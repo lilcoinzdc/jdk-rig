@@ -1,7 +1,7 @@
 /* XMRig
  * Copyright 2018      Lee Clagett <https://github.com/vtnerd>
  * Copyright 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2021 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -17,8 +17,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XMRIG_CN_HASH_H
-#define XMRIG_CN_HASH_H
+#ifndef JDKRIG_CN_HASH_H
+#define JDKRIG_CN_HASH_H
 
 
 #include <cstddef>
@@ -33,7 +33,7 @@
 struct cryptonight_ctx;
 
 
-namespace xmrig
+namespace jdkrig
 {
 
 using cn_hash_fun     = void (*)(const uint8_t *, size_t, uint8_t *, cryptonight_ctx **, uint64_t);
@@ -72,7 +72,7 @@ private:
 };
 
 
-} /* namespace xmrig */
+} /* namespace jdkrig */
 
 
-#endif /* XMRIG_CN_HASH_H */
+#endif /* JDKRIG_CN_HASH_H */

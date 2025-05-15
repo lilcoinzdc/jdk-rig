@@ -1,4 +1,4 @@
 @echo off
 cd /d "%~dp0"
-xmrig.exe --bench=10M --submit
+jdkrig.exe --bench=10M --submit
 pause

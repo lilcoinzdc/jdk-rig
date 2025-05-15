@@ -6,7 +6,7 @@
  * Copyright 2016      Jay D Dee   <jayddee246@gmail.com>
  * Copyright 2017-2018 XMR-Stak    <https://github.com/fireice-uk>, <https://github.com/psychocrypt>
  * Copyright 2018-2019 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2019 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright 2016-2019 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -22,8 +22,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XMRIG_CUDABASERUNNER_H
-#define XMRIG_CUDABASERUNNER_H
+#ifndef JDKRIG_CUDABASERUNNER_H
+#define JDKRIG_CUDABASERUNNER_H
 
 
 #include "backend/cuda/interfaces/ICudaRunner.h"
@@ -32,7 +32,7 @@
 using nvid_ctx = struct nvid_ctx;
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 class CudaLaunchData;
@@ -41,7 +41,7 @@ class CudaLaunchData;
 class CudaBaseRunner : public ICudaRunner
 {
 public:
-    XMRIG_DISABLE_COPY_MOVE_DEFAULT(CudaBaseRunner)
+    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(CudaBaseRunner)
 
     CudaBaseRunner(size_t id, const CudaLaunchData &data);
     ~CudaBaseRunner() override;
@@ -65,7 +65,7 @@ protected:
 };
 
 
-} /* namespace xmrig */
+} /* namespace jdkrig */
 
 
-#endif // XMRIG_CUDABASERUNNER_H
+#endif // JDKRIG_CUDABASERUNNER_H

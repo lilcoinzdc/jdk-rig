@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -41,25 +41,25 @@
 #include "core/Controller.h"
 
 
-#ifdef XMRIG_ALGO_KAWPOW
+#ifdef JDKRIG_ALGO_KAWPOW
 #   include "crypto/kawpow/KPCache.h"
 #   include "crypto/kawpow/KPHash.h"
 #endif
 
 
-#ifdef XMRIG_FEATURE_API
+#ifdef JDKRIG_FEATURE_API
 #   include "base/api/interfaces/IApiRequest.h"
 #endif
 
 
-#ifdef XMRIG_FEATURE_ADL
+#ifdef JDKRIG_FEATURE_ADL
 #include "backend/opencl/wrappers/AdlLib.h"
 
-namespace xmrig { static const char *kAdlLabel = "ADL"; }
+namespace jdkrig { static const char *kAdlLabel = "ADL"; }
 #endif
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 extern template class Threads<OclThreads>;
@@ -157,7 +157,7 @@ public:
             return printDisabled(kLabel, RED_S " (no devices)");
         }
 
-#       ifdef XMRIG_FEATURE_ADL
+#       ifdef JDKRIG_FEATURE_ADL
         if (cl.isAdlEnabled()) {
             if (AdlLib::init()) {
                 Log::print(GREEN_BOLD(" * ") WHITE_BOLD("%-13s") "press " MAGENTA_BG(WHITE_BOLD_S "e") " for health report",
@@ -207,7 +207,7 @@ public:
         for (const auto &data : threads) {
             size_t mem_used = data.thread.intensity() * algo_l3 / oneMiB;
 
-#           ifdef XMRIG_ALGO_KAWPOW
+#           ifdef JDKRIG_ALGO_KAWPOW
             if (algo.family() == Algorithm::KAWPOW) {
                 const uint32_t epoch = job.height() / KPHash::EPOCH_LENGTH;
                 mem_used = (KPCache::cache_size(epoch) + KPCache::dag_size(epoch)) / oneMiB;
@@ -235,7 +235,7 @@ public:
     }
 
 
-#   ifdef XMRIG_FEATURE_ADL
+#   ifdef JDKRIG_FEATURE_ADL
     void printHealth()
     {
         if (!AdlLib::isReady()) {
@@ -273,70 +273,70 @@ public:
 };
 
 
-} // namespace xmrig
+} // namespace jdkrig
 
 
-const char *xmrig::ocl_tag()
+const char *jdkrig::ocl_tag()
 {
     return Tags::opencl();
 }
 
 
-xmrig::OclBackend::OclBackend(Controller *controller) :
+jdkrig::OclBackend::OclBackend(Controller *controller) :
     d_ptr(new OclBackendPrivate(controller))
 {
     d_ptr->workers.setBackend(this);
 }
 
 
-xmrig::OclBackend::~OclBackend()
+jdkrig::OclBackend::~OclBackend()
 {
     delete d_ptr;
 
     OclLib::close();
 
-#   ifdef XMRIG_FEATURE_ADL
+#   ifdef JDKRIG_FEATURE_ADL
     AdlLib::close();
 #   endif
 }
 
 
-bool xmrig::OclBackend::isEnabled() const
+bool jdkrig::OclBackend::isEnabled() const
 {
     return d_ptr->controller->config()->cl().isEnabled() && OclLib::isInitialized() && d_ptr->platform.isValid() && !d_ptr->devices.empty();
 }
 
 
-bool xmrig::OclBackend::isEnabled(const Algorithm &algorithm) const
+bool jdkrig::OclBackend::isEnabled(const Algorithm &algorithm) const
 {
     return !d_ptr->controller->config()->cl().threads().get(algorithm).isEmpty();
 }
 
 
-const xmrig::Hashrate *xmrig::OclBackend::hashrate() const
+const jdkrig::Hashrate *jdkrig::OclBackend::hashrate() const
 {
     return d_ptr->workers.hashrate();
 }
 
 
-const xmrig::String &xmrig::OclBackend::profileName() const
+const jdkrig::String &jdkrig::OclBackend::profileName() const
 {
     return d_ptr->profileName;
 }
 
 
-const xmrig::String &xmrig::OclBackend::type() const
+const jdkrig::String &jdkrig::OclBackend::type() const
 {
     return kType;
 }
 
 
-void xmrig::OclBackend::execCommand(char)
+void jdkrig::OclBackend::execCommand(char)
 {
 }
 
 
-void xmrig::OclBackend::prepare(const Job &job)
+void jdkrig::OclBackend::prepare(const Job &job)
 {
     if (d_ptr) {
         d_ptr->workers.jobEarlyNotification(job);
@@ -344,7 +344,7 @@ void xmrig::OclBackend::prepare(const Job &job)
 }
 
 
-void xmrig::OclBackend::printHashrate(bool details)
+void jdkrig::OclBackend::printHashrate(bool details)
 {
     if (!details || !hashrate()) {
         return;
@@ -399,15 +399,15 @@ void xmrig::OclBackend::printHashrate(bool details)
 }
 
 
-void xmrig::OclBackend::printHealth()
+void jdkrig::OclBackend::printHealth()
 {
-#   ifdef XMRIG_FEATURE_ADL
+#   ifdef JDKRIG_FEATURE_ADL
     d_ptr->printHealth();
 #   endif
 }
 
 
-void xmrig::OclBackend::setJob(const Job &job)
+void jdkrig::OclBackend::setJob(const Job &job)
 {
     const auto &cl = d_ptr->controller->config()->cl();
     if (cl.isEnabled()) {
@@ -418,7 +418,7 @@ void xmrig::OclBackend::setJob(const Job &job)
         return stop();
     }
 
-    auto threads = cl.get(d_ptr->controller->miner(), job.algorithm(), d_ptr->platform, d_ptr->devices);
+    auto threads = cl.get(d_ptr->controller->jdkrigger(), job.algorithm(), d_ptr->platform, d_ptr->devices);
     if (!d_ptr->threads.empty() && d_ptr->threads.size() == threads.size() && std::equal(d_ptr->threads.begin(), d_ptr->threads.end(), threads.begin())) {
         return;
     }
@@ -445,7 +445,7 @@ void xmrig::OclBackend::setJob(const Job &job)
 }
 
 
-void xmrig::OclBackend::start(IWorker *worker, bool ready)
+void jdkrig::OclBackend::start(IWorker *worker, bool ready)
 {
     mutex.lock();
 
@@ -463,7 +463,7 @@ void xmrig::OclBackend::start(IWorker *worker, bool ready)
 }
 
 
-void xmrig::OclBackend::stop()
+void jdkrig::OclBackend::stop()
 {
     if (d_ptr->threads.empty()) {
         return;
@@ -480,14 +480,14 @@ void xmrig::OclBackend::stop()
 }
 
 
-bool xmrig::OclBackend::tick(uint64_t ticks)
+bool jdkrig::OclBackend::tick(uint64_t ticks)
 {
     return d_ptr->workers.tick(ticks);
 }
 
 
-#ifdef XMRIG_FEATURE_API
-rapidjson::Value xmrig::OclBackend::toJSON(rapidjson::Document &doc) const
+#ifdef JDKRIG_FEATURE_API
+rapidjson::Value jdkrig::OclBackend::toJSON(rapidjson::Document &doc) const
 {
     using namespace rapidjson;
     auto &allocator = doc.GetAllocator();
@@ -525,7 +525,7 @@ rapidjson::Value xmrig::OclBackend::toJSON(rapidjson::Document &doc) const
 }
 
 
-void xmrig::OclBackend::handleRequest(IApiRequest &)
+void jdkrig::OclBackend::handleRequest(IApiRequest &)
 {
 }
 #endif

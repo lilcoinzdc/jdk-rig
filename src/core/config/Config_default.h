@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -17,15 +17,15 @@
  */
 
 
-#ifndef XMRIG_CONFIG_DEFAULT_H
-#define XMRIG_CONFIG_DEFAULT_H
+#ifndef JDKRIG_CONFIG_DEFAULT_H
+#define JDKRIG_CONFIG_DEFAULT_H
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 // This feature require CMake option: -DWITH_EMBEDDED_CONFIG=ON
-#ifdef XMRIG_FEATURE_EMBEDDED_CONFIG
+#ifdef JDKRIG_FEATURE_EMBEDDED_CONFIG
 const static char *default_config =
 R"===(
 {
@@ -92,7 +92,7 @@ R"===(
         {
             "algo": null,
             "coin": null,
-            "url": "donate.v2.xmrig.com:3333",
+            "url": "donate.v2.jdkrig.com:3333",
             "user": "YOUR_WALLET_ADDRESS",
             "pass": "x",
             "rig-id": null,
@@ -132,7 +132,7 @@ R"===(
 #endif
 
 
-} // namespace xmrig
+} // namespace jdkrig
 
 
-#endif /* XMRIG_CONFIG_DEFAULT_H */
+#endif /* JDKRIG_CONFIG_DEFAULT_H */

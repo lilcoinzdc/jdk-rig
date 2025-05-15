@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@
 #include "base/io/log/Log.h"
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 static const char *kCache       = "cache";
@@ -33,14 +33,14 @@ static const char *kDevicesHint = "devices-hint";
 static const char *kEnabled     = "enabled";
 static const char *kLoader      = "loader";
 
-#ifndef XMRIG_OS_APPLE
+#ifndef JDKRIG_OS_APPLE
 static const char *kAMD         = "AMD";
 static const char *kINTEL       = "INTEL";
 static const char *kNVIDIA      = "NVIDIA";
 static const char *kPlatform    = "platform";
 #endif
 
-#ifdef XMRIG_FEATURE_ADL
+#ifdef JDKRIG_FEATURE_ADL
 static const char *kAdl         = "adl";
 #endif
 
@@ -48,24 +48,24 @@ static const char *kAdl         = "adl";
 extern template class Threads<OclThreads>;
 
 
-} // namespace xmrig
+} // namespace jdkrig
 
 
-#ifndef XMRIG_OS_APPLE
-xmrig::OclConfig::OclConfig() : m_platformVendor(kAMD) {}
+#ifndef JDKRIG_OS_APPLE
+jdkrig::OclConfig::OclConfig() : m_platformVendor(kAMD) {}
 #else
-xmrig::OclConfig::OclConfig() = default;
+jdkrig::OclConfig::OclConfig() = default;
 #endif
 
 
-xmrig::OclPlatform xmrig::OclConfig::platform() const
+jdkrig::OclPlatform jdkrig::OclConfig::platform() const
 {
     const auto platforms = OclPlatform::get();
     if (platforms.empty()) {
         return {};
     }
 
-#   ifndef XMRIG_OS_APPLE
+#   ifndef JDKRIG_OS_APPLE
     if (!m_platformVendor.isEmpty()) {
         String search;
         String vendor = m_platformVendor;
@@ -101,7 +101,7 @@ xmrig::OclPlatform xmrig::OclConfig::platform() const
 }
 
 
-rapidjson::Value xmrig::OclConfig::toJSON(rapidjson::Document &doc) const
+rapidjson::Value jdkrig::OclConfig::toJSON(rapidjson::Document &doc) const
 {
     using namespace rapidjson;
     auto &allocator = doc.GetAllocator();
@@ -112,11 +112,11 @@ rapidjson::Value xmrig::OclConfig::toJSON(rapidjson::Document &doc) const
     obj.AddMember(StringRef(kCache),    m_cache, allocator);
     obj.AddMember(StringRef(kLoader),   m_loader.toJSON(), allocator);
 
-#   ifndef XMRIG_OS_APPLE
+#   ifndef JDKRIG_OS_APPLE
     obj.AddMember(StringRef(kPlatform), m_platformVendor.isEmpty() ? Value(m_platformIndex) : m_platformVendor.toJSON(), allocator);
 #   endif
 
-#   ifdef XMRIG_FEATURE_ADL
+#   ifdef JDKRIG_FEATURE_ADL
     obj.AddMember(StringRef(kAdl),      m_adl, allocator);
 #   endif
 
@@ -126,7 +126,7 @@ rapidjson::Value xmrig::OclConfig::toJSON(rapidjson::Document &doc) const
 }
 
 
-std::vector<xmrig::OclLaunchData> xmrig::OclConfig::get(const Miner *miner, const Algorithm &algorithm, const OclPlatform &platform, const std::vector<OclDevice> &devices) const
+std::vector<jdkrig::OclLaunchData> jdkrig::OclConfig::get(const Jdkrigger *jdkrigger, const Algorithm &algorithm, const OclPlatform &platform, const std::vector<OclDevice> &devices) const
 {
     std::vector<OclLaunchData> out;
     const auto &threads = m_threads.get(algorithm);
@@ -145,11 +145,11 @@ std::vector<xmrig::OclLaunchData> xmrig::OclConfig::get(const Miner *miner, cons
 
         if (thread.threads().size() > 1) {
             for (int64_t affinity : thread.threads()) {
-                out.emplace_back(miner, algorithm, *this, platform, thread, devices[thread.index()], affinity);
+                out.emplace_back(jdkrigger, algorithm, *this, platform, thread, devices[thread.index()], affinity);
             }
         }
         else {
-            out.emplace_back(miner, algorithm, *this, platform, thread, devices[thread.index()], thread.threads().front());
+            out.emplace_back(jdkrigger, algorithm, *this, platform, thread, devices[thread.index()], thread.threads().front());
         }
     }
 
@@ -157,20 +157,20 @@ std::vector<xmrig::OclLaunchData> xmrig::OclConfig::get(const Miner *miner, cons
 }
 
 
-void xmrig::OclConfig::read(const rapidjson::Value &value)
+void jdkrig::OclConfig::read(const rapidjson::Value &value)
 {
     if (value.IsObject()) {
         m_enabled   = Json::getBool(value, kEnabled, m_enabled);
         m_cache     = Json::getBool(value, kCache, m_cache);
         m_loader    = Json::getString(value, kLoader);
 
-#       ifndef XMRIG_OS_APPLE
+#       ifndef JDKRIG_OS_APPLE
         setPlatform(Json::getValue(value, kPlatform));
 #       endif
 
         setDevicesHint(Json::getString(value, kDevicesHint));
 
-#       ifdef XMRIG_FEATURE_ADL
+#       ifdef JDKRIG_FEATURE_ADL
         m_adl = Json::getBool(value, kAdl, m_adl);
 #       endif
 
@@ -191,7 +191,7 @@ void xmrig::OclConfig::read(const rapidjson::Value &value)
 }
 
 
-void xmrig::OclConfig::generate()
+void jdkrig::OclConfig::generate()
 {
     if (!isEnabled() || m_threads.has("*")) {
         return;
@@ -208,19 +208,19 @@ void xmrig::OclConfig::generate()
 
     size_t count = 0;
 
-    count += xmrig::generate<Algorithm::CN>(m_threads, devices);
-    count += xmrig::generate<Algorithm::CN_LITE>(m_threads, devices);
-    count += xmrig::generate<Algorithm::CN_HEAVY>(m_threads, devices);
-    count += xmrig::generate<Algorithm::CN_PICO>(m_threads, devices);
-    count += xmrig::generate<Algorithm::CN_FEMTO>(m_threads, devices);
-    count += xmrig::generate<Algorithm::RANDOM_X>(m_threads, devices);
-    count += xmrig::generate<Algorithm::KAWPOW>(m_threads, devices);
+    count += jdkrig::generate<Algorithm::CN>(m_threads, devices);
+    count += jdkrig::generate<Algorithm::CN_LITE>(m_threads, devices);
+    count += jdkrig::generate<Algorithm::CN_HEAVY>(m_threads, devices);
+    count += jdkrig::generate<Algorithm::CN_PICO>(m_threads, devices);
+    count += jdkrig::generate<Algorithm::CN_FEMTO>(m_threads, devices);
+    count += jdkrig::generate<Algorithm::RANDOM_X>(m_threads, devices);
+    count += jdkrig::generate<Algorithm::KAWPOW>(m_threads, devices);
 
     m_shouldSave = count > 0;
 }
 
 
-void xmrig::OclConfig::setDevicesHint(const char *devicesHint)
+void jdkrig::OclConfig::setDevicesHint(const char *devicesHint)
 {
     if (devicesHint == nullptr) {
         return;
@@ -235,8 +235,8 @@ void xmrig::OclConfig::setDevicesHint(const char *devicesHint)
 }
 
 
-#ifndef XMRIG_OS_APPLE
-void xmrig::OclConfig::setPlatform(const rapidjson::Value &platform)
+#ifndef JDKRIG_OS_APPLE
+void jdkrig::OclConfig::setPlatform(const rapidjson::Value &platform)
 {
     if (platform.IsString()) {
         m_platformVendor = platform.GetString();

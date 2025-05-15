@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XMRIG_CPUBACKEND_H
-#define XMRIG_CPUBACKEND_H
+#ifndef JDKRIG_CPUBACKEND_H
+#define JDKRIG_CPUBACKEND_H
 
 
 #include "backend/common/interfaces/IBackend.h"
@@ -27,18 +27,18 @@
 #include <utility>
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 class Controller;
 class CpuBackendPrivate;
-class Miner;
+class Jdkrigger;
 
 
 class CpuBackend : public IBackend
 {
 public:
-    XMRIG_DISABLE_COPY_MOVE_DEFAULT(CpuBackend)
+    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(CpuBackend)
 
     CpuBackend(Controller *controller);
     ~CpuBackend() override;
@@ -59,12 +59,12 @@ protected:
     void start(IWorker *worker, bool ready) override;
     void stop() override;
 
-#   ifdef XMRIG_FEATURE_API
+#   ifdef JDKRIG_FEATURE_API
     rapidjson::Value toJSON(rapidjson::Document &doc) const override;
     void handleRequest(IApiRequest &request) override;
 #   endif
 
-#   ifdef XMRIG_FEATURE_BENCHMARK
+#   ifdef JDKRIG_FEATURE_BENCHMARK
     Benchmark *benchmark() const override;
     void printBenchProgress() const override;
 #   endif
@@ -74,7 +74,7 @@ private:
 };
 
 
-} /* namespace xmrig */
+} /* namespace jdkrig */
 
 
-#endif /* XMRIG_CPUBACKEND_H */
+#endif /* JDKRIG_CPUBACKEND_H */

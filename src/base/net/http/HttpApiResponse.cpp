@@ -1,7 +1,7 @@
 /* XMRig
  * Copyright (c) 2014-2019 heapwolf    <https://github.com/heapwolf>
  * Copyright (c) 2018-2024 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2024 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2024 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -23,22 +23,22 @@
 #include "base/net/http/HttpData.h"
 
 
-namespace xmrig {
+namespace jdkrig {
 
 static const char *kError  = "error";
 static const char *kStatus = "status";
 
-} // namespace xmrig
+} // namespace jdkrig
 
 
-xmrig::HttpApiResponse::HttpApiResponse(uint64_t id) :
+jdkrig::HttpApiResponse::HttpApiResponse(uint64_t id) :
     HttpResponse(id),
     m_doc(rapidjson::kObjectType)
 {
 }
 
 
-xmrig::HttpApiResponse::HttpApiResponse(uint64_t id, int status) :
+jdkrig::HttpApiResponse::HttpApiResponse(uint64_t id, int status) :
     HttpResponse(id),
     m_doc(rapidjson::kObjectType)
 {
@@ -46,7 +46,7 @@ xmrig::HttpApiResponse::HttpApiResponse(uint64_t id, int status) :
 }
 
 
-void xmrig::HttpApiResponse::end()
+void jdkrig::HttpApiResponse::end()
 {
     using namespace rapidjson;
 

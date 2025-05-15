@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XMRIG_CPUCONFIG_H
-#define XMRIG_CPUCONFIG_H
+#ifndef JDKRIG_CPUCONFIG_H
+#define JDKRIG_CPUCONFIG_H
 
 
 #include "backend/common/Threads.h"
@@ -26,7 +26,7 @@
 #include "crypto/common/Assembly.h"
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 class CpuConfig
@@ -48,11 +48,11 @@ public:
     static const char *kPriority;
     static const char *kYield;
 
-#   ifdef XMRIG_FEATURE_ASM
+#   ifdef JDKRIG_FEATURE_ASM
     static const char *kAsm;
 #   endif
 
-#   ifdef XMRIG_ALGO_ARGON2
+#   ifdef JDKRIG_ALGO_ARGON2
     static const char *kArgon2Impl;
 #   endif
 
@@ -61,7 +61,7 @@ public:
     bool isHwAES() const;
     rapidjson::Value toJSON(rapidjson::Document &doc) const;
     size_t memPoolSize() const;
-    std::vector<CpuLaunchData> get(const Miner *miner, const Algorithm &algorithm) const;
+    std::vector<CpuLaunchData> get(const Jdkrigger *jdkrigger, const Algorithm &algorithm) const;
     void read(const rapidjson::Value &value);
 
     inline bool isEnabled() const                       { return m_enabled; }
@@ -102,7 +102,7 @@ private:
 };
 
 
-} /* namespace xmrig */
+} /* namespace jdkrig */
 
 
-#endif /* XMRIG_CPUCONFIG_H */
+#endif /* JDKRIG_CPUCONFIG_H */

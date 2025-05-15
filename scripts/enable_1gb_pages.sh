@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-# https://xmrig.com/docs/miner/hugepages#onegb-huge-pages
+# https://jdkrig.com/docs/jdkrigger/hugepages#onegb-huge-pages
 
 sysctl -w vm.nr_hugepages=$(nproc)
 

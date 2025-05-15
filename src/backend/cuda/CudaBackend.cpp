@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -40,25 +40,25 @@
 #include "core/Controller.h"
 
 
-#ifdef XMRIG_ALGO_KAWPOW
+#ifdef JDKRIG_ALGO_KAWPOW
 #   include "crypto/kawpow/KPCache.h"
 #   include "crypto/kawpow/KPHash.h"
 #endif
 
 
-#ifdef XMRIG_FEATURE_API
+#ifdef JDKRIG_FEATURE_API
 #   include "base/api/interfaces/IApiRequest.h"
 #endif
 
 
-#ifdef XMRIG_FEATURE_NVML
+#ifdef JDKRIG_FEATURE_NVML
 #include "backend/cuda/wrappers/NvmlLib.h"
 
-namespace xmrig { static const char *kNvmlLabel = "NVML"; }
+namespace jdkrig { static const char *kNvmlLabel = "NVML"; }
 #endif
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 extern template class Threads<CudaThreads>;
@@ -164,7 +164,7 @@ public:
         Log::print(GREEN_BOLD(" * ") WHITE_BOLD("%-13s") WHITE_BOLD("%s") "/" WHITE_BOLD("%s") BLACK_BOLD("/%s"), kLabel,
                    CudaLib::version(runtimeVersion).c_str(), CudaLib::version(driverVersion).c_str(), CudaLib::pluginVersion());
 
-#       ifdef XMRIG_FEATURE_NVML
+#       ifdef JDKRIG_FEATURE_NVML
         if (cuda.isNvmlEnabled()) {
             if (NvmlLib::init(cuda.nvmlLoader())) {
                 NvmlLib::assign(devices);
@@ -219,7 +219,7 @@ public:
         for (const auto &data : threads) {
             size_t mem_used = (data.thread.threads() * data.thread.blocks()) * algo_l3 / oneMiB;
 
-#           ifdef XMRIG_ALGO_KAWPOW
+#           ifdef JDKRIG_ALGO_KAWPOW
             if (algo.family() == Algorithm::KAWPOW) {
                 const uint32_t epoch = job.height() / KPHash::EPOCH_LENGTH;
                 mem_used = (KPCache::dag_size(epoch) + oneMiB - 1) / oneMiB;
@@ -248,7 +248,7 @@ public:
     }
 
 
-#   ifdef XMRIG_FEATURE_NVML
+#   ifdef JDKRIG_FEATURE_NVML
     void printHealth()
     {
         for (const auto &device : devices) {
@@ -293,70 +293,70 @@ public:
 };
 
 
-} // namespace xmrig
+} // namespace jdkrig
 
 
-const char *xmrig::cuda_tag()
+const char *jdkrig::cuda_tag()
 {
     return Tags::nvidia();
 }
 
 
-xmrig::CudaBackend::CudaBackend(Controller *controller) :
+jdkrig::CudaBackend::CudaBackend(Controller *controller) :
     d_ptr(new CudaBackendPrivate(controller))
 {
     d_ptr->workers.setBackend(this);
 }
 
 
-xmrig::CudaBackend::~CudaBackend()
+jdkrig::CudaBackend::~CudaBackend()
 {
     delete d_ptr;
 
     CudaLib::close();
 
-#   ifdef XMRIG_FEATURE_NVML
+#   ifdef JDKRIG_FEATURE_NVML
     NvmlLib::close();
 #   endif
 }
 
 
-bool xmrig::CudaBackend::isEnabled() const
+bool jdkrig::CudaBackend::isEnabled() const
 {
     return d_ptr->controller->config()->cuda().isEnabled() && CudaLib::isInitialized() && !d_ptr->devices.empty();;
 }
 
 
-bool xmrig::CudaBackend::isEnabled(const Algorithm &algorithm) const
+bool jdkrig::CudaBackend::isEnabled(const Algorithm &algorithm) const
 {
     return !d_ptr->controller->config()->cuda().threads().get(algorithm).isEmpty();
 }
 
 
-const xmrig::Hashrate *xmrig::CudaBackend::hashrate() const
+const jdkrig::Hashrate *jdkrig::CudaBackend::hashrate() const
 {
     return d_ptr->workers.hashrate();
 }
 
 
-const xmrig::String &xmrig::CudaBackend::profileName() const
+const jdkrig::String &jdkrig::CudaBackend::profileName() const
 {
     return d_ptr->profileName;
 }
 
 
-const xmrig::String &xmrig::CudaBackend::type() const
+const jdkrig::String &jdkrig::CudaBackend::type() const
 {
     return kType;
 }
 
 
-void xmrig::CudaBackend::execCommand(char)
+void jdkrig::CudaBackend::execCommand(char)
 {
 }
 
 
-void xmrig::CudaBackend::prepare(const Job &job)
+void jdkrig::CudaBackend::prepare(const Job &job)
 {
     if (d_ptr) {
         d_ptr->workers.jobEarlyNotification(job);
@@ -364,7 +364,7 @@ void xmrig::CudaBackend::prepare(const Job &job)
 }
 
 
-void xmrig::CudaBackend::printHashrate(bool details)
+void jdkrig::CudaBackend::printHashrate(bool details)
 {
     if (!details || !hashrate()) {
         return;
@@ -423,15 +423,15 @@ void xmrig::CudaBackend::printHashrate(bool details)
 }
 
 
-void xmrig::CudaBackend::printHealth()
+void jdkrig::CudaBackend::printHealth()
 {
-#   ifdef XMRIG_FEATURE_NVML
+#   ifdef JDKRIG_FEATURE_NVML
     d_ptr->printHealth();
 #   endif
 }
 
 
-void xmrig::CudaBackend::setJob(const Job &job)
+void jdkrig::CudaBackend::setJob(const Job &job)
 {
     const auto &cuda = d_ptr->controller->config()->cuda();
     if (cuda.isEnabled()) {
@@ -442,7 +442,7 @@ void xmrig::CudaBackend::setJob(const Job &job)
         return stop();
     }
 
-    auto threads = cuda.get(d_ptr->controller->miner(), job.algorithm(), d_ptr->devices);
+    auto threads = cuda.get(d_ptr->controller->jdkrigger(), job.algorithm(), d_ptr->devices);
     if (!d_ptr->threads.empty() && d_ptr->threads.size() == threads.size() && std::equal(d_ptr->threads.begin(), d_ptr->threads.end(), threads.begin())) {
         return;
     }
@@ -463,7 +463,7 @@ void xmrig::CudaBackend::setJob(const Job &job)
 }
 
 
-void xmrig::CudaBackend::start(IWorker *worker, bool ready)
+void jdkrig::CudaBackend::start(IWorker *worker, bool ready)
 {
     mutex.lock();
 
@@ -481,7 +481,7 @@ void xmrig::CudaBackend::start(IWorker *worker, bool ready)
 }
 
 
-void xmrig::CudaBackend::stop()
+void jdkrig::CudaBackend::stop()
 {
     if (d_ptr->threads.empty()) {
         return;
@@ -496,14 +496,14 @@ void xmrig::CudaBackend::stop()
 }
 
 
-bool xmrig::CudaBackend::tick(uint64_t ticks)
+bool jdkrig::CudaBackend::tick(uint64_t ticks)
 {
     return d_ptr->workers.tick(ticks);
 }
 
 
-#ifdef XMRIG_FEATURE_API
-rapidjson::Value xmrig::CudaBackend::toJSON(rapidjson::Document &doc) const
+#ifdef JDKRIG_FEATURE_API
+rapidjson::Value jdkrig::CudaBackend::toJSON(rapidjson::Document &doc) const
 {
     using namespace rapidjson;
     auto &allocator = doc.GetAllocator();
@@ -520,7 +520,7 @@ rapidjson::Value xmrig::CudaBackend::toJSON(rapidjson::Document &doc) const
         versions.AddMember("cuda-driver",    Value(CudaLib::version(d_ptr->driverVersion).c_str(), allocator), allocator);
         versions.AddMember("plugin",         String(CudaLib::pluginVersion()).toJSON(doc), allocator);
 
-#       ifdef XMRIG_FEATURE_NVML
+#       ifdef JDKRIG_FEATURE_NVML
         if (NvmlLib::isReady()) {
             versions.AddMember("nvml",       StringRef(NvmlLib::version()), allocator);
             versions.AddMember("driver",     StringRef(NvmlLib::driverVersion()), allocator);
@@ -555,7 +555,7 @@ rapidjson::Value xmrig::CudaBackend::toJSON(rapidjson::Document &doc) const
 }
 
 
-void xmrig::CudaBackend::handleRequest(IApiRequest &)
+void jdkrig::CudaBackend::handleRequest(IApiRequest &)
 {
 }
 #endif

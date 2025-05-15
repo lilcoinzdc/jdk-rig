@@ -1,0 +1,7 @@
+/mnt/jdk-rig/build-someon/CMakeFiles/jdkrig-asm.dir
+/mnt/jdk-rig/build-someon/CMakeFiles/jdkrig.dir
+/mnt/jdk-rig/build-someon/CMakeFiles/edit_cache.dir
+/mnt/jdk-rig/build-someon/CMakeFiles/rebuild_cache.dir
+/mnt/jdk-rig/build-someon/src/3rdparty/libethash/CMakeFiles/ethash.dir
+/mnt/jdk-rig/build-someon/src/3rdparty/libethash/CMakeFiles/edit_cache.dir
+/mnt/jdk-rig/build-someon/src/3rdparty/libethash/CMakeFiles/rebuild_cache.dir

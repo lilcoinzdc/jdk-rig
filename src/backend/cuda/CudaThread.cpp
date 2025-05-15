@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@
 #include <algorithm>
 
 
-namespace xmrig {
+namespace jdkrig {
 
 static const char *kAffinity    = "affinity";
 static const char *kBFactor     = "bfactor";
@@ -35,10 +35,10 @@ static const char *kIndex       = "index";
 static const char *kThreads     = "threads";
 static const char *kDatasetHost = "dataset_host";
 
-} // namespace xmrig
+} // namespace jdkrig
 
 
-xmrig::CudaThread::CudaThread(const rapidjson::Value &value)
+jdkrig::CudaThread::CudaThread(const rapidjson::Value &value)
 {
     if (!value.IsObject()) {
         return;
@@ -60,7 +60,7 @@ xmrig::CudaThread::CudaThread(const rapidjson::Value &value)
 }
 
 
-xmrig::CudaThread::CudaThread(uint32_t index, nvid_ctx *ctx) :
+jdkrig::CudaThread::CudaThread(uint32_t index, nvid_ctx *ctx) :
     m_blocks(CudaLib::deviceInt(ctx, CudaLib::DeviceBlocks)),
     m_datasetHost(CudaLib::deviceInt(ctx, CudaLib::DeviceDatasetHost)),
     m_threads(CudaLib::deviceInt(ctx, CudaLib::DeviceThreads)),
@@ -72,7 +72,7 @@ xmrig::CudaThread::CudaThread(uint32_t index, nvid_ctx *ctx) :
 }
 
 
-bool xmrig::CudaThread::isEqual(const CudaThread &other) const
+bool jdkrig::CudaThread::isEqual(const CudaThread &other) const
 {
     return m_blocks      == other.m_blocks &&
            m_threads     == other.m_threads &&
@@ -84,7 +84,7 @@ bool xmrig::CudaThread::isEqual(const CudaThread &other) const
 }
 
 
-rapidjson::Value xmrig::CudaThread::toJSON(rapidjson::Document &doc) const
+rapidjson::Value jdkrig::CudaThread::toJSON(rapidjson::Document &doc) const
 {
     using namespace rapidjson;
     auto &allocator = doc.GetAllocator();

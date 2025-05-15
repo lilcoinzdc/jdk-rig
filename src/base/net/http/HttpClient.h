@@ -1,7 +1,7 @@
 /* XMRig
  * Copyright (c) 2014-2019 heapwolf    <https://github.com/heapwolf>
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -18,8 +18,8 @@
  */
 
 
-#ifndef XMRIG_HTTPCLIENT_H
-#define XMRIG_HTTPCLIENT_H
+#ifndef JDKRIG_HTTPCLIENT_H
+#define JDKRIG_HTTPCLIENT_H
 
 
 #include "base/kernel/interfaces/IDnsListener.h"
@@ -29,7 +29,7 @@
 #include "base/tools/Object.h"
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 class DnsRequest;
@@ -38,7 +38,7 @@ class DnsRequest;
 class HttpClient : public HttpContext, public IDnsListener, public ITimerListener
 {
 public:
-    XMRIG_DISABLE_COPY_MOVE_DEFAULT(HttpClient);
+    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(HttpClient);
 
     HttpClient(const char *tag, FetchRequest &&req, const std::weak_ptr<IHttpListener> &listener);
     ~HttpClient() override = default;
@@ -70,8 +70,8 @@ private:
 };
 
 
-} // namespace xmrig
+} // namespace jdkrig
 
 
-#endif // XMRIG_HTTPCLIENT_H
+#endif // JDKRIG_HTTPCLIENT_H
 

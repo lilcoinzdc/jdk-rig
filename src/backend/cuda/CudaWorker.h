@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XMRIG_CUDAWORKER_H
-#define XMRIG_CUDAWORKER_H
+#ifndef JDKRIG_CUDAWORKER_H
+#define JDKRIG_CUDAWORKER_H
 
 
 #include "backend/common/GpuWorker.h"
@@ -27,7 +27,7 @@
 #include "net/JobResult.h"
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 class ICudaRunner;
@@ -36,7 +36,7 @@ class ICudaRunner;
 class CudaWorker : public GpuWorker
 {
 public:
-    XMRIG_DISABLE_COPY_MOVE_DEFAULT(CudaWorker)
+    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(CudaWorker)
 
     CudaWorker(size_t id, const CudaLaunchData &data);
 
@@ -56,13 +56,13 @@ private:
     void storeStats();
 
     const Algorithm m_algorithm;
-    const Miner *m_miner;
+    const Jdkrigger *m_jdkrigger;
     ICudaRunner *m_runner = nullptr;
     WorkerJob<1> m_job;
 };
 
 
-} // namespace xmrig
+} // namespace jdkrig
 
 
-#endif /* XMRIG_CUDAWORKER_H */
+#endif /* JDKRIG_CUDAWORKER_H */

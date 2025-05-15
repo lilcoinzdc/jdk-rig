@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XMRIG_CUDACONFIG_H
-#define XMRIG_CUDACONFIG_H
+#ifndef JDKRIG_CUDACONFIG_H
+#define JDKRIG_CUDACONFIG_H
 
 
 #include "backend/cuda/CudaLaunchData.h"
@@ -25,7 +25,7 @@
 #include "backend/cuda/CudaThreads.h"
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 class CudaConfig
@@ -34,7 +34,7 @@ public:
     CudaConfig() = default;
 
     rapidjson::Value toJSON(rapidjson::Document &doc) const;
-    std::vector<CudaLaunchData> get(const Miner *miner, const Algorithm &algorithm, const std::vector<CudaDevice> &devices) const;
+    std::vector<CudaLaunchData> get(const Jdkrigger *jdkrigger, const Algorithm &algorithm, const std::vector<CudaDevice> &devices) const;
     void read(const rapidjson::Value &value);
 
     inline bool isEnabled() const                               { return m_enabled; }
@@ -45,7 +45,7 @@ public:
     inline int32_t bfactor() const                              { return m_bfactor; }
     inline int32_t bsleep() const                               { return m_bsleep; }
 
-#   ifdef XMRIG_FEATURE_NVML
+#   ifdef JDKRIG_FEATURE_NVML
     inline bool isNvmlEnabled() const                           { return m_nvml; }
     inline const String &nvmlLoader() const                     { return m_nvmlLoader; }
 #   endif
@@ -68,14 +68,14 @@ private:
     int32_t m_bsleep       = 0;
 #   endif
 
-#   ifdef XMRIG_FEATURE_NVML
+#   ifdef JDKRIG_FEATURE_NVML
     bool m_nvml            = true;
     String m_nvmlLoader;
 #   endif
 };
 
 
-} /* namespace xmrig */
+} /* namespace jdkrig */
 
 
-#endif /* XMRIG_CUDACONFIG_H */
+#endif /* JDKRIG_CUDACONFIG_H */

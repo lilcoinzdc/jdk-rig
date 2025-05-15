@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2024 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2024 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2024 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XMRIG_API_H
-#define XMRIG_API_H
+#ifndef JDKRIG_API_H
+#define JDKRIG_API_H
 
 
 #include <vector>
@@ -27,7 +27,7 @@
 #include "base/tools/String.h"
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 class Base;
@@ -41,7 +41,7 @@ class String;
 class Api : public IBaseListener
 {
 public:
-    XMRIG_DISABLE_COPY_MOVE_DEFAULT(Api)
+    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(Api)
 
     explicit Api(Base *base);
     ~Api() override;
@@ -73,7 +73,7 @@ private:
 };
 
 
-} // namespace xmrig
+} // namespace jdkrig
 
 
-#endif // XMRIG_API_H
+#endif // JDKRIG_API_H

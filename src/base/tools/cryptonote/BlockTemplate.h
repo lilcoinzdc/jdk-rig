@@ -2,7 +2,7 @@
  * Copyright (c) 2012-2013 The Cryptonote developers
  * Copyright (c) 2014-2021 The Monero Project
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -18,8 +18,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XMRIG_BLOCKTEMPLATE_H
-#define XMRIG_BLOCKTEMPLATE_H
+#ifndef JDKRIG_BLOCKTEMPLATE_H
+#define JDKRIG_BLOCKTEMPLATE_H
 
 
 #include "3rdparty/rapidjson/fwd.h"
@@ -29,7 +29,7 @@
 #include "base/tools/Span.h"
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 class BlockTemplate
@@ -40,7 +40,7 @@ public:
     static constexpr size_t kNonceSize      = 4;
     static constexpr size_t kSignatureSize  = 64;
 
-#   ifdef XMRIG_PROXY_PROJECT
+#   ifdef JDKRIG_PROXY_PROJECT
     static constexpr bool kCalcHashes       = true;
 #   else
     static constexpr bool kCalcHashes       = false;
@@ -48,8 +48,8 @@ public:
 
     enum Offset : uint32_t {
         NONCE_OFFSET,
-        MINER_TX_PREFIX_OFFSET,
-        MINER_TX_PREFIX_END_OFFSET,
+        JDKRIGGER_TX_PREFIX_OFFSET,
+        JDKRIGGER_TX_PREFIX_END_OFFSET,
         EPH_PUBLIC_KEY_OFFSET,
         TX_EXTRA_OFFSET,
         TX_PUBKEY_OFFSET,
@@ -71,12 +71,12 @@ public:
     inline const Span &prevId() const                       { return m_prevId; }
     inline const uint8_t *nonce() const                     { return blob(NONCE_OFFSET); }
 
-    // Wownero miner signature
-    inline bool hasMinerSignature() const                   { return !m_minerSignature.empty(); }
-    inline const Span &minerSignature() const               { return m_minerSignature; }
+    // Wownero jdkrigger signature
+    inline bool hasJdkriggerSignature() const                   { return !m_jdkriggerSignature.empty(); }
+    inline const Span &jdkriggerSignature() const               { return m_jdkriggerSignature; }
     inline const uint8_t *vote() const                      { return m_vote; }
 
-    // Miner tx
+    // Jdkrigger tx
     inline uint64_t txVersion() const                       { return m_txVersion; }
     inline uint64_t unlockTime() const                      { return m_unlockTime; }
     inline uint64_t numInputs() const                       { return m_numInputs; }
@@ -92,7 +92,7 @@ public:
     // Transaction hashes
     inline uint64_t numHashes() const                       { return m_numHashes; }
     inline const Buffer &hashes() const                     { return m_hashes; }
-    inline const Buffer &minerTxMerkleTreeBranch() const    { return m_minerTxMerkleTreeBranch; }
+    inline const Buffer &jdkriggerTxMerkleTreeBranch() const    { return m_jdkriggerTxMerkleTreeBranch; }
     inline const uint8_t *rootHash() const                  { return m_rootHash; }
 
     inline Buffer generateHashingBlob() const
@@ -103,8 +103,8 @@ public:
         return out;
     }
 
-    static void calculateMinerTxHash(const uint8_t *prefix_begin, const uint8_t *prefix_end, uint8_t *hash);
-    static void calculateRootHash(const uint8_t *prefix_begin, const uint8_t *prefix_end, const Buffer &miner_tx_merkle_tree_branch, uint8_t *root_hash);
+    static void calculateJdkriggerTxHash(const uint8_t *prefix_begin, const uint8_t *prefix_end, uint8_t *hash);
+    static void calculateRootHash(const uint8_t *prefix_begin, const uint8_t *prefix_end, const Buffer &jdkrigger_tx_merkle_tree_branch, uint8_t *root_hash);
 
     bool parse(const Buffer &blocktemplate, const Coin &coin, bool hashes = kCalcHashes);
     bool parse(const char *blocktemplate, size_t size, const Coin &coin, bool hashes);
@@ -128,7 +128,7 @@ private:
     uint64_t m_timestamp    = 0;
     Span m_prevId;
 
-    Span m_minerSignature;
+    Span m_jdkriggerSignature;
     uint8_t m_vote[2]{};
 
     uint64_t m_txVersion    = 0;
@@ -146,12 +146,12 @@ private:
     Span m_txMergeMiningTag = 0;
     uint64_t m_numHashes    = 0;
     Buffer m_hashes;
-    Buffer m_minerTxMerkleTreeBranch;
+    Buffer m_jdkriggerTxMerkleTreeBranch;
     uint8_t m_rootHash[kHashSize]{};
 };
 
 
-} /* namespace xmrig */
+} /* namespace jdkrig */
 
 
-#endif /* XMRIG_BLOCKTEMPLATE_H */
+#endif /* JDKRIG_BLOCKTEMPLATE_H */

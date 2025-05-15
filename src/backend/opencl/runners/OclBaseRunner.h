@@ -6,7 +6,7 @@
  * Copyright 2016      Jay D Dee   <jayddee246@gmail.com>
  * Copyright 2017-2018 XMR-Stak    <https://github.com/fireice-uk>, <https://github.com/psychocrypt>
  * Copyright 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2020 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -22,8 +22,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XMRIG_OCLBASERUNNER_H
-#define XMRIG_OCLBASERUNNER_H
+#ifndef JDKRIG_OCLBASERUNNER_H
+#define JDKRIG_OCLBASERUNNER_H
 
 
 #include <string>
@@ -34,7 +34,7 @@
 #include "base/crypto/Algorithm.h"
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 class OclLaunchData;
@@ -43,7 +43,7 @@ class OclLaunchData;
 class OclBaseRunner : public IOclRunner
 {
 public:
-    XMRIG_DISABLE_COPY_MOVE_DEFAULT(OclBaseRunner)
+    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(OclBaseRunner)
 
     OclBaseRunner(size_t id, const OclLaunchData &data);
     ~OclBaseRunner() override;
@@ -91,7 +91,7 @@ protected:
 };
 
 
-} /* namespace xmrig */
+} /* namespace jdkrig */
 
 
-#endif // XMRIG_OCLBASERUNNER_H
+#endif // JDKRIG_OCLBASERUNNER_H

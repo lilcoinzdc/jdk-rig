@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -21,17 +21,17 @@
 #include "backend/common/Tags.h"
 
 
-xmrig::CudaLaunchData::CudaLaunchData(const Miner *miner, const Algorithm &algorithm, const CudaThread &thread, const CudaDevice &device) :
+jdkrig::CudaLaunchData::CudaLaunchData(const Jdkrigger *jdkrigger, const Algorithm &algorithm, const CudaThread &thread, const CudaDevice &device) :
     algorithm(algorithm),
     device(device),
     thread(thread),
     affinity(thread.affinity()),
-    miner(miner)
+    jdkrigger(jdkrigger)
 {
 }
 
 
-bool xmrig::CudaLaunchData::isEqual(const CudaLaunchData &other) const
+bool jdkrig::CudaLaunchData::isEqual(const CudaLaunchData &other) const
 {
     return (other.algorithm.family() == algorithm.family() &&
             other.algorithm.l3()     == algorithm.l3() &&
@@ -39,7 +39,7 @@ bool xmrig::CudaLaunchData::isEqual(const CudaLaunchData &other) const
 }
 
 
-const char *xmrig::CudaLaunchData::tag()
+const char *jdkrig::CudaLaunchData::tag()
 {
     return cuda_tag();
 }

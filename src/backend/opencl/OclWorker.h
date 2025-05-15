@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XMRIG_OCLWORKER_H
-#define XMRIG_OCLWORKER_H
+#ifndef JDKRIG_OCLWORKER_H
+#define JDKRIG_OCLWORKER_H
 
 
 #include "backend/common/GpuWorker.h"
@@ -27,7 +27,7 @@
 #include "net/JobResult.h"
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 class IOclRunner;
@@ -37,7 +37,7 @@ class Job;
 class OclWorker : public GpuWorker
 {
 public:
-    XMRIG_DISABLE_COPY_MOVE_DEFAULT(OclWorker)
+    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(OclWorker)
 
     OclWorker(size_t id, const OclLaunchData &data);
 
@@ -57,14 +57,14 @@ private:
     void storeStats(uint64_t ts);
 
     const Algorithm m_algorithm;
-    const Miner *m_miner;
+    const Jdkrigger *m_jdkrigger;
     IOclRunner *m_runner = nullptr;
     OclSharedData &m_sharedData;
     WorkerJob<1> m_job;
 };
 
 
-} // namespace xmrig
+} // namespace jdkrig
 
 
-#endif /* XMRIG_OCLWORKER_H */
+#endif /* JDKRIG_OCLWORKER_H */

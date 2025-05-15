@@ -8,7 +8,7 @@
  * Copyright 2018      Lee Clagett <https://github.com/vtnerd>
  * Copyright 2018-2019 tevador     <tevador@gmail.com>
  * Copyright 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2020 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -24,15 +24,15 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XMRIG_RX_SEED_H
-#define XMRIG_RX_SEED_H
+#ifndef JDKRIG_RX_SEED_H
+#define JDKRIG_RX_SEED_H
 
 
 #include "base/net/stratum/Job.h"
 #include "base/tools/Buffer.h"
 
 
-namespace xmrig
+namespace jdkrig
 {
 
 
@@ -63,7 +63,7 @@ private:
 };
 
 
-} /* namespace xmrig */
+} /* namespace jdkrig */
 
 
-#endif /* XMRIG_RX_CACHE_H */
+#endif /* JDKRIG_RX_CACHE_H */

@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XMRIG_BENCHSTATE_H
-#define XMRIG_BENCHSTATE_H
+#ifndef JDKRIG_BENCHSTATE_H
+#define JDKRIG_BENCHSTATE_H
 
 
 #include <atomic>
@@ -25,7 +25,7 @@
 #include <cstdint>
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 class Algorithm;
@@ -53,7 +53,7 @@ private:
 };
 
 
-} // namespace xmrig
+} // namespace jdkrig
 
 
-#endif /* XMRIG_BENCHSTATE_H */
+#endif /* JDKRIG_BENCHSTATE_H */

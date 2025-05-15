@@ -2,7 +2,7 @@
  * Copyright (c) 2015-2020 libuv project contributors.
  * Copyright (c) 2020      cohcho      <https://github.com/cohcho>
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -18,8 +18,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XMRIG_ASYNC_H
-#define XMRIG_ASYNC_H
+#ifndef JDKRIG_ASYNC_H
+#define JDKRIG_ASYNC_H
 
 
 #include "base/tools/Object.h"
@@ -28,7 +28,7 @@
 #include <functional>
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 class AsyncPrivate;
@@ -38,7 +38,7 @@ class IAsyncListener;
 class Async
 {
 public:
-    XMRIG_DISABLE_COPY_MOVE_DEFAULT(Async)
+    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(Async)
 
     using Callback = std::function<void()>;
 
@@ -53,7 +53,7 @@ private:
 };
 
 
-} // namespace xmrig
+} // namespace jdkrig
 
 
-#endif /* XMRIG_ASYNC_H */
+#endif /* JDKRIG_ASYNC_H */

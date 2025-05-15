@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@
 #include "base/io/log/Log.h"
 
 
-const char *xmrig::Tags::config()
+const char *jdkrig::Tags::config()
 {
     static const char *tag = CYAN_BG_BOLD(WHITE_BOLD_S " config  ");
 
@@ -29,7 +29,7 @@ const char *xmrig::Tags::config()
 }
 
 
-const char *xmrig::Tags::network()
+const char *jdkrig::Tags::network()
 {
     static const char *tag = BLUE_BG_BOLD(WHITE_BOLD_S " net     ");
 
@@ -37,7 +37,7 @@ const char *xmrig::Tags::network()
 }
 
 
-const char* xmrig::Tags::origin()
+const char* jdkrig::Tags::origin()
 {
     static const char* tag = YELLOW_BG_BOLD(WHITE_BOLD_S " origin  ");
 
@@ -45,7 +45,7 @@ const char* xmrig::Tags::origin()
 }
 
 
-const char *xmrig::Tags::signal()
+const char *jdkrig::Tags::signal()
 {
     static const char *tag = YELLOW_BG_BOLD(WHITE_BOLD_S " signal  ");
 
@@ -53,8 +53,8 @@ const char *xmrig::Tags::signal()
 }
 
 
-#ifdef XMRIG_MINER_PROJECT
-const char *xmrig::Tags::cpu()
+#ifdef JDKRIG_JDKRIGGER_PROJECT
+const char *jdkrig::Tags::cpu()
 {
     static const char *tag = CYAN_BG_BOLD(WHITE_BOLD_S " cpu     ");
 
@@ -62,16 +62,16 @@ const char *xmrig::Tags::cpu()
 }
 
 
-const char *xmrig::Tags::miner()
+const char *jdkrig::Tags::jdkrigger()
 {
-    static const char *tag = MAGENTA_BG_BOLD(WHITE_BOLD_S " miner   ");
+    static const char *tag = MAGENTA_BG_BOLD(WHITE_BOLD_S " jdkrigger   ");
 
     return tag;
 }
 
 
-#ifdef XMRIG_ALGO_RANDOMX
-const char *xmrig::Tags::randomx()
+#ifdef JDKRIG_ALGO_RANDOMX
+const char *jdkrig::Tags::randomx()
 {
     static const char *tag = BLUE_BG(WHITE_BOLD_S " randomx ") " ";
 
@@ -80,8 +80,8 @@ const char *xmrig::Tags::randomx()
 #endif
 
 
-#ifdef XMRIG_FEATURE_BENCHMARK
-const char *xmrig::Tags::bench()
+#ifdef JDKRIG_FEATURE_BENCHMARK
+const char *jdkrig::Tags::bench()
 {
     static const char *tag = GREEN_BG_BOLD(WHITE_BOLD_S " bench   ");
 
@@ -91,8 +91,8 @@ const char *xmrig::Tags::bench()
 #endif
 
 
-#ifdef XMRIG_PROXY_PROJECT
-const char *xmrig::Tags::proxy()
+#ifdef JDKRIG_PROXY_PROJECT
+const char *jdkrig::Tags::proxy()
 {
     static const char *tag = MAGENTA_BG_BOLD(WHITE_BOLD_S " proxy   ");
 
@@ -101,8 +101,8 @@ const char *xmrig::Tags::proxy()
 #endif
 
 
-#ifdef XMRIG_FEATURE_CUDA
-const char *xmrig::Tags::nvidia()
+#ifdef JDKRIG_FEATURE_CUDA
+const char *jdkrig::Tags::nvidia()
 {
     static const char *tag = GREEN_BG_BOLD(WHITE_BOLD_S " nvidia  ");
 
@@ -111,8 +111,8 @@ const char *xmrig::Tags::nvidia()
 #endif
 
 
-#ifdef XMRIG_FEATURE_OPENCL
-const char *xmrig::Tags::opencl()
+#ifdef JDKRIG_FEATURE_OPENCL
+const char *jdkrig::Tags::opencl()
 {
     static const char *tag = MAGENTA_BG_BOLD(WHITE_BOLD_S " opencl  ");
 
@@ -121,8 +121,8 @@ const char *xmrig::Tags::opencl()
 #endif
 
 
-#ifdef XMRIG_FEATURE_PROFILING
-const char* xmrig::Tags::profiler()
+#ifdef JDKRIG_FEATURE_PROFILING
+const char* jdkrig::Tags::profiler()
 {
     static const char* tag = CYAN_BG_BOLD(WHITE_BOLD_S " profile ");
 

@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,14 +16,14 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XMRIG_CONFIGTRANSFORM_H
-#define XMRIG_CONFIGTRANSFORM_H
+#ifndef JDKRIG_CONFIGTRANSFORM_H
+#define JDKRIG_CONFIGTRANSFORM_H
 
 
 #include "base/kernel/config/BaseTransform.h"
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 class ConfigTransform : public BaseTransform
@@ -36,7 +36,7 @@ private:
     void transformBoolean(rapidjson::Document &doc, int key, bool enable);
     void transformUint64(rapidjson::Document &doc, int key, uint64_t arg);
 
-#   ifdef XMRIG_FEATURE_BENCHMARK
+#   ifdef JDKRIG_FEATURE_BENCHMARK
     void transformBenchmark(rapidjson::Document &doc, int key, const char *arg);
 #   endif
 
@@ -47,7 +47,7 @@ private:
 };
 
 
-} // namespace xmrig
+} // namespace jdkrig
 
 
-#endif /* XMRIG_CONFIGTRANSFORM_H */
+#endif /* JDKRIG_CONFIGTRANSFORM_H */

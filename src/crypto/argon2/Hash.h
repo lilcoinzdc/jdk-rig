@@ -6,7 +6,7 @@
  * Copyright 2016      Jay D Dee   <jayddee246@gmail.com>
  * Copyright 2017-2018 XMR-Stak    <https://github.com/fireice-uk>, <https://github.com/psychocrypt>
  * Copyright 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2020 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -22,8 +22,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XMRIG_ARGON2_HASH_H
-#define XMRIG_ARGON2_HASH_H
+#ifndef JDKRIG_ARGON2_HASH_H
+#define JDKRIG_ARGON2_HASH_H
 
 
 #include "3rdparty/argon2.h"
@@ -31,7 +31,7 @@
 #include "crypto/cn/CryptoNight.h"
 
 
-namespace xmrig { namespace argon2 {
+namespace jdkrig { namespace argon2 {
 
 
 template<Algorithm::Id ALGO>
@@ -49,7 +49,7 @@ inline void single_hash(const uint8_t *__restrict__ input, size_t size, uint8_t 
 }
 
 
-}} // namespace xmrig::argon2
+}} // namespace jdkrig::argon2
 
 
-#endif /* XMRIG_ARGON2_HASH_H */
+#endif /* JDKRIG_ARGON2_HASH_H */

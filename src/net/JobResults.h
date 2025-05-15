@@ -7,7 +7,7 @@
  * Copyright 2017-2018 XMR-Stak    <https://github.com/fireice-uk>, <https://github.com/psychocrypt>
  * Copyright 2018      Lee Clagett <https://github.com/vtnerd>
  * Copyright 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2020 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -23,15 +23,15 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XMRIG_JOBRESULTS_H
-#define XMRIG_JOBRESULTS_H
+#ifndef JDKRIG_JOBRESULTS_H
+#define JDKRIG_JOBRESULTS_H
 
 
 #include <cstddef>
 #include <cstdint>
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 class IJobResultListener;
@@ -46,16 +46,16 @@ public:
     static void setListener(IJobResultListener *listener, bool hwAES);
     static void stop();
     static void submit(const Job &job, uint32_t nonce, const uint8_t *result);
-    static void submit(const Job& job, uint32_t nonce, const uint8_t* result, const uint8_t* miner_signature);
+    static void submit(const Job& job, uint32_t nonce, const uint8_t* result, const uint8_t* jdkrigger_signature);
     static void submit(const JobResult &result);
 
-#   if defined(XMRIG_FEATURE_OPENCL) || defined(XMRIG_FEATURE_CUDA)
+#   if defined(JDKRIG_FEATURE_OPENCL) || defined(JDKRIG_FEATURE_CUDA)
     static void submit(const Job &job, uint32_t *results, size_t count, uint32_t device_index);
 #   endif
 };
 
 
-} // namespace xmrig
+} // namespace jdkrig
 
 
-#endif /* XMRIG_JOBRESULTS_H */
+#endif /* JDKRIG_JOBRESULTS_H */

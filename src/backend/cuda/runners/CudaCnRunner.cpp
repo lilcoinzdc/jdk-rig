@@ -6,7 +6,7 @@
  * Copyright 2016      Jay D Dee   <jayddee246@gmail.com>
  * Copyright 2017-2018 XMR-Stak    <https://github.com/fireice-uk>, <https://github.com/psychocrypt>
  * Copyright 2018-2019 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2019 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright 2016-2019 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -27,12 +27,12 @@
 #include "backend/cuda/wrappers/CudaLib.h"
 
 
-xmrig::CudaCnRunner::CudaCnRunner(size_t index, const CudaLaunchData &data) : CudaBaseRunner(index, data)
+jdkrig::CudaCnRunner::CudaCnRunner(size_t index, const CudaLaunchData &data) : CudaBaseRunner(index, data)
 {
 }
 
 
-bool xmrig::CudaCnRunner::run(uint32_t startNonce, uint32_t *rescount, uint32_t *resnonce)
+bool jdkrig::CudaCnRunner::run(uint32_t startNonce, uint32_t *rescount, uint32_t *resnonce)
 {
     return callWrapper(CudaLib::cnHash(m_ctx, startNonce, m_height, m_target, rescount, resnonce));
 }

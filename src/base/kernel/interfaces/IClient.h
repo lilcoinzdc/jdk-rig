@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XMRIG_ICLIENT_H
-#define XMRIG_ICLIENT_H
+#ifndef JDKRIG_ICLIENT_H
+#define JDKRIG_ICLIENT_H
 
 
 #include "3rdparty/rapidjson/fwd.h"
@@ -27,7 +27,7 @@
 #include <functional>
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 class Algorithm;
@@ -41,7 +41,7 @@ class String;
 class IClient
 {
 public:
-    XMRIG_DISABLE_COPY_MOVE(IClient)
+    JDKRIG_DISABLE_COPY_MOVE(IClient)
 
     enum Extension {
         EXT_ALGO,
@@ -87,7 +87,7 @@ public:
 };
 
 
-} /* namespace xmrig */
+} /* namespace jdkrig */
 
 
-#endif // XMRIG_ICLIENT_H
+#endif // JDKRIG_ICLIENT_H

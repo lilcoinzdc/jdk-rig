@@ -1,7 +1,7 @@
 /* XMRig
  * Copyright (c) 2018      Lee Clagett <https://github.com/vtnerd>
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -17,8 +17,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XMRIG_CLIENT_TLS_H
-#define XMRIG_CLIENT_TLS_H
+#ifndef JDKRIG_CLIENT_TLS_H
+#define JDKRIG_CLIENT_TLS_H
 
 
 using BIO       = struct bio_st;
@@ -31,13 +31,13 @@ using X509      = struct x509_st;
 #include "base/tools/Object.h"
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 class Client::Tls
 {
 public:
-    XMRIG_DISABLE_COPY_MOVE_DEFAULT(Tls)
+    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(Tls)
 
     Tls(Client *client);
     ~Tls();
@@ -63,7 +63,7 @@ private:
 };
 
 
-} /* namespace xmrig */
+} /* namespace jdkrig */
 
 
-#endif /* XMRIG_CLIENT_TLS_H */
+#endif /* JDKRIG_CLIENT_TLS_H */

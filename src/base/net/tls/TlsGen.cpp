@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2023 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2023 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2023 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@
 #include <fstream>
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 static const char *kLocalhost = "localhost";
@@ -68,17 +68,17 @@ bool isFileExist(const char *fileName)
 }
 
 
-} // namespace xmrig
+} // namespace jdkrig
 
 
-xmrig::TlsGen::~TlsGen()
+jdkrig::TlsGen::~TlsGen()
 {
     EVP_PKEY_free(m_pkey);
     X509_free(m_x509);
 }
 
 
-void xmrig::TlsGen::generate(const char *commonName)
+void jdkrig::TlsGen::generate(const char *commonName)
 {
     if (isFileExist(m_cert) && isFileExist(m_certKey)) {
         return;
@@ -99,7 +99,7 @@ void xmrig::TlsGen::generate(const char *commonName)
 }
 
 
-bool xmrig::TlsGen::generate_x509(const char *commonName)
+bool jdkrig::TlsGen::generate_x509(const char *commonName)
 {
     m_x509 = X509_new();
     if (!m_x509) {
@@ -123,7 +123,7 @@ bool xmrig::TlsGen::generate_x509(const char *commonName)
 }
 
 
-bool xmrig::TlsGen::write()
+bool jdkrig::TlsGen::write()
 {
     auto pkey_file = fopen(m_certKey, "wb");
     if (!pkey_file) {

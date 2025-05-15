@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -26,23 +26,23 @@
 #include "base/net/stratum/SubmitResult.h"
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 int64_t BaseClient::m_sequence = 1;
 
 
-} /* namespace xmrig */
+} /* namespace jdkrig */
 
 
-xmrig::BaseClient::BaseClient(int id, IClientListener *listener) :
+jdkrig::BaseClient::BaseClient(int id, IClientListener *listener) :
     m_listener(listener),
     m_id(id)
 {
 }
 
 
-void xmrig::BaseClient::setPool(const Pool &pool)
+void jdkrig::BaseClient::setPool(const Pool &pool)
 {
     if (!pool.isValid()) {
         return;
@@ -56,7 +56,7 @@ void xmrig::BaseClient::setPool(const Pool &pool)
 }
 
 
-bool xmrig::BaseClient::handleResponse(int64_t id, const rapidjson::Value &result, const rapidjson::Value &error)
+bool jdkrig::BaseClient::handleResponse(int64_t id, const rapidjson::Value &result, const rapidjson::Value &error)
 {
     if (id == 1) {
         return false;
@@ -82,7 +82,7 @@ bool xmrig::BaseClient::handleResponse(int64_t id, const rapidjson::Value &resul
 }
 
 
-bool xmrig::BaseClient::handleSubmitResponse(int64_t id, const char *error)
+bool jdkrig::BaseClient::handleSubmitResponse(int64_t id, const char *error)
 {
     auto it = m_results.find(id);
     if (it != m_results.end()) {

@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2023 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2023 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2023 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -23,22 +23,22 @@
 #include <uv.h>
 
 
-#ifdef XMRIG_FEATURE_TLS
+#ifdef JDKRIG_FEATURE_TLS
 #   include <openssl/ssl.h>
 #   include <openssl/err.h>
 #endif
 
 
-namespace xmrig {
+namespace jdkrig {
 
 String Platform::m_userAgent;
 
-} // namespace xmrig
+} // namespace jdkrig
 
 
-void xmrig::Platform::init(const char *userAgent)
+void jdkrig::Platform::init(const char *userAgent)
 {
-#   ifdef XMRIG_FEATURE_TLS
+#   ifdef JDKRIG_FEATURE_TLS
     SSL_library_init();
     SSL_load_error_strings();
 

@@ -6,7 +6,7 @@
  * Copyright 2016      Jay D Dee   <jayddee246@gmail.com>
  * Copyright 2017-2018 XMR-Stak    <https://github.com/fireice-uk>, <https://github.com/psychocrypt>
  * Copyright 2018-2019 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2019 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright 2016-2019 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -22,8 +22,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XMRIG_OCLCNR_H
-#define XMRIG_OCLCNR_H
+#ifndef JDKRIG_OCLCNR_H
+#define JDKRIG_OCLCNR_H
 
 
 #include <cstddef>
@@ -33,7 +33,7 @@
 using cl_program = struct _cl_program *;
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 class Algorithm;
@@ -50,7 +50,7 @@ public:
 };
 
 
-} // namespace xmrig
+} // namespace jdkrig
 
 
-#endif /* XMRIG_OCLCNR_H */
+#endif /* JDKRIG_OCLCNR_H */

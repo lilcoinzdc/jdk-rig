@@ -6,7 +6,7 @@
  * Copyright 2016      Jay D Dee   <jayddee246@gmail.com>
  * Copyright 2017-2018 XMR-Stak    <https://github.com/fireice-uk>, <https://github.com/psychocrypt>
  * Copyright 2018-2019 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2019 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright 2016-2019 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -27,7 +27,7 @@
 #include "backend/opencl/wrappers/OclLib.h"
 
 
-void xmrig::Blake2bInitialHashDoubleKernel::enqueue(cl_command_queue queue, size_t threads)
+void jdkrig::Blake2bInitialHashDoubleKernel::enqueue(cl_command_queue queue, size_t threads)
 {
     const size_t gthreads        = threads;
     static const size_t lthreads = 64;
@@ -37,14 +37,14 @@ void xmrig::Blake2bInitialHashDoubleKernel::enqueue(cl_command_queue queue, size
 
 
 // __kernel void blake2b_initial_hash_double(__global void *out, __global const void* blockTemplate, uint blockTemplateSize, uint start_nonce)
-void xmrig::Blake2bInitialHashDoubleKernel::setArgs(cl_mem out, cl_mem blockTemplate)
+void jdkrig::Blake2bInitialHashDoubleKernel::setArgs(cl_mem out, cl_mem blockTemplate)
 {
     setArg(0, sizeof(cl_mem), &out);
     setArg(1, sizeof(cl_mem), &blockTemplate);
 }
 
 
-void xmrig::Blake2bInitialHashDoubleKernel::setBlobSize(size_t size)
+void jdkrig::Blake2bInitialHashDoubleKernel::setBlobSize(size_t size)
 {
     const uint32_t s = size;
 
@@ -52,7 +52,7 @@ void xmrig::Blake2bInitialHashDoubleKernel::setBlobSize(size_t size)
 }
 
 
-void xmrig::Blake2bInitialHashDoubleKernel::setNonce(uint32_t nonce)
+void jdkrig::Blake2bInitialHashDoubleKernel::setNonce(uint32_t nonce)
 {
     setArg(3, sizeof(uint32_t), &nonce);
 }

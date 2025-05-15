@@ -1,7 +1,7 @@
 /* XMRig
  * Copyright (c) 2018-2019 tevador     <tevador@gmail.com>
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@
 #include <set>
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 bool RxMsr::m_cacheQoS      = false;
@@ -42,7 +42,7 @@ bool RxMsr::m_initialized   = false;
 static MsrItems items;
 
 
-#ifdef XMRIG_OS_WIN
+#ifdef JDKRIG_OS_WIN
 static constexpr inline int32_t get_cpu(int32_t)        { return -1; }
 #else
 static constexpr inline int32_t get_cpu(int32_t cpu)    { return cpu; }
@@ -87,7 +87,7 @@ static bool wrmsr(const MsrItems &preset, const std::vector<CpuThread> &threads,
             if (affinity < 0 || std::find(units.begin(), units.end(), affinity) == units.end()) {
                 cacheQoSDisabled = true;
 
-                LOG_WARN("%s " YELLOW_BOLD("cache QoS can only be enabled when all mining threads have affinity set"), Msr::tag());
+                LOG_WARN("%s " YELLOW_BOLD("cache QoS can only be enabled when all jdkrigging threads have affinity set"), Msr::tag());
                 break;
             }
 
@@ -125,10 +125,10 @@ static bool wrmsr(const MsrItems &preset, const std::vector<CpuThread> &threads,
 }
 
 
-} // namespace xmrig
+} // namespace jdkrig
 
 
-bool xmrig::RxMsr::init(const RxConfig &config, const std::vector<CpuThread> &threads)
+bool jdkrig::RxMsr::init(const RxConfig &config, const std::vector<CpuThread> &threads)
 {
     if (isInitialized()) {
         return isEnabled();
@@ -162,7 +162,7 @@ bool xmrig::RxMsr::init(const RxConfig &config, const std::vector<CpuThread> &th
 }
 
 
-void xmrig::RxMsr::destroy()
+void jdkrig::RxMsr::destroy()
 {
     if (!isInitialized()) {
         return;

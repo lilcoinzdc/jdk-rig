@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2023 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2023 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2023 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@
 #include "base/tools/Chrono.h"
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 static Storage<DnsUvBackend> *storage = nullptr;
@@ -45,10 +45,10 @@ Storage<DnsUvBackend> &DnsUvBackend::getStorage()
 static addrinfo hints{};
 
 
-} // namespace xmrig
+} // namespace jdkrig
 
 
-xmrig::DnsUvBackend::DnsUvBackend()
+jdkrig::DnsUvBackend::DnsUvBackend()
 {
     if (!hints.ai_protocol) {
         hints.ai_family     = AF_UNSPEC;
@@ -60,7 +60,7 @@ xmrig::DnsUvBackend::DnsUvBackend()
 }
 
 
-xmrig::DnsUvBackend::~DnsUvBackend()
+jdkrig::DnsUvBackend::~DnsUvBackend()
 {
     assert(storage);
 
@@ -73,7 +73,7 @@ xmrig::DnsUvBackend::~DnsUvBackend()
 }
 
 
-std::shared_ptr<xmrig::DnsRequest> xmrig::DnsUvBackend::resolve(const String &host, IDnsListener *listener, uint64_t ttl)
+std::shared_ptr<jdkrig::DnsRequest> jdkrig::DnsUvBackend::resolve(const String &host, IDnsListener *listener, uint64_t ttl)
 {
     auto req = std::make_shared<DnsRequest>(listener);
 
@@ -91,7 +91,7 @@ std::shared_ptr<xmrig::DnsRequest> xmrig::DnsUvBackend::resolve(const String &ho
 }
 
 
-bool xmrig::DnsUvBackend::resolve(const String &host)
+bool jdkrig::DnsUvBackend::resolve(const String &host)
 {
     m_req = std::make_shared<uv_getaddrinfo_t>();
     m_req->data = getStorage().ptr(m_key);
@@ -102,7 +102,7 @@ bool xmrig::DnsUvBackend::resolve(const String &host)
 }
 
 
-void xmrig::DnsUvBackend::done()
+void jdkrig::DnsUvBackend::done()
 {
     const char *error = m_status < 0 ? uv_strerror(m_status) : nullptr;
 
@@ -119,7 +119,7 @@ void xmrig::DnsUvBackend::done()
 }
 
 
-void xmrig::DnsUvBackend::onResolved(int status, addrinfo *res)
+void jdkrig::DnsUvBackend::onResolved(int status, addrinfo *res)
 {
     m_ts = Chrono::currentMSecsSinceEpoch();
 
@@ -137,7 +137,7 @@ void xmrig::DnsUvBackend::onResolved(int status, addrinfo *res)
 }
 
 
-void xmrig::DnsUvBackend::onResolved(uv_getaddrinfo_t *req, int status, addrinfo *res)
+void jdkrig::DnsUvBackend::onResolved(uv_getaddrinfo_t *req, int status, addrinfo *res)
 {
     auto backend = getStorage().get(req->data);
     if (backend) {

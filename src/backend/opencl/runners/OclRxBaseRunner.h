@@ -6,7 +6,7 @@
  * Copyright 2016      Jay D Dee   <jayddee246@gmail.com>
  * Copyright 2017-2018 XMR-Stak    <https://github.com/fireice-uk>, <https://github.com/psychocrypt>
  * Copyright 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2020 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -22,15 +22,15 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XMRIG_OCLRXBASERUNNER_H
-#define XMRIG_OCLRXBASERUNNER_H
+#ifndef JDKRIG_OCLRXBASERUNNER_H
+#define JDKRIG_OCLRXBASERUNNER_H
 
 
 #include "backend/opencl/runners/OclBaseRunner.h"
 #include "base/tools/Buffer.h"
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 class Blake2bHashRegistersKernel;
@@ -45,7 +45,7 @@ class HashAesKernel;
 class OclRxBaseRunner : public OclBaseRunner
 {
 public:
-    XMRIG_DISABLE_COPY_MOVE_DEFAULT(OclRxBaseRunner)
+    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(OclRxBaseRunner)
 
     OclRxBaseRunner(size_t index, const OclLaunchData &data);
     ~OclRxBaseRunner() override;
@@ -82,7 +82,7 @@ protected:
 };
 
 
-} /* namespace xmrig */
+} /* namespace jdkrig */
 
 
-#endif // XMRIG_OCLRXBASERUNNER_H
+#endif // JDKRIG_OCLRXBASERUNNER_H

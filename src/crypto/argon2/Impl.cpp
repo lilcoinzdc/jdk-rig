@@ -6,7 +6,7 @@
  * Copyright 2016      Jay D Dee   <jayddee246@gmail.com>
  * Copyright 2017-2018 XMR-Stak    <https://github.com/fireice-uk>, <https://github.com/psychocrypt>
  * Copyright 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2020 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -29,45 +29,45 @@
 
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 static bool selected = false;
 static String implName;
 
 
-} // namespace xmrig
+} // namespace jdkrig
 
 
 extern "C" {
 
 
-extern int xmrig_ar2_check_avx512f();
-extern int xmrig_ar2_check_avx2();
-extern int xmrig_ar2_check_ssse3();
-extern int xmrig_ar2_check_sse2();
+extern int jdkrig_ar2_check_avx512f();
+extern int jdkrig_ar2_check_avx2();
+extern int jdkrig_ar2_check_ssse3();
+extern int jdkrig_ar2_check_sse2();
 
 
 }
 
 
-bool xmrig::argon2::Impl::select(const String &nameHint, bool benchmark)
+bool jdkrig::argon2::Impl::select(const String &nameHint, bool benchmark)
 {
     if (!selected) {
 #       if defined(__x86_64__) || defined(_M_AMD64)
         auto hint = nameHint;
 
         if (hint.isEmpty() && !benchmark) {
-            if (xmrig_ar2_check_avx512f()) {
+            if (jdkrig_ar2_check_avx512f()) {
                 hint = "AVX-512F";
             }
-            else if (xmrig_ar2_check_avx2()) {
+            else if (jdkrig_ar2_check_avx2()) {
                 hint = "AVX2";
             }
-            else if (xmrig_ar2_check_ssse3()) {
+            else if (jdkrig_ar2_check_ssse3()) {
                 hint = "SSSE3";
             }
-            else if (xmrig_ar2_check_sse2()) {
+            else if (jdkrig_ar2_check_sse2()) {
                 hint = "SSE2";
             }
         }
@@ -87,7 +87,7 @@ bool xmrig::argon2::Impl::select(const String &nameHint, bool benchmark)
 }
 
 
-const xmrig::String &xmrig::argon2::Impl::name()
+const jdkrig::String &jdkrig::argon2::Impl::name()
 {
     return implName;
 }

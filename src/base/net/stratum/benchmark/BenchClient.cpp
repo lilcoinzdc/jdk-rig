@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -35,12 +35,12 @@
 #include "base/tools/Cvt.h"
 #include "version.h"
 
-#ifdef XMRIG_FEATURE_DMI
+#ifdef JDKRIG_FEATURE_DMI
 #   include "hw/dmi/DmiReader.h"
 #endif
 
 
-xmrig::BenchClient::BenchClient(const std::shared_ptr<BenchConfig> &benchmark, IClientListener* listener) :
+jdkrig::BenchClient::BenchClient(const std::shared_ptr<BenchConfig> &benchmark, IClientListener* listener) :
     m_listener(listener),
     m_benchmark(benchmark),
     m_hash(benchmark->hash())
@@ -48,7 +48,7 @@ xmrig::BenchClient::BenchClient(const std::shared_ptr<BenchConfig> &benchmark, I
     std::vector<char> blob(112 * 2 + 1, '0');
     blob.back() = '\0';
 
-#   ifdef XMRIG_ALGO_GHOSTRIDER
+#   ifdef JDKRIG_ALGO_GHOSTRIDER
     if (m_benchmark->algorithm() == Algorithm::GHOSTRIDER_RTM) {
         const uint32_t q = (benchmark->rotation() / 20) & 1;
         const uint32_t r = benchmark->rotation() % 20;
@@ -93,7 +93,7 @@ xmrig::BenchClient::BenchClient(const std::shared_ptr<BenchConfig> &benchmark, I
 
     BenchState::init(this, m_benchmark->size());
 
-#   ifdef XMRIG_FEATURE_HTTP
+#   ifdef JDKRIG_FEATURE_HTTP
     if (m_benchmark->isSubmit() && (m_benchmark->algorithm().family() == Algorithm::RANDOM_X)) {
         m_mode  = ONLINE_BENCH;
         m_token = m_benchmark->token();
@@ -121,21 +121,21 @@ xmrig::BenchClient::BenchClient(const std::shared_ptr<BenchConfig> &benchmark, I
 }
 
 
-xmrig::BenchClient::~BenchClient()
+jdkrig::BenchClient::~BenchClient()
 {
     BenchState::destroy();
 }
 
 
-const char *xmrig::BenchClient::tag() const
+const char *jdkrig::BenchClient::tag() const
 {
     return Tags::bench();
 }
 
 
-void xmrig::BenchClient::connect()
+void jdkrig::BenchClient::connect()
 {
-#   ifdef XMRIG_FEATURE_HTTP
+#   ifdef JDKRIG_FEATURE_HTTP
     if (m_mode == ONLINE_BENCH || m_mode == ONLINE_VERIFY) {
         return resolve();
     }
@@ -145,19 +145,19 @@ void xmrig::BenchClient::connect()
 }
 
 
-void xmrig::BenchClient::setPool(const Pool &pool)
+void jdkrig::BenchClient::setPool(const Pool &pool)
 {
     m_pool = pool;
 }
 
 
-void xmrig::BenchClient::onBenchDone(uint64_t result, uint64_t diff, uint64_t ts)
+void jdkrig::BenchClient::onBenchDone(uint64_t result, uint64_t diff, uint64_t ts)
 {
     m_result    = result;
     m_diff      = diff;
     m_doneTime  = ts;
 
-#   ifdef XMRIG_FEATURE_HTTP
+#   ifdef JDKRIG_FEATURE_HTTP
     if (!m_token.isEmpty()) {
         send(DONE_BENCH);
     }
@@ -175,13 +175,13 @@ void xmrig::BenchClient::onBenchDone(uint64_t result, uint64_t diff, uint64_t ts
 }
 
 
-void xmrig::BenchClient::onBenchReady(uint64_t ts, uint32_t threads, const IBackend *backend)
+void jdkrig::BenchClient::onBenchReady(uint64_t ts, uint32_t threads, const IBackend *backend)
 {
     m_readyTime = ts;
     m_threads   = threads;
     m_backend   = backend;
 
-#   ifdef XMRIG_FEATURE_HTTP
+#   ifdef JDKRIG_FEATURE_HTTP
     if (m_mode == ONLINE_BENCH) {
         send(CREATE_BENCH);
     }
@@ -189,9 +189,9 @@ void xmrig::BenchClient::onBenchReady(uint64_t ts, uint32_t threads, const IBack
 }
 
 
-void xmrig::BenchClient::onHttpData(const HttpData &data)
+void jdkrig::BenchClient::onHttpData(const HttpData &data)
 {
-#   ifdef XMRIG_FEATURE_HTTP
+#   ifdef JDKRIG_FEATURE_HTTP
     rapidjson::Document doc;
 
     try {
@@ -221,9 +221,9 @@ void xmrig::BenchClient::onHttpData(const HttpData &data)
 }
 
 
-void xmrig::BenchClient::onResolved(const DnsRecords &records, int status, const char *error)
+void jdkrig::BenchClient::onResolved(const DnsRecords &records, int status, const char *error)
 {
-#   ifdef XMRIG_FEATURE_HTTP
+#   ifdef JDKRIG_FEATURE_HTTP
     assert(!m_httpListener);
 
     m_dns.reset();
@@ -245,7 +245,7 @@ void xmrig::BenchClient::onResolved(const DnsRecords &records, int status, const
 }
 
 
-bool xmrig::BenchClient::setSeed(const char *seed)
+bool jdkrig::BenchClient::setSeed(const char *seed)
 {
     if (!seed) {
         return false;
@@ -273,7 +273,7 @@ bool xmrig::BenchClient::setSeed(const char *seed)
 }
 
 
-uint64_t xmrig::BenchClient::referenceHash() const
+uint64_t jdkrig::BenchClient::referenceHash() const
 {
     if (m_hash || m_mode == ONLINE_BENCH) {
         return m_hash;
@@ -283,13 +283,13 @@ uint64_t xmrig::BenchClient::referenceHash() const
 }
 
 
-void xmrig::BenchClient::printExit() const
+void jdkrig::BenchClient::printExit() const
 {
     LOG_INFO("%s " WHITE_BOLD("press ") MAGENTA_BOLD("Ctrl+C") WHITE_BOLD(" to exit"), tag());
 }
 
 
-void xmrig::BenchClient::start()
+void jdkrig::BenchClient::start()
 {
     const uint32_t size = BenchState::size();
 
@@ -305,8 +305,8 @@ void xmrig::BenchClient::start()
 
 
 
-#ifdef XMRIG_FEATURE_HTTP
-void xmrig::BenchClient::onCreateReply(const rapidjson::Value &value)
+#ifdef JDKRIG_FEATURE_HTTP
+void jdkrig::BenchClient::onCreateReply(const rapidjson::Value &value)
 {
     m_startTime = Chrono::steadyMSecs();
     m_token     = Json::getString(value, BenchConfig::kToken);
@@ -320,14 +320,14 @@ void xmrig::BenchClient::onCreateReply(const rapidjson::Value &value)
 }
 
 
-void xmrig::BenchClient::onDoneReply(const rapidjson::Value &)
+void jdkrig::BenchClient::onDoneReply(const rapidjson::Value &)
 {
-    LOG_NOTICE("%s " WHITE_BOLD("benchmark submitted ") CYAN_BOLD("https://xmrig.com/benchmark/%s"), tag(), m_job.id().data());
+    LOG_NOTICE("%s " WHITE_BOLD("benchmark submitted ") CYAN_BOLD("https://jdkrig.com/benchmark/%s"), tag(), m_job.id().data());
     printExit();
 }
 
 
-void xmrig::BenchClient::onGetReply(const rapidjson::Value &value)
+void jdkrig::BenchClient::onGetReply(const rapidjson::Value &value)
 {
     const char *hash = Json::getString(value, BenchConfig::kHash);
     if (hash) {
@@ -343,13 +343,13 @@ void xmrig::BenchClient::onGetReply(const rapidjson::Value &value)
 }
 
 
-void xmrig::BenchClient::resolve()
+void jdkrig::BenchClient::resolve()
 {
     m_dns = Dns::resolve(BenchConfig::kApiHost, this);
 }
 
 
-void xmrig::BenchClient::send(Request request)
+void jdkrig::BenchClient::send(Request request)
 {
     using namespace rapidjson;
 
@@ -375,7 +375,7 @@ void xmrig::BenchClient::send(Request request)
             doc.AddMember("steady_ready_ts",                m_readyTime, allocator);
             doc.AddMember("cpu",                            Cpu::toJSON(doc), allocator);
 
-#           ifdef XMRIG_FEATURE_DMI
+#           ifdef JDKRIG_FEATURE_DMI
             if (m_benchmark->isDMI()) {
                 DmiReader reader;
                 if (reader.read()) {
@@ -413,7 +413,7 @@ void xmrig::BenchClient::send(Request request)
 }
 
 
-void xmrig::BenchClient::setError(const char *message, const char *label)
+void jdkrig::BenchClient::setError(const char *message, const char *label)
 {
     LOG_ERR("%s " RED("%s: ") RED_BOLD("\"%s\""), tag(), label ? label : "benchmark failed", message);
     printExit();
@@ -422,7 +422,7 @@ void xmrig::BenchClient::setError(const char *message, const char *label)
 }
 
 
-void xmrig::BenchClient::update(const rapidjson::Value &body)
+void jdkrig::BenchClient::update(const rapidjson::Value &body)
 {
     assert(!m_token.isEmpty());
 

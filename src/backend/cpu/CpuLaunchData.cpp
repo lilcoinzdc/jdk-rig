@@ -7,7 +7,7 @@
  * Copyright 2017-2018 XMR-Stak    <https://github.com/fireice-uk>, <https://github.com/psychocrypt>
  * Copyright 2018      Lee Clagett <https://github.com/vtnerd>
  * Copyright 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2020 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -32,7 +32,7 @@
 #include <algorithm>
 
 
-xmrig::CpuLaunchData::CpuLaunchData(const Miner *miner, const Algorithm &algorithm, const CpuConfig &config, const CpuThread &thread, size_t threads, const std::vector<int64_t>& affinities) :
+jdkrig::CpuLaunchData::CpuLaunchData(const Jdkrigger *jdkrigger, const Algorithm &algorithm, const CpuConfig &config, const CpuThread &thread, size_t threads, const std::vector<int64_t>& affinities) :
     algorithm(algorithm),
     assembly(config.assembly()),
     hugePages(config.isHugePages()),
@@ -40,7 +40,7 @@ xmrig::CpuLaunchData::CpuLaunchData(const Miner *miner, const Algorithm &algorit
     yield(config.isYield()),
     priority(config.priority()),
     affinity(thread.affinity()),
-    miner(miner),
+    jdkrigger(jdkrigger),
     threads(threads),
     intensity(std::max<uint32_t>(std::min<uint32_t>(thread.intensity(), algorithm.maxIntensity()), algorithm.minIntensity())),
     affinities(affinities)
@@ -48,7 +48,7 @@ xmrig::CpuLaunchData::CpuLaunchData(const Miner *miner, const Algorithm &algorit
 }
 
 
-bool xmrig::CpuLaunchData::isEqual(const CpuLaunchData &other) const
+bool jdkrig::CpuLaunchData::isEqual(const CpuLaunchData &other) const
 {
     return (algorithm.l3()      == other.algorithm.l3()
             && assembly         == other.assembly
@@ -61,7 +61,7 @@ bool xmrig::CpuLaunchData::isEqual(const CpuLaunchData &other) const
 }
 
 
-xmrig::CnHash::AlgoVariant xmrig::CpuLaunchData::av() const
+jdkrig::CnHash::AlgoVariant jdkrig::CpuLaunchData::av() const
 {
     if (intensity <= 2) {
         return static_cast<CnHash::AlgoVariant>(!hwAES ? (intensity + 2) : intensity);
@@ -71,7 +71,7 @@ xmrig::CnHash::AlgoVariant xmrig::CpuLaunchData::av() const
 }
 
 
-const char *xmrig::CpuLaunchData::tag()
+const char *jdkrig::CpuLaunchData::tag()
 {
     return cpu_tag();
 }

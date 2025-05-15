@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -17,8 +17,8 @@
  */
 
 
-#ifndef XMRIG_FETCH_H
-#define XMRIG_FETCH_H
+#ifndef JDKRIG_FETCH_H
+#define JDKRIG_FETCH_H
 
 
 #include "3rdparty/llhttp/llhttp.h"
@@ -31,7 +31,7 @@
 #include <string>
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 class IHttpListener;
@@ -65,8 +65,8 @@ public:
 void fetch(const char *tag, FetchRequest &&req, const std::weak_ptr<IHttpListener> &listener, int type = 0, uint64_t rpcId = 0);
 
 
-} // namespace xmrig
+} // namespace jdkrig
 
 
-#endif // XMRIG_FETCH_H
+#endif // JDKRIG_FETCH_H
 

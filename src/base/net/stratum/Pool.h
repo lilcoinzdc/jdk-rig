@@ -1,7 +1,7 @@
 /* XMRig
  * Copyright (c) 2019      Howard Chu  <https://github.com/hyc>
  * Copyright (c) 2018-2024 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2024 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2024 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -17,8 +17,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XMRIG_POOL_H
-#define XMRIG_POOL_H
+#ifndef JDKRIG_POOL_H
+#define JDKRIG_POOL_H
 
 
 #include <bitset>
@@ -31,7 +31,7 @@
 #include "base/net/stratum/ProxyUrl.h"
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 class BenchConfig;
@@ -47,7 +47,7 @@ public:
         MODE_DAEMON,
         MODE_SELF_SELECT,
         MODE_AUTO_ETH,
-#       ifdef XMRIG_FEATURE_BENCHMARK
+#       ifdef JDKRIG_FEATURE_BENCHMARK
         MODE_BENCHMARK,
 #       endif
     };
@@ -87,7 +87,7 @@ public:
     Pool(const char *url);
     Pool(const rapidjson::Value &object);
 
-#   ifdef XMRIG_FEATURE_BENCHMARK
+#   ifdef JDKRIG_FEATURE_BENCHMARK
     Pool(const std::shared_ptr<BenchConfig> &benchmark);
 
     BenchConfig *benchmark() const;
@@ -167,13 +167,13 @@ private:
     Url m_url;
     int m_zmqPort                   = -1;
 
-#   ifdef XMRIG_FEATURE_BENCHMARK
+#   ifdef JDKRIG_FEATURE_BENCHMARK
     std::shared_ptr<BenchConfig> m_benchmark;
 #   endif
 };
 
 
-} /* namespace xmrig */
+} /* namespace jdkrig */
 
 
-#endif /* XMRIG_POOL_H */
+#endif /* JDKRIG_POOL_H */

@@ -2,10 +2,10 @@
 
 You can run with XMRig with the following commands:
 ```
-xmrig --bench=1M
-xmrig --bench=10M
-xmrig --bench=1M -a rx/wow
-xmrig --bench=10M -a rx/wow
+jdkrig --bench=1M
+jdkrig --bench=10M
+jdkrig --bench=1M -a rx/wow
+jdkrig --bench=10M -a rx/wow
 ```
 This will run between 1 and 10 million RandomX hashes, depending on `bench` parameter, and print the time it took. First two commands use Monero variant (2 MB per thread, best for Zen2/Zen3 CPUs), second two commands use Wownero variant (1 MB per thread, useful for Intel and 1st gen Zen/Zen+ CPUs).
 
@@ -21,9 +21,9 @@ You can run benchmark with any configuration you want. Just start without comman
 
 # Stress test
 
-You can also run continuous stress-test that is as close to the real RandomX mining as possible and doesn't require any configuration:
+You can also run continuous stress-test that is as close to the real RandomX jdkrigging as possible and doesn't require any configuration:
 ```
-xmrig --stress
-xmrig --stress -a rx/wow
+jdkrig --stress
+jdkrig --stress -a rx/wow
 ```
 This will require Internet connection and will run indefinitely.

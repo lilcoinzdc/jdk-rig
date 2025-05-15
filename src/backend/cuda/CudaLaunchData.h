@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XMRIG_CUDALAUNCHDATA_H
-#define XMRIG_CUDALAUNCHDATA_H
+#ifndef JDKRIG_CUDALAUNCHDATA_H
+#define JDKRIG_CUDALAUNCHDATA_H
 
 
 #include "backend/cuda/CudaThread.h"
@@ -25,17 +25,17 @@
 #include "crypto/common/Nonce.h"
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 class CudaDevice;
-class Miner;
+class Jdkrigger;
 
 
 class CudaLaunchData
 {
 public:
-    CudaLaunchData(const Miner *miner, const Algorithm &algorithm, const CudaThread &thread, const CudaDevice &device);
+    CudaLaunchData(const Jdkrigger *jdkrigger, const Algorithm &algorithm, const CudaThread &thread, const CudaDevice &device);
 
     bool isEqual(const CudaLaunchData &other) const;
 
@@ -50,12 +50,12 @@ public:
     const CudaDevice &device;
     const CudaThread thread;
     const int64_t affinity;
-    const Miner *miner;
+    const Jdkrigger *jdkrigger;
     const uint32_t benchSize = 0;
 };
 
 
-} // namespace xmrig
+} // namespace jdkrig
 
 
-#endif /* XMRIG_OCLLAUNCHDATA_H */
+#endif /* JDKRIG_OCLLAUNCHDATA_H */

@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -19,12 +19,12 @@
 #include "core/Controller.h"
 #include "backend/cpu/Cpu.h"
 #include "core/config/Config.h"
-#include "core/Miner.h"
+#include "core/Jdkrigger.h"
 #include "crypto/common/VirtualMemory.h"
 #include "net/Network.h"
 
 
-#ifdef XMRIG_FEATURE_API
+#ifdef JDKRIG_FEATURE_API
 #   include "base/api/Api.h"
 #   include "hw/api/HwApi.h"
 #endif
@@ -33,19 +33,19 @@
 #include <cassert>
 
 
-xmrig::Controller::Controller(Process *process) :
+jdkrig::Controller::Controller(Process *process) :
     Base(process)
 {
 }
 
 
-xmrig::Controller::~Controller()
+jdkrig::Controller::~Controller()
 {
     VirtualMemory::destroy();
 }
 
 
-int xmrig::Controller::init()
+int jdkrig::Controller::init()
 {
     Base::init();
 
@@ -53,7 +53,7 @@ int xmrig::Controller::init()
 
     m_network = std::make_shared<Network>(this);
 
-#   ifdef XMRIG_FEATURE_API
+#   ifdef JDKRIG_FEATURE_API
     m_hwApi = std::make_shared<HwApi>();
     api()->addListener(m_hwApi.get());
 #   endif
@@ -62,36 +62,36 @@ int xmrig::Controller::init()
 }
 
 
-void xmrig::Controller::start()
+void jdkrig::Controller::start()
 {
     Base::start();
 
-    m_miner = std::make_shared<Miner>(this);
+    m_jdkrigger = std::make_shared<Jdkrigger>(this);
 
     network()->connect();
 }
 
 
-void xmrig::Controller::stop()
+void jdkrig::Controller::stop()
 {
     Base::stop();
 
     m_network.reset();
 
-    m_miner->stop();
-    m_miner.reset();
+    m_jdkrigger->stop();
+    m_jdkrigger.reset();
 }
 
 
-xmrig::Miner *xmrig::Controller::miner() const
+jdkrig::Jdkrigger *jdkrig::Controller::jdkrigger() const
 {
-    assert(m_miner);
+    assert(m_jdkrigger);
 
-    return m_miner.get();
+    return m_jdkrigger.get();
 }
 
 
-xmrig::Network *xmrig::Controller::network() const
+jdkrig::Network *jdkrig::Controller::network() const
 {
     assert(m_network);
 
@@ -99,8 +99,8 @@ xmrig::Network *xmrig::Controller::network() const
 }
 
 
-void xmrig::Controller::execCommand(char command) const
+void jdkrig::Controller::execCommand(char command) const
 {
-    miner()->execCommand(command);
+    jdkrigger()->execCommand(command);
     network()->execCommand(command);
 }

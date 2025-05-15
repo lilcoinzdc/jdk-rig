@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XMRIG_CONTROLLER_H
-#define XMRIG_CONTROLLER_H
+#ifndef JDKRIG_CONTROLLER_H
+#define JDKRIG_CONTROLLER_H
 
 
 #include "base/kernel/Base.h"
@@ -26,19 +26,19 @@
 #include <memory>
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 class HwApi;
 class Job;
-class Miner;
+class Jdkrigger;
 class Network;
 
 
 class Controller : public Base
 {
 public:
-    XMRIG_DISABLE_COPY_MOVE_DEFAULT(Controller)
+    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(Controller)
 
     Controller(Process *process);
     ~Controller() override;
@@ -47,21 +47,21 @@ public:
     void start() override;
     void stop() override;
 
-    Miner *miner() const;
+    Jdkrigger *jdkrigger() const;
     Network *network() const;
     void execCommand(char command) const;
 
 private:
-    std::shared_ptr<Miner> m_miner;
+    std::shared_ptr<Jdkrigger> m_jdkrigger;
     std::shared_ptr<Network> m_network;
 
-#   ifdef XMRIG_FEATURE_API
+#   ifdef JDKRIG_FEATURE_API
     std::shared_ptr<HwApi> m_hwApi;
 #   endif
 };
 
 
-} // namespace xmrig
+} // namespace jdkrig
 
 
-#endif /* XMRIG_CONTROLLER_H */
+#endif /* JDKRIG_CONTROLLER_H */

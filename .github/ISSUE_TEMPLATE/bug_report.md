@@ -18,9 +18,9 @@ A clear and concise description of what you expected to happen.
 
 **Required data**
  - XMRig version
-    - Either the exact link to a release you downloaded from https://github.com/xmrig/xmrig/releases
+    - Either the exact link to a release you downloaded from https://github.com/jdkrig/jdkrig/releases
     - Or the exact command lines that you used to build XMRig
- - Miner log as text or screenshot
+ - Jdkrigger log as text or screenshot
  - Config file or command line (without wallets)
  - OS: [e.g. Windows]
  - For GPU related issues: information about GPUs and driver version.

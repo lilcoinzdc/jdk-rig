@@ -2,7 +2,7 @@
  * Copyright (c) 2000-2002 Alan Cox     <alan@redhat.com>
  * Copyright (c) 2005-2020 Jean Delvare <jdelvare@suse.de>
  * Copyright (c) 2018-2021 SChernykh    <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig        <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2021 XMRig        <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -18,8 +18,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XMRIG_DMIREADER_H
-#define XMRIG_DMIREADER_H
+#ifndef JDKRIG_DMIREADER_H
+#define JDKRIG_DMIREADER_H
 
 
 #include "hw/dmi/DmiBoard.h"
@@ -29,7 +29,7 @@
 #include <functional>
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 class DmiReader
@@ -45,7 +45,7 @@ public:
 
     bool read();
 
-#   ifdef XMRIG_FEATURE_API
+#   ifdef JDKRIG_FEATURE_API
     rapidjson::Value toJSON(rapidjson::Document &doc) const;
     void toJSON(rapidjson::Value &out, rapidjson::Document &doc) const;
 #   endif
@@ -64,7 +64,7 @@ private:
 };
 
 
-} /* namespace xmrig */
+} /* namespace jdkrig */
 
 
-#endif /* XMRIG_DMIREADER_H */
+#endif /* JDKRIG_DMIREADER_H */

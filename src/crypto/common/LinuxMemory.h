@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,15 +16,15 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XMRIG_LINUXMEMORY_H
-#define XMRIG_LINUXMEMORY_H
+#ifndef JDKRIG_LINUXMEMORY_H
+#define JDKRIG_LINUXMEMORY_H
 
 
 #include <cstdint>
 #include <cstddef>
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 class LinuxMemory
@@ -37,7 +37,7 @@ public:
 };
 
 
-} /* namespace xmrig */
+} /* namespace jdkrig */
 
 
-#endif /* XMRIG_LINUXMEMORY_H */
+#endif /* JDKRIG_LINUXMEMORY_H */

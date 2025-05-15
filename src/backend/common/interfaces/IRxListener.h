@@ -1,7 +1,7 @@
 /* XMRig
  * Copyright (c) 2018-2019 tevador     <tevador@gmail.com>
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -17,31 +17,31 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XMRIG_IRXLISTENER_H
-#define XMRIG_IRXLISTENER_H
+#ifndef JDKRIG_IRXLISTENER_H
+#define JDKRIG_IRXLISTENER_H
 
 
 #include "base/tools/Object.h"
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 class IRxListener
 {
 public:
-    XMRIG_DISABLE_COPY_MOVE(IRxListener)
+    JDKRIG_DISABLE_COPY_MOVE(IRxListener)
 
     IRxListener()           = default;
     virtual ~IRxListener()  = default;
 
-#   ifdef XMRIG_ALGO_RANDOMX
+#   ifdef JDKRIG_ALGO_RANDOMX
     virtual void onDatasetReady() = 0;
 #   endif
 };
 
 
-} /* namespace xmrig */
+} /* namespace jdkrig */
 
 
-#endif // XMRIG_IRXLISTENER_H
+#endif // JDKRIG_IRXLISTENER_H

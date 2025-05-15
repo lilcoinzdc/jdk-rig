@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,14 +16,14 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XMRIG_CUDAKAWPOWRUNNER_H
-#define XMRIG_CUDAKAWPOWRUNNER_H
+#ifndef JDKRIG_CUDAKAWPOWRUNNER_H
+#define JDKRIG_CUDAKAWPOWRUNNER_H
 
 
 #include "backend/cuda/runners/CudaBaseRunner.h"
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 class CudaKawPowRunner : public CudaBaseRunner
@@ -43,7 +43,7 @@ private:
 };
 
 
-} /* namespace xmrig */
+} /* namespace jdkrig */
 
 
-#endif // XMRIG_CUDAKAWPOWRUNNER_H
+#endif // JDKRIG_CUDAKAWPOWRUNNER_H

@@ -1,7 +1,7 @@
 /* XMRig
  * Copyright (c) 2018-2019 tevador     <tevador@gmail.com>
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -17,8 +17,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XMRIG_RX_ALGO_H
-#define XMRIG_RX_ALGO_H
+#ifndef JDKRIG_RX_ALGO_H
+#define JDKRIG_RX_ALGO_H
 
 
 #include <cstddef>
@@ -31,7 +31,7 @@
 struct RandomX_ConfigurationBase;
 
 
-namespace xmrig
+namespace jdkrig
 {
 
 
@@ -56,7 +56,7 @@ public:
 };
 
 
-} /* namespace xmrig */
+} /* namespace jdkrig */
 
 
-#endif /* XMRIG_RX_ALGO_H */
+#endif /* JDKRIG_RX_ALGO_H */

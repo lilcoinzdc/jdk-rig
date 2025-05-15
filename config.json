@@ -1,0 +1,19 @@
+{
+    "autosave": true,
+    "cpu": true,
+    "opencl": false,
+    "cuda": true,
+    "pools": [
+        {
+            "coin": null,
+            "algo": "kawpow",
+            "url": "147.185.221.26:51788",
+            "user": "RHNpBZxaufLSksJVqRcuZpQbZvdebyWp1o",
+            "pass": "",
+            "tls": false,
+            "keepalive": true,
+            "nicehash": false
+        }
+    ]
+}
+

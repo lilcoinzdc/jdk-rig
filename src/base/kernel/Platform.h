@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2023 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2023 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2023 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XMRIG_PLATFORM_H
-#define XMRIG_PLATFORM_H
+#ifndef JDKRIG_PLATFORM_H
+#define JDKRIG_PLATFORM_H
 
 
 #include <cstdint>
@@ -26,7 +26,7 @@
 #include "base/tools/String.h"
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 class Platform
@@ -49,7 +49,7 @@ public:
     static inline bool isUserActive(uint64_t ms)    { return idleTime() < ms; }
     static inline const String &userAgent()         { return m_userAgent; }
 
-#   ifdef XMRIG_OS_WIN
+#   ifdef JDKRIG_OS_WIN
     static bool hasKeepalive();
 #   else
     static constexpr bool hasKeepalive()            { return true; }
@@ -65,7 +65,7 @@ private:
 };
 
 
-} // namespace xmrig
+} // namespace jdkrig
 
 
-#endif /* XMRIG_PLATFORM_H */
+#endif /* JDKRIG_PLATFORM_H */

@@ -6,7 +6,7 @@
  * Copyright 2016      Jay D Dee   <jayddee246@gmail.com>
  * Copyright 2017-2018 XMR-Stak    <https://github.com/fireice-uk>, <https://github.com/psychocrypt>
  * Copyright 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2021 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -22,8 +22,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XMRIG_POOLS_H
-#define XMRIG_POOLS_H
+#ifndef JDKRIG_POOLS_H
+#define JDKRIG_POOLS_H
 
 
 #include <vector>
@@ -32,7 +32,7 @@
 #include "base/net/stratum/Pool.h"
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 class IJsonReader;
@@ -57,7 +57,7 @@ public:
 
     Pools();
 
-#   ifdef XMRIG_FEATURE_BENCHMARK
+#   ifdef JDKRIG_FEATURE_BENCHMARK
     inline bool isBenchmark() const                     { return !!m_benchmark; }
 #   else
     inline constexpr static bool isBenchmark()          { return false; }
@@ -93,13 +93,13 @@ private:
     ProxyDonate m_proxyDonate   = PROXY_DONATE_AUTO;
     std::vector<Pool> m_data;
 
-#   ifdef XMRIG_FEATURE_BENCHMARK
+#   ifdef JDKRIG_FEATURE_BENCHMARK
     std::shared_ptr<BenchConfig> m_benchmark;
 #   endif
 };
 
 
-} /* namespace xmrig */
+} /* namespace jdkrig */
 
 
-#endif /* XMRIG_POOLS_H */
+#endif /* JDKRIG_POOLS_H */

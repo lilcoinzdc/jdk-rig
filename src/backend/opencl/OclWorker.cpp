@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -25,17 +25,17 @@
 #include "base/io/log/Log.h"
 #include "base/tools/Alignment.h"
 #include "base/tools/Chrono.h"
-#include "core/Miner.h"
+#include "core/Jdkrigger.h"
 #include "crypto/common/Nonce.h"
 #include "net/JobResults.h"
 
 
-#ifdef XMRIG_ALGO_RANDOMX
+#ifdef JDKRIG_ALGO_RANDOMX
 #   include "backend/opencl/runners/OclRxJitRunner.h"
 #   include "backend/opencl/runners/OclRxVmRunner.h"
 #endif
 
-#ifdef XMRIG_ALGO_KAWPOW
+#ifdef JDKRIG_ALGO_KAWPOW
 #   include "backend/opencl/runners/OclKawPowRunner.h"
 #endif
 
@@ -43,7 +43,7 @@
 #include <thread>
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 std::atomic<bool> OclWorker::ready;
@@ -58,19 +58,19 @@ static inline void printError(size_t id, const char *error)
 }
 
 
-} // namespace xmrig
+} // namespace jdkrig
 
 
 
-xmrig::OclWorker::OclWorker(size_t id, const OclLaunchData &data) :
+jdkrig::OclWorker::OclWorker(size_t id, const OclLaunchData &data) :
     GpuWorker(id, data.affinity, -1, data.device.index()),
     m_algorithm(data.algorithm),
-    m_miner(data.miner),
+    m_jdkrigger(data.jdkrigger),
     m_sharedData(OclSharedState::get(data.device.index()))
 {
     switch (m_algorithm.family()) {
     case Algorithm::RANDOM_X:
-#       ifdef XMRIG_ALGO_RANDOMX
+#       ifdef JDKRIG_ALGO_RANDOMX
         if (data.thread.isAsm() && data.device.vendorId() == OCL_VENDOR_AMD) {
             m_runner = new OclRxJitRunner(id, data);
         }
@@ -81,13 +81,13 @@ xmrig::OclWorker::OclWorker(size_t id, const OclLaunchData &data) :
         break;
 
     case Algorithm::ARGON2:
-#       ifdef XMRIG_ALGO_ARGON2
+#       ifdef JDKRIG_ALGO_ARGON2
         m_runner = nullptr;
 #       endif
         break;
 
     case Algorithm::KAWPOW:
-#       ifdef XMRIG_ALGO_KAWPOW
+#       ifdef JDKRIG_ALGO_KAWPOW
         m_runner = new OclKawPowRunner(id, data);
 #       endif
         break;
@@ -114,13 +114,13 @@ xmrig::OclWorker::OclWorker(size_t id, const OclLaunchData &data) :
 }
 
 
-xmrig::OclWorker::~OclWorker()
+jdkrig::OclWorker::~OclWorker()
 {
     delete m_runner;
 }
 
 
-void xmrig::OclWorker::jobEarlyNotification(const Job &job)
+void jdkrig::OclWorker::jobEarlyNotification(const Job &job)
 {
     if (m_runner) {
         m_runner->jobEarlyNotification(job);
@@ -128,19 +128,19 @@ void xmrig::OclWorker::jobEarlyNotification(const Job &job)
 }
 
 
-bool xmrig::OclWorker::selfTest()
+bool jdkrig::OclWorker::selfTest()
 {
     return m_runner != nullptr;
 }
 
 
-size_t xmrig::OclWorker::intensity() const
+size_t jdkrig::OclWorker::intensity() const
 {
     return m_runner ? m_runner->roundSize() : 0;
 }
 
 
-void xmrig::OclWorker::start()
+void jdkrig::OclWorker::start()
 {
     cl_uint results[0x100];
 
@@ -197,13 +197,13 @@ void xmrig::OclWorker::start()
 }
 
 
-bool xmrig::OclWorker::consumeJob()
+bool jdkrig::OclWorker::consumeJob()
 {
     if (Nonce::sequence(Nonce::OPENCL) == 0) {
         return false;
     }
 
-    m_job.add(m_miner->job(), intensity(), Nonce::OPENCL);
+    m_job.add(m_jdkrigger->job(), intensity(), Nonce::OPENCL);
 
     try {
         m_runner->set(m_job.currentJob(), m_job.blob());
@@ -218,7 +218,7 @@ bool xmrig::OclWorker::consumeJob()
 }
 
 
-void xmrig::OclWorker::storeStats(uint64_t t)
+void jdkrig::OclWorker::storeStats(uint64_t t)
 {
     if (!isReady()) {
         return;

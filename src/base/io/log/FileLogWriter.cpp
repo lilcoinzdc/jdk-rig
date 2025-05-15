@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@
 #include <cassert>
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 static void fsWriteCallback(uv_fs_t *req)
@@ -36,28 +36,28 @@ static void fsWriteCallback(uv_fs_t *req)
 }
 
 
-} // namespace xmrig
+} // namespace jdkrig
 
 
-xmrig::FileLogWriter::FileLogWriter()
+jdkrig::FileLogWriter::FileLogWriter()
 {
     init();
 }
 
-xmrig::FileLogWriter::FileLogWriter(const char* fileName)
+jdkrig::FileLogWriter::FileLogWriter(const char* fileName)
 {
     init();
     open(fileName);
 }
 
-xmrig::FileLogWriter::~FileLogWriter()
+jdkrig::FileLogWriter::~FileLogWriter()
 {
     uv_close(reinterpret_cast<uv_handle_t*>(&m_flushAsync), nullptr);
 
     uv_mutex_destroy(&m_buffersLock);
 }
 
-void xmrig::FileLogWriter::init()
+void jdkrig::FileLogWriter::init()
 {
     uv_mutex_init(&m_buffersLock);
 
@@ -65,7 +65,7 @@ void xmrig::FileLogWriter::init()
     m_flushAsync.data = this;
 }
 
-bool xmrig::FileLogWriter::open(const char *fileName)
+bool jdkrig::FileLogWriter::open(const char *fileName)
 {
     assert(fileName != nullptr);
     if (!fileName) {
@@ -93,7 +93,7 @@ bool xmrig::FileLogWriter::open(const char *fileName)
 }
 
 
-bool xmrig::FileLogWriter::write(const char *data, size_t size)
+bool jdkrig::FileLogWriter::write(const char *data, size_t size)
 {
     if (!isOpen()) {
         return false;
@@ -113,7 +113,7 @@ bool xmrig::FileLogWriter::write(const char *data, size_t size)
 }
 
 
-bool xmrig::FileLogWriter::writeLine(const char *data, size_t size)
+bool jdkrig::FileLogWriter::writeLine(const char *data, size_t size)
 {
     if (!isOpen()) {
         return false;
@@ -135,7 +135,7 @@ bool xmrig::FileLogWriter::writeLine(const char *data, size_t size)
     return true;
 }
 
-void xmrig::FileLogWriter::flush()
+void jdkrig::FileLogWriter::flush()
 {
     uv_mutex_lock(&m_buffersLock);
 

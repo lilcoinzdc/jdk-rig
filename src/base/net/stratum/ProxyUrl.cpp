@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2020 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -21,14 +21,14 @@
 #include "3rdparty/rapidjson/document.h"
 
 
-namespace xmrig {
+namespace jdkrig {
 
 static const String kLocalhost = "127.0.0.1";
 
-} // namespace xmrig
+} // namespace jdkrig
 
 
-xmrig::ProxyUrl::ProxyUrl(const rapidjson::Value &value)
+jdkrig::ProxyUrl::ProxyUrl(const rapidjson::Value &value)
 {
     m_port = 0;
 
@@ -41,13 +41,13 @@ xmrig::ProxyUrl::ProxyUrl(const rapidjson::Value &value)
 }
 
 
-const xmrig::String &xmrig::ProxyUrl::host() const
+const jdkrig::String &jdkrig::ProxyUrl::host() const
 {
     return m_host.isNull() && isValid() ? kLocalhost : m_host;
 }
 
 
-rapidjson::Value xmrig::ProxyUrl::toJSON(rapidjson::Document &doc) const
+rapidjson::Value jdkrig::ProxyUrl::toJSON(rapidjson::Document &doc) const
 {
     using namespace rapidjson;
     if (!isValid()) {

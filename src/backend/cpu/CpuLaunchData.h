@@ -7,7 +7,7 @@
  * Copyright 2017-2018 XMR-Stak    <https://github.com/fireice-uk>, <https://github.com/psychocrypt>
  * Copyright 2018      Lee Clagett <https://github.com/vtnerd>
  * Copyright 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2020 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -23,8 +23,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XMRIG_CPULAUNCHDATA_H
-#define XMRIG_CPULAUNCHDATA_H
+#ifndef JDKRIG_CPULAUNCHDATA_H
+#define JDKRIG_CPULAUNCHDATA_H
 
 
 #include "base/crypto/Algorithm.h"
@@ -33,18 +33,18 @@
 #include "crypto/common/Nonce.h"
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 class CpuConfig;
 class CpuThread;
-class Miner;
+class Jdkrigger;
 
 
 class CpuLaunchData
 {
 public:
-    CpuLaunchData(const Miner *miner, const Algorithm &algorithm, const CpuConfig &config, const CpuThread &thread, size_t threads, const std::vector<int64_t>& affinities);
+    CpuLaunchData(const Jdkrigger *jdkrigger, const Algorithm &algorithm, const CpuConfig &config, const CpuThread &thread, size_t threads, const std::vector<int64_t>& affinities);
 
     bool isEqual(const CpuLaunchData &other) const;
     CnHash::AlgoVariant av() const;
@@ -63,14 +63,14 @@ public:
     const bool yield;
     const int priority;
     const int64_t affinity;
-    const Miner *miner;
+    const Jdkrigger *jdkrigger;
     const size_t threads;
     const uint32_t intensity;
     const std::vector<int64_t> affinities;
 };
 
 
-} // namespace xmrig
+} // namespace jdkrig
 
 
-#endif /* XMRIG_CPULAUNCHDATA_H */
+#endif /* JDKRIG_CPULAUNCHDATA_H */

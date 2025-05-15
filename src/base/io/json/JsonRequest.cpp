@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@
 #include "3rdparty/rapidjson/document.h"
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 const char *JsonRequest::k2_0               = "2.0";
@@ -41,16 +41,16 @@ const char *JsonRequest::kInternalError     = "internal error";
 static uint64_t nextId                      = 0;
 
 
-} // namespace xmrig
+} // namespace jdkrig
 
 
-rapidjson::Document xmrig::JsonRequest::create(const char *method)
+rapidjson::Document jdkrig::JsonRequest::create(const char *method)
 {
     return create(++nextId, method);
 }
 
 
-rapidjson::Document xmrig::JsonRequest::create(int64_t id, const char *method)
+rapidjson::Document jdkrig::JsonRequest::create(int64_t id, const char *method)
 {
     using namespace rapidjson;
     Document doc(kObjectType);
@@ -64,13 +64,13 @@ rapidjson::Document xmrig::JsonRequest::create(int64_t id, const char *method)
 }
 
 
-uint64_t xmrig::JsonRequest::create(rapidjson::Document &doc, const char *method, rapidjson::Value &params)
+uint64_t jdkrig::JsonRequest::create(rapidjson::Document &doc, const char *method, rapidjson::Value &params)
 {
     return create(doc, ++nextId, method, params);
 }
 
 
-uint64_t xmrig::JsonRequest::create(rapidjson::Document &doc, int64_t id, const char *method, rapidjson::Value &params)
+uint64_t jdkrig::JsonRequest::create(rapidjson::Document &doc, int64_t id, const char *method, rapidjson::Value &params)
 {
     using namespace rapidjson;
     auto &allocator = doc.GetAllocator();

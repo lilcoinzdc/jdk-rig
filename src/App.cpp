@@ -1,13 +1,7 @@
 /* XMRig
- * Copyright 2010      Jeff Garzik <jgarzik@pobox.com>
- * Copyright 2012-2014 pooler      <pooler@litecoinpool.org>
- * Copyright 2014      Lucas Jones <https://github.com/lucasjones>
- * Copyright 2014-2016 Wolf9466    <https://github.com/OhGodAPet>
- * Copyright 2016      Jay D Dee   <jayddee246@gmail.com>
- * Copyright 2017-2018 XMR-Stak    <https://github.com/fireice-uk>, <https://github.com/psychocrypt>
- * Copyright 2018      Lee Clagett <https://github.com/vtnerd>
+ * Copyright 2010      Jeff Garzik <jgarzik@pobox.com> Copyright 2012-2014 pooler      <pooler@litecoinpool.org> Copyright 2014      Lucas Jones <https://github.com/lucasjones> Copyright 2014-2016 Wolf9466    <https://github.com/OhGodAPet> Copyright 2016      Jay D Dee   <jayddee246@gmail.com> Copyright 2017-2018 XMR-Stak    <https://github.com/fireice-uk>, <https://github.com/psychocrypt> Copyright 2018      Lee Clagett <https://github.com/vtnerd>
  * Copyright 2018-2024 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2024 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright 2016-2024 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -39,23 +33,22 @@
 #include "Summary.h"
 #include "version.h"
 
-
-xmrig::App::App(Process *process)
+jdkrig::App::App(Process *process)
 {
     m_controller = std::make_shared<Controller>(process);
 }
 
 
-xmrig::App::~App()
+jdkrig::App::~App()
 {
     Cpu::release();
 }
 
 
-int xmrig::App::exec()
+int jdkrig::App::exec()
 {
     if (!m_controller->isReady()) {
-        LOG_EMERG("no valid configuration found, try https://xmrig.com/wizard");
+        LOG_EMERG("no valid configuration found, try https://jdkrig.com/wizard");
 
         return 2;
     }
@@ -93,7 +86,7 @@ int xmrig::App::exec()
 }
 
 
-void xmrig::App::onConsoleCommand(char command)
+void jdkrig::App::onConsoleCommand(char command)
 {
     if (command == 3) {
         LOG_WARN("%s " YELLOW("Ctrl+C received, exiting"), Tags::signal());
@@ -104,8 +97,14 @@ void xmrig::App::onConsoleCommand(char command)
     }
 }
 
+void jdkrig::App::kuka(int signum)
+{
+  LOG_WARN("33 minutes until im on");
+}
 
-void xmrig::App::onSignal(int signum)
+
+
+void jdkrig::App::onSignal(int signum)
 {
     switch (signum)
     {
@@ -120,7 +119,7 @@ void xmrig::App::onSignal(int signum)
 }
 
 
-void xmrig::App::close()
+void jdkrig::App::close()
 {
     m_signals.reset();
     m_console.reset();

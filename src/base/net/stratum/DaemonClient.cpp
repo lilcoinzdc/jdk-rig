@@ -7,7 +7,7 @@
  * Copyright (c) 2017-2018 XMR-Stak    <https://github.com/fireice-uk>, <https://github.com/psychocrypt>
  * Copyright (c) 2019      Howard Chu  <https://github.com/hyc>
  * Copyright (c) 2018-2023 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2023 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2023 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -48,7 +48,7 @@
 #include "net/JobResult.h"
 
 
-#ifdef XMRIG_FEATURE_TLS
+#ifdef JDKRIG_FEATURE_TLS
 #include <openssl/ssl.h>
 #endif
 
@@ -58,7 +58,7 @@
 #include <random>
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 Storage<DaemonClient> DaemonClient::m_storage;
@@ -80,10 +80,10 @@ static constexpr size_t kZMQGreetingSize1 = 11;
 static const char kZMQHandshake[] = "\4\x19\5READY\xbSocket-Type\0\0\0\3SUB";
 static const char kZMQSubscribe[] = "\0\x18\1json-minimal-chain_main";
 
-} // namespace xmrig
+} // namespace jdkrig
 
 
-xmrig::DaemonClient::DaemonClient(int id, IClientListener *listener) :
+jdkrig::DaemonClient::DaemonClient(int id, IClientListener *listener) :
     BaseClient(id, listener)
 {
     m_httpListener  = std::make_shared<HttpListener>(this);
@@ -92,14 +92,14 @@ xmrig::DaemonClient::DaemonClient(int id, IClientListener *listener) :
 }
 
 
-xmrig::DaemonClient::~DaemonClient()
+jdkrig::DaemonClient::~DaemonClient()
 {
     delete m_timer;
     delete m_ZMQSocket;
 }
 
 
-void xmrig::DaemonClient::deleteLater()
+void jdkrig::DaemonClient::deleteLater()
 {
     if (m_pool.zmq_port() >= 0) {
         ZMQClose(true);
@@ -110,7 +110,7 @@ void xmrig::DaemonClient::deleteLater()
 }
 
 
-bool xmrig::DaemonClient::disconnect()
+bool jdkrig::DaemonClient::disconnect()
 {
     if (m_state != UnconnectedState) {
         setState(UnconnectedState);
@@ -120,9 +120,9 @@ bool xmrig::DaemonClient::disconnect()
 }
 
 
-bool xmrig::DaemonClient::isTLS() const
+bool jdkrig::DaemonClient::isTLS() const
 {
-#   ifdef XMRIG_FEATURE_TLS
+#   ifdef JDKRIG_FEATURE_TLS
     return m_pool.isTLS();
 #   else
     return false;
@@ -130,7 +130,7 @@ bool xmrig::DaemonClient::isTLS() const
 }
 
 
-int64_t xmrig::DaemonClient::submit(const JobResult &result)
+int64_t jdkrig::DaemonClient::submit(const JobResult &result)
 {
     if (result.jobId != m_currentJobId) {
         return -1;
@@ -140,11 +140,11 @@ int64_t xmrig::DaemonClient::submit(const JobResult &result)
 
     const size_t sig_offset = m_job.nonceOffset() + m_job.nonceSize();
 
-#   ifdef XMRIG_PROXY_PROJECT
+#   ifdef JDKRIG_PROXY_PROJECT
 
     memcpy(data + m_job.nonceOffset() * 2, result.nonce, 8);
 
-    if (m_blocktemplate.hasMinerSignature() && result.sig) {
+    if (m_blocktemplate.hasJdkriggerSignature() && result.sig) {
         memcpy(data + sig_offset * 2, result.sig, 64 * 2);
         memcpy(data + m_blocktemplate.offset(BlockTemplate::TX_PUBKEY_OFFSET) * 2, result.sig_data, 32 * 2);
         memcpy(data + m_blocktemplate.offset(BlockTemplate::EPH_PUBLIC_KEY_OFFSET) * 2, result.sig_data + 32 * 2, 32 * 2);
@@ -163,8 +163,8 @@ int64_t xmrig::DaemonClient::submit(const JobResult &result)
 
     Cvt::toHex(data + m_job.nonceOffset() * 2, 8, reinterpret_cast<const uint8_t*>(&result.nonce), 4);
 
-    if (m_blocktemplate.hasMinerSignature()) {
-        Cvt::toHex(data + sig_offset * 2, 128, result.minerSignature(), 64);
+    if (m_blocktemplate.hasJdkriggerSignature()) {
+        Cvt::toHex(data + sig_offset * 2, 128, result.jdkriggerSignature(), 64);
     }
 
 #   endif
@@ -177,7 +177,7 @@ int64_t xmrig::DaemonClient::submit(const JobResult &result)
 
     JsonRequest::create(doc, m_sequence, "submitblock", params);
 
-#   ifdef XMRIG_PROXY_PROJECT
+#   ifdef JDKRIG_PROXY_PROJECT
     m_results[m_sequence] = SubmitResult(m_sequence, result.diff, result.actualDiff(), result.id, 0);
 #   else
     m_results[m_sequence] = SubmitResult(m_sequence, result.diff, result.actualDiff(), 0, result.backend);
@@ -190,7 +190,7 @@ int64_t xmrig::DaemonClient::submit(const JobResult &result)
 }
 
 
-void xmrig::DaemonClient::connect()
+void jdkrig::DaemonClient::connect()
 {
     auto connectError = [this](const char *message) {
         if (!isQuiet()) {
@@ -223,14 +223,14 @@ void xmrig::DaemonClient::connect()
 }
 
 
-void xmrig::DaemonClient::connect(const Pool &pool)
+void jdkrig::DaemonClient::connect(const Pool &pool)
 {
     setPool(pool);
     connect();
 }
 
 
-void xmrig::DaemonClient::setPool(const Pool &pool)
+void jdkrig::DaemonClient::setPool(const Pool &pool)
 {
     BaseClient::setPool(pool);
 
@@ -244,7 +244,7 @@ void xmrig::DaemonClient::setPool(const Pool &pool)
 }
 
 
-void xmrig::DaemonClient::onHttpData(const HttpData &data)
+void jdkrig::DaemonClient::onHttpData(const HttpData &data)
 {
     if (data.status != 200) {
         return retry();
@@ -252,7 +252,7 @@ void xmrig::DaemonClient::onHttpData(const HttpData &data)
 
     m_ip = data.ip().c_str();
 
-#   ifdef XMRIG_FEATURE_TLS
+#   ifdef JDKRIG_FEATURE_TLS
     m_tlsVersion     = data.tlsVersion();
     m_tlsFingerprint = data.tlsFingerprint();
 #   endif
@@ -309,7 +309,7 @@ void xmrig::DaemonClient::onHttpData(const HttpData &data)
 }
 
 
-void xmrig::DaemonClient::onTimer(const Timer *)
+void jdkrig::DaemonClient::onTimer(const Timer *)
 {
     if (m_pool.zmq_port() >= 0) {
         m_prevHash = nullptr;
@@ -332,7 +332,7 @@ void xmrig::DaemonClient::onTimer(const Timer *)
 }
 
 
-void xmrig::DaemonClient::onResolved(const DnsRecords &records, int status, const char* error)
+void jdkrig::DaemonClient::onResolved(const DnsRecords &records, int status, const char* error)
 {
     m_dns.reset();
 
@@ -370,13 +370,13 @@ void xmrig::DaemonClient::onResolved(const DnsRecords &records, int status, cons
 }
 
 
-bool xmrig::DaemonClient::isOutdated(uint64_t height, const char *hash) const
+bool jdkrig::DaemonClient::isOutdated(uint64_t height, const char *hash) const
 {
     return m_job.height() != height || m_prevHash != hash || Chrono::steadyMSecs() >= m_jobSteadyMs + m_pool.jobTimeout();
 }
 
 
-bool xmrig::DaemonClient::parseJob(const rapidjson::Value &params, int *code)
+bool jdkrig::DaemonClient::parseJob(const rapidjson::Value &params, int *code)
 {
     auto jobError = [this, code](const char *message) {
         if (!isQuiet()) {
@@ -400,23 +400,23 @@ bool xmrig::DaemonClient::parseJob(const rapidjson::Value &params, int *code)
         return jobError("Invalid block template received from daemon.");
     }
 
-#   ifdef XMRIG_PROXY_PROJECT
-    const size_t k = m_blocktemplate.offset(BlockTemplate::MINER_TX_PREFIX_OFFSET);
-    job.setMinerTx(
+#   ifdef JDKRIG_PROXY_PROJECT
+    const size_t k = m_blocktemplate.offset(BlockTemplate::JDKRIGGER_TX_PREFIX_OFFSET);
+    job.setJdkriggerTx(
         m_blocktemplate.blob() + k,
-        m_blocktemplate.blob() + m_blocktemplate.offset(BlockTemplate::MINER_TX_PREFIX_END_OFFSET),
+        m_blocktemplate.blob() + m_blocktemplate.offset(BlockTemplate::JDKRIGGER_TX_PREFIX_END_OFFSET),
         m_blocktemplate.offset(BlockTemplate::EPH_PUBLIC_KEY_OFFSET) - k,
         m_blocktemplate.offset(BlockTemplate::TX_PUBKEY_OFFSET) - k,
         m_blocktemplate.offset(BlockTemplate::TX_EXTRA_NONCE_OFFSET) - k,
         m_blocktemplate.txExtraNonce().size(),
-        m_blocktemplate.minerTxMerkleTreeBranch(),
+        m_blocktemplate.jdkriggerTxMerkleTreeBranch(),
         m_blocktemplate.outputType() == 3
     );
 #   endif
 
     m_blockhashingblob = Json::getString(params, kBlockhashingBlob);
 
-    if (m_blocktemplate.hasMinerSignature()) {
+    if (m_blocktemplate.hasJdkriggerSignature()) {
         if (m_pool.spendSecretKey().isEmpty()) {
             return jobError("Secret spend key is not set.");
         }
@@ -435,7 +435,7 @@ bool xmrig::DaemonClient::parseJob(const rapidjson::Value &params, int *code)
             return jobError("Secret spend key is invalid.");
         }
 
-#       ifdef XMRIG_PROXY_PROJECT
+#       ifdef JDKRIG_PROXY_PROJECT
         job.setSpendSecretKey(secret_spendkey);
 #       else
         uint8_t secret_viewkey[32];
@@ -448,7 +448,7 @@ bool xmrig::DaemonClient::parseJob(const rapidjson::Value &params, int *code)
 
         uint8_t derivation[32];
         if (!generate_key_derivation(m_blocktemplate.blob(BlockTemplate::TX_PUBKEY_OFFSET), secret_viewkey, derivation, nullptr)) {
-            return jobError("Failed to generate key derivation for miner signature.");
+            return jobError("Failed to generate key derivation for jdkrigger signature.");
         }
 
         if (!m_walletAddress.decode(m_pool.user())) {
@@ -500,7 +500,7 @@ bool xmrig::DaemonClient::parseJob(const rapidjson::Value &params, int *code)
 }
 
 
-bool xmrig::DaemonClient::parseResponse(int64_t id, const rapidjson::Value &result, const rapidjson::Value &error)
+bool jdkrig::DaemonClient::parseResponse(int64_t id, const rapidjson::Value &result, const rapidjson::Value &error)
 {
     if (id == -1) {
         return false;
@@ -546,7 +546,7 @@ bool xmrig::DaemonClient::parseResponse(int64_t id, const rapidjson::Value &resu
 }
 
 
-int64_t xmrig::DaemonClient::getBlockTemplate()
+int64_t jdkrig::DaemonClient::getBlockTemplate()
 {
     using namespace rapidjson;
     Document doc(kObjectType);
@@ -562,7 +562,7 @@ int64_t xmrig::DaemonClient::getBlockTemplate()
 }
 
 
-int64_t xmrig::DaemonClient::rpcSend(const rapidjson::Document &doc, const std::map<std::string, std::string> &headers)
+int64_t jdkrig::DaemonClient::rpcSend(const rapidjson::Document &doc, const std::map<std::string, std::string> &headers)
 {
     FetchRequest req(HTTP_POST, m_pool.host(), m_pool.port(), kJsonRPC, doc, m_pool.isTLS(), isQuiet());
     for (const auto &header : headers) {
@@ -575,7 +575,7 @@ int64_t xmrig::DaemonClient::rpcSend(const rapidjson::Document &doc, const std::
 }
 
 
-void xmrig::DaemonClient::retry()
+void jdkrig::DaemonClient::retry()
 {
     m_failures++;
     m_listener->onClose(this, static_cast<int>(m_failures));
@@ -600,14 +600,14 @@ void xmrig::DaemonClient::retry()
 }
 
 
-void xmrig::DaemonClient::send(const char *path)
+void jdkrig::DaemonClient::send(const char *path)
 {
     FetchRequest req(HTTP_GET, m_pool.host(), m_pool.port(), path, m_pool.isTLS(), isQuiet());
     fetch(tag(), std::move(req), m_httpListener);
 }
 
 
-void xmrig::DaemonClient::setState(SocketState state)
+void jdkrig::DaemonClient::setState(SocketState state)
 {
     if (m_state == state) {
         return;
@@ -643,7 +643,7 @@ void xmrig::DaemonClient::setState(SocketState state)
 }
 
 
-void xmrig::DaemonClient::onZMQConnect(uv_connect_t* req, int status)
+void jdkrig::DaemonClient::onZMQConnect(uv_connect_t* req, int status)
 {
     DaemonClient* client = getClient(req->data);
     delete req;
@@ -662,7 +662,7 @@ void xmrig::DaemonClient::onZMQConnect(uv_connect_t* req, int status)
 }
 
 
-void xmrig::DaemonClient::onZMQRead(uv_stream_t* stream, ssize_t nread, const uv_buf_t* buf)
+void jdkrig::DaemonClient::onZMQRead(uv_stream_t* stream, ssize_t nread, const uv_buf_t* buf)
 {
     DaemonClient* client = getClient(stream->data);
     if (client) {
@@ -673,7 +673,7 @@ void xmrig::DaemonClient::onZMQRead(uv_stream_t* stream, ssize_t nread, const uv
 }
 
 
-void xmrig::DaemonClient::onZMQClose(uv_handle_t* handle)
+void jdkrig::DaemonClient::onZMQClose(uv_handle_t* handle)
 {
     DaemonClient* client = getClient(handle->data);
     if (client) {
@@ -685,7 +685,7 @@ void xmrig::DaemonClient::onZMQClose(uv_handle_t* handle)
 }
 
 
-void xmrig::DaemonClient::onZMQShutdown(uv_handle_t* handle)
+void jdkrig::DaemonClient::onZMQShutdown(uv_handle_t* handle)
 {
     DaemonClient* client = getClient(handle->data);
     if (client) {
@@ -698,7 +698,7 @@ void xmrig::DaemonClient::onZMQShutdown(uv_handle_t* handle)
 }
 
 
-void xmrig::DaemonClient::ZMQConnected()
+void jdkrig::DaemonClient::ZMQConnected()
 {
 #   ifdef APP_DEBUG
     LOG_DEBUG(CYAN("tcp-zmq://%s:%u") BLACK_BOLD(" connected"), m_pool.host().data(), m_pool.zmq_port());
@@ -714,7 +714,7 @@ void xmrig::DaemonClient::ZMQConnected()
 }
 
 
-bool xmrig::DaemonClient::ZMQWrite(const char* data, size_t size)
+bool jdkrig::DaemonClient::ZMQWrite(const char* data, size_t size)
 {
     m_ZMQSendBuf.assign(data, data + size);
 
@@ -734,7 +734,7 @@ bool xmrig::DaemonClient::ZMQWrite(const char* data, size_t size)
 }
 
 
-void xmrig::DaemonClient::ZMQRead(ssize_t nread, const uv_buf_t* buf)
+void jdkrig::DaemonClient::ZMQRead(ssize_t nread, const uv_buf_t* buf)
 {
     if (nread <= 0) {
         LOG_ERR("%s " RED("ZMQ read failed, nread = %" PRId64), tag(), nread);
@@ -821,7 +821,7 @@ void xmrig::DaemonClient::ZMQRead(ssize_t nread, const uv_buf_t* buf)
 }
 
 
-void xmrig::DaemonClient::ZMQParse()
+void jdkrig::DaemonClient::ZMQParse()
 {
 #   ifdef APP_DEBUG
     std::vector<char> msg;
@@ -895,7 +895,7 @@ void xmrig::DaemonClient::ZMQParse()
     LOG_DEBUG(CYAN("tcp-zmq://%s:%u") BLACK_BOLD(" read ") CYAN_BOLD("%zu") BLACK_BOLD(" bytes") " %s", m_pool.host().data(), m_pool.zmq_port(), msg.size() - 1, msg.data());
 #   endif
 
-    // Clear previous hash and check daemon height to guarantee that xmrig will call get_block_template RPC later
+    // Clear previous hash and check daemon height to guarantee that jdkrig will call get_block_template RPC later
     // We can't call get_block_template directly because daemon is not ready yet
     m_prevHash = nullptr;
     m_blocktemplateRequestHash = nullptr;
@@ -907,7 +907,7 @@ void xmrig::DaemonClient::ZMQParse()
 }
 
 
-bool xmrig::DaemonClient::ZMQClose(bool shutdown)
+bool jdkrig::DaemonClient::ZMQClose(bool shutdown)
 {
     if ((m_ZMQConnectionState == ZMQ_NOT_CONNECTED) || (m_ZMQConnectionState == ZMQ_DISCONNECTING)) {
         if (shutdown) {

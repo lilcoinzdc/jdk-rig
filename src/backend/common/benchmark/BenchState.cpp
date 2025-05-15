@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@
 #include <mutex>
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 class BenchStatePrivate
@@ -55,23 +55,23 @@ static BenchStatePrivate *d_ptr = nullptr;
 std::atomic<uint64_t> BenchState::m_data{};
 
 
-} // namespace xmrig
+} // namespace jdkrig
 
 
 
-bool xmrig::BenchState::isDone()
+bool jdkrig::BenchState::isDone()
 {
     return d_ptr == nullptr;
 }
 
 
-uint32_t xmrig::BenchState::size()
+uint32_t jdkrig::BenchState::size()
 {
     return d_ptr ? d_ptr->size : 0U;
 }
 
 
-uint64_t xmrig::BenchState::referenceHash(const Algorithm &algo, uint32_t size, uint32_t threads)
+uint64_t jdkrig::BenchState::referenceHash(const Algorithm &algo, uint32_t size, uint32_t threads)
 {
     uint64_t hash = 0;
 
@@ -84,7 +84,7 @@ uint64_t xmrig::BenchState::referenceHash(const Algorithm &algo, uint32_t size, 
 }
 
 
-uint64_t xmrig::BenchState::start(size_t threads, const IBackend *backend)
+uint64_t jdkrig::BenchState::start(size_t threads, const IBackend *backend)
 {
     assert(d_ptr != nullptr);
 
@@ -103,14 +103,14 @@ uint64_t xmrig::BenchState::start(size_t threads, const IBackend *backend)
 }
 
 
-void xmrig::BenchState::destroy()
+void jdkrig::BenchState::destroy()
 {
     delete d_ptr;
     d_ptr = nullptr;
 }
 
 
-void xmrig::BenchState::done()
+void jdkrig::BenchState::done()
 {
     assert(d_ptr != nullptr && d_ptr->async && d_ptr->remaining > 0);
 
@@ -127,7 +127,7 @@ void xmrig::BenchState::done()
 }
 
 
-void xmrig::BenchState::init(IBenchListener *listener, uint32_t size)
+void jdkrig::BenchState::init(IBenchListener *listener, uint32_t size)
 {
     assert(d_ptr == nullptr);
 
@@ -135,7 +135,7 @@ void xmrig::BenchState::init(IBenchListener *listener, uint32_t size)
 }
 
 
-void xmrig::BenchState::setSize(uint32_t size)
+void jdkrig::BenchState::setSize(uint32_t size)
 {
     assert(d_ptr != nullptr);
 

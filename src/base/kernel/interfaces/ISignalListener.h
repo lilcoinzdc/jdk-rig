@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,14 +16,14 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XMRIG_ISIGNALLISTENER_H
-#define XMRIG_ISIGNALLISTENER_H
+#ifndef JDKRIG_ISIGNALLISTENER_H
+#define JDKRIG_ISIGNALLISTENER_H
 
 
 #include "base/tools/Object.h"
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 class String;
@@ -32,7 +32,7 @@ class String;
 class ISignalListener
 {
 public:
-    XMRIG_DISABLE_COPY_MOVE(ISignalListener)
+    JDKRIG_DISABLE_COPY_MOVE(ISignalListener)
 
     ISignalListener()           = default;
     virtual ~ISignalListener()  = default;
@@ -41,7 +41,7 @@ public:
 };
 
 
-} /* namespace xmrig */
+} /* namespace jdkrig */
 
 
-#endif // XMRIG_ISIGNALLISTENER_H
+#endif // JDKRIG_ISIGNALLISTENER_H

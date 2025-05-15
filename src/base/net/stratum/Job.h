@@ -8,7 +8,7 @@
  * Copyright 2018      Lee Clagett <https://github.com/vtnerd>
  * Copyright 2019      Howard Chu  <https://github.com/hyc>
  * Copyright 2018-2024 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2024 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright 2016-2024 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -24,8 +24,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XMRIG_JOB_H
-#define XMRIG_JOB_H
+#ifndef JDKRIG_JOB_H
+#define JDKRIG_JOB_H
 
 #include <cstddef>
 #include <cstdint>
@@ -35,14 +35,14 @@
 #include "base/tools/String.h"
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 class Job
 {
 public:
-    // Max blob size is 84 (75 fixed + 9 variable), aligned to 96. https://github.com/xmrig/xmrig/issues/1 Thanks fireice-uk.
-    // SECOR increase requirements for blob size: https://github.com/xmrig/xmrig/issues/913
+    // Max blob size is 84 (75 fixed + 9 variable), aligned to 96. https://github.com/jdkrig/jdkrig/issues/1 Thanks fireice-uk.
+    // SECOR increase requirements for blob size: https://github.com/jdkrig/jdkrig/issues/913
     // Haven (XHV) offshore increases requirements by adding pricing_record struct (192 bytes) to block_header.
     // Round it up to 408 (136*3) for a convenient keccak calculation in OpenCL
     static constexpr const size_t kMaxBlobSize = 408;
@@ -97,7 +97,7 @@ public:
     inline void setIndex(uint8_t index)                 { m_index = index; }
     inline void setPoolWallet(const String &poolWallet) { m_poolWallet = poolWallet; }
 
-#   ifdef XMRIG_PROXY_PROJECT
+#   ifdef JDKRIG_PROXY_PROJECT
     inline char *rawBlob()                              { return m_rawBlob; }
     inline const char *rawBlob() const                  { return m_rawBlob; }
     inline const char *rawTarget() const                { return m_rawTarget; }
@@ -112,34 +112,34 @@ public:
     inline Job &operator=(const Job &other)             { if (this != &other) { copy(other); } return *this; }
     inline Job &operator=(Job &&other) noexcept         { move(std::move(other)); return *this; }
 
-#   ifdef XMRIG_FEATURE_BENCHMARK
+#   ifdef JDKRIG_FEATURE_BENCHMARK
     inline uint32_t benchSize() const                   { return m_benchSize; }
     inline void setBenchSize(uint32_t size)             { m_benchSize = size; }
 #   endif
 
-#   ifdef XMRIG_PROXY_PROJECT
+#   ifdef JDKRIG_PROXY_PROJECT
     inline bool hasViewTag() const                      { return m_hasViewTag; }
 
     void setSpendSecretKey(const uint8_t* key);
-    void setMinerTx(const uint8_t* begin, const uint8_t* end, size_t minerTxEphPubKeyOffset, size_t minerTxPubKeyOffset, size_t minerTxExtraNonceOffset, size_t minerTxExtraNonceSize, const Buffer& minerTxMerkleTreeBranch, bool hasViewTag);
-    void setViewTagInMinerTx(uint8_t view_tag);
-    void setExtraNonceInMinerTx(uint32_t extra_nonce);
+    void setJdkriggerTx(const uint8_t* begin, const uint8_t* end, size_t jdkriggerTxEphPubKeyOffset, size_t jdkriggerTxPubKeyOffset, size_t jdkriggerTxExtraNonceOffset, size_t jdkriggerTxExtraNonceSize, const Buffer& jdkriggerTxMerkleTreeBranch, bool hasViewTag);
+    void setViewTagInJdkriggerTx(uint8_t view_tag);
+    void setExtraNonceInJdkriggerTx(uint32_t extra_nonce);
     void generateSignatureData(String& signatureData, uint8_t& view_tag) const;
     void generateHashingBlob(String& blob) const;
 #   else
-    inline const uint8_t* ephSecretKey() const { return m_hasMinerSignature ? m_ephSecretKey : nullptr; }
+    inline const uint8_t* ephSecretKey() const { return m_hasJdkriggerSignature ? m_ephSecretKey : nullptr; }
 
     inline void setEphemeralKeys(const uint8_t *pub_key, const uint8_t *sec_key)
     {
-        m_hasMinerSignature = true;
+        m_hasJdkriggerSignature = true;
         memcpy(m_ephPublicKey, pub_key, sizeof(m_ephSecretKey));
         memcpy(m_ephSecretKey, sec_key, sizeof(m_ephSecretKey));
     }
 
-    void generateMinerSignature(const uint8_t* blob, size_t size, uint8_t* out_sig) const;
+    void generateJdkriggerSignature(const uint8_t* blob, size_t size, uint8_t* out_sig) const;
 #   endif
 
-    inline bool hasMinerSignature() const { return m_hasMinerSignature; }
+    inline bool hasJdkriggerSignature() const { return m_hasJdkriggerSignature; }
 
     uint32_t getNumTransactions() const;
 
@@ -162,39 +162,39 @@ private:
     uint8_t m_blob[kMaxBlobSize]{ 0 };
     uint8_t m_index     = 0;
 
-#   ifdef XMRIG_PROXY_PROJECT
+#   ifdef JDKRIG_PROXY_PROJECT
     char m_rawBlob[kMaxBlobSize * 2 + 8]{};
     char m_rawTarget[24]{};
     String m_rawSeedHash;
     String m_rawSigKey;
 
-    // Miner signatures
+    // Jdkrigger signatures
     uint8_t m_spendSecretKey[32]{};
     uint8_t m_viewSecretKey[32]{};
     uint8_t m_spendPublicKey[32]{};
     uint8_t m_viewPublicKey[32]{};
-    mutable Buffer m_minerTxPrefix;
-    size_t m_minerTxEphPubKeyOffset = 0;
-    size_t m_minerTxPubKeyOffset = 0;
-    size_t m_minerTxExtraNonceOffset = 0;
-    size_t m_minerTxExtraNonceSize = 0;
-    Buffer m_minerTxMerkleTreeBranch;
+    mutable Buffer m_jdkriggerTxPrefix;
+    size_t m_jdkriggerTxEphPubKeyOffset = 0;
+    size_t m_jdkriggerTxPubKeyOffset = 0;
+    size_t m_jdkriggerTxExtraNonceOffset = 0;
+    size_t m_jdkriggerTxExtraNonceSize = 0;
+    Buffer m_jdkriggerTxMerkleTreeBranch;
     bool m_hasViewTag = false;
 #   else
-    // Miner signatures
+    // Jdkrigger signatures
     uint8_t m_ephPublicKey[32]{};
     uint8_t m_ephSecretKey[32]{};
 #   endif
 
-    bool m_hasMinerSignature = false;
+    bool m_hasJdkriggerSignature = false;
 
-#   ifdef XMRIG_FEATURE_BENCHMARK
+#   ifdef JDKRIG_FEATURE_BENCHMARK
     uint32_t m_benchSize = 0;
 #   endif
 };
 
 
-} /* namespace xmrig */
+} /* namespace jdkrig */
 
 
-#endif /* XMRIG_JOB_H */
+#endif /* JDKRIG_JOB_H */

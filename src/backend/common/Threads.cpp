@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -22,27 +22,27 @@
 #include "crypto/cn/CnAlgo.h"
 
 
-#ifdef XMRIG_FEATURE_OPENCL
+#ifdef JDKRIG_FEATURE_OPENCL
 #   include "backend/opencl/OclThreads.h"
 #endif
 
 
-#ifdef XMRIG_FEATURE_CUDA
+#ifdef JDKRIG_FEATURE_CUDA
 #   include "backend/cuda/CudaThreads.h"
 #endif
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 static const char *kAsterisk = "*";
 
 
-} // namespace xmrig
+} // namespace jdkrig
 
 
 template <class T>
-const T &xmrig::Threads<T>::get(const String &profileName) const
+const T &jdkrig::Threads<T>::get(const String &profileName) const
 {
     static T empty;
     if (profileName.isNull() || !has(profileName)) {
@@ -54,7 +54,7 @@ const T &xmrig::Threads<T>::get(const String &profileName) const
 
 
 template <class T>
-size_t xmrig::Threads<T>::read(const rapidjson::Value &value)
+size_t jdkrig::Threads<T>::read(const rapidjson::Value &value)
 {
     using namespace rapidjson;
 
@@ -98,7 +98,7 @@ size_t xmrig::Threads<T>::read(const rapidjson::Value &value)
 
 
 template <class T>
-xmrig::String xmrig::Threads<T>::profileName(const Algorithm &algorithm, bool strict) const
+jdkrig::String jdkrig::Threads<T>::profileName(const Algorithm &algorithm, bool strict) const
 {
     if (isDisabled(algorithm)) {
         return String();
@@ -137,7 +137,7 @@ xmrig::String xmrig::Threads<T>::profileName(const Algorithm &algorithm, bool st
 
 
 template <class T>
-void xmrig::Threads<T>::toJSON(rapidjson::Value &out, rapidjson::Document &doc) const
+void jdkrig::Threads<T>::toJSON(rapidjson::Value &out, rapidjson::Document &doc) const
 {
     using namespace rapidjson;
     auto &allocator = doc.GetAllocator();
@@ -156,16 +156,16 @@ void xmrig::Threads<T>::toJSON(rapidjson::Value &out, rapidjson::Document &doc) 
 }
 
 
-namespace xmrig {
+namespace jdkrig {
 
 template class Threads<CpuThreads>;
 
-#ifdef XMRIG_FEATURE_OPENCL
+#ifdef JDKRIG_FEATURE_OPENCL
 template class Threads<OclThreads>;
 #endif
 
-#ifdef XMRIG_FEATURE_CUDA
+#ifdef JDKRIG_FEATURE_CUDA
 template class Threads<CudaThreads>;
 #endif
 
-} // namespace xmrig
+} // namespace jdkrig

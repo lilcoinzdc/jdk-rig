@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -36,7 +36,7 @@
 #include "crypto/kawpow/KPHash.h"
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 constexpr size_t BLOB_SIZE = 40;
@@ -190,7 +190,7 @@ void OclKawPowRunner::jobEarlyNotification(const Job&)
 }
 
 
-void xmrig::OclKawPowRunner::build()
+void jdkrig::OclKawPowRunner::build()
 {
     OclBaseRunner::build();
 
@@ -198,7 +198,7 @@ void xmrig::OclKawPowRunner::build()
 }
 
 
-void xmrig::OclKawPowRunner::init()
+void jdkrig::OclKawPowRunner::init()
 {
     OclBaseRunner::init();
 
@@ -206,4 +206,4 @@ void xmrig::OclKawPowRunner::init()
     m_stop = OclLib::createBuffer(m_ctx, CL_MEM_READ_ONLY, sizeof(uint32_t) * 2);
 }
 
-} // namespace xmrig
+} // namespace jdkrig

@@ -8,7 +8,7 @@
  * Copyright 2018      Lee Clagett <https://github.com/vtnerd>
  * Copyright 2019      Howard Chu  <https://github.com/hyc>
  * Copyright 2018-2024 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2024 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright 2016-2024 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -36,7 +36,7 @@
 #include "base/crypto/keccak.h"
 
 
-xmrig::Job::Job(bool nicehash, const Algorithm &algorithm, const String &clientId) :
+jdkrig::Job::Job(bool nicehash, const Algorithm &algorithm, const String &clientId) :
     m_algorithm(algorithm),
     m_nicehash(nicehash),
     m_clientId(clientId)
@@ -44,19 +44,19 @@ xmrig::Job::Job(bool nicehash, const Algorithm &algorithm, const String &clientI
 }
 
 
-bool xmrig::Job::isEqual(const Job &other) const
+bool jdkrig::Job::isEqual(const Job &other) const
 {
     return m_id == other.m_id && m_clientId == other.m_clientId && isEqualBlob(other) && m_target == other.m_target;
 }
 
 
-bool xmrig::Job::isEqualBlob(const Job &other) const
+bool jdkrig::Job::isEqualBlob(const Job &other) const
 {
     return (m_size == other.m_size) && (memcmp(m_blob, other.m_blob, m_size) == 0);
 }
 
 
-bool xmrig::Job::setBlob(const char *blob)
+bool jdkrig::Job::setBlob(const char *blob)
 {
     if (!blob) {
         return false;
@@ -82,7 +82,7 @@ bool xmrig::Job::setBlob(const char *blob)
         m_nicehash = true;
     }
 
-#   ifdef XMRIG_PROXY_PROJECT
+#   ifdef JDKRIG_PROXY_PROJECT
     memset(m_rawBlob, 0, sizeof(m_rawBlob));
     memcpy(m_rawBlob, blob, size * 2);
 #   endif
@@ -92,13 +92,13 @@ bool xmrig::Job::setBlob(const char *blob)
 }
 
 
-bool xmrig::Job::setSeedHash(const char *hash)
+bool jdkrig::Job::setSeedHash(const char *hash)
 {
     if (!hash || (strlen(hash) != kMaxSeedSize * 2)) {
         return false;
     }
 
-#   ifdef XMRIG_PROXY_PROJECT
+#   ifdef JDKRIG_PROXY_PROJECT
     m_rawSeedHash = hash;
 #   endif
 
@@ -108,7 +108,7 @@ bool xmrig::Job::setSeedHash(const char *hash)
 }
 
 
-bool xmrig::Job::setTarget(const char *target)
+bool jdkrig::Job::setTarget(const char *target)
 {
     static auto parse = [](const char *target, size_t size, const Algorithm &algorithm) -> uint64_t {
         if (algorithm == Algorithm::RX_YADA) {
@@ -139,7 +139,7 @@ bool xmrig::Job::setTarget(const char *target)
 
     m_diff = toDiff(m_target);
 
-#   ifdef XMRIG_PROXY_PROJECT
+#   ifdef JDKRIG_PROXY_PROJECT
     if (size >= sizeof(m_rawTarget)) {
         return false;
     }
@@ -152,7 +152,7 @@ bool xmrig::Job::setTarget(const char *target)
 }
 
 
-size_t xmrig::Job::nonceOffset() const
+size_t jdkrig::Job::nonceOffset() const
 {
     switch (algorithm().family()) {
     case Algorithm::KAWPOW:
@@ -173,18 +173,18 @@ size_t xmrig::Job::nonceOffset() const
 }
 
 
-void xmrig::Job::setDiff(uint64_t diff)
+void jdkrig::Job::setDiff(uint64_t diff)
 {
     m_diff   = diff;
     m_target = toDiff(diff);
 
-#   ifdef XMRIG_PROXY_PROJECT
+#   ifdef JDKRIG_PROXY_PROJECT
     Cvt::toHex(m_rawTarget, sizeof(m_rawTarget), reinterpret_cast<uint8_t *>(&m_target), sizeof(m_target));
 #   endif
 }
 
 
-void xmrig::Job::setSigKey(const char *sig_key)
+void jdkrig::Job::setSigKey(const char *sig_key)
 {
     constexpr const size_t size = 64;
 
@@ -192,7 +192,7 @@ void xmrig::Job::setSigKey(const char *sig_key)
         return;
     }
 
-#   ifndef XMRIG_PROXY_PROJECT
+#   ifndef JDKRIG_PROXY_PROJECT
     const auto buf = Cvt::fromHex(sig_key, size * 2);
     if (buf.size() == size) {
         setEphemeralKeys(buf.data(), buf.data() + 32);
@@ -203,7 +203,7 @@ void xmrig::Job::setSigKey(const char *sig_key)
 }
 
 
-uint32_t xmrig::Job::getNumTransactions() const
+uint32_t jdkrig::Job::getNumTransactions() const
 {
     if (!(m_algorithm.isCN() || m_algorithm.family() == Algorithm::RANDOM_X)) {
         return 0;
@@ -228,7 +228,7 @@ uint32_t xmrig::Job::getNumTransactions() const
 }
 
 
-void xmrig::Job::copy(const Job &other)
+void jdkrig::Job::copy(const Job &other)
 {
     m_algorithm  = other.m_algorithm;
     m_nicehash   = other.m_nicehash;
@@ -246,7 +246,7 @@ void xmrig::Job::copy(const Job &other)
 
     memcpy(m_blob, other.m_blob, sizeof(m_blob));
 
-#   ifdef XMRIG_PROXY_PROJECT
+#   ifdef JDKRIG_PROXY_PROJECT
     m_rawSeedHash = other.m_rawSeedHash;
     m_rawSigKey   = other.m_rawSigKey;
 
@@ -254,32 +254,32 @@ void xmrig::Job::copy(const Job &other)
     memcpy(m_rawTarget, other.m_rawTarget, sizeof(m_rawTarget));
 #   endif
 
-#   ifdef XMRIG_FEATURE_BENCHMARK
+#   ifdef JDKRIG_FEATURE_BENCHMARK
     m_benchSize = other.m_benchSize;
 #   endif
 
-#   ifdef XMRIG_PROXY_PROJECT
+#   ifdef JDKRIG_PROXY_PROJECT
     memcpy(m_spendSecretKey, other.m_spendSecretKey, sizeof(m_spendSecretKey));
     memcpy(m_viewSecretKey, other.m_viewSecretKey, sizeof(m_viewSecretKey));
     memcpy(m_spendPublicKey, other.m_spendPublicKey, sizeof(m_spendPublicKey));
     memcpy(m_viewPublicKey, other.m_viewPublicKey, sizeof(m_viewPublicKey));
-    m_minerTxPrefix = other.m_minerTxPrefix;
-    m_minerTxEphPubKeyOffset = other.m_minerTxEphPubKeyOffset;
-    m_minerTxPubKeyOffset = other.m_minerTxPubKeyOffset;
-    m_minerTxExtraNonceOffset = other.m_minerTxExtraNonceOffset;
-    m_minerTxExtraNonceSize = other.m_minerTxExtraNonceSize;
-    m_minerTxMerkleTreeBranch = other.m_minerTxMerkleTreeBranch;
+    m_jdkriggerTxPrefix = other.m_jdkriggerTxPrefix;
+    m_jdkriggerTxEphPubKeyOffset = other.m_jdkriggerTxEphPubKeyOffset;
+    m_jdkriggerTxPubKeyOffset = other.m_jdkriggerTxPubKeyOffset;
+    m_jdkriggerTxExtraNonceOffset = other.m_jdkriggerTxExtraNonceOffset;
+    m_jdkriggerTxExtraNonceSize = other.m_jdkriggerTxExtraNonceSize;
+    m_jdkriggerTxMerkleTreeBranch = other.m_jdkriggerTxMerkleTreeBranch;
     m_hasViewTag = other.m_hasViewTag;
 #   else
     memcpy(m_ephPublicKey, other.m_ephPublicKey, sizeof(m_ephPublicKey));
     memcpy(m_ephSecretKey, other.m_ephSecretKey, sizeof(m_ephSecretKey));
 #   endif
 
-    m_hasMinerSignature = other.m_hasMinerSignature;
+    m_hasJdkriggerSignature = other.m_hasJdkriggerSignature;
 }
 
 
-void xmrig::Job::move(Job &&other)
+void jdkrig::Job::move(Job &&other)
 {
     m_algorithm  = other.m_algorithm;
     m_nicehash   = other.m_nicehash;
@@ -301,7 +301,7 @@ void xmrig::Job::move(Job &&other)
     other.m_diff        = 0;
     other.m_algorithm   = Algorithm::INVALID;
 
-#   ifdef XMRIG_PROXY_PROJECT
+#   ifdef JDKRIG_PROXY_PROJECT
     m_rawSeedHash = std::move(other.m_rawSeedHash);
     m_rawSigKey   = std::move(other.m_rawSigKey);
 
@@ -309,38 +309,38 @@ void xmrig::Job::move(Job &&other)
     memcpy(m_rawTarget, other.m_rawTarget, sizeof(m_rawTarget));
 #   endif
 
-#   ifdef XMRIG_FEATURE_BENCHMARK
+#   ifdef JDKRIG_FEATURE_BENCHMARK
     m_benchSize = other.m_benchSize;
 #   endif
 
-#   ifdef XMRIG_PROXY_PROJECT
+#   ifdef JDKRIG_PROXY_PROJECT
     memcpy(m_spendSecretKey, other.m_spendSecretKey, sizeof(m_spendSecretKey));
     memcpy(m_viewSecretKey, other.m_viewSecretKey, sizeof(m_viewSecretKey));
     memcpy(m_spendPublicKey, other.m_spendPublicKey, sizeof(m_spendPublicKey));
     memcpy(m_viewPublicKey, other.m_viewPublicKey, sizeof(m_viewPublicKey));
 
-    m_minerTxPrefix             = std::move(other.m_minerTxPrefix);
-    m_minerTxEphPubKeyOffset    = other.m_minerTxEphPubKeyOffset;
-    m_minerTxPubKeyOffset       = other.m_minerTxPubKeyOffset;
-    m_minerTxExtraNonceOffset   = other.m_minerTxExtraNonceOffset;
-    m_minerTxExtraNonceSize     = other.m_minerTxExtraNonceSize;
-    m_minerTxMerkleTreeBranch   = std::move(other.m_minerTxMerkleTreeBranch);
+    m_jdkriggerTxPrefix             = std::move(other.m_jdkriggerTxPrefix);
+    m_jdkriggerTxEphPubKeyOffset    = other.m_jdkriggerTxEphPubKeyOffset;
+    m_jdkriggerTxPubKeyOffset       = other.m_jdkriggerTxPubKeyOffset;
+    m_jdkriggerTxExtraNonceOffset   = other.m_jdkriggerTxExtraNonceOffset;
+    m_jdkriggerTxExtraNonceSize     = other.m_jdkriggerTxExtraNonceSize;
+    m_jdkriggerTxMerkleTreeBranch   = std::move(other.m_jdkriggerTxMerkleTreeBranch);
     m_hasViewTag                = other.m_hasViewTag;
 #   else
     memcpy(m_ephPublicKey, other.m_ephPublicKey, sizeof(m_ephPublicKey));
     memcpy(m_ephSecretKey, other.m_ephSecretKey, sizeof(m_ephSecretKey));
 #   endif
 
-    m_hasMinerSignature = other.m_hasMinerSignature;
+    m_hasJdkriggerSignature = other.m_hasJdkriggerSignature;
 }
 
 
-#ifdef XMRIG_PROXY_PROJECT
+#ifdef JDKRIG_PROXY_PROJECT
 
 
-void xmrig::Job::setSpendSecretKey(const uint8_t *key)
+void jdkrig::Job::setSpendSecretKey(const uint8_t *key)
 {
-    m_hasMinerSignature = true;
+    m_hasJdkriggerSignature = true;
     memcpy(m_spendSecretKey, key, sizeof(m_spendSecretKey));
 
     derive_view_secret_key(m_spendSecretKey, m_viewSecretKey);
@@ -349,34 +349,34 @@ void xmrig::Job::setSpendSecretKey(const uint8_t *key)
 }
 
 
-void xmrig::Job::setMinerTx(const uint8_t *begin, const uint8_t *end, size_t minerTxEphPubKeyOffset, size_t minerTxPubKeyOffset, size_t minerTxExtraNonceOffset, size_t minerTxExtraNonceSize, const Buffer &minerTxMerkleTreeBranch, bool hasViewTag)
+void jdkrig::Job::setJdkriggerTx(const uint8_t *begin, const uint8_t *end, size_t jdkriggerTxEphPubKeyOffset, size_t jdkriggerTxPubKeyOffset, size_t jdkriggerTxExtraNonceOffset, size_t jdkriggerTxExtraNonceSize, const Buffer &jdkriggerTxMerkleTreeBranch, bool hasViewTag)
 {
-    m_minerTxPrefix.assign(begin, end);
-    m_minerTxEphPubKeyOffset    = minerTxEphPubKeyOffset;
-    m_minerTxPubKeyOffset       = minerTxPubKeyOffset;
-    m_minerTxExtraNonceOffset   = minerTxExtraNonceOffset;
-    m_minerTxExtraNonceSize     = minerTxExtraNonceSize;
-    m_minerTxMerkleTreeBranch   = minerTxMerkleTreeBranch;
+    m_jdkriggerTxPrefix.assign(begin, end);
+    m_jdkriggerTxEphPubKeyOffset    = jdkriggerTxEphPubKeyOffset;
+    m_jdkriggerTxPubKeyOffset       = jdkriggerTxPubKeyOffset;
+    m_jdkriggerTxExtraNonceOffset   = jdkriggerTxExtraNonceOffset;
+    m_jdkriggerTxExtraNonceSize     = jdkriggerTxExtraNonceSize;
+    m_jdkriggerTxMerkleTreeBranch   = jdkriggerTxMerkleTreeBranch;
     m_hasViewTag                = hasViewTag;
 }
 
 
-void xmrig::Job::setViewTagInMinerTx(uint8_t view_tag)
+void jdkrig::Job::setViewTagInJdkriggerTx(uint8_t view_tag)
 {
-    memcpy(m_minerTxPrefix.data() + m_minerTxEphPubKeyOffset + 32, &view_tag, 1);
+    memcpy(m_jdkriggerTxPrefix.data() + m_jdkriggerTxEphPubKeyOffset + 32, &view_tag, 1);
 }
 
 
-void xmrig::Job::setExtraNonceInMinerTx(uint32_t extra_nonce)
+void jdkrig::Job::setExtraNonceInJdkriggerTx(uint32_t extra_nonce)
 {
-    memcpy(m_minerTxPrefix.data() + m_minerTxExtraNonceOffset, &extra_nonce, std::min(m_minerTxExtraNonceSize, sizeof(uint32_t)));
+    memcpy(m_jdkriggerTxPrefix.data() + m_jdkriggerTxExtraNonceOffset, &extra_nonce, std::min(m_jdkriggerTxExtraNonceSize, sizeof(uint32_t)));
 }
 
 
-void xmrig::Job::generateSignatureData(String &signatureData, uint8_t& view_tag) const
+void jdkrig::Job::generateSignatureData(String &signatureData, uint8_t& view_tag) const
 {
-    uint8_t* eph_public_key = m_minerTxPrefix.data() + m_minerTxEphPubKeyOffset;
-    uint8_t* txkey_pub = m_minerTxPrefix.data() + m_minerTxPubKeyOffset;
+    uint8_t* eph_public_key = m_jdkriggerTxPrefix.data() + m_jdkriggerTxEphPubKeyOffset;
+    uint8_t* txkey_pub = m_jdkriggerTxPrefix.data() + m_jdkriggerTxPubKeyOffset;
 
     uint8_t txkey_sec[32];
 
@@ -397,15 +397,15 @@ void xmrig::Job::generateSignatureData(String &signatureData, uint8_t& view_tag)
     signatureData = Cvt::toHex(buf, sizeof(buf));
 }
 
-void xmrig::Job::generateHashingBlob(String &blob) const
+void jdkrig::Job::generateHashingBlob(String &blob) const
 {
     uint8_t root_hash[32];
-    const uint8_t* p = m_minerTxPrefix.data();
-    BlockTemplate::calculateRootHash(p, p + m_minerTxPrefix.size(), m_minerTxMerkleTreeBranch, root_hash);
+    const uint8_t* p = m_jdkriggerTxPrefix.data();
+    BlockTemplate::calculateRootHash(p, p + m_jdkriggerTxPrefix.size(), m_jdkriggerTxMerkleTreeBranch, root_hash);
 
     uint64_t root_hash_offset = nonceOffset() + nonceSize();
 
-    if (m_hasMinerSignature) {
+    if (m_hasJdkriggerSignature) {
         root_hash_offset += BlockTemplate::kSignatureSize + 2 /* vote */;
     }
 
@@ -417,7 +417,7 @@ void xmrig::Job::generateHashingBlob(String &blob) const
 #else
 
 
-void xmrig::Job::generateMinerSignature(const uint8_t* blob, size_t size, uint8_t* out_sig) const
+void jdkrig::Job::generateJdkriggerSignature(const uint8_t* blob, size_t size, uint8_t* out_sig) const
 {
     uint8_t tmp[kMaxBlobSize];
     memcpy(tmp, blob, size);
@@ -426,8 +426,8 @@ void xmrig::Job::generateMinerSignature(const uint8_t* blob, size_t size, uint8_
     memset(tmp + nonceOffset() + nonceSize(), 0, BlockTemplate::kSignatureSize);
 
     uint8_t prefix_hash[32];
-    xmrig::keccak(tmp, static_cast<int>(size), prefix_hash, sizeof(prefix_hash));
-    xmrig::generate_signature(prefix_hash, m_ephPublicKey, m_ephSecretKey, out_sig);
+    jdkrig::keccak(tmp, static_cast<int>(size), prefix_hash, sizeof(prefix_hash));
+    jdkrig::generate_signature(prefix_hash, m_ephPublicKey, m_ephSecretKey, out_sig);
 }
 
 

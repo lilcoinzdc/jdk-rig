@@ -1,7 +1,7 @@
 /* XMRig
  * Copyright (c) 2002-2006 Hugo Weber  <address@hidden>
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@
 #include <windows.h>
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 /*
@@ -41,10 +41,10 @@ struct RawSMBIOSData {
 };
 
 
-} // namespace xmrig
+} // namespace jdkrig
 
 
-bool xmrig::DmiReader::read()
+bool jdkrig::DmiReader::read()
 {
     constexpr uint32_t RSMB = 0x52534D42;
 

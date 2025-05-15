@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -35,7 +35,7 @@
 #include <unistd.h>
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 static int msr_open(int32_t cpu, int flags)
@@ -73,10 +73,10 @@ private:
 };
 
 
-} // namespace xmrig
+} // namespace jdkrig
 
 
-xmrig::Msr::Msr() : d_ptr(new MsrPrivate())
+jdkrig::Msr::Msr() : d_ptr(new MsrPrivate())
 {
     if (!isAvailable()) {
         LOG_WARN("%s " YELLOW_BOLD("msr kernel module is not available"), tag());
@@ -84,19 +84,19 @@ xmrig::Msr::Msr() : d_ptr(new MsrPrivate())
 }
 
 
-xmrig::Msr::~Msr()
+jdkrig::Msr::~Msr()
 {
     delete d_ptr;
 }
 
 
-bool xmrig::Msr::isAvailable() const
+bool jdkrig::Msr::isAvailable() const
 {
     return d_ptr->isAvailable();
 }
 
 
-bool xmrig::Msr::write(Callback &&callback)
+bool jdkrig::Msr::write(Callback &&callback)
 {
     const auto &units = Cpu::info()->units();
 
@@ -110,7 +110,7 @@ bool xmrig::Msr::write(Callback &&callback)
 }
 
 
-bool xmrig::Msr::rdmsr(uint32_t reg, int32_t cpu, uint64_t &value) const
+bool jdkrig::Msr::rdmsr(uint32_t reg, int32_t cpu, uint64_t &value) const
 {
     const int fd = msr_open(cpu, O_RDONLY);
 
@@ -125,7 +125,7 @@ bool xmrig::Msr::rdmsr(uint32_t reg, int32_t cpu, uint64_t &value) const
 }
 
 
-bool xmrig::Msr::wrmsr(uint32_t reg, uint64_t value, int32_t cpu)
+bool jdkrig::Msr::wrmsr(uint32_t reg, uint64_t value, int32_t cpu)
 {
     const int fd = msr_open(cpu, O_WRONLY);
 

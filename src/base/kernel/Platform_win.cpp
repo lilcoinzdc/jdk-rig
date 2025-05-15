@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2023 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2023 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2023 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -45,7 +45,7 @@ static inline OSVERSIONINFOEX winOsVersion()
 }
 
 
-char *xmrig::Platform::createUserAgent()
+char *jdkrig::Platform::createUserAgent()
 {
     const auto osver = winOsVersion();
     constexpr const size_t max = 256;
@@ -69,14 +69,14 @@ char *xmrig::Platform::createUserAgent()
 }
 
 
-bool xmrig::Platform::hasKeepalive()
+bool jdkrig::Platform::hasKeepalive()
 {
     return winOsVersion().dwMajorVersion >= 6;
 }
 
 
-#ifndef XMRIG_FEATURE_HWLOC
-bool xmrig::Platform::setThreadAffinity(uint64_t cpu_id)
+#ifndef JDKRIG_FEATURE_HWLOC
+bool jdkrig::Platform::setThreadAffinity(uint64_t cpu_id)
 {
     const bool result = (SetThreadAffinityMask(GetCurrentThread(), 1ULL << cpu_id) != 0);
     Sleep(1);
@@ -85,7 +85,7 @@ bool xmrig::Platform::setThreadAffinity(uint64_t cpu_id)
 #endif
 
 
-void xmrig::Platform::setProcessPriority(int priority)
+void jdkrig::Platform::setProcessPriority(int priority)
 {
     if (priority == -1) {
         return;
@@ -122,7 +122,7 @@ void xmrig::Platform::setProcessPriority(int priority)
 }
 
 
-void xmrig::Platform::setThreadPriority(int priority)
+void jdkrig::Platform::setThreadPriority(int priority)
 {
     if (priority == -1) {
         return;
@@ -159,7 +159,7 @@ void xmrig::Platform::setThreadPriority(int priority)
 }
 
 
-bool xmrig::Platform::isOnBatteryPower()
+bool jdkrig::Platform::isOnBatteryPower()
 {
     SYSTEM_POWER_STATUS st;
     if (GetSystemPowerStatus(&st)) {
@@ -169,7 +169,7 @@ bool xmrig::Platform::isOnBatteryPower()
 }
 
 
-uint64_t xmrig::Platform::idleTime()
+uint64_t jdkrig::Platform::idleTime()
 {
     LASTINPUTINFO info{};
     info.cbSize = sizeof(LASTINPUTINFO);

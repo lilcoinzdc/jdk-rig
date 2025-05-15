@@ -73,7 +73,6 @@ void keccak_f800_round(uint32_t st[25], const int r)
 
 // Keccak - implemented as a variant of SHAKE
 // The width is 800, with a bitrate of 576, a capacity of 224, and no padding
-// Only need 64 bits of output for mining
 uint64_t keccak_f800(uint32_t* st)
 {
     // Complete all 22 rounds as a separate impl to
@@ -223,13 +222,13 @@ __kernel void progpow_search(__global dag_t const* g_dag, __global uint* job_blo
 		if (hack_false) barrier(CLK_LOCAL_MEM_FENCE);
 
 		uint32_t data;
-		XMRIG_INCLUDE_PROGPOW_RANDOM_MATH
+		JDKRIG_INCLUDE_PROGPOW_RANDOM_MATH
 
 		// consume global load data
 		// hack to prevent compiler from reordering LD and usage
 		if (hack_false) barrier(CLK_LOCAL_MEM_FENCE);
 
-		XMRIG_INCLUDE_PROGPOW_DATA_LOADS
+		JDKRIG_INCLUDE_PROGPOW_DATA_LOADS
 	}
 
         // Reduce mix data to a per-lane 32-bit digest

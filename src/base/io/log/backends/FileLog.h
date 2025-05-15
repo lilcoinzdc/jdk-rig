@@ -1,7 +1,7 @@
 /* XMRig
  * Copyright (c) 2019      Spudz76     <https://github.com/Spudz76>
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -17,15 +17,15 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XMRIG_FILELOG_H
-#define XMRIG_FILELOG_H
+#ifndef JDKRIG_FILELOG_H
+#define JDKRIG_FILELOG_H
 
 
 #include "base/io/log/FileLogWriter.h"
 #include "base/kernel/interfaces/ILogBackend.h"
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 class FileLog : public ILogBackend
@@ -41,7 +41,7 @@ private:
 };
 
 
-} /* namespace xmrig */
+} /* namespace jdkrig */
 
 
-#endif /* XMRIG_FILELOG_H */
+#endif /* JDKRIG_FILELOG_H */

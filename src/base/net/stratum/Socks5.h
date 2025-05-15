@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2020 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,14 +16,14 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XMRIG_SOCKS5_H
-#define XMRIG_SOCKS5_H
+#ifndef JDKRIG_SOCKS5_H
+#define JDKRIG_SOCKS5_H
 
 
 #include "base/net/stratum/Client.h"
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 class Client::Socks5
@@ -55,7 +55,7 @@ private:
 };
 
 
-} /* namespace xmrig */
+} /* namespace jdkrig */
 
 
-#endif /* XMRIG_SOCKS5_H */
+#endif /* JDKRIG_SOCKS5_H */

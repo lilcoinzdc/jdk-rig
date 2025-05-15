@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,15 +16,15 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XMRIG_TAGS_H
-#define XMRIG_TAGS_H
+#ifndef JDKRIG_TAGS_H
+#define JDKRIG_TAGS_H
 
 
 #include <cstddef>
 #include <cstdint>
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 class Tags
@@ -35,36 +35,36 @@ public:
     static const char *origin();
     static const char *signal();
 
-#   ifdef XMRIG_MINER_PROJECT
+#   ifdef JDKRIG_JDKRIGGER_PROJECT
     static const char *cpu();
-    static const char *miner();
-#   ifdef XMRIG_ALGO_RANDOMX
+    static const char *jdkrigger();
+#   ifdef JDKRIG_ALGO_RANDOMX
     static const char *randomx();
 #   endif
-#   ifdef XMRIG_FEATURE_BENCHMARK
+#   ifdef JDKRIG_FEATURE_BENCHMARK
     static const char *bench();
 #   endif
 #   endif
 
-#   ifdef XMRIG_PROXY_PROJECT
+#   ifdef JDKRIG_PROXY_PROJECT
     static const char *proxy();
 #   endif
 
-#   ifdef XMRIG_FEATURE_CUDA
+#   ifdef JDKRIG_FEATURE_CUDA
     static const char *nvidia();
 #   endif
 
-#   ifdef XMRIG_FEATURE_OPENCL
+#   ifdef JDKRIG_FEATURE_OPENCL
     static const char *opencl();
 #   endif
 
-#   ifdef XMRIG_FEATURE_PROFILING
+#   ifdef JDKRIG_FEATURE_PROFILING
     static const char* profiler();
 #   endif
 };
 
 
-} /* namespace xmrig */
+} /* namespace jdkrig */
 
 
-#endif /* XMRIG_TAGS_H */
+#endif /* JDKRIG_TAGS_H */

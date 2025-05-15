@@ -6,7 +6,7 @@
  * Copyright 2016      Jay D Dee   <jayddee246@gmail.com>
  * Copyright 2017-2018 XMR-Stak    <https://github.com/fireice-uk>, <https://github.com/psychocrypt>
  * Copyright 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2020 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -28,7 +28,7 @@
 #include "backend/opencl/wrappers/OclLib.h"
 
 
-std::vector<xmrig::OclPlatform> xmrig::OclPlatform::get()
+std::vector<jdkrig::OclPlatform> jdkrig::OclPlatform::get()
 {
     const std::vector<cl_platform_id> platforms = OclLib::getPlatformIDs();
     std::vector<OclPlatform> out;
@@ -46,7 +46,7 @@ std::vector<xmrig::OclPlatform> xmrig::OclPlatform::get()
 }
 
 
-void xmrig::OclPlatform::print()
+void jdkrig::OclPlatform::print()
 {
     const auto platforms = OclPlatform::get();
 
@@ -63,7 +63,7 @@ void xmrig::OclPlatform::print()
 }
 
 
-rapidjson::Value xmrig::OclPlatform::toJSON(rapidjson::Document &doc) const
+rapidjson::Value jdkrig::OclPlatform::toJSON(rapidjson::Document &doc) const
 {
     using namespace rapidjson;
     auto &allocator = doc.GetAllocator();
@@ -84,7 +84,7 @@ rapidjson::Value xmrig::OclPlatform::toJSON(rapidjson::Document &doc) const
 }
 
 
-std::vector<xmrig::OclDevice> xmrig::OclPlatform::devices() const
+std::vector<jdkrig::OclDevice> jdkrig::OclPlatform::devices() const
 {
     std::vector<OclDevice> out;
     if (!isValid()) {
@@ -109,31 +109,31 @@ std::vector<xmrig::OclDevice> xmrig::OclPlatform::devices() const
 }
 
 
-xmrig::String xmrig::OclPlatform::extensions() const
+jdkrig::String jdkrig::OclPlatform::extensions() const
 {
     return OclLib::getString(id(), CL_PLATFORM_EXTENSIONS);
 }
 
 
-xmrig::String xmrig::OclPlatform::name() const
+jdkrig::String jdkrig::OclPlatform::name() const
 {
     return OclLib::getString(id(), CL_PLATFORM_NAME);
 }
 
 
-xmrig::String xmrig::OclPlatform::profile() const
+jdkrig::String jdkrig::OclPlatform::profile() const
 {
     return OclLib::getString(id(), CL_PLATFORM_PROFILE);
 }
 
 
-xmrig::String xmrig::OclPlatform::vendor() const
+jdkrig::String jdkrig::OclPlatform::vendor() const
 {
     return OclLib::getString(id(), CL_PLATFORM_VENDOR);
 }
 
 
-xmrig::String xmrig::OclPlatform::version() const
+jdkrig::String jdkrig::OclPlatform::version() const
 {
     return OclLib::getString(id(), CL_PLATFORM_VERSION);
 }

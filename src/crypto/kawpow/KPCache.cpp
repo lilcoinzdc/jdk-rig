@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2020 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@
 #include "crypto/common/VirtualMemory.h"
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 std::mutex KPCache::s_cacheMutex;
@@ -106,7 +106,7 @@ bool KPCache::init(uint32_t epoch)
     m_size = size;
     m_epoch = epoch;
 
-    LOG_INFO("%s " YELLOW("KawPow") " light cache for epoch " WHITE_BOLD("%u") " calculated " BLACK_BOLD("(%" PRIu64 "ms)"), Tags::miner(), epoch, Chrono::steadyMSecs() - start_ms);
+    LOG_INFO("%s " YELLOW("KawPow") " light cache for epoch " WHITE_BOLD("%u") " calculated " BLACK_BOLD("(%" PRIu64 "ms)"), Tags::jdkrigger(), epoch, Chrono::steadyMSecs() - start_ms);
 
     return true;
 }
@@ -176,4 +176,4 @@ void KPCache::calculate_fast_mod_data(uint32_t divisor, uint32_t& reciprocal, ui
 }
 
 
-} // namespace xmrig
+} // namespace jdkrig

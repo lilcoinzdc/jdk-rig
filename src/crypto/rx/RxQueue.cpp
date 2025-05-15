@@ -2,7 +2,7 @@
  * Copyright (c) 2018      Lee Clagett <https://github.com/vtnerd>
  * Copyright (c) 2018-2019 tevador     <tevador@gmail.com>
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -27,12 +27,12 @@
 #include "crypto/rx/RxBasicStorage.h"
 
 
-#ifdef XMRIG_FEATURE_HWLOC
+#ifdef JDKRIG_FEATURE_HWLOC
 #   include "crypto/rx/RxNUMAStorage.h"
 #endif
 
 
-xmrig::RxQueue::RxQueue(IRxListener *listener) :
+jdkrig::RxQueue::RxQueue(IRxListener *listener) :
     m_listener(listener)
 {
     m_async  = std::make_shared<Async>(this);
@@ -40,7 +40,7 @@ xmrig::RxQueue::RxQueue(IRxListener *listener) :
 }
 
 
-xmrig::RxQueue::~RxQueue()
+jdkrig::RxQueue::~RxQueue()
 {
     std::unique_lock<std::mutex> lock(m_mutex);
     m_state = STATE_SHUTDOWN;
@@ -54,7 +54,7 @@ xmrig::RxQueue::~RxQueue()
 }
 
 
-xmrig::RxDataset *xmrig::RxQueue::dataset(const Job &job, uint32_t nodeId)
+jdkrig::RxDataset *jdkrig::RxQueue::dataset(const Job &job, uint32_t nodeId)
 {
     std::lock_guard<std::mutex> lock(m_mutex);
 
@@ -66,7 +66,7 @@ xmrig::RxDataset *xmrig::RxQueue::dataset(const Job &job, uint32_t nodeId)
 }
 
 
-xmrig::HugePagesInfo xmrig::RxQueue::hugePages()
+jdkrig::HugePagesInfo jdkrig::RxQueue::hugePages()
 {
     std::lock_guard<std::mutex> lock(m_mutex);
 
@@ -75,7 +75,7 @@ xmrig::HugePagesInfo xmrig::RxQueue::hugePages()
 
 
 template<typename T>
-bool xmrig::RxQueue::isReady(const T &seed)
+bool jdkrig::RxQueue::isReady(const T &seed)
 {
     std::lock_guard<std::mutex> lock(m_mutex);
 
@@ -83,12 +83,12 @@ bool xmrig::RxQueue::isReady(const T &seed)
 }
 
 
-void xmrig::RxQueue::enqueue(const RxSeed &seed, const std::vector<uint32_t> &nodeset, uint32_t threads, bool hugePages, bool oneGbPages, RxConfig::Mode mode, int priority)
+void jdkrig::RxQueue::enqueue(const RxSeed &seed, const std::vector<uint32_t> &nodeset, uint32_t threads, bool hugePages, bool oneGbPages, RxConfig::Mode mode, int priority)
 {
     std::unique_lock<std::mutex> lock(m_mutex);
 
     if (!m_storage) {
-#       ifdef XMRIG_FEATURE_HWLOC
+#       ifdef JDKRIG_FEATURE_HWLOC
         if (!nodeset.empty()) {
             m_storage = new RxNUMAStorage(nodeset);
         }
@@ -114,13 +114,13 @@ void xmrig::RxQueue::enqueue(const RxSeed &seed, const std::vector<uint32_t> &no
 
 
 template<typename T>
-bool xmrig::RxQueue::isReadyUnsafe(const T &seed) const
+bool jdkrig::RxQueue::isReadyUnsafe(const T &seed) const
 {
     return m_storage != nullptr && m_storage->isAllocated() && m_state == STATE_IDLE && m_seed == seed;
 }
 
 
-void xmrig::RxQueue::backgroundInit()
+void jdkrig::RxQueue::backgroundInit()
 {
     while (m_state != STATE_SHUTDOWN) {
         std::unique_lock<std::mutex> lock(m_mutex);
@@ -162,7 +162,7 @@ void xmrig::RxQueue::backgroundInit()
 }
 
 
-void xmrig::RxQueue::onReady()
+void jdkrig::RxQueue::onReady()
 {
     std::unique_lock<std::mutex> lock(m_mutex);
     const bool ready = m_listener && m_state == STATE_IDLE;
@@ -174,11 +174,11 @@ void xmrig::RxQueue::onReady()
 }
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 template bool RxQueue::isReady(const Job &);
 template bool RxQueue::isReady(const RxSeed &);
 
 
-} // namespace xmrig
+} // namespace jdkrig

@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2022 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2022 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2022 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,15 +16,15 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XMRIG_ALIGNMENT_H
-#define XMRIG_ALIGNMENT_H
+#ifndef JDKRIG_ALIGNMENT_H
+#define JDKRIG_ALIGNMENT_H
 
 
 #include <type_traits>
 #include <cstring>
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 template<typename T>
@@ -47,7 +47,7 @@ inline void writeUnaligned(T* ptr, T data)
 }
 
 
-} /* namespace xmrig */
+} /* namespace jdkrig */
 
 
-#endif /* XMRIG_ALIGNMENT_H */
+#endif /* JDKRIG_ALIGNMENT_H */

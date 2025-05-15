@@ -6,7 +6,7 @@
  * Copyright 2016      Jay D Dee   <jayddee246@gmail.com>
  * Copyright 2017-2018 XMR-Stak    <https://github.com/fireice-uk>, <https://github.com/psychocrypt>
  * Copyright 2018-2019 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2019 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright 2016-2019 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -32,7 +32,7 @@
 #include "base/tools/Timer.h"
 
 
-xmrig::Watcher::Watcher(const String &path, IWatcherListener *listener) :
+jdkrig::Watcher::Watcher(const String &path, IWatcherListener *listener) :
     m_listener(listener),
     m_path(path)
 {
@@ -46,7 +46,7 @@ xmrig::Watcher::Watcher(const String &path, IWatcherListener *listener) :
 }
 
 
-xmrig::Watcher::~Watcher()
+jdkrig::Watcher::~Watcher()
 {
     delete m_timer;
 
@@ -54,7 +54,7 @@ xmrig::Watcher::~Watcher()
 }
 
 
-void xmrig::Watcher::onFsEvent(uv_fs_event_t *handle, const char *filename, int, int)
+void jdkrig::Watcher::onFsEvent(uv_fs_event_t *handle, const char *filename, int, int)
 {
     if (!filename) {
         return;
@@ -64,14 +64,14 @@ void xmrig::Watcher::onFsEvent(uv_fs_event_t *handle, const char *filename, int,
 }
 
 
-void xmrig::Watcher::queueUpdate()
+void jdkrig::Watcher::queueUpdate()
 {
     m_timer->stop();
     m_timer->start(kDelay, 0);
 }
 
 
-void xmrig::Watcher::reload()
+void jdkrig::Watcher::reload()
 {
     m_listener->onFileChanged(m_path);
 
@@ -82,7 +82,7 @@ void xmrig::Watcher::reload()
 }
 
 
-void xmrig::Watcher::start()
+void jdkrig::Watcher::start()
 {
-    uv_fs_event_start(m_fsEvent, xmrig::Watcher::onFsEvent, m_path, 0);
+    uv_fs_event_start(m_fsEvent, jdkrig::Watcher::onFsEvent, m_path, 0);
 }

@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XMRIG_CUDATHREADS_H
-#define XMRIG_CUDATHREADS_H
+#ifndef JDKRIG_CUDATHREADS_H
+#define JDKRIG_CUDATHREADS_H
 
 
 #include <vector>
@@ -27,7 +27,7 @@
 #include "backend/cuda/wrappers/CudaDevice.h"
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 class CudaThreads
@@ -54,7 +54,7 @@ private:
 };
 
 
-} /* namespace xmrig */
+} /* namespace jdkrig */
 
 
-#endif /* XMRIG_CUDATHREADS_H */
+#endif /* JDKRIG_CUDATHREADS_H */

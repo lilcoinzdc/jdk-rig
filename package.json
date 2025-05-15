@@ -1,7 +1,7 @@
 {
-  "name": "xmrig",
+  "name": "jdkrig",
   "version": "3.0.0",
-  "description": "RandomX, CryptoNight and Argon2 miner",
+  "description": "RandomX, CryptoNight and Argon2 jdkrigger",
   "main": "index.js",
   "directories": {
     "doc": "doc"
@@ -11,13 +11,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xmrig/xmrig.git"
+    "url": "git+https://github.com/jdkrig/jdkrig.git"
   },
   "keywords": [],
   "author": "",
   "license": "GPLv3",
   "bugs": {
-    "url": "https://github.com/xmrig/xmrig/issues"
+    "url": "https://github.com/jdkrig/jdkrig/issues"
   },
-  "homepage": "https://github.com/xmrig/xmrig#readme"
+  "homepage": "https://github.com/jdkrig/jdkrig#readme"
 }

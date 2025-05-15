@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@
 #endif
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 const char *BenchConfig::kAlgo      = "algo";
@@ -45,16 +45,16 @@ const char *BenchConfig::kToken     = "token";
 const char *BenchConfig::kUser      = "user";
 const char *BenchConfig::kVerify    = "verify";
 
-#ifndef XMRIG_DEBUG_BENCHMARK_API
-const char *BenchConfig::kApiHost   = "api.xmrig.com";
+#ifndef JDKRIG_DEBUG_BENCHMARK_API
+const char *BenchConfig::kApiHost   = "api.jdkrig.com";
 #else
 const char *BenchConfig::kApiHost   = "127.0.0.1";
 #endif
 
-} // namespace xmrig
+} // namespace jdkrig
 
 
-xmrig::BenchConfig::BenchConfig(uint32_t size, const String &id, const rapidjson::Value &object, bool dmi, uint32_t rotation) :
+jdkrig::BenchConfig::BenchConfig(uint32_t size, const String &id, const rapidjson::Value &object, bool dmi, uint32_t rotation) :
     m_algorithm(Json::getString(object, kAlgo)),
     m_dmi(dmi),
     m_submit(Json::getBool(object, kSubmit)),
@@ -67,7 +67,7 @@ xmrig::BenchConfig::BenchConfig(uint32_t size, const String &id, const rapidjson
 {
     auto f = m_algorithm.family();
     if (!m_algorithm.isValid() || (f != Algorithm::RANDOM_X
-#       ifdef XMRIG_ALGO_GHOSTRIDER
+#       ifdef JDKRIG_ALGO_GHOSTRIDER
         && f != Algorithm::GHOSTRIDER
 #       endif
         )) {
@@ -81,7 +81,7 @@ xmrig::BenchConfig::BenchConfig(uint32_t size, const String &id, const rapidjson
 }
 
 
-xmrig::BenchConfig *xmrig::BenchConfig::create(const rapidjson::Value &object, bool dmi)
+jdkrig::BenchConfig *jdkrig::BenchConfig::create(const rapidjson::Value &object, bool dmi)
 {
     if (!object.IsObject() || object.ObjectEmpty()) {
         return nullptr;
@@ -101,7 +101,7 @@ xmrig::BenchConfig *xmrig::BenchConfig::create(const rapidjson::Value &object, b
 }
 
 
-rapidjson::Value xmrig::BenchConfig::toJSON(rapidjson::Document &doc) const
+rapidjson::Value jdkrig::BenchConfig::toJSON(rapidjson::Document &doc) const
 {
     using namespace rapidjson;
     Value out(kObjectType);
@@ -135,7 +135,7 @@ rapidjson::Value xmrig::BenchConfig::toJSON(rapidjson::Document &doc) const
 }
 
 
-uint32_t xmrig::BenchConfig::getSize(const char *benchmark)
+uint32_t jdkrig::BenchConfig::getSize(const char *benchmark)
 {
     if (!benchmark) {
         return 0;

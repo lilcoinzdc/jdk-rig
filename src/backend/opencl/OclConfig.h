@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XMRIG_OCLCONFIG_H
-#define XMRIG_OCLCONFIG_H
+#ifndef JDKRIG_OCLCONFIG_H
+#define JDKRIG_OCLCONFIG_H
 
 
 #include "backend/common/Threads.h"
@@ -26,7 +26,7 @@
 #include "backend/opencl/wrappers/OclPlatform.h"
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 class OclConfig
@@ -36,7 +36,7 @@ public:
 
     OclPlatform platform() const;
     rapidjson::Value toJSON(rapidjson::Document &doc) const;
-    std::vector<OclLaunchData> get(const Miner *miner, const Algorithm &algorithm, const OclPlatform &platform, const std::vector<OclDevice> &devices) const;
+    std::vector<OclLaunchData> get(const Jdkrigger *jdkrigger, const Algorithm &algorithm, const OclPlatform &platform, const std::vector<OclDevice> &devices) const;
     void read(const rapidjson::Value &value);
 
     inline bool isCacheEnabled() const                  { return m_cache; }
@@ -45,7 +45,7 @@ public:
     inline const String &loader() const                 { return m_loader; }
     inline const Threads<OclThreads> &threads() const   { return m_threads; }
 
-#   ifdef XMRIG_FEATURE_ADL
+#   ifdef JDKRIG_FEATURE_ADL
     inline bool isAdlEnabled() const                    { return m_adl; }
 #   endif
 
@@ -60,20 +60,20 @@ private:
     String m_loader;
     Threads<OclThreads> m_threads;
 
-#   ifndef XMRIG_OS_APPLE
+#   ifndef JDKRIG_OS_APPLE
     void setPlatform(const rapidjson::Value &platform);
 
     String m_platformVendor;
     uint32_t m_platformIndex = 0;
 #   endif
 
-#   ifdef XMRIG_FEATURE_ADL
+#   ifdef JDKRIG_FEATURE_ADL
     bool m_adl          = true;
 #   endif
 };
 
 
-} /* namespace xmrig */
+} /* namespace jdkrig */
 
 
-#endif /* XMRIG_OCLCONFIG_H */
+#endif /* JDKRIG_OCLCONFIG_H */

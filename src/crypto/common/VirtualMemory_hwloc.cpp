@@ -2,7 +2,7 @@
  * Copyright (c) 2018      Lee Clagett <https://github.com/vtnerd>
  * Copyright (c) 2018-2019 tevador     <tevador@gmail.com>
  * Copyright (c) 2018-2023 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2023 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2023 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@
 #include <hwloc.h>
 
 
-uint32_t xmrig::VirtualMemory::bindToNUMANode(int64_t affinity)
+uint32_t jdkrig::VirtualMemory::bindToNUMANode(int64_t affinity)
 {
     if (affinity < 0 || Cpu::info()->nodes() < 2) {
         return 0;

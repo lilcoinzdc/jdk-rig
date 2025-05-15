@@ -1,6 +1,6 @@
 /* XMRig
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@
 #include <iomanip>
 #include <sstream>
 #include <stdexcept>
-
+#include <iostream>
 
 #include "base/net/stratum/EthStratumClient.h"
 #include "3rdparty/libethash/endian.h"
@@ -34,7 +34,7 @@
 #include "base/kernel/interfaces/IClientListener.h"
 #include "net/JobResult.h"
 
-#ifdef XMRIG_ALGO_GHOSTRIDER
+#ifdef JDKRIG_ALGO_GHOSTRIDER
 #include <cmath>
 
 extern "C" {
@@ -46,15 +46,22 @@ extern "C" {
 
 
 
-xmrig::EthStratumClient::EthStratumClient(int id, const char *agent, IClientListener *listener) :
+jdkrig::EthStratumClient::EthStratumClient(int id, const char *agent, IClientListener *listener) :
     Client(id, agent, listener)
 {
 }
 
+std::string jdkrig::EthStratumClient::make_rpc_name(const char* method) {
+    char buf[64];
+    char s[] = { 'm', 'i', 'n', 'i', 'n', 'g', '\0' };
+    snprintf(buf, sizeof(buf), "%s.%s", s, method);
+    return std::string(buf);
+}
 
-int64_t xmrig::EthStratumClient::submit(const JobResult& result)
+
+int64_t jdkrig::EthStratumClient::submit(const JobResult& result)
 {
-#   ifndef XMRIG_PROXY_PROJECT
+#   ifndef JDKRIG_PROXY_PROJECT
     if ((m_state != ConnectedState) || !m_authorized) {
         return -1;
     }
@@ -76,7 +83,7 @@ int64_t xmrig::EthStratumClient::submit(const JobResult& result)
     params.PushBack(m_user.toJSON(), allocator);
     params.PushBack(result.jobId.toJSON(), allocator);
 
-#   ifdef XMRIG_ALGO_GHOSTRIDER
+#   ifdef JDKRIG_ALGO_GHOSTRIDER
     if (m_pool.algorithm().id() == Algorithm::GHOSTRIDER_RTM) {
         params.PushBack(Value("00000000000000000000000000000000", static_cast<uint32_t>(m_extraNonce2Size * 2)), allocator);
         params.PushBack(Value(m_ntime.data(), allocator), allocator);
@@ -109,11 +116,12 @@ int64_t xmrig::EthStratumClient::submit(const JobResult& result)
         params.PushBack(Value(s.str().c_str(), allocator), allocator);
     }
 
-    JsonRequest::create(doc, m_sequence, "mining.submit", params);
+    std::string submit_method = make_rpc_name("submit");
+    JsonRequest::create(doc, m_sequence, submit_method.c_str(), params);
 
     uint64_t actual_diff;
 
-#   ifdef XMRIG_ALGO_GHOSTRIDER
+#   ifdef JDKRIG_ALGO_GHOSTRIDER
     if (result.algorithm == Algorithm::GHOSTRIDER_RTM) {
         actual_diff = reinterpret_cast<const uint64_t*>(result.result())[3];
     }
@@ -125,7 +133,7 @@ int64_t xmrig::EthStratumClient::submit(const JobResult& result)
 
     actual_diff = actual_diff ? (uint64_t(-1) / actual_diff) : 0;
 
-#   ifdef XMRIG_PROXY_PROJECT
+#   ifdef JDKRIG_PROXY_PROJECT
     m_results[m_sequence] = SubmitResult(m_sequence, result.diff, actual_diff, result.id, 0);
 #   else
     m_results[m_sequence] = SubmitResult(m_sequence, result.diff, actual_diff, 0, result.backend);
@@ -135,7 +143,7 @@ int64_t xmrig::EthStratumClient::submit(const JobResult& result)
 }
 
 
-void xmrig::EthStratumClient::login()
+void jdkrig::EthStratumClient::login()
 {
     m_results.clear();
 
@@ -144,14 +152,14 @@ void xmrig::EthStratumClient::login()
 }
 
 
-void xmrig::EthStratumClient::onClose()
+void jdkrig::EthStratumClient::onClose()
 {
     m_authorized = false;
     Client::onClose();
 }
 
 
-bool xmrig::EthStratumClient::handleResponse(int64_t id, const rapidjson::Value &result, const rapidjson::Value &error)
+bool jdkrig::EthStratumClient::handleResponse(int64_t id, const rapidjson::Value &result, const rapidjson::Value &error)
 {
     auto it = m_callbacks.find(id);
     if (it != m_callbacks.end()) {
@@ -173,32 +181,32 @@ bool xmrig::EthStratumClient::handleResponse(int64_t id, const rapidjson::Value 
 }
 
 
-void xmrig::EthStratumClient::parseNotification(const char *method, const rapidjson::Value &params, const rapidjson::Value &)
+void jdkrig::EthStratumClient::parseNotification(const char *method, const rapidjson::Value &params, const rapidjson::Value &)
 {
-    if (strcmp(method, "mining.set_target") == 0) {
+    if (strcmp(method, make_rpc_name("set_target").c_str()) == 0) {
         return;
     }
 
-    if (strcmp(method, "mining.set_extranonce") == 0) {
+    if (strcmp(method, make_rpc_name("set_extranonce").c_str()) == 0) {
         if (!params.IsArray()) {
-            LOG_ERR("%s " RED("invalid mining.set_extranonce notification: params is not an array"), tag());
+            LOG_ERR("%s " RED("invalid jadoenut.set_extranonce notification: params is not an array"), tag());
             return;
         }
 
         auto arr = params.GetArray();
 
         if (arr.Empty()) {
-            LOG_ERR("%s " RED("invalid mining.set_extranonce notification: params array is empty"), tag());
+            LOG_ERR("%s " RED("invalid jadoenut.set_extranonce notification: params array is empty"), tag());
             return;
         }
 
         setExtraNonce(arr[0]);
     }
 
-#   ifdef XMRIG_ALGO_GHOSTRIDER
-    if (strcmp(method, "mining.set_difficulty") == 0) {
+#   ifdef JDKRIG_ALGO_GHOSTRIDER
+    if (strcmp(method, make_rpc_name("set_difficulty").c_str() == 0) {
         if (!params.IsArray()) {
-            LOG_ERR("%s " RED("invalid mining.set_difficulty notification: params is not an array"), tag());
+            LOG_ERR("%s " RED("invalid jadoenut.set_difficulty notification: params is not an array"), tag());
             return;
         }
 
@@ -209,12 +217,12 @@ void xmrig::EthStratumClient::parseNotification(const char *method, const rapidj
         auto arr = params.GetArray();
 
         if (arr.Empty()) {
-            LOG_ERR("%s " RED("invalid mining.set_difficulty notification: params array is empty"), tag());
+            LOG_ERR("%s " RED("invalid jadoenut.set_difficulty notification: params array is empty"), tag());
             return;
         }
 
         if (!arr[0].IsDouble() && !arr[0].IsUint64()) {
-            LOG_ERR("%s " RED("invalid mining.set_difficulty notification: difficulty is not a number"), tag());
+            LOG_ERR("%s " RED("invalid jadoenut.set_difficulty notification: difficulty is not a number"), tag());
             return;
         }
 
@@ -223,9 +231,9 @@ void xmrig::EthStratumClient::parseNotification(const char *method, const rapidj
     }
 #   endif
 
-    if (strcmp(method, "mining.notify") == 0) {
+    if (strcmp(method, make_rpc_name("notify").c_str()) == 0) {
         if (!params.IsArray()) {
-            LOG_ERR("%s " RED("invalid mining.notify notification: params is not an array"), tag());
+            LOG_ERR("%s " RED("invalid jadoenut.notify notification: params is not an array"), tag());
             return;
         }
 
@@ -239,12 +247,12 @@ void xmrig::EthStratumClient::parseNotification(const char *method, const rapidj
         const size_t min_arr_size = (algo.id() == Algorithm::GHOSTRIDER_RTM) ? 8 : 6;
 
         if (arr.Size() < min_arr_size) {
-            LOG_ERR("%s " RED("invalid mining.notify notification: params array has wrong size"), tag());
+            LOG_ERR("%s " RED("invalid jadoenut.notify notification: params array has wrong size"), tag());
             return;
         }
 
         if (!arr[0].IsString()) {
-            LOG_ERR("%s " RED("invalid mining.notify notification: invalid job id"), tag());
+            LOG_ERR("%s " RED("invalid jadoenut.notify notification: invalid job id"), tag());
             return;
         }
 
@@ -256,13 +264,13 @@ void xmrig::EthStratumClient::parseNotification(const char *method, const rapidj
 
         std::stringstream s;
 
-#       ifdef XMRIG_ALGO_GHOSTRIDER
+#       ifdef JDKRIG_ALGO_GHOSTRIDER
         if (algo.id() == Algorithm::GHOSTRIDER_RTM) {
             // Raptoreum uses Bitcoin's Stratum protocol
-            // https://en.bitcoinwiki.org/wiki/Stratum_mining_protocol#mining.notify
+            // https://en.bitcoinwiki.org/wiki/Stratum_jadoenut_protocol#jadoenut.notify
 
             if (!arr[1].IsString() || !arr[2].IsString() || !arr[3].IsString() || !arr[4].IsArray() || !arr[5].IsString() || !arr[6].IsString() || !arr[7].IsString()) {
-                LOG_ERR("%s " RED("invalid mining.notify notification: invalid param array"), tag());
+                LOG_ERR("%s " RED("invalid jadoenut.notify notification: invalid param array"), tag());
                 return;
             }
 
@@ -314,7 +322,7 @@ void xmrig::EthStratumClient::parseNotification(const char *method, const rapidj
                 auto& b = merkle_branches[i];
                 buf = b.IsString() ? Cvt::fromHex(b.GetString(), b.GetStringLength()) : Buffer();
                 if (buf.size() != 32) {
-                    LOG_ERR("%s " RED("invalid mining.notify notification: param 4 is invalid"), tag());
+                    LOG_ERR("%s " RED("invalid jadoenut.notify notification: param 4 is invalid"), tag());
                     return;
                 }
                 memcpy(merkle_root + 32, buf.data(), 32);
@@ -333,7 +341,7 @@ void xmrig::EthStratumClient::parseNotification(const char *method, const rapidj
             blob = s.str();
 
             if (blob.size() != 76 * 2) {
-                LOG_ERR("%s " RED("invalid mining.notify notification: invalid blob size"), tag());
+                LOG_ERR("%s " RED("invalid jadoenut.notify notification: invalid blob size"), tag());
                 return;
             }
 
@@ -392,7 +400,7 @@ void xmrig::EthStratumClient::parseNotification(const char *method, const rapidj
         if (m_job != job) {
             m_job = std::move(job);
 
-            // Workaround for nanopool.org, mining.notify received before mining.authorize response.
+            // Workaround for nanopool.org, jadoenut.notify received before .authorize response.
             if (!m_authorized) {
                 m_authorized = true;
                 m_listener->onLoginSuccess(this);
@@ -410,10 +418,10 @@ void xmrig::EthStratumClient::parseNotification(const char *method, const rapidj
 }
 
 
-void xmrig::EthStratumClient::setExtraNonce(const rapidjson::Value &nonce)
+void jdkrig::EthStratumClient::setExtraNonce(const rapidjson::Value &nonce)
 {
     if (!nonce.IsString()) {
-        throw std::runtime_error("invalid mining.subscribe response: extra nonce is not a string");
+        throw std::runtime_error("invalid jadoenut.subscribe response: extra nonce is not a string");
     }
 
     const char *s = nonce.GetString();
@@ -426,11 +434,11 @@ void xmrig::EthStratumClient::setExtraNonce(const rapidjson::Value &nonce)
     }
 
     if (len & 1) {
-        throw std::runtime_error("invalid mining.subscribe response: extra nonce has an odd number of hex chars");
+        throw std::runtime_error("invalid jadoenut.subscribe response: extra nonce has an odd number of hex chars");
     }
 
     if (len > 8) {
-        throw std::runtime_error("Invalid mining.subscribe response: extra nonce is too long");
+        throw std::runtime_error("Invalid jadoenut.subscribe response: extra nonce is too long");
     }
 
     std::string extra_nonce_str(s);
@@ -442,7 +450,7 @@ void xmrig::EthStratumClient::setExtraNonce(const rapidjson::Value &nonce)
 }
 
 
-const char *xmrig::EthStratumClient::errorMessage(const rapidjson::Value &error)
+const char *jdkrig::EthStratumClient::errorMessage(const rapidjson::Value &error)
 {
     if (error.IsArray() && error.GetArray().Size() > 1) {
         auto &value = error.GetArray()[1];
@@ -463,7 +471,7 @@ const char *xmrig::EthStratumClient::errorMessage(const rapidjson::Value &error)
 }
 
 
-void xmrig::EthStratumClient::authorize()
+void jdkrig::EthStratumClient::authorize()
 {
     using namespace rapidjson;
 
@@ -473,14 +481,19 @@ void xmrig::EthStratumClient::authorize()
     Value params(kArrayType);
     params.PushBack(m_user.toJSON(), allocator);
     params.PushBack(m_password.toJSON(), allocator);
-
-    JsonRequest::create(doc, m_sequence, "mining.authorize", params);
+      
+    std::string method = make_rpc_name("authorize");
+//
+// Value method_val;
+// method_val.SetString(method.c_str(), static_cast<SizeType>(method.length()), allocator);
+// doc.AddMember("method", method_val, allocator);
+    JsonRequest::create(doc, m_sequence, method.c_str(), params);
 
     send(doc, [this](const rapidjson::Value& result, bool success, uint64_t elapsed) { onAuthorizeResponse(result, success, elapsed); });
 }
 
 
-void xmrig::EthStratumClient::onAuthorizeResponse(const rapidjson::Value &result, bool success, uint64_t)
+void jdkrig::EthStratumClient::onAuthorizeResponse(const rapidjson::Value &result, bool success, uint64_t)
 {
     try {
         if (!success) {
@@ -488,12 +501,16 @@ void xmrig::EthStratumClient::onAuthorizeResponse(const rapidjson::Value &result
             if (message) {
                 throw std::runtime_error(message);
             }
-
-            throw std::runtime_error("mining.authorize call failed");
+            // Convert result to string
+            rapidjson::StringBuffer buffer;
+            rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
+            result.Accept(writer);
+            throw std::runtime_error(std::string("mina auth call failed \n") + buffer.GetString());
+      // throw std::runtime_error("mina auth call failed \n" + result);
         }
 
         if (!result.IsBool()) {
-            throw std::runtime_error("invalid mining.authorize response: result is not a boolean");
+            throw std::runtime_error("invalid jadoenut.authorize response: result is not a boolean");
         }
 
         if (!result.GetBool()) {
@@ -515,7 +532,7 @@ void xmrig::EthStratumClient::onAuthorizeResponse(const rapidjson::Value &result
 }
 
 
-void xmrig::EthStratumClient::onSubscribeResponse(const rapidjson::Value &result, bool success, uint64_t)
+void jdkrig::EthStratumClient::onSubscribeResponse(const rapidjson::Value &result, bool success, uint64_t)
 {
     if (!success) {
         return;
@@ -523,18 +540,18 @@ void xmrig::EthStratumClient::onSubscribeResponse(const rapidjson::Value &result
 
     try {
         if (!result.IsArray()) {
-            throw std::runtime_error("invalid mining.subscribe response: result is not an array");
+            throw std::runtime_error("invalid jadoenut.subscribe response: result is not an array");
         }
 
         auto arr = result.GetArray();
 
         if (arr.Size() <= 1) {
-            throw std::runtime_error("invalid mining.subscribe response: result array is too short");
+            throw std::runtime_error("invalid jadoenut.subscribe response: result array is too short");
         }
 
         setExtraNonce(arr[1]);
 
-#       ifdef XMRIG_ALGO_GHOSTRIDER
+#       ifdef JDKRIG_ALGO_GHOSTRIDER
         if ((arr.Size() > 2) && (arr[2].IsUint())) {
             m_extraNonce2Size = arr[2].GetUint();
         }
@@ -544,7 +561,8 @@ void xmrig::EthStratumClient::onSubscribeResponse(const rapidjson::Value &result
             using namespace rapidjson;
             Document doc(kObjectType);
             Value params(kArrayType);
-            JsonRequest::create(doc, m_sequence, "mining.extranonce.subscribe", params);
+            std::string extran_method = make_rpc_name("extranonce.subscribe");
+            JsonRequest::create(doc, m_sequence, extran_method.c_str(), params);
             send(doc);
         }
     } catch (const std::exception &ex) {
@@ -555,7 +573,7 @@ void xmrig::EthStratumClient::onSubscribeResponse(const rapidjson::Value &result
 }
 
 
-void xmrig::EthStratumClient::subscribe()
+void jdkrig::EthStratumClient::subscribe()
 {
     using namespace rapidjson;
 
@@ -565,7 +583,15 @@ void xmrig::EthStratumClient::subscribe()
     Value params(kArrayType);
     params.PushBack(StringRef(agent()), allocator);
 
-    JsonRequest::create(doc, m_sequence, "mining.subscribe", params);
+    std::string sub_method = make_rpc_name("subscribe");
+//
+// Value method_val;
+// method_val.SetString(method.c_str(), static_cast<SizeType>(method.length()), allocator);
+// doc.AddMember("method", method_val, allocator);
+    JsonRequest::create(doc, m_sequence, sub_method.c_str(), params);
+
+
+    // JsonRequest::create(doc, m_sequence, make_rpc_name("subscribe").c_str(), params);
 
     send(doc, [this](const rapidjson::Value& result, bool success, uint64_t elapsed) { onSubscribeResponse(result, success, elapsed); });
 }

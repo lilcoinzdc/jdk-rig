@@ -2,7 +2,7 @@
  * Copyright 2012-2013 The Cryptonote developers
  * Copyright 2014-2021 The Monero Project
  * Copyright 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2021 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -18,14 +18,14 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XMRIG_SIGNATURES_H
-#define XMRIG_SIGNATURES_H
+#ifndef JDKRIG_SIGNATURES_H
+#define JDKRIG_SIGNATURES_H
 
 
 #include <cstdint>
 
 
-namespace xmrig {
+namespace jdkrig {
 
 
 void generate_signature(const uint8_t* prefix_hash, const uint8_t* pub, const uint8_t* sec, uint8_t* sig);
@@ -40,7 +40,7 @@ void derive_view_secret_key(const uint8_t* spend_secret_key, uint8_t* view_secre
 void generate_keys(uint8_t* pub, uint8_t* sec);
 bool secret_key_to_public_key(const uint8_t* sec, uint8_t* pub);
 
-} /* namespace xmrig */
+} /* namespace jdkrig */
 
 
-#endif /* XMRIG_SIGNATURES_H */
+#endif /* JDKRIG_SIGNATURES_H */
