@@ -1,7 +1,7 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2019 tevador     <tevador@gmail.com>
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -32,7 +32,7 @@
 #include <uv.h>
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 static void init_dataset_wrapper(randomx_dataset *dataset, randomx_cache *cache, uint32_t startItem, uint32_t itemCount, int priority)
@@ -49,10 +49,10 @@ static void init_dataset_wrapper(randomx_dataset *dataset, randomx_cache *cache,
 }
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-jdkrig::RxDataset::RxDataset(bool hugePages, bool oneGbPages, bool cache, RxConfig::Mode mode, uint32_t node) :
+kittenpaw::RxDataset::RxDataset(bool hugePages, bool oneGbPages, bool cache, RxConfig::Mode mode, uint32_t node) :
     m_mode(mode),
     m_node(node)
 {
@@ -70,14 +70,14 @@ jdkrig::RxDataset::RxDataset(bool hugePages, bool oneGbPages, bool cache, RxConf
 }
 
 
-jdkrig::RxDataset::RxDataset(RxCache *cache) :
+kittenpaw::RxDataset::RxDataset(RxCache *cache) :
     m_node(0),
     m_cache(cache)
 {
 }
 
 
-jdkrig::RxDataset::~RxDataset()
+kittenpaw::RxDataset::~RxDataset()
 {
     randomx_release_dataset(m_dataset);
 
@@ -86,7 +86,7 @@ jdkrig::RxDataset::~RxDataset()
 }
 
 
-bool jdkrig::RxDataset::init(const Buffer &seed, uint32_t numThreads, int priority)
+bool kittenpaw::RxDataset::init(const Buffer &seed, uint32_t numThreads, int priority)
 {
     if (!m_cache || !m_cache->get()) {
         return false;
@@ -122,19 +122,19 @@ bool jdkrig::RxDataset::init(const Buffer &seed, uint32_t numThreads, int priori
 }
 
 
-bool jdkrig::RxDataset::isHugePages() const
+bool kittenpaw::RxDataset::isHugePages() const
 {
     return m_memory && m_memory->isHugePages();
 }
 
 
-bool jdkrig::RxDataset::isOneGbPages() const
+bool kittenpaw::RxDataset::isOneGbPages() const
 {
     return m_memory && m_memory->isOneGbPages();
 }
 
 
-jdkrig::HugePagesInfo jdkrig::RxDataset::hugePages(bool cache) const
+kittenpaw::HugePagesInfo kittenpaw::RxDataset::hugePages(bool cache) const
 {
     auto pages = m_memory ? m_memory->hugePages() : HugePagesInfo();
 
@@ -146,7 +146,7 @@ jdkrig::HugePagesInfo jdkrig::RxDataset::hugePages(bool cache) const
 }
 
 
-size_t jdkrig::RxDataset::size(bool cache) const
+size_t kittenpaw::RxDataset::size(bool cache) const
 {
     size_t size = 0;
 
@@ -162,7 +162,7 @@ size_t jdkrig::RxDataset::size(bool cache) const
 }
 
 
-uint8_t *jdkrig::RxDataset::tryAllocateScrathpad()
+uint8_t *kittenpaw::RxDataset::tryAllocateScrathpad()
 {
     auto p = reinterpret_cast<uint8_t *>(raw());
     if (!p) {
@@ -178,13 +178,13 @@ uint8_t *jdkrig::RxDataset::tryAllocateScrathpad()
 }
 
 
-void *jdkrig::RxDataset::raw() const
+void *kittenpaw::RxDataset::raw() const
 {
     return m_dataset ? randomx_get_dataset_memory(m_dataset) : nullptr;
 }
 
 
-void jdkrig::RxDataset::setRaw(const void *raw)
+void kittenpaw::RxDataset::setRaw(const void *raw)
 {
     if (!m_dataset) {
         return;
@@ -195,7 +195,7 @@ void jdkrig::RxDataset::setRaw(const void *raw)
 }
 
 
-void jdkrig::RxDataset::allocate(bool hugePages, bool oneGbPages)
+void kittenpaw::RxDataset::allocate(bool hugePages, bool oneGbPages)
 {
     if (m_mode == RxConfig::LightMode) {
         LOG_ERR(CLEAR "%s" RED_BOLD_S "fast RandomX mode disabled by config", Tags::randomx());
@@ -218,7 +218,7 @@ void jdkrig::RxDataset::allocate(bool hugePages, bool oneGbPages)
 
     m_dataset = randomx_create_dataset(m_memory->raw());
 
-#   ifdef JDKRIG_OS_LINUX
+#   ifdef KITTENPAW_OS_LINUX
     if (oneGbPages && !isOneGbPages()) {
         LOG_ERR(CLEAR "%s" RED_BOLD_S "failed to allocate RandomX dataset using 1GB pages", Tags::randomx());
     }

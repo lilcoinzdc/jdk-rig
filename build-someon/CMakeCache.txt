@@ -182,7 +182,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=jdkrig
+CMAKE_PROJECT_NAME:STATIC=kittenpaw
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -378,13 +378,13 @@ ethash_IS_TOP_LEVEL:STATIC=OFF
 ethash_SOURCE_DIR:STATIC=/mnt/jdk-rig/src/3rdparty/libethash
 
 //Value Computed by CMake
-jdkrig_BINARY_DIR:STATIC=/mnt/jdk-rig/build-someon
+kittenpaw_BINARY_DIR:STATIC=/mnt/jdk-rig/build-someon
 
 //Value Computed by CMake
-jdkrig_IS_TOP_LEVEL:STATIC=ON
+kittenpaw_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
-jdkrig_SOURCE_DIR:STATIC=/mnt/jdk-rig
+kittenpaw_SOURCE_DIR:STATIC=/mnt/jdk-rig
 
 
 ########################

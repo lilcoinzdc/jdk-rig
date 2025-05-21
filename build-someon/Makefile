@@ -117,30 +117,30 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named jdkrig-asm
+# Target rules for targets named kittenpaw-asm
 
 # Build rule for target.
-jdkrig-asm: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 jdkrig-asm
-.PHONY : jdkrig-asm
+kittenpaw-asm: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 kittenpaw-asm
+.PHONY : kittenpaw-asm
 
 # fast build rule for target.
-jdkrig-asm/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig-asm.dir/build.make CMakeFiles/jdkrig-asm.dir/build
-.PHONY : jdkrig-asm/fast
+kittenpaw-asm/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw-asm.dir/build.make CMakeFiles/kittenpaw-asm.dir/build
+.PHONY : kittenpaw-asm/fast
 
 #=============================================================================
-# Target rules for targets named jdkrig
+# Target rules for targets named kittenpaw
 
 # Build rule for target.
-jdkrig: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 jdkrig
-.PHONY : jdkrig
+kittenpaw: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 kittenpaw
+.PHONY : kittenpaw
 
 # fast build rule for target.
-jdkrig/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/build
-.PHONY : jdkrig/fast
+kittenpaw/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/build
+.PHONY : kittenpaw/fast
 
 #=============================================================================
 # Target rules for targets named ethash
@@ -160,7 +160,7 @@ src/3rdparty/fmt/format.o: src/3rdparty/fmt/format.cc.o
 
 # target to build an object file
 src/3rdparty/fmt/format.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/3rdparty/fmt/format.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/3rdparty/fmt/format.cc.o
 .PHONY : src/3rdparty/fmt/format.cc.o
 
 src/3rdparty/fmt/format.i: src/3rdparty/fmt/format.cc.i
@@ -168,7 +168,7 @@ src/3rdparty/fmt/format.i: src/3rdparty/fmt/format.cc.i
 
 # target to preprocess a source file
 src/3rdparty/fmt/format.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/3rdparty/fmt/format.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/3rdparty/fmt/format.cc.i
 .PHONY : src/3rdparty/fmt/format.cc.i
 
 src/3rdparty/fmt/format.s: src/3rdparty/fmt/format.cc.s
@@ -176,7 +176,7 @@ src/3rdparty/fmt/format.s: src/3rdparty/fmt/format.cc.s
 
 # target to generate assembly for a file
 src/3rdparty/fmt/format.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/3rdparty/fmt/format.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/3rdparty/fmt/format.cc.s
 .PHONY : src/3rdparty/fmt/format.cc.s
 
 src/3rdparty/llhttp/api.o: src/3rdparty/llhttp/api.c.o
@@ -184,7 +184,7 @@ src/3rdparty/llhttp/api.o: src/3rdparty/llhttp/api.c.o
 
 # target to build an object file
 src/3rdparty/llhttp/api.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/3rdparty/llhttp/api.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/3rdparty/llhttp/api.c.o
 .PHONY : src/3rdparty/llhttp/api.c.o
 
 src/3rdparty/llhttp/api.i: src/3rdparty/llhttp/api.c.i
@@ -192,7 +192,7 @@ src/3rdparty/llhttp/api.i: src/3rdparty/llhttp/api.c.i
 
 # target to preprocess a source file
 src/3rdparty/llhttp/api.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/3rdparty/llhttp/api.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/3rdparty/llhttp/api.c.i
 .PHONY : src/3rdparty/llhttp/api.c.i
 
 src/3rdparty/llhttp/api.s: src/3rdparty/llhttp/api.c.s
@@ -200,7 +200,7 @@ src/3rdparty/llhttp/api.s: src/3rdparty/llhttp/api.c.s
 
 # target to generate assembly for a file
 src/3rdparty/llhttp/api.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/3rdparty/llhttp/api.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/3rdparty/llhttp/api.c.s
 .PHONY : src/3rdparty/llhttp/api.c.s
 
 src/3rdparty/llhttp/http.o: src/3rdparty/llhttp/http.c.o
@@ -208,7 +208,7 @@ src/3rdparty/llhttp/http.o: src/3rdparty/llhttp/http.c.o
 
 # target to build an object file
 src/3rdparty/llhttp/http.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/3rdparty/llhttp/http.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/3rdparty/llhttp/http.c.o
 .PHONY : src/3rdparty/llhttp/http.c.o
 
 src/3rdparty/llhttp/http.i: src/3rdparty/llhttp/http.c.i
@@ -216,7 +216,7 @@ src/3rdparty/llhttp/http.i: src/3rdparty/llhttp/http.c.i
 
 # target to preprocess a source file
 src/3rdparty/llhttp/http.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/3rdparty/llhttp/http.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/3rdparty/llhttp/http.c.i
 .PHONY : src/3rdparty/llhttp/http.c.i
 
 src/3rdparty/llhttp/http.s: src/3rdparty/llhttp/http.c.s
@@ -224,7 +224,7 @@ src/3rdparty/llhttp/http.s: src/3rdparty/llhttp/http.c.s
 
 # target to generate assembly for a file
 src/3rdparty/llhttp/http.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/3rdparty/llhttp/http.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/3rdparty/llhttp/http.c.s
 .PHONY : src/3rdparty/llhttp/http.c.s
 
 src/3rdparty/llhttp/llhttp.o: src/3rdparty/llhttp/llhttp.c.o
@@ -232,7 +232,7 @@ src/3rdparty/llhttp/llhttp.o: src/3rdparty/llhttp/llhttp.c.o
 
 # target to build an object file
 src/3rdparty/llhttp/llhttp.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/3rdparty/llhttp/llhttp.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/3rdparty/llhttp/llhttp.c.o
 .PHONY : src/3rdparty/llhttp/llhttp.c.o
 
 src/3rdparty/llhttp/llhttp.i: src/3rdparty/llhttp/llhttp.c.i
@@ -240,7 +240,7 @@ src/3rdparty/llhttp/llhttp.i: src/3rdparty/llhttp/llhttp.c.i
 
 # target to preprocess a source file
 src/3rdparty/llhttp/llhttp.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/3rdparty/llhttp/llhttp.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/3rdparty/llhttp/llhttp.c.i
 .PHONY : src/3rdparty/llhttp/llhttp.c.i
 
 src/3rdparty/llhttp/llhttp.s: src/3rdparty/llhttp/llhttp.c.s
@@ -248,7 +248,7 @@ src/3rdparty/llhttp/llhttp.s: src/3rdparty/llhttp/llhttp.c.s
 
 # target to generate assembly for a file
 src/3rdparty/llhttp/llhttp.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/3rdparty/llhttp/llhttp.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/3rdparty/llhttp/llhttp.c.s
 .PHONY : src/3rdparty/llhttp/llhttp.c.s
 
 src/App.o: src/App.cpp.o
@@ -256,7 +256,7 @@ src/App.o: src/App.cpp.o
 
 # target to build an object file
 src/App.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/App.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/App.cpp.o
 .PHONY : src/App.cpp.o
 
 src/App.i: src/App.cpp.i
@@ -264,7 +264,7 @@ src/App.i: src/App.cpp.i
 
 # target to preprocess a source file
 src/App.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/App.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/App.cpp.i
 .PHONY : src/App.cpp.i
 
 src/App.s: src/App.cpp.s
@@ -272,7 +272,7 @@ src/App.s: src/App.cpp.s
 
 # target to generate assembly for a file
 src/App.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/App.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/App.cpp.s
 .PHONY : src/App.cpp.s
 
 src/App_unix.o: src/App_unix.cpp.o
@@ -280,7 +280,7 @@ src/App_unix.o: src/App_unix.cpp.o
 
 # target to build an object file
 src/App_unix.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/App_unix.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/App_unix.cpp.o
 .PHONY : src/App_unix.cpp.o
 
 src/App_unix.i: src/App_unix.cpp.i
@@ -288,7 +288,7 @@ src/App_unix.i: src/App_unix.cpp.i
 
 # target to preprocess a source file
 src/App_unix.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/App_unix.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/App_unix.cpp.i
 .PHONY : src/App_unix.cpp.i
 
 src/App_unix.s: src/App_unix.cpp.s
@@ -296,7 +296,7 @@ src/App_unix.s: src/App_unix.cpp.s
 
 # target to generate assembly for a file
 src/App_unix.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/App_unix.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/App_unix.cpp.s
 .PHONY : src/App_unix.cpp.s
 
 src/Summary.o: src/Summary.cpp.o
@@ -304,7 +304,7 @@ src/Summary.o: src/Summary.cpp.o
 
 # target to build an object file
 src/Summary.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/Summary.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/Summary.cpp.o
 .PHONY : src/Summary.cpp.o
 
 src/Summary.i: src/Summary.cpp.i
@@ -312,7 +312,7 @@ src/Summary.i: src/Summary.cpp.i
 
 # target to preprocess a source file
 src/Summary.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/Summary.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/Summary.cpp.i
 .PHONY : src/Summary.cpp.i
 
 src/Summary.s: src/Summary.cpp.s
@@ -320,7 +320,7 @@ src/Summary.s: src/Summary.cpp.s
 
 # target to generate assembly for a file
 src/Summary.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/Summary.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/Summary.cpp.s
 .PHONY : src/Summary.cpp.s
 
 src/backend/common/GpuWorker.o: src/backend/common/GpuWorker.cpp.o
@@ -328,7 +328,7 @@ src/backend/common/GpuWorker.o: src/backend/common/GpuWorker.cpp.o
 
 # target to build an object file
 src/backend/common/GpuWorker.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/common/GpuWorker.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/common/GpuWorker.cpp.o
 .PHONY : src/backend/common/GpuWorker.cpp.o
 
 src/backend/common/GpuWorker.i: src/backend/common/GpuWorker.cpp.i
@@ -336,7 +336,7 @@ src/backend/common/GpuWorker.i: src/backend/common/GpuWorker.cpp.i
 
 # target to preprocess a source file
 src/backend/common/GpuWorker.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/common/GpuWorker.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/common/GpuWorker.cpp.i
 .PHONY : src/backend/common/GpuWorker.cpp.i
 
 src/backend/common/GpuWorker.s: src/backend/common/GpuWorker.cpp.s
@@ -344,7 +344,7 @@ src/backend/common/GpuWorker.s: src/backend/common/GpuWorker.cpp.s
 
 # target to generate assembly for a file
 src/backend/common/GpuWorker.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/common/GpuWorker.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/common/GpuWorker.cpp.s
 .PHONY : src/backend/common/GpuWorker.cpp.s
 
 src/backend/common/Hashrate.o: src/backend/common/Hashrate.cpp.o
@@ -352,7 +352,7 @@ src/backend/common/Hashrate.o: src/backend/common/Hashrate.cpp.o
 
 # target to build an object file
 src/backend/common/Hashrate.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/common/Hashrate.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/common/Hashrate.cpp.o
 .PHONY : src/backend/common/Hashrate.cpp.o
 
 src/backend/common/Hashrate.i: src/backend/common/Hashrate.cpp.i
@@ -360,7 +360,7 @@ src/backend/common/Hashrate.i: src/backend/common/Hashrate.cpp.i
 
 # target to preprocess a source file
 src/backend/common/Hashrate.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/common/Hashrate.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/common/Hashrate.cpp.i
 .PHONY : src/backend/common/Hashrate.cpp.i
 
 src/backend/common/Hashrate.s: src/backend/common/Hashrate.cpp.s
@@ -368,7 +368,7 @@ src/backend/common/Hashrate.s: src/backend/common/Hashrate.cpp.s
 
 # target to generate assembly for a file
 src/backend/common/Hashrate.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/common/Hashrate.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/common/Hashrate.cpp.s
 .PHONY : src/backend/common/Hashrate.cpp.s
 
 src/backend/common/HashrateInterpolator.o: src/backend/common/HashrateInterpolator.cpp.o
@@ -376,7 +376,7 @@ src/backend/common/HashrateInterpolator.o: src/backend/common/HashrateInterpolat
 
 # target to build an object file
 src/backend/common/HashrateInterpolator.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/common/HashrateInterpolator.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/common/HashrateInterpolator.cpp.o
 .PHONY : src/backend/common/HashrateInterpolator.cpp.o
 
 src/backend/common/HashrateInterpolator.i: src/backend/common/HashrateInterpolator.cpp.i
@@ -384,7 +384,7 @@ src/backend/common/HashrateInterpolator.i: src/backend/common/HashrateInterpolat
 
 # target to preprocess a source file
 src/backend/common/HashrateInterpolator.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/common/HashrateInterpolator.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/common/HashrateInterpolator.cpp.i
 .PHONY : src/backend/common/HashrateInterpolator.cpp.i
 
 src/backend/common/HashrateInterpolator.s: src/backend/common/HashrateInterpolator.cpp.s
@@ -392,7 +392,7 @@ src/backend/common/HashrateInterpolator.s: src/backend/common/HashrateInterpolat
 
 # target to generate assembly for a file
 src/backend/common/HashrateInterpolator.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/common/HashrateInterpolator.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/common/HashrateInterpolator.cpp.s
 .PHONY : src/backend/common/HashrateInterpolator.cpp.s
 
 src/backend/common/Threads.o: src/backend/common/Threads.cpp.o
@@ -400,7 +400,7 @@ src/backend/common/Threads.o: src/backend/common/Threads.cpp.o
 
 # target to build an object file
 src/backend/common/Threads.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/common/Threads.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/common/Threads.cpp.o
 .PHONY : src/backend/common/Threads.cpp.o
 
 src/backend/common/Threads.i: src/backend/common/Threads.cpp.i
@@ -408,7 +408,7 @@ src/backend/common/Threads.i: src/backend/common/Threads.cpp.i
 
 # target to preprocess a source file
 src/backend/common/Threads.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/common/Threads.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/common/Threads.cpp.i
 .PHONY : src/backend/common/Threads.cpp.i
 
 src/backend/common/Threads.s: src/backend/common/Threads.cpp.s
@@ -416,7 +416,7 @@ src/backend/common/Threads.s: src/backend/common/Threads.cpp.s
 
 # target to generate assembly for a file
 src/backend/common/Threads.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/common/Threads.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/common/Threads.cpp.s
 .PHONY : src/backend/common/Threads.cpp.s
 
 src/backend/common/Worker.o: src/backend/common/Worker.cpp.o
@@ -424,7 +424,7 @@ src/backend/common/Worker.o: src/backend/common/Worker.cpp.o
 
 # target to build an object file
 src/backend/common/Worker.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/common/Worker.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/common/Worker.cpp.o
 .PHONY : src/backend/common/Worker.cpp.o
 
 src/backend/common/Worker.i: src/backend/common/Worker.cpp.i
@@ -432,7 +432,7 @@ src/backend/common/Worker.i: src/backend/common/Worker.cpp.i
 
 # target to preprocess a source file
 src/backend/common/Worker.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/common/Worker.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/common/Worker.cpp.i
 .PHONY : src/backend/common/Worker.cpp.i
 
 src/backend/common/Worker.s: src/backend/common/Worker.cpp.s
@@ -440,7 +440,7 @@ src/backend/common/Worker.s: src/backend/common/Worker.cpp.s
 
 # target to generate assembly for a file
 src/backend/common/Worker.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/common/Worker.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/common/Worker.cpp.s
 .PHONY : src/backend/common/Worker.cpp.s
 
 src/backend/common/Workers.o: src/backend/common/Workers.cpp.o
@@ -448,7 +448,7 @@ src/backend/common/Workers.o: src/backend/common/Workers.cpp.o
 
 # target to build an object file
 src/backend/common/Workers.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/common/Workers.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/common/Workers.cpp.o
 .PHONY : src/backend/common/Workers.cpp.o
 
 src/backend/common/Workers.i: src/backend/common/Workers.cpp.i
@@ -456,7 +456,7 @@ src/backend/common/Workers.i: src/backend/common/Workers.cpp.i
 
 # target to preprocess a source file
 src/backend/common/Workers.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/common/Workers.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/common/Workers.cpp.i
 .PHONY : src/backend/common/Workers.cpp.i
 
 src/backend/common/Workers.s: src/backend/common/Workers.cpp.s
@@ -464,7 +464,7 @@ src/backend/common/Workers.s: src/backend/common/Workers.cpp.s
 
 # target to generate assembly for a file
 src/backend/common/Workers.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/common/Workers.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/common/Workers.cpp.s
 .PHONY : src/backend/common/Workers.cpp.s
 
 src/backend/cpu/Cpu.o: src/backend/cpu/Cpu.cpp.o
@@ -472,7 +472,7 @@ src/backend/cpu/Cpu.o: src/backend/cpu/Cpu.cpp.o
 
 # target to build an object file
 src/backend/cpu/Cpu.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cpu/Cpu.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cpu/Cpu.cpp.o
 .PHONY : src/backend/cpu/Cpu.cpp.o
 
 src/backend/cpu/Cpu.i: src/backend/cpu/Cpu.cpp.i
@@ -480,7 +480,7 @@ src/backend/cpu/Cpu.i: src/backend/cpu/Cpu.cpp.i
 
 # target to preprocess a source file
 src/backend/cpu/Cpu.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cpu/Cpu.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cpu/Cpu.cpp.i
 .PHONY : src/backend/cpu/Cpu.cpp.i
 
 src/backend/cpu/Cpu.s: src/backend/cpu/Cpu.cpp.s
@@ -488,7 +488,7 @@ src/backend/cpu/Cpu.s: src/backend/cpu/Cpu.cpp.s
 
 # target to generate assembly for a file
 src/backend/cpu/Cpu.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cpu/Cpu.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cpu/Cpu.cpp.s
 .PHONY : src/backend/cpu/Cpu.cpp.s
 
 src/backend/cpu/CpuBackend.o: src/backend/cpu/CpuBackend.cpp.o
@@ -496,7 +496,7 @@ src/backend/cpu/CpuBackend.o: src/backend/cpu/CpuBackend.cpp.o
 
 # target to build an object file
 src/backend/cpu/CpuBackend.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cpu/CpuBackend.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cpu/CpuBackend.cpp.o
 .PHONY : src/backend/cpu/CpuBackend.cpp.o
 
 src/backend/cpu/CpuBackend.i: src/backend/cpu/CpuBackend.cpp.i
@@ -504,7 +504,7 @@ src/backend/cpu/CpuBackend.i: src/backend/cpu/CpuBackend.cpp.i
 
 # target to preprocess a source file
 src/backend/cpu/CpuBackend.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cpu/CpuBackend.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cpu/CpuBackend.cpp.i
 .PHONY : src/backend/cpu/CpuBackend.cpp.i
 
 src/backend/cpu/CpuBackend.s: src/backend/cpu/CpuBackend.cpp.s
@@ -512,7 +512,7 @@ src/backend/cpu/CpuBackend.s: src/backend/cpu/CpuBackend.cpp.s
 
 # target to generate assembly for a file
 src/backend/cpu/CpuBackend.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cpu/CpuBackend.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cpu/CpuBackend.cpp.s
 .PHONY : src/backend/cpu/CpuBackend.cpp.s
 
 src/backend/cpu/CpuConfig.o: src/backend/cpu/CpuConfig.cpp.o
@@ -520,7 +520,7 @@ src/backend/cpu/CpuConfig.o: src/backend/cpu/CpuConfig.cpp.o
 
 # target to build an object file
 src/backend/cpu/CpuConfig.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cpu/CpuConfig.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cpu/CpuConfig.cpp.o
 .PHONY : src/backend/cpu/CpuConfig.cpp.o
 
 src/backend/cpu/CpuConfig.i: src/backend/cpu/CpuConfig.cpp.i
@@ -528,7 +528,7 @@ src/backend/cpu/CpuConfig.i: src/backend/cpu/CpuConfig.cpp.i
 
 # target to preprocess a source file
 src/backend/cpu/CpuConfig.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cpu/CpuConfig.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cpu/CpuConfig.cpp.i
 .PHONY : src/backend/cpu/CpuConfig.cpp.i
 
 src/backend/cpu/CpuConfig.s: src/backend/cpu/CpuConfig.cpp.s
@@ -536,7 +536,7 @@ src/backend/cpu/CpuConfig.s: src/backend/cpu/CpuConfig.cpp.s
 
 # target to generate assembly for a file
 src/backend/cpu/CpuConfig.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cpu/CpuConfig.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cpu/CpuConfig.cpp.s
 .PHONY : src/backend/cpu/CpuConfig.cpp.s
 
 src/backend/cpu/CpuLaunchData.o: src/backend/cpu/CpuLaunchData.cpp.o
@@ -544,7 +544,7 @@ src/backend/cpu/CpuLaunchData.o: src/backend/cpu/CpuLaunchData.cpp.o
 
 # target to build an object file
 src/backend/cpu/CpuLaunchData.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cpu/CpuLaunchData.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cpu/CpuLaunchData.cpp.o
 .PHONY : src/backend/cpu/CpuLaunchData.cpp.o
 
 src/backend/cpu/CpuLaunchData.i: src/backend/cpu/CpuLaunchData.cpp.i
@@ -552,7 +552,7 @@ src/backend/cpu/CpuLaunchData.i: src/backend/cpu/CpuLaunchData.cpp.i
 
 # target to preprocess a source file
 src/backend/cpu/CpuLaunchData.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cpu/CpuLaunchData.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cpu/CpuLaunchData.cpp.i
 .PHONY : src/backend/cpu/CpuLaunchData.cpp.i
 
 src/backend/cpu/CpuLaunchData.s: src/backend/cpu/CpuLaunchData.cpp.s
@@ -560,7 +560,7 @@ src/backend/cpu/CpuLaunchData.s: src/backend/cpu/CpuLaunchData.cpp.s
 
 # target to generate assembly for a file
 src/backend/cpu/CpuLaunchData.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cpu/CpuLaunchData.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cpu/CpuLaunchData.cpp.s
 .PHONY : src/backend/cpu/CpuLaunchData.cpp.s
 
 src/backend/cpu/CpuThread.o: src/backend/cpu/CpuThread.cpp.o
@@ -568,7 +568,7 @@ src/backend/cpu/CpuThread.o: src/backend/cpu/CpuThread.cpp.o
 
 # target to build an object file
 src/backend/cpu/CpuThread.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cpu/CpuThread.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cpu/CpuThread.cpp.o
 .PHONY : src/backend/cpu/CpuThread.cpp.o
 
 src/backend/cpu/CpuThread.i: src/backend/cpu/CpuThread.cpp.i
@@ -576,7 +576,7 @@ src/backend/cpu/CpuThread.i: src/backend/cpu/CpuThread.cpp.i
 
 # target to preprocess a source file
 src/backend/cpu/CpuThread.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cpu/CpuThread.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cpu/CpuThread.cpp.i
 .PHONY : src/backend/cpu/CpuThread.cpp.i
 
 src/backend/cpu/CpuThread.s: src/backend/cpu/CpuThread.cpp.s
@@ -584,7 +584,7 @@ src/backend/cpu/CpuThread.s: src/backend/cpu/CpuThread.cpp.s
 
 # target to generate assembly for a file
 src/backend/cpu/CpuThread.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cpu/CpuThread.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cpu/CpuThread.cpp.s
 .PHONY : src/backend/cpu/CpuThread.cpp.s
 
 src/backend/cpu/CpuThreads.o: src/backend/cpu/CpuThreads.cpp.o
@@ -592,7 +592,7 @@ src/backend/cpu/CpuThreads.o: src/backend/cpu/CpuThreads.cpp.o
 
 # target to build an object file
 src/backend/cpu/CpuThreads.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cpu/CpuThreads.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cpu/CpuThreads.cpp.o
 .PHONY : src/backend/cpu/CpuThreads.cpp.o
 
 src/backend/cpu/CpuThreads.i: src/backend/cpu/CpuThreads.cpp.i
@@ -600,7 +600,7 @@ src/backend/cpu/CpuThreads.i: src/backend/cpu/CpuThreads.cpp.i
 
 # target to preprocess a source file
 src/backend/cpu/CpuThreads.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cpu/CpuThreads.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cpu/CpuThreads.cpp.i
 .PHONY : src/backend/cpu/CpuThreads.cpp.i
 
 src/backend/cpu/CpuThreads.s: src/backend/cpu/CpuThreads.cpp.s
@@ -608,7 +608,7 @@ src/backend/cpu/CpuThreads.s: src/backend/cpu/CpuThreads.cpp.s
 
 # target to generate assembly for a file
 src/backend/cpu/CpuThreads.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cpu/CpuThreads.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cpu/CpuThreads.cpp.s
 .PHONY : src/backend/cpu/CpuThreads.cpp.s
 
 src/backend/cpu/CpuWorker.o: src/backend/cpu/CpuWorker.cpp.o
@@ -616,7 +616,7 @@ src/backend/cpu/CpuWorker.o: src/backend/cpu/CpuWorker.cpp.o
 
 # target to build an object file
 src/backend/cpu/CpuWorker.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cpu/CpuWorker.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cpu/CpuWorker.cpp.o
 .PHONY : src/backend/cpu/CpuWorker.cpp.o
 
 src/backend/cpu/CpuWorker.i: src/backend/cpu/CpuWorker.cpp.i
@@ -624,7 +624,7 @@ src/backend/cpu/CpuWorker.i: src/backend/cpu/CpuWorker.cpp.i
 
 # target to preprocess a source file
 src/backend/cpu/CpuWorker.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cpu/CpuWorker.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cpu/CpuWorker.cpp.i
 .PHONY : src/backend/cpu/CpuWorker.cpp.i
 
 src/backend/cpu/CpuWorker.s: src/backend/cpu/CpuWorker.cpp.s
@@ -632,7 +632,7 @@ src/backend/cpu/CpuWorker.s: src/backend/cpu/CpuWorker.cpp.s
 
 # target to generate assembly for a file
 src/backend/cpu/CpuWorker.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cpu/CpuWorker.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cpu/CpuWorker.cpp.s
 .PHONY : src/backend/cpu/CpuWorker.cpp.s
 
 src/backend/cpu/platform/BasicCpuInfo.o: src/backend/cpu/platform/BasicCpuInfo.cpp.o
@@ -640,7 +640,7 @@ src/backend/cpu/platform/BasicCpuInfo.o: src/backend/cpu/platform/BasicCpuInfo.c
 
 # target to build an object file
 src/backend/cpu/platform/BasicCpuInfo.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cpu/platform/BasicCpuInfo.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cpu/platform/BasicCpuInfo.cpp.o
 .PHONY : src/backend/cpu/platform/BasicCpuInfo.cpp.o
 
 src/backend/cpu/platform/BasicCpuInfo.i: src/backend/cpu/platform/BasicCpuInfo.cpp.i
@@ -648,7 +648,7 @@ src/backend/cpu/platform/BasicCpuInfo.i: src/backend/cpu/platform/BasicCpuInfo.c
 
 # target to preprocess a source file
 src/backend/cpu/platform/BasicCpuInfo.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cpu/platform/BasicCpuInfo.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cpu/platform/BasicCpuInfo.cpp.i
 .PHONY : src/backend/cpu/platform/BasicCpuInfo.cpp.i
 
 src/backend/cpu/platform/BasicCpuInfo.s: src/backend/cpu/platform/BasicCpuInfo.cpp.s
@@ -656,7 +656,7 @@ src/backend/cpu/platform/BasicCpuInfo.s: src/backend/cpu/platform/BasicCpuInfo.c
 
 # target to generate assembly for a file
 src/backend/cpu/platform/BasicCpuInfo.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cpu/platform/BasicCpuInfo.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cpu/platform/BasicCpuInfo.cpp.s
 .PHONY : src/backend/cpu/platform/BasicCpuInfo.cpp.s
 
 src/backend/cpu/platform/HwlocCpuInfo.o: src/backend/cpu/platform/HwlocCpuInfo.cpp.o
@@ -664,7 +664,7 @@ src/backend/cpu/platform/HwlocCpuInfo.o: src/backend/cpu/platform/HwlocCpuInfo.c
 
 # target to build an object file
 src/backend/cpu/platform/HwlocCpuInfo.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cpu/platform/HwlocCpuInfo.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cpu/platform/HwlocCpuInfo.cpp.o
 .PHONY : src/backend/cpu/platform/HwlocCpuInfo.cpp.o
 
 src/backend/cpu/platform/HwlocCpuInfo.i: src/backend/cpu/platform/HwlocCpuInfo.cpp.i
@@ -672,7 +672,7 @@ src/backend/cpu/platform/HwlocCpuInfo.i: src/backend/cpu/platform/HwlocCpuInfo.c
 
 # target to preprocess a source file
 src/backend/cpu/platform/HwlocCpuInfo.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cpu/platform/HwlocCpuInfo.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cpu/platform/HwlocCpuInfo.cpp.i
 .PHONY : src/backend/cpu/platform/HwlocCpuInfo.cpp.i
 
 src/backend/cpu/platform/HwlocCpuInfo.s: src/backend/cpu/platform/HwlocCpuInfo.cpp.s
@@ -680,7 +680,7 @@ src/backend/cpu/platform/HwlocCpuInfo.s: src/backend/cpu/platform/HwlocCpuInfo.c
 
 # target to generate assembly for a file
 src/backend/cpu/platform/HwlocCpuInfo.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cpu/platform/HwlocCpuInfo.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cpu/platform/HwlocCpuInfo.cpp.s
 .PHONY : src/backend/cpu/platform/HwlocCpuInfo.cpp.s
 
 src/backend/cuda/CudaBackend.o: src/backend/cuda/CudaBackend.cpp.o
@@ -688,7 +688,7 @@ src/backend/cuda/CudaBackend.o: src/backend/cuda/CudaBackend.cpp.o
 
 # target to build an object file
 src/backend/cuda/CudaBackend.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cuda/CudaBackend.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cuda/CudaBackend.cpp.o
 .PHONY : src/backend/cuda/CudaBackend.cpp.o
 
 src/backend/cuda/CudaBackend.i: src/backend/cuda/CudaBackend.cpp.i
@@ -696,7 +696,7 @@ src/backend/cuda/CudaBackend.i: src/backend/cuda/CudaBackend.cpp.i
 
 # target to preprocess a source file
 src/backend/cuda/CudaBackend.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cuda/CudaBackend.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cuda/CudaBackend.cpp.i
 .PHONY : src/backend/cuda/CudaBackend.cpp.i
 
 src/backend/cuda/CudaBackend.s: src/backend/cuda/CudaBackend.cpp.s
@@ -704,7 +704,7 @@ src/backend/cuda/CudaBackend.s: src/backend/cuda/CudaBackend.cpp.s
 
 # target to generate assembly for a file
 src/backend/cuda/CudaBackend.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cuda/CudaBackend.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cuda/CudaBackend.cpp.s
 .PHONY : src/backend/cuda/CudaBackend.cpp.s
 
 src/backend/cuda/CudaConfig.o: src/backend/cuda/CudaConfig.cpp.o
@@ -712,7 +712,7 @@ src/backend/cuda/CudaConfig.o: src/backend/cuda/CudaConfig.cpp.o
 
 # target to build an object file
 src/backend/cuda/CudaConfig.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cuda/CudaConfig.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cuda/CudaConfig.cpp.o
 .PHONY : src/backend/cuda/CudaConfig.cpp.o
 
 src/backend/cuda/CudaConfig.i: src/backend/cuda/CudaConfig.cpp.i
@@ -720,7 +720,7 @@ src/backend/cuda/CudaConfig.i: src/backend/cuda/CudaConfig.cpp.i
 
 # target to preprocess a source file
 src/backend/cuda/CudaConfig.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cuda/CudaConfig.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cuda/CudaConfig.cpp.i
 .PHONY : src/backend/cuda/CudaConfig.cpp.i
 
 src/backend/cuda/CudaConfig.s: src/backend/cuda/CudaConfig.cpp.s
@@ -728,7 +728,7 @@ src/backend/cuda/CudaConfig.s: src/backend/cuda/CudaConfig.cpp.s
 
 # target to generate assembly for a file
 src/backend/cuda/CudaConfig.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cuda/CudaConfig.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cuda/CudaConfig.cpp.s
 .PHONY : src/backend/cuda/CudaConfig.cpp.s
 
 src/backend/cuda/CudaLaunchData.o: src/backend/cuda/CudaLaunchData.cpp.o
@@ -736,7 +736,7 @@ src/backend/cuda/CudaLaunchData.o: src/backend/cuda/CudaLaunchData.cpp.o
 
 # target to build an object file
 src/backend/cuda/CudaLaunchData.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cuda/CudaLaunchData.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cuda/CudaLaunchData.cpp.o
 .PHONY : src/backend/cuda/CudaLaunchData.cpp.o
 
 src/backend/cuda/CudaLaunchData.i: src/backend/cuda/CudaLaunchData.cpp.i
@@ -744,7 +744,7 @@ src/backend/cuda/CudaLaunchData.i: src/backend/cuda/CudaLaunchData.cpp.i
 
 # target to preprocess a source file
 src/backend/cuda/CudaLaunchData.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cuda/CudaLaunchData.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cuda/CudaLaunchData.cpp.i
 .PHONY : src/backend/cuda/CudaLaunchData.cpp.i
 
 src/backend/cuda/CudaLaunchData.s: src/backend/cuda/CudaLaunchData.cpp.s
@@ -752,7 +752,7 @@ src/backend/cuda/CudaLaunchData.s: src/backend/cuda/CudaLaunchData.cpp.s
 
 # target to generate assembly for a file
 src/backend/cuda/CudaLaunchData.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cuda/CudaLaunchData.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cuda/CudaLaunchData.cpp.s
 .PHONY : src/backend/cuda/CudaLaunchData.cpp.s
 
 src/backend/cuda/CudaThread.o: src/backend/cuda/CudaThread.cpp.o
@@ -760,7 +760,7 @@ src/backend/cuda/CudaThread.o: src/backend/cuda/CudaThread.cpp.o
 
 # target to build an object file
 src/backend/cuda/CudaThread.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cuda/CudaThread.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cuda/CudaThread.cpp.o
 .PHONY : src/backend/cuda/CudaThread.cpp.o
 
 src/backend/cuda/CudaThread.i: src/backend/cuda/CudaThread.cpp.i
@@ -768,7 +768,7 @@ src/backend/cuda/CudaThread.i: src/backend/cuda/CudaThread.cpp.i
 
 # target to preprocess a source file
 src/backend/cuda/CudaThread.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cuda/CudaThread.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cuda/CudaThread.cpp.i
 .PHONY : src/backend/cuda/CudaThread.cpp.i
 
 src/backend/cuda/CudaThread.s: src/backend/cuda/CudaThread.cpp.s
@@ -776,7 +776,7 @@ src/backend/cuda/CudaThread.s: src/backend/cuda/CudaThread.cpp.s
 
 # target to generate assembly for a file
 src/backend/cuda/CudaThread.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cuda/CudaThread.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cuda/CudaThread.cpp.s
 .PHONY : src/backend/cuda/CudaThread.cpp.s
 
 src/backend/cuda/CudaThreads.o: src/backend/cuda/CudaThreads.cpp.o
@@ -784,7 +784,7 @@ src/backend/cuda/CudaThreads.o: src/backend/cuda/CudaThreads.cpp.o
 
 # target to build an object file
 src/backend/cuda/CudaThreads.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cuda/CudaThreads.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cuda/CudaThreads.cpp.o
 .PHONY : src/backend/cuda/CudaThreads.cpp.o
 
 src/backend/cuda/CudaThreads.i: src/backend/cuda/CudaThreads.cpp.i
@@ -792,7 +792,7 @@ src/backend/cuda/CudaThreads.i: src/backend/cuda/CudaThreads.cpp.i
 
 # target to preprocess a source file
 src/backend/cuda/CudaThreads.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cuda/CudaThreads.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cuda/CudaThreads.cpp.i
 .PHONY : src/backend/cuda/CudaThreads.cpp.i
 
 src/backend/cuda/CudaThreads.s: src/backend/cuda/CudaThreads.cpp.s
@@ -800,7 +800,7 @@ src/backend/cuda/CudaThreads.s: src/backend/cuda/CudaThreads.cpp.s
 
 # target to generate assembly for a file
 src/backend/cuda/CudaThreads.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cuda/CudaThreads.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cuda/CudaThreads.cpp.s
 .PHONY : src/backend/cuda/CudaThreads.cpp.s
 
 src/backend/cuda/CudaWorker.o: src/backend/cuda/CudaWorker.cpp.o
@@ -808,7 +808,7 @@ src/backend/cuda/CudaWorker.o: src/backend/cuda/CudaWorker.cpp.o
 
 # target to build an object file
 src/backend/cuda/CudaWorker.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cuda/CudaWorker.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cuda/CudaWorker.cpp.o
 .PHONY : src/backend/cuda/CudaWorker.cpp.o
 
 src/backend/cuda/CudaWorker.i: src/backend/cuda/CudaWorker.cpp.i
@@ -816,7 +816,7 @@ src/backend/cuda/CudaWorker.i: src/backend/cuda/CudaWorker.cpp.i
 
 # target to preprocess a source file
 src/backend/cuda/CudaWorker.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cuda/CudaWorker.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cuda/CudaWorker.cpp.i
 .PHONY : src/backend/cuda/CudaWorker.cpp.i
 
 src/backend/cuda/CudaWorker.s: src/backend/cuda/CudaWorker.cpp.s
@@ -824,7 +824,7 @@ src/backend/cuda/CudaWorker.s: src/backend/cuda/CudaWorker.cpp.s
 
 # target to generate assembly for a file
 src/backend/cuda/CudaWorker.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cuda/CudaWorker.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cuda/CudaWorker.cpp.s
 .PHONY : src/backend/cuda/CudaWorker.cpp.s
 
 src/backend/cuda/runners/CudaBaseRunner.o: src/backend/cuda/runners/CudaBaseRunner.cpp.o
@@ -832,7 +832,7 @@ src/backend/cuda/runners/CudaBaseRunner.o: src/backend/cuda/runners/CudaBaseRunn
 
 # target to build an object file
 src/backend/cuda/runners/CudaBaseRunner.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cuda/runners/CudaBaseRunner.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cuda/runners/CudaBaseRunner.cpp.o
 .PHONY : src/backend/cuda/runners/CudaBaseRunner.cpp.o
 
 src/backend/cuda/runners/CudaBaseRunner.i: src/backend/cuda/runners/CudaBaseRunner.cpp.i
@@ -840,7 +840,7 @@ src/backend/cuda/runners/CudaBaseRunner.i: src/backend/cuda/runners/CudaBaseRunn
 
 # target to preprocess a source file
 src/backend/cuda/runners/CudaBaseRunner.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cuda/runners/CudaBaseRunner.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cuda/runners/CudaBaseRunner.cpp.i
 .PHONY : src/backend/cuda/runners/CudaBaseRunner.cpp.i
 
 src/backend/cuda/runners/CudaBaseRunner.s: src/backend/cuda/runners/CudaBaseRunner.cpp.s
@@ -848,7 +848,7 @@ src/backend/cuda/runners/CudaBaseRunner.s: src/backend/cuda/runners/CudaBaseRunn
 
 # target to generate assembly for a file
 src/backend/cuda/runners/CudaBaseRunner.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cuda/runners/CudaBaseRunner.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cuda/runners/CudaBaseRunner.cpp.s
 .PHONY : src/backend/cuda/runners/CudaBaseRunner.cpp.s
 
 src/backend/cuda/runners/CudaCnRunner.o: src/backend/cuda/runners/CudaCnRunner.cpp.o
@@ -856,7 +856,7 @@ src/backend/cuda/runners/CudaCnRunner.o: src/backend/cuda/runners/CudaCnRunner.c
 
 # target to build an object file
 src/backend/cuda/runners/CudaCnRunner.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cuda/runners/CudaCnRunner.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cuda/runners/CudaCnRunner.cpp.o
 .PHONY : src/backend/cuda/runners/CudaCnRunner.cpp.o
 
 src/backend/cuda/runners/CudaCnRunner.i: src/backend/cuda/runners/CudaCnRunner.cpp.i
@@ -864,7 +864,7 @@ src/backend/cuda/runners/CudaCnRunner.i: src/backend/cuda/runners/CudaCnRunner.c
 
 # target to preprocess a source file
 src/backend/cuda/runners/CudaCnRunner.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cuda/runners/CudaCnRunner.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cuda/runners/CudaCnRunner.cpp.i
 .PHONY : src/backend/cuda/runners/CudaCnRunner.cpp.i
 
 src/backend/cuda/runners/CudaCnRunner.s: src/backend/cuda/runners/CudaCnRunner.cpp.s
@@ -872,7 +872,7 @@ src/backend/cuda/runners/CudaCnRunner.s: src/backend/cuda/runners/CudaCnRunner.c
 
 # target to generate assembly for a file
 src/backend/cuda/runners/CudaCnRunner.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cuda/runners/CudaCnRunner.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cuda/runners/CudaCnRunner.cpp.s
 .PHONY : src/backend/cuda/runners/CudaCnRunner.cpp.s
 
 src/backend/cuda/runners/CudaKawPowRunner.o: src/backend/cuda/runners/CudaKawPowRunner.cpp.o
@@ -880,7 +880,7 @@ src/backend/cuda/runners/CudaKawPowRunner.o: src/backend/cuda/runners/CudaKawPow
 
 # target to build an object file
 src/backend/cuda/runners/CudaKawPowRunner.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cuda/runners/CudaKawPowRunner.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cuda/runners/CudaKawPowRunner.cpp.o
 .PHONY : src/backend/cuda/runners/CudaKawPowRunner.cpp.o
 
 src/backend/cuda/runners/CudaKawPowRunner.i: src/backend/cuda/runners/CudaKawPowRunner.cpp.i
@@ -888,7 +888,7 @@ src/backend/cuda/runners/CudaKawPowRunner.i: src/backend/cuda/runners/CudaKawPow
 
 # target to preprocess a source file
 src/backend/cuda/runners/CudaKawPowRunner.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cuda/runners/CudaKawPowRunner.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cuda/runners/CudaKawPowRunner.cpp.i
 .PHONY : src/backend/cuda/runners/CudaKawPowRunner.cpp.i
 
 src/backend/cuda/runners/CudaKawPowRunner.s: src/backend/cuda/runners/CudaKawPowRunner.cpp.s
@@ -896,7 +896,7 @@ src/backend/cuda/runners/CudaKawPowRunner.s: src/backend/cuda/runners/CudaKawPow
 
 # target to generate assembly for a file
 src/backend/cuda/runners/CudaKawPowRunner.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cuda/runners/CudaKawPowRunner.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cuda/runners/CudaKawPowRunner.cpp.s
 .PHONY : src/backend/cuda/runners/CudaKawPowRunner.cpp.s
 
 src/backend/cuda/wrappers/CudaDevice.o: src/backend/cuda/wrappers/CudaDevice.cpp.o
@@ -904,7 +904,7 @@ src/backend/cuda/wrappers/CudaDevice.o: src/backend/cuda/wrappers/CudaDevice.cpp
 
 # target to build an object file
 src/backend/cuda/wrappers/CudaDevice.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cuda/wrappers/CudaDevice.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cuda/wrappers/CudaDevice.cpp.o
 .PHONY : src/backend/cuda/wrappers/CudaDevice.cpp.o
 
 src/backend/cuda/wrappers/CudaDevice.i: src/backend/cuda/wrappers/CudaDevice.cpp.i
@@ -912,7 +912,7 @@ src/backend/cuda/wrappers/CudaDevice.i: src/backend/cuda/wrappers/CudaDevice.cpp
 
 # target to preprocess a source file
 src/backend/cuda/wrappers/CudaDevice.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cuda/wrappers/CudaDevice.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cuda/wrappers/CudaDevice.cpp.i
 .PHONY : src/backend/cuda/wrappers/CudaDevice.cpp.i
 
 src/backend/cuda/wrappers/CudaDevice.s: src/backend/cuda/wrappers/CudaDevice.cpp.s
@@ -920,7 +920,7 @@ src/backend/cuda/wrappers/CudaDevice.s: src/backend/cuda/wrappers/CudaDevice.cpp
 
 # target to generate assembly for a file
 src/backend/cuda/wrappers/CudaDevice.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cuda/wrappers/CudaDevice.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cuda/wrappers/CudaDevice.cpp.s
 .PHONY : src/backend/cuda/wrappers/CudaDevice.cpp.s
 
 src/backend/cuda/wrappers/CudaLib.o: src/backend/cuda/wrappers/CudaLib.cpp.o
@@ -928,7 +928,7 @@ src/backend/cuda/wrappers/CudaLib.o: src/backend/cuda/wrappers/CudaLib.cpp.o
 
 # target to build an object file
 src/backend/cuda/wrappers/CudaLib.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cuda/wrappers/CudaLib.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cuda/wrappers/CudaLib.cpp.o
 .PHONY : src/backend/cuda/wrappers/CudaLib.cpp.o
 
 src/backend/cuda/wrappers/CudaLib.i: src/backend/cuda/wrappers/CudaLib.cpp.i
@@ -936,7 +936,7 @@ src/backend/cuda/wrappers/CudaLib.i: src/backend/cuda/wrappers/CudaLib.cpp.i
 
 # target to preprocess a source file
 src/backend/cuda/wrappers/CudaLib.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cuda/wrappers/CudaLib.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cuda/wrappers/CudaLib.cpp.i
 .PHONY : src/backend/cuda/wrappers/CudaLib.cpp.i
 
 src/backend/cuda/wrappers/CudaLib.s: src/backend/cuda/wrappers/CudaLib.cpp.s
@@ -944,7 +944,7 @@ src/backend/cuda/wrappers/CudaLib.s: src/backend/cuda/wrappers/CudaLib.cpp.s
 
 # target to generate assembly for a file
 src/backend/cuda/wrappers/CudaLib.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/cuda/wrappers/CudaLib.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/cuda/wrappers/CudaLib.cpp.s
 .PHONY : src/backend/cuda/wrappers/CudaLib.cpp.s
 
 src/backend/opencl/OclBackend.o: src/backend/opencl/OclBackend.cpp.o
@@ -952,7 +952,7 @@ src/backend/opencl/OclBackend.o: src/backend/opencl/OclBackend.cpp.o
 
 # target to build an object file
 src/backend/opencl/OclBackend.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/OclBackend.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/OclBackend.cpp.o
 .PHONY : src/backend/opencl/OclBackend.cpp.o
 
 src/backend/opencl/OclBackend.i: src/backend/opencl/OclBackend.cpp.i
@@ -960,7 +960,7 @@ src/backend/opencl/OclBackend.i: src/backend/opencl/OclBackend.cpp.i
 
 # target to preprocess a source file
 src/backend/opencl/OclBackend.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/OclBackend.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/OclBackend.cpp.i
 .PHONY : src/backend/opencl/OclBackend.cpp.i
 
 src/backend/opencl/OclBackend.s: src/backend/opencl/OclBackend.cpp.s
@@ -968,7 +968,7 @@ src/backend/opencl/OclBackend.s: src/backend/opencl/OclBackend.cpp.s
 
 # target to generate assembly for a file
 src/backend/opencl/OclBackend.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/OclBackend.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/OclBackend.cpp.s
 .PHONY : src/backend/opencl/OclBackend.cpp.s
 
 src/backend/opencl/OclCache.o: src/backend/opencl/OclCache.cpp.o
@@ -976,7 +976,7 @@ src/backend/opencl/OclCache.o: src/backend/opencl/OclCache.cpp.o
 
 # target to build an object file
 src/backend/opencl/OclCache.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/OclCache.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/OclCache.cpp.o
 .PHONY : src/backend/opencl/OclCache.cpp.o
 
 src/backend/opencl/OclCache.i: src/backend/opencl/OclCache.cpp.i
@@ -984,7 +984,7 @@ src/backend/opencl/OclCache.i: src/backend/opencl/OclCache.cpp.i
 
 # target to preprocess a source file
 src/backend/opencl/OclCache.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/OclCache.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/OclCache.cpp.i
 .PHONY : src/backend/opencl/OclCache.cpp.i
 
 src/backend/opencl/OclCache.s: src/backend/opencl/OclCache.cpp.s
@@ -992,7 +992,7 @@ src/backend/opencl/OclCache.s: src/backend/opencl/OclCache.cpp.s
 
 # target to generate assembly for a file
 src/backend/opencl/OclCache.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/OclCache.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/OclCache.cpp.s
 .PHONY : src/backend/opencl/OclCache.cpp.s
 
 src/backend/opencl/OclCache_unix.o: src/backend/opencl/OclCache_unix.cpp.o
@@ -1000,7 +1000,7 @@ src/backend/opencl/OclCache_unix.o: src/backend/opencl/OclCache_unix.cpp.o
 
 # target to build an object file
 src/backend/opencl/OclCache_unix.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/OclCache_unix.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/OclCache_unix.cpp.o
 .PHONY : src/backend/opencl/OclCache_unix.cpp.o
 
 src/backend/opencl/OclCache_unix.i: src/backend/opencl/OclCache_unix.cpp.i
@@ -1008,7 +1008,7 @@ src/backend/opencl/OclCache_unix.i: src/backend/opencl/OclCache_unix.cpp.i
 
 # target to preprocess a source file
 src/backend/opencl/OclCache_unix.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/OclCache_unix.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/OclCache_unix.cpp.i
 .PHONY : src/backend/opencl/OclCache_unix.cpp.i
 
 src/backend/opencl/OclCache_unix.s: src/backend/opencl/OclCache_unix.cpp.s
@@ -1016,7 +1016,7 @@ src/backend/opencl/OclCache_unix.s: src/backend/opencl/OclCache_unix.cpp.s
 
 # target to generate assembly for a file
 src/backend/opencl/OclCache_unix.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/OclCache_unix.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/OclCache_unix.cpp.s
 .PHONY : src/backend/opencl/OclCache_unix.cpp.s
 
 src/backend/opencl/OclConfig.o: src/backend/opencl/OclConfig.cpp.o
@@ -1024,7 +1024,7 @@ src/backend/opencl/OclConfig.o: src/backend/opencl/OclConfig.cpp.o
 
 # target to build an object file
 src/backend/opencl/OclConfig.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/OclConfig.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/OclConfig.cpp.o
 .PHONY : src/backend/opencl/OclConfig.cpp.o
 
 src/backend/opencl/OclConfig.i: src/backend/opencl/OclConfig.cpp.i
@@ -1032,7 +1032,7 @@ src/backend/opencl/OclConfig.i: src/backend/opencl/OclConfig.cpp.i
 
 # target to preprocess a source file
 src/backend/opencl/OclConfig.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/OclConfig.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/OclConfig.cpp.i
 .PHONY : src/backend/opencl/OclConfig.cpp.i
 
 src/backend/opencl/OclConfig.s: src/backend/opencl/OclConfig.cpp.s
@@ -1040,7 +1040,7 @@ src/backend/opencl/OclConfig.s: src/backend/opencl/OclConfig.cpp.s
 
 # target to generate assembly for a file
 src/backend/opencl/OclConfig.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/OclConfig.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/OclConfig.cpp.s
 .PHONY : src/backend/opencl/OclConfig.cpp.s
 
 src/backend/opencl/OclLaunchData.o: src/backend/opencl/OclLaunchData.cpp.o
@@ -1048,7 +1048,7 @@ src/backend/opencl/OclLaunchData.o: src/backend/opencl/OclLaunchData.cpp.o
 
 # target to build an object file
 src/backend/opencl/OclLaunchData.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/OclLaunchData.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/OclLaunchData.cpp.o
 .PHONY : src/backend/opencl/OclLaunchData.cpp.o
 
 src/backend/opencl/OclLaunchData.i: src/backend/opencl/OclLaunchData.cpp.i
@@ -1056,7 +1056,7 @@ src/backend/opencl/OclLaunchData.i: src/backend/opencl/OclLaunchData.cpp.i
 
 # target to preprocess a source file
 src/backend/opencl/OclLaunchData.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/OclLaunchData.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/OclLaunchData.cpp.i
 .PHONY : src/backend/opencl/OclLaunchData.cpp.i
 
 src/backend/opencl/OclLaunchData.s: src/backend/opencl/OclLaunchData.cpp.s
@@ -1064,7 +1064,7 @@ src/backend/opencl/OclLaunchData.s: src/backend/opencl/OclLaunchData.cpp.s
 
 # target to generate assembly for a file
 src/backend/opencl/OclLaunchData.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/OclLaunchData.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/OclLaunchData.cpp.s
 .PHONY : src/backend/opencl/OclLaunchData.cpp.s
 
 src/backend/opencl/OclThread.o: src/backend/opencl/OclThread.cpp.o
@@ -1072,7 +1072,7 @@ src/backend/opencl/OclThread.o: src/backend/opencl/OclThread.cpp.o
 
 # target to build an object file
 src/backend/opencl/OclThread.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/OclThread.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/OclThread.cpp.o
 .PHONY : src/backend/opencl/OclThread.cpp.o
 
 src/backend/opencl/OclThread.i: src/backend/opencl/OclThread.cpp.i
@@ -1080,7 +1080,7 @@ src/backend/opencl/OclThread.i: src/backend/opencl/OclThread.cpp.i
 
 # target to preprocess a source file
 src/backend/opencl/OclThread.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/OclThread.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/OclThread.cpp.i
 .PHONY : src/backend/opencl/OclThread.cpp.i
 
 src/backend/opencl/OclThread.s: src/backend/opencl/OclThread.cpp.s
@@ -1088,7 +1088,7 @@ src/backend/opencl/OclThread.s: src/backend/opencl/OclThread.cpp.s
 
 # target to generate assembly for a file
 src/backend/opencl/OclThread.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/OclThread.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/OclThread.cpp.s
 .PHONY : src/backend/opencl/OclThread.cpp.s
 
 src/backend/opencl/OclThreads.o: src/backend/opencl/OclThreads.cpp.o
@@ -1096,7 +1096,7 @@ src/backend/opencl/OclThreads.o: src/backend/opencl/OclThreads.cpp.o
 
 # target to build an object file
 src/backend/opencl/OclThreads.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/OclThreads.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/OclThreads.cpp.o
 .PHONY : src/backend/opencl/OclThreads.cpp.o
 
 src/backend/opencl/OclThreads.i: src/backend/opencl/OclThreads.cpp.i
@@ -1104,7 +1104,7 @@ src/backend/opencl/OclThreads.i: src/backend/opencl/OclThreads.cpp.i
 
 # target to preprocess a source file
 src/backend/opencl/OclThreads.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/OclThreads.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/OclThreads.cpp.i
 .PHONY : src/backend/opencl/OclThreads.cpp.i
 
 src/backend/opencl/OclThreads.s: src/backend/opencl/OclThreads.cpp.s
@@ -1112,7 +1112,7 @@ src/backend/opencl/OclThreads.s: src/backend/opencl/OclThreads.cpp.s
 
 # target to generate assembly for a file
 src/backend/opencl/OclThreads.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/OclThreads.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/OclThreads.cpp.s
 .PHONY : src/backend/opencl/OclThreads.cpp.s
 
 src/backend/opencl/OclWorker.o: src/backend/opencl/OclWorker.cpp.o
@@ -1120,7 +1120,7 @@ src/backend/opencl/OclWorker.o: src/backend/opencl/OclWorker.cpp.o
 
 # target to build an object file
 src/backend/opencl/OclWorker.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/OclWorker.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/OclWorker.cpp.o
 .PHONY : src/backend/opencl/OclWorker.cpp.o
 
 src/backend/opencl/OclWorker.i: src/backend/opencl/OclWorker.cpp.i
@@ -1128,7 +1128,7 @@ src/backend/opencl/OclWorker.i: src/backend/opencl/OclWorker.cpp.i
 
 # target to preprocess a source file
 src/backend/opencl/OclWorker.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/OclWorker.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/OclWorker.cpp.i
 .PHONY : src/backend/opencl/OclWorker.cpp.i
 
 src/backend/opencl/OclWorker.s: src/backend/opencl/OclWorker.cpp.s
@@ -1136,7 +1136,7 @@ src/backend/opencl/OclWorker.s: src/backend/opencl/OclWorker.cpp.s
 
 # target to generate assembly for a file
 src/backend/opencl/OclWorker.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/OclWorker.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/OclWorker.cpp.s
 .PHONY : src/backend/opencl/OclWorker.cpp.s
 
 src/backend/opencl/cl/OclSource.o: src/backend/opencl/cl/OclSource.cpp.o
@@ -1144,7 +1144,7 @@ src/backend/opencl/cl/OclSource.o: src/backend/opencl/cl/OclSource.cpp.o
 
 # target to build an object file
 src/backend/opencl/cl/OclSource.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/cl/OclSource.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/cl/OclSource.cpp.o
 .PHONY : src/backend/opencl/cl/OclSource.cpp.o
 
 src/backend/opencl/cl/OclSource.i: src/backend/opencl/cl/OclSource.cpp.i
@@ -1152,7 +1152,7 @@ src/backend/opencl/cl/OclSource.i: src/backend/opencl/cl/OclSource.cpp.i
 
 # target to preprocess a source file
 src/backend/opencl/cl/OclSource.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/cl/OclSource.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/cl/OclSource.cpp.i
 .PHONY : src/backend/opencl/cl/OclSource.cpp.i
 
 src/backend/opencl/cl/OclSource.s: src/backend/opencl/cl/OclSource.cpp.s
@@ -1160,7 +1160,7 @@ src/backend/opencl/cl/OclSource.s: src/backend/opencl/cl/OclSource.cpp.s
 
 # target to generate assembly for a file
 src/backend/opencl/cl/OclSource.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/cl/OclSource.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/cl/OclSource.cpp.s
 .PHONY : src/backend/opencl/cl/OclSource.cpp.s
 
 src/backend/opencl/generators/ocl_generic_cn_generator.o: src/backend/opencl/generators/ocl_generic_cn_generator.cpp.o
@@ -1168,7 +1168,7 @@ src/backend/opencl/generators/ocl_generic_cn_generator.o: src/backend/opencl/gen
 
 # target to build an object file
 src/backend/opencl/generators/ocl_generic_cn_generator.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/generators/ocl_generic_cn_generator.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/generators/ocl_generic_cn_generator.cpp.o
 .PHONY : src/backend/opencl/generators/ocl_generic_cn_generator.cpp.o
 
 src/backend/opencl/generators/ocl_generic_cn_generator.i: src/backend/opencl/generators/ocl_generic_cn_generator.cpp.i
@@ -1176,7 +1176,7 @@ src/backend/opencl/generators/ocl_generic_cn_generator.i: src/backend/opencl/gen
 
 # target to preprocess a source file
 src/backend/opencl/generators/ocl_generic_cn_generator.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/generators/ocl_generic_cn_generator.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/generators/ocl_generic_cn_generator.cpp.i
 .PHONY : src/backend/opencl/generators/ocl_generic_cn_generator.cpp.i
 
 src/backend/opencl/generators/ocl_generic_cn_generator.s: src/backend/opencl/generators/ocl_generic_cn_generator.cpp.s
@@ -1184,7 +1184,7 @@ src/backend/opencl/generators/ocl_generic_cn_generator.s: src/backend/opencl/gen
 
 # target to generate assembly for a file
 src/backend/opencl/generators/ocl_generic_cn_generator.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/generators/ocl_generic_cn_generator.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/generators/ocl_generic_cn_generator.cpp.s
 .PHONY : src/backend/opencl/generators/ocl_generic_cn_generator.cpp.s
 
 src/backend/opencl/generators/ocl_generic_kawpow_generator.o: src/backend/opencl/generators/ocl_generic_kawpow_generator.cpp.o
@@ -1192,7 +1192,7 @@ src/backend/opencl/generators/ocl_generic_kawpow_generator.o: src/backend/opencl
 
 # target to build an object file
 src/backend/opencl/generators/ocl_generic_kawpow_generator.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/generators/ocl_generic_kawpow_generator.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/generators/ocl_generic_kawpow_generator.cpp.o
 .PHONY : src/backend/opencl/generators/ocl_generic_kawpow_generator.cpp.o
 
 src/backend/opencl/generators/ocl_generic_kawpow_generator.i: src/backend/opencl/generators/ocl_generic_kawpow_generator.cpp.i
@@ -1200,7 +1200,7 @@ src/backend/opencl/generators/ocl_generic_kawpow_generator.i: src/backend/opencl
 
 # target to preprocess a source file
 src/backend/opencl/generators/ocl_generic_kawpow_generator.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/generators/ocl_generic_kawpow_generator.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/generators/ocl_generic_kawpow_generator.cpp.i
 .PHONY : src/backend/opencl/generators/ocl_generic_kawpow_generator.cpp.i
 
 src/backend/opencl/generators/ocl_generic_kawpow_generator.s: src/backend/opencl/generators/ocl_generic_kawpow_generator.cpp.s
@@ -1208,7 +1208,7 @@ src/backend/opencl/generators/ocl_generic_kawpow_generator.s: src/backend/opencl
 
 # target to generate assembly for a file
 src/backend/opencl/generators/ocl_generic_kawpow_generator.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/generators/ocl_generic_kawpow_generator.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/generators/ocl_generic_kawpow_generator.cpp.s
 .PHONY : src/backend/opencl/generators/ocl_generic_kawpow_generator.cpp.s
 
 src/backend/opencl/generators/ocl_vega_cn_generator.o: src/backend/opencl/generators/ocl_vega_cn_generator.cpp.o
@@ -1216,7 +1216,7 @@ src/backend/opencl/generators/ocl_vega_cn_generator.o: src/backend/opencl/genera
 
 # target to build an object file
 src/backend/opencl/generators/ocl_vega_cn_generator.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/generators/ocl_vega_cn_generator.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/generators/ocl_vega_cn_generator.cpp.o
 .PHONY : src/backend/opencl/generators/ocl_vega_cn_generator.cpp.o
 
 src/backend/opencl/generators/ocl_vega_cn_generator.i: src/backend/opencl/generators/ocl_vega_cn_generator.cpp.i
@@ -1224,7 +1224,7 @@ src/backend/opencl/generators/ocl_vega_cn_generator.i: src/backend/opencl/genera
 
 # target to preprocess a source file
 src/backend/opencl/generators/ocl_vega_cn_generator.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/generators/ocl_vega_cn_generator.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/generators/ocl_vega_cn_generator.cpp.i
 .PHONY : src/backend/opencl/generators/ocl_vega_cn_generator.cpp.i
 
 src/backend/opencl/generators/ocl_vega_cn_generator.s: src/backend/opencl/generators/ocl_vega_cn_generator.cpp.s
@@ -1232,7 +1232,7 @@ src/backend/opencl/generators/ocl_vega_cn_generator.s: src/backend/opencl/genera
 
 # target to generate assembly for a file
 src/backend/opencl/generators/ocl_vega_cn_generator.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/generators/ocl_vega_cn_generator.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/generators/ocl_vega_cn_generator.cpp.s
 .PHONY : src/backend/opencl/generators/ocl_vega_cn_generator.cpp.s
 
 src/backend/opencl/kernels/Cn0Kernel.o: src/backend/opencl/kernels/Cn0Kernel.cpp.o
@@ -1240,7 +1240,7 @@ src/backend/opencl/kernels/Cn0Kernel.o: src/backend/opencl/kernels/Cn0Kernel.cpp
 
 # target to build an object file
 src/backend/opencl/kernels/Cn0Kernel.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/kernels/Cn0Kernel.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/kernels/Cn0Kernel.cpp.o
 .PHONY : src/backend/opencl/kernels/Cn0Kernel.cpp.o
 
 src/backend/opencl/kernels/Cn0Kernel.i: src/backend/opencl/kernels/Cn0Kernel.cpp.i
@@ -1248,7 +1248,7 @@ src/backend/opencl/kernels/Cn0Kernel.i: src/backend/opencl/kernels/Cn0Kernel.cpp
 
 # target to preprocess a source file
 src/backend/opencl/kernels/Cn0Kernel.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/kernels/Cn0Kernel.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/kernels/Cn0Kernel.cpp.i
 .PHONY : src/backend/opencl/kernels/Cn0Kernel.cpp.i
 
 src/backend/opencl/kernels/Cn0Kernel.s: src/backend/opencl/kernels/Cn0Kernel.cpp.s
@@ -1256,7 +1256,7 @@ src/backend/opencl/kernels/Cn0Kernel.s: src/backend/opencl/kernels/Cn0Kernel.cpp
 
 # target to generate assembly for a file
 src/backend/opencl/kernels/Cn0Kernel.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/kernels/Cn0Kernel.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/kernels/Cn0Kernel.cpp.s
 .PHONY : src/backend/opencl/kernels/Cn0Kernel.cpp.s
 
 src/backend/opencl/kernels/Cn1Kernel.o: src/backend/opencl/kernels/Cn1Kernel.cpp.o
@@ -1264,7 +1264,7 @@ src/backend/opencl/kernels/Cn1Kernel.o: src/backend/opencl/kernels/Cn1Kernel.cpp
 
 # target to build an object file
 src/backend/opencl/kernels/Cn1Kernel.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/kernels/Cn1Kernel.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/kernels/Cn1Kernel.cpp.o
 .PHONY : src/backend/opencl/kernels/Cn1Kernel.cpp.o
 
 src/backend/opencl/kernels/Cn1Kernel.i: src/backend/opencl/kernels/Cn1Kernel.cpp.i
@@ -1272,7 +1272,7 @@ src/backend/opencl/kernels/Cn1Kernel.i: src/backend/opencl/kernels/Cn1Kernel.cpp
 
 # target to preprocess a source file
 src/backend/opencl/kernels/Cn1Kernel.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/kernels/Cn1Kernel.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/kernels/Cn1Kernel.cpp.i
 .PHONY : src/backend/opencl/kernels/Cn1Kernel.cpp.i
 
 src/backend/opencl/kernels/Cn1Kernel.s: src/backend/opencl/kernels/Cn1Kernel.cpp.s
@@ -1280,7 +1280,7 @@ src/backend/opencl/kernels/Cn1Kernel.s: src/backend/opencl/kernels/Cn1Kernel.cpp
 
 # target to generate assembly for a file
 src/backend/opencl/kernels/Cn1Kernel.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/kernels/Cn1Kernel.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/kernels/Cn1Kernel.cpp.s
 .PHONY : src/backend/opencl/kernels/Cn1Kernel.cpp.s
 
 src/backend/opencl/kernels/Cn2Kernel.o: src/backend/opencl/kernels/Cn2Kernel.cpp.o
@@ -1288,7 +1288,7 @@ src/backend/opencl/kernels/Cn2Kernel.o: src/backend/opencl/kernels/Cn2Kernel.cpp
 
 # target to build an object file
 src/backend/opencl/kernels/Cn2Kernel.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/kernels/Cn2Kernel.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/kernels/Cn2Kernel.cpp.o
 .PHONY : src/backend/opencl/kernels/Cn2Kernel.cpp.o
 
 src/backend/opencl/kernels/Cn2Kernel.i: src/backend/opencl/kernels/Cn2Kernel.cpp.i
@@ -1296,7 +1296,7 @@ src/backend/opencl/kernels/Cn2Kernel.i: src/backend/opencl/kernels/Cn2Kernel.cpp
 
 # target to preprocess a source file
 src/backend/opencl/kernels/Cn2Kernel.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/kernels/Cn2Kernel.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/kernels/Cn2Kernel.cpp.i
 .PHONY : src/backend/opencl/kernels/Cn2Kernel.cpp.i
 
 src/backend/opencl/kernels/Cn2Kernel.s: src/backend/opencl/kernels/Cn2Kernel.cpp.s
@@ -1304,7 +1304,7 @@ src/backend/opencl/kernels/Cn2Kernel.s: src/backend/opencl/kernels/Cn2Kernel.cpp
 
 # target to generate assembly for a file
 src/backend/opencl/kernels/Cn2Kernel.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/kernels/Cn2Kernel.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/kernels/Cn2Kernel.cpp.s
 .PHONY : src/backend/opencl/kernels/Cn2Kernel.cpp.s
 
 src/backend/opencl/kernels/CnBranchKernel.o: src/backend/opencl/kernels/CnBranchKernel.cpp.o
@@ -1312,7 +1312,7 @@ src/backend/opencl/kernels/CnBranchKernel.o: src/backend/opencl/kernels/CnBranch
 
 # target to build an object file
 src/backend/opencl/kernels/CnBranchKernel.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/kernels/CnBranchKernel.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/kernels/CnBranchKernel.cpp.o
 .PHONY : src/backend/opencl/kernels/CnBranchKernel.cpp.o
 
 src/backend/opencl/kernels/CnBranchKernel.i: src/backend/opencl/kernels/CnBranchKernel.cpp.i
@@ -1320,7 +1320,7 @@ src/backend/opencl/kernels/CnBranchKernel.i: src/backend/opencl/kernels/CnBranch
 
 # target to preprocess a source file
 src/backend/opencl/kernels/CnBranchKernel.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/kernels/CnBranchKernel.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/kernels/CnBranchKernel.cpp.i
 .PHONY : src/backend/opencl/kernels/CnBranchKernel.cpp.i
 
 src/backend/opencl/kernels/CnBranchKernel.s: src/backend/opencl/kernels/CnBranchKernel.cpp.s
@@ -1328,7 +1328,7 @@ src/backend/opencl/kernels/CnBranchKernel.s: src/backend/opencl/kernels/CnBranch
 
 # target to generate assembly for a file
 src/backend/opencl/kernels/CnBranchKernel.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/kernels/CnBranchKernel.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/kernels/CnBranchKernel.cpp.s
 .PHONY : src/backend/opencl/kernels/CnBranchKernel.cpp.s
 
 src/backend/opencl/kernels/kawpow/KawPow_CalculateDAGKernel.o: src/backend/opencl/kernels/kawpow/KawPow_CalculateDAGKernel.cpp.o
@@ -1336,7 +1336,7 @@ src/backend/opencl/kernels/kawpow/KawPow_CalculateDAGKernel.o: src/backend/openc
 
 # target to build an object file
 src/backend/opencl/kernels/kawpow/KawPow_CalculateDAGKernel.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/kernels/kawpow/KawPow_CalculateDAGKernel.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/kernels/kawpow/KawPow_CalculateDAGKernel.cpp.o
 .PHONY : src/backend/opencl/kernels/kawpow/KawPow_CalculateDAGKernel.cpp.o
 
 src/backend/opencl/kernels/kawpow/KawPow_CalculateDAGKernel.i: src/backend/opencl/kernels/kawpow/KawPow_CalculateDAGKernel.cpp.i
@@ -1344,7 +1344,7 @@ src/backend/opencl/kernels/kawpow/KawPow_CalculateDAGKernel.i: src/backend/openc
 
 # target to preprocess a source file
 src/backend/opencl/kernels/kawpow/KawPow_CalculateDAGKernel.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/kernels/kawpow/KawPow_CalculateDAGKernel.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/kernels/kawpow/KawPow_CalculateDAGKernel.cpp.i
 .PHONY : src/backend/opencl/kernels/kawpow/KawPow_CalculateDAGKernel.cpp.i
 
 src/backend/opencl/kernels/kawpow/KawPow_CalculateDAGKernel.s: src/backend/opencl/kernels/kawpow/KawPow_CalculateDAGKernel.cpp.s
@@ -1352,7 +1352,7 @@ src/backend/opencl/kernels/kawpow/KawPow_CalculateDAGKernel.s: src/backend/openc
 
 # target to generate assembly for a file
 src/backend/opencl/kernels/kawpow/KawPow_CalculateDAGKernel.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/kernels/kawpow/KawPow_CalculateDAGKernel.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/kernels/kawpow/KawPow_CalculateDAGKernel.cpp.s
 .PHONY : src/backend/opencl/kernels/kawpow/KawPow_CalculateDAGKernel.cpp.s
 
 src/backend/opencl/runners/OclBaseRunner.o: src/backend/opencl/runners/OclBaseRunner.cpp.o
@@ -1360,7 +1360,7 @@ src/backend/opencl/runners/OclBaseRunner.o: src/backend/opencl/runners/OclBaseRu
 
 # target to build an object file
 src/backend/opencl/runners/OclBaseRunner.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/runners/OclBaseRunner.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/runners/OclBaseRunner.cpp.o
 .PHONY : src/backend/opencl/runners/OclBaseRunner.cpp.o
 
 src/backend/opencl/runners/OclBaseRunner.i: src/backend/opencl/runners/OclBaseRunner.cpp.i
@@ -1368,7 +1368,7 @@ src/backend/opencl/runners/OclBaseRunner.i: src/backend/opencl/runners/OclBaseRu
 
 # target to preprocess a source file
 src/backend/opencl/runners/OclBaseRunner.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/runners/OclBaseRunner.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/runners/OclBaseRunner.cpp.i
 .PHONY : src/backend/opencl/runners/OclBaseRunner.cpp.i
 
 src/backend/opencl/runners/OclBaseRunner.s: src/backend/opencl/runners/OclBaseRunner.cpp.s
@@ -1376,7 +1376,7 @@ src/backend/opencl/runners/OclBaseRunner.s: src/backend/opencl/runners/OclBaseRu
 
 # target to generate assembly for a file
 src/backend/opencl/runners/OclBaseRunner.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/runners/OclBaseRunner.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/runners/OclBaseRunner.cpp.s
 .PHONY : src/backend/opencl/runners/OclBaseRunner.cpp.s
 
 src/backend/opencl/runners/OclCnRunner.o: src/backend/opencl/runners/OclCnRunner.cpp.o
@@ -1384,7 +1384,7 @@ src/backend/opencl/runners/OclCnRunner.o: src/backend/opencl/runners/OclCnRunner
 
 # target to build an object file
 src/backend/opencl/runners/OclCnRunner.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/runners/OclCnRunner.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/runners/OclCnRunner.cpp.o
 .PHONY : src/backend/opencl/runners/OclCnRunner.cpp.o
 
 src/backend/opencl/runners/OclCnRunner.i: src/backend/opencl/runners/OclCnRunner.cpp.i
@@ -1392,7 +1392,7 @@ src/backend/opencl/runners/OclCnRunner.i: src/backend/opencl/runners/OclCnRunner
 
 # target to preprocess a source file
 src/backend/opencl/runners/OclCnRunner.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/runners/OclCnRunner.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/runners/OclCnRunner.cpp.i
 .PHONY : src/backend/opencl/runners/OclCnRunner.cpp.i
 
 src/backend/opencl/runners/OclCnRunner.s: src/backend/opencl/runners/OclCnRunner.cpp.s
@@ -1400,7 +1400,7 @@ src/backend/opencl/runners/OclCnRunner.s: src/backend/opencl/runners/OclCnRunner
 
 # target to generate assembly for a file
 src/backend/opencl/runners/OclCnRunner.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/runners/OclCnRunner.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/runners/OclCnRunner.cpp.s
 .PHONY : src/backend/opencl/runners/OclCnRunner.cpp.s
 
 src/backend/opencl/runners/OclKawPowRunner.o: src/backend/opencl/runners/OclKawPowRunner.cpp.o
@@ -1408,7 +1408,7 @@ src/backend/opencl/runners/OclKawPowRunner.o: src/backend/opencl/runners/OclKawP
 
 # target to build an object file
 src/backend/opencl/runners/OclKawPowRunner.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/runners/OclKawPowRunner.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/runners/OclKawPowRunner.cpp.o
 .PHONY : src/backend/opencl/runners/OclKawPowRunner.cpp.o
 
 src/backend/opencl/runners/OclKawPowRunner.i: src/backend/opencl/runners/OclKawPowRunner.cpp.i
@@ -1416,7 +1416,7 @@ src/backend/opencl/runners/OclKawPowRunner.i: src/backend/opencl/runners/OclKawP
 
 # target to preprocess a source file
 src/backend/opencl/runners/OclKawPowRunner.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/runners/OclKawPowRunner.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/runners/OclKawPowRunner.cpp.i
 .PHONY : src/backend/opencl/runners/OclKawPowRunner.cpp.i
 
 src/backend/opencl/runners/OclKawPowRunner.s: src/backend/opencl/runners/OclKawPowRunner.cpp.s
@@ -1424,7 +1424,7 @@ src/backend/opencl/runners/OclKawPowRunner.s: src/backend/opencl/runners/OclKawP
 
 # target to generate assembly for a file
 src/backend/opencl/runners/OclKawPowRunner.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/runners/OclKawPowRunner.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/runners/OclKawPowRunner.cpp.s
 .PHONY : src/backend/opencl/runners/OclKawPowRunner.cpp.s
 
 src/backend/opencl/runners/tools/OclCnR.o: src/backend/opencl/runners/tools/OclCnR.cpp.o
@@ -1432,7 +1432,7 @@ src/backend/opencl/runners/tools/OclCnR.o: src/backend/opencl/runners/tools/OclC
 
 # target to build an object file
 src/backend/opencl/runners/tools/OclCnR.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/runners/tools/OclCnR.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/runners/tools/OclCnR.cpp.o
 .PHONY : src/backend/opencl/runners/tools/OclCnR.cpp.o
 
 src/backend/opencl/runners/tools/OclCnR.i: src/backend/opencl/runners/tools/OclCnR.cpp.i
@@ -1440,7 +1440,7 @@ src/backend/opencl/runners/tools/OclCnR.i: src/backend/opencl/runners/tools/OclC
 
 # target to preprocess a source file
 src/backend/opencl/runners/tools/OclCnR.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/runners/tools/OclCnR.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/runners/tools/OclCnR.cpp.i
 .PHONY : src/backend/opencl/runners/tools/OclCnR.cpp.i
 
 src/backend/opencl/runners/tools/OclCnR.s: src/backend/opencl/runners/tools/OclCnR.cpp.s
@@ -1448,7 +1448,7 @@ src/backend/opencl/runners/tools/OclCnR.s: src/backend/opencl/runners/tools/OclC
 
 # target to generate assembly for a file
 src/backend/opencl/runners/tools/OclCnR.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/runners/tools/OclCnR.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/runners/tools/OclCnR.cpp.s
 .PHONY : src/backend/opencl/runners/tools/OclCnR.cpp.s
 
 src/backend/opencl/runners/tools/OclKawPow.o: src/backend/opencl/runners/tools/OclKawPow.cpp.o
@@ -1456,7 +1456,7 @@ src/backend/opencl/runners/tools/OclKawPow.o: src/backend/opencl/runners/tools/O
 
 # target to build an object file
 src/backend/opencl/runners/tools/OclKawPow.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/runners/tools/OclKawPow.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/runners/tools/OclKawPow.cpp.o
 .PHONY : src/backend/opencl/runners/tools/OclKawPow.cpp.o
 
 src/backend/opencl/runners/tools/OclKawPow.i: src/backend/opencl/runners/tools/OclKawPow.cpp.i
@@ -1464,7 +1464,7 @@ src/backend/opencl/runners/tools/OclKawPow.i: src/backend/opencl/runners/tools/O
 
 # target to preprocess a source file
 src/backend/opencl/runners/tools/OclKawPow.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/runners/tools/OclKawPow.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/runners/tools/OclKawPow.cpp.i
 .PHONY : src/backend/opencl/runners/tools/OclKawPow.cpp.i
 
 src/backend/opencl/runners/tools/OclKawPow.s: src/backend/opencl/runners/tools/OclKawPow.cpp.s
@@ -1472,7 +1472,7 @@ src/backend/opencl/runners/tools/OclKawPow.s: src/backend/opencl/runners/tools/O
 
 # target to generate assembly for a file
 src/backend/opencl/runners/tools/OclKawPow.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/runners/tools/OclKawPow.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/runners/tools/OclKawPow.cpp.s
 .PHONY : src/backend/opencl/runners/tools/OclKawPow.cpp.s
 
 src/backend/opencl/runners/tools/OclSharedData.o: src/backend/opencl/runners/tools/OclSharedData.cpp.o
@@ -1480,7 +1480,7 @@ src/backend/opencl/runners/tools/OclSharedData.o: src/backend/opencl/runners/too
 
 # target to build an object file
 src/backend/opencl/runners/tools/OclSharedData.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/runners/tools/OclSharedData.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/runners/tools/OclSharedData.cpp.o
 .PHONY : src/backend/opencl/runners/tools/OclSharedData.cpp.o
 
 src/backend/opencl/runners/tools/OclSharedData.i: src/backend/opencl/runners/tools/OclSharedData.cpp.i
@@ -1488,7 +1488,7 @@ src/backend/opencl/runners/tools/OclSharedData.i: src/backend/opencl/runners/too
 
 # target to preprocess a source file
 src/backend/opencl/runners/tools/OclSharedData.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/runners/tools/OclSharedData.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/runners/tools/OclSharedData.cpp.i
 .PHONY : src/backend/opencl/runners/tools/OclSharedData.cpp.i
 
 src/backend/opencl/runners/tools/OclSharedData.s: src/backend/opencl/runners/tools/OclSharedData.cpp.s
@@ -1496,7 +1496,7 @@ src/backend/opencl/runners/tools/OclSharedData.s: src/backend/opencl/runners/too
 
 # target to generate assembly for a file
 src/backend/opencl/runners/tools/OclSharedData.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/runners/tools/OclSharedData.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/runners/tools/OclSharedData.cpp.s
 .PHONY : src/backend/opencl/runners/tools/OclSharedData.cpp.s
 
 src/backend/opencl/runners/tools/OclSharedState.o: src/backend/opencl/runners/tools/OclSharedState.cpp.o
@@ -1504,7 +1504,7 @@ src/backend/opencl/runners/tools/OclSharedState.o: src/backend/opencl/runners/to
 
 # target to build an object file
 src/backend/opencl/runners/tools/OclSharedState.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/runners/tools/OclSharedState.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/runners/tools/OclSharedState.cpp.o
 .PHONY : src/backend/opencl/runners/tools/OclSharedState.cpp.o
 
 src/backend/opencl/runners/tools/OclSharedState.i: src/backend/opencl/runners/tools/OclSharedState.cpp.i
@@ -1512,7 +1512,7 @@ src/backend/opencl/runners/tools/OclSharedState.i: src/backend/opencl/runners/to
 
 # target to preprocess a source file
 src/backend/opencl/runners/tools/OclSharedState.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/runners/tools/OclSharedState.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/runners/tools/OclSharedState.cpp.i
 .PHONY : src/backend/opencl/runners/tools/OclSharedState.cpp.i
 
 src/backend/opencl/runners/tools/OclSharedState.s: src/backend/opencl/runners/tools/OclSharedState.cpp.s
@@ -1520,7 +1520,7 @@ src/backend/opencl/runners/tools/OclSharedState.s: src/backend/opencl/runners/to
 
 # target to generate assembly for a file
 src/backend/opencl/runners/tools/OclSharedState.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/runners/tools/OclSharedState.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/runners/tools/OclSharedState.cpp.s
 .PHONY : src/backend/opencl/runners/tools/OclSharedState.cpp.s
 
 src/backend/opencl/wrappers/OclContext.o: src/backend/opencl/wrappers/OclContext.cpp.o
@@ -1528,7 +1528,7 @@ src/backend/opencl/wrappers/OclContext.o: src/backend/opencl/wrappers/OclContext
 
 # target to build an object file
 src/backend/opencl/wrappers/OclContext.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/wrappers/OclContext.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/wrappers/OclContext.cpp.o
 .PHONY : src/backend/opencl/wrappers/OclContext.cpp.o
 
 src/backend/opencl/wrappers/OclContext.i: src/backend/opencl/wrappers/OclContext.cpp.i
@@ -1536,7 +1536,7 @@ src/backend/opencl/wrappers/OclContext.i: src/backend/opencl/wrappers/OclContext
 
 # target to preprocess a source file
 src/backend/opencl/wrappers/OclContext.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/wrappers/OclContext.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/wrappers/OclContext.cpp.i
 .PHONY : src/backend/opencl/wrappers/OclContext.cpp.i
 
 src/backend/opencl/wrappers/OclContext.s: src/backend/opencl/wrappers/OclContext.cpp.s
@@ -1544,7 +1544,7 @@ src/backend/opencl/wrappers/OclContext.s: src/backend/opencl/wrappers/OclContext
 
 # target to generate assembly for a file
 src/backend/opencl/wrappers/OclContext.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/wrappers/OclContext.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/wrappers/OclContext.cpp.s
 .PHONY : src/backend/opencl/wrappers/OclContext.cpp.s
 
 src/backend/opencl/wrappers/OclDevice.o: src/backend/opencl/wrappers/OclDevice.cpp.o
@@ -1552,7 +1552,7 @@ src/backend/opencl/wrappers/OclDevice.o: src/backend/opencl/wrappers/OclDevice.c
 
 # target to build an object file
 src/backend/opencl/wrappers/OclDevice.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/wrappers/OclDevice.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/wrappers/OclDevice.cpp.o
 .PHONY : src/backend/opencl/wrappers/OclDevice.cpp.o
 
 src/backend/opencl/wrappers/OclDevice.i: src/backend/opencl/wrappers/OclDevice.cpp.i
@@ -1560,7 +1560,7 @@ src/backend/opencl/wrappers/OclDevice.i: src/backend/opencl/wrappers/OclDevice.c
 
 # target to preprocess a source file
 src/backend/opencl/wrappers/OclDevice.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/wrappers/OclDevice.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/wrappers/OclDevice.cpp.i
 .PHONY : src/backend/opencl/wrappers/OclDevice.cpp.i
 
 src/backend/opencl/wrappers/OclDevice.s: src/backend/opencl/wrappers/OclDevice.cpp.s
@@ -1568,7 +1568,7 @@ src/backend/opencl/wrappers/OclDevice.s: src/backend/opencl/wrappers/OclDevice.c
 
 # target to generate assembly for a file
 src/backend/opencl/wrappers/OclDevice.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/wrappers/OclDevice.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/wrappers/OclDevice.cpp.s
 .PHONY : src/backend/opencl/wrappers/OclDevice.cpp.s
 
 src/backend/opencl/wrappers/OclError.o: src/backend/opencl/wrappers/OclError.cpp.o
@@ -1576,7 +1576,7 @@ src/backend/opencl/wrappers/OclError.o: src/backend/opencl/wrappers/OclError.cpp
 
 # target to build an object file
 src/backend/opencl/wrappers/OclError.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/wrappers/OclError.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/wrappers/OclError.cpp.o
 .PHONY : src/backend/opencl/wrappers/OclError.cpp.o
 
 src/backend/opencl/wrappers/OclError.i: src/backend/opencl/wrappers/OclError.cpp.i
@@ -1584,7 +1584,7 @@ src/backend/opencl/wrappers/OclError.i: src/backend/opencl/wrappers/OclError.cpp
 
 # target to preprocess a source file
 src/backend/opencl/wrappers/OclError.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/wrappers/OclError.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/wrappers/OclError.cpp.i
 .PHONY : src/backend/opencl/wrappers/OclError.cpp.i
 
 src/backend/opencl/wrappers/OclError.s: src/backend/opencl/wrappers/OclError.cpp.s
@@ -1592,7 +1592,7 @@ src/backend/opencl/wrappers/OclError.s: src/backend/opencl/wrappers/OclError.cpp
 
 # target to generate assembly for a file
 src/backend/opencl/wrappers/OclError.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/wrappers/OclError.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/wrappers/OclError.cpp.s
 .PHONY : src/backend/opencl/wrappers/OclError.cpp.s
 
 src/backend/opencl/wrappers/OclKernel.o: src/backend/opencl/wrappers/OclKernel.cpp.o
@@ -1600,7 +1600,7 @@ src/backend/opencl/wrappers/OclKernel.o: src/backend/opencl/wrappers/OclKernel.c
 
 # target to build an object file
 src/backend/opencl/wrappers/OclKernel.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/wrappers/OclKernel.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/wrappers/OclKernel.cpp.o
 .PHONY : src/backend/opencl/wrappers/OclKernel.cpp.o
 
 src/backend/opencl/wrappers/OclKernel.i: src/backend/opencl/wrappers/OclKernel.cpp.i
@@ -1608,7 +1608,7 @@ src/backend/opencl/wrappers/OclKernel.i: src/backend/opencl/wrappers/OclKernel.c
 
 # target to preprocess a source file
 src/backend/opencl/wrappers/OclKernel.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/wrappers/OclKernel.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/wrappers/OclKernel.cpp.i
 .PHONY : src/backend/opencl/wrappers/OclKernel.cpp.i
 
 src/backend/opencl/wrappers/OclKernel.s: src/backend/opencl/wrappers/OclKernel.cpp.s
@@ -1616,7 +1616,7 @@ src/backend/opencl/wrappers/OclKernel.s: src/backend/opencl/wrappers/OclKernel.c
 
 # target to generate assembly for a file
 src/backend/opencl/wrappers/OclKernel.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/wrappers/OclKernel.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/wrappers/OclKernel.cpp.s
 .PHONY : src/backend/opencl/wrappers/OclKernel.cpp.s
 
 src/backend/opencl/wrappers/OclLib.o: src/backend/opencl/wrappers/OclLib.cpp.o
@@ -1624,7 +1624,7 @@ src/backend/opencl/wrappers/OclLib.o: src/backend/opencl/wrappers/OclLib.cpp.o
 
 # target to build an object file
 src/backend/opencl/wrappers/OclLib.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/wrappers/OclLib.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/wrappers/OclLib.cpp.o
 .PHONY : src/backend/opencl/wrappers/OclLib.cpp.o
 
 src/backend/opencl/wrappers/OclLib.i: src/backend/opencl/wrappers/OclLib.cpp.i
@@ -1632,7 +1632,7 @@ src/backend/opencl/wrappers/OclLib.i: src/backend/opencl/wrappers/OclLib.cpp.i
 
 # target to preprocess a source file
 src/backend/opencl/wrappers/OclLib.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/wrappers/OclLib.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/wrappers/OclLib.cpp.i
 .PHONY : src/backend/opencl/wrappers/OclLib.cpp.i
 
 src/backend/opencl/wrappers/OclLib.s: src/backend/opencl/wrappers/OclLib.cpp.s
@@ -1640,7 +1640,7 @@ src/backend/opencl/wrappers/OclLib.s: src/backend/opencl/wrappers/OclLib.cpp.s
 
 # target to generate assembly for a file
 src/backend/opencl/wrappers/OclLib.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/wrappers/OclLib.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/wrappers/OclLib.cpp.s
 .PHONY : src/backend/opencl/wrappers/OclLib.cpp.s
 
 src/backend/opencl/wrappers/OclPlatform.o: src/backend/opencl/wrappers/OclPlatform.cpp.o
@@ -1648,7 +1648,7 @@ src/backend/opencl/wrappers/OclPlatform.o: src/backend/opencl/wrappers/OclPlatfo
 
 # target to build an object file
 src/backend/opencl/wrappers/OclPlatform.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/wrappers/OclPlatform.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/wrappers/OclPlatform.cpp.o
 .PHONY : src/backend/opencl/wrappers/OclPlatform.cpp.o
 
 src/backend/opencl/wrappers/OclPlatform.i: src/backend/opencl/wrappers/OclPlatform.cpp.i
@@ -1656,7 +1656,7 @@ src/backend/opencl/wrappers/OclPlatform.i: src/backend/opencl/wrappers/OclPlatfo
 
 # target to preprocess a source file
 src/backend/opencl/wrappers/OclPlatform.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/wrappers/OclPlatform.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/wrappers/OclPlatform.cpp.i
 .PHONY : src/backend/opencl/wrappers/OclPlatform.cpp.i
 
 src/backend/opencl/wrappers/OclPlatform.s: src/backend/opencl/wrappers/OclPlatform.cpp.s
@@ -1664,7 +1664,7 @@ src/backend/opencl/wrappers/OclPlatform.s: src/backend/opencl/wrappers/OclPlatfo
 
 # target to generate assembly for a file
 src/backend/opencl/wrappers/OclPlatform.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/backend/opencl/wrappers/OclPlatform.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/backend/opencl/wrappers/OclPlatform.cpp.s
 .PHONY : src/backend/opencl/wrappers/OclPlatform.cpp.s
 
 src/base/api/Api.o: src/base/api/Api.cpp.o
@@ -1672,7 +1672,7 @@ src/base/api/Api.o: src/base/api/Api.cpp.o
 
 # target to build an object file
 src/base/api/Api.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/api/Api.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/api/Api.cpp.o
 .PHONY : src/base/api/Api.cpp.o
 
 src/base/api/Api.i: src/base/api/Api.cpp.i
@@ -1680,7 +1680,7 @@ src/base/api/Api.i: src/base/api/Api.cpp.i
 
 # target to preprocess a source file
 src/base/api/Api.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/api/Api.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/api/Api.cpp.i
 .PHONY : src/base/api/Api.cpp.i
 
 src/base/api/Api.s: src/base/api/Api.cpp.s
@@ -1688,7 +1688,7 @@ src/base/api/Api.s: src/base/api/Api.cpp.s
 
 # target to generate assembly for a file
 src/base/api/Api.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/api/Api.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/api/Api.cpp.s
 .PHONY : src/base/api/Api.cpp.s
 
 src/base/api/Httpd.o: src/base/api/Httpd.cpp.o
@@ -1696,7 +1696,7 @@ src/base/api/Httpd.o: src/base/api/Httpd.cpp.o
 
 # target to build an object file
 src/base/api/Httpd.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/api/Httpd.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/api/Httpd.cpp.o
 .PHONY : src/base/api/Httpd.cpp.o
 
 src/base/api/Httpd.i: src/base/api/Httpd.cpp.i
@@ -1704,7 +1704,7 @@ src/base/api/Httpd.i: src/base/api/Httpd.cpp.i
 
 # target to preprocess a source file
 src/base/api/Httpd.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/api/Httpd.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/api/Httpd.cpp.i
 .PHONY : src/base/api/Httpd.cpp.i
 
 src/base/api/Httpd.s: src/base/api/Httpd.cpp.s
@@ -1712,7 +1712,7 @@ src/base/api/Httpd.s: src/base/api/Httpd.cpp.s
 
 # target to generate assembly for a file
 src/base/api/Httpd.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/api/Httpd.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/api/Httpd.cpp.s
 .PHONY : src/base/api/Httpd.cpp.s
 
 src/base/api/requests/ApiRequest.o: src/base/api/requests/ApiRequest.cpp.o
@@ -1720,7 +1720,7 @@ src/base/api/requests/ApiRequest.o: src/base/api/requests/ApiRequest.cpp.o
 
 # target to build an object file
 src/base/api/requests/ApiRequest.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/api/requests/ApiRequest.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/api/requests/ApiRequest.cpp.o
 .PHONY : src/base/api/requests/ApiRequest.cpp.o
 
 src/base/api/requests/ApiRequest.i: src/base/api/requests/ApiRequest.cpp.i
@@ -1728,7 +1728,7 @@ src/base/api/requests/ApiRequest.i: src/base/api/requests/ApiRequest.cpp.i
 
 # target to preprocess a source file
 src/base/api/requests/ApiRequest.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/api/requests/ApiRequest.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/api/requests/ApiRequest.cpp.i
 .PHONY : src/base/api/requests/ApiRequest.cpp.i
 
 src/base/api/requests/ApiRequest.s: src/base/api/requests/ApiRequest.cpp.s
@@ -1736,7 +1736,7 @@ src/base/api/requests/ApiRequest.s: src/base/api/requests/ApiRequest.cpp.s
 
 # target to generate assembly for a file
 src/base/api/requests/ApiRequest.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/api/requests/ApiRequest.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/api/requests/ApiRequest.cpp.s
 .PHONY : src/base/api/requests/ApiRequest.cpp.s
 
 src/base/api/requests/HttpApiRequest.o: src/base/api/requests/HttpApiRequest.cpp.o
@@ -1744,7 +1744,7 @@ src/base/api/requests/HttpApiRequest.o: src/base/api/requests/HttpApiRequest.cpp
 
 # target to build an object file
 src/base/api/requests/HttpApiRequest.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/api/requests/HttpApiRequest.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/api/requests/HttpApiRequest.cpp.o
 .PHONY : src/base/api/requests/HttpApiRequest.cpp.o
 
 src/base/api/requests/HttpApiRequest.i: src/base/api/requests/HttpApiRequest.cpp.i
@@ -1752,7 +1752,7 @@ src/base/api/requests/HttpApiRequest.i: src/base/api/requests/HttpApiRequest.cpp
 
 # target to preprocess a source file
 src/base/api/requests/HttpApiRequest.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/api/requests/HttpApiRequest.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/api/requests/HttpApiRequest.cpp.i
 .PHONY : src/base/api/requests/HttpApiRequest.cpp.i
 
 src/base/api/requests/HttpApiRequest.s: src/base/api/requests/HttpApiRequest.cpp.s
@@ -1760,7 +1760,7 @@ src/base/api/requests/HttpApiRequest.s: src/base/api/requests/HttpApiRequest.cpp
 
 # target to generate assembly for a file
 src/base/api/requests/HttpApiRequest.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/api/requests/HttpApiRequest.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/api/requests/HttpApiRequest.cpp.s
 .PHONY : src/base/api/requests/HttpApiRequest.cpp.s
 
 src/base/crypto/Algorithm.o: src/base/crypto/Algorithm.cpp.o
@@ -1768,7 +1768,7 @@ src/base/crypto/Algorithm.o: src/base/crypto/Algorithm.cpp.o
 
 # target to build an object file
 src/base/crypto/Algorithm.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/crypto/Algorithm.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/crypto/Algorithm.cpp.o
 .PHONY : src/base/crypto/Algorithm.cpp.o
 
 src/base/crypto/Algorithm.i: src/base/crypto/Algorithm.cpp.i
@@ -1776,7 +1776,7 @@ src/base/crypto/Algorithm.i: src/base/crypto/Algorithm.cpp.i
 
 # target to preprocess a source file
 src/base/crypto/Algorithm.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/crypto/Algorithm.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/crypto/Algorithm.cpp.i
 .PHONY : src/base/crypto/Algorithm.cpp.i
 
 src/base/crypto/Algorithm.s: src/base/crypto/Algorithm.cpp.s
@@ -1784,7 +1784,7 @@ src/base/crypto/Algorithm.s: src/base/crypto/Algorithm.cpp.s
 
 # target to generate assembly for a file
 src/base/crypto/Algorithm.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/crypto/Algorithm.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/crypto/Algorithm.cpp.s
 .PHONY : src/base/crypto/Algorithm.cpp.s
 
 src/base/crypto/Coin.o: src/base/crypto/Coin.cpp.o
@@ -1792,7 +1792,7 @@ src/base/crypto/Coin.o: src/base/crypto/Coin.cpp.o
 
 # target to build an object file
 src/base/crypto/Coin.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/crypto/Coin.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/crypto/Coin.cpp.o
 .PHONY : src/base/crypto/Coin.cpp.o
 
 src/base/crypto/Coin.i: src/base/crypto/Coin.cpp.i
@@ -1800,7 +1800,7 @@ src/base/crypto/Coin.i: src/base/crypto/Coin.cpp.i
 
 # target to preprocess a source file
 src/base/crypto/Coin.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/crypto/Coin.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/crypto/Coin.cpp.i
 .PHONY : src/base/crypto/Coin.cpp.i
 
 src/base/crypto/Coin.s: src/base/crypto/Coin.cpp.s
@@ -1808,7 +1808,7 @@ src/base/crypto/Coin.s: src/base/crypto/Coin.cpp.s
 
 # target to generate assembly for a file
 src/base/crypto/Coin.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/crypto/Coin.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/crypto/Coin.cpp.s
 .PHONY : src/base/crypto/Coin.cpp.s
 
 src/base/crypto/keccak.o: src/base/crypto/keccak.cpp.o
@@ -1816,7 +1816,7 @@ src/base/crypto/keccak.o: src/base/crypto/keccak.cpp.o
 
 # target to build an object file
 src/base/crypto/keccak.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/crypto/keccak.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/crypto/keccak.cpp.o
 .PHONY : src/base/crypto/keccak.cpp.o
 
 src/base/crypto/keccak.i: src/base/crypto/keccak.cpp.i
@@ -1824,7 +1824,7 @@ src/base/crypto/keccak.i: src/base/crypto/keccak.cpp.i
 
 # target to preprocess a source file
 src/base/crypto/keccak.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/crypto/keccak.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/crypto/keccak.cpp.i
 .PHONY : src/base/crypto/keccak.cpp.i
 
 src/base/crypto/keccak.s: src/base/crypto/keccak.cpp.s
@@ -1832,7 +1832,7 @@ src/base/crypto/keccak.s: src/base/crypto/keccak.cpp.s
 
 # target to generate assembly for a file
 src/base/crypto/keccak.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/crypto/keccak.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/crypto/keccak.cpp.s
 .PHONY : src/base/crypto/keccak.cpp.s
 
 src/base/crypto/sha3.o: src/base/crypto/sha3.cpp.o
@@ -1840,7 +1840,7 @@ src/base/crypto/sha3.o: src/base/crypto/sha3.cpp.o
 
 # target to build an object file
 src/base/crypto/sha3.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/crypto/sha3.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/crypto/sha3.cpp.o
 .PHONY : src/base/crypto/sha3.cpp.o
 
 src/base/crypto/sha3.i: src/base/crypto/sha3.cpp.i
@@ -1848,7 +1848,7 @@ src/base/crypto/sha3.i: src/base/crypto/sha3.cpp.i
 
 # target to preprocess a source file
 src/base/crypto/sha3.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/crypto/sha3.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/crypto/sha3.cpp.i
 .PHONY : src/base/crypto/sha3.cpp.i
 
 src/base/crypto/sha3.s: src/base/crypto/sha3.cpp.s
@@ -1856,7 +1856,7 @@ src/base/crypto/sha3.s: src/base/crypto/sha3.cpp.s
 
 # target to generate assembly for a file
 src/base/crypto/sha3.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/crypto/sha3.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/crypto/sha3.cpp.s
 .PHONY : src/base/crypto/sha3.cpp.s
 
 src/base/io/Async.o: src/base/io/Async.cpp.o
@@ -1864,7 +1864,7 @@ src/base/io/Async.o: src/base/io/Async.cpp.o
 
 # target to build an object file
 src/base/io/Async.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/Async.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/Async.cpp.o
 .PHONY : src/base/io/Async.cpp.o
 
 src/base/io/Async.i: src/base/io/Async.cpp.i
@@ -1872,7 +1872,7 @@ src/base/io/Async.i: src/base/io/Async.cpp.i
 
 # target to preprocess a source file
 src/base/io/Async.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/Async.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/Async.cpp.i
 .PHONY : src/base/io/Async.cpp.i
 
 src/base/io/Async.s: src/base/io/Async.cpp.s
@@ -1880,7 +1880,7 @@ src/base/io/Async.s: src/base/io/Async.cpp.s
 
 # target to generate assembly for a file
 src/base/io/Async.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/Async.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/Async.cpp.s
 .PHONY : src/base/io/Async.cpp.s
 
 src/base/io/Console.o: src/base/io/Console.cpp.o
@@ -1888,7 +1888,7 @@ src/base/io/Console.o: src/base/io/Console.cpp.o
 
 # target to build an object file
 src/base/io/Console.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/Console.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/Console.cpp.o
 .PHONY : src/base/io/Console.cpp.o
 
 src/base/io/Console.i: src/base/io/Console.cpp.i
@@ -1896,7 +1896,7 @@ src/base/io/Console.i: src/base/io/Console.cpp.i
 
 # target to preprocess a source file
 src/base/io/Console.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/Console.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/Console.cpp.i
 .PHONY : src/base/io/Console.cpp.i
 
 src/base/io/Console.s: src/base/io/Console.cpp.s
@@ -1904,7 +1904,7 @@ src/base/io/Console.s: src/base/io/Console.cpp.s
 
 # target to generate assembly for a file
 src/base/io/Console.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/Console.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/Console.cpp.s
 .PHONY : src/base/io/Console.cpp.s
 
 src/base/io/Env.o: src/base/io/Env.cpp.o
@@ -1912,7 +1912,7 @@ src/base/io/Env.o: src/base/io/Env.cpp.o
 
 # target to build an object file
 src/base/io/Env.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/Env.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/Env.cpp.o
 .PHONY : src/base/io/Env.cpp.o
 
 src/base/io/Env.i: src/base/io/Env.cpp.i
@@ -1920,7 +1920,7 @@ src/base/io/Env.i: src/base/io/Env.cpp.i
 
 # target to preprocess a source file
 src/base/io/Env.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/Env.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/Env.cpp.i
 .PHONY : src/base/io/Env.cpp.i
 
 src/base/io/Env.s: src/base/io/Env.cpp.s
@@ -1928,7 +1928,7 @@ src/base/io/Env.s: src/base/io/Env.cpp.s
 
 # target to generate assembly for a file
 src/base/io/Env.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/Env.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/Env.cpp.s
 .PHONY : src/base/io/Env.cpp.s
 
 src/base/io/Signals.o: src/base/io/Signals.cpp.o
@@ -1936,7 +1936,7 @@ src/base/io/Signals.o: src/base/io/Signals.cpp.o
 
 # target to build an object file
 src/base/io/Signals.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/Signals.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/Signals.cpp.o
 .PHONY : src/base/io/Signals.cpp.o
 
 src/base/io/Signals.i: src/base/io/Signals.cpp.i
@@ -1944,7 +1944,7 @@ src/base/io/Signals.i: src/base/io/Signals.cpp.i
 
 # target to preprocess a source file
 src/base/io/Signals.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/Signals.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/Signals.cpp.i
 .PHONY : src/base/io/Signals.cpp.i
 
 src/base/io/Signals.s: src/base/io/Signals.cpp.s
@@ -1952,7 +1952,7 @@ src/base/io/Signals.s: src/base/io/Signals.cpp.s
 
 # target to generate assembly for a file
 src/base/io/Signals.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/Signals.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/Signals.cpp.s
 .PHONY : src/base/io/Signals.cpp.s
 
 src/base/io/Watcher.o: src/base/io/Watcher.cpp.o
@@ -1960,7 +1960,7 @@ src/base/io/Watcher.o: src/base/io/Watcher.cpp.o
 
 # target to build an object file
 src/base/io/Watcher.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/Watcher.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/Watcher.cpp.o
 .PHONY : src/base/io/Watcher.cpp.o
 
 src/base/io/Watcher.i: src/base/io/Watcher.cpp.i
@@ -1968,7 +1968,7 @@ src/base/io/Watcher.i: src/base/io/Watcher.cpp.i
 
 # target to preprocess a source file
 src/base/io/Watcher.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/Watcher.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/Watcher.cpp.i
 .PHONY : src/base/io/Watcher.cpp.i
 
 src/base/io/Watcher.s: src/base/io/Watcher.cpp.s
@@ -1976,7 +1976,7 @@ src/base/io/Watcher.s: src/base/io/Watcher.cpp.s
 
 # target to generate assembly for a file
 src/base/io/Watcher.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/Watcher.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/Watcher.cpp.s
 .PHONY : src/base/io/Watcher.cpp.s
 
 src/base/io/json/Json.o: src/base/io/json/Json.cpp.o
@@ -1984,7 +1984,7 @@ src/base/io/json/Json.o: src/base/io/json/Json.cpp.o
 
 # target to build an object file
 src/base/io/json/Json.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/json/Json.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/json/Json.cpp.o
 .PHONY : src/base/io/json/Json.cpp.o
 
 src/base/io/json/Json.i: src/base/io/json/Json.cpp.i
@@ -1992,7 +1992,7 @@ src/base/io/json/Json.i: src/base/io/json/Json.cpp.i
 
 # target to preprocess a source file
 src/base/io/json/Json.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/json/Json.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/json/Json.cpp.i
 .PHONY : src/base/io/json/Json.cpp.i
 
 src/base/io/json/Json.s: src/base/io/json/Json.cpp.s
@@ -2000,7 +2000,7 @@ src/base/io/json/Json.s: src/base/io/json/Json.cpp.s
 
 # target to generate assembly for a file
 src/base/io/json/Json.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/json/Json.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/json/Json.cpp.s
 .PHONY : src/base/io/json/Json.cpp.s
 
 src/base/io/json/JsonChain.o: src/base/io/json/JsonChain.cpp.o
@@ -2008,7 +2008,7 @@ src/base/io/json/JsonChain.o: src/base/io/json/JsonChain.cpp.o
 
 # target to build an object file
 src/base/io/json/JsonChain.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/json/JsonChain.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/json/JsonChain.cpp.o
 .PHONY : src/base/io/json/JsonChain.cpp.o
 
 src/base/io/json/JsonChain.i: src/base/io/json/JsonChain.cpp.i
@@ -2016,7 +2016,7 @@ src/base/io/json/JsonChain.i: src/base/io/json/JsonChain.cpp.i
 
 # target to preprocess a source file
 src/base/io/json/JsonChain.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/json/JsonChain.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/json/JsonChain.cpp.i
 .PHONY : src/base/io/json/JsonChain.cpp.i
 
 src/base/io/json/JsonChain.s: src/base/io/json/JsonChain.cpp.s
@@ -2024,7 +2024,7 @@ src/base/io/json/JsonChain.s: src/base/io/json/JsonChain.cpp.s
 
 # target to generate assembly for a file
 src/base/io/json/JsonChain.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/json/JsonChain.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/json/JsonChain.cpp.s
 .PHONY : src/base/io/json/JsonChain.cpp.s
 
 src/base/io/json/JsonRequest.o: src/base/io/json/JsonRequest.cpp.o
@@ -2032,7 +2032,7 @@ src/base/io/json/JsonRequest.o: src/base/io/json/JsonRequest.cpp.o
 
 # target to build an object file
 src/base/io/json/JsonRequest.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/json/JsonRequest.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/json/JsonRequest.cpp.o
 .PHONY : src/base/io/json/JsonRequest.cpp.o
 
 src/base/io/json/JsonRequest.i: src/base/io/json/JsonRequest.cpp.i
@@ -2040,7 +2040,7 @@ src/base/io/json/JsonRequest.i: src/base/io/json/JsonRequest.cpp.i
 
 # target to preprocess a source file
 src/base/io/json/JsonRequest.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/json/JsonRequest.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/json/JsonRequest.cpp.i
 .PHONY : src/base/io/json/JsonRequest.cpp.i
 
 src/base/io/json/JsonRequest.s: src/base/io/json/JsonRequest.cpp.s
@@ -2048,7 +2048,7 @@ src/base/io/json/JsonRequest.s: src/base/io/json/JsonRequest.cpp.s
 
 # target to generate assembly for a file
 src/base/io/json/JsonRequest.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/json/JsonRequest.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/json/JsonRequest.cpp.s
 .PHONY : src/base/io/json/JsonRequest.cpp.s
 
 src/base/io/json/Json_unix.o: src/base/io/json/Json_unix.cpp.o
@@ -2056,7 +2056,7 @@ src/base/io/json/Json_unix.o: src/base/io/json/Json_unix.cpp.o
 
 # target to build an object file
 src/base/io/json/Json_unix.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/json/Json_unix.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/json/Json_unix.cpp.o
 .PHONY : src/base/io/json/Json_unix.cpp.o
 
 src/base/io/json/Json_unix.i: src/base/io/json/Json_unix.cpp.i
@@ -2064,7 +2064,7 @@ src/base/io/json/Json_unix.i: src/base/io/json/Json_unix.cpp.i
 
 # target to preprocess a source file
 src/base/io/json/Json_unix.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/json/Json_unix.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/json/Json_unix.cpp.i
 .PHONY : src/base/io/json/Json_unix.cpp.i
 
 src/base/io/json/Json_unix.s: src/base/io/json/Json_unix.cpp.s
@@ -2072,7 +2072,7 @@ src/base/io/json/Json_unix.s: src/base/io/json/Json_unix.cpp.s
 
 # target to generate assembly for a file
 src/base/io/json/Json_unix.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/json/Json_unix.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/json/Json_unix.cpp.s
 .PHONY : src/base/io/json/Json_unix.cpp.s
 
 src/base/io/log/FileLogWriter.o: src/base/io/log/FileLogWriter.cpp.o
@@ -2080,7 +2080,7 @@ src/base/io/log/FileLogWriter.o: src/base/io/log/FileLogWriter.cpp.o
 
 # target to build an object file
 src/base/io/log/FileLogWriter.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/log/FileLogWriter.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/log/FileLogWriter.cpp.o
 .PHONY : src/base/io/log/FileLogWriter.cpp.o
 
 src/base/io/log/FileLogWriter.i: src/base/io/log/FileLogWriter.cpp.i
@@ -2088,7 +2088,7 @@ src/base/io/log/FileLogWriter.i: src/base/io/log/FileLogWriter.cpp.i
 
 # target to preprocess a source file
 src/base/io/log/FileLogWriter.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/log/FileLogWriter.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/log/FileLogWriter.cpp.i
 .PHONY : src/base/io/log/FileLogWriter.cpp.i
 
 src/base/io/log/FileLogWriter.s: src/base/io/log/FileLogWriter.cpp.s
@@ -2096,7 +2096,7 @@ src/base/io/log/FileLogWriter.s: src/base/io/log/FileLogWriter.cpp.s
 
 # target to generate assembly for a file
 src/base/io/log/FileLogWriter.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/log/FileLogWriter.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/log/FileLogWriter.cpp.s
 .PHONY : src/base/io/log/FileLogWriter.cpp.s
 
 src/base/io/log/Log.o: src/base/io/log/Log.cpp.o
@@ -2104,7 +2104,7 @@ src/base/io/log/Log.o: src/base/io/log/Log.cpp.o
 
 # target to build an object file
 src/base/io/log/Log.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/log/Log.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/log/Log.cpp.o
 .PHONY : src/base/io/log/Log.cpp.o
 
 src/base/io/log/Log.i: src/base/io/log/Log.cpp.i
@@ -2112,7 +2112,7 @@ src/base/io/log/Log.i: src/base/io/log/Log.cpp.i
 
 # target to preprocess a source file
 src/base/io/log/Log.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/log/Log.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/log/Log.cpp.i
 .PHONY : src/base/io/log/Log.cpp.i
 
 src/base/io/log/Log.s: src/base/io/log/Log.cpp.s
@@ -2120,7 +2120,7 @@ src/base/io/log/Log.s: src/base/io/log/Log.cpp.s
 
 # target to generate assembly for a file
 src/base/io/log/Log.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/log/Log.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/log/Log.cpp.s
 .PHONY : src/base/io/log/Log.cpp.s
 
 src/base/io/log/Tags.o: src/base/io/log/Tags.cpp.o
@@ -2128,7 +2128,7 @@ src/base/io/log/Tags.o: src/base/io/log/Tags.cpp.o
 
 # target to build an object file
 src/base/io/log/Tags.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/log/Tags.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/log/Tags.cpp.o
 .PHONY : src/base/io/log/Tags.cpp.o
 
 src/base/io/log/Tags.i: src/base/io/log/Tags.cpp.i
@@ -2136,7 +2136,7 @@ src/base/io/log/Tags.i: src/base/io/log/Tags.cpp.i
 
 # target to preprocess a source file
 src/base/io/log/Tags.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/log/Tags.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/log/Tags.cpp.i
 .PHONY : src/base/io/log/Tags.cpp.i
 
 src/base/io/log/Tags.s: src/base/io/log/Tags.cpp.s
@@ -2144,7 +2144,7 @@ src/base/io/log/Tags.s: src/base/io/log/Tags.cpp.s
 
 # target to generate assembly for a file
 src/base/io/log/Tags.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/log/Tags.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/log/Tags.cpp.s
 .PHONY : src/base/io/log/Tags.cpp.s
 
 src/base/io/log/backends/ConsoleLog.o: src/base/io/log/backends/ConsoleLog.cpp.o
@@ -2152,7 +2152,7 @@ src/base/io/log/backends/ConsoleLog.o: src/base/io/log/backends/ConsoleLog.cpp.o
 
 # target to build an object file
 src/base/io/log/backends/ConsoleLog.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/log/backends/ConsoleLog.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/log/backends/ConsoleLog.cpp.o
 .PHONY : src/base/io/log/backends/ConsoleLog.cpp.o
 
 src/base/io/log/backends/ConsoleLog.i: src/base/io/log/backends/ConsoleLog.cpp.i
@@ -2160,7 +2160,7 @@ src/base/io/log/backends/ConsoleLog.i: src/base/io/log/backends/ConsoleLog.cpp.i
 
 # target to preprocess a source file
 src/base/io/log/backends/ConsoleLog.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/log/backends/ConsoleLog.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/log/backends/ConsoleLog.cpp.i
 .PHONY : src/base/io/log/backends/ConsoleLog.cpp.i
 
 src/base/io/log/backends/ConsoleLog.s: src/base/io/log/backends/ConsoleLog.cpp.s
@@ -2168,7 +2168,7 @@ src/base/io/log/backends/ConsoleLog.s: src/base/io/log/backends/ConsoleLog.cpp.s
 
 # target to generate assembly for a file
 src/base/io/log/backends/ConsoleLog.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/log/backends/ConsoleLog.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/log/backends/ConsoleLog.cpp.s
 .PHONY : src/base/io/log/backends/ConsoleLog.cpp.s
 
 src/base/io/log/backends/FileLog.o: src/base/io/log/backends/FileLog.cpp.o
@@ -2176,7 +2176,7 @@ src/base/io/log/backends/FileLog.o: src/base/io/log/backends/FileLog.cpp.o
 
 # target to build an object file
 src/base/io/log/backends/FileLog.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/log/backends/FileLog.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/log/backends/FileLog.cpp.o
 .PHONY : src/base/io/log/backends/FileLog.cpp.o
 
 src/base/io/log/backends/FileLog.i: src/base/io/log/backends/FileLog.cpp.i
@@ -2184,7 +2184,7 @@ src/base/io/log/backends/FileLog.i: src/base/io/log/backends/FileLog.cpp.i
 
 # target to preprocess a source file
 src/base/io/log/backends/FileLog.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/log/backends/FileLog.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/log/backends/FileLog.cpp.i
 .PHONY : src/base/io/log/backends/FileLog.cpp.i
 
 src/base/io/log/backends/FileLog.s: src/base/io/log/backends/FileLog.cpp.s
@@ -2192,7 +2192,7 @@ src/base/io/log/backends/FileLog.s: src/base/io/log/backends/FileLog.cpp.s
 
 # target to generate assembly for a file
 src/base/io/log/backends/FileLog.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/log/backends/FileLog.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/log/backends/FileLog.cpp.s
 .PHONY : src/base/io/log/backends/FileLog.cpp.s
 
 src/base/io/log/backends/SysLog.o: src/base/io/log/backends/SysLog.cpp.o
@@ -2200,7 +2200,7 @@ src/base/io/log/backends/SysLog.o: src/base/io/log/backends/SysLog.cpp.o
 
 # target to build an object file
 src/base/io/log/backends/SysLog.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/log/backends/SysLog.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/log/backends/SysLog.cpp.o
 .PHONY : src/base/io/log/backends/SysLog.cpp.o
 
 src/base/io/log/backends/SysLog.i: src/base/io/log/backends/SysLog.cpp.i
@@ -2208,7 +2208,7 @@ src/base/io/log/backends/SysLog.i: src/base/io/log/backends/SysLog.cpp.i
 
 # target to preprocess a source file
 src/base/io/log/backends/SysLog.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/log/backends/SysLog.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/log/backends/SysLog.cpp.i
 .PHONY : src/base/io/log/backends/SysLog.cpp.i
 
 src/base/io/log/backends/SysLog.s: src/base/io/log/backends/SysLog.cpp.s
@@ -2216,7 +2216,7 @@ src/base/io/log/backends/SysLog.s: src/base/io/log/backends/SysLog.cpp.s
 
 # target to generate assembly for a file
 src/base/io/log/backends/SysLog.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/io/log/backends/SysLog.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/io/log/backends/SysLog.cpp.s
 .PHONY : src/base/io/log/backends/SysLog.cpp.s
 
 src/base/kernel/Base.o: src/base/kernel/Base.cpp.o
@@ -2224,7 +2224,7 @@ src/base/kernel/Base.o: src/base/kernel/Base.cpp.o
 
 # target to build an object file
 src/base/kernel/Base.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/kernel/Base.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/kernel/Base.cpp.o
 .PHONY : src/base/kernel/Base.cpp.o
 
 src/base/kernel/Base.i: src/base/kernel/Base.cpp.i
@@ -2232,7 +2232,7 @@ src/base/kernel/Base.i: src/base/kernel/Base.cpp.i
 
 # target to preprocess a source file
 src/base/kernel/Base.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/kernel/Base.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/kernel/Base.cpp.i
 .PHONY : src/base/kernel/Base.cpp.i
 
 src/base/kernel/Base.s: src/base/kernel/Base.cpp.s
@@ -2240,7 +2240,7 @@ src/base/kernel/Base.s: src/base/kernel/Base.cpp.s
 
 # target to generate assembly for a file
 src/base/kernel/Base.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/kernel/Base.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/kernel/Base.cpp.s
 .PHONY : src/base/kernel/Base.cpp.s
 
 src/base/kernel/Entry.o: src/base/kernel/Entry.cpp.o
@@ -2248,7 +2248,7 @@ src/base/kernel/Entry.o: src/base/kernel/Entry.cpp.o
 
 # target to build an object file
 src/base/kernel/Entry.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/kernel/Entry.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/kernel/Entry.cpp.o
 .PHONY : src/base/kernel/Entry.cpp.o
 
 src/base/kernel/Entry.i: src/base/kernel/Entry.cpp.i
@@ -2256,7 +2256,7 @@ src/base/kernel/Entry.i: src/base/kernel/Entry.cpp.i
 
 # target to preprocess a source file
 src/base/kernel/Entry.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/kernel/Entry.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/kernel/Entry.cpp.i
 .PHONY : src/base/kernel/Entry.cpp.i
 
 src/base/kernel/Entry.s: src/base/kernel/Entry.cpp.s
@@ -2264,7 +2264,7 @@ src/base/kernel/Entry.s: src/base/kernel/Entry.cpp.s
 
 # target to generate assembly for a file
 src/base/kernel/Entry.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/kernel/Entry.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/kernel/Entry.cpp.s
 .PHONY : src/base/kernel/Entry.cpp.s
 
 src/base/kernel/Platform.o: src/base/kernel/Platform.cpp.o
@@ -2272,7 +2272,7 @@ src/base/kernel/Platform.o: src/base/kernel/Platform.cpp.o
 
 # target to build an object file
 src/base/kernel/Platform.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/kernel/Platform.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/kernel/Platform.cpp.o
 .PHONY : src/base/kernel/Platform.cpp.o
 
 src/base/kernel/Platform.i: src/base/kernel/Platform.cpp.i
@@ -2280,7 +2280,7 @@ src/base/kernel/Platform.i: src/base/kernel/Platform.cpp.i
 
 # target to preprocess a source file
 src/base/kernel/Platform.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/kernel/Platform.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/kernel/Platform.cpp.i
 .PHONY : src/base/kernel/Platform.cpp.i
 
 src/base/kernel/Platform.s: src/base/kernel/Platform.cpp.s
@@ -2288,7 +2288,7 @@ src/base/kernel/Platform.s: src/base/kernel/Platform.cpp.s
 
 # target to generate assembly for a file
 src/base/kernel/Platform.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/kernel/Platform.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/kernel/Platform.cpp.s
 .PHONY : src/base/kernel/Platform.cpp.s
 
 src/base/kernel/Platform_hwloc.o: src/base/kernel/Platform_hwloc.cpp.o
@@ -2296,7 +2296,7 @@ src/base/kernel/Platform_hwloc.o: src/base/kernel/Platform_hwloc.cpp.o
 
 # target to build an object file
 src/base/kernel/Platform_hwloc.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/kernel/Platform_hwloc.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/kernel/Platform_hwloc.cpp.o
 .PHONY : src/base/kernel/Platform_hwloc.cpp.o
 
 src/base/kernel/Platform_hwloc.i: src/base/kernel/Platform_hwloc.cpp.i
@@ -2304,7 +2304,7 @@ src/base/kernel/Platform_hwloc.i: src/base/kernel/Platform_hwloc.cpp.i
 
 # target to preprocess a source file
 src/base/kernel/Platform_hwloc.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/kernel/Platform_hwloc.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/kernel/Platform_hwloc.cpp.i
 .PHONY : src/base/kernel/Platform_hwloc.cpp.i
 
 src/base/kernel/Platform_hwloc.s: src/base/kernel/Platform_hwloc.cpp.s
@@ -2312,7 +2312,7 @@ src/base/kernel/Platform_hwloc.s: src/base/kernel/Platform_hwloc.cpp.s
 
 # target to generate assembly for a file
 src/base/kernel/Platform_hwloc.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/kernel/Platform_hwloc.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/kernel/Platform_hwloc.cpp.s
 .PHONY : src/base/kernel/Platform_hwloc.cpp.s
 
 src/base/kernel/Platform_unix.o: src/base/kernel/Platform_unix.cpp.o
@@ -2320,7 +2320,7 @@ src/base/kernel/Platform_unix.o: src/base/kernel/Platform_unix.cpp.o
 
 # target to build an object file
 src/base/kernel/Platform_unix.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/kernel/Platform_unix.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/kernel/Platform_unix.cpp.o
 .PHONY : src/base/kernel/Platform_unix.cpp.o
 
 src/base/kernel/Platform_unix.i: src/base/kernel/Platform_unix.cpp.i
@@ -2328,7 +2328,7 @@ src/base/kernel/Platform_unix.i: src/base/kernel/Platform_unix.cpp.i
 
 # target to preprocess a source file
 src/base/kernel/Platform_unix.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/kernel/Platform_unix.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/kernel/Platform_unix.cpp.i
 .PHONY : src/base/kernel/Platform_unix.cpp.i
 
 src/base/kernel/Platform_unix.s: src/base/kernel/Platform_unix.cpp.s
@@ -2336,7 +2336,7 @@ src/base/kernel/Platform_unix.s: src/base/kernel/Platform_unix.cpp.s
 
 # target to generate assembly for a file
 src/base/kernel/Platform_unix.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/kernel/Platform_unix.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/kernel/Platform_unix.cpp.s
 .PHONY : src/base/kernel/Platform_unix.cpp.s
 
 src/base/kernel/Process.o: src/base/kernel/Process.cpp.o
@@ -2344,7 +2344,7 @@ src/base/kernel/Process.o: src/base/kernel/Process.cpp.o
 
 # target to build an object file
 src/base/kernel/Process.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/kernel/Process.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/kernel/Process.cpp.o
 .PHONY : src/base/kernel/Process.cpp.o
 
 src/base/kernel/Process.i: src/base/kernel/Process.cpp.i
@@ -2352,7 +2352,7 @@ src/base/kernel/Process.i: src/base/kernel/Process.cpp.i
 
 # target to preprocess a source file
 src/base/kernel/Process.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/kernel/Process.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/kernel/Process.cpp.i
 .PHONY : src/base/kernel/Process.cpp.i
 
 src/base/kernel/Process.s: src/base/kernel/Process.cpp.s
@@ -2360,7 +2360,7 @@ src/base/kernel/Process.s: src/base/kernel/Process.cpp.s
 
 # target to generate assembly for a file
 src/base/kernel/Process.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/kernel/Process.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/kernel/Process.cpp.s
 .PHONY : src/base/kernel/Process.cpp.s
 
 src/base/kernel/Process_unix.o: src/base/kernel/Process_unix.cpp.o
@@ -2368,7 +2368,7 @@ src/base/kernel/Process_unix.o: src/base/kernel/Process_unix.cpp.o
 
 # target to build an object file
 src/base/kernel/Process_unix.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/kernel/Process_unix.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/kernel/Process_unix.cpp.o
 .PHONY : src/base/kernel/Process_unix.cpp.o
 
 src/base/kernel/Process_unix.i: src/base/kernel/Process_unix.cpp.i
@@ -2376,7 +2376,7 @@ src/base/kernel/Process_unix.i: src/base/kernel/Process_unix.cpp.i
 
 # target to preprocess a source file
 src/base/kernel/Process_unix.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/kernel/Process_unix.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/kernel/Process_unix.cpp.i
 .PHONY : src/base/kernel/Process_unix.cpp.i
 
 src/base/kernel/Process_unix.s: src/base/kernel/Process_unix.cpp.s
@@ -2384,7 +2384,7 @@ src/base/kernel/Process_unix.s: src/base/kernel/Process_unix.cpp.s
 
 # target to generate assembly for a file
 src/base/kernel/Process_unix.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/kernel/Process_unix.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/kernel/Process_unix.cpp.s
 .PHONY : src/base/kernel/Process_unix.cpp.s
 
 src/base/kernel/config/BaseConfig.o: src/base/kernel/config/BaseConfig.cpp.o
@@ -2392,7 +2392,7 @@ src/base/kernel/config/BaseConfig.o: src/base/kernel/config/BaseConfig.cpp.o
 
 # target to build an object file
 src/base/kernel/config/BaseConfig.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/kernel/config/BaseConfig.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/kernel/config/BaseConfig.cpp.o
 .PHONY : src/base/kernel/config/BaseConfig.cpp.o
 
 src/base/kernel/config/BaseConfig.i: src/base/kernel/config/BaseConfig.cpp.i
@@ -2400,7 +2400,7 @@ src/base/kernel/config/BaseConfig.i: src/base/kernel/config/BaseConfig.cpp.i
 
 # target to preprocess a source file
 src/base/kernel/config/BaseConfig.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/kernel/config/BaseConfig.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/kernel/config/BaseConfig.cpp.i
 .PHONY : src/base/kernel/config/BaseConfig.cpp.i
 
 src/base/kernel/config/BaseConfig.s: src/base/kernel/config/BaseConfig.cpp.s
@@ -2408,7 +2408,7 @@ src/base/kernel/config/BaseConfig.s: src/base/kernel/config/BaseConfig.cpp.s
 
 # target to generate assembly for a file
 src/base/kernel/config/BaseConfig.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/kernel/config/BaseConfig.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/kernel/config/BaseConfig.cpp.s
 .PHONY : src/base/kernel/config/BaseConfig.cpp.s
 
 src/base/kernel/config/BaseTransform.o: src/base/kernel/config/BaseTransform.cpp.o
@@ -2416,7 +2416,7 @@ src/base/kernel/config/BaseTransform.o: src/base/kernel/config/BaseTransform.cpp
 
 # target to build an object file
 src/base/kernel/config/BaseTransform.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/kernel/config/BaseTransform.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/kernel/config/BaseTransform.cpp.o
 .PHONY : src/base/kernel/config/BaseTransform.cpp.o
 
 src/base/kernel/config/BaseTransform.i: src/base/kernel/config/BaseTransform.cpp.i
@@ -2424,7 +2424,7 @@ src/base/kernel/config/BaseTransform.i: src/base/kernel/config/BaseTransform.cpp
 
 # target to preprocess a source file
 src/base/kernel/config/BaseTransform.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/kernel/config/BaseTransform.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/kernel/config/BaseTransform.cpp.i
 .PHONY : src/base/kernel/config/BaseTransform.cpp.i
 
 src/base/kernel/config/BaseTransform.s: src/base/kernel/config/BaseTransform.cpp.s
@@ -2432,7 +2432,7 @@ src/base/kernel/config/BaseTransform.s: src/base/kernel/config/BaseTransform.cpp
 
 # target to generate assembly for a file
 src/base/kernel/config/BaseTransform.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/kernel/config/BaseTransform.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/kernel/config/BaseTransform.cpp.s
 .PHONY : src/base/kernel/config/BaseTransform.cpp.s
 
 src/base/kernel/config/Title.o: src/base/kernel/config/Title.cpp.o
@@ -2440,7 +2440,7 @@ src/base/kernel/config/Title.o: src/base/kernel/config/Title.cpp.o
 
 # target to build an object file
 src/base/kernel/config/Title.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/kernel/config/Title.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/kernel/config/Title.cpp.o
 .PHONY : src/base/kernel/config/Title.cpp.o
 
 src/base/kernel/config/Title.i: src/base/kernel/config/Title.cpp.i
@@ -2448,7 +2448,7 @@ src/base/kernel/config/Title.i: src/base/kernel/config/Title.cpp.i
 
 # target to preprocess a source file
 src/base/kernel/config/Title.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/kernel/config/Title.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/kernel/config/Title.cpp.i
 .PHONY : src/base/kernel/config/Title.cpp.i
 
 src/base/kernel/config/Title.s: src/base/kernel/config/Title.cpp.s
@@ -2456,7 +2456,7 @@ src/base/kernel/config/Title.s: src/base/kernel/config/Title.cpp.s
 
 # target to generate assembly for a file
 src/base/kernel/config/Title.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/kernel/config/Title.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/kernel/config/Title.cpp.s
 .PHONY : src/base/kernel/config/Title.cpp.s
 
 src/base/net/dns/Dns.o: src/base/net/dns/Dns.cpp.o
@@ -2464,7 +2464,7 @@ src/base/net/dns/Dns.o: src/base/net/dns/Dns.cpp.o
 
 # target to build an object file
 src/base/net/dns/Dns.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/dns/Dns.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/dns/Dns.cpp.o
 .PHONY : src/base/net/dns/Dns.cpp.o
 
 src/base/net/dns/Dns.i: src/base/net/dns/Dns.cpp.i
@@ -2472,7 +2472,7 @@ src/base/net/dns/Dns.i: src/base/net/dns/Dns.cpp.i
 
 # target to preprocess a source file
 src/base/net/dns/Dns.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/dns/Dns.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/dns/Dns.cpp.i
 .PHONY : src/base/net/dns/Dns.cpp.i
 
 src/base/net/dns/Dns.s: src/base/net/dns/Dns.cpp.s
@@ -2480,7 +2480,7 @@ src/base/net/dns/Dns.s: src/base/net/dns/Dns.cpp.s
 
 # target to generate assembly for a file
 src/base/net/dns/Dns.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/dns/Dns.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/dns/Dns.cpp.s
 .PHONY : src/base/net/dns/Dns.cpp.s
 
 src/base/net/dns/DnsConfig.o: src/base/net/dns/DnsConfig.cpp.o
@@ -2488,7 +2488,7 @@ src/base/net/dns/DnsConfig.o: src/base/net/dns/DnsConfig.cpp.o
 
 # target to build an object file
 src/base/net/dns/DnsConfig.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/dns/DnsConfig.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/dns/DnsConfig.cpp.o
 .PHONY : src/base/net/dns/DnsConfig.cpp.o
 
 src/base/net/dns/DnsConfig.i: src/base/net/dns/DnsConfig.cpp.i
@@ -2496,7 +2496,7 @@ src/base/net/dns/DnsConfig.i: src/base/net/dns/DnsConfig.cpp.i
 
 # target to preprocess a source file
 src/base/net/dns/DnsConfig.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/dns/DnsConfig.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/dns/DnsConfig.cpp.i
 .PHONY : src/base/net/dns/DnsConfig.cpp.i
 
 src/base/net/dns/DnsConfig.s: src/base/net/dns/DnsConfig.cpp.s
@@ -2504,7 +2504,7 @@ src/base/net/dns/DnsConfig.s: src/base/net/dns/DnsConfig.cpp.s
 
 # target to generate assembly for a file
 src/base/net/dns/DnsConfig.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/dns/DnsConfig.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/dns/DnsConfig.cpp.s
 .PHONY : src/base/net/dns/DnsConfig.cpp.s
 
 src/base/net/dns/DnsRecord.o: src/base/net/dns/DnsRecord.cpp.o
@@ -2512,7 +2512,7 @@ src/base/net/dns/DnsRecord.o: src/base/net/dns/DnsRecord.cpp.o
 
 # target to build an object file
 src/base/net/dns/DnsRecord.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/dns/DnsRecord.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/dns/DnsRecord.cpp.o
 .PHONY : src/base/net/dns/DnsRecord.cpp.o
 
 src/base/net/dns/DnsRecord.i: src/base/net/dns/DnsRecord.cpp.i
@@ -2520,7 +2520,7 @@ src/base/net/dns/DnsRecord.i: src/base/net/dns/DnsRecord.cpp.i
 
 # target to preprocess a source file
 src/base/net/dns/DnsRecord.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/dns/DnsRecord.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/dns/DnsRecord.cpp.i
 .PHONY : src/base/net/dns/DnsRecord.cpp.i
 
 src/base/net/dns/DnsRecord.s: src/base/net/dns/DnsRecord.cpp.s
@@ -2528,7 +2528,7 @@ src/base/net/dns/DnsRecord.s: src/base/net/dns/DnsRecord.cpp.s
 
 # target to generate assembly for a file
 src/base/net/dns/DnsRecord.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/dns/DnsRecord.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/dns/DnsRecord.cpp.s
 .PHONY : src/base/net/dns/DnsRecord.cpp.s
 
 src/base/net/dns/DnsRecords.o: src/base/net/dns/DnsRecords.cpp.o
@@ -2536,7 +2536,7 @@ src/base/net/dns/DnsRecords.o: src/base/net/dns/DnsRecords.cpp.o
 
 # target to build an object file
 src/base/net/dns/DnsRecords.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/dns/DnsRecords.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/dns/DnsRecords.cpp.o
 .PHONY : src/base/net/dns/DnsRecords.cpp.o
 
 src/base/net/dns/DnsRecords.i: src/base/net/dns/DnsRecords.cpp.i
@@ -2544,7 +2544,7 @@ src/base/net/dns/DnsRecords.i: src/base/net/dns/DnsRecords.cpp.i
 
 # target to preprocess a source file
 src/base/net/dns/DnsRecords.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/dns/DnsRecords.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/dns/DnsRecords.cpp.i
 .PHONY : src/base/net/dns/DnsRecords.cpp.i
 
 src/base/net/dns/DnsRecords.s: src/base/net/dns/DnsRecords.cpp.s
@@ -2552,7 +2552,7 @@ src/base/net/dns/DnsRecords.s: src/base/net/dns/DnsRecords.cpp.s
 
 # target to generate assembly for a file
 src/base/net/dns/DnsRecords.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/dns/DnsRecords.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/dns/DnsRecords.cpp.s
 .PHONY : src/base/net/dns/DnsRecords.cpp.s
 
 src/base/net/dns/DnsUvBackend.o: src/base/net/dns/DnsUvBackend.cpp.o
@@ -2560,7 +2560,7 @@ src/base/net/dns/DnsUvBackend.o: src/base/net/dns/DnsUvBackend.cpp.o
 
 # target to build an object file
 src/base/net/dns/DnsUvBackend.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/dns/DnsUvBackend.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/dns/DnsUvBackend.cpp.o
 .PHONY : src/base/net/dns/DnsUvBackend.cpp.o
 
 src/base/net/dns/DnsUvBackend.i: src/base/net/dns/DnsUvBackend.cpp.i
@@ -2568,7 +2568,7 @@ src/base/net/dns/DnsUvBackend.i: src/base/net/dns/DnsUvBackend.cpp.i
 
 # target to preprocess a source file
 src/base/net/dns/DnsUvBackend.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/dns/DnsUvBackend.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/dns/DnsUvBackend.cpp.i
 .PHONY : src/base/net/dns/DnsUvBackend.cpp.i
 
 src/base/net/dns/DnsUvBackend.s: src/base/net/dns/DnsUvBackend.cpp.s
@@ -2576,7 +2576,7 @@ src/base/net/dns/DnsUvBackend.s: src/base/net/dns/DnsUvBackend.cpp.s
 
 # target to generate assembly for a file
 src/base/net/dns/DnsUvBackend.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/dns/DnsUvBackend.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/dns/DnsUvBackend.cpp.s
 .PHONY : src/base/net/dns/DnsUvBackend.cpp.s
 
 src/base/net/http/Fetch.o: src/base/net/http/Fetch.cpp.o
@@ -2584,7 +2584,7 @@ src/base/net/http/Fetch.o: src/base/net/http/Fetch.cpp.o
 
 # target to build an object file
 src/base/net/http/Fetch.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/http/Fetch.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/http/Fetch.cpp.o
 .PHONY : src/base/net/http/Fetch.cpp.o
 
 src/base/net/http/Fetch.i: src/base/net/http/Fetch.cpp.i
@@ -2592,7 +2592,7 @@ src/base/net/http/Fetch.i: src/base/net/http/Fetch.cpp.i
 
 # target to preprocess a source file
 src/base/net/http/Fetch.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/http/Fetch.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/http/Fetch.cpp.i
 .PHONY : src/base/net/http/Fetch.cpp.i
 
 src/base/net/http/Fetch.s: src/base/net/http/Fetch.cpp.s
@@ -2600,7 +2600,7 @@ src/base/net/http/Fetch.s: src/base/net/http/Fetch.cpp.s
 
 # target to generate assembly for a file
 src/base/net/http/Fetch.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/http/Fetch.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/http/Fetch.cpp.s
 .PHONY : src/base/net/http/Fetch.cpp.s
 
 src/base/net/http/Http.o: src/base/net/http/Http.cpp.o
@@ -2608,7 +2608,7 @@ src/base/net/http/Http.o: src/base/net/http/Http.cpp.o
 
 # target to build an object file
 src/base/net/http/Http.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/http/Http.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/http/Http.cpp.o
 .PHONY : src/base/net/http/Http.cpp.o
 
 src/base/net/http/Http.i: src/base/net/http/Http.cpp.i
@@ -2616,7 +2616,7 @@ src/base/net/http/Http.i: src/base/net/http/Http.cpp.i
 
 # target to preprocess a source file
 src/base/net/http/Http.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/http/Http.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/http/Http.cpp.i
 .PHONY : src/base/net/http/Http.cpp.i
 
 src/base/net/http/Http.s: src/base/net/http/Http.cpp.s
@@ -2624,7 +2624,7 @@ src/base/net/http/Http.s: src/base/net/http/Http.cpp.s
 
 # target to generate assembly for a file
 src/base/net/http/Http.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/http/Http.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/http/Http.cpp.s
 .PHONY : src/base/net/http/Http.cpp.s
 
 src/base/net/http/HttpApiResponse.o: src/base/net/http/HttpApiResponse.cpp.o
@@ -2632,7 +2632,7 @@ src/base/net/http/HttpApiResponse.o: src/base/net/http/HttpApiResponse.cpp.o
 
 # target to build an object file
 src/base/net/http/HttpApiResponse.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/http/HttpApiResponse.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/http/HttpApiResponse.cpp.o
 .PHONY : src/base/net/http/HttpApiResponse.cpp.o
 
 src/base/net/http/HttpApiResponse.i: src/base/net/http/HttpApiResponse.cpp.i
@@ -2640,7 +2640,7 @@ src/base/net/http/HttpApiResponse.i: src/base/net/http/HttpApiResponse.cpp.i
 
 # target to preprocess a source file
 src/base/net/http/HttpApiResponse.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/http/HttpApiResponse.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/http/HttpApiResponse.cpp.i
 .PHONY : src/base/net/http/HttpApiResponse.cpp.i
 
 src/base/net/http/HttpApiResponse.s: src/base/net/http/HttpApiResponse.cpp.s
@@ -2648,7 +2648,7 @@ src/base/net/http/HttpApiResponse.s: src/base/net/http/HttpApiResponse.cpp.s
 
 # target to generate assembly for a file
 src/base/net/http/HttpApiResponse.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/http/HttpApiResponse.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/http/HttpApiResponse.cpp.s
 .PHONY : src/base/net/http/HttpApiResponse.cpp.s
 
 src/base/net/http/HttpClient.o: src/base/net/http/HttpClient.cpp.o
@@ -2656,7 +2656,7 @@ src/base/net/http/HttpClient.o: src/base/net/http/HttpClient.cpp.o
 
 # target to build an object file
 src/base/net/http/HttpClient.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/http/HttpClient.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/http/HttpClient.cpp.o
 .PHONY : src/base/net/http/HttpClient.cpp.o
 
 src/base/net/http/HttpClient.i: src/base/net/http/HttpClient.cpp.i
@@ -2664,7 +2664,7 @@ src/base/net/http/HttpClient.i: src/base/net/http/HttpClient.cpp.i
 
 # target to preprocess a source file
 src/base/net/http/HttpClient.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/http/HttpClient.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/http/HttpClient.cpp.i
 .PHONY : src/base/net/http/HttpClient.cpp.i
 
 src/base/net/http/HttpClient.s: src/base/net/http/HttpClient.cpp.s
@@ -2672,7 +2672,7 @@ src/base/net/http/HttpClient.s: src/base/net/http/HttpClient.cpp.s
 
 # target to generate assembly for a file
 src/base/net/http/HttpClient.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/http/HttpClient.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/http/HttpClient.cpp.s
 .PHONY : src/base/net/http/HttpClient.cpp.s
 
 src/base/net/http/HttpContext.o: src/base/net/http/HttpContext.cpp.o
@@ -2680,7 +2680,7 @@ src/base/net/http/HttpContext.o: src/base/net/http/HttpContext.cpp.o
 
 # target to build an object file
 src/base/net/http/HttpContext.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/http/HttpContext.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/http/HttpContext.cpp.o
 .PHONY : src/base/net/http/HttpContext.cpp.o
 
 src/base/net/http/HttpContext.i: src/base/net/http/HttpContext.cpp.i
@@ -2688,7 +2688,7 @@ src/base/net/http/HttpContext.i: src/base/net/http/HttpContext.cpp.i
 
 # target to preprocess a source file
 src/base/net/http/HttpContext.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/http/HttpContext.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/http/HttpContext.cpp.i
 .PHONY : src/base/net/http/HttpContext.cpp.i
 
 src/base/net/http/HttpContext.s: src/base/net/http/HttpContext.cpp.s
@@ -2696,7 +2696,7 @@ src/base/net/http/HttpContext.s: src/base/net/http/HttpContext.cpp.s
 
 # target to generate assembly for a file
 src/base/net/http/HttpContext.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/http/HttpContext.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/http/HttpContext.cpp.s
 .PHONY : src/base/net/http/HttpContext.cpp.s
 
 src/base/net/http/HttpData.o: src/base/net/http/HttpData.cpp.o
@@ -2704,7 +2704,7 @@ src/base/net/http/HttpData.o: src/base/net/http/HttpData.cpp.o
 
 # target to build an object file
 src/base/net/http/HttpData.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/http/HttpData.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/http/HttpData.cpp.o
 .PHONY : src/base/net/http/HttpData.cpp.o
 
 src/base/net/http/HttpData.i: src/base/net/http/HttpData.cpp.i
@@ -2712,7 +2712,7 @@ src/base/net/http/HttpData.i: src/base/net/http/HttpData.cpp.i
 
 # target to preprocess a source file
 src/base/net/http/HttpData.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/http/HttpData.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/http/HttpData.cpp.i
 .PHONY : src/base/net/http/HttpData.cpp.i
 
 src/base/net/http/HttpData.s: src/base/net/http/HttpData.cpp.s
@@ -2720,7 +2720,7 @@ src/base/net/http/HttpData.s: src/base/net/http/HttpData.cpp.s
 
 # target to generate assembly for a file
 src/base/net/http/HttpData.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/http/HttpData.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/http/HttpData.cpp.s
 .PHONY : src/base/net/http/HttpData.cpp.s
 
 src/base/net/http/HttpListener.o: src/base/net/http/HttpListener.cpp.o
@@ -2728,7 +2728,7 @@ src/base/net/http/HttpListener.o: src/base/net/http/HttpListener.cpp.o
 
 # target to build an object file
 src/base/net/http/HttpListener.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/http/HttpListener.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/http/HttpListener.cpp.o
 .PHONY : src/base/net/http/HttpListener.cpp.o
 
 src/base/net/http/HttpListener.i: src/base/net/http/HttpListener.cpp.i
@@ -2736,7 +2736,7 @@ src/base/net/http/HttpListener.i: src/base/net/http/HttpListener.cpp.i
 
 # target to preprocess a source file
 src/base/net/http/HttpListener.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/http/HttpListener.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/http/HttpListener.cpp.i
 .PHONY : src/base/net/http/HttpListener.cpp.i
 
 src/base/net/http/HttpListener.s: src/base/net/http/HttpListener.cpp.s
@@ -2744,7 +2744,7 @@ src/base/net/http/HttpListener.s: src/base/net/http/HttpListener.cpp.s
 
 # target to generate assembly for a file
 src/base/net/http/HttpListener.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/http/HttpListener.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/http/HttpListener.cpp.s
 .PHONY : src/base/net/http/HttpListener.cpp.s
 
 src/base/net/http/HttpResponse.o: src/base/net/http/HttpResponse.cpp.o
@@ -2752,7 +2752,7 @@ src/base/net/http/HttpResponse.o: src/base/net/http/HttpResponse.cpp.o
 
 # target to build an object file
 src/base/net/http/HttpResponse.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/http/HttpResponse.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/http/HttpResponse.cpp.o
 .PHONY : src/base/net/http/HttpResponse.cpp.o
 
 src/base/net/http/HttpResponse.i: src/base/net/http/HttpResponse.cpp.i
@@ -2760,7 +2760,7 @@ src/base/net/http/HttpResponse.i: src/base/net/http/HttpResponse.cpp.i
 
 # target to preprocess a source file
 src/base/net/http/HttpResponse.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/http/HttpResponse.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/http/HttpResponse.cpp.i
 .PHONY : src/base/net/http/HttpResponse.cpp.i
 
 src/base/net/http/HttpResponse.s: src/base/net/http/HttpResponse.cpp.s
@@ -2768,7 +2768,7 @@ src/base/net/http/HttpResponse.s: src/base/net/http/HttpResponse.cpp.s
 
 # target to generate assembly for a file
 src/base/net/http/HttpResponse.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/http/HttpResponse.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/http/HttpResponse.cpp.s
 .PHONY : src/base/net/http/HttpResponse.cpp.s
 
 src/base/net/https/HttpsClient.o: src/base/net/https/HttpsClient.cpp.o
@@ -2776,7 +2776,7 @@ src/base/net/https/HttpsClient.o: src/base/net/https/HttpsClient.cpp.o
 
 # target to build an object file
 src/base/net/https/HttpsClient.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/https/HttpsClient.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/https/HttpsClient.cpp.o
 .PHONY : src/base/net/https/HttpsClient.cpp.o
 
 src/base/net/https/HttpsClient.i: src/base/net/https/HttpsClient.cpp.i
@@ -2784,7 +2784,7 @@ src/base/net/https/HttpsClient.i: src/base/net/https/HttpsClient.cpp.i
 
 # target to preprocess a source file
 src/base/net/https/HttpsClient.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/https/HttpsClient.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/https/HttpsClient.cpp.i
 .PHONY : src/base/net/https/HttpsClient.cpp.i
 
 src/base/net/https/HttpsClient.s: src/base/net/https/HttpsClient.cpp.s
@@ -2792,7 +2792,7 @@ src/base/net/https/HttpsClient.s: src/base/net/https/HttpsClient.cpp.s
 
 # target to generate assembly for a file
 src/base/net/https/HttpsClient.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/https/HttpsClient.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/https/HttpsClient.cpp.s
 .PHONY : src/base/net/https/HttpsClient.cpp.s
 
 src/base/net/https/HttpsContext.o: src/base/net/https/HttpsContext.cpp.o
@@ -2800,7 +2800,7 @@ src/base/net/https/HttpsContext.o: src/base/net/https/HttpsContext.cpp.o
 
 # target to build an object file
 src/base/net/https/HttpsContext.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/https/HttpsContext.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/https/HttpsContext.cpp.o
 .PHONY : src/base/net/https/HttpsContext.cpp.o
 
 src/base/net/https/HttpsContext.i: src/base/net/https/HttpsContext.cpp.i
@@ -2808,7 +2808,7 @@ src/base/net/https/HttpsContext.i: src/base/net/https/HttpsContext.cpp.i
 
 # target to preprocess a source file
 src/base/net/https/HttpsContext.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/https/HttpsContext.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/https/HttpsContext.cpp.i
 .PHONY : src/base/net/https/HttpsContext.cpp.i
 
 src/base/net/https/HttpsContext.s: src/base/net/https/HttpsContext.cpp.s
@@ -2816,7 +2816,7 @@ src/base/net/https/HttpsContext.s: src/base/net/https/HttpsContext.cpp.s
 
 # target to generate assembly for a file
 src/base/net/https/HttpsContext.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/https/HttpsContext.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/https/HttpsContext.cpp.s
 .PHONY : src/base/net/https/HttpsContext.cpp.s
 
 src/base/net/https/HttpsServer.o: src/base/net/https/HttpsServer.cpp.o
@@ -2824,7 +2824,7 @@ src/base/net/https/HttpsServer.o: src/base/net/https/HttpsServer.cpp.o
 
 # target to build an object file
 src/base/net/https/HttpsServer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/https/HttpsServer.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/https/HttpsServer.cpp.o
 .PHONY : src/base/net/https/HttpsServer.cpp.o
 
 src/base/net/https/HttpsServer.i: src/base/net/https/HttpsServer.cpp.i
@@ -2832,7 +2832,7 @@ src/base/net/https/HttpsServer.i: src/base/net/https/HttpsServer.cpp.i
 
 # target to preprocess a source file
 src/base/net/https/HttpsServer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/https/HttpsServer.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/https/HttpsServer.cpp.i
 .PHONY : src/base/net/https/HttpsServer.cpp.i
 
 src/base/net/https/HttpsServer.s: src/base/net/https/HttpsServer.cpp.s
@@ -2840,7 +2840,7 @@ src/base/net/https/HttpsServer.s: src/base/net/https/HttpsServer.cpp.s
 
 # target to generate assembly for a file
 src/base/net/https/HttpsServer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/https/HttpsServer.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/https/HttpsServer.cpp.s
 .PHONY : src/base/net/https/HttpsServer.cpp.s
 
 src/base/net/stratum/AutoClient.o: src/base/net/stratum/AutoClient.cpp.o
@@ -2848,7 +2848,7 @@ src/base/net/stratum/AutoClient.o: src/base/net/stratum/AutoClient.cpp.o
 
 # target to build an object file
 src/base/net/stratum/AutoClient.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/AutoClient.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/AutoClient.cpp.o
 .PHONY : src/base/net/stratum/AutoClient.cpp.o
 
 src/base/net/stratum/AutoClient.i: src/base/net/stratum/AutoClient.cpp.i
@@ -2856,7 +2856,7 @@ src/base/net/stratum/AutoClient.i: src/base/net/stratum/AutoClient.cpp.i
 
 # target to preprocess a source file
 src/base/net/stratum/AutoClient.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/AutoClient.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/AutoClient.cpp.i
 .PHONY : src/base/net/stratum/AutoClient.cpp.i
 
 src/base/net/stratum/AutoClient.s: src/base/net/stratum/AutoClient.cpp.s
@@ -2864,7 +2864,7 @@ src/base/net/stratum/AutoClient.s: src/base/net/stratum/AutoClient.cpp.s
 
 # target to generate assembly for a file
 src/base/net/stratum/AutoClient.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/AutoClient.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/AutoClient.cpp.s
 .PHONY : src/base/net/stratum/AutoClient.cpp.s
 
 src/base/net/stratum/BaseClient.o: src/base/net/stratum/BaseClient.cpp.o
@@ -2872,7 +2872,7 @@ src/base/net/stratum/BaseClient.o: src/base/net/stratum/BaseClient.cpp.o
 
 # target to build an object file
 src/base/net/stratum/BaseClient.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/BaseClient.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/BaseClient.cpp.o
 .PHONY : src/base/net/stratum/BaseClient.cpp.o
 
 src/base/net/stratum/BaseClient.i: src/base/net/stratum/BaseClient.cpp.i
@@ -2880,7 +2880,7 @@ src/base/net/stratum/BaseClient.i: src/base/net/stratum/BaseClient.cpp.i
 
 # target to preprocess a source file
 src/base/net/stratum/BaseClient.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/BaseClient.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/BaseClient.cpp.i
 .PHONY : src/base/net/stratum/BaseClient.cpp.i
 
 src/base/net/stratum/BaseClient.s: src/base/net/stratum/BaseClient.cpp.s
@@ -2888,7 +2888,7 @@ src/base/net/stratum/BaseClient.s: src/base/net/stratum/BaseClient.cpp.s
 
 # target to generate assembly for a file
 src/base/net/stratum/BaseClient.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/BaseClient.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/BaseClient.cpp.s
 .PHONY : src/base/net/stratum/BaseClient.cpp.s
 
 src/base/net/stratum/Client.o: src/base/net/stratum/Client.cpp.o
@@ -2896,7 +2896,7 @@ src/base/net/stratum/Client.o: src/base/net/stratum/Client.cpp.o
 
 # target to build an object file
 src/base/net/stratum/Client.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/Client.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/Client.cpp.o
 .PHONY : src/base/net/stratum/Client.cpp.o
 
 src/base/net/stratum/Client.i: src/base/net/stratum/Client.cpp.i
@@ -2904,7 +2904,7 @@ src/base/net/stratum/Client.i: src/base/net/stratum/Client.cpp.i
 
 # target to preprocess a source file
 src/base/net/stratum/Client.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/Client.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/Client.cpp.i
 .PHONY : src/base/net/stratum/Client.cpp.i
 
 src/base/net/stratum/Client.s: src/base/net/stratum/Client.cpp.s
@@ -2912,7 +2912,7 @@ src/base/net/stratum/Client.s: src/base/net/stratum/Client.cpp.s
 
 # target to generate assembly for a file
 src/base/net/stratum/Client.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/Client.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/Client.cpp.s
 .PHONY : src/base/net/stratum/Client.cpp.s
 
 src/base/net/stratum/DaemonClient.o: src/base/net/stratum/DaemonClient.cpp.o
@@ -2920,7 +2920,7 @@ src/base/net/stratum/DaemonClient.o: src/base/net/stratum/DaemonClient.cpp.o
 
 # target to build an object file
 src/base/net/stratum/DaemonClient.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/DaemonClient.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/DaemonClient.cpp.o
 .PHONY : src/base/net/stratum/DaemonClient.cpp.o
 
 src/base/net/stratum/DaemonClient.i: src/base/net/stratum/DaemonClient.cpp.i
@@ -2928,7 +2928,7 @@ src/base/net/stratum/DaemonClient.i: src/base/net/stratum/DaemonClient.cpp.i
 
 # target to preprocess a source file
 src/base/net/stratum/DaemonClient.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/DaemonClient.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/DaemonClient.cpp.i
 .PHONY : src/base/net/stratum/DaemonClient.cpp.i
 
 src/base/net/stratum/DaemonClient.s: src/base/net/stratum/DaemonClient.cpp.s
@@ -2936,7 +2936,7 @@ src/base/net/stratum/DaemonClient.s: src/base/net/stratum/DaemonClient.cpp.s
 
 # target to generate assembly for a file
 src/base/net/stratum/DaemonClient.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/DaemonClient.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/DaemonClient.cpp.s
 .PHONY : src/base/net/stratum/DaemonClient.cpp.s
 
 src/base/net/stratum/EthStratumClient.o: src/base/net/stratum/EthStratumClient.cpp.o
@@ -2944,7 +2944,7 @@ src/base/net/stratum/EthStratumClient.o: src/base/net/stratum/EthStratumClient.c
 
 # target to build an object file
 src/base/net/stratum/EthStratumClient.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/EthStratumClient.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/EthStratumClient.cpp.o
 .PHONY : src/base/net/stratum/EthStratumClient.cpp.o
 
 src/base/net/stratum/EthStratumClient.i: src/base/net/stratum/EthStratumClient.cpp.i
@@ -2952,7 +2952,7 @@ src/base/net/stratum/EthStratumClient.i: src/base/net/stratum/EthStratumClient.c
 
 # target to preprocess a source file
 src/base/net/stratum/EthStratumClient.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/EthStratumClient.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/EthStratumClient.cpp.i
 .PHONY : src/base/net/stratum/EthStratumClient.cpp.i
 
 src/base/net/stratum/EthStratumClient.s: src/base/net/stratum/EthStratumClient.cpp.s
@@ -2960,7 +2960,7 @@ src/base/net/stratum/EthStratumClient.s: src/base/net/stratum/EthStratumClient.c
 
 # target to generate assembly for a file
 src/base/net/stratum/EthStratumClient.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/EthStratumClient.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/EthStratumClient.cpp.s
 .PHONY : src/base/net/stratum/EthStratumClient.cpp.s
 
 src/base/net/stratum/Job.o: src/base/net/stratum/Job.cpp.o
@@ -2968,7 +2968,7 @@ src/base/net/stratum/Job.o: src/base/net/stratum/Job.cpp.o
 
 # target to build an object file
 src/base/net/stratum/Job.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/Job.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/Job.cpp.o
 .PHONY : src/base/net/stratum/Job.cpp.o
 
 src/base/net/stratum/Job.i: src/base/net/stratum/Job.cpp.i
@@ -2976,7 +2976,7 @@ src/base/net/stratum/Job.i: src/base/net/stratum/Job.cpp.i
 
 # target to preprocess a source file
 src/base/net/stratum/Job.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/Job.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/Job.cpp.i
 .PHONY : src/base/net/stratum/Job.cpp.i
 
 src/base/net/stratum/Job.s: src/base/net/stratum/Job.cpp.s
@@ -2984,7 +2984,7 @@ src/base/net/stratum/Job.s: src/base/net/stratum/Job.cpp.s
 
 # target to generate assembly for a file
 src/base/net/stratum/Job.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/Job.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/Job.cpp.s
 .PHONY : src/base/net/stratum/Job.cpp.s
 
 src/base/net/stratum/NetworkState.o: src/base/net/stratum/NetworkState.cpp.o
@@ -2992,7 +2992,7 @@ src/base/net/stratum/NetworkState.o: src/base/net/stratum/NetworkState.cpp.o
 
 # target to build an object file
 src/base/net/stratum/NetworkState.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/NetworkState.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/NetworkState.cpp.o
 .PHONY : src/base/net/stratum/NetworkState.cpp.o
 
 src/base/net/stratum/NetworkState.i: src/base/net/stratum/NetworkState.cpp.i
@@ -3000,7 +3000,7 @@ src/base/net/stratum/NetworkState.i: src/base/net/stratum/NetworkState.cpp.i
 
 # target to preprocess a source file
 src/base/net/stratum/NetworkState.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/NetworkState.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/NetworkState.cpp.i
 .PHONY : src/base/net/stratum/NetworkState.cpp.i
 
 src/base/net/stratum/NetworkState.s: src/base/net/stratum/NetworkState.cpp.s
@@ -3008,7 +3008,7 @@ src/base/net/stratum/NetworkState.s: src/base/net/stratum/NetworkState.cpp.s
 
 # target to generate assembly for a file
 src/base/net/stratum/NetworkState.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/NetworkState.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/NetworkState.cpp.s
 .PHONY : src/base/net/stratum/NetworkState.cpp.s
 
 src/base/net/stratum/Pool.o: src/base/net/stratum/Pool.cpp.o
@@ -3016,7 +3016,7 @@ src/base/net/stratum/Pool.o: src/base/net/stratum/Pool.cpp.o
 
 # target to build an object file
 src/base/net/stratum/Pool.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/Pool.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/Pool.cpp.o
 .PHONY : src/base/net/stratum/Pool.cpp.o
 
 src/base/net/stratum/Pool.i: src/base/net/stratum/Pool.cpp.i
@@ -3024,7 +3024,7 @@ src/base/net/stratum/Pool.i: src/base/net/stratum/Pool.cpp.i
 
 # target to preprocess a source file
 src/base/net/stratum/Pool.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/Pool.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/Pool.cpp.i
 .PHONY : src/base/net/stratum/Pool.cpp.i
 
 src/base/net/stratum/Pool.s: src/base/net/stratum/Pool.cpp.s
@@ -3032,7 +3032,7 @@ src/base/net/stratum/Pool.s: src/base/net/stratum/Pool.cpp.s
 
 # target to generate assembly for a file
 src/base/net/stratum/Pool.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/Pool.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/Pool.cpp.s
 .PHONY : src/base/net/stratum/Pool.cpp.s
 
 src/base/net/stratum/Pools.o: src/base/net/stratum/Pools.cpp.o
@@ -3040,7 +3040,7 @@ src/base/net/stratum/Pools.o: src/base/net/stratum/Pools.cpp.o
 
 # target to build an object file
 src/base/net/stratum/Pools.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/Pools.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/Pools.cpp.o
 .PHONY : src/base/net/stratum/Pools.cpp.o
 
 src/base/net/stratum/Pools.i: src/base/net/stratum/Pools.cpp.i
@@ -3048,7 +3048,7 @@ src/base/net/stratum/Pools.i: src/base/net/stratum/Pools.cpp.i
 
 # target to preprocess a source file
 src/base/net/stratum/Pools.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/Pools.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/Pools.cpp.i
 .PHONY : src/base/net/stratum/Pools.cpp.i
 
 src/base/net/stratum/Pools.s: src/base/net/stratum/Pools.cpp.s
@@ -3056,7 +3056,7 @@ src/base/net/stratum/Pools.s: src/base/net/stratum/Pools.cpp.s
 
 # target to generate assembly for a file
 src/base/net/stratum/Pools.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/Pools.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/Pools.cpp.s
 .PHONY : src/base/net/stratum/Pools.cpp.s
 
 src/base/net/stratum/ProxyUrl.o: src/base/net/stratum/ProxyUrl.cpp.o
@@ -3064,7 +3064,7 @@ src/base/net/stratum/ProxyUrl.o: src/base/net/stratum/ProxyUrl.cpp.o
 
 # target to build an object file
 src/base/net/stratum/ProxyUrl.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/ProxyUrl.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/ProxyUrl.cpp.o
 .PHONY : src/base/net/stratum/ProxyUrl.cpp.o
 
 src/base/net/stratum/ProxyUrl.i: src/base/net/stratum/ProxyUrl.cpp.i
@@ -3072,7 +3072,7 @@ src/base/net/stratum/ProxyUrl.i: src/base/net/stratum/ProxyUrl.cpp.i
 
 # target to preprocess a source file
 src/base/net/stratum/ProxyUrl.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/ProxyUrl.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/ProxyUrl.cpp.i
 .PHONY : src/base/net/stratum/ProxyUrl.cpp.i
 
 src/base/net/stratum/ProxyUrl.s: src/base/net/stratum/ProxyUrl.cpp.s
@@ -3080,7 +3080,7 @@ src/base/net/stratum/ProxyUrl.s: src/base/net/stratum/ProxyUrl.cpp.s
 
 # target to generate assembly for a file
 src/base/net/stratum/ProxyUrl.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/ProxyUrl.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/ProxyUrl.cpp.s
 .PHONY : src/base/net/stratum/ProxyUrl.cpp.s
 
 src/base/net/stratum/SelfSelectClient.o: src/base/net/stratum/SelfSelectClient.cpp.o
@@ -3088,7 +3088,7 @@ src/base/net/stratum/SelfSelectClient.o: src/base/net/stratum/SelfSelectClient.c
 
 # target to build an object file
 src/base/net/stratum/SelfSelectClient.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/SelfSelectClient.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/SelfSelectClient.cpp.o
 .PHONY : src/base/net/stratum/SelfSelectClient.cpp.o
 
 src/base/net/stratum/SelfSelectClient.i: src/base/net/stratum/SelfSelectClient.cpp.i
@@ -3096,7 +3096,7 @@ src/base/net/stratum/SelfSelectClient.i: src/base/net/stratum/SelfSelectClient.c
 
 # target to preprocess a source file
 src/base/net/stratum/SelfSelectClient.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/SelfSelectClient.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/SelfSelectClient.cpp.i
 .PHONY : src/base/net/stratum/SelfSelectClient.cpp.i
 
 src/base/net/stratum/SelfSelectClient.s: src/base/net/stratum/SelfSelectClient.cpp.s
@@ -3104,7 +3104,7 @@ src/base/net/stratum/SelfSelectClient.s: src/base/net/stratum/SelfSelectClient.c
 
 # target to generate assembly for a file
 src/base/net/stratum/SelfSelectClient.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/SelfSelectClient.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/SelfSelectClient.cpp.s
 .PHONY : src/base/net/stratum/SelfSelectClient.cpp.s
 
 src/base/net/stratum/Socks5.o: src/base/net/stratum/Socks5.cpp.o
@@ -3112,7 +3112,7 @@ src/base/net/stratum/Socks5.o: src/base/net/stratum/Socks5.cpp.o
 
 # target to build an object file
 src/base/net/stratum/Socks5.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/Socks5.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/Socks5.cpp.o
 .PHONY : src/base/net/stratum/Socks5.cpp.o
 
 src/base/net/stratum/Socks5.i: src/base/net/stratum/Socks5.cpp.i
@@ -3120,7 +3120,7 @@ src/base/net/stratum/Socks5.i: src/base/net/stratum/Socks5.cpp.i
 
 # target to preprocess a source file
 src/base/net/stratum/Socks5.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/Socks5.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/Socks5.cpp.i
 .PHONY : src/base/net/stratum/Socks5.cpp.i
 
 src/base/net/stratum/Socks5.s: src/base/net/stratum/Socks5.cpp.s
@@ -3128,7 +3128,7 @@ src/base/net/stratum/Socks5.s: src/base/net/stratum/Socks5.cpp.s
 
 # target to generate assembly for a file
 src/base/net/stratum/Socks5.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/Socks5.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/Socks5.cpp.s
 .PHONY : src/base/net/stratum/Socks5.cpp.s
 
 src/base/net/stratum/Tls.o: src/base/net/stratum/Tls.cpp.o
@@ -3136,7 +3136,7 @@ src/base/net/stratum/Tls.o: src/base/net/stratum/Tls.cpp.o
 
 # target to build an object file
 src/base/net/stratum/Tls.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/Tls.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/Tls.cpp.o
 .PHONY : src/base/net/stratum/Tls.cpp.o
 
 src/base/net/stratum/Tls.i: src/base/net/stratum/Tls.cpp.i
@@ -3144,7 +3144,7 @@ src/base/net/stratum/Tls.i: src/base/net/stratum/Tls.cpp.i
 
 # target to preprocess a source file
 src/base/net/stratum/Tls.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/Tls.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/Tls.cpp.i
 .PHONY : src/base/net/stratum/Tls.cpp.i
 
 src/base/net/stratum/Tls.s: src/base/net/stratum/Tls.cpp.s
@@ -3152,7 +3152,7 @@ src/base/net/stratum/Tls.s: src/base/net/stratum/Tls.cpp.s
 
 # target to generate assembly for a file
 src/base/net/stratum/Tls.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/Tls.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/Tls.cpp.s
 .PHONY : src/base/net/stratum/Tls.cpp.s
 
 src/base/net/stratum/Url.o: src/base/net/stratum/Url.cpp.o
@@ -3160,7 +3160,7 @@ src/base/net/stratum/Url.o: src/base/net/stratum/Url.cpp.o
 
 # target to build an object file
 src/base/net/stratum/Url.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/Url.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/Url.cpp.o
 .PHONY : src/base/net/stratum/Url.cpp.o
 
 src/base/net/stratum/Url.i: src/base/net/stratum/Url.cpp.i
@@ -3168,7 +3168,7 @@ src/base/net/stratum/Url.i: src/base/net/stratum/Url.cpp.i
 
 # target to preprocess a source file
 src/base/net/stratum/Url.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/Url.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/Url.cpp.i
 .PHONY : src/base/net/stratum/Url.cpp.i
 
 src/base/net/stratum/Url.s: src/base/net/stratum/Url.cpp.s
@@ -3176,7 +3176,7 @@ src/base/net/stratum/Url.s: src/base/net/stratum/Url.cpp.s
 
 # target to generate assembly for a file
 src/base/net/stratum/Url.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/Url.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/Url.cpp.s
 .PHONY : src/base/net/stratum/Url.cpp.s
 
 src/base/net/stratum/strategies/FailoverStrategy.o: src/base/net/stratum/strategies/FailoverStrategy.cpp.o
@@ -3184,7 +3184,7 @@ src/base/net/stratum/strategies/FailoverStrategy.o: src/base/net/stratum/strateg
 
 # target to build an object file
 src/base/net/stratum/strategies/FailoverStrategy.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/strategies/FailoverStrategy.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/strategies/FailoverStrategy.cpp.o
 .PHONY : src/base/net/stratum/strategies/FailoverStrategy.cpp.o
 
 src/base/net/stratum/strategies/FailoverStrategy.i: src/base/net/stratum/strategies/FailoverStrategy.cpp.i
@@ -3192,7 +3192,7 @@ src/base/net/stratum/strategies/FailoverStrategy.i: src/base/net/stratum/strateg
 
 # target to preprocess a source file
 src/base/net/stratum/strategies/FailoverStrategy.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/strategies/FailoverStrategy.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/strategies/FailoverStrategy.cpp.i
 .PHONY : src/base/net/stratum/strategies/FailoverStrategy.cpp.i
 
 src/base/net/stratum/strategies/FailoverStrategy.s: src/base/net/stratum/strategies/FailoverStrategy.cpp.s
@@ -3200,7 +3200,7 @@ src/base/net/stratum/strategies/FailoverStrategy.s: src/base/net/stratum/strateg
 
 # target to generate assembly for a file
 src/base/net/stratum/strategies/FailoverStrategy.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/strategies/FailoverStrategy.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/strategies/FailoverStrategy.cpp.s
 .PHONY : src/base/net/stratum/strategies/FailoverStrategy.cpp.s
 
 src/base/net/stratum/strategies/SinglePoolStrategy.o: src/base/net/stratum/strategies/SinglePoolStrategy.cpp.o
@@ -3208,7 +3208,7 @@ src/base/net/stratum/strategies/SinglePoolStrategy.o: src/base/net/stratum/strat
 
 # target to build an object file
 src/base/net/stratum/strategies/SinglePoolStrategy.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/strategies/SinglePoolStrategy.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/strategies/SinglePoolStrategy.cpp.o
 .PHONY : src/base/net/stratum/strategies/SinglePoolStrategy.cpp.o
 
 src/base/net/stratum/strategies/SinglePoolStrategy.i: src/base/net/stratum/strategies/SinglePoolStrategy.cpp.i
@@ -3216,7 +3216,7 @@ src/base/net/stratum/strategies/SinglePoolStrategy.i: src/base/net/stratum/strat
 
 # target to preprocess a source file
 src/base/net/stratum/strategies/SinglePoolStrategy.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/strategies/SinglePoolStrategy.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/strategies/SinglePoolStrategy.cpp.i
 .PHONY : src/base/net/stratum/strategies/SinglePoolStrategy.cpp.i
 
 src/base/net/stratum/strategies/SinglePoolStrategy.s: src/base/net/stratum/strategies/SinglePoolStrategy.cpp.s
@@ -3224,7 +3224,7 @@ src/base/net/stratum/strategies/SinglePoolStrategy.s: src/base/net/stratum/strat
 
 # target to generate assembly for a file
 src/base/net/stratum/strategies/SinglePoolStrategy.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/stratum/strategies/SinglePoolStrategy.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/stratum/strategies/SinglePoolStrategy.cpp.s
 .PHONY : src/base/net/stratum/strategies/SinglePoolStrategy.cpp.s
 
 src/base/net/tls/ServerTls.o: src/base/net/tls/ServerTls.cpp.o
@@ -3232,7 +3232,7 @@ src/base/net/tls/ServerTls.o: src/base/net/tls/ServerTls.cpp.o
 
 # target to build an object file
 src/base/net/tls/ServerTls.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/tls/ServerTls.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/tls/ServerTls.cpp.o
 .PHONY : src/base/net/tls/ServerTls.cpp.o
 
 src/base/net/tls/ServerTls.i: src/base/net/tls/ServerTls.cpp.i
@@ -3240,7 +3240,7 @@ src/base/net/tls/ServerTls.i: src/base/net/tls/ServerTls.cpp.i
 
 # target to preprocess a source file
 src/base/net/tls/ServerTls.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/tls/ServerTls.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/tls/ServerTls.cpp.i
 .PHONY : src/base/net/tls/ServerTls.cpp.i
 
 src/base/net/tls/ServerTls.s: src/base/net/tls/ServerTls.cpp.s
@@ -3248,7 +3248,7 @@ src/base/net/tls/ServerTls.s: src/base/net/tls/ServerTls.cpp.s
 
 # target to generate assembly for a file
 src/base/net/tls/ServerTls.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/tls/ServerTls.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/tls/ServerTls.cpp.s
 .PHONY : src/base/net/tls/ServerTls.cpp.s
 
 src/base/net/tls/TlsConfig.o: src/base/net/tls/TlsConfig.cpp.o
@@ -3256,7 +3256,7 @@ src/base/net/tls/TlsConfig.o: src/base/net/tls/TlsConfig.cpp.o
 
 # target to build an object file
 src/base/net/tls/TlsConfig.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/tls/TlsConfig.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/tls/TlsConfig.cpp.o
 .PHONY : src/base/net/tls/TlsConfig.cpp.o
 
 src/base/net/tls/TlsConfig.i: src/base/net/tls/TlsConfig.cpp.i
@@ -3264,7 +3264,7 @@ src/base/net/tls/TlsConfig.i: src/base/net/tls/TlsConfig.cpp.i
 
 # target to preprocess a source file
 src/base/net/tls/TlsConfig.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/tls/TlsConfig.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/tls/TlsConfig.cpp.i
 .PHONY : src/base/net/tls/TlsConfig.cpp.i
 
 src/base/net/tls/TlsConfig.s: src/base/net/tls/TlsConfig.cpp.s
@@ -3272,7 +3272,7 @@ src/base/net/tls/TlsConfig.s: src/base/net/tls/TlsConfig.cpp.s
 
 # target to generate assembly for a file
 src/base/net/tls/TlsConfig.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/tls/TlsConfig.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/tls/TlsConfig.cpp.s
 .PHONY : src/base/net/tls/TlsConfig.cpp.s
 
 src/base/net/tls/TlsContext.o: src/base/net/tls/TlsContext.cpp.o
@@ -3280,7 +3280,7 @@ src/base/net/tls/TlsContext.o: src/base/net/tls/TlsContext.cpp.o
 
 # target to build an object file
 src/base/net/tls/TlsContext.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/tls/TlsContext.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/tls/TlsContext.cpp.o
 .PHONY : src/base/net/tls/TlsContext.cpp.o
 
 src/base/net/tls/TlsContext.i: src/base/net/tls/TlsContext.cpp.i
@@ -3288,7 +3288,7 @@ src/base/net/tls/TlsContext.i: src/base/net/tls/TlsContext.cpp.i
 
 # target to preprocess a source file
 src/base/net/tls/TlsContext.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/tls/TlsContext.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/tls/TlsContext.cpp.i
 .PHONY : src/base/net/tls/TlsContext.cpp.i
 
 src/base/net/tls/TlsContext.s: src/base/net/tls/TlsContext.cpp.s
@@ -3296,7 +3296,7 @@ src/base/net/tls/TlsContext.s: src/base/net/tls/TlsContext.cpp.s
 
 # target to generate assembly for a file
 src/base/net/tls/TlsContext.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/tls/TlsContext.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/tls/TlsContext.cpp.s
 .PHONY : src/base/net/tls/TlsContext.cpp.s
 
 src/base/net/tls/TlsGen.o: src/base/net/tls/TlsGen.cpp.o
@@ -3304,7 +3304,7 @@ src/base/net/tls/TlsGen.o: src/base/net/tls/TlsGen.cpp.o
 
 # target to build an object file
 src/base/net/tls/TlsGen.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/tls/TlsGen.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/tls/TlsGen.cpp.o
 .PHONY : src/base/net/tls/TlsGen.cpp.o
 
 src/base/net/tls/TlsGen.i: src/base/net/tls/TlsGen.cpp.i
@@ -3312,7 +3312,7 @@ src/base/net/tls/TlsGen.i: src/base/net/tls/TlsGen.cpp.i
 
 # target to preprocess a source file
 src/base/net/tls/TlsGen.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/tls/TlsGen.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/tls/TlsGen.cpp.i
 .PHONY : src/base/net/tls/TlsGen.cpp.i
 
 src/base/net/tls/TlsGen.s: src/base/net/tls/TlsGen.cpp.s
@@ -3320,7 +3320,7 @@ src/base/net/tls/TlsGen.s: src/base/net/tls/TlsGen.cpp.s
 
 # target to generate assembly for a file
 src/base/net/tls/TlsGen.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/tls/TlsGen.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/tls/TlsGen.cpp.s
 .PHONY : src/base/net/tls/TlsGen.cpp.s
 
 src/base/net/tools/LineReader.o: src/base/net/tools/LineReader.cpp.o
@@ -3328,7 +3328,7 @@ src/base/net/tools/LineReader.o: src/base/net/tools/LineReader.cpp.o
 
 # target to build an object file
 src/base/net/tools/LineReader.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/tools/LineReader.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/tools/LineReader.cpp.o
 .PHONY : src/base/net/tools/LineReader.cpp.o
 
 src/base/net/tools/LineReader.i: src/base/net/tools/LineReader.cpp.i
@@ -3336,7 +3336,7 @@ src/base/net/tools/LineReader.i: src/base/net/tools/LineReader.cpp.i
 
 # target to preprocess a source file
 src/base/net/tools/LineReader.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/tools/LineReader.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/tools/LineReader.cpp.i
 .PHONY : src/base/net/tools/LineReader.cpp.i
 
 src/base/net/tools/LineReader.s: src/base/net/tools/LineReader.cpp.s
@@ -3344,7 +3344,7 @@ src/base/net/tools/LineReader.s: src/base/net/tools/LineReader.cpp.s
 
 # target to generate assembly for a file
 src/base/net/tools/LineReader.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/tools/LineReader.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/tools/LineReader.cpp.s
 .PHONY : src/base/net/tools/LineReader.cpp.s
 
 src/base/net/tools/NetBuffer.o: src/base/net/tools/NetBuffer.cpp.o
@@ -3352,7 +3352,7 @@ src/base/net/tools/NetBuffer.o: src/base/net/tools/NetBuffer.cpp.o
 
 # target to build an object file
 src/base/net/tools/NetBuffer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/tools/NetBuffer.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/tools/NetBuffer.cpp.o
 .PHONY : src/base/net/tools/NetBuffer.cpp.o
 
 src/base/net/tools/NetBuffer.i: src/base/net/tools/NetBuffer.cpp.i
@@ -3360,7 +3360,7 @@ src/base/net/tools/NetBuffer.i: src/base/net/tools/NetBuffer.cpp.i
 
 # target to preprocess a source file
 src/base/net/tools/NetBuffer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/tools/NetBuffer.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/tools/NetBuffer.cpp.i
 .PHONY : src/base/net/tools/NetBuffer.cpp.i
 
 src/base/net/tools/NetBuffer.s: src/base/net/tools/NetBuffer.cpp.s
@@ -3368,7 +3368,7 @@ src/base/net/tools/NetBuffer.s: src/base/net/tools/NetBuffer.cpp.s
 
 # target to generate assembly for a file
 src/base/net/tools/NetBuffer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/tools/NetBuffer.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/tools/NetBuffer.cpp.s
 .PHONY : src/base/net/tools/NetBuffer.cpp.s
 
 src/base/net/tools/TcpServer.o: src/base/net/tools/TcpServer.cpp.o
@@ -3376,7 +3376,7 @@ src/base/net/tools/TcpServer.o: src/base/net/tools/TcpServer.cpp.o
 
 # target to build an object file
 src/base/net/tools/TcpServer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/tools/TcpServer.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/tools/TcpServer.cpp.o
 .PHONY : src/base/net/tools/TcpServer.cpp.o
 
 src/base/net/tools/TcpServer.i: src/base/net/tools/TcpServer.cpp.i
@@ -3384,7 +3384,7 @@ src/base/net/tools/TcpServer.i: src/base/net/tools/TcpServer.cpp.i
 
 # target to preprocess a source file
 src/base/net/tools/TcpServer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/tools/TcpServer.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/tools/TcpServer.cpp.i
 .PHONY : src/base/net/tools/TcpServer.cpp.i
 
 src/base/net/tools/TcpServer.s: src/base/net/tools/TcpServer.cpp.s
@@ -3392,7 +3392,7 @@ src/base/net/tools/TcpServer.s: src/base/net/tools/TcpServer.cpp.s
 
 # target to generate assembly for a file
 src/base/net/tools/TcpServer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/net/tools/TcpServer.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/net/tools/TcpServer.cpp.s
 .PHONY : src/base/net/tools/TcpServer.cpp.s
 
 src/base/tools/Arguments.o: src/base/tools/Arguments.cpp.o
@@ -3400,7 +3400,7 @@ src/base/tools/Arguments.o: src/base/tools/Arguments.cpp.o
 
 # target to build an object file
 src/base/tools/Arguments.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/tools/Arguments.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/tools/Arguments.cpp.o
 .PHONY : src/base/tools/Arguments.cpp.o
 
 src/base/tools/Arguments.i: src/base/tools/Arguments.cpp.i
@@ -3408,7 +3408,7 @@ src/base/tools/Arguments.i: src/base/tools/Arguments.cpp.i
 
 # target to preprocess a source file
 src/base/tools/Arguments.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/tools/Arguments.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/tools/Arguments.cpp.i
 .PHONY : src/base/tools/Arguments.cpp.i
 
 src/base/tools/Arguments.s: src/base/tools/Arguments.cpp.s
@@ -3416,7 +3416,7 @@ src/base/tools/Arguments.s: src/base/tools/Arguments.cpp.s
 
 # target to generate assembly for a file
 src/base/tools/Arguments.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/tools/Arguments.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/tools/Arguments.cpp.s
 .PHONY : src/base/tools/Arguments.cpp.s
 
 src/base/tools/Chrono.o: src/base/tools/Chrono.cpp.o
@@ -3424,7 +3424,7 @@ src/base/tools/Chrono.o: src/base/tools/Chrono.cpp.o
 
 # target to build an object file
 src/base/tools/Chrono.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/tools/Chrono.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/tools/Chrono.cpp.o
 .PHONY : src/base/tools/Chrono.cpp.o
 
 src/base/tools/Chrono.i: src/base/tools/Chrono.cpp.i
@@ -3432,7 +3432,7 @@ src/base/tools/Chrono.i: src/base/tools/Chrono.cpp.i
 
 # target to preprocess a source file
 src/base/tools/Chrono.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/tools/Chrono.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/tools/Chrono.cpp.i
 .PHONY : src/base/tools/Chrono.cpp.i
 
 src/base/tools/Chrono.s: src/base/tools/Chrono.cpp.s
@@ -3440,7 +3440,7 @@ src/base/tools/Chrono.s: src/base/tools/Chrono.cpp.s
 
 # target to generate assembly for a file
 src/base/tools/Chrono.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/tools/Chrono.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/tools/Chrono.cpp.s
 .PHONY : src/base/tools/Chrono.cpp.s
 
 src/base/tools/Cvt.o: src/base/tools/Cvt.cpp.o
@@ -3448,7 +3448,7 @@ src/base/tools/Cvt.o: src/base/tools/Cvt.cpp.o
 
 # target to build an object file
 src/base/tools/Cvt.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/tools/Cvt.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/tools/Cvt.cpp.o
 .PHONY : src/base/tools/Cvt.cpp.o
 
 src/base/tools/Cvt.i: src/base/tools/Cvt.cpp.i
@@ -3456,7 +3456,7 @@ src/base/tools/Cvt.i: src/base/tools/Cvt.cpp.i
 
 # target to preprocess a source file
 src/base/tools/Cvt.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/tools/Cvt.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/tools/Cvt.cpp.i
 .PHONY : src/base/tools/Cvt.cpp.i
 
 src/base/tools/Cvt.s: src/base/tools/Cvt.cpp.s
@@ -3464,7 +3464,7 @@ src/base/tools/Cvt.s: src/base/tools/Cvt.cpp.s
 
 # target to generate assembly for a file
 src/base/tools/Cvt.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/tools/Cvt.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/tools/Cvt.cpp.s
 .PHONY : src/base/tools/Cvt.cpp.s
 
 src/base/tools/String.o: src/base/tools/String.cpp.o
@@ -3472,7 +3472,7 @@ src/base/tools/String.o: src/base/tools/String.cpp.o
 
 # target to build an object file
 src/base/tools/String.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/tools/String.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/tools/String.cpp.o
 .PHONY : src/base/tools/String.cpp.o
 
 src/base/tools/String.i: src/base/tools/String.cpp.i
@@ -3480,7 +3480,7 @@ src/base/tools/String.i: src/base/tools/String.cpp.i
 
 # target to preprocess a source file
 src/base/tools/String.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/tools/String.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/tools/String.cpp.i
 .PHONY : src/base/tools/String.cpp.i
 
 src/base/tools/String.s: src/base/tools/String.cpp.s
@@ -3488,7 +3488,7 @@ src/base/tools/String.s: src/base/tools/String.cpp.s
 
 # target to generate assembly for a file
 src/base/tools/String.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/tools/String.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/tools/String.cpp.s
 .PHONY : src/base/tools/String.cpp.s
 
 src/base/tools/Timer.o: src/base/tools/Timer.cpp.o
@@ -3496,7 +3496,7 @@ src/base/tools/Timer.o: src/base/tools/Timer.cpp.o
 
 # target to build an object file
 src/base/tools/Timer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/tools/Timer.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/tools/Timer.cpp.o
 .PHONY : src/base/tools/Timer.cpp.o
 
 src/base/tools/Timer.i: src/base/tools/Timer.cpp.i
@@ -3504,7 +3504,7 @@ src/base/tools/Timer.i: src/base/tools/Timer.cpp.i
 
 # target to preprocess a source file
 src/base/tools/Timer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/tools/Timer.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/tools/Timer.cpp.i
 .PHONY : src/base/tools/Timer.cpp.i
 
 src/base/tools/Timer.s: src/base/tools/Timer.cpp.s
@@ -3512,7 +3512,7 @@ src/base/tools/Timer.s: src/base/tools/Timer.cpp.s
 
 # target to generate assembly for a file
 src/base/tools/Timer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/tools/Timer.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/tools/Timer.cpp.s
 .PHONY : src/base/tools/Timer.cpp.s
 
 src/base/tools/cryptonote/BlockTemplate.o: src/base/tools/cryptonote/BlockTemplate.cpp.o
@@ -3520,7 +3520,7 @@ src/base/tools/cryptonote/BlockTemplate.o: src/base/tools/cryptonote/BlockTempla
 
 # target to build an object file
 src/base/tools/cryptonote/BlockTemplate.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/tools/cryptonote/BlockTemplate.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/tools/cryptonote/BlockTemplate.cpp.o
 .PHONY : src/base/tools/cryptonote/BlockTemplate.cpp.o
 
 src/base/tools/cryptonote/BlockTemplate.i: src/base/tools/cryptonote/BlockTemplate.cpp.i
@@ -3528,7 +3528,7 @@ src/base/tools/cryptonote/BlockTemplate.i: src/base/tools/cryptonote/BlockTempla
 
 # target to preprocess a source file
 src/base/tools/cryptonote/BlockTemplate.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/tools/cryptonote/BlockTemplate.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/tools/cryptonote/BlockTemplate.cpp.i
 .PHONY : src/base/tools/cryptonote/BlockTemplate.cpp.i
 
 src/base/tools/cryptonote/BlockTemplate.s: src/base/tools/cryptonote/BlockTemplate.cpp.s
@@ -3536,7 +3536,7 @@ src/base/tools/cryptonote/BlockTemplate.s: src/base/tools/cryptonote/BlockTempla
 
 # target to generate assembly for a file
 src/base/tools/cryptonote/BlockTemplate.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/tools/cryptonote/BlockTemplate.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/tools/cryptonote/BlockTemplate.cpp.s
 .PHONY : src/base/tools/cryptonote/BlockTemplate.cpp.s
 
 src/base/tools/cryptonote/Signatures.o: src/base/tools/cryptonote/Signatures.cpp.o
@@ -3544,7 +3544,7 @@ src/base/tools/cryptonote/Signatures.o: src/base/tools/cryptonote/Signatures.cpp
 
 # target to build an object file
 src/base/tools/cryptonote/Signatures.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/tools/cryptonote/Signatures.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/tools/cryptonote/Signatures.cpp.o
 .PHONY : src/base/tools/cryptonote/Signatures.cpp.o
 
 src/base/tools/cryptonote/Signatures.i: src/base/tools/cryptonote/Signatures.cpp.i
@@ -3552,7 +3552,7 @@ src/base/tools/cryptonote/Signatures.i: src/base/tools/cryptonote/Signatures.cpp
 
 # target to preprocess a source file
 src/base/tools/cryptonote/Signatures.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/tools/cryptonote/Signatures.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/tools/cryptonote/Signatures.cpp.i
 .PHONY : src/base/tools/cryptonote/Signatures.cpp.i
 
 src/base/tools/cryptonote/Signatures.s: src/base/tools/cryptonote/Signatures.cpp.s
@@ -3560,7 +3560,7 @@ src/base/tools/cryptonote/Signatures.s: src/base/tools/cryptonote/Signatures.cpp
 
 # target to generate assembly for a file
 src/base/tools/cryptonote/Signatures.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/tools/cryptonote/Signatures.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/tools/cryptonote/Signatures.cpp.s
 .PHONY : src/base/tools/cryptonote/Signatures.cpp.s
 
 src/base/tools/cryptonote/WalletAddress.o: src/base/tools/cryptonote/WalletAddress.cpp.o
@@ -3568,7 +3568,7 @@ src/base/tools/cryptonote/WalletAddress.o: src/base/tools/cryptonote/WalletAddre
 
 # target to build an object file
 src/base/tools/cryptonote/WalletAddress.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/tools/cryptonote/WalletAddress.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/tools/cryptonote/WalletAddress.cpp.o
 .PHONY : src/base/tools/cryptonote/WalletAddress.cpp.o
 
 src/base/tools/cryptonote/WalletAddress.i: src/base/tools/cryptonote/WalletAddress.cpp.i
@@ -3576,7 +3576,7 @@ src/base/tools/cryptonote/WalletAddress.i: src/base/tools/cryptonote/WalletAddre
 
 # target to preprocess a source file
 src/base/tools/cryptonote/WalletAddress.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/tools/cryptonote/WalletAddress.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/tools/cryptonote/WalletAddress.cpp.i
 .PHONY : src/base/tools/cryptonote/WalletAddress.cpp.i
 
 src/base/tools/cryptonote/WalletAddress.s: src/base/tools/cryptonote/WalletAddress.cpp.s
@@ -3584,7 +3584,7 @@ src/base/tools/cryptonote/WalletAddress.s: src/base/tools/cryptonote/WalletAddre
 
 # target to generate assembly for a file
 src/base/tools/cryptonote/WalletAddress.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/tools/cryptonote/WalletAddress.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/tools/cryptonote/WalletAddress.cpp.s
 .PHONY : src/base/tools/cryptonote/WalletAddress.cpp.s
 
 src/base/tools/cryptonote/crypto-ops-data.o: src/base/tools/cryptonote/crypto-ops-data.c.o
@@ -3592,7 +3592,7 @@ src/base/tools/cryptonote/crypto-ops-data.o: src/base/tools/cryptonote/crypto-op
 
 # target to build an object file
 src/base/tools/cryptonote/crypto-ops-data.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/tools/cryptonote/crypto-ops-data.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/tools/cryptonote/crypto-ops-data.c.o
 .PHONY : src/base/tools/cryptonote/crypto-ops-data.c.o
 
 src/base/tools/cryptonote/crypto-ops-data.i: src/base/tools/cryptonote/crypto-ops-data.c.i
@@ -3600,7 +3600,7 @@ src/base/tools/cryptonote/crypto-ops-data.i: src/base/tools/cryptonote/crypto-op
 
 # target to preprocess a source file
 src/base/tools/cryptonote/crypto-ops-data.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/tools/cryptonote/crypto-ops-data.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/tools/cryptonote/crypto-ops-data.c.i
 .PHONY : src/base/tools/cryptonote/crypto-ops-data.c.i
 
 src/base/tools/cryptonote/crypto-ops-data.s: src/base/tools/cryptonote/crypto-ops-data.c.s
@@ -3608,7 +3608,7 @@ src/base/tools/cryptonote/crypto-ops-data.s: src/base/tools/cryptonote/crypto-op
 
 # target to generate assembly for a file
 src/base/tools/cryptonote/crypto-ops-data.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/tools/cryptonote/crypto-ops-data.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/tools/cryptonote/crypto-ops-data.c.s
 .PHONY : src/base/tools/cryptonote/crypto-ops-data.c.s
 
 src/base/tools/cryptonote/crypto-ops.o: src/base/tools/cryptonote/crypto-ops.c.o
@@ -3616,7 +3616,7 @@ src/base/tools/cryptonote/crypto-ops.o: src/base/tools/cryptonote/crypto-ops.c.o
 
 # target to build an object file
 src/base/tools/cryptonote/crypto-ops.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/tools/cryptonote/crypto-ops.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/tools/cryptonote/crypto-ops.c.o
 .PHONY : src/base/tools/cryptonote/crypto-ops.c.o
 
 src/base/tools/cryptonote/crypto-ops.i: src/base/tools/cryptonote/crypto-ops.c.i
@@ -3624,7 +3624,7 @@ src/base/tools/cryptonote/crypto-ops.i: src/base/tools/cryptonote/crypto-ops.c.i
 
 # target to preprocess a source file
 src/base/tools/cryptonote/crypto-ops.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/tools/cryptonote/crypto-ops.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/tools/cryptonote/crypto-ops.c.i
 .PHONY : src/base/tools/cryptonote/crypto-ops.c.i
 
 src/base/tools/cryptonote/crypto-ops.s: src/base/tools/cryptonote/crypto-ops.c.s
@@ -3632,7 +3632,7 @@ src/base/tools/cryptonote/crypto-ops.s: src/base/tools/cryptonote/crypto-ops.c.s
 
 # target to generate assembly for a file
 src/base/tools/cryptonote/crypto-ops.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/base/tools/cryptonote/crypto-ops.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/base/tools/cryptonote/crypto-ops.c.s
 .PHONY : src/base/tools/cryptonote/crypto-ops.c.s
 
 src/core/Controller.o: src/core/Controller.cpp.o
@@ -3640,7 +3640,7 @@ src/core/Controller.o: src/core/Controller.cpp.o
 
 # target to build an object file
 src/core/Controller.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/core/Controller.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/core/Controller.cpp.o
 .PHONY : src/core/Controller.cpp.o
 
 src/core/Controller.i: src/core/Controller.cpp.i
@@ -3648,7 +3648,7 @@ src/core/Controller.i: src/core/Controller.cpp.i
 
 # target to preprocess a source file
 src/core/Controller.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/core/Controller.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/core/Controller.cpp.i
 .PHONY : src/core/Controller.cpp.i
 
 src/core/Controller.s: src/core/Controller.cpp.s
@@ -3656,39 +3656,39 @@ src/core/Controller.s: src/core/Controller.cpp.s
 
 # target to generate assembly for a file
 src/core/Controller.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/core/Controller.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/core/Controller.cpp.s
 .PHONY : src/core/Controller.cpp.s
 
-src/core/Jdkrigger.o: src/core/Jdkrigger.cpp.o
-.PHONY : src/core/Jdkrigger.o
+src/core/Kittenpawger.o: src/core/Kittenpawger.cpp.o
+.PHONY : src/core/Kittenpawger.o
 
 # target to build an object file
-src/core/Jdkrigger.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/core/Jdkrigger.cpp.o
-.PHONY : src/core/Jdkrigger.cpp.o
+src/core/Kittenpawger.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/core/Kittenpawger.cpp.o
+.PHONY : src/core/Kittenpawger.cpp.o
 
-src/core/Jdkrigger.i: src/core/Jdkrigger.cpp.i
-.PHONY : src/core/Jdkrigger.i
+src/core/Kittenpawger.i: src/core/Kittenpawger.cpp.i
+.PHONY : src/core/Kittenpawger.i
 
 # target to preprocess a source file
-src/core/Jdkrigger.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/core/Jdkrigger.cpp.i
-.PHONY : src/core/Jdkrigger.cpp.i
+src/core/Kittenpawger.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/core/Kittenpawger.cpp.i
+.PHONY : src/core/Kittenpawger.cpp.i
 
-src/core/Jdkrigger.s: src/core/Jdkrigger.cpp.s
-.PHONY : src/core/Jdkrigger.s
+src/core/Kittenpawger.s: src/core/Kittenpawger.cpp.s
+.PHONY : src/core/Kittenpawger.s
 
 # target to generate assembly for a file
-src/core/Jdkrigger.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/core/Jdkrigger.cpp.s
-.PHONY : src/core/Jdkrigger.cpp.s
+src/core/Kittenpawger.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/core/Kittenpawger.cpp.s
+.PHONY : src/core/Kittenpawger.cpp.s
 
 src/core/Taskbar.o: src/core/Taskbar.cpp.o
 .PHONY : src/core/Taskbar.o
 
 # target to build an object file
 src/core/Taskbar.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/core/Taskbar.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/core/Taskbar.cpp.o
 .PHONY : src/core/Taskbar.cpp.o
 
 src/core/Taskbar.i: src/core/Taskbar.cpp.i
@@ -3696,7 +3696,7 @@ src/core/Taskbar.i: src/core/Taskbar.cpp.i
 
 # target to preprocess a source file
 src/core/Taskbar.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/core/Taskbar.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/core/Taskbar.cpp.i
 .PHONY : src/core/Taskbar.cpp.i
 
 src/core/Taskbar.s: src/core/Taskbar.cpp.s
@@ -3704,7 +3704,7 @@ src/core/Taskbar.s: src/core/Taskbar.cpp.s
 
 # target to generate assembly for a file
 src/core/Taskbar.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/core/Taskbar.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/core/Taskbar.cpp.s
 .PHONY : src/core/Taskbar.cpp.s
 
 src/core/config/Config.o: src/core/config/Config.cpp.o
@@ -3712,7 +3712,7 @@ src/core/config/Config.o: src/core/config/Config.cpp.o
 
 # target to build an object file
 src/core/config/Config.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/core/config/Config.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/core/config/Config.cpp.o
 .PHONY : src/core/config/Config.cpp.o
 
 src/core/config/Config.i: src/core/config/Config.cpp.i
@@ -3720,7 +3720,7 @@ src/core/config/Config.i: src/core/config/Config.cpp.i
 
 # target to preprocess a source file
 src/core/config/Config.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/core/config/Config.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/core/config/Config.cpp.i
 .PHONY : src/core/config/Config.cpp.i
 
 src/core/config/Config.s: src/core/config/Config.cpp.s
@@ -3728,7 +3728,7 @@ src/core/config/Config.s: src/core/config/Config.cpp.s
 
 # target to generate assembly for a file
 src/core/config/Config.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/core/config/Config.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/core/config/Config.cpp.s
 .PHONY : src/core/config/Config.cpp.s
 
 src/core/config/ConfigTransform.o: src/core/config/ConfigTransform.cpp.o
@@ -3736,7 +3736,7 @@ src/core/config/ConfigTransform.o: src/core/config/ConfigTransform.cpp.o
 
 # target to build an object file
 src/core/config/ConfigTransform.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/core/config/ConfigTransform.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/core/config/ConfigTransform.cpp.o
 .PHONY : src/core/config/ConfigTransform.cpp.o
 
 src/core/config/ConfigTransform.i: src/core/config/ConfigTransform.cpp.i
@@ -3744,7 +3744,7 @@ src/core/config/ConfigTransform.i: src/core/config/ConfigTransform.cpp.i
 
 # target to preprocess a source file
 src/core/config/ConfigTransform.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/core/config/ConfigTransform.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/core/config/ConfigTransform.cpp.i
 .PHONY : src/core/config/ConfigTransform.cpp.i
 
 src/core/config/ConfigTransform.s: src/core/config/ConfigTransform.cpp.s
@@ -3752,7 +3752,7 @@ src/core/config/ConfigTransform.s: src/core/config/ConfigTransform.cpp.s
 
 # target to generate assembly for a file
 src/core/config/ConfigTransform.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/core/config/ConfigTransform.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/core/config/ConfigTransform.cpp.s
 .PHONY : src/core/config/ConfigTransform.cpp.s
 
 src/crypto/cn/CnCtx.o: src/crypto/cn/CnCtx.cpp.o
@@ -3760,7 +3760,7 @@ src/crypto/cn/CnCtx.o: src/crypto/cn/CnCtx.cpp.o
 
 # target to build an object file
 src/crypto/cn/CnCtx.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/cn/CnCtx.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/cn/CnCtx.cpp.o
 .PHONY : src/crypto/cn/CnCtx.cpp.o
 
 src/crypto/cn/CnCtx.i: src/crypto/cn/CnCtx.cpp.i
@@ -3768,7 +3768,7 @@ src/crypto/cn/CnCtx.i: src/crypto/cn/CnCtx.cpp.i
 
 # target to preprocess a source file
 src/crypto/cn/CnCtx.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/cn/CnCtx.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/cn/CnCtx.cpp.i
 .PHONY : src/crypto/cn/CnCtx.cpp.i
 
 src/crypto/cn/CnCtx.s: src/crypto/cn/CnCtx.cpp.s
@@ -3776,7 +3776,7 @@ src/crypto/cn/CnCtx.s: src/crypto/cn/CnCtx.cpp.s
 
 # target to generate assembly for a file
 src/crypto/cn/CnCtx.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/cn/CnCtx.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/cn/CnCtx.cpp.s
 .PHONY : src/crypto/cn/CnCtx.cpp.s
 
 src/crypto/cn/CnHash.o: src/crypto/cn/CnHash.cpp.o
@@ -3784,7 +3784,7 @@ src/crypto/cn/CnHash.o: src/crypto/cn/CnHash.cpp.o
 
 # target to build an object file
 src/crypto/cn/CnHash.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/cn/CnHash.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/cn/CnHash.cpp.o
 .PHONY : src/crypto/cn/CnHash.cpp.o
 
 src/crypto/cn/CnHash.i: src/crypto/cn/CnHash.cpp.i
@@ -3792,7 +3792,7 @@ src/crypto/cn/CnHash.i: src/crypto/cn/CnHash.cpp.i
 
 # target to preprocess a source file
 src/crypto/cn/CnHash.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/cn/CnHash.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/cn/CnHash.cpp.i
 .PHONY : src/crypto/cn/CnHash.cpp.i
 
 src/crypto/cn/CnHash.s: src/crypto/cn/CnHash.cpp.s
@@ -3800,7 +3800,7 @@ src/crypto/cn/CnHash.s: src/crypto/cn/CnHash.cpp.s
 
 # target to generate assembly for a file
 src/crypto/cn/CnHash.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/cn/CnHash.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/cn/CnHash.cpp.s
 .PHONY : src/crypto/cn/CnHash.cpp.s
 
 src/crypto/cn/asm/CryptonightR_template.o: src/crypto/cn/asm/CryptonightR_template.S.o
@@ -3808,7 +3808,7 @@ src/crypto/cn/asm/CryptonightR_template.o: src/crypto/cn/asm/CryptonightR_templa
 
 # target to build an object file
 src/crypto/cn/asm/CryptonightR_template.S.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig-asm.dir/build.make CMakeFiles/jdkrig-asm.dir/src/crypto/cn/asm/CryptonightR_template.S.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw-asm.dir/build.make CMakeFiles/kittenpaw-asm.dir/src/crypto/cn/asm/CryptonightR_template.S.o
 .PHONY : src/crypto/cn/asm/CryptonightR_template.S.o
 
 src/crypto/cn/asm/cn_main_loop.o: src/crypto/cn/asm/cn_main_loop.S.o
@@ -3816,7 +3816,7 @@ src/crypto/cn/asm/cn_main_loop.o: src/crypto/cn/asm/cn_main_loop.S.o
 
 # target to build an object file
 src/crypto/cn/asm/cn_main_loop.S.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig-asm.dir/build.make CMakeFiles/jdkrig-asm.dir/src/crypto/cn/asm/cn_main_loop.S.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw-asm.dir/build.make CMakeFiles/kittenpaw-asm.dir/src/crypto/cn/asm/cn_main_loop.S.o
 .PHONY : src/crypto/cn/asm/cn_main_loop.S.o
 
 src/crypto/cn/c_blake256.o: src/crypto/cn/c_blake256.c.o
@@ -3824,7 +3824,7 @@ src/crypto/cn/c_blake256.o: src/crypto/cn/c_blake256.c.o
 
 # target to build an object file
 src/crypto/cn/c_blake256.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/cn/c_blake256.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/cn/c_blake256.c.o
 .PHONY : src/crypto/cn/c_blake256.c.o
 
 src/crypto/cn/c_blake256.i: src/crypto/cn/c_blake256.c.i
@@ -3832,7 +3832,7 @@ src/crypto/cn/c_blake256.i: src/crypto/cn/c_blake256.c.i
 
 # target to preprocess a source file
 src/crypto/cn/c_blake256.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/cn/c_blake256.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/cn/c_blake256.c.i
 .PHONY : src/crypto/cn/c_blake256.c.i
 
 src/crypto/cn/c_blake256.s: src/crypto/cn/c_blake256.c.s
@@ -3840,7 +3840,7 @@ src/crypto/cn/c_blake256.s: src/crypto/cn/c_blake256.c.s
 
 # target to generate assembly for a file
 src/crypto/cn/c_blake256.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/cn/c_blake256.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/cn/c_blake256.c.s
 .PHONY : src/crypto/cn/c_blake256.c.s
 
 src/crypto/cn/c_groestl.o: src/crypto/cn/c_groestl.c.o
@@ -3848,7 +3848,7 @@ src/crypto/cn/c_groestl.o: src/crypto/cn/c_groestl.c.o
 
 # target to build an object file
 src/crypto/cn/c_groestl.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/cn/c_groestl.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/cn/c_groestl.c.o
 .PHONY : src/crypto/cn/c_groestl.c.o
 
 src/crypto/cn/c_groestl.i: src/crypto/cn/c_groestl.c.i
@@ -3856,7 +3856,7 @@ src/crypto/cn/c_groestl.i: src/crypto/cn/c_groestl.c.i
 
 # target to preprocess a source file
 src/crypto/cn/c_groestl.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/cn/c_groestl.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/cn/c_groestl.c.i
 .PHONY : src/crypto/cn/c_groestl.c.i
 
 src/crypto/cn/c_groestl.s: src/crypto/cn/c_groestl.c.s
@@ -3864,7 +3864,7 @@ src/crypto/cn/c_groestl.s: src/crypto/cn/c_groestl.c.s
 
 # target to generate assembly for a file
 src/crypto/cn/c_groestl.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/cn/c_groestl.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/cn/c_groestl.c.s
 .PHONY : src/crypto/cn/c_groestl.c.s
 
 src/crypto/cn/c_jh.o: src/crypto/cn/c_jh.c.o
@@ -3872,7 +3872,7 @@ src/crypto/cn/c_jh.o: src/crypto/cn/c_jh.c.o
 
 # target to build an object file
 src/crypto/cn/c_jh.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/cn/c_jh.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/cn/c_jh.c.o
 .PHONY : src/crypto/cn/c_jh.c.o
 
 src/crypto/cn/c_jh.i: src/crypto/cn/c_jh.c.i
@@ -3880,7 +3880,7 @@ src/crypto/cn/c_jh.i: src/crypto/cn/c_jh.c.i
 
 # target to preprocess a source file
 src/crypto/cn/c_jh.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/cn/c_jh.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/cn/c_jh.c.i
 .PHONY : src/crypto/cn/c_jh.c.i
 
 src/crypto/cn/c_jh.s: src/crypto/cn/c_jh.c.s
@@ -3888,7 +3888,7 @@ src/crypto/cn/c_jh.s: src/crypto/cn/c_jh.c.s
 
 # target to generate assembly for a file
 src/crypto/cn/c_jh.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/cn/c_jh.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/cn/c_jh.c.s
 .PHONY : src/crypto/cn/c_jh.c.s
 
 src/crypto/cn/c_skein.o: src/crypto/cn/c_skein.c.o
@@ -3896,7 +3896,7 @@ src/crypto/cn/c_skein.o: src/crypto/cn/c_skein.c.o
 
 # target to build an object file
 src/crypto/cn/c_skein.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/cn/c_skein.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/cn/c_skein.c.o
 .PHONY : src/crypto/cn/c_skein.c.o
 
 src/crypto/cn/c_skein.i: src/crypto/cn/c_skein.c.i
@@ -3904,7 +3904,7 @@ src/crypto/cn/c_skein.i: src/crypto/cn/c_skein.c.i
 
 # target to preprocess a source file
 src/crypto/cn/c_skein.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/cn/c_skein.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/cn/c_skein.c.i
 .PHONY : src/crypto/cn/c_skein.c.i
 
 src/crypto/cn/c_skein.s: src/crypto/cn/c_skein.c.s
@@ -3912,7 +3912,7 @@ src/crypto/cn/c_skein.s: src/crypto/cn/c_skein.c.s
 
 # target to generate assembly for a file
 src/crypto/cn/c_skein.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/cn/c_skein.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/cn/c_skein.c.s
 .PHONY : src/crypto/cn/c_skein.c.s
 
 src/crypto/cn/r/CryptonightR_gen.o: src/crypto/cn/r/CryptonightR_gen.cpp.o
@@ -3920,7 +3920,7 @@ src/crypto/cn/r/CryptonightR_gen.o: src/crypto/cn/r/CryptonightR_gen.cpp.o
 
 # target to build an object file
 src/crypto/cn/r/CryptonightR_gen.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/cn/r/CryptonightR_gen.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/cn/r/CryptonightR_gen.cpp.o
 .PHONY : src/crypto/cn/r/CryptonightR_gen.cpp.o
 
 src/crypto/cn/r/CryptonightR_gen.i: src/crypto/cn/r/CryptonightR_gen.cpp.i
@@ -3928,7 +3928,7 @@ src/crypto/cn/r/CryptonightR_gen.i: src/crypto/cn/r/CryptonightR_gen.cpp.i
 
 # target to preprocess a source file
 src/crypto/cn/r/CryptonightR_gen.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/cn/r/CryptonightR_gen.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/cn/r/CryptonightR_gen.cpp.i
 .PHONY : src/crypto/cn/r/CryptonightR_gen.cpp.i
 
 src/crypto/cn/r/CryptonightR_gen.s: src/crypto/cn/r/CryptonightR_gen.cpp.s
@@ -3936,7 +3936,7 @@ src/crypto/cn/r/CryptonightR_gen.s: src/crypto/cn/r/CryptonightR_gen.cpp.s
 
 # target to generate assembly for a file
 src/crypto/cn/r/CryptonightR_gen.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/cn/r/CryptonightR_gen.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/cn/r/CryptonightR_gen.cpp.s
 .PHONY : src/crypto/cn/r/CryptonightR_gen.cpp.s
 
 src/crypto/common/Assembly.o: src/crypto/common/Assembly.cpp.o
@@ -3944,7 +3944,7 @@ src/crypto/common/Assembly.o: src/crypto/common/Assembly.cpp.o
 
 # target to build an object file
 src/crypto/common/Assembly.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/common/Assembly.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/common/Assembly.cpp.o
 .PHONY : src/crypto/common/Assembly.cpp.o
 
 src/crypto/common/Assembly.i: src/crypto/common/Assembly.cpp.i
@@ -3952,7 +3952,7 @@ src/crypto/common/Assembly.i: src/crypto/common/Assembly.cpp.i
 
 # target to preprocess a source file
 src/crypto/common/Assembly.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/common/Assembly.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/common/Assembly.cpp.i
 .PHONY : src/crypto/common/Assembly.cpp.i
 
 src/crypto/common/Assembly.s: src/crypto/common/Assembly.cpp.s
@@ -3960,7 +3960,7 @@ src/crypto/common/Assembly.s: src/crypto/common/Assembly.cpp.s
 
 # target to generate assembly for a file
 src/crypto/common/Assembly.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/common/Assembly.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/common/Assembly.cpp.s
 .PHONY : src/crypto/common/Assembly.cpp.s
 
 src/crypto/common/HugePagesInfo.o: src/crypto/common/HugePagesInfo.cpp.o
@@ -3968,7 +3968,7 @@ src/crypto/common/HugePagesInfo.o: src/crypto/common/HugePagesInfo.cpp.o
 
 # target to build an object file
 src/crypto/common/HugePagesInfo.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/common/HugePagesInfo.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/common/HugePagesInfo.cpp.o
 .PHONY : src/crypto/common/HugePagesInfo.cpp.o
 
 src/crypto/common/HugePagesInfo.i: src/crypto/common/HugePagesInfo.cpp.i
@@ -3976,7 +3976,7 @@ src/crypto/common/HugePagesInfo.i: src/crypto/common/HugePagesInfo.cpp.i
 
 # target to preprocess a source file
 src/crypto/common/HugePagesInfo.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/common/HugePagesInfo.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/common/HugePagesInfo.cpp.i
 .PHONY : src/crypto/common/HugePagesInfo.cpp.i
 
 src/crypto/common/HugePagesInfo.s: src/crypto/common/HugePagesInfo.cpp.s
@@ -3984,7 +3984,7 @@ src/crypto/common/HugePagesInfo.s: src/crypto/common/HugePagesInfo.cpp.s
 
 # target to generate assembly for a file
 src/crypto/common/HugePagesInfo.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/common/HugePagesInfo.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/common/HugePagesInfo.cpp.s
 .PHONY : src/crypto/common/HugePagesInfo.cpp.s
 
 src/crypto/common/LinuxMemory.o: src/crypto/common/LinuxMemory.cpp.o
@@ -3992,7 +3992,7 @@ src/crypto/common/LinuxMemory.o: src/crypto/common/LinuxMemory.cpp.o
 
 # target to build an object file
 src/crypto/common/LinuxMemory.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/common/LinuxMemory.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/common/LinuxMemory.cpp.o
 .PHONY : src/crypto/common/LinuxMemory.cpp.o
 
 src/crypto/common/LinuxMemory.i: src/crypto/common/LinuxMemory.cpp.i
@@ -4000,7 +4000,7 @@ src/crypto/common/LinuxMemory.i: src/crypto/common/LinuxMemory.cpp.i
 
 # target to preprocess a source file
 src/crypto/common/LinuxMemory.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/common/LinuxMemory.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/common/LinuxMemory.cpp.i
 .PHONY : src/crypto/common/LinuxMemory.cpp.i
 
 src/crypto/common/LinuxMemory.s: src/crypto/common/LinuxMemory.cpp.s
@@ -4008,7 +4008,7 @@ src/crypto/common/LinuxMemory.s: src/crypto/common/LinuxMemory.cpp.s
 
 # target to generate assembly for a file
 src/crypto/common/LinuxMemory.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/common/LinuxMemory.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/common/LinuxMemory.cpp.s
 .PHONY : src/crypto/common/LinuxMemory.cpp.s
 
 src/crypto/common/MemoryPool.o: src/crypto/common/MemoryPool.cpp.o
@@ -4016,7 +4016,7 @@ src/crypto/common/MemoryPool.o: src/crypto/common/MemoryPool.cpp.o
 
 # target to build an object file
 src/crypto/common/MemoryPool.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/common/MemoryPool.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/common/MemoryPool.cpp.o
 .PHONY : src/crypto/common/MemoryPool.cpp.o
 
 src/crypto/common/MemoryPool.i: src/crypto/common/MemoryPool.cpp.i
@@ -4024,7 +4024,7 @@ src/crypto/common/MemoryPool.i: src/crypto/common/MemoryPool.cpp.i
 
 # target to preprocess a source file
 src/crypto/common/MemoryPool.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/common/MemoryPool.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/common/MemoryPool.cpp.i
 .PHONY : src/crypto/common/MemoryPool.cpp.i
 
 src/crypto/common/MemoryPool.s: src/crypto/common/MemoryPool.cpp.s
@@ -4032,7 +4032,7 @@ src/crypto/common/MemoryPool.s: src/crypto/common/MemoryPool.cpp.s
 
 # target to generate assembly for a file
 src/crypto/common/MemoryPool.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/common/MemoryPool.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/common/MemoryPool.cpp.s
 .PHONY : src/crypto/common/MemoryPool.cpp.s
 
 src/crypto/common/NUMAMemoryPool.o: src/crypto/common/NUMAMemoryPool.cpp.o
@@ -4040,7 +4040,7 @@ src/crypto/common/NUMAMemoryPool.o: src/crypto/common/NUMAMemoryPool.cpp.o
 
 # target to build an object file
 src/crypto/common/NUMAMemoryPool.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/common/NUMAMemoryPool.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/common/NUMAMemoryPool.cpp.o
 .PHONY : src/crypto/common/NUMAMemoryPool.cpp.o
 
 src/crypto/common/NUMAMemoryPool.i: src/crypto/common/NUMAMemoryPool.cpp.i
@@ -4048,7 +4048,7 @@ src/crypto/common/NUMAMemoryPool.i: src/crypto/common/NUMAMemoryPool.cpp.i
 
 # target to preprocess a source file
 src/crypto/common/NUMAMemoryPool.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/common/NUMAMemoryPool.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/common/NUMAMemoryPool.cpp.i
 .PHONY : src/crypto/common/NUMAMemoryPool.cpp.i
 
 src/crypto/common/NUMAMemoryPool.s: src/crypto/common/NUMAMemoryPool.cpp.s
@@ -4056,7 +4056,7 @@ src/crypto/common/NUMAMemoryPool.s: src/crypto/common/NUMAMemoryPool.cpp.s
 
 # target to generate assembly for a file
 src/crypto/common/NUMAMemoryPool.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/common/NUMAMemoryPool.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/common/NUMAMemoryPool.cpp.s
 .PHONY : src/crypto/common/NUMAMemoryPool.cpp.s
 
 src/crypto/common/Nonce.o: src/crypto/common/Nonce.cpp.o
@@ -4064,7 +4064,7 @@ src/crypto/common/Nonce.o: src/crypto/common/Nonce.cpp.o
 
 # target to build an object file
 src/crypto/common/Nonce.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/common/Nonce.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/common/Nonce.cpp.o
 .PHONY : src/crypto/common/Nonce.cpp.o
 
 src/crypto/common/Nonce.i: src/crypto/common/Nonce.cpp.i
@@ -4072,7 +4072,7 @@ src/crypto/common/Nonce.i: src/crypto/common/Nonce.cpp.i
 
 # target to preprocess a source file
 src/crypto/common/Nonce.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/common/Nonce.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/common/Nonce.cpp.i
 .PHONY : src/crypto/common/Nonce.cpp.i
 
 src/crypto/common/Nonce.s: src/crypto/common/Nonce.cpp.s
@@ -4080,7 +4080,7 @@ src/crypto/common/Nonce.s: src/crypto/common/Nonce.cpp.s
 
 # target to generate assembly for a file
 src/crypto/common/Nonce.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/common/Nonce.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/common/Nonce.cpp.s
 .PHONY : src/crypto/common/Nonce.cpp.s
 
 src/crypto/common/VirtualMemory.o: src/crypto/common/VirtualMemory.cpp.o
@@ -4088,7 +4088,7 @@ src/crypto/common/VirtualMemory.o: src/crypto/common/VirtualMemory.cpp.o
 
 # target to build an object file
 src/crypto/common/VirtualMemory.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/common/VirtualMemory.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/common/VirtualMemory.cpp.o
 .PHONY : src/crypto/common/VirtualMemory.cpp.o
 
 src/crypto/common/VirtualMemory.i: src/crypto/common/VirtualMemory.cpp.i
@@ -4096,7 +4096,7 @@ src/crypto/common/VirtualMemory.i: src/crypto/common/VirtualMemory.cpp.i
 
 # target to preprocess a source file
 src/crypto/common/VirtualMemory.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/common/VirtualMemory.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/common/VirtualMemory.cpp.i
 .PHONY : src/crypto/common/VirtualMemory.cpp.i
 
 src/crypto/common/VirtualMemory.s: src/crypto/common/VirtualMemory.cpp.s
@@ -4104,7 +4104,7 @@ src/crypto/common/VirtualMemory.s: src/crypto/common/VirtualMemory.cpp.s
 
 # target to generate assembly for a file
 src/crypto/common/VirtualMemory.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/common/VirtualMemory.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/common/VirtualMemory.cpp.s
 .PHONY : src/crypto/common/VirtualMemory.cpp.s
 
 src/crypto/common/VirtualMemory_hwloc.o: src/crypto/common/VirtualMemory_hwloc.cpp.o
@@ -4112,7 +4112,7 @@ src/crypto/common/VirtualMemory_hwloc.o: src/crypto/common/VirtualMemory_hwloc.c
 
 # target to build an object file
 src/crypto/common/VirtualMemory_hwloc.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/common/VirtualMemory_hwloc.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/common/VirtualMemory_hwloc.cpp.o
 .PHONY : src/crypto/common/VirtualMemory_hwloc.cpp.o
 
 src/crypto/common/VirtualMemory_hwloc.i: src/crypto/common/VirtualMemory_hwloc.cpp.i
@@ -4120,7 +4120,7 @@ src/crypto/common/VirtualMemory_hwloc.i: src/crypto/common/VirtualMemory_hwloc.c
 
 # target to preprocess a source file
 src/crypto/common/VirtualMemory_hwloc.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/common/VirtualMemory_hwloc.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/common/VirtualMemory_hwloc.cpp.i
 .PHONY : src/crypto/common/VirtualMemory_hwloc.cpp.i
 
 src/crypto/common/VirtualMemory_hwloc.s: src/crypto/common/VirtualMemory_hwloc.cpp.s
@@ -4128,7 +4128,7 @@ src/crypto/common/VirtualMemory_hwloc.s: src/crypto/common/VirtualMemory_hwloc.c
 
 # target to generate assembly for a file
 src/crypto/common/VirtualMemory_hwloc.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/common/VirtualMemory_hwloc.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/common/VirtualMemory_hwloc.cpp.s
 .PHONY : src/crypto/common/VirtualMemory_hwloc.cpp.s
 
 src/crypto/common/VirtualMemory_unix.o: src/crypto/common/VirtualMemory_unix.cpp.o
@@ -4136,7 +4136,7 @@ src/crypto/common/VirtualMemory_unix.o: src/crypto/common/VirtualMemory_unix.cpp
 
 # target to build an object file
 src/crypto/common/VirtualMemory_unix.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/common/VirtualMemory_unix.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/common/VirtualMemory_unix.cpp.o
 .PHONY : src/crypto/common/VirtualMemory_unix.cpp.o
 
 src/crypto/common/VirtualMemory_unix.i: src/crypto/common/VirtualMemory_unix.cpp.i
@@ -4144,7 +4144,7 @@ src/crypto/common/VirtualMemory_unix.i: src/crypto/common/VirtualMemory_unix.cpp
 
 # target to preprocess a source file
 src/crypto/common/VirtualMemory_unix.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/common/VirtualMemory_unix.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/common/VirtualMemory_unix.cpp.i
 .PHONY : src/crypto/common/VirtualMemory_unix.cpp.i
 
 src/crypto/common/VirtualMemory_unix.s: src/crypto/common/VirtualMemory_unix.cpp.s
@@ -4152,7 +4152,7 @@ src/crypto/common/VirtualMemory_unix.s: src/crypto/common/VirtualMemory_unix.cpp
 
 # target to generate assembly for a file
 src/crypto/common/VirtualMemory_unix.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/common/VirtualMemory_unix.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/common/VirtualMemory_unix.cpp.s
 .PHONY : src/crypto/common/VirtualMemory_unix.cpp.s
 
 src/crypto/kawpow/KPCache.o: src/crypto/kawpow/KPCache.cpp.o
@@ -4160,7 +4160,7 @@ src/crypto/kawpow/KPCache.o: src/crypto/kawpow/KPCache.cpp.o
 
 # target to build an object file
 src/crypto/kawpow/KPCache.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/kawpow/KPCache.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/kawpow/KPCache.cpp.o
 .PHONY : src/crypto/kawpow/KPCache.cpp.o
 
 src/crypto/kawpow/KPCache.i: src/crypto/kawpow/KPCache.cpp.i
@@ -4168,7 +4168,7 @@ src/crypto/kawpow/KPCache.i: src/crypto/kawpow/KPCache.cpp.i
 
 # target to preprocess a source file
 src/crypto/kawpow/KPCache.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/kawpow/KPCache.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/kawpow/KPCache.cpp.i
 .PHONY : src/crypto/kawpow/KPCache.cpp.i
 
 src/crypto/kawpow/KPCache.s: src/crypto/kawpow/KPCache.cpp.s
@@ -4176,7 +4176,7 @@ src/crypto/kawpow/KPCache.s: src/crypto/kawpow/KPCache.cpp.s
 
 # target to generate assembly for a file
 src/crypto/kawpow/KPCache.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/kawpow/KPCache.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/kawpow/KPCache.cpp.s
 .PHONY : src/crypto/kawpow/KPCache.cpp.s
 
 src/crypto/kawpow/KPHash.o: src/crypto/kawpow/KPHash.cpp.o
@@ -4184,7 +4184,7 @@ src/crypto/kawpow/KPHash.o: src/crypto/kawpow/KPHash.cpp.o
 
 # target to build an object file
 src/crypto/kawpow/KPHash.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/kawpow/KPHash.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/kawpow/KPHash.cpp.o
 .PHONY : src/crypto/kawpow/KPHash.cpp.o
 
 src/crypto/kawpow/KPHash.i: src/crypto/kawpow/KPHash.cpp.i
@@ -4192,7 +4192,7 @@ src/crypto/kawpow/KPHash.i: src/crypto/kawpow/KPHash.cpp.i
 
 # target to preprocess a source file
 src/crypto/kawpow/KPHash.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/kawpow/KPHash.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/kawpow/KPHash.cpp.i
 .PHONY : src/crypto/kawpow/KPHash.cpp.i
 
 src/crypto/kawpow/KPHash.s: src/crypto/kawpow/KPHash.cpp.s
@@ -4200,7 +4200,7 @@ src/crypto/kawpow/KPHash.s: src/crypto/kawpow/KPHash.cpp.s
 
 # target to generate assembly for a file
 src/crypto/kawpow/KPHash.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/crypto/kawpow/KPHash.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/crypto/kawpow/KPHash.cpp.s
 .PHONY : src/crypto/kawpow/KPHash.cpp.s
 
 src/hw/api/HwApi.o: src/hw/api/HwApi.cpp.o
@@ -4208,7 +4208,7 @@ src/hw/api/HwApi.o: src/hw/api/HwApi.cpp.o
 
 # target to build an object file
 src/hw/api/HwApi.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/hw/api/HwApi.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/hw/api/HwApi.cpp.o
 .PHONY : src/hw/api/HwApi.cpp.o
 
 src/hw/api/HwApi.i: src/hw/api/HwApi.cpp.i
@@ -4216,7 +4216,7 @@ src/hw/api/HwApi.i: src/hw/api/HwApi.cpp.i
 
 # target to preprocess a source file
 src/hw/api/HwApi.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/hw/api/HwApi.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/hw/api/HwApi.cpp.i
 .PHONY : src/hw/api/HwApi.cpp.i
 
 src/hw/api/HwApi.s: src/hw/api/HwApi.cpp.s
@@ -4224,39 +4224,39 @@ src/hw/api/HwApi.s: src/hw/api/HwApi.cpp.s
 
 # target to generate assembly for a file
 src/hw/api/HwApi.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/hw/api/HwApi.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/hw/api/HwApi.cpp.s
 .PHONY : src/hw/api/HwApi.cpp.s
 
-src/jdkrig.o: src/jdkrig.cpp.o
-.PHONY : src/jdkrig.o
+src/kittenpaw.o: src/kittenpaw.cpp.o
+.PHONY : src/kittenpaw.o
 
 # target to build an object file
-src/jdkrig.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/jdkrig.cpp.o
-.PHONY : src/jdkrig.cpp.o
+src/kittenpaw.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/kittenpaw.cpp.o
+.PHONY : src/kittenpaw.cpp.o
 
-src/jdkrig.i: src/jdkrig.cpp.i
-.PHONY : src/jdkrig.i
+src/kittenpaw.i: src/kittenpaw.cpp.i
+.PHONY : src/kittenpaw.i
 
 # target to preprocess a source file
-src/jdkrig.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/jdkrig.cpp.i
-.PHONY : src/jdkrig.cpp.i
+src/kittenpaw.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/kittenpaw.cpp.i
+.PHONY : src/kittenpaw.cpp.i
 
-src/jdkrig.s: src/jdkrig.cpp.s
-.PHONY : src/jdkrig.s
+src/kittenpaw.s: src/kittenpaw.cpp.s
+.PHONY : src/kittenpaw.s
 
 # target to generate assembly for a file
-src/jdkrig.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/jdkrig.cpp.s
-.PHONY : src/jdkrig.cpp.s
+src/kittenpaw.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/kittenpaw.cpp.s
+.PHONY : src/kittenpaw.cpp.s
 
 src/net/JobResults.o: src/net/JobResults.cpp.o
 .PHONY : src/net/JobResults.o
 
 # target to build an object file
 src/net/JobResults.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/net/JobResults.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/net/JobResults.cpp.o
 .PHONY : src/net/JobResults.cpp.o
 
 src/net/JobResults.i: src/net/JobResults.cpp.i
@@ -4264,7 +4264,7 @@ src/net/JobResults.i: src/net/JobResults.cpp.i
 
 # target to preprocess a source file
 src/net/JobResults.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/net/JobResults.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/net/JobResults.cpp.i
 .PHONY : src/net/JobResults.cpp.i
 
 src/net/JobResults.s: src/net/JobResults.cpp.s
@@ -4272,7 +4272,7 @@ src/net/JobResults.s: src/net/JobResults.cpp.s
 
 # target to generate assembly for a file
 src/net/JobResults.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/net/JobResults.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/net/JobResults.cpp.s
 .PHONY : src/net/JobResults.cpp.s
 
 src/net/Network.o: src/net/Network.cpp.o
@@ -4280,7 +4280,7 @@ src/net/Network.o: src/net/Network.cpp.o
 
 # target to build an object file
 src/net/Network.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/net/Network.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/net/Network.cpp.o
 .PHONY : src/net/Network.cpp.o
 
 src/net/Network.i: src/net/Network.cpp.i
@@ -4288,7 +4288,7 @@ src/net/Network.i: src/net/Network.cpp.i
 
 # target to preprocess a source file
 src/net/Network.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/net/Network.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/net/Network.cpp.i
 .PHONY : src/net/Network.cpp.i
 
 src/net/Network.s: src/net/Network.cpp.s
@@ -4296,7 +4296,7 @@ src/net/Network.s: src/net/Network.cpp.s
 
 # target to generate assembly for a file
 src/net/Network.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/net/Network.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/net/Network.cpp.s
 .PHONY : src/net/Network.cpp.s
 
 src/net/strategies/DonateStrategy.o: src/net/strategies/DonateStrategy.cpp.o
@@ -4304,7 +4304,7 @@ src/net/strategies/DonateStrategy.o: src/net/strategies/DonateStrategy.cpp.o
 
 # target to build an object file
 src/net/strategies/DonateStrategy.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/net/strategies/DonateStrategy.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/net/strategies/DonateStrategy.cpp.o
 .PHONY : src/net/strategies/DonateStrategy.cpp.o
 
 src/net/strategies/DonateStrategy.i: src/net/strategies/DonateStrategy.cpp.i
@@ -4312,7 +4312,7 @@ src/net/strategies/DonateStrategy.i: src/net/strategies/DonateStrategy.cpp.i
 
 # target to preprocess a source file
 src/net/strategies/DonateStrategy.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/net/strategies/DonateStrategy.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/net/strategies/DonateStrategy.cpp.i
 .PHONY : src/net/strategies/DonateStrategy.cpp.i
 
 src/net/strategies/DonateStrategy.s: src/net/strategies/DonateStrategy.cpp.s
@@ -4320,7 +4320,7 @@ src/net/strategies/DonateStrategy.s: src/net/strategies/DonateStrategy.cpp.s
 
 # target to generate assembly for a file
 src/net/strategies/DonateStrategy.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jdkrig.dir/build.make CMakeFiles/jdkrig.dir/src/net/strategies/DonateStrategy.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kittenpaw.dir/build.make CMakeFiles/kittenpaw.dir/src/net/strategies/DonateStrategy.cpp.s
 .PHONY : src/net/strategies/DonateStrategy.cpp.s
 
 # Help Target
@@ -4332,8 +4332,8 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... ethash"
-	@echo "... jdkrig"
-	@echo "... jdkrig-asm"
+	@echo "... kittenpaw"
+	@echo "... kittenpaw-asm"
 	@echo "... src/3rdparty/fmt/format.o"
 	@echo "... src/3rdparty/fmt/format.i"
 	@echo "... src/3rdparty/fmt/format.s"
@@ -4772,9 +4772,9 @@ help:
 	@echo "... src/core/Controller.o"
 	@echo "... src/core/Controller.i"
 	@echo "... src/core/Controller.s"
-	@echo "... src/core/Jdkrigger.o"
-	@echo "... src/core/Jdkrigger.i"
-	@echo "... src/core/Jdkrigger.s"
+	@echo "... src/core/Kittenpawger.o"
+	@echo "... src/core/Kittenpawger.i"
+	@echo "... src/core/Kittenpawger.s"
 	@echo "... src/core/Taskbar.o"
 	@echo "... src/core/Taskbar.i"
 	@echo "... src/core/Taskbar.s"
@@ -4843,9 +4843,9 @@ help:
 	@echo "... src/hw/api/HwApi.o"
 	@echo "... src/hw/api/HwApi.i"
 	@echo "... src/hw/api/HwApi.s"
-	@echo "... src/jdkrig.o"
-	@echo "... src/jdkrig.i"
-	@echo "... src/jdkrig.s"
+	@echo "... src/kittenpaw.o"
+	@echo "... src/kittenpaw.i"
+	@echo "... src/kittenpaw.s"
 	@echo "... src/net/JobResults.o"
 	@echo "... src/net/JobResults.i"
 	@echo "... src/net/JobResults.s"

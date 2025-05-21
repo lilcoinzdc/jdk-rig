@@ -1,7 +1,7 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2020 tevador     <tevador@gmail.com>
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -29,14 +29,14 @@
 #include "crypto/common/portable/mm_malloc.h"
 
 
-#ifdef JDKRIG_SECURE_JIT
+#ifdef KITTENPAW_SECURE_JIT
 #   define SECURE_PAGE_EXECUTE_READWRITE PAGE_READWRITE
 #else
 #   define SECURE_PAGE_EXECUTE_READWRITE PAGE_EXECUTE_READWRITE
 #endif
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 static bool hugepagesAvailable = false;
@@ -147,22 +147,22 @@ static BOOL TrySetLockPagesPrivilege() {
 }
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-bool jdkrig::VirtualMemory::isHugepagesAvailable()
+bool kittenpaw::VirtualMemory::isHugepagesAvailable()
 {
     return hugepagesAvailable;
 }
 
 
-bool jdkrig::VirtualMemory::isOneGbPagesAvailable()
+bool kittenpaw::VirtualMemory::isOneGbPagesAvailable()
 {
     return false;
 }
 
 
-bool jdkrig::VirtualMemory::protectRW(void *p, size_t size)
+bool kittenpaw::VirtualMemory::protectRW(void *p, size_t size)
 {
     DWORD oldProtect;
 
@@ -170,7 +170,7 @@ bool jdkrig::VirtualMemory::protectRW(void *p, size_t size)
 }
 
 
-bool jdkrig::VirtualMemory::protectRWX(void *p, size_t size)
+bool kittenpaw::VirtualMemory::protectRWX(void *p, size_t size)
 {
     DWORD oldProtect;
 
@@ -178,7 +178,7 @@ bool jdkrig::VirtualMemory::protectRWX(void *p, size_t size)
 }
 
 
-bool jdkrig::VirtualMemory::protectRX(void *p, size_t size)
+bool kittenpaw::VirtualMemory::protectRX(void *p, size_t size)
 {
     DWORD oldProtect;
 
@@ -186,7 +186,7 @@ bool jdkrig::VirtualMemory::protectRX(void *p, size_t size)
 }
 
 
-void *jdkrig::VirtualMemory::allocateExecutableMemory(size_t size, bool hugePages)
+void *kittenpaw::VirtualMemory::allocateExecutableMemory(size_t size, bool hugePages)
 {
     void* result = nullptr;
 
@@ -202,7 +202,7 @@ void *jdkrig::VirtualMemory::allocateExecutableMemory(size_t size, bool hugePage
 }
 
 
-void *jdkrig::VirtualMemory::allocateLargePagesMemory(size_t size)
+void *kittenpaw::VirtualMemory::allocateLargePagesMemory(size_t size)
 {
     const size_t min = GetLargePageMinimum();
     void *mem        = nullptr;
@@ -215,25 +215,25 @@ void *jdkrig::VirtualMemory::allocateLargePagesMemory(size_t size)
 }
 
 
-void *jdkrig::VirtualMemory::allocateOneGbPagesMemory(size_t)
+void *kittenpaw::VirtualMemory::allocateOneGbPagesMemory(size_t)
 {
     return nullptr;
 }
 
 
-void jdkrig::VirtualMemory::flushInstructionCache(void *p, size_t size)
+void kittenpaw::VirtualMemory::flushInstructionCache(void *p, size_t size)
 {
     ::FlushInstructionCache(GetCurrentProcess(), p, size);
 }
 
 
-void jdkrig::VirtualMemory::freeLargePagesMemory(void *p, size_t)
+void kittenpaw::VirtualMemory::freeLargePagesMemory(void *p, size_t)
 {
     VirtualFree(p, 0, MEM_RELEASE);
 }
 
 
-void jdkrig::VirtualMemory::osInit(size_t hugePageSize)
+void kittenpaw::VirtualMemory::osInit(size_t hugePageSize)
 {
     if (hugePageSize) {
         hugepagesAvailable = TrySetLockPagesPrivilege();
@@ -241,7 +241,7 @@ void jdkrig::VirtualMemory::osInit(size_t hugePageSize)
 }
 
 
-bool jdkrig::VirtualMemory::allocateLargePagesMemory()
+bool kittenpaw::VirtualMemory::allocateLargePagesMemory()
 {
     m_scratchpad = static_cast<uint8_t*>(allocateLargePagesMemory(m_size));
     if (m_scratchpad) {
@@ -253,14 +253,14 @@ bool jdkrig::VirtualMemory::allocateLargePagesMemory()
     return false;
 }
 
-bool jdkrig::VirtualMemory::allocateOneGbPagesMemory()
+bool kittenpaw::VirtualMemory::allocateOneGbPagesMemory()
 {
     m_scratchpad = nullptr;
     return false;
 }
 
 
-void jdkrig::VirtualMemory::freeLargePagesMemory()
+void kittenpaw::VirtualMemory::freeLargePagesMemory()
 {
     freeLargePagesMemory(m_scratchpad, m_size);
 }

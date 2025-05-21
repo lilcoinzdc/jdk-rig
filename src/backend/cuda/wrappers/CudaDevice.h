@@ -1,4 +1,4 @@
-/* XMRig
+/* KITTENpaw
  * Copyright 2010      Jeff Garzik <jgarzik@pobox.com>
  * Copyright 2012-2014 pooler      <pooler@litecoinpool.org>
  * Copyright 2014      Lucas Jones <https://github.com/lucasjones>
@@ -6,7 +6,7 @@
  * Copyright 2016      Jay D Dee   <jayddee246@gmail.com>
  * Copyright 2017-2018 XMR-Stak    <https://github.com/fireice-uk>, <https://github.com/psychocrypt>
  * Copyright 2018-2019 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2019 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright 2016-2019 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -22,8 +22,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_CUDADEVICE_H
-#define JDKRIG_CUDADEVICE_H
+#ifndef KITTENPAW_CUDADEVICE_H
+#define KITTENPAW_CUDADEVICE_H
 
 
 #include "backend/common/misc/PciTopology.h"
@@ -34,7 +34,7 @@ using nvid_ctx      = struct nvid_ctx;
 using nvmlDevice_t  = struct nvmlDevice_st *;
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class Algorithm;
@@ -64,12 +64,12 @@ public:
     inline uint32_t arch() const                    { return (computeCapability(true) * 10) + computeCapability(false); }
     inline uint32_t index() const                   { return m_index; }
 
-#   ifdef JDKRIG_FEATURE_NVML
+#   ifdef KITTENPAW_FEATURE_NVML
     inline nvmlDevice_t nvmlDevice() const          { return m_nvmlDevice; }
     inline void setNvmlDevice(nvmlDevice_t device)  { m_nvmlDevice = device; }
 #   endif
 
-#   ifdef JDKRIG_FEATURE_API
+#   ifdef KITTENPAW_FEATURE_API
     void toJSON(rapidjson::Value &out, rapidjson::Document &doc) const;
 #   endif
 
@@ -82,13 +82,13 @@ private:
     PciTopology m_topology;
     String m_name;
 
-#   ifdef JDKRIG_FEATURE_NVML
+#   ifdef KITTENPAW_FEATURE_NVML
     nvmlDevice_t m_nvmlDevice       = nullptr;
 #   endif
 };
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-#endif /* JDKRIG_CUDADEVICE_H */
+#endif /* KITTENPAW_CUDADEVICE_H */

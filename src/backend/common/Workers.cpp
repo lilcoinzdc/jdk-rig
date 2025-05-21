@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -25,28 +25,28 @@
 #include "base/tools/Chrono.h"
 
 
-#ifdef JDKRIG_FEATURE_OPENCL
+#ifdef KITTENPAW_FEATURE_OPENCL
 #   include "backend/opencl/OclWorker.h"
 #endif
 
 
-#ifdef JDKRIG_FEATURE_CUDA
+#ifdef KITTENPAW_FEATURE_CUDA
 #   include "backend/cuda/CudaWorker.h"
 #endif
 
 
-#ifdef JDKRIG_FEATURE_BENCHMARK
+#ifdef KITTENPAW_FEATURE_BENCHMARK
 #   include "backend/common/benchmark/Benchmark.h"
 #endif
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class WorkersPrivate
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE(WorkersPrivate)
+    KITTENPAW_DISABLE_COPY_MOVE(WorkersPrivate)
 
     WorkersPrivate()    = default;
     ~WorkersPrivate()   = default;
@@ -57,11 +57,11 @@ public:
 };
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
 template<class T>
-jdkrig::Workers<T>::Workers() :
+kittenpaw::Workers<T>::Workers() :
     d_ptr(new WorkersPrivate())
 {
 
@@ -69,14 +69,14 @@ jdkrig::Workers<T>::Workers() :
 
 
 template<class T>
-jdkrig::Workers<T>::~Workers()
+kittenpaw::Workers<T>::~Workers()
 {
     delete d_ptr;
 }
 
 
 template<class T>
-bool jdkrig::Workers<T>::tick(uint64_t)
+bool kittenpaw::Workers<T>::tick(uint64_t)
 {
     if (!d_ptr->hashrate) {
         return true;
@@ -106,7 +106,7 @@ bool jdkrig::Workers<T>::tick(uint64_t)
         d_ptr->hashrate->add(totalHashCount, Chrono::steadyMSecs());
     }
 
-#   ifdef JDKRIG_FEATURE_BENCHMARK
+#   ifdef KITTENPAW_FEATURE_BENCHMARK
     return !d_ptr->benchmark || !d_ptr->benchmark->finish(totalHashCount);
 #   else
     return true;
@@ -115,23 +115,23 @@ bool jdkrig::Workers<T>::tick(uint64_t)
 
 
 template<class T>
-const jdkrig::Hashrate *jdkrig::Workers<T>::hashrate() const
+const kittenpaw::Hashrate *kittenpaw::Workers<T>::hashrate() const
 {
     return d_ptr->hashrate.get();
 }
 
 
 template<class T>
-void jdkrig::Workers<T>::setBackend(IBackend *backend)
+void kittenpaw::Workers<T>::setBackend(IBackend *backend)
 {
     d_ptr->backend = backend;
 }
 
 
 template<class T>
-void jdkrig::Workers<T>::stop()
+void kittenpaw::Workers<T>::stop()
 {
-#   ifdef JDKRIG_JDKRIGGER_PROJECT
+#   ifdef KITTENPAW_KITTENPAWGER_PROJECT
     Nonce::stop(T::backend());
 #   endif
 
@@ -141,7 +141,7 @@ void jdkrig::Workers<T>::stop()
 
     m_workers.clear();
 
-#   ifdef JDKRIG_JDKRIGGER_PROJECT
+#   ifdef KITTENPAW_KITTENPAWGER_PROJECT
     Nonce::touch(T::backend());
 #   endif
 
@@ -149,9 +149,9 @@ void jdkrig::Workers<T>::stop()
 }
 
 
-#ifdef JDKRIG_FEATURE_BENCHMARK
+#ifdef KITTENPAW_FEATURE_BENCHMARK
 template<class T>
-void jdkrig::Workers<T>::start(const std::vector<T> &data, const std::shared_ptr<Benchmark> &benchmark)
+void kittenpaw::Workers<T>::start(const std::vector<T> &data, const std::shared_ptr<Benchmark> &benchmark)
 {
     if (!benchmark) {
         return start(data, true);
@@ -166,14 +166,14 @@ void jdkrig::Workers<T>::start(const std::vector<T> &data, const std::shared_ptr
 
 
 template<class T>
-jdkrig::IWorker *jdkrig::Workers<T>::create(Thread<T> *)
+kittenpaw::IWorker *kittenpaw::Workers<T>::create(Thread<T> *)
 {
     return nullptr;
 }
 
 
 template<class T>
-void *jdkrig::Workers<T>::onReady(void *arg)
+void *kittenpaw::Workers<T>::onReady(void *arg)
 {
     auto handle = static_cast<Thread<T>* >(arg);
 
@@ -199,7 +199,7 @@ void *jdkrig::Workers<T>::onReady(void *arg)
 
 
 template<class T>
-void jdkrig::Workers<T>::start(const std::vector<T> &data, bool /*sleep*/)
+void kittenpaw::Workers<T>::start(const std::vector<T> &data, bool /*sleep*/)
 {
     for (const auto &item : data) {
         m_workers.push_back(new Thread<T>(d_ptr->backend, m_workers.size(), item));
@@ -207,7 +207,7 @@ void jdkrig::Workers<T>::start(const std::vector<T> &data, bool /*sleep*/)
 
     d_ptr->hashrate = std::make_shared<Hashrate>(m_workers.size());
 
-#   ifdef JDKRIG_JDKRIGGER_PROJECT
+#   ifdef KITTENPAW_KITTENPAWGER_PROJECT
     Nonce::touch(T::backend());
 #   endif
 
@@ -217,13 +217,13 @@ void jdkrig::Workers<T>::start(const std::vector<T> &data, bool /*sleep*/)
 }
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 template<>
-jdkrig::IWorker *jdkrig::Workers<CpuLaunchData>::create(Thread<CpuLaunchData> *handle)
+kittenpaw::IWorker *kittenpaw::Workers<CpuLaunchData>::create(Thread<CpuLaunchData> *handle)
 {
-#   ifdef JDKRIG_JDKRIGGER_PROJECT
+#   ifdef KITTENPAW_KITTENPAWGER_PROJECT
     switch (handle->config().intensity) {
     case 1:
         return new CpuWorker<1>(handle->id(), handle->config());
@@ -256,9 +256,9 @@ jdkrig::IWorker *jdkrig::Workers<CpuLaunchData>::create(Thread<CpuLaunchData> *h
 template class Workers<CpuLaunchData>;
 
 
-#ifdef JDKRIG_FEATURE_OPENCL
+#ifdef KITTENPAW_FEATURE_OPENCL
 template<>
-jdkrig::IWorker *jdkrig::Workers<OclLaunchData>::create(Thread<OclLaunchData> *handle)
+kittenpaw::IWorker *kittenpaw::Workers<OclLaunchData>::create(Thread<OclLaunchData> *handle)
 {
     return new OclWorker(handle->id(), handle->config());
 }
@@ -268,9 +268,9 @@ template class Workers<OclLaunchData>;
 #endif
 
 
-#ifdef JDKRIG_FEATURE_CUDA
+#ifdef KITTENPAW_FEATURE_CUDA
 template<>
-jdkrig::IWorker *jdkrig::Workers<CudaLaunchData>::create(Thread<CudaLaunchData> *handle)
+kittenpaw::IWorker *kittenpaw::Workers<CudaLaunchData>::create(Thread<CudaLaunchData> *handle)
 {
     return new CudaWorker(handle->id(), handle->config());
 }
@@ -280,4 +280,4 @@ template class Workers<CudaLaunchData>;
 #endif
 
 
-} // namespace jdkrig
+} // namespace kittenpaw

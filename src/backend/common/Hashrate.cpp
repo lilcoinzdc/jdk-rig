@@ -1,7 +1,7 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2017-2018 XMR-Stak    <https://github.com/fireice-uk>, <https://github.com/psychocrypt>
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -41,7 +41,7 @@ inline static const char *format(std::pair<bool, double> h, char *buf, size_t si
 }
 
 
-jdkrig::Hashrate::Hashrate(size_t threads) :
+kittenpaw::Hashrate::Hashrate(size_t threads) :
     m_threads(threads + 1)
 {
     m_counts     = new uint64_t*[m_threads];
@@ -59,7 +59,7 @@ jdkrig::Hashrate::Hashrate(size_t threads) :
 }
 
 
-jdkrig::Hashrate::~Hashrate()
+kittenpaw::Hashrate::~Hashrate()
 {
     for (size_t i = 0; i < m_threads; i++) {
         delete [] m_counts[i];
@@ -73,28 +73,28 @@ jdkrig::Hashrate::~Hashrate()
 }
 
 
-double jdkrig::Hashrate::average() const
+double kittenpaw::Hashrate::average() const
 {
     const uint64_t ts = Chrono::steadyMSecs();
     return (ts > m_earliestTimestamp) ? (m_totalCount * 1e3 / (ts - m_earliestTimestamp)) : 0.0;
 }
 
 
-const char *jdkrig::Hashrate::format(std::pair<bool, double> h, char *buf, size_t size)
+const char *kittenpaw::Hashrate::format(std::pair<bool, double> h, char *buf, size_t size)
 {
     return ::format(h, buf, size);
 }
 
 
-rapidjson::Value jdkrig::Hashrate::normalize(std::pair<bool, double> d)
+rapidjson::Value kittenpaw::Hashrate::normalize(std::pair<bool, double> d)
 {
     using namespace rapidjson;
     return d.first ? Value(floor(d.second * 100.0) / 100.0) : Value(kNullType);
 }
 
 
-#ifdef JDKRIG_FEATURE_API
-rapidjson::Value jdkrig::Hashrate::toJSON(rapidjson::Document &doc) const
+#ifdef KITTENPAW_FEATURE_API
+rapidjson::Value kittenpaw::Hashrate::toJSON(rapidjson::Document &doc) const
 {
     using namespace rapidjson;
     auto &allocator = doc.GetAllocator();
@@ -108,7 +108,7 @@ rapidjson::Value jdkrig::Hashrate::toJSON(rapidjson::Document &doc) const
 }
 
 
-rapidjson::Value jdkrig::Hashrate::toJSON(size_t threadId, rapidjson::Document &doc) const
+rapidjson::Value kittenpaw::Hashrate::toJSON(size_t threadId, rapidjson::Document &doc) const
 {
     using namespace rapidjson;
     auto &allocator = doc.GetAllocator();
@@ -123,7 +123,7 @@ rapidjson::Value jdkrig::Hashrate::toJSON(size_t threadId, rapidjson::Document &
 #endif
 
 
-std::pair<bool, double> jdkrig::Hashrate::hashrate(size_t index, size_t ms) const
+std::pair<bool, double> kittenpaw::Hashrate::hashrate(size_t index, size_t ms) const
 {
     assert(index < m_threads);
     if (index >= m_threads) {
@@ -134,7 +134,7 @@ std::pair<bool, double> jdkrig::Hashrate::hashrate(size_t index, size_t ms) cons
     uint64_t earliestStamp     = 0;
     bool haveFullSet           = false;
 
-    const uint64_t timeStampLimit = jdkrig::Chrono::steadyMSecs() - ms;
+    const uint64_t timeStampLimit = kittenpaw::Chrono::steadyMSecs() - ms;
     uint64_t* timestamps          = m_timestamps[index];
     uint64_t* counts              = m_counts[index];
 
@@ -182,7 +182,7 @@ std::pair<bool, double> jdkrig::Hashrate::hashrate(size_t index, size_t ms) cons
 }
 
 
-void jdkrig::Hashrate::addData(size_t index, uint64_t count, uint64_t timestamp)
+void kittenpaw::Hashrate::addData(size_t index, uint64_t count, uint64_t timestamp)
 {
     const size_t top         = m_top[index];
     m_counts[index][top]     = count;

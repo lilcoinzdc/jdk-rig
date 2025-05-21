@@ -1,7 +1,7 @@
 {
-  "name": "jdkrig",
+  "name": "kittenpaw",
   "version": "3.0.0",
-  "description": "RandomX, CryptoNight and Argon2 jdkrigger",
+  "description": "RandomX, CryptoNight and Argon2 kittenpawger",
   "main": "index.js",
   "directories": {
     "doc": "doc"
@@ -11,13 +11,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jdkrig/jdkrig.git"
+    "url": "git+https://github.com/kittenpaw/kittenpaw.git"
   },
   "keywords": [],
   "author": "",
   "license": "GPLv3",
   "bugs": {
-    "url": "https://github.com/jdkrig/jdkrig/issues"
+    "url": "https://github.com/kittenpaw/kittenpaw/issues"
   },
-  "homepage": "https://github.com/jdkrig/jdkrig#readme"
+  "homepage": "https://github.com/kittenpaw/kittenpaw#readme"
 }

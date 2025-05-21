@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -38,23 +38,23 @@
 #include "crypto/rx/RxDataset.h"
 
 
-#ifdef JDKRIG_FEATURE_API
+#ifdef KITTENPAW_FEATURE_API
 #   include "base/api/interfaces/IApiRequest.h"
 #endif
 
 
-#ifdef JDKRIG_ALGO_ARGON2
+#ifdef KITTENPAW_ALGO_ARGON2
 #   include "crypto/argon2/Impl.h"
 #endif
 
 
-#ifdef JDKRIG_FEATURE_BENCHMARK
+#ifdef KITTENPAW_FEATURE_BENCHMARK
 #   include "backend/common/benchmark/Benchmark.h"
 #   include "backend/common/benchmark/BenchState.h"
 #endif
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 extern template class Threads<CpuThreads>;
@@ -154,7 +154,7 @@ public:
 
         status.start(threads, algo.l3());
 
-#       ifdef JDKRIG_FEATURE_BENCHMARK
+#       ifdef KITTENPAW_FEATURE_BENCHMARK
         workers.start(threads, benchmark);
 #       else
         workers.start(threads);
@@ -174,7 +174,7 @@ public:
     {
         HugePagesInfo pages;
 
-    #   ifdef JDKRIG_ALGO_RANDOMX
+    #   ifdef KITTENPAW_ALGO_RANDOMX
         if (algo.family() == Algorithm::RANDOM_X) {
             pages += Rx::hugePages();
         }
@@ -208,24 +208,24 @@ public:
     String profileName;
     Workers<CpuLaunchData> workers;
 
-#   ifdef JDKRIG_FEATURE_BENCHMARK
+#   ifdef KITTENPAW_FEATURE_BENCHMARK
     std::shared_ptr<Benchmark> benchmark;
 #   endif
 };
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-const char *jdkrig::backend_tag(uint32_t backend)
+const char *kittenpaw::backend_tag(uint32_t backend)
 {
-#   ifdef JDKRIG_FEATURE_OPENCL
+#   ifdef KITTENPAW_FEATURE_OPENCL
     if (backend == Nonce::OPENCL) {
         return ocl_tag();
     }
 #   endif
 
-#   ifdef JDKRIG_FEATURE_CUDA
+#   ifdef KITTENPAW_FEATURE_CUDA
     if (backend == Nonce::CUDA) {
         return cuda_tag();
     }
@@ -235,64 +235,64 @@ const char *jdkrig::backend_tag(uint32_t backend)
 }
 
 
-const char *jdkrig::cpu_tag()
+const char *kittenpaw::cpu_tag()
 {
     return Tags::cpu();
 }
 
 
-jdkrig::CpuBackend::CpuBackend(Controller *controller) :
+kittenpaw::CpuBackend::CpuBackend(Controller *controller) :
     d_ptr(new CpuBackendPrivate(controller))
 {
     d_ptr->workers.setBackend(this);
 }
 
 
-jdkrig::CpuBackend::~CpuBackend()
+kittenpaw::CpuBackend::~CpuBackend()
 {
     delete d_ptr;
 }
 
 
-bool jdkrig::CpuBackend::isEnabled() const
+bool kittenpaw::CpuBackend::isEnabled() const
 {
     return d_ptr->controller->config()->cpu().isEnabled();
 }
 
 
-bool jdkrig::CpuBackend::isEnabled(const Algorithm &algorithm) const
+bool kittenpaw::CpuBackend::isEnabled(const Algorithm &algorithm) const
 {
     return !d_ptr->controller->config()->cpu().threads().get(algorithm).isEmpty();
 }
 
 
-bool jdkrig::CpuBackend::tick(uint64_t ticks)
+bool kittenpaw::CpuBackend::tick(uint64_t ticks)
 {
     return d_ptr->workers.tick(ticks);
 }
 
 
-const jdkrig::Hashrate *jdkrig::CpuBackend::hashrate() const
+const kittenpaw::Hashrate *kittenpaw::CpuBackend::hashrate() const
 {
     return d_ptr->workers.hashrate();
 }
 
 
-const jdkrig::String &jdkrig::CpuBackend::profileName() const
+const kittenpaw::String &kittenpaw::CpuBackend::profileName() const
 {
     return d_ptr->profileName;
 }
 
 
-const jdkrig::String &jdkrig::CpuBackend::type() const
+const kittenpaw::String &kittenpaw::CpuBackend::type() const
 {
     return kType;
 }
 
 
-void jdkrig::CpuBackend::prepare(const Job &nextJob)
+void kittenpaw::CpuBackend::prepare(const Job &nextJob)
 {
-#   ifdef JDKRIG_ALGO_ARGON2
+#   ifdef KITTENPAW_ALGO_ARGON2
     const auto f = nextJob.algorithm().family();
     if ((f == Algorithm::ARGON2) || (f == Algorithm::RANDOM_X)) {
         if (argon2::Impl::select(d_ptr->controller->config()->cpu().argon2Impl())) {
@@ -307,7 +307,7 @@ void jdkrig::CpuBackend::prepare(const Job &nextJob)
 }
 
 
-void jdkrig::CpuBackend::printHashrate(bool details)
+void kittenpaw::CpuBackend::printHashrate(bool details)
 {
     if (!details || !hashrate()) {
         return;
@@ -338,12 +338,12 @@ void jdkrig::CpuBackend::printHashrate(bool details)
 }
 
 
-void jdkrig::CpuBackend::printHealth()
+void kittenpaw::CpuBackend::printHealth()
 {
 }
 
 
-void jdkrig::CpuBackend::setJob(const Job &job)
+void kittenpaw::CpuBackend::setJob(const Job &job)
 {
     if (!isEnabled()) {
         return stop();
@@ -351,7 +351,7 @@ void jdkrig::CpuBackend::setJob(const Job &job)
 
     const auto &cpu = d_ptr->controller->config()->cpu();
 
-    auto threads = cpu.get(d_ptr->controller->jdkrigger(), job.algorithm());
+    auto threads = cpu.get(d_ptr->controller->kittenpawger(), job.algorithm());
     if (!d_ptr->threads.empty() && d_ptr->threads.size() == threads.size() && std::equal(d_ptr->threads.begin(), d_ptr->threads.end(), threads.begin())) {
         return;
     }
@@ -367,7 +367,7 @@ void jdkrig::CpuBackend::setJob(const Job &job)
 
     stop();
 
-#   ifdef JDKRIG_FEATURE_BENCHMARK
+#   ifdef KITTENPAW_FEATURE_BENCHMARK
     if (BenchState::size()) {
         d_ptr->benchmark = std::make_shared<Benchmark>(threads.size(), this);
     }
@@ -378,7 +378,7 @@ void jdkrig::CpuBackend::setJob(const Job &job)
 }
 
 
-void jdkrig::CpuBackend::start(IWorker *worker, bool ready)
+void kittenpaw::CpuBackend::start(IWorker *worker, bool ready)
 {
     mutex.lock();
 
@@ -394,7 +394,7 @@ void jdkrig::CpuBackend::start(IWorker *worker, bool ready)
 }
 
 
-void jdkrig::CpuBackend::stop()
+void kittenpaw::CpuBackend::stop()
 {
     if (d_ptr->threads.empty()) {
         return;
@@ -409,8 +409,8 @@ void jdkrig::CpuBackend::stop()
 }
 
 
-#ifdef JDKRIG_FEATURE_API
-rapidjson::Value jdkrig::CpuBackend::toJSON(rapidjson::Document &doc) const
+#ifdef KITTENPAW_FEATURE_API
+rapidjson::Value kittenpaw::CpuBackend::toJSON(rapidjson::Document &doc) const
 {
     using namespace rapidjson;
     auto &allocator         = doc.GetAllocator();
@@ -425,14 +425,14 @@ rapidjson::Value jdkrig::CpuBackend::toJSON(rapidjson::Document &doc) const
     out.AddMember("priority",   cpu.priority(), allocator);
     out.AddMember("msr",        Rx::isMSR(), allocator);
 
-#   ifdef JDKRIG_FEATURE_ASM
+#   ifdef KITTENPAW_FEATURE_ASM
     const Assembly assembly = Cpu::assembly(cpu.assembly());
     out.AddMember("asm", assembly.toJSON(), allocator);
 #   else
     out.AddMember("asm", false, allocator);
 #   endif
 
-#   ifdef JDKRIG_ALGO_ARGON2
+#   ifdef KITTENPAW_ALGO_ARGON2
     out.AddMember("argon2-impl", argon2::Impl::name().toJSON(), allocator);
 #   endif
 
@@ -465,7 +465,7 @@ rapidjson::Value jdkrig::CpuBackend::toJSON(rapidjson::Document &doc) const
 }
 
 
-void jdkrig::CpuBackend::handleRequest(IApiRequest &request)
+void kittenpaw::CpuBackend::handleRequest(IApiRequest &request)
 {
     if (request.type() == IApiRequest::REQ_SUMMARY) {
         request.reply().AddMember("hugepages", d_ptr->hugePages(request.version(), request.doc()), request.doc().GetAllocator());
@@ -474,14 +474,14 @@ void jdkrig::CpuBackend::handleRequest(IApiRequest &request)
 #endif
 
 
-#ifdef JDKRIG_FEATURE_BENCHMARK
-jdkrig::Benchmark *jdkrig::CpuBackend::benchmark() const
+#ifdef KITTENPAW_FEATURE_BENCHMARK
+kittenpaw::Benchmark *kittenpaw::CpuBackend::benchmark() const
 {
     return d_ptr->benchmark.get();
 }
 
 
-void jdkrig::CpuBackend::printBenchProgress() const
+void kittenpaw::CpuBackend::printBenchProgress() const
 {
     if (d_ptr->benchmark) {
         d_ptr->benchmark->printProgress();

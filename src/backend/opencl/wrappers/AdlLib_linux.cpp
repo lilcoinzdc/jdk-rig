@@ -1,8 +1,8 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2008-2018 Advanced Micro Devices, Inc.
  * Copyright (c) 2020      Patrick Bollinger            <https://github.com/pjbollinger>
  * Copyright (c) 2018-2021 SChernykh                    <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig                        <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw                        <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@
 #include <sys/types.h>
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 bool AdlLib::m_initialized          = false;
@@ -133,10 +133,10 @@ static size_t sysfs_prefix(char path[PATH_MAX], const PciTopology &topology)
 }
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-bool jdkrig::AdlLib::init()
+bool kittenpaw::AdlLib::init()
 {
     if (!m_initialized) {
         m_ready       = dlopen() && load();
@@ -147,19 +147,19 @@ bool jdkrig::AdlLib::init()
 }
 
 
-const char *jdkrig::AdlLib::lastError() noexcept
+const char *kittenpaw::AdlLib::lastError() noexcept
 {
     return nullptr;
 }
 
 
-void jdkrig::AdlLib::close()
+void kittenpaw::AdlLib::close()
 {
 }
 
 
 // https://dri.freedesktop.org/docs/drm/gpu/amdgpu.html#gpu-power-thermal-controls-and-monitoring
-AdlHealth jdkrig::AdlLib::health(const OclDevice &device)
+AdlHealth kittenpaw::AdlLib::health(const OclDevice &device)
 {
     if (!isReady() || device.vendorId() != OCL_VENDOR_AMD) {
         return {};
@@ -187,7 +187,7 @@ AdlHealth jdkrig::AdlLib::health(const OclDevice &device)
 }
 
 
-bool jdkrig::AdlLib::dlopen()
+bool kittenpaw::AdlLib::dlopen()
 {
     struct stat sb;
     if (stat(kPrefix.c_str(), &sb) == -1) {
@@ -198,7 +198,7 @@ bool jdkrig::AdlLib::dlopen()
 }
 
 
-bool jdkrig::AdlLib::load()
+bool kittenpaw::AdlLib::load()
 {
     return true;
 }

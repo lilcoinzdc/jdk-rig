@@ -1,7 +1,7 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2019      Spudz76     <https://github.com/Spudz76>
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@
 #include <cstdio>
 
 
-jdkrig::ConsoleLog::ConsoleLog(const Title &title)
+kittenpaw::ConsoleLog::ConsoleLog(const Title &title)
 {
     if (!isSupported()) {
         Log::setColors(false);
@@ -42,7 +42,7 @@ jdkrig::ConsoleLog::ConsoleLog(const Title &title)
 
     uv_tty_set_mode(m_tty, UV_TTY_MODE_NORMAL);
 
-#   ifdef JDKRIG_OS_WIN
+#   ifdef KITTENPAW_OS_WIN
     m_stream = reinterpret_cast<uv_stream_t*>(m_tty);
 
     HANDLE handle = GetStdHandle(STD_INPUT_HANDLE);
@@ -61,19 +61,19 @@ jdkrig::ConsoleLog::ConsoleLog(const Title &title)
 }
 
 
-jdkrig::ConsoleLog::~ConsoleLog()
+kittenpaw::ConsoleLog::~ConsoleLog()
 {
     Handle::close(m_tty);
 }
 
 
-void jdkrig::ConsoleLog::print(uint64_t, int, const char *line, size_t, size_t size, bool colors)
+void kittenpaw::ConsoleLog::print(uint64_t, int, const char *line, size_t, size_t size, bool colors)
 {
     if (!m_tty || Log::isColors() != colors) {
         return;
     }
 
-#   ifdef JDKRIG_OS_WIN
+#   ifdef KITTENPAW_OS_WIN
     uv_buf_t buf = uv_buf_init(const_cast<char *>(line), static_cast<unsigned int>(size));
 
     if (!isWritable()) {
@@ -90,15 +90,15 @@ void jdkrig::ConsoleLog::print(uint64_t, int, const char *line, size_t, size_t s
 }
 
 
-bool jdkrig::ConsoleLog::isSupported()
+bool kittenpaw::ConsoleLog::isSupported()
 {
     const uv_handle_type type = uv_guess_handle(1);
     return type == UV_TTY || type == UV_NAMED_PIPE;
 }
 
 
-#ifdef JDKRIG_OS_WIN
-bool jdkrig::ConsoleLog::isWritable() const
+#ifdef KITTENPAW_OS_WIN
+bool kittenpaw::ConsoleLog::isWritable() const
 {
     if (!m_stream || uv_is_writable(m_stream) != 1) {
         return false;

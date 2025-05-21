@@ -1,7 +1,7 @@
 /*
 Copyright (c) 2018-2020, tevador    <tevador@gmail.com>
 Copyright (c) 2019-2021, SChernykh  <https://github.com/SChernykh>
-Copyright (c) 2019-2021, XMRig      <https://github.com/jdkrig>, <support@jdkrig.com>
+Copyright (c) 2019-2021, KITTENpaw      <https://github.com/kittenpaw>, <support@kittenpaw.com>
 
 All rights reserved.
 
@@ -43,7 +43,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "crypto/randomx/virtual_memory.hpp"
 #include "crypto/rx/Profiler.h"
 
-#ifdef JDKRIG_FIX_RYZEN
+#ifdef KITTENPAW_FIX_RYZEN
 #   include "crypto/rx/RxFix.h"
 #endif
 
@@ -202,13 +202,13 @@ namespace randomx {
 	void JitCompilerX86::enableWriting() const {
 		uint8_t* p1 = alignToPage(code, 4096);
 		uint8_t* p2 = code + CodeSize;
-		jdkrig::VirtualMemory::protectRW(p1, p2 - p1);
+		kittenpaw::VirtualMemory::protectRW(p1, p2 - p1);
 	}
 
 	void JitCompilerX86::enableExecution() const {
 		uint8_t* p1 = alignToPage(code, 4096);
 		uint8_t* p2 = code + CodeSize;
-		jdkrig::VirtualMemory::protectRX(p1, p2 - p1);
+		kittenpaw::VirtualMemory::protectRX(p1, p2 - p1);
 	}
 
 #	ifdef _MSC_VER
@@ -221,10 +221,10 @@ namespace randomx {
 	constexpr size_t codeOffsetIncrement = 59 * 64;
 
 	JitCompilerX86::JitCompilerX86(bool hugePagesEnable, bool optimizedInitDatasetEnable) {
-		BranchesWithin32B = jdkrig::Cpu::info()->jccErratum();
+		BranchesWithin32B = kittenpaw::Cpu::info()->jccErratum();
 
-		hasAVX = jdkrig::Cpu::info()->hasAVX();
-		hasAVX2 = jdkrig::Cpu::info()->hasAVX2();
+		hasAVX = kittenpaw::Cpu::info()->hasAVX();
+		hasAVX2 = kittenpaw::Cpu::info()->hasAVX2();
 
 		// Disable by default
 		initDatasetAVX2 = false;
@@ -238,35 +238,35 @@ namespace randomx {
 				initDatasetAVX2 = true;
 			}
 			else if (optimizedDatasetInit < 0) {
-				jdkrig::ICpuInfo::Vendor vendor = jdkrig::Cpu::info()->vendor();
-				jdkrig::ICpuInfo::Arch arch = jdkrig::Cpu::info()->arch();
+				kittenpaw::ICpuInfo::Vendor vendor = kittenpaw::Cpu::info()->vendor();
+				kittenpaw::ICpuInfo::Arch arch = kittenpaw::Cpu::info()->arch();
 
-				if (vendor == jdkrig::ICpuInfo::VENDOR_INTEL) {
+				if (vendor == kittenpaw::ICpuInfo::VENDOR_INTEL) {
 					// AVX2 init is faster on Intel CPUs without HT
-					initDatasetAVX2 = (jdkrig::Cpu::info()->cores() == jdkrig::Cpu::info()->threads());
+					initDatasetAVX2 = (kittenpaw::Cpu::info()->cores() == kittenpaw::Cpu::info()->threads());
 				}
-				else if (vendor == jdkrig::ICpuInfo::VENDOR_AMD) {
+				else if (vendor == kittenpaw::ICpuInfo::VENDOR_AMD) {
 					switch (arch) {
-					case jdkrig::ICpuInfo::ARCH_ZEN:
-					case jdkrig::ICpuInfo::ARCH_ZEN_PLUS:
+					case kittenpaw::ICpuInfo::ARCH_ZEN:
+					case kittenpaw::ICpuInfo::ARCH_ZEN_PLUS:
 					default:
 						// AVX2 init is slower on Zen/Zen+
 						// Also disable it for other unknown architectures
 						initDatasetAVX2 = false;
 						break;
-					case jdkrig::ICpuInfo::ARCH_ZEN2:
+					case kittenpaw::ICpuInfo::ARCH_ZEN2:
 						// AVX2 init is faster on Zen2 without SMT (mobile CPUs)
-						initDatasetAVX2 = (jdkrig::Cpu::info()->cores() == jdkrig::Cpu::info()->threads());
+						initDatasetAVX2 = (kittenpaw::Cpu::info()->cores() == kittenpaw::Cpu::info()->threads());
 						break;
-					case jdkrig::ICpuInfo::ARCH_ZEN3:
+					case kittenpaw::ICpuInfo::ARCH_ZEN3:
 						// AVX2 init is faster on Zen3
 						initDatasetAVX2 = true;
 						break;
-					case jdkrig::ICpuInfo::ARCH_ZEN4:
+					case kittenpaw::ICpuInfo::ARCH_ZEN4:
 						// AVX2 init is slower on Zen4
 						initDatasetAVX2 = false;
 						break;
-					case jdkrig::ICpuInfo::ARCH_ZEN5:
+					case kittenpaw::ICpuInfo::ARCH_ZEN5:
 						// AVX2 init is 49% faster on Zen5
 						initDatasetAVX2 = true;
 						break;
@@ -280,11 +280,11 @@ namespace randomx {
 			initDatasetAVX2 = false;
 		}
 
-		hasXOP = jdkrig::Cpu::info()->hasXOP();
+		hasXOP = kittenpaw::Cpu::info()->hasXOP();
 
 		allocatedSize = initDatasetAVX2 ? (CodeSize * 4) : (CodeSize * 2);
 		allocatedCode = static_cast<uint8_t*>(allocExecutableMemory(allocatedSize,
-#			ifdef JDKRIG_SECURE_JIT
+#			ifdef KITTENPAW_SECURE_JIT
 			false
 #			else
 			hugePagesJIT && hugePagesEnable
@@ -305,7 +305,7 @@ namespace randomx {
 
 		codePosFirst = prologueSize + (hasXOP ? loopLoadXOPSize : loopLoadSize);
 
-#		ifdef JDKRIG_FIX_RYZEN
+#		ifdef KITTENPAW_FIX_RYZEN
 		mainLoopBounds.first = code + prologueSize;
 		mainLoopBounds.second = code + epilogueOffset;
 #		endif
@@ -334,7 +334,7 @@ namespace randomx {
 	void JitCompilerX86::generateProgram(Program& prog, ProgramConfiguration& pcfg, uint32_t flags) {
 		PROFILE_SCOPE(RandomX_JIT_compile);
 
-#		ifdef JDKRIG_SECURE_JIT
+#		ifdef KITTENPAW_SECURE_JIT
 		enableWriting();
 #		endif
 
@@ -431,8 +431,8 @@ namespace randomx {
 			*p = (*p & 0xFF000000U) | 0x0077F8C5U; // vzeroupper
 		}
 
-#		ifdef JDKRIG_FIX_RYZEN
-		jdkrig::RxFix::setMainLoopBounds(mainLoopBounds);
+#		ifdef KITTENPAW_FIX_RYZEN
+		kittenpaw::RxFix::setMainLoopBounds(mainLoopBounds);
 #		endif
 
 		imul_rcp_storage = code + (ADDR(randomx_program_imul_rcp_store) - codePrologue) + 2;

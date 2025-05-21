@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_HTTPSSERVER_H
-#define JDKRIG_HTTPSSERVER_H
+#ifndef KITTENPAW_HTTPSSERVER_H
+#define KITTENPAW_HTTPSSERVER_H
 
 
 using uv_tcp_t  = struct uv_tcp_s;
@@ -34,7 +34,7 @@ struct uv_buf_t;
 #include <memory>
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class IHttpListener;
@@ -45,7 +45,7 @@ class TlsConfig;
 class HttpsServer : public ITcpServerListener
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(HttpsServer)
+    KITTENPAW_DISABLE_COPY_MOVE_DEFAULT(HttpsServer)
 
     HttpsServer(const std::shared_ptr<IHttpListener> &listener);
     ~HttpsServer() override;
@@ -63,8 +63,8 @@ private:
 };
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-#endif // JDKRIG_HTTPSSERVER_H
+#endif // KITTENPAW_HTTPSSERVER_H
 

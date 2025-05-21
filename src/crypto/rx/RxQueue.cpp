@@ -1,8 +1,8 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018      Lee Clagett <https://github.com/vtnerd>
  * Copyright (c) 2018-2019 tevador     <tevador@gmail.com>
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -27,12 +27,12 @@
 #include "crypto/rx/RxBasicStorage.h"
 
 
-#ifdef JDKRIG_FEATURE_HWLOC
+#ifdef KITTENPAW_FEATURE_HWLOC
 #   include "crypto/rx/RxNUMAStorage.h"
 #endif
 
 
-jdkrig::RxQueue::RxQueue(IRxListener *listener) :
+kittenpaw::RxQueue::RxQueue(IRxListener *listener) :
     m_listener(listener)
 {
     m_async  = std::make_shared<Async>(this);
@@ -40,7 +40,7 @@ jdkrig::RxQueue::RxQueue(IRxListener *listener) :
 }
 
 
-jdkrig::RxQueue::~RxQueue()
+kittenpaw::RxQueue::~RxQueue()
 {
     std::unique_lock<std::mutex> lock(m_mutex);
     m_state = STATE_SHUTDOWN;
@@ -54,7 +54,7 @@ jdkrig::RxQueue::~RxQueue()
 }
 
 
-jdkrig::RxDataset *jdkrig::RxQueue::dataset(const Job &job, uint32_t nodeId)
+kittenpaw::RxDataset *kittenpaw::RxQueue::dataset(const Job &job, uint32_t nodeId)
 {
     std::lock_guard<std::mutex> lock(m_mutex);
 
@@ -66,7 +66,7 @@ jdkrig::RxDataset *jdkrig::RxQueue::dataset(const Job &job, uint32_t nodeId)
 }
 
 
-jdkrig::HugePagesInfo jdkrig::RxQueue::hugePages()
+kittenpaw::HugePagesInfo kittenpaw::RxQueue::hugePages()
 {
     std::lock_guard<std::mutex> lock(m_mutex);
 
@@ -75,7 +75,7 @@ jdkrig::HugePagesInfo jdkrig::RxQueue::hugePages()
 
 
 template<typename T>
-bool jdkrig::RxQueue::isReady(const T &seed)
+bool kittenpaw::RxQueue::isReady(const T &seed)
 {
     std::lock_guard<std::mutex> lock(m_mutex);
 
@@ -83,12 +83,12 @@ bool jdkrig::RxQueue::isReady(const T &seed)
 }
 
 
-void jdkrig::RxQueue::enqueue(const RxSeed &seed, const std::vector<uint32_t> &nodeset, uint32_t threads, bool hugePages, bool oneGbPages, RxConfig::Mode mode, int priority)
+void kittenpaw::RxQueue::enqueue(const RxSeed &seed, const std::vector<uint32_t> &nodeset, uint32_t threads, bool hugePages, bool oneGbPages, RxConfig::Mode mode, int priority)
 {
     std::unique_lock<std::mutex> lock(m_mutex);
 
     if (!m_storage) {
-#       ifdef JDKRIG_FEATURE_HWLOC
+#       ifdef KITTENPAW_FEATURE_HWLOC
         if (!nodeset.empty()) {
             m_storage = new RxNUMAStorage(nodeset);
         }
@@ -114,13 +114,13 @@ void jdkrig::RxQueue::enqueue(const RxSeed &seed, const std::vector<uint32_t> &n
 
 
 template<typename T>
-bool jdkrig::RxQueue::isReadyUnsafe(const T &seed) const
+bool kittenpaw::RxQueue::isReadyUnsafe(const T &seed) const
 {
     return m_storage != nullptr && m_storage->isAllocated() && m_state == STATE_IDLE && m_seed == seed;
 }
 
 
-void jdkrig::RxQueue::backgroundInit()
+void kittenpaw::RxQueue::backgroundInit()
 {
     while (m_state != STATE_SHUTDOWN) {
         std::unique_lock<std::mutex> lock(m_mutex);
@@ -162,7 +162,7 @@ void jdkrig::RxQueue::backgroundInit()
 }
 
 
-void jdkrig::RxQueue::onReady()
+void kittenpaw::RxQueue::onReady()
 {
     std::unique_lock<std::mutex> lock(m_mutex);
     const bool ready = m_listener && m_state == STATE_IDLE;
@@ -174,11 +174,11 @@ void jdkrig::RxQueue::onReady()
 }
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 template bool RxQueue::isReady(const Job &);
 template bool RxQueue::isReady(const RxSeed &);
 
 
-} // namespace jdkrig
+} // namespace kittenpaw

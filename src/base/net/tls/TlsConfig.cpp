@@ -1,7 +1,7 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018      Lee Clagett <https://github.com/vtnerd>
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@
 #include "base/net/tls/TlsGen.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 const char *TlsConfig::kCert            = "cert";
@@ -42,7 +42,7 @@ static const char *kTLSv1_2             = "TLSv1.2";
 static const char *kTLSv1_3             = "TLSv1.3";
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
 /**
@@ -52,7 +52,7 @@ static const char *kTLSv1_3             = "TLSv1.3";
  * "ciphersuites" set list of available TLSv1.3 ciphersuites.
  * "dhparam"      load DH parameters for DHE ciphers from file.
  */
-jdkrig::TlsConfig::TlsConfig(const rapidjson::Value &value)
+kittenpaw::TlsConfig::TlsConfig(const rapidjson::Value &value)
 {
     if (value.IsObject()) {
         m_enabled = Json::getBool(value, kEnabled, m_enabled);
@@ -79,7 +79,7 @@ jdkrig::TlsConfig::TlsConfig(const rapidjson::Value &value)
             generate();
         }
     }
-#   ifdef JDKRIG_FORCE_TLS
+#   ifdef KITTENPAW_FORCE_TLS
     else if (value.IsNull()) {
         generate();
     }
@@ -93,7 +93,7 @@ jdkrig::TlsConfig::TlsConfig(const rapidjson::Value &value)
 }
 
 
-bool jdkrig::TlsConfig::generate(const char *commonName)
+bool kittenpaw::TlsConfig::generate(const char *commonName)
 {
     TlsGen gen;
 
@@ -115,7 +115,7 @@ bool jdkrig::TlsConfig::generate(const char *commonName)
 }
 
 
-rapidjson::Value jdkrig::TlsConfig::toJSON(rapidjson::Document &doc) const
+rapidjson::Value kittenpaw::TlsConfig::toJSON(rapidjson::Document &doc) const
 {
     using namespace rapidjson;
 
@@ -158,7 +158,7 @@ rapidjson::Value jdkrig::TlsConfig::toJSON(rapidjson::Document &doc) const
 }
 
 
-void jdkrig::TlsConfig::setProtocols(const char *protocols)
+void kittenpaw::TlsConfig::setProtocols(const char *protocols)
 {
     const std::vector<String> vec = String(protocols).split(' ');
 
@@ -179,7 +179,7 @@ void jdkrig::TlsConfig::setProtocols(const char *protocols)
 }
 
 
-void jdkrig::TlsConfig::setProtocols(const rapidjson::Value &protocols)
+void kittenpaw::TlsConfig::setProtocols(const rapidjson::Value &protocols)
 {
     m_protocols = 0;
 

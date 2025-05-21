@@ -1,7 +1,7 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018      Lee Clagett <https://github.com/vtnerd>
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -17,8 +17,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_ALGORITHM_H
-#define JDKRIG_ALGORITHM_H
+#ifndef KITTENPAW_ALGORITHM_H
+#define KITTENPAW_ALGORITHM_H
 
 
 #include <functional>
@@ -28,7 +28,7 @@
 #include "3rdparty/rapidjson/fwd.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class Algorithm
@@ -113,30 +113,30 @@ public:
     static const char *kCN_DOUBLE;
     static const char *kCN_CCX;
 
-#   ifdef JDKRIG_ALGO_CN_LITE
+#   ifdef KITTENPAW_ALGO_CN_LITE
     static const char *kCN_LITE;
     static const char *kCN_LITE_0;
     static const char *kCN_LITE_1;
 #   endif
 
-#   ifdef JDKRIG_ALGO_CN_HEAVY
+#   ifdef KITTENPAW_ALGO_CN_HEAVY
     static const char *kCN_HEAVY;
     static const char *kCN_HEAVY_0;
     static const char *kCN_HEAVY_TUBE;
     static const char *kCN_HEAVY_XHV;
 #   endif
 
-#   ifdef JDKRIG_ALGO_CN_PICO
+#   ifdef KITTENPAW_ALGO_CN_PICO
     static const char *kCN_PICO;
     static const char *kCN_PICO_0;
     static const char *kCN_PICO_TLO;
 #   endif
 
-#   ifdef JDKRIG_ALGO_CN_FEMTO
+#   ifdef KITTENPAW_ALGO_CN_FEMTO
     static const char *kCN_UPX2;
 #   endif
 
-#   ifdef JDKRIG_ALGO_RANDOMX
+#   ifdef KITTENPAW_ALGO_RANDOMX
     static const char *kRX;
     static const char *kRX_0;
     static const char *kRX_WOW;
@@ -146,19 +146,19 @@ public:
     static const char *kRX_YADA;
 #   endif
 
-#   ifdef JDKRIG_ALGO_ARGON2
+#   ifdef KITTENPAW_ALGO_ARGON2
     static const char *kAR2;
     static const char *kAR2_CHUKWA;
     static const char *kAR2_CHUKWA_V2;
     static const char *kAR2_WRKZ;
 #   endif
 
-#   ifdef JDKRIG_ALGO_KAWPOW
+#   ifdef KITTENPAW_ALGO_KAWPOW
     static const char *kKAWPOW;
     static const char *kKAWPOW_RVN;
 #   endif
 
-#   ifdef JDKRIG_ALGO_GHOSTRIDER
+#   ifdef KITTENPAW_ALGO_GHOSTRIDER
     static const char* kGHOSTRIDER;
     static const char* kGHOSTRIDER_RTM;
 #   endif
@@ -209,7 +209,7 @@ private:
 using Algorithms = std::vector<Algorithm>;
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif /* JDKRIG_ALGORITHM_H */
+#endif /* KITTENPAW_ALGORITHM_H */

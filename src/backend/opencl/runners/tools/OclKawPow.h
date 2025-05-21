@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_OCLKAWPOW_H
-#define JDKRIG_OCLKAWPOW_H
+#ifndef KITTENPAW_OCLKAWPOW_H
+#define KITTENPAW_OCLKAWPOW_H
 
 
 #include <cstddef>
@@ -27,7 +27,7 @@
 using cl_kernel = struct _cl_kernel *;
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class IOclRunner;
@@ -41,7 +41,7 @@ public:
 };
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-#endif /* JDKRIG_OCLKAWPOW_H */
+#endif /* KITTENPAW_OCLKAWPOW_H */

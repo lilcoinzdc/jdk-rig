@@ -1,7 +1,7 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2014-2019 heapwolf    <https://github.com/heapwolf>
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -18,8 +18,8 @@
  */
 
 
-#ifndef JDKRIG_HTTPDATA_H
-#define JDKRIG_HTTPDATA_H
+#ifndef KITTENPAW_HTTPDATA_H
+#define KITTENPAW_HTTPDATA_H
 
 
 #include "3rdparty/rapidjson/document.h"
@@ -30,13 +30,13 @@
 #include <string>
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class HttpData
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(HttpData)
+    KITTENPAW_DISABLE_COPY_MOVE_DEFAULT(HttpData)
 
     static const std::string kApplicationJson;
     static const std::string kContentType;
@@ -77,8 +77,8 @@ private:
 };
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-#endif // JDKRIG_HTTPDATA_H
+#endif // KITTENPAW_HTTPDATA_H
 

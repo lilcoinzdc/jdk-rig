@@ -1,4 +1,4 @@
-/* XMRig
+/* KITTENpaw
  * Copyright 2010      Jeff Garzik <jgarzik@pobox.com>
  * Copyright 2012-2014 pooler      <pooler@litecoinpool.org>
  * Copyright 2014      Lucas Jones <https://github.com/lucasjones>
@@ -6,7 +6,7 @@
  * Copyright 2016      Jay D Dee   <jayddee246@gmail.com>
  * Copyright 2017-2018 XMR-Stak    <https://github.com/fireice-uk>, <https://github.com/psychocrypt>
  * Copyright 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@
 #include "base/io/json/Json.h"
 
 
-jdkrig::OclThreads::OclThreads(const rapidjson::Value &value)
+kittenpaw::OclThreads::OclThreads(const rapidjson::Value &value)
 {
     if (value.IsArray()) {
         for (auto &v : value.GetArray()) {
@@ -44,7 +44,7 @@ jdkrig::OclThreads::OclThreads(const rapidjson::Value &value)
 }
 
 
-jdkrig::OclThreads::OclThreads(const std::vector<OclDevice> &devices, const Algorithm &algorithm)
+kittenpaw::OclThreads::OclThreads(const std::vector<OclDevice> &devices, const Algorithm &algorithm)
 {
     for (const auto &device : devices) {
         device.generate(algorithm, *this);
@@ -52,7 +52,7 @@ jdkrig::OclThreads::OclThreads(const std::vector<OclDevice> &devices, const Algo
 }
 
 
-bool jdkrig::OclThreads::isEqual(const OclThreads &other) const
+bool kittenpaw::OclThreads::isEqual(const OclThreads &other) const
 {
     if (isEmpty() && other.isEmpty()) {
         return true;
@@ -62,7 +62,7 @@ bool jdkrig::OclThreads::isEqual(const OclThreads &other) const
 }
 
 
-rapidjson::Value jdkrig::OclThreads::toJSON(rapidjson::Document &doc) const
+rapidjson::Value kittenpaw::OclThreads::toJSON(rapidjson::Document &doc) const
 {
     using namespace rapidjson;
     auto &allocator = doc.GetAllocator();

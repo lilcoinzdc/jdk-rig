@@ -1,7 +1,7 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2014-2019 heapwolf    <https://github.com/heapwolf>
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -30,24 +30,24 @@
 #include <uv.h>
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 static const char *kCRLF      = "\r\n";
 static const char *kUserAgent = "user-agent";
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-jdkrig::HttpResponse::HttpResponse(uint64_t id, int statusCode) :
+kittenpaw::HttpResponse::HttpResponse(uint64_t id, int statusCode) :
     m_id(id),
     m_statusCode(statusCode)
 {
 }
 
 
-bool jdkrig::HttpResponse::isAlive() const
+bool kittenpaw::HttpResponse::isAlive() const
 {
     auto ctx = HttpContext::get(m_id);
 
@@ -55,7 +55,7 @@ bool jdkrig::HttpResponse::isAlive() const
 }
 
 
-void jdkrig::HttpResponse::end(const char *data, size_t size)
+void kittenpaw::HttpResponse::end(const char *data, size_t size)
 {
     if (!isAlive()) {
         return;

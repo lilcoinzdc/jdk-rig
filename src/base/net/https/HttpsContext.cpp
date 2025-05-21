@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@
 #include <uv.h>
 
 
-jdkrig::HttpsContext::HttpsContext(TlsContext *tls, const std::weak_ptr<IHttpListener> &listener) :
+kittenpaw::HttpsContext::HttpsContext(TlsContext *tls, const std::weak_ptr<IHttpListener> &listener) :
     HttpContext(HTTP_REQUEST, listener),
     ServerTls(tls ? tls->ctx() : nullptr)
 {
@@ -35,10 +35,10 @@ jdkrig::HttpsContext::HttpsContext(TlsContext *tls, const std::weak_ptr<IHttpLis
 }
 
 
-jdkrig::HttpsContext::~HttpsContext() = default;
+kittenpaw::HttpsContext::~HttpsContext() = default;
 
 
-void jdkrig::HttpsContext::append(char *data, size_t size)
+void kittenpaw::HttpsContext::append(char *data, size_t size)
 {
     if (m_mode == TLS_AUTO) {
         m_mode = isTLS(data, size) ? TLS_ON : TLS_OFF;
@@ -53,7 +53,7 @@ void jdkrig::HttpsContext::append(char *data, size_t size)
 }
 
 
-bool jdkrig::HttpsContext::write(BIO *bio)
+bool kittenpaw::HttpsContext::write(BIO *bio)
 {
     if (uv_is_writable(stream()) != 1) {
         return false;
@@ -71,7 +71,7 @@ bool jdkrig::HttpsContext::write(BIO *bio)
 }
 
 
-void jdkrig::HttpsContext::parse(char *data, size_t size)
+void kittenpaw::HttpsContext::parse(char *data, size_t size)
 {
     if (!HttpContext::parse(data, size)) {
         close();
@@ -79,13 +79,13 @@ void jdkrig::HttpsContext::parse(char *data, size_t size)
 }
 
 
-void jdkrig::HttpsContext::shutdown()
+void kittenpaw::HttpsContext::shutdown()
 {
     close();
 }
 
 
-void jdkrig::HttpsContext::write(std::string &&data, bool close)
+void kittenpaw::HttpsContext::write(std::string &&data, bool close)
 {
     m_close = close;
 

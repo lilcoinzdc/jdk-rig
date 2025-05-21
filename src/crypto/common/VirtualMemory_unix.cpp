@@ -1,7 +1,7 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2020 tevador     <tevador@gmail.com>
  * Copyright (c) 2018-2023 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2023 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2023 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -28,12 +28,12 @@
 #include <sys/mman.h>
 
 
-#ifdef JDKRIG_OS_APPLE
+#ifdef KITTENPAW_OS_APPLE
 #   include <libkern/OSCacheControl.h>
 #   include <mach/vm_statistics.h>
 #   include <pthread.h>
 #   include <TargetConditionals.h>
-#   ifdef JDKRIG_ARM
+#   ifdef KITTENPAW_ARM
 #       define MEXTRA MAP_JIT
 #   else
 #       define MEXTRA 0
@@ -43,7 +43,7 @@
 #endif
 
 
-#ifdef JDKRIG_OS_LINUX
+#ifdef KITTENPAW_OS_LINUX
 #   include "crypto/common/LinuxMemory.h"
 #endif
 
@@ -57,7 +57,7 @@
 #   define MAP_HUGE_MASK 0x3f
 #endif
 
-#ifdef JDKRIG_OS_FREEBSD
+#ifdef KITTENPAW_OS_FREEBSD
 #   ifndef MAP_ALIGNED_SUPER
 #       define MAP_ALIGNED_SUPER 0
 #   endif
@@ -67,14 +67,14 @@
 #endif
 
 
-#ifdef JDKRIG_SECURE_JIT
+#ifdef KITTENPAW_SECURE_JIT
 #   define SECURE_PROT_EXEC 0
 #else
 #   define SECURE_PROT_EXEC PROT_EXEC
 #endif
 
 
-#if defined(JDKRIG_OS_LINUX) || (!defined(JDKRIG_OS_APPLE) && !defined(JDKRIG_OS_FREEBSD))
+#if defined(KITTENPAW_OS_LINUX) || (!defined(KITTENPAW_OS_APPLE) && !defined(KITTENPAW_OS_FREEBSD))
 static inline int hugePagesFlag(size_t size)
 {
     return (static_cast<int>(log2(size)) & MAP_HUGE_MASK) << MAP_HUGE_SHIFT;
@@ -82,11 +82,11 @@ static inline int hugePagesFlag(size_t size)
 #endif
 
 
-bool jdkrig::VirtualMemory::isHugepagesAvailable()
+bool kittenpaw::VirtualMemory::isHugepagesAvailable()
 {
-#   ifdef JDKRIG_OS_LINUX
+#   ifdef KITTENPAW_OS_LINUX
     return std::ifstream("/proc/sys/vm/nr_hugepages").good() || std::ifstream("/sys/devices/system/node/node0/hugepages/hugepages-2048kB/nr_hugepages").good();
-#   elif defined(JDKRIG_OS_MACOS) && defined(JDKRIG_ARM)
+#   elif defined(KITTENPAW_OS_MACOS) && defined(KITTENPAW_ARM)
     return false;
 #   else
     return true;
@@ -94,9 +94,9 @@ bool jdkrig::VirtualMemory::isHugepagesAvailable()
 }
 
 
-bool jdkrig::VirtualMemory::isOneGbPagesAvailable()
+bool kittenpaw::VirtualMemory::isOneGbPagesAvailable()
 {
-#   ifdef JDKRIG_OS_LINUX
+#   ifdef KITTENPAW_OS_LINUX
     return Cpu::info()->hasOneGbPages();
 #   else
     return false;
@@ -104,9 +104,9 @@ bool jdkrig::VirtualMemory::isOneGbPagesAvailable()
 }
 
 
-bool jdkrig::VirtualMemory::protectRW(void *p, size_t size)
+bool kittenpaw::VirtualMemory::protectRW(void *p, size_t size)
 {
-#   if defined(JDKRIG_OS_APPLE) && defined(JDKRIG_ARM)
+#   if defined(KITTENPAW_OS_APPLE) && defined(KITTENPAW_ARM)
     pthread_jit_write_protect_np(false);
     return true;
 #   else
@@ -115,23 +115,23 @@ bool jdkrig::VirtualMemory::protectRW(void *p, size_t size)
 }
 
 
-bool jdkrig::VirtualMemory::protectRWX(void *p, size_t size)
+bool kittenpaw::VirtualMemory::protectRWX(void *p, size_t size)
 {
     return mprotect(p, size, PROT_READ | PROT_WRITE | PROT_EXEC) == 0;
 }
 
 
-bool jdkrig::VirtualMemory::protectRX(void *p, size_t size)
+bool kittenpaw::VirtualMemory::protectRX(void *p, size_t size)
 {
     bool result = true;
 
-#   if defined(JDKRIG_OS_APPLE) && defined(JDKRIG_ARM)
+#   if defined(KITTENPAW_OS_APPLE) && defined(KITTENPAW_ARM)
     pthread_jit_write_protect_np(true);
 #   else
     result = (mprotect(p, size, PROT_READ | PROT_EXEC) == 0);
 #   endif
 
-#   if defined(JDKRIG_ARM)
+#   if defined(KITTENPAW_ARM)
     flushInstructionCache(p, size);
 #   endif
 
@@ -139,14 +139,14 @@ bool jdkrig::VirtualMemory::protectRX(void *p, size_t size)
 }
 
 
-void *jdkrig::VirtualMemory::allocateExecutableMemory(size_t size, bool hugePages)
+void *kittenpaw::VirtualMemory::allocateExecutableMemory(size_t size, bool hugePages)
 {
-#   if defined(JDKRIG_OS_APPLE)
+#   if defined(KITTENPAW_OS_APPLE)
     void *mem = mmap(0, size, PROT_READ | PROT_WRITE | PROT_EXEC, MAP_PRIVATE | MAP_ANON | MEXTRA, -1, 0);
-#   ifdef JDKRIG_ARM
+#   ifdef KITTENPAW_ARM
     pthread_jit_write_protect_np(false);
 #   endif
-#   elif defined(JDKRIG_OS_FREEBSD)
+#   elif defined(KITTENPAW_OS_FREEBSD)
     void *mem = nullptr;
 
     if (hugePages) {
@@ -175,11 +175,11 @@ void *jdkrig::VirtualMemory::allocateExecutableMemory(size_t size, bool hugePage
 }
 
 
-void *jdkrig::VirtualMemory::allocateLargePagesMemory(size_t size)
+void *kittenpaw::VirtualMemory::allocateLargePagesMemory(size_t size)
 {
-#   if defined(JDKRIG_OS_APPLE)
+#   if defined(KITTENPAW_OS_APPLE)
     void *mem = mmap(0, size, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANON, VM_FLAGS_SUPERPAGE_SIZE_2MB, 0);
-#   elif defined(JDKRIG_OS_FREEBSD)
+#   elif defined(KITTENPAW_OS_FREEBSD)
     void *mem = mmap(0, size, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS | MAP_ALIGNED_SUPER | MAP_PREFAULT_READ, -1, 0);
 #   else
     void *mem = mmap(0, size, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS | MAP_HUGETLB | MAP_POPULATE | hugePagesFlag(hugePageSize()), 0, 0);
@@ -189,9 +189,9 @@ void *jdkrig::VirtualMemory::allocateLargePagesMemory(size_t size)
 }
 
 
-void *jdkrig::VirtualMemory::allocateOneGbPagesMemory(size_t size)
+void *kittenpaw::VirtualMemory::allocateOneGbPagesMemory(size_t size)
 {
-#   ifdef JDKRIG_OS_LINUX
+#   ifdef KITTENPAW_OS_LINUX
     if (isOneGbPagesAvailable()) {
         void *mem = mmap(0, size, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS | MAP_HUGETLB | MAP_POPULATE | hugePagesFlag(kOneGiB), 0, 0);
 
@@ -203,9 +203,9 @@ void *jdkrig::VirtualMemory::allocateOneGbPagesMemory(size_t size)
 }
 
 
-void jdkrig::VirtualMemory::flushInstructionCache(void *p, size_t size)
+void kittenpaw::VirtualMemory::flushInstructionCache(void *p, size_t size)
 {
-#   if defined(JDKRIG_OS_APPLE)
+#   if defined(KITTENPAW_OS_APPLE)
     sys_icache_invalidate(p, size);
 #   elif defined (HAVE_BUILTIN_CLEAR_CACHE) || defined (__GNUC__)
     __builtin___clear_cache(reinterpret_cast<char*>(p), reinterpret_cast<char*>(p) + size);
@@ -213,13 +213,13 @@ void jdkrig::VirtualMemory::flushInstructionCache(void *p, size_t size)
 }
 
 
-void jdkrig::VirtualMemory::freeLargePagesMemory(void *p, size_t size)
+void kittenpaw::VirtualMemory::freeLargePagesMemory(void *p, size_t size)
 {
     munmap(p, size);
 }
 
 
-void jdkrig::VirtualMemory::osInit(size_t hugePageSize)
+void kittenpaw::VirtualMemory::osInit(size_t hugePageSize)
 {
     if (hugePageSize) {
         m_hugePageSize = hugePageSize;
@@ -227,9 +227,9 @@ void jdkrig::VirtualMemory::osInit(size_t hugePageSize)
 }
 
 
-bool jdkrig::VirtualMemory::allocateLargePagesMemory()
+bool kittenpaw::VirtualMemory::allocateLargePagesMemory()
 {
-#   ifdef JDKRIG_OS_LINUX
+#   ifdef KITTENPAW_OS_LINUX
     LinuxMemory::reserve(m_size, m_node, hugePageSize());
 #   endif
 
@@ -250,9 +250,9 @@ bool jdkrig::VirtualMemory::allocateLargePagesMemory()
 }
 
 
-bool jdkrig::VirtualMemory::allocateOneGbPagesMemory()
+bool kittenpaw::VirtualMemory::allocateOneGbPagesMemory()
 {
-#   ifdef JDKRIG_OS_LINUX
+#   ifdef KITTENPAW_OS_LINUX
     LinuxMemory::reserve(m_size, m_node, kOneGiB);
 #   endif
 
@@ -273,7 +273,7 @@ bool jdkrig::VirtualMemory::allocateOneGbPagesMemory()
 }
 
 
-void jdkrig::VirtualMemory::freeLargePagesMemory()
+void kittenpaw::VirtualMemory::freeLargePagesMemory()
 {
     if (m_flags.test(FLAG_LOCK)) {
         munlock(m_scratchpad, m_size);

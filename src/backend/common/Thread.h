@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_THREAD_H
-#define JDKRIG_THREAD_H
+#ifndef KITTENPAW_THREAD_H
+#define KITTENPAW_THREAD_H
 
 
 #include "backend/common/interfaces/IWorker.h"
@@ -26,13 +26,13 @@
 #include <thread>
 
 
-#ifdef JDKRIG_OS_APPLE
+#ifdef KITTENPAW_OS_APPLE
 #   include <pthread.h>
 #   include <mach/thread_act.h>
 #endif
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class IBackend;
@@ -42,11 +42,11 @@ template<class T>
 class Thread
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(Thread)
+    KITTENPAW_DISABLE_COPY_MOVE_DEFAULT(Thread)
 
     inline Thread(IBackend *backend, size_t id, const T &config) : m_id(id), m_config(config), m_backend(backend) {}
 
-#   ifdef JDKRIG_OS_APPLE
+#   ifdef KITTENPAW_OS_APPLE
     inline ~Thread() { pthread_join(m_thread, nullptr); delete m_worker; }
 
     inline void start(void *(*callback)(void *))
@@ -82,7 +82,7 @@ private:
     IBackend *m_backend;
     IWorker *m_worker       = nullptr;
 
-    #ifdef JDKRIG_OS_APPLE
+    #ifdef KITTENPAW_OS_APPLE
     pthread_t m_thread{};
 #   else
     std::thread m_thread;
@@ -90,7 +90,7 @@ private:
 };
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-#endif /* JDKRIG_THREAD_H */
+#endif /* KITTENPAW_THREAD_H */

@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2023 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2023 XMRig       <support@jdkrig.com>
+ * Copyright (c) 2016-2023 KITTENpaw       <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,7 +16,7 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifdef JDKRIG_HWLOC_DEBUG
+#ifdef KITTENPAW_HWLOC_DEBUG
 #   include <uv.h>
 #endif
 
@@ -44,7 +44,7 @@ static inline int hwloc_obj_type_is_cache(hwloc_obj_type_t type)
 #endif
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 template <typename func>
@@ -87,7 +87,7 @@ static inline size_t countByType(hwloc_topology_t topology, hwloc_obj_type_t typ
 }
 
 
-#ifndef JDKRIG_ARM
+#ifndef KITTENPAW_ARM
 static inline std::vector<hwloc_obj_t> findByType(hwloc_obj_t obj, hwloc_obj_type_t type)
 {
     std::vector<hwloc_obj_t> out;
@@ -114,15 +114,15 @@ static inline bool isCacheExclusive(hwloc_obj_t obj)
 #endif
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-jdkrig::HwlocCpuInfo::HwlocCpuInfo()
+kittenpaw::HwlocCpuInfo::HwlocCpuInfo()
 {
     hwloc_topology_init(&m_topology);
     hwloc_topology_load(m_topology);
 
-#   ifdef JDKRIG_HWLOC_DEBUG
+#   ifdef KITTENPAW_HWLOC_DEBUG
 #   if defined(UV_VERSION_HEX) && UV_VERSION_HEX >= 0x010c00
     {
         char env[520] = { 0 };
@@ -177,7 +177,7 @@ jdkrig::HwlocCpuInfo::HwlocCpuInfo()
         }
     }
 
-#   if defined(JDKRIG_OS_MACOS) && defined(JDKRIG_ARM)
+#   if defined(KITTENPAW_OS_MACOS) && defined(KITTENPAW_ARM)
     if (L2() == 33554432U && m_cores == 8 && m_cores == m_threads) {
         m_cache[2] = 16777216U;
     }
@@ -185,13 +185,13 @@ jdkrig::HwlocCpuInfo::HwlocCpuInfo()
 }
 
 
-jdkrig::HwlocCpuInfo::~HwlocCpuInfo()
+kittenpaw::HwlocCpuInfo::~HwlocCpuInfo()
 {
     hwloc_topology_destroy(m_topology);
 }
 
 
-bool jdkrig::HwlocCpuInfo::membind(hwloc_const_bitmap_t nodeset)
+bool kittenpaw::HwlocCpuInfo::membind(hwloc_const_bitmap_t nodeset)
 {
     if (!hwloc_topology_get_support(m_topology)->membind->set_thisthread_membind) {
         return false;
@@ -205,9 +205,9 @@ bool jdkrig::HwlocCpuInfo::membind(hwloc_const_bitmap_t nodeset)
 }
 
 
-jdkrig::CpuThreads jdkrig::HwlocCpuInfo::threads(const Algorithm &algorithm, uint32_t limit) const
+kittenpaw::CpuThreads kittenpaw::HwlocCpuInfo::threads(const Algorithm &algorithm, uint32_t limit) const
 {
-#   ifndef JDKRIG_ARM
+#   ifndef KITTENPAW_ARM
     if (L2() == 0 && L3() == 0) {
         return BasicCpuInfo::threads(algorithm, limit);
     }
@@ -255,7 +255,7 @@ jdkrig::CpuThreads jdkrig::HwlocCpuInfo::threads(const Algorithm &algorithm, uin
 }
 
 
-jdkrig::CpuThreads jdkrig::HwlocCpuInfo::allThreads(const Algorithm &algorithm, uint32_t limit) const
+kittenpaw::CpuThreads kittenpaw::HwlocCpuInfo::allThreads(const Algorithm &algorithm, uint32_t limit) const
 {
     CpuThreads threads;
     threads.reserve(m_threads);
@@ -275,9 +275,9 @@ jdkrig::CpuThreads jdkrig::HwlocCpuInfo::allThreads(const Algorithm &algorithm, 
 
 
 
-void jdkrig::HwlocCpuInfo::processTopLevelCache(hwloc_obj_t cache, const Algorithm &algorithm, CpuThreads &threads, size_t limit) const
+void kittenpaw::HwlocCpuInfo::processTopLevelCache(hwloc_obj_t cache, const Algorithm &algorithm, CpuThreads &threads, size_t limit) const
 {
-#   ifndef JDKRIG_ARM
+#   ifndef KITTENPAW_ARM
     constexpr size_t oneMiB = 1024U * 1024U;
 
     size_t PUs = countByType(cache, HWLOC_OBJ_PU);
@@ -291,7 +291,7 @@ void jdkrig::HwlocCpuInfo::processTopLevelCache(hwloc_obj_t cache, const Algorit
 
     const bool L3_exclusive = isCacheExclusive(cache);
 
-#   ifdef JDKRIG_ALGO_GHOSTRIDER
+#   ifdef KITTENPAW_ALGO_GHOSTRIDER
     if ((algorithm == Algorithm::GHOSTRIDER_RTM) && L3_exclusive && (PUs > cores.size()) && (PUs < cores.size() * 2)) {
         // Don't use E-cores on Alder Lake
         cores.erase(std::remove_if(cores.begin(), cores.end(), [](hwloc_obj_t c) { return hwloc_bitmap_weight(c->cpuset) == 1; }), cores.end());
@@ -341,7 +341,7 @@ void jdkrig::HwlocCpuInfo::processTopLevelCache(hwloc_obj_t cache, const Algorit
         intensity = 2;
     }
 
-#   ifdef JDKRIG_ALGO_RANDOMX
+#   ifdef KITTENPAW_ALGO_RANDOMX
     if ((vendor() == VENDOR_INTEL) && (algorithm.family() == Algorithm::RANDOM_X) && L3_exclusive && (PUs < cores.size() * 2)) {
         // Use all L3+L2 on latest Intel CPUs with P-cores, E-cores and exclusive L3 cache
         cacheHashes = (L3 + L2) / scratchpad;
@@ -355,7 +355,7 @@ void jdkrig::HwlocCpuInfo::processTopLevelCache(hwloc_obj_t cache, const Algorit
         cacheHashes = std::min(cacheHashes, limit);
     }
 
-#   ifdef JDKRIG_ALGO_GHOSTRIDER
+#   ifdef KITTENPAW_ALGO_GHOSTRIDER
     if (algorithm == Algorithm::GHOSTRIDER_RTM) {
         // GhostRider implementation runs 8 hashes at a time
         intensity = 8;
@@ -423,7 +423,7 @@ void jdkrig::HwlocCpuInfo::processTopLevelCache(hwloc_obj_t cache, const Algorit
 }
 
 
-void jdkrig::HwlocCpuInfo::setThreads(size_t threads)
+void kittenpaw::HwlocCpuInfo::setThreads(size_t threads)
 {
     if (!threads) {
         return;

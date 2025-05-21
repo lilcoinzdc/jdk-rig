@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@
 #include "3rdparty/rapidjson/prettywriter.h"
 
 
-bool jdkrig::Json::get(const char *fileName, rapidjson::Document &doc)
+bool kittenpaw::Json::get(const char *fileName, rapidjson::Document &doc)
 {
     std::ifstream ifs(fileName, std::ios_base::in | std::ios_base::binary);
     if (!ifs.is_open()) {
@@ -40,7 +40,7 @@ bool jdkrig::Json::get(const char *fileName, rapidjson::Document &doc)
 }
 
 
-bool jdkrig::Json::save(const char *fileName, const rapidjson::Document &doc)
+bool kittenpaw::Json::save(const char *fileName, const rapidjson::Document &doc)
 {
     std::ofstream ofs(fileName, std::ios_base::out | std::ios_base::binary | std::ios_base::trunc);
     if (!ofs.is_open()) {
@@ -50,7 +50,7 @@ bool jdkrig::Json::save(const char *fileName, const rapidjson::Document &doc)
     rapidjson::OStreamWrapper osw(ofs);
     rapidjson::PrettyWriter<rapidjson::OStreamWrapper> writer(osw);
 
-#   ifdef JDKRIG_JSON_SINGLE_LINE_ARRAY
+#   ifdef KITTENPAW_JSON_SINGLE_LINE_ARRAY
     writer.SetFormatOptions(rapidjson::kFormatSingleLineArray);
 #   endif
 
@@ -60,7 +60,7 @@ bool jdkrig::Json::save(const char *fileName, const rapidjson::Document &doc)
 }
 
 
-bool jdkrig::Json::convertOffset(const char* fileName, size_t offset, size_t& line, size_t& pos, std::vector<std::string>& s)
+bool kittenpaw::Json::convertOffset(const char* fileName, size_t offset, size_t& line, size_t& pos, std::vector<std::string>& s)
 {
     std::ifstream ifs(fileName, std::ios_base::in | std::ios_base::binary);
     if (!ifs.is_open()) {

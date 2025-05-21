@@ -1,7 +1,7 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2019 tevador     <tevador@gmail.com>
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@
 #include <windows.h>
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 static thread_local std::pair<const void*, const void*> mainLoopBounds = { nullptr, nullptr };
@@ -58,16 +58,16 @@ static LONG WINAPI MainLoopHandler(_EXCEPTION_POINTERS *ExceptionInfo)
 }
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-void jdkrig::RxFix::setMainLoopBounds(const std::pair<const void *, const void *> &bounds)
+void kittenpaw::RxFix::setMainLoopBounds(const std::pair<const void *, const void *> &bounds)
 {
     mainLoopBounds = bounds;
 }
 
 
-void jdkrig::RxFix::setupMainLoopExceptionFrame()
+void kittenpaw::RxFix::setupMainLoopExceptionFrame()
 {
     AddVectoredExceptionHandler(1, MainLoopHandler);
 }

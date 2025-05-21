@@ -1,7 +1,7 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2019 tevador     <tevador@gmail.com>
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -27,13 +27,13 @@
 #include "crypto/randomx/aes_hash.hpp"
 
 
-#ifdef JDKRIG_FEATURE_MSR
+#ifdef KITTENPAW_FEATURE_MSR
 #   include "crypto/rx/RxFix.h"
 #   include "crypto/rx/RxMsr.h"
 #endif
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class RxPrivate;
@@ -52,24 +52,24 @@ public:
 };
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-jdkrig::HugePagesInfo jdkrig::Rx::hugePages()
+kittenpaw::HugePagesInfo kittenpaw::Rx::hugePages()
 {
     return d_ptr->queue.hugePages();
 }
 
 
-jdkrig::RxDataset *jdkrig::Rx::dataset(const Job &job, uint32_t nodeId)
+kittenpaw::RxDataset *kittenpaw::Rx::dataset(const Job &job, uint32_t nodeId)
 {
     return d_ptr->queue.dataset(job, nodeId);
 }
 
 
-void jdkrig::Rx::destroy()
+void kittenpaw::Rx::destroy()
 {
-#   ifdef JDKRIG_FEATURE_MSR
+#   ifdef KITTENPAW_FEATURE_MSR
     RxMsr::destroy();
 #   endif
 
@@ -79,14 +79,14 @@ void jdkrig::Rx::destroy()
 }
 
 
-void jdkrig::Rx::init(IRxListener *listener)
+void kittenpaw::Rx::init(IRxListener *listener)
 {
     d_ptr = new RxPrivate(listener);
 }
 
 
 #include "crypto/randomx/blake2/blake2.h"
-#if defined(JDKRIG_FEATURE_AVX2)
+#if defined(KITTENPAW_FEATURE_AVX2)
 #include "crypto/randomx/blake2/avx2/blake2b.h"
 #endif
 
@@ -96,37 +96,37 @@ int (*rx_blake2b)(void* out, size_t outlen, const void* in, size_t inlen) = rx_b
 
 
 template<typename T>
-bool jdkrig::Rx::init(const T &seed, const RxConfig &config, const CpuConfig &cpu)
+bool kittenpaw::Rx::init(const T &seed, const RxConfig &config, const CpuConfig &cpu)
 {
     const auto f = seed.algorithm().family();
     if ((f != Algorithm::RANDOM_X)
-#       ifdef JDKRIG_ALGO_CN_HEAVY
+#       ifdef KITTENPAW_ALGO_CN_HEAVY
         && (f != Algorithm::CN_HEAVY)
 #       endif
-#       ifdef JDKRIG_ALGO_GHOSTRIDER
+#       ifdef KITTENPAW_ALGO_GHOSTRIDER
         && (f != Algorithm::GHOSTRIDER)
 #       endif
         ) {
-#       ifdef JDKRIG_FEATURE_MSR
+#       ifdef KITTENPAW_FEATURE_MSR
         RxMsr::destroy();
 #       endif
 
         return true;
     }
 
-#   ifdef JDKRIG_FEATURE_MSR
+#   ifdef KITTENPAW_FEATURE_MSR
     if (!RxMsr::isInitialized()) {
         RxMsr::init(config, cpu.threads().get(seed.algorithm()).data());
     }
 #   endif
 
-#   ifdef JDKRIG_ALGO_CN_HEAVY
+#   ifdef KITTENPAW_ALGO_CN_HEAVY
     if (f == Algorithm::CN_HEAVY) {
         return true;
     }
 #   endif
 
-#   ifdef JDKRIG_ALGO_GHOSTRIDER
+#   ifdef KITTENPAW_ALGO_GHOSTRIDER
     if (f == Algorithm::GHOSTRIDER) {
         return true;
     }
@@ -137,7 +137,7 @@ bool jdkrig::Rx::init(const T &seed, const RxConfig &config, const CpuConfig &cp
     randomx_set_optimized_dataset_init(config.initDatasetAVX2());
 
     if (!osInitialized) {
-#       ifdef JDKRIG_FIX_RYZEN
+#       ifdef KITTENPAW_FIX_RYZEN
         RxFix::setupMainLoopExceptionFrame();
 #       endif
 
@@ -145,13 +145,13 @@ bool jdkrig::Rx::init(const T &seed, const RxConfig &config, const CpuConfig &cp
             SelectSoftAESImpl(cpu.threads().get(seed.algorithm()).count());
         }
 
-#       if defined(JDKRIG_FEATURE_SSE4_1)
+#       if defined(KITTENPAW_FEATURE_SSE4_1)
         if (Cpu::info()->has(ICpuInfo::FLAG_SSE41)) {
             rx_blake2b_compress = rx_blake2b_compress_sse41;
         }
 #       endif
 
-#if     defined(JDKRIG_FEATURE_AVX2)
+#if     defined(KITTENPAW_FEATURE_AVX2)
         if (Cpu::info()->has(ICpuInfo::FLAG_AVX2)) {
             rx_blake2b = blake2b_avx2;
         }
@@ -171,21 +171,21 @@ bool jdkrig::Rx::init(const T &seed, const RxConfig &config, const CpuConfig &cp
 
 
 template<typename T>
-bool jdkrig::Rx::isReady(const T &seed)
+bool kittenpaw::Rx::isReady(const T &seed)
 {
     return d_ptr->queue.isReady(seed);
 }
 
 
-#ifdef JDKRIG_FEATURE_MSR
-bool jdkrig::Rx::isMSR()
+#ifdef KITTENPAW_FEATURE_MSR
+bool kittenpaw::Rx::isMSR()
 {
     return RxMsr::isEnabled();
 }
 #endif
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 template bool Rx::init(const RxSeed &seed, const RxConfig &config, const CpuConfig &cpu);
@@ -194,4 +194,4 @@ template bool Rx::init(const Job &seed, const RxConfig &config, const CpuConfig 
 template bool Rx::isReady(const Job &seed);
 
 
-} // namespace jdkrig
+} // namespace kittenpaw

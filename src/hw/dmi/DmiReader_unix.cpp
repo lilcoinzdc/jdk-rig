@@ -1,8 +1,8 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2000-2002 Alan Cox     <alan@redhat.com>
  * Copyright (c) 2005-2020 Jean Delvare <jdelvare@suse.de>
  * Copyright (c) 2018-2021 SChernykh    <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig        <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw        <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@
 #include <unistd.h>
 #include <cstdio>
 
-#ifdef JDKRIG_OS_FREEBSD
+#ifdef KITTENPAW_OS_FREEBSD
 #   include <kenv.h>
 #endif
 
@@ -39,7 +39,7 @@
 #define FLAG_NO_FILE_OFFSET     (1 << 0)
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 static const char *kMemDevice       = "/dev/mem";
@@ -49,7 +49,7 @@ static const char *kSysTableFile    = "/sys/firmware/dmi/tables/DMI";
 
 static inline void safe_memcpy(void *dest, const void *src, size_t n)
 {
-#   ifdef JDKRIG_ARM
+#   ifdef KITTENPAW_ARM
     for (size_t i = 0; i < n; i++) {
         *((uint8_t *)dest + i) = *((const uint8_t *)src + i);
     }
@@ -288,7 +288,7 @@ static off_t address_from_efi()
     const char *filename;
     char linebuf[64];
     off_t address = 0;
-#   elif defined(JDKRIG_OS_FREEBSD)
+#   elif defined(KITTENPAW_OS_FREEBSD)
     char addrstr[KENV_MVALLEN + 1];
 #   endif
 
@@ -310,7 +310,7 @@ static off_t address_from_efi()
     fclose(efi_systab);
 
     return address;
-#   elif defined(JDKRIG_OS_FREEBSD)
+#   elif defined(KITTENPAW_OS_FREEBSD)
     if (kenv(KENV_GET, "hint.smbios.0.mem", addrstr, sizeof(addrstr)) == -1) {
         return EFI_NOT_FOUND;
     }
@@ -322,10 +322,10 @@ static off_t address_from_efi()
 }
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-bool jdkrig::DmiReader::read()
+bool kittenpaw::DmiReader::read()
 {
     size_t size  = 0x20;
     uint8_t *buf = read_file(0, &size, kSysEntryFile);

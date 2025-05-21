@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright 2018-2023 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2023 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright 2016-2023 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,15 +16,15 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_STORAGE_H
-#define JDKRIG_STORAGE_H
+#ifndef KITTENPAW_STORAGE_H
+#define KITTENPAW_STORAGE_H
 
 
 #include <cassert>
 #include <map>
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 template <class TYPE>
@@ -82,7 +82,7 @@ private:
 };
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif /* JDKRIG_STORAGE_H */
+#endif /* KITTENPAW_STORAGE_H */

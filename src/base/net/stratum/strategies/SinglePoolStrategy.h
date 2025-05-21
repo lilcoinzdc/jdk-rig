@@ -1,4 +1,4 @@
-/* XMRig
+/* KITTENpaw
  * Copyright 2010      Jeff Garzik <jgarzik@pobox.com>
  * Copyright 2012-2014 pooler      <pooler@litecoinpool.org>
  * Copyright 2014      Lucas Jones <https://github.com/lucasjones>
@@ -6,7 +6,7 @@
  * Copyright 2016      Jay D Dee   <jayddee246@gmail.com>
  * Copyright 2017-2018 XMR-Stak    <https://github.com/fireice-uk>, <https://github.com/psychocrypt>
  * Copyright 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -22,8 +22,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_SINGLEPOOLSTRATEGY_H
-#define JDKRIG_SINGLEPOOLSTRATEGY_H
+#ifndef KITTENPAW_SINGLEPOOLSTRATEGY_H
+#define KITTENPAW_SINGLEPOOLSTRATEGY_H
 
 
 #include "base/kernel/interfaces/IClientListener.h"
@@ -31,7 +31,7 @@
 #include "base/tools/Object.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class Client;
@@ -42,7 +42,7 @@ class Pool;
 class SinglePoolStrategy : public IStrategy, public IClientListener
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(SinglePoolStrategy)
+    KITTENPAW_DISABLE_COPY_MOVE_DEFAULT(SinglePoolStrategy)
 
     SinglePoolStrategy(const Pool &pool, int retryPause, int retries, IStrategyListener *listener, bool quiet = false);
     ~SinglePoolStrategy() override;
@@ -73,7 +73,7 @@ private:
 };
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif /* JDKRIG_SINGLEPOOLSTRATEGY_H */
+#endif /* KITTENPAW_SINGLEPOOLSTRATEGY_H */

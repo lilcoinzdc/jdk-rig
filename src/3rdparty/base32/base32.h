@@ -25,8 +25,8 @@
 // All functions return the number of output bytes or -1 on error. If the
 // output buffer is too small, the result will silently be truncated.
 
-#ifndef JDKRIG_BASE32_H
-#define JDKRIG_BASE32_H
+#ifndef KITTENPAW_BASE32_H
+#define KITTENPAW_BASE32_H
 
 
 #include <stdint.h>
@@ -65,4 +65,4 @@ int base32_encode(const uint8_t *data, int length, uint8_t *result, int bufSize)
 }
 
 
-#endif /* JDKRIG_BASE32_H */
+#endif /* KITTENPAW_BASE32_H */

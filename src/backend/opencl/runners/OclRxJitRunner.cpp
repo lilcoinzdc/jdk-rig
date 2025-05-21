@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -32,12 +32,12 @@
 #include "backend/opencl/wrappers/OclError.h"
 
 
-jdkrig::OclRxJitRunner::OclRxJitRunner(size_t index, const OclLaunchData &data) : OclRxBaseRunner(index, data)
+kittenpaw::OclRxJitRunner::OclRxJitRunner(size_t index, const OclLaunchData &data) : OclRxBaseRunner(index, data)
 {
 }
 
 
-jdkrig::OclRxJitRunner::~OclRxJitRunner()
+kittenpaw::OclRxJitRunner::~OclRxJitRunner()
 {
     delete m_randomx_jit;
     delete m_randomx_run;
@@ -49,13 +49,13 @@ jdkrig::OclRxJitRunner::~OclRxJitRunner()
 }
 
 
-size_t jdkrig::OclRxJitRunner::bufferSize() const
+size_t kittenpaw::OclRxJitRunner::bufferSize() const
 {
     return OclRxBaseRunner::bufferSize() + align(256 * m_intensity) + align(5120 * m_intensity) + align(10048 * m_intensity);
 }
 
 
-void jdkrig::OclRxJitRunner::build()
+void kittenpaw::OclRxJitRunner::build()
 {
     OclRxBaseRunner::build();
 
@@ -75,7 +75,7 @@ void jdkrig::OclRxJitRunner::build()
 }
 
 
-void jdkrig::OclRxJitRunner::execute(uint32_t iteration)
+void kittenpaw::OclRxJitRunner::execute(uint32_t iteration)
 {
     m_randomx_jit->enqueue(m_queue, m_intensity, iteration);
 
@@ -85,7 +85,7 @@ void jdkrig::OclRxJitRunner::execute(uint32_t iteration)
 }
 
 
-void jdkrig::OclRxJitRunner::init()
+void kittenpaw::OclRxJitRunner::init()
 {
     OclRxBaseRunner::init();
 
@@ -95,7 +95,7 @@ void jdkrig::OclRxJitRunner::init()
 }
 
 
-bool jdkrig::OclRxJitRunner::loadAsmProgram()
+bool kittenpaw::OclRxJitRunner::loadAsmProgram()
 {
     // Adrenaline drivers on Windows and amdgpu-pro drivers on Linux use ELF header's flags (offset 0x30) to store internal device ID
     // Read it from compiled OpenCL code and substitute this ID into pre-compiled binary to make sure the driver accepts it

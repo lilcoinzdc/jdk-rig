@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -38,12 +38,12 @@
 #include "core/config/Config_platform.h"
 
 
-#ifdef JDKRIG_FEATURE_TLS
+#ifdef KITTENPAW_FEATURE_TLS
 #   include "base/net/tls/TlsConfig.h"
 #endif
 
 
-void jdkrig::BaseTransform::load(JsonChain &chain, Process *process, IConfigTransform &transform)
+void kittenpaw::BaseTransform::load(JsonChain &chain, Process *process, IConfigTransform &transform)
 {
     using namespace rapidjson;
 
@@ -79,7 +79,7 @@ void jdkrig::BaseTransform::load(JsonChain &chain, Process *process, IConfigTran
 }
 
 
-void jdkrig::BaseTransform::finalize(rapidjson::Document &doc)
+void kittenpaw::BaseTransform::finalize(rapidjson::Document &doc)
 {
     using namespace rapidjson;
     auto &allocator = doc.GetAllocator();
@@ -108,7 +108,7 @@ void jdkrig::BaseTransform::finalize(rapidjson::Document &doc)
 }
 
 
-void jdkrig::BaseTransform::transform(rapidjson::Document &doc, int key, const char *arg)
+void kittenpaw::BaseTransform::transform(rapidjson::Document &doc, int key, const char *arg)
 {
     switch (key) {
     case IConfig::AlgorithmKey: /* --algo */
@@ -157,13 +157,13 @@ void jdkrig::BaseTransform::transform(rapidjson::Document &doc, int key, const c
             array.PushBack(rapidjson::kObjectType, doc.GetAllocator());
         }
 
-#       ifdef JDKRIG_FEATURE_BENCHMARK
+#       ifdef KITTENPAW_FEATURE_BENCHMARK
         if (key != IConfig::UrlKey) {
             set(doc, array[array.Size() - 1], Pool::kUrl,
-#           ifdef JDKRIG_FEATURE_TLS
-                "stratum+ssl://randomx.jdkrig.com:443"
+#           ifdef KITTENPAW_FEATURE_TLS
+                "stratum+ssl://randomx.kittenpaw.com:443"
 #           else
-                "randomx.jdkrig.com:3333"
+                "randomx.kittenpaw.com:3333"
 #           endif
             );
         } else
@@ -218,7 +218,7 @@ void jdkrig::BaseTransform::transform(rapidjson::Document &doc, int key, const c
     case IConfig::TitleKey: /* --title */
         return set(doc, BaseConfig::kTitle, arg);
 
-#   ifdef JDKRIG_FEATURE_TLS
+#   ifdef KITTENPAW_FEATURE_TLS
     case IConfig::TlsCertKey: /* --tls-cert */
         return set(doc, BaseConfig::kTls, TlsConfig::kCert, arg);
 
@@ -276,7 +276,7 @@ void jdkrig::BaseTransform::transform(rapidjson::Document &doc, int key, const c
 }
 
 
-void jdkrig::BaseTransform::transformBoolean(rapidjson::Document &doc, int key, bool enable)
+void kittenpaw::BaseTransform::transformBoolean(rapidjson::Document &doc, int key, bool enable)
 {
     switch (key) {
     case IConfig::BackgroundKey: /* --background */
@@ -293,12 +293,12 @@ void jdkrig::BaseTransform::transformBoolean(rapidjson::Document &doc, int key, 
 
     case IConfig::SubmitToOriginKey: /* --submit-to-origin */
         return add(doc, Pools::kPools, Pool::kSubmitToOrigin, enable);
-#   ifdef JDKRIG_FEATURE_HTTP
+#   ifdef KITTENPAW_FEATURE_HTTP
     case IConfig::DaemonKey: /* --daemon */
         return add(doc, Pools::kPools, Pool::kDaemon, enable);
 #   endif
 
-#   ifndef JDKRIG_PROXY_PROJECT
+#   ifndef KITTENPAW_PROXY_PROJECT
     case IConfig::NicehashKey: /* --nicehash */
         return add<bool>(doc, Pools::kPools, Pool::kNicehash, enable);
 #   endif
@@ -332,7 +332,7 @@ void jdkrig::BaseTransform::transformBoolean(rapidjson::Document &doc, int key, 
 }
 
 
-void jdkrig::BaseTransform::transformUint64(rapidjson::Document &doc, int key, uint64_t arg)
+void kittenpaw::BaseTransform::transformUint64(rapidjson::Document &doc, int key, uint64_t arg)
 {
     switch (key) {
     case IConfig::RetriesKey: /* --retries */
@@ -357,7 +357,7 @@ void jdkrig::BaseTransform::transformUint64(rapidjson::Document &doc, int key, u
     case IConfig::DnsTtlKey: /* --dns-ttl */
         return set(doc, DnsConfig::kField, DnsConfig::kTTL, arg);
 
-#   ifdef JDKRIG_FEATURE_HTTP
+#   ifdef KITTENPAW_FEATURE_HTTP
     case IConfig::DaemonPollKey:  /* --daemon-poll-interval */
         return add(doc, Pools::kPools, Pool::kDaemonPollInterval, arg);
 

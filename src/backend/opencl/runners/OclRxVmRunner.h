@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,14 +16,14 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_OCLRXVMRUNNER_H
-#define JDKRIG_OCLRXVMRUNNER_H
+#ifndef KITTENPAW_OCLRXVMRUNNER_H
+#define KITTENPAW_OCLRXVMRUNNER_H
 
 
 #include "backend/opencl/runners/OclRxBaseRunner.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class ExecuteVmKernel;
@@ -33,7 +33,7 @@ class InitVmKernel;
 class OclRxVmRunner : public OclRxBaseRunner
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(OclRxVmRunner)
+    KITTENPAW_DISABLE_COPY_MOVE_DEFAULT(OclRxVmRunner)
 
     OclRxVmRunner(size_t index, const OclLaunchData &data);
     ~OclRxVmRunner() override;
@@ -51,7 +51,7 @@ private:
 };
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif // JDKRIG_OCLRXVMRUNNER_H
+#endif // KITTENPAW_OCLRXVMRUNNER_H

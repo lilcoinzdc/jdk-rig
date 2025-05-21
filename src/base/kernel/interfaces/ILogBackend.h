@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_ILOGBACKEND_H
-#define JDKRIG_ILOGBACKEND_H
+#ifndef KITTENPAW_ILOGBACKEND_H
+#define KITTENPAW_ILOGBACKEND_H
 
 
 #include "base/tools/Object.h"
@@ -27,13 +27,13 @@
 #include <cstddef>
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class ILogBackend
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE(ILogBackend)
+    KITTENPAW_DISABLE_COPY_MOVE(ILogBackend)
 
     ILogBackend()           = default;
     virtual ~ILogBackend()  = default;
@@ -42,7 +42,7 @@ public:
 };
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif // JDKRIG_ILOGBACKEND_H
+#endif // KITTENPAW_ILOGBACKEND_H

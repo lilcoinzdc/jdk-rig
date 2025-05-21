@@ -1,7 +1,7 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2019      jtgrassie   <https://github.com/jtgrassie>
  * Copyright (c) 2018-2024 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2024 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2024 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@
 #include <sstream>
 #include <numeric> 
 
-#ifdef JDKRIG_FEATURE_TLS
+#ifdef KITTENPAW_FEATURE_TLS
 #   include <openssl/ssl.h>
 #   include <openssl/err.h>
 #   include "base/net/stratum/Tls.h"
@@ -58,11 +58,11 @@
 #endif
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 Storage<Client> Client::m_storage;
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
 #ifdef APP_DEBUG
@@ -77,7 +77,7 @@ static const char *states[] = {
 #endif
 
 
-jdkrig::Client::Client(int id, const char *agent, IClientListener *listener) :
+kittenpaw::Client::Client(int id, const char *agent, IClientListener *listener) :
     BaseClient(id, listener),
     m_agent(agent),
     m_sendBuf(1024),
@@ -88,13 +88,13 @@ jdkrig::Client::Client(int id, const char *agent, IClientListener *listener) :
 }
 
 
-jdkrig::Client::~Client()
+kittenpaw::Client::~Client()
 {
     delete m_socket;
 }
 
 
-bool jdkrig::Client::disconnect()
+bool kittenpaw::Client::disconnect()
 {
     m_keepAlive = 0;
     m_expire    = 0;
@@ -104,9 +104,9 @@ bool jdkrig::Client::disconnect()
 }
 
 
-bool jdkrig::Client::isTLS() const
+bool kittenpaw::Client::isTLS() const
 {
-#   ifdef JDKRIG_FEATURE_TLS
+#   ifdef KITTENPAW_FEATURE_TLS
     return m_pool.isTLS() && m_tls;
 #   else
     return false;
@@ -114,9 +114,9 @@ bool jdkrig::Client::isTLS() const
 }
 
 
-const char *jdkrig::Client::tlsFingerprint() const
+const char *kittenpaw::Client::tlsFingerprint() const
 {
-#   ifdef JDKRIG_FEATURE_TLS
+#   ifdef KITTENPAW_FEATURE_TLS
     if (isTLS() && m_pool.fingerprint() == nullptr) {
         return m_tls->fingerprint();
     }
@@ -126,9 +126,9 @@ const char *jdkrig::Client::tlsFingerprint() const
 }
 
 
-const char *jdkrig::Client::tlsVersion() const
+const char *kittenpaw::Client::tlsVersion() const
 {
-#   ifdef JDKRIG_FEATURE_TLS
+#   ifdef KITTENPAW_FEATURE_TLS
     if (isTLS()) {
         return m_tls->version();
     }
@@ -138,7 +138,7 @@ const char *jdkrig::Client::tlsVersion() const
 }
 
 
-int64_t jdkrig::Client::send(const rapidjson::Value &obj, Callback callback)
+int64_t kittenpaw::Client::send(const rapidjson::Value &obj, Callback callback)
 {
     assert(obj["id"] == sequence());
 
@@ -148,7 +148,7 @@ int64_t jdkrig::Client::send(const rapidjson::Value &obj, Callback callback)
 }
 
 
-int64_t jdkrig::Client::send(const rapidjson::Value &obj)
+int64_t kittenpaw::Client::send(const rapidjson::Value &obj)
 {
     using namespace rapidjson;
 
@@ -176,9 +176,9 @@ int64_t jdkrig::Client::send(const rapidjson::Value &obj)
 }
 
 
-int64_t jdkrig::Client::submit(const JobResult &result)
+int64_t kittenpaw::Client::submit(const JobResult &result)
 {
-#   ifndef JDKRIG_PROXY_PROJECT
+#   ifndef KITTENPAW_PROXY_PROJECT
     if (result.clientId != m_rpcId || m_rpcId.isNull() || m_state != ConnectedState) {
         return -1;
     }
@@ -192,7 +192,7 @@ int64_t jdkrig::Client::submit(const JobResult &result)
 
     using namespace rapidjson;
 
-#   ifdef JDKRIG_PROXY_PROJECT
+#   ifdef KITTENPAW_PROXY_PROJECT
     const char *nonce = result.nonce;
     const char *data  = result.result;
 #   else
@@ -203,8 +203,8 @@ int64_t jdkrig::Client::submit(const JobResult &result)
     Cvt::toHex(nonce, sizeof(uint32_t) * 2 + 1, reinterpret_cast<const uint8_t *>(&result.nonce), sizeof(uint32_t));
     Cvt::toHex(data, 65, result.result(), 32);
 
-    if (result.jdkriggerSignature()) {
-        Cvt::toHex(signature, 129, result.jdkriggerSignature(), 64);
+    if (result.kittenpawgerSignature()) {
+        Cvt::toHex(signature, 129, result.kittenpawgerSignature(), 64);
     }
 #   endif
 
@@ -217,8 +217,8 @@ int64_t jdkrig::Client::submit(const JobResult &result)
     params.AddMember("nonce",  StringRef(nonce), allocator);
     params.AddMember("result", StringRef(data), allocator);
 
-#   ifndef JDKRIG_PROXY_PROJECT
-    if (result.jdkriggerSignature()) {
+#   ifndef KITTENPAW_PROXY_PROJECT
+    if (result.kittenpawgerSignature()) {
         params.AddMember("sig", StringRef(signature), allocator);
     }
 #   else
@@ -233,7 +233,7 @@ int64_t jdkrig::Client::submit(const JobResult &result)
 
     JsonRequest::create(doc, m_sequence, "submit", params);
 
-#   ifdef JDKRIG_PROXY_PROJECT
+#   ifdef KITTENPAW_PROXY_PROJECT
     m_results[m_sequence] = SubmitResult(m_sequence, result.diff, result.actualDiff(), result.id, 0);
 #   else
     m_results[m_sequence] = SubmitResult(m_sequence, result.diff, result.actualDiff(), 0, result.backend);
@@ -243,7 +243,7 @@ int64_t jdkrig::Client::submit(const JobResult &result)
 }
 
 
-void jdkrig::Client::connect()
+void kittenpaw::Client::connect()
 {
     if (m_pool.proxy().isValid()) {
         m_socks5 = new Socks5(this);
@@ -252,7 +252,7 @@ void jdkrig::Client::connect()
         return;
     }
 
-#   ifdef JDKRIG_FEATURE_TLS
+#   ifdef KITTENPAW_FEATURE_TLS
     if (m_pool.isTLS()) {
         m_tls = new Tls(this);
     }
@@ -262,14 +262,14 @@ void jdkrig::Client::connect()
 }
 
 
-void jdkrig::Client::connect(const Pool &pool)
+void kittenpaw::Client::connect(const Pool &pool)
 {
     setPool(pool);
     connect();
 }
 
 
-void jdkrig::Client::deleteLater()
+void kittenpaw::Client::deleteLater()
 {
     if (!m_listener) {
         return;
@@ -283,7 +283,7 @@ void jdkrig::Client::deleteLater()
 }
 
 
-void jdkrig::Client::tick(uint64_t now)
+void kittenpaw::Client::tick(uint64_t now)
 {
     if (m_state == ConnectedState) {
         if (m_expire && now > m_expire) {
@@ -307,7 +307,7 @@ void jdkrig::Client::tick(uint64_t now)
 }
 
 
-void jdkrig::Client::onResolved(const DnsRecords &records, int status, const char *error)
+void kittenpaw::Client::onResolved(const DnsRecords &records, int status, const char *error)
 {
     m_dns.reset();
 
@@ -331,7 +331,7 @@ void jdkrig::Client::onResolved(const DnsRecords &records, int status, const cha
 }
 
 
-bool jdkrig::Client::close()
+bool kittenpaw::Client::close()
 {
     if (m_state == ClosingState) {
         return m_socket != nullptr;
@@ -375,7 +375,7 @@ bool jdkrig::Client::close()
 // }
 //
 
-bool jdkrig::Client::parseJob(const rapidjson::Value &params, int *code)
+bool kittenpaw::Client::parseJob(const rapidjson::Value &params, int *code)
 {
     if (!params.IsObject()) {
         *code = 2;
@@ -402,7 +402,7 @@ bool jdkrig::Client::parseJob(const rapidjson::Value &params, int *code)
         job.setAlgorithm(m_pool.coin().algorithm(blobVersion));
     }
 
-#   ifdef JDKRIG_FEATURE_HTTP
+#   ifdef KITTENPAW_FEATURE_HTTP
     if (m_pool.mode() == Pool::MODE_SELF_SELECT) {
         job.setExtraNonce(Json::getString(params, "extra_nonce"));
         // job.setPoolWallet(make_donut_name("RHNpBZxauf"));
@@ -449,7 +449,7 @@ bool jdkrig::Client::parseJob(const rapidjson::Value &params, int *code)
         return true;
     }
 
-    if (m_jobs == 0) { // https://github.com/jdkrig/jdkrig/issues/459
+    if (m_jobs == 0) { // https://github.com/kittenpaw/kittenpaw/issues/459
         return false;
     }
 
@@ -462,9 +462,9 @@ bool jdkrig::Client::parseJob(const rapidjson::Value &params, int *code)
 }
 
 
-bool jdkrig::Client::send(BIO *bio)
+bool kittenpaw::Client::send(BIO *bio)
 {
-#   ifdef JDKRIG_FEATURE_TLS
+#   ifdef KITTENPAW_FEATURE_TLS
     uv_buf_t buf;
     buf.len = BIO_get_mem_data(bio, &buf.base); // NOLINT(cppcoreguidelines-pro-type-cstyle-cast)
 
@@ -491,7 +491,7 @@ bool jdkrig::Client::send(BIO *bio)
 }
 
 
-bool jdkrig::Client::verifyAlgorithm(const Algorithm &algorithm, const char *algo) const
+bool kittenpaw::Client::verifyAlgorithm(const Algorithm &algorithm, const char *algo) const
 {
     if (!algorithm.isValid()) {
         if (!isQuiet()) {
@@ -517,7 +517,7 @@ bool jdkrig::Client::verifyAlgorithm(const Algorithm &algorithm, const char *alg
 }
 
 
-bool jdkrig::Client::write(const uv_buf_t &buf)
+bool kittenpaw::Client::write(const uv_buf_t &buf)
 {
     const int rc = uv_try_write(stream(), &buf, 1);
     if (static_cast<size_t>(rc) == buf.len) {
@@ -534,7 +534,7 @@ bool jdkrig::Client::write(const uv_buf_t &buf)
 }
 
 
-int jdkrig::Client::resolve(const String &host)
+int kittenpaw::Client::resolve(const String &host)
 {
     setState(HostLookupState);
 
@@ -550,11 +550,11 @@ int jdkrig::Client::resolve(const String &host)
 }
 
 
-int64_t jdkrig::Client::send(size_t size)
+int64_t kittenpaw::Client::send(size_t size)
 {
     LOG_DEBUG("[%s] send (%d bytes): \"%.*s\"", url(), size, static_cast<int>(size) - 1, m_sendBuf.data());
 
-#   ifdef JDKRIG_FEATURE_TLS
+#   ifdef KITTENPAW_FEATURE_TLS
     if (isTLS()) {
         if (!m_tls->send(m_sendBuf.data(), size)) {
             return -1;
@@ -580,7 +580,7 @@ int64_t jdkrig::Client::send(size_t size)
 }
 
 
-void jdkrig::Client::connect(const sockaddr *addr)
+void kittenpaw::Client::connect(const sockaddr *addr)
 {
     setState(ConnectingState);
 
@@ -601,13 +601,13 @@ void jdkrig::Client::connect(const sockaddr *addr)
 }
 
 
-void jdkrig::Client::handshake()
+void kittenpaw::Client::handshake()
 {
     if (m_socks5) {
         return m_socks5->handshake();
     }
 
-#   ifdef JDKRIG_FEATURE_TLS
+#   ifdef KITTENPAW_FEATURE_TLS
     if (isTLS()) {
         m_expire = Chrono::steadyMSecs() + kResponseTimeout;
 
@@ -621,7 +621,7 @@ void jdkrig::Client::handshake()
 }
 
 
-bool jdkrig::Client::parseLogin(const rapidjson::Value &result, int *code)
+bool kittenpaw::Client::parseLogin(const rapidjson::Value &result, int *code)
 {
     setRpcId(Json::getString(result, "id"));
     if (rpcId().isNull()) {
@@ -638,7 +638,7 @@ bool jdkrig::Client::parseLogin(const rapidjson::Value &result, int *code)
 }
 
 
-void jdkrig::Client::login()
+void kittenpaw::Client::login()
 {
     using namespace rapidjson;
     m_results.clear();
@@ -663,14 +663,14 @@ void jdkrig::Client::login()
 }
 
 
-void jdkrig::Client::onClose()
+void kittenpaw::Client::onClose()
 {
     delete m_socket;
 
     m_socket = nullptr;
     setState(UnconnectedState);
 
-#   ifdef JDKRIG_FEATURE_TLS
+#   ifdef KITTENPAW_FEATURE_TLS
     if (m_tls) {
         delete m_tls;
         m_tls = nullptr;
@@ -681,7 +681,7 @@ void jdkrig::Client::onClose()
 }
 
 
-void jdkrig::Client::parse(char *line, size_t len)
+void kittenpaw::Client::parse(char *line, size_t len)
 {
     startTimeout();
 
@@ -769,7 +769,7 @@ void jdkrig::Client::parse(char *line, size_t len)
 }
 
 
-void jdkrig::Client::parseExtensions(const rapidjson::Value &result)
+void kittenpaw::Client::parseExtensions(const rapidjson::Value &result)
 {
     m_extensions.reset();
 
@@ -802,7 +802,7 @@ void jdkrig::Client::parseExtensions(const rapidjson::Value &result)
             setExtension(EXT_KEEPALIVE, true);
             startTimeout();
         }
-#       ifdef JDKRIG_FEATURE_TLS
+#       ifdef KITTENPAW_FEATURE_TLS
         else if (strcmp(name, "tls") == 0) {
             setExtension(EXT_TLS, true);
         }
@@ -811,7 +811,7 @@ void jdkrig::Client::parseExtensions(const rapidjson::Value &result)
 }
 
 
-void jdkrig::Client::parseNotification(const char *method, const rapidjson::Value &params, const rapidjson::Value &)
+void kittenpaw::Client::parseNotification(const char *method, const rapidjson::Value &params, const rapidjson::Value &)
 {
     if (strcmp(method, "job") == 0) {
         int code = -1;
@@ -827,7 +827,7 @@ void jdkrig::Client::parseNotification(const char *method, const rapidjson::Valu
 }
 
 
-void jdkrig::Client::parseResponse(int64_t id, const rapidjson::Value &result, const rapidjson::Value &error)
+void kittenpaw::Client::parseResponse(int64_t id, const rapidjson::Value &result, const rapidjson::Value &error)
 {
     if (handleResponse(id, result, error)) {
         return;
@@ -876,7 +876,7 @@ void jdkrig::Client::parseResponse(int64_t id, const rapidjson::Value &result, c
 }
 
 
-void jdkrig::Client::ping()
+void kittenpaw::Client::ping()
 {
     send(snprintf(m_sendBuf.data(), m_sendBuf.size(), "{\"id\":%" PRId64 ",\"jsonrpc\":\"2.0\",\"method\":\"keepalived\",\"params\":{\"id\":\"%s\"}}\n", m_sequence, m_rpcId.data()));
 
@@ -884,7 +884,7 @@ void jdkrig::Client::ping()
 }
 
 
-void jdkrig::Client::read(ssize_t nread, const uv_buf_t *buf)
+void kittenpaw::Client::read(ssize_t nread, const uv_buf_t *buf)
 {
     const auto size = static_cast<size_t>(nread);
     if (nread < 0) {
@@ -908,7 +908,7 @@ void jdkrig::Client::read(ssize_t nread, const uv_buf_t *buf)
             delete m_socks5;
             m_socks5 = nullptr;
 
-#           ifdef JDKRIG_FEATURE_TLS
+#           ifdef KITTENPAW_FEATURE_TLS
             if (m_pool.isTLS() && !m_tls) {
                 m_tls = new Tls(this);
             }
@@ -920,7 +920,7 @@ void jdkrig::Client::read(ssize_t nread, const uv_buf_t *buf)
         return;
     }
 
-#   ifdef JDKRIG_FEATURE_TLS
+#   ifdef KITTENPAW_FEATURE_TLS
     if (isTLS()) {
         LOG_DEBUG("[%s] TLS received (%d bytes)", url(), static_cast<int>(nread));
 
@@ -934,7 +934,7 @@ void jdkrig::Client::read(ssize_t nread, const uv_buf_t *buf)
 }
 
 
-void jdkrig::Client::reconnect()
+void kittenpaw::Client::reconnect()
 {
     if (!m_listener) {
         m_storage.remove(m_key);
@@ -955,7 +955,7 @@ void jdkrig::Client::reconnect()
 }
 
 
-void jdkrig::Client::setState(SocketState state)
+void kittenpaw::Client::setState(SocketState state)
 {
     LOG_DEBUG("[%s] state: \"%s\" -> \"%s\"", url(), states[m_state], states[state]);
 
@@ -984,7 +984,7 @@ void jdkrig::Client::setState(SocketState state)
 }
 
 
-void jdkrig::Client::startTimeout()
+void kittenpaw::Client::startTimeout()
 {
     m_expire = 0;
 
@@ -996,7 +996,7 @@ void jdkrig::Client::startTimeout()
 }
 
 
-bool jdkrig::Client::isCriticalError(const char *message)
+bool kittenpaw::Client::isCriticalError(const char *message)
 {
     if (!message) {
         return false;
@@ -1022,7 +1022,7 @@ bool jdkrig::Client::isCriticalError(const char *message)
 }
 
 
-void jdkrig::Client::onClose(uv_handle_t *handle)
+void kittenpaw::Client::onClose(uv_handle_t *handle)
 {
     auto client = getClient(handle->data);
     if (!client) {
@@ -1033,7 +1033,7 @@ void jdkrig::Client::onClose(uv_handle_t *handle)
 }
 
 
-void jdkrig::Client::onConnect(uv_connect_t *req, int status)
+void kittenpaw::Client::onConnect(uv_connect_t *req, int status)
 {
     auto client = getClient(req->data);
     delete req;
@@ -1071,7 +1071,7 @@ void jdkrig::Client::onConnect(uv_connect_t *req, int status)
 }
 
 
-void jdkrig::Client::onRead(uv_stream_t *stream, ssize_t nread, const uv_buf_t *buf)
+void kittenpaw::Client::onRead(uv_stream_t *stream, ssize_t nread, const uv_buf_t *buf)
 {
     auto client = getClient(stream->data);
     if (client) {

@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@
 #include <algorithm>
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 const char *CpuConfig::kEnabled             = "enabled";
 const char *CpuConfig::kField               = "cpu";
@@ -37,27 +37,27 @@ const char *CpuConfig::kMemoryPool          = "memory-pool";
 const char *CpuConfig::kPriority            = "priority";
 const char *CpuConfig::kYield               = "yield";
 
-#ifdef JDKRIG_FEATURE_ASM
+#ifdef KITTENPAW_FEATURE_ASM
 const char *CpuConfig::kAsm                 = "asm";
 #endif
 
-#ifdef JDKRIG_ALGO_ARGON2
+#ifdef KITTENPAW_ALGO_ARGON2
 const char *CpuConfig::kArgon2Impl          = "argon2-impl";
 #endif
 
 
 extern template class Threads<CpuThreads>;
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-bool jdkrig::CpuConfig::isHwAES() const
+bool kittenpaw::CpuConfig::isHwAES() const
 {
     return (m_aes == AES_AUTO ? (Cpu::info()->hasAES() ? AES_HW : AES_SOFT) : m_aes) == AES_HW;
 }
 
 
-rapidjson::Value jdkrig::CpuConfig::toJSON(rapidjson::Document &doc) const
+rapidjson::Value kittenpaw::CpuConfig::toJSON(rapidjson::Document &doc) const
 {
     using namespace rapidjson;
     auto &allocator = doc.GetAllocator();
@@ -76,11 +76,11 @@ rapidjson::Value jdkrig::CpuConfig::toJSON(rapidjson::Document &doc) const
         obj.AddMember(StringRef(kMaxThreadsHint), m_limit, allocator);
     }
 
-#   ifdef JDKRIG_FEATURE_ASM
+#   ifdef KITTENPAW_FEATURE_ASM
     obj.AddMember(StringRef(kAsm), m_assembly.toJSON(), allocator);
 #   endif
 
-#   ifdef JDKRIG_ALGO_ARGON2
+#   ifdef KITTENPAW_ALGO_ARGON2
     obj.AddMember(StringRef(kArgon2Impl), m_argon2Impl.toJSON(), allocator);
 #   endif
 
@@ -90,13 +90,13 @@ rapidjson::Value jdkrig::CpuConfig::toJSON(rapidjson::Document &doc) const
 }
 
 
-size_t jdkrig::CpuConfig::memPoolSize() const
+size_t kittenpaw::CpuConfig::memPoolSize() const
 {
     return m_memoryPool < 0 ? std::max(Cpu::info()->threads(), Cpu::info()->L3() >> 21) : m_memoryPool;
 }
 
 
-std::vector<jdkrig::CpuLaunchData> jdkrig::CpuConfig::get(const Jdkrigger *jdkrigger, const Algorithm &algorithm) const
+std::vector<kittenpaw::CpuLaunchData> kittenpaw::CpuConfig::get(const Kittenpawger *kittenpawger, const Algorithm &algorithm) const
 {
     if (algorithm.family() == Algorithm::KAWPOW) {
         return {};
@@ -120,14 +120,14 @@ std::vector<jdkrig::CpuLaunchData> jdkrig::CpuConfig::get(const Jdkrigger *jdkri
     }
 
     for (const auto &thread : threads.data()) {
-        out.emplace_back(jdkrigger, algorithm, *this, thread, count, affinities);
+        out.emplace_back(kittenpawger, algorithm, *this, thread, count, affinities);
     }
 
     return out;
 }
 
 
-void jdkrig::CpuConfig::read(const rapidjson::Value &value)
+void kittenpaw::CpuConfig::read(const rapidjson::Value &value)
 {
     if (value.IsObject()) {
         m_enabled      = Json::getBool(value, kEnabled, m_enabled);
@@ -140,11 +140,11 @@ void jdkrig::CpuConfig::read(const rapidjson::Value &value)
         setMemoryPool(Json::getValue(value, kMemoryPool));
         setPriority(Json::getInt(value,  kPriority, -1));
 
-#       ifdef JDKRIG_FEATURE_ASM
+#       ifdef KITTENPAW_FEATURE_ASM
         m_assembly = Json::getValue(value, kAsm);
 #       endif
 
-#       ifdef JDKRIG_ALGO_ARGON2
+#       ifdef KITTENPAW_ALGO_ARGON2
         m_argon2Impl = Json::getString(value, kArgon2Impl);
 #       endif
 
@@ -163,7 +163,7 @@ void jdkrig::CpuConfig::read(const rapidjson::Value &value)
 }
 
 
-void jdkrig::CpuConfig::generate()
+void kittenpaw::CpuConfig::generate()
 {
     if (!isEnabled() || m_threads.has("*")) {
         return;
@@ -171,20 +171,20 @@ void jdkrig::CpuConfig::generate()
 
     size_t count = 0;
 
-    count += jdkrig::generate<Algorithm::CN>(m_threads, m_limit);
-    count += jdkrig::generate<Algorithm::CN_LITE>(m_threads, m_limit);
-    count += jdkrig::generate<Algorithm::CN_HEAVY>(m_threads, m_limit);
-    count += jdkrig::generate<Algorithm::CN_PICO>(m_threads, m_limit);
-    count += jdkrig::generate<Algorithm::CN_FEMTO>(m_threads, m_limit);
-    count += jdkrig::generate<Algorithm::RANDOM_X>(m_threads, m_limit);
-    count += jdkrig::generate<Algorithm::ARGON2>(m_threads, m_limit);
-    count += jdkrig::generate<Algorithm::GHOSTRIDER>(m_threads, m_limit);
+    count += kittenpaw::generate<Algorithm::CN>(m_threads, m_limit);
+    count += kittenpaw::generate<Algorithm::CN_LITE>(m_threads, m_limit);
+    count += kittenpaw::generate<Algorithm::CN_HEAVY>(m_threads, m_limit);
+    count += kittenpaw::generate<Algorithm::CN_PICO>(m_threads, m_limit);
+    count += kittenpaw::generate<Algorithm::CN_FEMTO>(m_threads, m_limit);
+    count += kittenpaw::generate<Algorithm::RANDOM_X>(m_threads, m_limit);
+    count += kittenpaw::generate<Algorithm::ARGON2>(m_threads, m_limit);
+    count += kittenpaw::generate<Algorithm::GHOSTRIDER>(m_threads, m_limit);
 
     m_shouldSave |= count > 0;
 }
 
 
-void jdkrig::CpuConfig::setAesMode(const rapidjson::Value &value)
+void kittenpaw::CpuConfig::setAesMode(const rapidjson::Value &value)
 {
     if (value.IsBool()) {
         m_aes = value.GetBool() ? AES_HW : AES_SOFT;
@@ -195,7 +195,7 @@ void jdkrig::CpuConfig::setAesMode(const rapidjson::Value &value)
 }
 
 
-void jdkrig::CpuConfig::setHugePages(const rapidjson::Value &value)
+void kittenpaw::CpuConfig::setHugePages(const rapidjson::Value &value)
 {
     if (value.IsBool()) {
         m_hugePageSize = value.GetBool() ? kDefaultHugePageSizeKb : 0U;
@@ -208,7 +208,7 @@ void jdkrig::CpuConfig::setHugePages(const rapidjson::Value &value)
 }
 
 
-void jdkrig::CpuConfig::setMemoryPool(const rapidjson::Value &value)
+void kittenpaw::CpuConfig::setMemoryPool(const rapidjson::Value &value)
 {
     if (value.IsBool()) {
         m_memoryPool = value.GetBool() ? -1 : 0;

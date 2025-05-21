@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -41,25 +41,25 @@
 #include "core/Controller.h"
 
 
-#ifdef JDKRIG_ALGO_KAWPOW
+#ifdef KITTENPAW_ALGO_KAWPOW
 #   include "crypto/kawpow/KPCache.h"
 #   include "crypto/kawpow/KPHash.h"
 #endif
 
 
-#ifdef JDKRIG_FEATURE_API
+#ifdef KITTENPAW_FEATURE_API
 #   include "base/api/interfaces/IApiRequest.h"
 #endif
 
 
-#ifdef JDKRIG_FEATURE_ADL
+#ifdef KITTENPAW_FEATURE_ADL
 #include "backend/opencl/wrappers/AdlLib.h"
 
-namespace jdkrig { static const char *kAdlLabel = "ADL"; }
+namespace kittenpaw { static const char *kAdlLabel = "ADL"; }
 #endif
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 extern template class Threads<OclThreads>;
@@ -157,7 +157,7 @@ public:
             return printDisabled(kLabel, RED_S " (no devices)");
         }
 
-#       ifdef JDKRIG_FEATURE_ADL
+#       ifdef KITTENPAW_FEATURE_ADL
         if (cl.isAdlEnabled()) {
             if (AdlLib::init()) {
                 Log::print(GREEN_BOLD(" * ") WHITE_BOLD("%-13s") "press " MAGENTA_BG(WHITE_BOLD_S "e") " for health report",
@@ -207,7 +207,7 @@ public:
         for (const auto &data : threads) {
             size_t mem_used = data.thread.intensity() * algo_l3 / oneMiB;
 
-#           ifdef JDKRIG_ALGO_KAWPOW
+#           ifdef KITTENPAW_ALGO_KAWPOW
             if (algo.family() == Algorithm::KAWPOW) {
                 const uint32_t epoch = job.height() / KPHash::EPOCH_LENGTH;
                 mem_used = (KPCache::cache_size(epoch) + KPCache::dag_size(epoch)) / oneMiB;
@@ -235,7 +235,7 @@ public:
     }
 
 
-#   ifdef JDKRIG_FEATURE_ADL
+#   ifdef KITTENPAW_FEATURE_ADL
     void printHealth()
     {
         if (!AdlLib::isReady()) {
@@ -273,70 +273,70 @@ public:
 };
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-const char *jdkrig::ocl_tag()
+const char *kittenpaw::ocl_tag()
 {
     return Tags::opencl();
 }
 
 
-jdkrig::OclBackend::OclBackend(Controller *controller) :
+kittenpaw::OclBackend::OclBackend(Controller *controller) :
     d_ptr(new OclBackendPrivate(controller))
 {
     d_ptr->workers.setBackend(this);
 }
 
 
-jdkrig::OclBackend::~OclBackend()
+kittenpaw::OclBackend::~OclBackend()
 {
     delete d_ptr;
 
     OclLib::close();
 
-#   ifdef JDKRIG_FEATURE_ADL
+#   ifdef KITTENPAW_FEATURE_ADL
     AdlLib::close();
 #   endif
 }
 
 
-bool jdkrig::OclBackend::isEnabled() const
+bool kittenpaw::OclBackend::isEnabled() const
 {
     return d_ptr->controller->config()->cl().isEnabled() && OclLib::isInitialized() && d_ptr->platform.isValid() && !d_ptr->devices.empty();
 }
 
 
-bool jdkrig::OclBackend::isEnabled(const Algorithm &algorithm) const
+bool kittenpaw::OclBackend::isEnabled(const Algorithm &algorithm) const
 {
     return !d_ptr->controller->config()->cl().threads().get(algorithm).isEmpty();
 }
 
 
-const jdkrig::Hashrate *jdkrig::OclBackend::hashrate() const
+const kittenpaw::Hashrate *kittenpaw::OclBackend::hashrate() const
 {
     return d_ptr->workers.hashrate();
 }
 
 
-const jdkrig::String &jdkrig::OclBackend::profileName() const
+const kittenpaw::String &kittenpaw::OclBackend::profileName() const
 {
     return d_ptr->profileName;
 }
 
 
-const jdkrig::String &jdkrig::OclBackend::type() const
+const kittenpaw::String &kittenpaw::OclBackend::type() const
 {
     return kType;
 }
 
 
-void jdkrig::OclBackend::execCommand(char)
+void kittenpaw::OclBackend::execCommand(char)
 {
 }
 
 
-void jdkrig::OclBackend::prepare(const Job &job)
+void kittenpaw::OclBackend::prepare(const Job &job)
 {
     if (d_ptr) {
         d_ptr->workers.jobEarlyNotification(job);
@@ -344,7 +344,7 @@ void jdkrig::OclBackend::prepare(const Job &job)
 }
 
 
-void jdkrig::OclBackend::printHashrate(bool details)
+void kittenpaw::OclBackend::printHashrate(bool details)
 {
     if (!details || !hashrate()) {
         return;
@@ -399,15 +399,15 @@ void jdkrig::OclBackend::printHashrate(bool details)
 }
 
 
-void jdkrig::OclBackend::printHealth()
+void kittenpaw::OclBackend::printHealth()
 {
-#   ifdef JDKRIG_FEATURE_ADL
+#   ifdef KITTENPAW_FEATURE_ADL
     d_ptr->printHealth();
 #   endif
 }
 
 
-void jdkrig::OclBackend::setJob(const Job &job)
+void kittenpaw::OclBackend::setJob(const Job &job)
 {
     const auto &cl = d_ptr->controller->config()->cl();
     if (cl.isEnabled()) {
@@ -418,7 +418,7 @@ void jdkrig::OclBackend::setJob(const Job &job)
         return stop();
     }
 
-    auto threads = cl.get(d_ptr->controller->jdkrigger(), job.algorithm(), d_ptr->platform, d_ptr->devices);
+    auto threads = cl.get(d_ptr->controller->kittenpawger(), job.algorithm(), d_ptr->platform, d_ptr->devices);
     if (!d_ptr->threads.empty() && d_ptr->threads.size() == threads.size() && std::equal(d_ptr->threads.begin(), d_ptr->threads.end(), threads.begin())) {
         return;
     }
@@ -445,7 +445,7 @@ void jdkrig::OclBackend::setJob(const Job &job)
 }
 
 
-void jdkrig::OclBackend::start(IWorker *worker, bool ready)
+void kittenpaw::OclBackend::start(IWorker *worker, bool ready)
 {
     mutex.lock();
 
@@ -463,7 +463,7 @@ void jdkrig::OclBackend::start(IWorker *worker, bool ready)
 }
 
 
-void jdkrig::OclBackend::stop()
+void kittenpaw::OclBackend::stop()
 {
     if (d_ptr->threads.empty()) {
         return;
@@ -480,14 +480,14 @@ void jdkrig::OclBackend::stop()
 }
 
 
-bool jdkrig::OclBackend::tick(uint64_t ticks)
+bool kittenpaw::OclBackend::tick(uint64_t ticks)
 {
     return d_ptr->workers.tick(ticks);
 }
 
 
-#ifdef JDKRIG_FEATURE_API
-rapidjson::Value jdkrig::OclBackend::toJSON(rapidjson::Document &doc) const
+#ifdef KITTENPAW_FEATURE_API
+rapidjson::Value kittenpaw::OclBackend::toJSON(rapidjson::Document &doc) const
 {
     using namespace rapidjson;
     auto &allocator = doc.GetAllocator();
@@ -525,7 +525,7 @@ rapidjson::Value jdkrig::OclBackend::toJSON(rapidjson::Document &doc) const
 }
 
 
-void jdkrig::OclBackend::handleRequest(IApiRequest &)
+void kittenpaw::OclBackend::handleRequest(IApiRequest &)
 {
 }
 #endif

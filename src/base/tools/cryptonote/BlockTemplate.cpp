@@ -1,8 +1,8 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2012-2013 The Cryptonote developers
  * Copyright (c) 2014-2021 The Monero Project
  * Copyright (c) 2018-2023 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2023 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2023 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@
 #include "base/tools/Cvt.h"
 
 
-void jdkrig::BlockTemplate::calculateJdkriggerTxHash(const uint8_t *prefix_begin, const uint8_t *prefix_end, uint8_t *hash)
+void kittenpaw::BlockTemplate::calculateKittenpawgerTxHash(const uint8_t *prefix_begin, const uint8_t *prefix_end, uint8_t *hash)
 {
     uint8_t hashes[kHashSize * 3];
 
@@ -34,38 +34,38 @@ void jdkrig::BlockTemplate::calculateJdkriggerTxHash(const uint8_t *prefix_begin
     // 1. Prefix
     keccak(prefix_begin, static_cast<int>(prefix_end - prefix_begin), hashes, kHashSize);
 
-    // 2. Base RCT, single 0 byte in jdkrigger tx
+    // 2. Base RCT, single 0 byte in kittenpawger tx
     static const uint8_t known_second_hash[kHashSize] = {
         188,54,120,158,122,30,40,20,54,70,66,41,130,143,129,125,102,18,247,180,119,214,101,145,255,150,169,224,100,188,201,138
     };
     memcpy(hashes + kHashSize, known_second_hash, kHashSize);
 
-    // 3. Prunable RCT, empty in jdkrigger tx
+    // 3. Prunable RCT, empty in kittenpawger tx
     memset(hashes + kHashSize * 2, 0, kHashSize);
 
-    // Calculate jdkrigger transaction hash
+    // Calculate kittenpawger transaction hash
     keccak(hashes, sizeof(hashes), hash, kHashSize);
 }
 
 
-void jdkrig::BlockTemplate::calculateRootHash(const uint8_t *prefix_begin, const uint8_t *prefix_end, const Buffer &jdkrigger_tx_merkle_tree_branch, uint8_t *root_hash)
+void kittenpaw::BlockTemplate::calculateRootHash(const uint8_t *prefix_begin, const uint8_t *prefix_end, const Buffer &kittenpawger_tx_merkle_tree_branch, uint8_t *root_hash)
 {
-    calculateJdkriggerTxHash(prefix_begin, prefix_end, root_hash);
+    calculateKittenpawgerTxHash(prefix_begin, prefix_end, root_hash);
 
-    for (size_t i = 0; i < jdkrigger_tx_merkle_tree_branch.size(); i += kHashSize) {
+    for (size_t i = 0; i < kittenpawger_tx_merkle_tree_branch.size(); i += kHashSize) {
         uint8_t h[kHashSize * 2];
 
         memcpy(h, root_hash, kHashSize);
-        memcpy(h + kHashSize, jdkrigger_tx_merkle_tree_branch.data() + i, kHashSize);
+        memcpy(h + kHashSize, kittenpawger_tx_merkle_tree_branch.data() + i, kHashSize);
 
         keccak(h, kHashSize * 2, root_hash, kHashSize);
     }
 }
 
 
-void jdkrig::BlockTemplate::calculateMerkleTreeHash()
+void kittenpaw::BlockTemplate::calculateMerkleTreeHash()
 {
-    m_jdkriggerTxMerkleTreeBranch.clear();
+    m_kittenpawgerTxMerkleTreeBranch.clear();
 
     const uint64_t count = m_numHashes + 1;
     const uint8_t *h = m_hashes.data();
@@ -74,7 +74,7 @@ void jdkrig::BlockTemplate::calculateMerkleTreeHash()
         memcpy(m_rootHash, h, kHashSize);
     }
     else if (count == 2) {
-        m_jdkriggerTxMerkleTreeBranch.insert(m_jdkriggerTxMerkleTreeBranch.end(), h + kHashSize, h + kHashSize * 2);
+        m_kittenpawgerTxMerkleTreeBranch.insert(m_kittenpawgerTxMerkleTreeBranch.end(), h + kHashSize, h + kHashSize * 2);
         keccak(h, kHashSize * 2, m_rootHash, kHashSize);
     }
     else {
@@ -86,14 +86,14 @@ void jdkrig::BlockTemplate::calculateMerkleTreeHash()
 
         cnt >>= 1;
 
-        m_jdkriggerTxMerkleTreeBranch.reserve(kHashSize * (i - 1));
+        m_kittenpawgerTxMerkleTreeBranch.reserve(kHashSize * (i - 1));
 
         Buffer ints(cnt * kHashSize);
         memcpy(ints.data(), h, (cnt * 2 - count) * kHashSize);
 
         for (i = cnt * 2 - count, j = cnt * 2 - count; j < cnt; i += 2, ++j) {
             if (i == 0) {
-                m_jdkriggerTxMerkleTreeBranch.insert(m_jdkriggerTxMerkleTreeBranch.end(), h + kHashSize, h + kHashSize * 2);
+                m_kittenpawgerTxMerkleTreeBranch.insert(m_kittenpawgerTxMerkleTreeBranch.end(), h + kHashSize, h + kHashSize * 2);
             }
             keccak(h + i * kHashSize, kHashSize * 2, ints.data() + j * kHashSize, kHashSize);
         }
@@ -102,19 +102,19 @@ void jdkrig::BlockTemplate::calculateMerkleTreeHash()
             cnt >>= 1;
             for (i = 0, j = 0; j < cnt; i += 2, ++j) {
                 if (i == 0) {
-                    m_jdkriggerTxMerkleTreeBranch.insert(m_jdkriggerTxMerkleTreeBranch.end(), ints.data() + kHashSize, ints.data() + kHashSize * 2);
+                    m_kittenpawgerTxMerkleTreeBranch.insert(m_kittenpawgerTxMerkleTreeBranch.end(), ints.data() + kHashSize, ints.data() + kHashSize * 2);
                 }
                 keccak(ints.data() + i * kHashSize, kHashSize * 2, ints.data() + j * kHashSize, kHashSize);
             }
         }
 
-        m_jdkriggerTxMerkleTreeBranch.insert(m_jdkriggerTxMerkleTreeBranch.end(), ints.data() + kHashSize, ints.data() + kHashSize * 2);
+        m_kittenpawgerTxMerkleTreeBranch.insert(m_kittenpawgerTxMerkleTreeBranch.end(), ints.data() + kHashSize, ints.data() + kHashSize * 2);
         keccak(ints.data(), kHashSize * 2, m_rootHash, kHashSize);
     }
 }
 
 
-bool jdkrig::BlockTemplate::parse(const Buffer &blocktemplate, const Coin &coin, bool hashes)
+bool kittenpaw::BlockTemplate::parse(const Buffer &blocktemplate, const Coin &coin, bool hashes)
 {
     if (blocktemplate.size() < kMinSize) {
         return false;
@@ -132,7 +132,7 @@ bool jdkrig::BlockTemplate::parse(const Buffer &blocktemplate, const Coin &coin,
 }
 
 
-bool jdkrig::BlockTemplate::parse(const char *blocktemplate, size_t size, const Coin &coin, bool hashes)
+bool kittenpaw::BlockTemplate::parse(const char *blocktemplate, size_t size, const Coin &coin, bool hashes)
 {
     if (size < (kMinSize * 2) || !Cvt::fromHex(m_blob, blocktemplate, size)) {
         return false;
@@ -149,24 +149,24 @@ bool jdkrig::BlockTemplate::parse(const char *blocktemplate, size_t size, const 
 }
 
 
-bool jdkrig::BlockTemplate::parse(const rapidjson::Value &blocktemplate, const Coin &coin, bool hashes)
+bool kittenpaw::BlockTemplate::parse(const rapidjson::Value &blocktemplate, const Coin &coin, bool hashes)
 {
     return blocktemplate.IsString() && parse(blocktemplate.GetString(), blocktemplate.GetStringLength(), coin, hashes);
 }
 
 
-bool jdkrig::BlockTemplate::parse(const String &blocktemplate, const Coin &coin, bool hashes)
+bool kittenpaw::BlockTemplate::parse(const String &blocktemplate, const Coin &coin, bool hashes)
 {
     return parse(blocktemplate.data(), blocktemplate.size(), coin, hashes);
 }
 
 
-void jdkrig::BlockTemplate::generateHashingBlob(Buffer &out) const
+void kittenpaw::BlockTemplate::generateHashingBlob(Buffer &out) const
 {
     out.clear();
-    out.reserve(offset(JDKRIGGER_TX_PREFIX_OFFSET) + kHashSize + 3);
+    out.reserve(offset(KITTENPAWGER_TX_PREFIX_OFFSET) + kHashSize + 3);
 
-    out.assign(m_blob.begin(), m_blob.begin() + offset(JDKRIGGER_TX_PREFIX_OFFSET));
+    out.assign(m_blob.begin(), m_blob.begin() + offset(KITTENPAWGER_TX_PREFIX_OFFSET));
     out.insert(out.end(), m_rootHash, m_rootHash + kHashSize);
 
     uint64_t k = m_numHashes + 1;
@@ -178,7 +178,7 @@ void jdkrig::BlockTemplate::generateHashingBlob(Buffer &out) const
 }
 
 
-bool jdkrig::BlockTemplate::parse(bool hashes)
+bool kittenpaw::BlockTemplate::parse(bool hashes)
 {
     BlobReader<true> ar(m_blob.data(), m_blob.size());
 
@@ -191,9 +191,9 @@ bool jdkrig::BlockTemplate::parse(bool hashes)
     setOffset(NONCE_OFFSET, ar.index());
     ar.skip(kNonceSize);
 
-    // Wownero block template has jdkrigger signature starting from version 18
+    // Wownero block template has kittenpawger signature starting from version 18
     if (m_coin == Coin::WOWNERO && majorVersion() >= 18) {
-        ar(m_jdkriggerSignature, kSignatureSize);
+        ar(m_kittenpawgerSignature, kSignatureSize);
         ar(m_vote);
     }
 
@@ -202,9 +202,9 @@ bool jdkrig::BlockTemplate::parse(bool hashes)
         ar(pricing_record);
     }
 
-    // Jdkrigger transaction begin
+    // Kittenpawger transaction begin
     // Prefix begin
-    setOffset(JDKRIGGER_TX_PREFIX_OFFSET, ar.index());
+    setOffset(KITTENPAWGER_TX_PREFIX_OFFSET, ar.index());
 
     ar(m_txVersion);
 
@@ -336,10 +336,10 @@ bool jdkrig::BlockTemplate::parse(bool hashes)
         ar(amount_minted);
     }
 
-    setOffset(JDKRIGGER_TX_PREFIX_END_OFFSET, ar.index());
+    setOffset(KITTENPAWGER_TX_PREFIX_END_OFFSET, ar.index());
     // Prefix end
 
-    // RCT signatures (empty in jdkrigger transaction)
+    // RCT signatures (empty in kittenpawger transaction)
     uint8_t vin_rct_type = 0;
     ar(vin_rct_type);
 
@@ -353,11 +353,11 @@ bool jdkrig::BlockTemplate::parse(bool hashes)
         return false;
     }
 
-    const size_t jdkrigger_tx_end = ar.index();
-    // Jdkrigger transaction end
+    const size_t kittenpawger_tx_end = ar.index();
+    // Kittenpawger transaction end
 
-    // Jdkrigger transaction must have exactly 1 byte with value 0 after the prefix
-    if ((jdkrigger_tx_end != offset(JDKRIGGER_TX_PREFIX_END_OFFSET) + 1) || (*blob(JDKRIGGER_TX_PREFIX_END_OFFSET) != 0)) {
+    // Kittenpawger transaction must have exactly 1 byte with value 0 after the prefix
+    if ((kittenpawger_tx_end != offset(KITTENPAWGER_TX_PREFIX_END_OFFSET) + 1) || (*blob(KITTENPAWGER_TX_PREFIX_END_OFFSET) != 0)) {
         return false;
     }
 
@@ -366,7 +366,7 @@ bool jdkrig::BlockTemplate::parse(bool hashes)
 
     if (hashes) {
         m_hashes.resize((m_numHashes + 1) * kHashSize);
-        calculateJdkriggerTxHash(blob(JDKRIGGER_TX_PREFIX_OFFSET), blob(JDKRIGGER_TX_PREFIX_END_OFFSET), m_hashes.data());
+        calculateKittenpawgerTxHash(blob(KITTENPAWGER_TX_PREFIX_OFFSET), blob(KITTENPAWGER_TX_PREFIX_END_OFFSET), m_hashes.data());
 
         for (uint64_t i = 1; i <= m_numHashes; ++i) {
             Span h;

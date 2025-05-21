@@ -223,7 +223,7 @@ static void next_addresses(block *address_block, block *input_block)
     fill_block(zero2_block, address_block, address_block, 0);
 }
 
-void jdkrig_ar2_fill_segment_avx2(const argon2_instance_t *instance, argon2_position_t position)
+void kittenpaw_ar2_fill_segment_avx2(const argon2_instance_t *instance, argon2_position_t position)
 {
     block *ref_block = NULL, *curr_block = NULL;
     block address_block, input_block;
@@ -307,7 +307,7 @@ void jdkrig_ar2_fill_segment_avx2(const argon2_instance_t *instance, argon2_posi
          * lane.
          */
         position.index = i;
-        ref_index = jdkrig_ar2_index_alpha(instance, &position, pseudo_rand & 0xFFFFFFFF, ref_lane == position.lane);
+        ref_index = kittenpaw_ar2_index_alpha(instance, &position, pseudo_rand & 0xFFFFFFFF, ref_lane == position.lane);
 
         /* 2 Creating a new block */
         ref_block =
@@ -325,11 +325,11 @@ void jdkrig_ar2_fill_segment_avx2(const argon2_instance_t *instance, argon2_posi
 
 
 extern int cpu_flags_has_avx2(void);
-int jdkrig_ar2_check_avx2(void) { return cpu_flags_has_avx2(); }
+int kittenpaw_ar2_check_avx2(void) { return cpu_flags_has_avx2(); }
 
 #else
 
-void jdkrig_ar2_fill_segment_avx2(const argon2_instance_t *instance, argon2_position_t position) {}
-int jdkrig_ar2_check_avx2(void) { return 0; }
+void kittenpaw_ar2_fill_segment_avx2(const argon2_instance_t *instance, argon2_position_t position) {}
+int kittenpaw_ar2_check_avx2(void) { return 0; }
 
 #endif

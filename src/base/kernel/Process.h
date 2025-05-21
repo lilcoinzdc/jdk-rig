@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,21 +16,21 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_PROCESS_H
-#define JDKRIG_PROCESS_H
+#ifndef KITTENPAW_PROCESS_H
+#define KITTENPAW_PROCESS_H
 
 
 #include "base/tools/Arguments.h"
 
 
 #ifdef WIN32
-#   define JDKRIG_DIR_SEPARATOR "\\"
+#   define KITTENPAW_DIR_SEPARATOR "\\"
 #else
-#   define JDKRIG_DIR_SEPARATOR "/"
+#   define KITTENPAW_DIR_SEPARATOR "/"
 #endif
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class Process
@@ -58,7 +58,7 @@ private:
 };
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif /* JDKRIG_PROCESS_H */
+#endif /* KITTENPAW_PROCESS_H */

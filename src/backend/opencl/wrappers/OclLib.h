@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_OCLLIB_H
-#define JDKRIG_OCLLIB_H
+#ifndef KITTENPAW_OCLLIB_H
+#define KITTENPAW_OCLLIB_H
 
 
 #include <vector>
@@ -43,7 +43,7 @@
 #endif
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class OclLib
@@ -120,7 +120,7 @@ private:
 };
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-#endif /* JDKRIG_OCLLIB_H */
+#endif /* KITTENPAW_OCLLIB_H */

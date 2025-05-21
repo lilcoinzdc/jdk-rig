@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@
 #include "base/tools/Chrono.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 static std::mutex mutex;
@@ -98,10 +98,10 @@ static cl_program createFromBinary(const IOclRunner *runner, const std::string &
 }
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-cl_program jdkrig::OclCache::build(const IOclRunner *runner)
+cl_program kittenpaw::OclCache::build(const IOclRunner *runner)
 {
     std::lock_guard<std::mutex> lock(mutex);
 
@@ -112,7 +112,7 @@ cl_program jdkrig::OclCache::build(const IOclRunner *runner)
     std::string fileName;
     if (runner->data().cache) {
 #       ifdef _WIN32
-        fileName = prefix() + "\\jdkrig\\.cache\\" + cacheKey(runner) + ".bin";
+        fileName = prefix() + "\\kittenpaw\\.cache\\" + cacheKey(runner) + ".bin";
 #       else
         fileName = prefix() + "/.cache/" + cacheKey(runner) + ".bin";
 #       endif
@@ -132,7 +132,7 @@ cl_program jdkrig::OclCache::build(const IOclRunner *runner)
 }
 
 
-std::string jdkrig::OclCache::cacheKey(const char *deviceKey, const char *options, const char *source)
+std::string kittenpaw::OclCache::cacheKey(const char *deviceKey, const char *options, const char *source)
 {
     std::string in(source);
     in += options;
@@ -148,13 +148,13 @@ std::string jdkrig::OclCache::cacheKey(const char *deviceKey, const char *option
 }
 
 
-std::string jdkrig::OclCache::cacheKey(const IOclRunner *runner)
+std::string kittenpaw::OclCache::cacheKey(const IOclRunner *runner)
 {
     return cacheKey(runner->deviceKey(), runner->buildOptions(), runner->source());
 }
 
 
-void jdkrig::OclCache::save(cl_program program, const std::string &fileName)
+void kittenpaw::OclCache::save(cl_program program, const std::string &fileName)
 {
     size_t size = 0;
     if (OclLib::getProgramInfo(program, CL_PROGRAM_BINARY_SIZES, sizeof(size), &size) != CL_SUCCESS) {

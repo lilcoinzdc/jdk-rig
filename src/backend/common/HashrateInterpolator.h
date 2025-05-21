@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_HASHRATE_INTERPOLATOR_H
-#define JDKRIG_HASHRATE_INTERPOLATOR_H
+#ifndef KITTENPAW_HASHRATE_INTERPOLATOR_H
+#define KITTENPAW_HASHRATE_INTERPOLATOR_H
 
 
 #include <mutex>
@@ -25,7 +25,7 @@
 #include <utility>
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class HashrateInterpolator
@@ -45,7 +45,7 @@ private:
 };
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-#endif /* JDKRIG_HASHRATE_INTERPOLATOR_H */
+#endif /* KITTENPAW_HASHRATE_INTERPOLATOR_H */

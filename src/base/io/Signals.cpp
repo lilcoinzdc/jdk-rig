@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -25,16 +25,16 @@
 
 
 #ifdef SIGUSR1
-static const int signums[jdkrig::Signals::kSignalsCount] = { SIGHUP, SIGINT, SIGTERM, SIGUSR1 };
+static const int signums[kittenpaw::Signals::kSignalsCount] = { SIGHUP, SIGINT, SIGTERM, SIGUSR1 };
 #else
-static const int signums[jdkrig::Signals::kSignalsCount] = { SIGHUP, SIGINT, SIGTERM };
+static const int signums[kittenpaw::Signals::kSignalsCount] = { SIGHUP, SIGINT, SIGTERM };
 #endif
 
 
-jdkrig::Signals::Signals(ISignalListener *listener)
+kittenpaw::Signals::Signals(ISignalListener *listener)
     : m_listener(listener)
 {
-#   ifndef JDKRIG_OS_WIN
+#   ifndef KITTENPAW_OS_WIN
     signal(SIGPIPE, SIG_IGN);
 #   endif
 
@@ -50,7 +50,7 @@ jdkrig::Signals::Signals(ISignalListener *listener)
 }
 
 
-jdkrig::Signals::~Signals()
+kittenpaw::Signals::~Signals()
 {
     for (auto signal : m_signals) {
         Handle::close(signal);
@@ -58,7 +58,7 @@ jdkrig::Signals::~Signals()
 }
 
 
-void jdkrig::Signals::onSignal(uv_signal_t *handle, int signum)
+void kittenpaw::Signals::onSignal(uv_signal_t *handle, int signum)
 {
     switch (signum)
     {

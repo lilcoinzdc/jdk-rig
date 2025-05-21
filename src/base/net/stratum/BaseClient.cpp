@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -26,23 +26,23 @@
 #include "base/net/stratum/SubmitResult.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 int64_t BaseClient::m_sequence = 1;
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-jdkrig::BaseClient::BaseClient(int id, IClientListener *listener) :
+kittenpaw::BaseClient::BaseClient(int id, IClientListener *listener) :
     m_listener(listener),
     m_id(id)
 {
 }
 
 
-void jdkrig::BaseClient::setPool(const Pool &pool)
+void kittenpaw::BaseClient::setPool(const Pool &pool)
 {
     if (!pool.isValid()) {
         return;
@@ -56,7 +56,7 @@ void jdkrig::BaseClient::setPool(const Pool &pool)
 }
 
 
-bool jdkrig::BaseClient::handleResponse(int64_t id, const rapidjson::Value &result, const rapidjson::Value &error)
+bool kittenpaw::BaseClient::handleResponse(int64_t id, const rapidjson::Value &result, const rapidjson::Value &error)
 {
     if (id == 1) {
         return false;
@@ -82,7 +82,7 @@ bool jdkrig::BaseClient::handleResponse(int64_t id, const rapidjson::Value &resu
 }
 
 
-bool jdkrig::BaseClient::handleSubmitResponse(int64_t id, const char *error)
+bool kittenpaw::BaseClient::handleSubmitResponse(int64_t id, const char *error)
 {
     auto it = m_results.find(id);
     if (it != m_results.end()) {

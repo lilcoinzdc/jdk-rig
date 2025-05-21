@@ -1,4 +1,4 @@
-/* XMRig
+/* KITTENpaw
  * Copyright 2010      Jeff Garzik <jgarzik@pobox.com>
  * Copyright 2012-2014 pooler      <pooler@litecoinpool.org>
  * Copyright 2014      Lucas Jones <https://github.com/lucasjones>
@@ -7,7 +7,7 @@
  * Copyright 2017-2018 XMR-Stak    <https://github.com/fireice-uk>, <https://github.com/psychocrypt>
  * Copyright 2018      Lee Clagett <https://github.com/vtnerd>
  * Copyright 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -23,8 +23,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_CPULAUNCHDATA_H
-#define JDKRIG_CPULAUNCHDATA_H
+#ifndef KITTENPAW_CPULAUNCHDATA_H
+#define KITTENPAW_CPULAUNCHDATA_H
 
 
 #include "base/crypto/Algorithm.h"
@@ -33,18 +33,18 @@
 #include "crypto/common/Nonce.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class CpuConfig;
 class CpuThread;
-class Jdkrigger;
+class Kittenpawger;
 
 
 class CpuLaunchData
 {
 public:
-    CpuLaunchData(const Jdkrigger *jdkrigger, const Algorithm &algorithm, const CpuConfig &config, const CpuThread &thread, size_t threads, const std::vector<int64_t>& affinities);
+    CpuLaunchData(const Kittenpawger *kittenpawger, const Algorithm &algorithm, const CpuConfig &config, const CpuThread &thread, size_t threads, const std::vector<int64_t>& affinities);
 
     bool isEqual(const CpuLaunchData &other) const;
     CnHash::AlgoVariant av() const;
@@ -63,14 +63,14 @@ public:
     const bool yield;
     const int priority;
     const int64_t affinity;
-    const Jdkrigger *jdkrigger;
+    const Kittenpawger *kittenpawger;
     const size_t threads;
     const uint32_t intensity;
     const std::vector<int64_t> affinities;
 };
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-#endif /* JDKRIG_CPULAUNCHDATA_H */
+#endif /* KITTENPAW_CPULAUNCHDATA_H */

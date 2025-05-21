@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_OCLTHREAD_H
-#define JDKRIG_OCLTHREAD_H
+#ifndef KITTENPAW_OCLTHREAD_H
+#define KITTENPAW_OCLTHREAD_H
 
 
 #include "3rdparty/rapidjson/fwd.h"
@@ -27,7 +27,7 @@
 #include <vector>
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class OclThread
@@ -45,7 +45,7 @@ public:
         setIntensity(intensity);
     }
 
-#   ifdef JDKRIG_ALGO_RANDOMX
+#   ifdef KITTENPAW_ALGO_RANDOMX
     OclThread(uint32_t index, uint32_t intensity, uint32_t worksize, uint32_t threads, bool gcnAsm, bool datasetHost, uint32_t bfactor) :
         m_datasetHost(datasetHost),
         m_gcnAsm(gcnAsm),
@@ -61,7 +61,7 @@ public:
     }
 #   endif
 
-#   ifdef JDKRIG_ALGO_KAWPOW
+#   ifdef KITTENPAW_ALGO_KAWPOW
     OclThread(uint32_t index, uint32_t intensity, uint32_t worksize, uint32_t threads) :
         m_fields(8),
         m_threads(threads, -1),
@@ -119,7 +119,7 @@ private:
 };
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif /* JDKRIG_OCLTHREAD_H */
+#endif /* KITTENPAW_OCLTHREAD_H */

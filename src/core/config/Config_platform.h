@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_CONFIG_PLATFORM_H
-#define JDKRIG_CONFIG_PLATFORM_H
+#ifndef KITTENPAW_CONFIG_PLATFORM_H
+#define KITTENPAW_CONFIG_PLATFORM_H
 
 
 #ifdef _MSC_VER
@@ -31,7 +31,7 @@
 #include "version.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 static const char short_options[] = "a:c:kBp:Px:r:R:s:t:T:o:u:O:v:l:Sx:";
@@ -40,7 +40,7 @@ static const char short_options[] = "a:c:kBp:Px:r:R:s:t:T:o:u:O:v:l:Sx:";
 static const option options[] = {
     { "algo",                  1, nullptr, IConfig::AlgorithmKey          },
     { "coin",                  1, nullptr, IConfig::CoinKey               },
-#   ifdef JDKRIG_FEATURE_HTTP
+#   ifdef KITTENPAW_FEATURE_HTTP
     { "api-worker-id",         1, nullptr, IConfig::ApiWorkerIdKey        },
     { "api-id",                1, nullptr, IConfig::ApiIdKey              },
     { "http-enabled",          0, nullptr, IConfig::HttpEnabledKey        },
@@ -102,11 +102,11 @@ static const option options[] = {
     { "dns-ipv6",              0, nullptr, IConfig::DnsIPv6Key            },
     { "dns-ttl",               1, nullptr, IConfig::DnsTtlKey             },
     { "spend-secret-key",      1, nullptr, IConfig::SpendSecretKey        },
-#   ifdef JDKRIG_FEATURE_BENCHMARK
+#   ifdef KITTENPAW_FEATURE_BENCHMARK
     { "stress",                0, nullptr, IConfig::StressKey             },
     { "bench",                 1, nullptr, IConfig::BenchKey              },
     { "benchmark",             1, nullptr, IConfig::BenchKey              },
-#   ifdef JDKRIG_FEATURE_HTTP
+#   ifdef KITTENPAW_FEATURE_HTTP
     { "submit",                0, nullptr, IConfig::BenchSubmitKey        },
     { "verify",                1, nullptr, IConfig::BenchVerifyKey        },
     { "token",                 1, nullptr, IConfig::BenchTokenKey         },
@@ -114,7 +114,7 @@ static const option options[] = {
     { "seed",                  1, nullptr, IConfig::BenchSeedKey          },
     { "hash",                  1, nullptr, IConfig::BenchHashKey          },
 #   endif
-#   ifdef JDKRIG_FEATURE_TLS
+#   ifdef KITTENPAW_FEATURE_TLS
     { "tls",                   0, nullptr, IConfig::TlsKey                },
     { "tls-fingerprint",       1, nullptr, IConfig::FingerprintKey        },
     { "tls-cert",              1, nullptr, IConfig::TlsCertKey            },
@@ -125,10 +125,10 @@ static const option options[] = {
     { "tls-ciphersuites",      1, nullptr, IConfig::TlsCipherSuitesKey    },
     { "tls-gen",               1, nullptr, IConfig::TlsGenKey             },
 #   endif
-#   ifdef JDKRIG_FEATURE_ASM
+#   ifdef KITTENPAW_FEATURE_ASM
     { "asm",                   1, nullptr, IConfig::AssemblyKey           },
 #   endif
-#   ifdef JDKRIG_ALGO_RANDOMX
+#   ifdef KITTENPAW_ALGO_RANDOMX
     { "randomx-init",          1, nullptr, IConfig::RandomXInitKey        },
     { "randomx-no-numa",       0, nullptr, IConfig::RandomXNumaKey        },
     { "randomx-mode",          1, nullptr, IConfig::RandomXModeKey        },
@@ -141,34 +141,34 @@ static const option options[] = {
     { "randomx-cache-qos",     0, nullptr, IConfig::RandomXCacheQoSKey    },
     { "cache-qos",             0, nullptr, IConfig::RandomXCacheQoSKey    },
 #   endif
-#   ifdef JDKRIG_FEATURE_OPENCL
+#   ifdef KITTENPAW_FEATURE_OPENCL
     { "opencl",                0, nullptr, IConfig::OclKey                },
     { "opencl-devices",        1, nullptr, IConfig::OclDevicesKey         },
     { "opencl-platform",       1, nullptr, IConfig::OclPlatformKey        },
     { "opencl-loader",         1, nullptr, IConfig::OclLoaderKey          },
     { "opencl-no-cache",       0, nullptr, IConfig::OclCacheKey           },
 #   endif
-#   ifdef JDKRIG_FEATURE_CUDA
+#   ifdef KITTENPAW_FEATURE_CUDA
     { "cuda",                  0, nullptr, IConfig::CudaKey               },
     { "cuda-loader",           1, nullptr, IConfig::CudaLoaderKey         },
     { "cuda-devices",          1, nullptr, IConfig::CudaDevicesKey        },
     { "cuda-bfactor-hint",     1, nullptr, IConfig::CudaBFactorKey        },
     { "cuda-bsleep-hint",      1, nullptr, IConfig::CudaBSleepKey         },
 #   endif
-#   ifdef JDKRIG_FEATURE_NVML
+#   ifdef KITTENPAW_FEATURE_NVML
     { "no-nvml",               0, nullptr, IConfig::NvmlKey               },
 #   endif
-#   if defined(JDKRIG_FEATURE_NVML) || defined (JDKRIG_FEATURE_ADL)
+#   if defined(KITTENPAW_FEATURE_NVML) || defined (KITTENPAW_FEATURE_ADL)
     { "health-print-time",     1, nullptr, IConfig::HealthPrintTimeKey    },
 #   endif
-#   ifdef JDKRIG_FEATURE_DMI
+#   ifdef KITTENPAW_FEATURE_DMI
     { "no-dmi",                0, nullptr, IConfig::DmiKey                },
 #   endif
     { nullptr,                 0, nullptr, 0 }
 };
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-#endif /* JDKRIG_CONFIG_PLATFORM_H */
+#endif /* KITTENPAW_CONFIG_PLATFORM_H */

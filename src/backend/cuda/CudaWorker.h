@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_CUDAWORKER_H
-#define JDKRIG_CUDAWORKER_H
+#ifndef KITTENPAW_CUDAWORKER_H
+#define KITTENPAW_CUDAWORKER_H
 
 
 #include "backend/common/GpuWorker.h"
@@ -27,7 +27,7 @@
 #include "net/JobResult.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class ICudaRunner;
@@ -36,7 +36,7 @@ class ICudaRunner;
 class CudaWorker : public GpuWorker
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(CudaWorker)
+    KITTENPAW_DISABLE_COPY_MOVE_DEFAULT(CudaWorker)
 
     CudaWorker(size_t id, const CudaLaunchData &data);
 
@@ -56,13 +56,13 @@ private:
     void storeStats();
 
     const Algorithm m_algorithm;
-    const Jdkrigger *m_jdkrigger;
+    const Kittenpawger *m_kittenpawger;
     ICudaRunner *m_runner = nullptr;
     WorkerJob<1> m_job;
 };
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-#endif /* JDKRIG_CUDAWORKER_H */
+#endif /* KITTENPAW_CUDAWORKER_H */

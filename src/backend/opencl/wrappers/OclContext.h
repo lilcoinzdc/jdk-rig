@@ -1,4 +1,4 @@
-/* XMRig
+/* KITTENpaw
  * Copyright 2010      Jeff Garzik <jgarzik@pobox.com>
  * Copyright 2012-2014 pooler      <pooler@litecoinpool.org>
  * Copyright 2014      Lucas Jones <https://github.com/lucasjones>
@@ -6,7 +6,7 @@
  * Copyright 2016      Jay D Dee   <jayddee246@gmail.com>
  * Copyright 2017-2018 XMR-Stak    <https://github.com/fireice-uk>, <https://github.com/psychocrypt>
  * Copyright 2018-2019 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2019 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright 2016-2019 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -22,8 +22,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_OCLCONTEXT_H
-#define JDKRIG_OCLCONTEXT_H
+#ifndef KITTENPAW_OCLCONTEXT_H
+#define KITTENPAW_OCLCONTEXT_H
 
 
 #include "backend/opencl/OclLaunchData.h"
@@ -34,7 +34,7 @@
 using cl_context = struct _cl_context *;
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class Job;
@@ -43,7 +43,7 @@ class Job;
 class OclContext
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE(OclContext)
+    KITTENPAW_DISABLE_COPY_MOVE(OclContext)
 
     OclContext() = default;
     OclContext(const OclDevice &device);
@@ -59,7 +59,7 @@ private:
 };
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-#endif /* JDKRIG_OCLCONTEXT_H */
+#endif /* KITTENPAW_OCLCONTEXT_H */

@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_CPUTHREADS_H
-#define JDKRIG_CPUTHREADS_H
+#ifndef KITTENPAW_CPUTHREADS_H
+#define KITTENPAW_CPUTHREADS_H
 
 
 #include <vector>
@@ -26,7 +26,7 @@
 #include "backend/cpu/CpuThread.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class CpuThreads
@@ -63,7 +63,7 @@ private:
 };
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif /* JDKRIG_CPUTHREADS_H */
+#endif /* KITTENPAW_CPUTHREADS_H */

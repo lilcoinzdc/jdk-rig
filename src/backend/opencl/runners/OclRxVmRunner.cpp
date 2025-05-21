@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -29,12 +29,12 @@
 #include <algorithm>
 
 
-jdkrig::OclRxVmRunner::OclRxVmRunner(size_t index, const OclLaunchData &data) : OclRxBaseRunner(index, data)
+kittenpaw::OclRxVmRunner::OclRxVmRunner(size_t index, const OclLaunchData &data) : OclRxBaseRunner(index, data)
 {
 }
 
 
-jdkrig::OclRxVmRunner::~OclRxVmRunner()
+kittenpaw::OclRxVmRunner::~OclRxVmRunner()
 {
     delete m_init_vm;
     delete m_execute_vm;
@@ -43,13 +43,13 @@ jdkrig::OclRxVmRunner::~OclRxVmRunner()
 }
 
 
-size_t jdkrig::OclRxVmRunner::bufferSize() const
+size_t kittenpaw::OclRxVmRunner::bufferSize() const
 {
     return OclRxBaseRunner::bufferSize() + (align(2560 * m_intensity));
 }
 
 
-void jdkrig::OclRxVmRunner::build()
+void kittenpaw::OclRxVmRunner::build()
 {
     OclRxBaseRunner::build();
 
@@ -67,7 +67,7 @@ void jdkrig::OclRxVmRunner::build()
 }
 
 
-void jdkrig::OclRxVmRunner::execute(uint32_t iteration)
+void kittenpaw::OclRxVmRunner::execute(uint32_t iteration)
 {
     const uint32_t bfactor        = std::min(data().thread.bfactor(), 8U);
     const uint32_t num_iterations = RxAlgo::programIterations(m_algorithm) >> bfactor;
@@ -90,7 +90,7 @@ void jdkrig::OclRxVmRunner::execute(uint32_t iteration)
 }
 
 
-void jdkrig::OclRxVmRunner::init()
+void kittenpaw::OclRxVmRunner::init()
 {
     OclRxBaseRunner::init();
 

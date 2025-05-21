@@ -1,0 +1,7 @@
+/mnt/jdk-rig/kittenpaw-build/CMakeFiles/kittenpaw-asm.dir
+/mnt/jdk-rig/kittenpaw-build/CMakeFiles/kittenpaw.dir
+/mnt/jdk-rig/kittenpaw-build/CMakeFiles/edit_cache.dir
+/mnt/jdk-rig/kittenpaw-build/CMakeFiles/rebuild_cache.dir
+/mnt/jdk-rig/kittenpaw-build/src/3rdparty/libethash/CMakeFiles/ethash.dir
+/mnt/jdk-rig/kittenpaw-build/src/3rdparty/libethash/CMakeFiles/edit_cache.dir
+/mnt/jdk-rig/kittenpaw-build/src/3rdparty/libethash/CMakeFiles/rebuild_cache.dir

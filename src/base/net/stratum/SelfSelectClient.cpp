@@ -1,8 +1,8 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2019       jtgrassie       <https://github.com/jtgrassie>
  * Copyright (c) 2021       Hansie Odendaal <https://github.com/hansieodendaal>
  * Copyright (c) 2018-2021  SChernykh       <https://github.com/SChernykh>
- * Copyright (c) 2016-2021  XMRig           <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021  KITTENpaw           <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@
 #include "base/tools/Cvt.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 static const char *kBlob                = "blob";
 static const char *kBlockhashingBlob    = "blockhashing_blob";
@@ -48,10 +48,10 @@ static const char *kSeedHash            = "seed_hash";
 
 static const char * const required_fields[] = { kBlocktemplateBlob, kBlockhashingBlob, kHeight, kDifficulty, kPrevHash };
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-jdkrig::SelfSelectClient::SelfSelectClient(int id, const char *agent, IClientListener *listener, bool submitToOrigin) :
+kittenpaw::SelfSelectClient::SelfSelectClient(int id, const char *agent, IClientListener *listener, bool submitToOrigin) :
     m_submitToOrigin(submitToOrigin),
     m_listener(listener)
 {
@@ -60,13 +60,13 @@ jdkrig::SelfSelectClient::SelfSelectClient(int id, const char *agent, IClientLis
 }
 
 
-jdkrig::SelfSelectClient::~SelfSelectClient()
+kittenpaw::SelfSelectClient::~SelfSelectClient()
 {
     delete m_client;
 }
 
 
-int64_t jdkrig::SelfSelectClient::submit(const JobResult &result)
+int64_t kittenpaw::SelfSelectClient::submit(const JobResult &result)
 {
     if (m_submitToOrigin) {
         submitOriginDaemon(result);
@@ -83,7 +83,7 @@ int64_t jdkrig::SelfSelectClient::submit(const JobResult &result)
 }
 
 
-void jdkrig::SelfSelectClient::tick(uint64_t now)
+void kittenpaw::SelfSelectClient::tick(uint64_t now)
 {
     m_client->tick(now);
 
@@ -97,7 +97,7 @@ void jdkrig::SelfSelectClient::tick(uint64_t now)
 }
 
 
-void jdkrig::SelfSelectClient::onJobReceived(IClient *, const Job &job, const rapidjson::Value &)
+void kittenpaw::SelfSelectClient::onJobReceived(IClient *, const Job &job, const rapidjson::Value &)
 {
     m_job = job;
 
@@ -105,7 +105,7 @@ void jdkrig::SelfSelectClient::onJobReceived(IClient *, const Job &job, const ra
 }
 
 
-void jdkrig::SelfSelectClient::onLogin(IClient *, rapidjson::Document &doc, rapidjson::Value &params)
+void kittenpaw::SelfSelectClient::onLogin(IClient *, rapidjson::Document &doc, rapidjson::Value &params)
 {
     params.AddMember("mode", "self-select", doc.GetAllocator());
 
@@ -113,7 +113,7 @@ void jdkrig::SelfSelectClient::onLogin(IClient *, rapidjson::Document &doc, rapi
 }
 
 
-bool jdkrig::SelfSelectClient::parseResponse(int64_t id, rapidjson::Value &result, const rapidjson::Value &error)
+bool kittenpaw::SelfSelectClient::parseResponse(int64_t id, rapidjson::Value &result, const rapidjson::Value &error)
 {
     if (id == -1) {
         return false;
@@ -159,7 +159,7 @@ bool jdkrig::SelfSelectClient::parseResponse(int64_t id, rapidjson::Value &resul
 }
 
 
-void jdkrig::SelfSelectClient::getBlockTemplate()
+void kittenpaw::SelfSelectClient::getBlockTemplate()
 {
     setState(WaitState);
 
@@ -178,13 +178,13 @@ void jdkrig::SelfSelectClient::getBlockTemplate()
 }
 
 
-void jdkrig::SelfSelectClient::retry()
+void kittenpaw::SelfSelectClient::retry()
 {
     setState(RetryState);
 }
 
 
-void jdkrig::SelfSelectClient::setState(State state)
+void kittenpaw::SelfSelectClient::setState(State state)
 {
     if (m_state == state) {
         return;
@@ -215,7 +215,7 @@ void jdkrig::SelfSelectClient::setState(State state)
 }
 
 
-void jdkrig::SelfSelectClient::submitBlockTemplate(rapidjson::Value &result)
+void kittenpaw::SelfSelectClient::submitBlockTemplate(rapidjson::Value &result)
 {
     using namespace rapidjson;
     Document doc(kObjectType);
@@ -259,7 +259,7 @@ void jdkrig::SelfSelectClient::submitBlockTemplate(rapidjson::Value &result)
 }
 
 
-void jdkrig::SelfSelectClient::submitOriginDaemon(const JobResult& result)
+void kittenpaw::SelfSelectClient::submitOriginDaemon(const JobResult& result)
 {
     if (result.diff == 0 || m_blockDiff == 0) {
         return;
@@ -294,7 +294,7 @@ void jdkrig::SelfSelectClient::submitOriginDaemon(const JobResult& result)
         Tags::origin(), m_originSubmitted, m_originNotSubmitted, m_blockDiff, result.actualDiff(), result.diff);
 }
 
-void jdkrig::SelfSelectClient::onHttpData(const HttpData &data)
+void kittenpaw::SelfSelectClient::onHttpData(const HttpData &data)
 {
     if (data.status != 200) {
         return retry();

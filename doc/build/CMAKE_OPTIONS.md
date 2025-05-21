@@ -1,5 +1,5 @@
 # CMake options
-**Recent version of this document: https://jdkrig.com/docs/jdkrigger/cmake-options**
+**Recent version of this document: https://kittenpaw.com/docs/kittenpawger/cmake-options**
 
 ## Algorithms
 
@@ -12,14 +12,14 @@
 ## Features
 
 * **`-DWITH_HWLOC=OFF`**
-disable [hwloc](https://github.com/jdkrig/jdkrig/issues/1077) support.
+disable [hwloc](https://github.com/kittenpaw/kittenpaw/issues/1077) support.
 Disabling this feature is not recommended in most cases.
 This feature add external dependency to libhwloc (1.10.0+) (except MSVC builds).
 * **`-DWITH_LIBCPUID=OFF`** disable built in libcpuid support, this feature always disabled if hwloc enabled, if both hwloc and libcpuid disabled auto configuration for CPU will very limited.
-* **`-DWITH_HTTP=OFF`** disable built in HTTP support, this feature used for HTTP API and daemon (solo jdkrigging) support.
+* **`-DWITH_HTTP=OFF`** disable built in HTTP support, this feature used for HTTP API and daemon (solo kittenpawging) support.
 * **`-DWITH_TLS=OFF`** disable SSL/TLS support (secure connections to pool). This feature add external dependency to OpenSSL.
 * **`-DWITH_ASM=OFF`** disable assembly optimizations for modern CryptoNight algorithms.
-* **`-DWITH_EMBEDDED_CONFIG=ON`** Enable [embedded](https://github.com/jdkrig/jdkrig/issues/957) config support.
+* **`-DWITH_EMBEDDED_CONFIG=ON`** Enable [embedded](https://github.com/kittenpaw/kittenpaw/issues/957) config support.
 * **`-DWITH_OPENCL=OFF`** Disable OpenCL backend.
 * **`-DWITH_CUDA=OFF`** Disable CUDA backend.
 * **`-DWITH_SSE4_1=OFF`** Disable SSE 4.1 for Blake2 (useful for arm builds).
@@ -28,11 +28,11 @@ This feature add external dependency to libhwloc (1.10.0+) (except MSVC builds).
 
 * **`-DWITH_DEBUG_LOG=ON`** enable debug log (mostly network requests).
 * **`-DHWLOC_DEBUG=ON`** enable some debug log for hwloc.
-* **`-DCMAKE_BUILD_TYPE=Debug`** enable debug build, only useful for investigate crashes, this option slow down jdkrigger.
+* **`-DCMAKE_BUILD_TYPE=Debug`** enable debug build, only useful for investigate crashes, this option slow down kittenpawger.
 
 ## Special build options
 
-* **`-DJDKRIG_DEPS=<path>`** path to precompiled dependencies https://github.com/jdkrig/jdkrig-deps
+* **`-DKITTENPAW_DEPS=<path>`** path to precompiled dependencies https://github.com/kittenpaw/kittenpaw-deps
 * **`-DARM_TARGET=<number>`** override ARM target, possible values `7` (ARMv7) and `8` (ARMv8).
 * **`-DUV_INCLUDE_DIR=<path>`** custom path to libuv headers.
 * **`-DUV_LIBRARY=<path>`** custom path to libuv library.

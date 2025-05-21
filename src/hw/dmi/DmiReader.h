@@ -1,8 +1,8 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2000-2002 Alan Cox     <alan@redhat.com>
  * Copyright (c) 2005-2020 Jean Delvare <jdelvare@suse.de>
  * Copyright (c) 2018-2021 SChernykh    <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig        <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw        <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -18,8 +18,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_DMIREADER_H
-#define JDKRIG_DMIREADER_H
+#ifndef KITTENPAW_DMIREADER_H
+#define KITTENPAW_DMIREADER_H
 
 
 #include "hw/dmi/DmiBoard.h"
@@ -29,7 +29,7 @@
 #include <functional>
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class DmiReader
@@ -45,7 +45,7 @@ public:
 
     bool read();
 
-#   ifdef JDKRIG_FEATURE_API
+#   ifdef KITTENPAW_FEATURE_API
     rapidjson::Value toJSON(rapidjson::Document &doc) const;
     void toJSON(rapidjson::Value &out, rapidjson::Document &doc) const;
 #   endif
@@ -64,7 +64,7 @@ private:
 };
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif /* JDKRIG_DMIREADER_H */
+#endif /* KITTENPAW_DMIREADER_H */

@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,14 +16,14 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_BENCHMARK_H
-#define JDKRIG_BENCHMARK_H
+#ifndef KITTENPAW_BENCHMARK_H
+#define KITTENPAW_BENCHMARK_H
 
 
 #include "base/tools/Object.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class IBackend;
@@ -32,7 +32,7 @@ class IBackend;
 class Benchmark
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(Benchmark)
+    KITTENPAW_DISABLE_COPY_MOVE_DEFAULT(Benchmark)
 
     Benchmark(size_t workers, const IBackend *backend);
     ~Benchmark() = default;
@@ -49,7 +49,7 @@ private:
 };
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-#endif /* JDKRIG_BENCHMARK_H */
+#endif /* KITTENPAW_BENCHMARK_H */

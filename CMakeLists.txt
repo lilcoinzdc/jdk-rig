@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(jdkrig)
+project(kittenpaw)
 
 option(WITH_HWLOC           "Enable hwloc support" OFF)
 option(WITH_CN_LITE         "Enable CryptoNight-Lite algorithms family" OFF)
@@ -60,7 +60,7 @@ set(HEADERS
     src/core/config/ConfigTransform.h
     src/core/config/usage.h
     src/core/Controller.h
-    src/core/Jdkrigger.h
+    src/core/Kittenpawger.h
     src/core/Taskbar.h
     src/net/interfaces/IJobResultListener.h
     src/net/JobResult.h
@@ -95,7 +95,7 @@ set(HEADERS_CRYPTO
     src/crypto/common/VirtualMemory.h
    )
 
-if (JDKRIG_ARM)
+if (KITTENPAW_ARM)
     set(HEADERS_CRYPTO "${HEADERS_CRYPTO}" src/crypto/cn/CryptoNight_arm.h)
 else()
     set(HEADERS_CRYPTO "${HEADERS_CRYPTO}" src/crypto/cn/CryptoNight_x86.h)
@@ -109,13 +109,13 @@ set(SOURCES
     src/core/config/Config.cpp
     src/core/config/ConfigTransform.cpp
     src/core/Controller.cpp
-    src/core/Jdkrigger.cpp
+    src/core/Kittenpawger.cpp
     src/core/Taskbar.cpp
     src/net/JobResults.cpp
     src/net/Network.cpp
     src/net/strategies/DonateStrategy.cpp
     src/Summary.cpp
-    src/jdkrig.cpp
+    src/kittenpaw.cpp
    )
 
 set(SOURCES_CRYPTO
@@ -136,7 +136,7 @@ if (CMAKE_C_COMPILER_ID MATCHES GNU)
 endif()
 
 if (WITH_VAES)
-    add_definitions(-DJDKRIG_VAES)
+    add_definitions(-DKITTENPAW_VAES)
     set(HEADERS_CRYPTO "${HEADERS_CRYPTO}" src/crypto/cn/CryptoNight_x86_vaes.h)
     set(SOURCES_CRYPTO "${SOURCES_CRYPTO}" src/crypto/cn/CryptoNight_x86_vaes.cpp)
     if (CMAKE_C_COMPILER_ID MATCHES GNU OR CMAKE_C_COMPILER_ID MATCHES Clang)
@@ -155,7 +155,7 @@ if (WITH_HWLOC)
         )
 endif()
 
-if (JDKRIG_OS_WIN)
+if (KITTENPAW_OS_WIN)
     list(APPEND SOURCES_OS
         res/app.rc
         src/App_win.cpp
@@ -163,7 +163,7 @@ if (JDKRIG_OS_WIN)
         )
 
     set(EXTRA_LIBS ws2_32 psapi iphlpapi userenv dbghelp)
-elseif (JDKRIG_OS_APPLE)
+elseif (KITTENPAW_OS_APPLE)
     list(APPEND SOURCES_OS
         src/App_unix.cpp
         src/crypto/common/VirtualMemory_unix.cpp
@@ -178,21 +178,21 @@ else()
         src/crypto/common/VirtualMemory_unix.cpp
         )
 
-    if (JDKRIG_OS_ANDROID)
+    if (KITTENPAW_OS_ANDROID)
         set(EXTRA_LIBS pthread rt dl log)
-    elseif (JDKRIG_OS_LINUX)
+    elseif (KITTENPAW_OS_LINUX)
         list(APPEND SOURCES_OS
             src/crypto/common/LinuxMemory.h
             src/crypto/common/LinuxMemory.cpp
             )
 
         set(EXTRA_LIBS pthread rt dl)
-    elseif (JDKRIG_OS_FREEBSD)
+    elseif (KITTENPAW_OS_FREEBSD)
         set(EXTRA_LIBS kvm pthread)
     endif()
 endif()
 
-add_definitions(-DJDKRIG_JDKRIGGER_PROJECT -DJDKRIG_JSON_SINGLE_LINE_ARRAY)
+add_definitions(-DKITTENPAW_KITTENPAWGER_PROJECT -DKITTENPAW_JSON_SINGLE_LINE_ARRAY)
 add_definitions(-D__STDC_FORMAT_MACROS -DUNICODE -D_FILE_OFFSET_BITS=64)
 
 find_package(UV REQUIRED)
@@ -206,23 +206,23 @@ include(cmake/OpenSSL.cmake)
 include(cmake/asm.cmake)
 
 if (WITH_CN_LITE)
-    add_definitions(/DJDKRIG_ALGO_CN_LITE)
+    add_definitions(/DKITTENPAW_ALGO_CN_LITE)
 endif()
 
 if (WITH_CN_HEAVY)
-    add_definitions(/DJDKRIG_ALGO_CN_HEAVY)
+    add_definitions(/DKITTENPAW_ALGO_CN_HEAVY)
 endif()
 
 if (WITH_CN_PICO)
-    add_definitions(/DJDKRIG_ALGO_CN_PICO)
+    add_definitions(/DKITTENPAW_ALGO_CN_PICO)
 endif()
 
 if (WITH_CN_FEMTO)
-    add_definitions(/DJDKRIG_ALGO_CN_FEMTO)
+    add_definitions(/DKITTENPAW_ALGO_CN_FEMTO)
 endif()
 
 if (WITH_EMBEDDED_CONFIG)
-    add_definitions(/DJDKRIG_FEATURE_EMBEDDED_CONFIG)
+    add_definitions(/DKITTENPAW_FEATURE_EMBEDDED_CONFIG)
 endif()
 
 include(src/hw/api/api.cmake)
@@ -236,8 +236,8 @@ if (WITH_DEBUG_LOG)
     add_definitions(/DAPP_DEBUG)
 endif()
 
-add_executable(${CMAKE_PROJECT_NAME} ${HEADERS} ${SOURCES} ${SOURCES_OS} ${HEADERS_CRYPTO} ${SOURCES_CRYPTO} ${SOURCES_SYSLOG} ${TLS_SOURCES} ${JDKRIG_ASM_SOURCES})
-target_link_libraries(${CMAKE_PROJECT_NAME} ${JDKRIG_ASM_LIBRARY} ${OPENSSL_LIBRARIES} ${UV_LIBRARIES} ${EXTRA_LIBS} ${CPUID_LIB} ${ARGON2_LIBRARY} ${ETHASH_LIBRARY} ${GHOSTRIDER_LIBRARY})
+add_executable(${CMAKE_PROJECT_NAME} ${HEADERS} ${SOURCES} ${SOURCES_OS} ${HEADERS_CRYPTO} ${SOURCES_CRYPTO} ${SOURCES_SYSLOG} ${TLS_SOURCES} ${KITTENPAW_ASM_SOURCES})
+target_link_libraries(${CMAKE_PROJECT_NAME} ${KITTENPAW_ASM_LIBRARY} ${OPENSSL_LIBRARIES} ${UV_LIBRARIES} ${EXTRA_LIBS} ${CPUID_LIB} ${ARGON2_LIBRARY} ${ETHASH_LIBRARY} ${GHOSTRIDER_LIBRARY})
 
 if (WIN32)
     add_custom_command(TARGET ${CMAKE_PROJECT_NAME} POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/bin/WinRing0/WinRing0x64.sys" $<TARGET_FILE_DIR:${CMAKE_PROJECT_NAME}>)

@@ -1,4 +1,4 @@
-/* XMRig
+/* KITTENpaw
  * Copyright 2010      Jeff Garzik <jgarzik@pobox.com>
  * Copyright 2012-2014 pooler      <pooler@litecoinpool.org>
  * Copyright 2014      Lucas Jones <https://github.com/lucasjones>
@@ -6,7 +6,7 @@
  * Copyright 2016      Jay D Dee   <jayddee246@gmail.com>
  * Copyright 2017-2018 XMR-Stak    <https://github.com/fireice-uk>, <https://github.com/psychocrypt>
  * Copyright 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -29,45 +29,45 @@
 
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 static bool selected = false;
 static String implName;
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
 extern "C" {
 
 
-extern int jdkrig_ar2_check_avx512f();
-extern int jdkrig_ar2_check_avx2();
-extern int jdkrig_ar2_check_ssse3();
-extern int jdkrig_ar2_check_sse2();
+extern int kittenpaw_ar2_check_avx512f();
+extern int kittenpaw_ar2_check_avx2();
+extern int kittenpaw_ar2_check_ssse3();
+extern int kittenpaw_ar2_check_sse2();
 
 
 }
 
 
-bool jdkrig::argon2::Impl::select(const String &nameHint, bool benchmark)
+bool kittenpaw::argon2::Impl::select(const String &nameHint, bool benchmark)
 {
     if (!selected) {
 #       if defined(__x86_64__) || defined(_M_AMD64)
         auto hint = nameHint;
 
         if (hint.isEmpty() && !benchmark) {
-            if (jdkrig_ar2_check_avx512f()) {
+            if (kittenpaw_ar2_check_avx512f()) {
                 hint = "AVX-512F";
             }
-            else if (jdkrig_ar2_check_avx2()) {
+            else if (kittenpaw_ar2_check_avx2()) {
                 hint = "AVX2";
             }
-            else if (jdkrig_ar2_check_ssse3()) {
+            else if (kittenpaw_ar2_check_ssse3()) {
                 hint = "SSSE3";
             }
-            else if (jdkrig_ar2_check_sse2()) {
+            else if (kittenpaw_ar2_check_sse2()) {
                 hint = "SSE2";
             }
         }
@@ -87,7 +87,7 @@ bool jdkrig::argon2::Impl::select(const String &nameHint, bool benchmark)
 }
 
 
-const jdkrig::String &jdkrig::argon2::Impl::name()
+const kittenpaw::String &kittenpaw::argon2::Impl::name()
 {
     return implName;
 }

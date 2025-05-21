@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@
 
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 inline static void printCount(uint64_t accepted, uint64_t rejected)
@@ -104,17 +104,17 @@ inline static void printLatency(uint32_t latency)
 }
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
 
-jdkrig::NetworkState::NetworkState(IStrategyListener *listener) : StrategyProxy(listener)
+kittenpaw::NetworkState::NetworkState(IStrategyListener *listener) : StrategyProxy(listener)
 {
 }
 
 
-#ifdef JDKRIG_FEATURE_API
-rapidjson::Value jdkrig::NetworkState::getConnection(rapidjson::Document &doc, int version) const
+#ifdef KITTENPAW_FEATURE_API
+rapidjson::Value kittenpaw::NetworkState::getConnection(rapidjson::Document &doc, int version) const
 {
     using namespace rapidjson;
     auto &allocator = doc.GetAllocator();
@@ -145,7 +145,7 @@ rapidjson::Value jdkrig::NetworkState::getConnection(rapidjson::Document &doc, i
 }
 
 
-rapidjson::Value jdkrig::NetworkState::getResults(rapidjson::Document &doc, int version) const
+rapidjson::Value kittenpaw::NetworkState::getResults(rapidjson::Document &doc, int version) const
 {
     using namespace rapidjson;
     auto &allocator = doc.GetAllocator();
@@ -177,7 +177,7 @@ rapidjson::Value jdkrig::NetworkState::getResults(rapidjson::Document &doc, int 
 #endif
 
 
-void jdkrig::NetworkState::printConnection() const
+void kittenpaw::NetworkState::printConnection() const
 {
     if (!m_active) {
         LOG_NOTICE(YELLOW_BOLD_S "no active connection");
@@ -196,7 +196,7 @@ void jdkrig::NetworkState::printConnection() const
 }
 
 
-void jdkrig::NetworkState::printResults() const
+void kittenpaw::NetworkState::printResults() const
 {
     if (!m_hashes) {
         LOG_NOTICE(YELLOW_BOLD_S "no results yet");
@@ -223,7 +223,7 @@ void jdkrig::NetworkState::printResults() const
 }
 
 
-const char *jdkrig::NetworkState::scaleDiff(uint64_t &diff)
+const char *kittenpaw::NetworkState::scaleDiff(uint64_t &diff)
 {
     if (diff >= 100000000000) {
         diff /= 1000000000;
@@ -247,7 +247,7 @@ const char *jdkrig::NetworkState::scaleDiff(uint64_t &diff)
 }
 
 
-std::string jdkrig::NetworkState::humanDiff(uint64_t diff)
+std::string kittenpaw::NetworkState::humanDiff(uint64_t diff)
 {
     const char *scale = scaleDiff(diff);
 
@@ -255,7 +255,7 @@ std::string jdkrig::NetworkState::humanDiff(uint64_t diff)
 }
 
 
-void jdkrig::NetworkState::onActive(IStrategy *strategy, IClient *client)
+void kittenpaw::NetworkState::onActive(IStrategy *strategy, IClient *client)
 {
     snprintf(m_pool, sizeof(m_pool) - 1, "%s:%d", client->pool().host().data(), client->pool().port());
 
@@ -269,7 +269,7 @@ void jdkrig::NetworkState::onActive(IStrategy *strategy, IClient *client)
 }
 
 
-void jdkrig::NetworkState::onJob(IStrategy *strategy, IClient *client, const Job &job, const rapidjson::Value &params)
+void kittenpaw::NetworkState::onJob(IStrategy *strategy, IClient *client, const Job &job, const rapidjson::Value &params)
 {
     m_algorithm = job.algorithm();
     m_diff      = job.diff();
@@ -278,7 +278,7 @@ void jdkrig::NetworkState::onJob(IStrategy *strategy, IClient *client, const Job
 }
 
 
-void jdkrig::NetworkState::onPause(IStrategy *strategy)
+void kittenpaw::NetworkState::onPause(IStrategy *strategy)
 {
     if (!strategy->isActive()) {
         stop();
@@ -288,7 +288,7 @@ void jdkrig::NetworkState::onPause(IStrategy *strategy)
 }
 
 
-void jdkrig::NetworkState::onResultAccepted(IStrategy *strategy, IClient *client, const SubmitResult &result, const char *error)
+void kittenpaw::NetworkState::onResultAccepted(IStrategy *strategy, IClient *client, const SubmitResult &result, const char *error)
 {
     add(result, error);
 
@@ -296,7 +296,7 @@ void jdkrig::NetworkState::onResultAccepted(IStrategy *strategy, IClient *client
 }
 
 
-uint32_t jdkrig::NetworkState::latency() const
+uint32_t kittenpaw::NetworkState::latency() const
 {
     const size_t calls = m_latency.size();
     if (calls == 0) {
@@ -310,7 +310,7 @@ uint32_t jdkrig::NetworkState::latency() const
 }
 
 
-uint64_t jdkrig::NetworkState::avgTime() const
+uint64_t kittenpaw::NetworkState::avgTime() const
 {
     if (m_latency.empty()) {
         return 0;
@@ -320,13 +320,13 @@ uint64_t jdkrig::NetworkState::avgTime() const
 }
 
 
-uint64_t jdkrig::NetworkState::connectionTime() const
+uint64_t kittenpaw::NetworkState::connectionTime() const
 {
     return m_active ? ((Chrono::steadyMSecs() - m_connectionTime)) : 0;
 }
 
 
-void jdkrig::NetworkState::add(const SubmitResult &result, const char *error)
+void kittenpaw::NetworkState::add(const SubmitResult &result, const char *error)
 {
     if (error) {
         m_rejected++;
@@ -346,7 +346,7 @@ void jdkrig::NetworkState::add(const SubmitResult &result, const char *error)
 }
 
 
-void jdkrig::NetworkState::stop()
+void kittenpaw::NetworkState::stop()
 {
     m_active      = false;
     m_diff        = 0;

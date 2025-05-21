@@ -1,7 +1,7 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2013-2020 Frank Denis <j at pureftpd dot org>
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -25,12 +25,12 @@
 #include <random>
 
 
-#ifdef JDKRIG_SODIUM
+#ifdef KITTENPAW_SODIUM
 #   include <sodium.h>
 #endif
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 static char *cvt_bin2hex(char *const hex, const size_t hex_maxlen, const unsigned char *const bin, const size_t bin_len)
@@ -63,7 +63,7 @@ static char *cvt_bin2hex(char *const hex, const size_t hex_maxlen, const unsigne
 }
 
 
-#ifndef JDKRIG_SODIUM
+#ifndef KITTENPAW_SODIUM
 static std::random_device randomDevice;
 static std::mt19937 randomEngine(randomDevice());
 
@@ -157,16 +157,16 @@ inline bool fromHexImpl(T &buf, const char *in, size_t size)
 }
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-bool jdkrig::Cvt::fromHex(Buffer &buf, const char *in, size_t size)
+bool kittenpaw::Cvt::fromHex(Buffer &buf, const char *in, size_t size)
 {
     return fromHexImpl(buf, in, size);
 }
 
 
-bool jdkrig::Cvt::fromHex(Buffer &buf, const rapidjson::Value &value)
+bool kittenpaw::Cvt::fromHex(Buffer &buf, const rapidjson::Value &value)
 {
     if (!value.IsString()) {
         return false;
@@ -176,13 +176,13 @@ bool jdkrig::Cvt::fromHex(Buffer &buf, const rapidjson::Value &value)
 }
 
 
-bool jdkrig::Cvt::fromHex(std::string &buf, const char *in, size_t size)
+bool kittenpaw::Cvt::fromHex(std::string &buf, const char *in, size_t size)
 {
     return fromHexImpl(buf, in, size);
 }
 
 
-bool jdkrig::Cvt::fromHex(uint8_t *bin, size_t bin_maxlen, const char *hex, size_t hex_len)
+bool kittenpaw::Cvt::fromHex(uint8_t *bin, size_t bin_maxlen, const char *hex, size_t hex_len)
 {
     assert(hex != nullptr && hex_len > 0);
     if (hex == nullptr || hex_len == 0) {
@@ -193,7 +193,7 @@ bool jdkrig::Cvt::fromHex(uint8_t *bin, size_t bin_maxlen, const char *hex, size
 }
 
 
-bool jdkrig::Cvt::fromHex(uint8_t *bin, size_t bin_maxlen, const rapidjson::Value &value)
+bool kittenpaw::Cvt::fromHex(uint8_t *bin, size_t bin_maxlen, const rapidjson::Value &value)
 {
     if (!value.IsString()) {
         return false;
@@ -203,7 +203,7 @@ bool jdkrig::Cvt::fromHex(uint8_t *bin, size_t bin_maxlen, const rapidjson::Valu
 }
 
 
-jdkrig::Buffer jdkrig::Cvt::fromHex(const char *in, size_t size)
+kittenpaw::Buffer kittenpaw::Cvt::fromHex(const char *in, size_t size)
 {
     Buffer buf;
     if (!fromHex(buf, in, size)) {
@@ -214,17 +214,17 @@ jdkrig::Buffer jdkrig::Cvt::fromHex(const char *in, size_t size)
 }
 
 
-bool jdkrig::Cvt::toHex(char *hex, size_t hex_maxlen, const uint8_t *bin, size_t bin_len)
+bool kittenpaw::Cvt::toHex(char *hex, size_t hex_maxlen, const uint8_t *bin, size_t bin_len)
 {
     return cvt_bin2hex(hex, hex_maxlen, bin, bin_len) != nullptr;
 }
 
 
-jdkrig::Buffer jdkrig::Cvt::randomBytes(const size_t size)
+kittenpaw::Buffer kittenpaw::Cvt::randomBytes(const size_t size)
 {
     Buffer buf(size);
 
-#   ifndef JDKRIG_SODIUM
+#   ifndef KITTENPAW_SODIUM
     std::uniform_int_distribution<> dis(0, 255);
 
     for (size_t i = 0; i < size; ++i) {
@@ -238,31 +238,31 @@ jdkrig::Buffer jdkrig::Cvt::randomBytes(const size_t size)
 }
 
 
-rapidjson::Value jdkrig::Cvt::toHex(const Buffer &data, rapidjson::Document &doc)
+rapidjson::Value kittenpaw::Cvt::toHex(const Buffer &data, rapidjson::Document &doc)
 {
     return toHex(data.data(), data.size(), doc);
 }
 
 
-rapidjson::Value jdkrig::Cvt::toHex(const Span &data, rapidjson::Document &doc)
+rapidjson::Value kittenpaw::Cvt::toHex(const Span &data, rapidjson::Document &doc)
 {
     return toHex(data.data(), data.size(), doc);
 }
 
 
-rapidjson::Value jdkrig::Cvt::toHex(const std::string &data, rapidjson::Document &doc)
+rapidjson::Value kittenpaw::Cvt::toHex(const std::string &data, rapidjson::Document &doc)
 {
     return toHex(reinterpret_cast<const uint8_t *>(data.data()), data.size(), doc);
 }
 
 
-rapidjson::Value jdkrig::Cvt::toHex(const uint8_t *in, size_t size, rapidjson::Document &doc)
+rapidjson::Value kittenpaw::Cvt::toHex(const uint8_t *in, size_t size, rapidjson::Document &doc)
 {
     return toHex(in, size).toJSON(doc);
 }
 
 
-jdkrig::String jdkrig::Cvt::toHex(const uint8_t *in, size_t size)
+kittenpaw::String kittenpaw::Cvt::toHex(const uint8_t *in, size_t size)
 {
     assert(in != nullptr && size > 0);
     if (in == nullptr || size == 0) {
@@ -282,9 +282,9 @@ jdkrig::String jdkrig::Cvt::toHex(const uint8_t *in, size_t size)
 }
 
 
-void jdkrig::Cvt::randomBytes(void *buf, size_t size)
+void kittenpaw::Cvt::randomBytes(void *buf, size_t size)
 {
-#   ifndef JDKRIG_SODIUM
+#   ifndef KITTENPAW_SODIUM
     std::uniform_int_distribution<> dis(0, 255);
 
     for (size_t i = 0; i < size; ++i) {

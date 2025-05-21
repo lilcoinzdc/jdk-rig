@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@
 #include <algorithm>
 
 
-jdkrig::CudaThreads::CudaThreads(const rapidjson::Value &value)
+kittenpaw::CudaThreads::CudaThreads(const rapidjson::Value &value)
 {
     if (value.IsArray()) {
         for (auto &v : value.GetArray()) {
@@ -37,7 +37,7 @@ jdkrig::CudaThreads::CudaThreads(const rapidjson::Value &value)
 }
 
 
-jdkrig::CudaThreads::CudaThreads(const std::vector<CudaDevice> &devices, const Algorithm &algorithm)
+kittenpaw::CudaThreads::CudaThreads(const std::vector<CudaDevice> &devices, const Algorithm &algorithm)
 {
     for (const auto &device : devices) {
         device.generate(algorithm, *this);
@@ -45,7 +45,7 @@ jdkrig::CudaThreads::CudaThreads(const std::vector<CudaDevice> &devices, const A
 }
 
 
-bool jdkrig::CudaThreads::isEqual(const CudaThreads &other) const
+bool kittenpaw::CudaThreads::isEqual(const CudaThreads &other) const
 {
     if (isEmpty() && other.isEmpty()) {
         return true;
@@ -55,7 +55,7 @@ bool jdkrig::CudaThreads::isEqual(const CudaThreads &other) const
 }
 
 
-rapidjson::Value jdkrig::CudaThreads::toJSON(rapidjson::Document &doc) const
+rapidjson::Value kittenpaw::CudaThreads::toJSON(rapidjson::Document &doc) const
 {
     using namespace rapidjson;
     auto &allocator = doc.GetAllocator();

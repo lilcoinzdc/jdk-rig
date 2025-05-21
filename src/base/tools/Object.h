@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2023 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2023 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2023 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_OBJECT_H
-#define JDKRIG_OBJECT_H
+#ifndef KITTENPAW_OBJECT_H
+#define KITTENPAW_OBJECT_H
 
 
 #include <cstddef>
@@ -25,17 +25,17 @@
 #include <memory>
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
-#define JDKRIG_DISABLE_COPY_MOVE(X) \
+#define KITTENPAW_DISABLE_COPY_MOVE(X) \
     X(const X &other)            = delete; \
     X(X &&other)                 = delete; \
     X &operator=(const X &other) = delete; \
     X &operator=(X &&other)      = delete;
 
 
-#define JDKRIG_DISABLE_COPY_MOVE_DEFAULT(X) \
+#define KITTENPAW_DISABLE_COPY_MOVE_DEFAULT(X) \
     X()                          = delete; \
     X(const X &other)            = delete; \
     X(X &&other)                 = delete; \
@@ -43,7 +43,7 @@ namespace jdkrig {
     X &operator=(X &&other)      = delete;
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-#endif // JDKRIG_OBJECT_H
+#endif // KITTENPAW_OBJECT_H

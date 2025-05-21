@@ -1,4 +1,4 @@
-/* XMRig
+/* KITTENpaw
  * Copyright 2010      Jeff Garzik <jgarzik@pobox.com>
  * Copyright 2012-2014 pooler      <pooler@litecoinpool.org>
  * Copyright 2014      Lucas Jones <https://github.com/lucasjones>
@@ -8,7 +8,7 @@
  * Copyright 2018      Lee Clagett <https://github.com/vtnerd>
  * Copyright 2018-2019 tevador     <tevador@gmail.com>
  * Copyright 2018-2019 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2019 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright 2016-2019 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@
 static_assert(RANDOMX_FLAG_JIT == 8, "RANDOMX_FLAG_JIT flag mismatch");
 
 
-jdkrig::RxCache::RxCache(bool hugePages, uint32_t nodeId)
+kittenpaw::RxCache::RxCache(bool hugePages, uint32_t nodeId)
 {
     m_memory = new VirtualMemory(maxSize(), hugePages, false, false, nodeId);
 
@@ -41,13 +41,13 @@ jdkrig::RxCache::RxCache(bool hugePages, uint32_t nodeId)
 }
 
 
-jdkrig::RxCache::RxCache(uint8_t *memory)
+kittenpaw::RxCache::RxCache(uint8_t *memory)
 {
     create(memory);
 }
 
 
-jdkrig::RxCache::~RxCache()
+kittenpaw::RxCache::~RxCache()
 {
     randomx_release_cache(m_cache);
 
@@ -55,7 +55,7 @@ jdkrig::RxCache::~RxCache()
 }
 
 
-bool jdkrig::RxCache::init(const Buffer &seed)
+bool kittenpaw::RxCache::init(const Buffer &seed)
 {
     if (m_seed == seed) {
         return false;
@@ -73,13 +73,13 @@ bool jdkrig::RxCache::init(const Buffer &seed)
 }
 
 
-jdkrig::HugePagesInfo jdkrig::RxCache::hugePages() const
+kittenpaw::HugePagesInfo kittenpaw::RxCache::hugePages() const
 {
     return m_memory ? m_memory->hugePages() : HugePagesInfo();
 }
 
 
-void jdkrig::RxCache::create(uint8_t *memory)
+void kittenpaw::RxCache::create(uint8_t *memory)
 {
     if (!memory) {
         return;

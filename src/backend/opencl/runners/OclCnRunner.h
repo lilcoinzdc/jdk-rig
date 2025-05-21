@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,14 +16,14 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_OCLCNRUNNER_H
-#define JDKRIG_OCLCNRUNNER_H
+#ifndef KITTENPAW_OCLCNRUNNER_H
+#define KITTENPAW_OCLCNRUNNER_H
 
 
 #include "backend/opencl/runners/OclBaseRunner.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class Cn0Kernel;
@@ -35,7 +35,7 @@ class CnBranchKernel;
 class OclCnRunner : public OclBaseRunner
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(OclCnRunner)
+    KITTENPAW_DISABLE_COPY_MOVE_DEFAULT(OclCnRunner)
 
     OclCnRunner(size_t index, const OclLaunchData &data);
     ~OclCnRunner() override;
@@ -70,7 +70,7 @@ private:
 };
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif // JDKRIG_OCLCNRUNNER_H
+#endif // KITTENPAW_OCLCNRUNNER_H

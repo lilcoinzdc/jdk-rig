@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@
 #endif
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 struct CoinInfo
@@ -66,10 +66,10 @@ const char *Coin::kField    = "coin";
 const char *Coin::kUnknown  = "UNKNOWN_COIN";
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-jdkrig::Coin::Coin(const rapidjson::Value &value)
+kittenpaw::Coin::Coin(const rapidjson::Value &value)
 {
     if (value.IsString()) {
         m_id = parse(value.GetString());
@@ -80,25 +80,25 @@ jdkrig::Coin::Coin(const rapidjson::Value &value)
 }
 
 
-jdkrig::Algorithm jdkrig::Coin::algorithm(uint8_t) const
+kittenpaw::Algorithm kittenpaw::Coin::algorithm(uint8_t) const
 {
     return coinInfo[m_id].algorithm;
 }
 
 
-const char *jdkrig::Coin::code() const
+const char *kittenpaw::Coin::code() const
 {
     return coinInfo[m_id].code;
 }
 
 
-const char *jdkrig::Coin::name() const
+const char *kittenpaw::Coin::name() const
 {
     return coinInfo[m_id].name;
 }
 
 
-rapidjson::Value jdkrig::Coin::toJSON() const
+rapidjson::Value kittenpaw::Coin::toJSON() const
 {
     using namespace rapidjson;
 
@@ -106,19 +106,19 @@ rapidjson::Value jdkrig::Coin::toJSON() const
 }
 
 
-uint64_t jdkrig::Coin::target(uint8_t) const
+uint64_t kittenpaw::Coin::target(uint8_t) const
 {
     return coinInfo[m_id].target;
 }
 
 
-uint64_t jdkrig::Coin::units() const
+uint64_t kittenpaw::Coin::units() const
 {
     return coinInfo[m_id].units;
 }
 
 
-jdkrig::Coin::Id jdkrig::Coin::parse(const char *name)
+kittenpaw::Coin::Id kittenpaw::Coin::parse(const char *name)
 {
     if (name == nullptr || strlen(name) < 3) {
         return INVALID;
@@ -134,7 +134,7 @@ jdkrig::Coin::Id jdkrig::Coin::parse(const char *name)
 }
 
 
-const char *jdkrig::Coin::tag(Id id)
+const char *kittenpaw::Coin::tag(Id id)
 {
     return coinInfo[id].tag;
 }

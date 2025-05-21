@@ -37,7 +37,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #if defined(_M_X64) || defined(__x86_64__)
 #include "crypto/randomx/jit_compiler_x86_static.hpp"
-#elif (JDKRIG_ARM == 8)
+#elif (KITTENPAW_ARM == 8)
 #include "crypto/randomx/jit_compiler_a64_static.hpp"
 #endif
 
@@ -158,7 +158,7 @@ RandomX_ConfigurationBase::RandomX_ConfigurationBase()
 	fillAes4Rx4_Key[6] = rx_set_int_vec_i128(0xf63befa7, 0x2ba9660a, 0xf765a38b, 0xf273c9e7);
 	fillAes4Rx4_Key[7] = rx_set_int_vec_i128(0xc0b0762d, 0x0c06d1fd, 0x915839de, 0x7a7cd609);
 
-#	if defined(JDKRIG_FEATURE_ASM) && (defined(_M_X64) || defined(__x86_64__))
+#	if defined(KITTENPAW_FEATURE_ASM) && (defined(_M_X64) || defined(__x86_64__))
 	// Workaround for Visual Studio placing trampoline in debug builds.
 	auto addr = [](void (*func)()) {
 		const uint8_t* p = reinterpret_cast<const uint8_t*>(func);
@@ -175,7 +175,7 @@ RandomX_ConfigurationBase::RandomX_ConfigurationBase()
 		const uint8_t* b = addr(randomx_sshash_end);
 		memcpy(codeSshPrefetchTweaked, a, b - a);
 	}
-	if (jdkrig::Cpu::info()->hasBMI2()) {
+	if (kittenpaw::Cpu::info()->hasBMI2()) {
 		const uint8_t* a = addr(randomx_prefetch_scratchpad_bmi2);
 		const uint8_t* b = addr(randomx_prefetch_scratchpad_end);
 		memcpy(codePrefetchScratchpadTweaked, a, b - a);
@@ -190,7 +190,7 @@ RandomX_ConfigurationBase::RandomX_ConfigurationBase()
 #	endif
 }
 
-#if (JDKRIG_ARM == 8)
+#if (KITTENPAW_ARM == 8)
 static uint32_t Log2(size_t value) { return (value > 1) ? (Log2(value / 2) + 1) : 0; }
 #endif
 
@@ -214,7 +214,7 @@ void RandomX_ConfigurationBase::Apply()
 	ScratchpadL3Mask_Calculated = (((ScratchpadL3_Size / sizeof(uint64_t)) - 1) * 8);
 	ScratchpadL3Mask64_Calculated = ((ScratchpadL3_Size / sizeof(uint64_t)) / 8 - 1) * 64;
 
-#if defined(JDKRIG_FEATURE_ASM) && (defined(_M_X64) || defined(__x86_64__))
+#if defined(KITTENPAW_FEATURE_ASM) && (defined(_M_X64) || defined(__x86_64__))
 	*(uint32_t*)(codeSshPrefetchTweaked + 3) = ArgonMemory * 16 - 1;
 	// Not needed right now because all variants use default dataset base size
 	//const uint32_t DatasetBaseMask = DatasetBaseSize - RANDOMX_DATASET_ITEM_SIZE;
@@ -222,7 +222,7 @@ void RandomX_ConfigurationBase::Apply()
 	//*(uint32_t*)(codeReadDatasetTweaked + 24) = DatasetBaseMask;
 	//*(uint32_t*)(codeReadDatasetLightSshInitTweaked + 59) = DatasetBaseMask;
 
-	const bool hasBMI2 = jdkrig::Cpu::info()->hasBMI2();
+	const bool hasBMI2 = kittenpaw::Cpu::info()->hasBMI2();
 
 	*(uint32_t*)(codePrefetchScratchpadTweaked + (hasBMI2 ? 7 : 4)) = ScratchpadL3Mask64_Calculated;
 	*(uint32_t*)(codePrefetchScratchpadTweaked + (hasBMI2 ? 17 : 18)) = ScratchpadL3Mask64_Calculated;
@@ -264,7 +264,7 @@ typedef void(randomx::JitCompilerX86::* InstructionGeneratorX86_2)(const randomx
 		memcpy(randomx::JitCompilerX86::engine + k, &p, sizeof(randomx::JitCompilerX86::engine[k])); \
 	} while (0)
 
-#elif (JDKRIG_ARM == 8)
+#elif (KITTENPAW_ARM == 8)
 
 	Log2_ScratchpadL1 = Log2(ScratchpadL1_Size);
 	Log2_ScratchpadL2 = Log2(ScratchpadL2_Size);
@@ -296,7 +296,7 @@ typedef void(randomx::JitCompilerX86::* InstructionGeneratorX86_2)(const randomx
 	INST_HANDLE(IMUL_R, ISUB_M);
 	INST_HANDLE(IMUL_M, IMUL_R);
 
-#if defined(JDKRIG_FEATURE_ASM) && (defined(_M_X64) || defined(__x86_64__))
+#if defined(KITTENPAW_FEATURE_ASM) && (defined(_M_X64) || defined(__x86_64__))
 	if (hasBMI2) {
 		INST_HANDLE2(IMULH_R, IMULH_R_BMI2, IMUL_M);
 		INST_HANDLE2(IMULH_M, IMULH_M_BMI2, IMULH_R);
@@ -328,7 +328,7 @@ typedef void(randomx::JitCompilerX86::* InstructionGeneratorX86_2)(const randomx
 	INST_HANDLE(FSQRT_R, FDIV_M);
 
 #if defined(_M_X64) || defined(__x86_64__)
-	if (jdkrig::Cpu::info()->jccErratum()) {
+	if (kittenpaw::Cpu::info()->jccErratum()) {
 		INST_HANDLE2(CBRANCH, CBRANCH<true>, FSQRT_R);
 	}
 	else {
@@ -338,7 +338,7 @@ typedef void(randomx::JitCompilerX86::* InstructionGeneratorX86_2)(const randomx
 	INST_HANDLE(CBRANCH, FSQRT_R);
 #endif
 
-#if defined(JDKRIG_FEATURE_ASM) && (defined(_M_X64) || defined(__x86_64__))
+#if defined(KITTENPAW_FEATURE_ASM) && (defined(_M_X64) || defined(__x86_64__))
 	if (hasBMI2) {
 		INST_HANDLE2(CFROUND, CFROUND_BMI2, CBRANCH);
 	}
@@ -468,7 +468,7 @@ extern "C" {
 		}
 
 		if (!vm_pool[node]) {
-			vm_pool[node] = (uint8_t*) jdkrig::VirtualMemory::allocateLargePagesMemory(VM_POOL_SIZE);
+			vm_pool[node] = (uint8_t*) kittenpaw::VirtualMemory::allocateLargePagesMemory(VM_POOL_SIZE);
 			if (!vm_pool[node]) {
 				vm_pool[node] = (uint8_t*) rx_aligned_alloc(VM_POOL_SIZE, 4096);
 			}

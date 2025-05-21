@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2023 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2023 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2023 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_DONATESTRATEGY_H
-#define JDKRIG_DONATESTRATEGY_H
+#ifndef KITTENPAW_DONATESTRATEGY_H
+#define KITTENPAW_DONATESTRATEGY_H
 
 
 #include "base/kernel/interfaces/IClientListener.h"
@@ -28,7 +28,7 @@
 #include "base/tools/Buffer.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class Client;
@@ -38,7 +38,7 @@ class Controller;
 class DonateStrategy : public IStrategy, public IStrategyListener, public ITimerListener, public IClientListener
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(DonateStrategy)
+    KITTENPAW_DISABLE_COPY_MOVE_DEFAULT(DonateStrategy)
 
     DonateStrategy(Controller *controller, IStrategyListener *listener);
     ~DonateStrategy() override;
@@ -111,7 +111,7 @@ private:
 };
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-#endif // JDKRIG_DONATESTRATEGY_H
+#endif // KITTENPAW_DONATESTRATEGY_H

@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_DNSREQUEST_H
-#define JDKRIG_DNSREQUEST_H
+#ifndef KITTENPAW_DNSREQUEST_H
+#define KITTENPAW_DNSREQUEST_H
 
 
 #include "base/tools/Object.h"
@@ -26,7 +26,7 @@
 #include <cstdint>
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class IDnsListener;
@@ -35,7 +35,7 @@ class IDnsListener;
 class DnsRequest
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(DnsRequest)
+    KITTENPAW_DISABLE_COPY_MOVE_DEFAULT(DnsRequest)
 
     DnsRequest(IDnsListener *listener) : listener(listener) {}
     ~DnsRequest() = default;
@@ -44,7 +44,7 @@ public:
 };
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif /* JDKRIG_DNSREQUEST_H */
+#endif /* KITTENPAW_DNSREQUEST_H */

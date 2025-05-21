@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_PCITOPOLOGY_H
-#define JDKRIG_PCITOPOLOGY_H
+#ifndef KITTENPAW_PCITOPOLOGY_H
+#define KITTENPAW_PCITOPOLOGY_H
 
 
 #include <cstdio>
@@ -26,7 +26,7 @@
 #include "base/tools/String.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class PciTopology
@@ -67,7 +67,7 @@ private:
 };
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-#endif /* JDKRIG_PCITOPOLOGY_H */
+#endif /* KITTENPAW_PCITOPOLOGY_H */

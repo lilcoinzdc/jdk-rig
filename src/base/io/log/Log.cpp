@@ -1,7 +1,7 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2019      Spudz76     <https://github.com/Spudz76>
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -39,7 +39,7 @@
 #include "base/tools/Object.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 static const char *colors_map[] = {
@@ -62,7 +62,7 @@ static const char *colors_map[] = {
 class LogPrivate
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE(LogPrivate)
+    KITTENPAW_DISABLE_COPY_MOVE(LogPrivate)
 
 
     LogPrivate() = default;
@@ -198,11 +198,11 @@ LogPrivate *Log::d          = nullptr;
 uint32_t Log::m_verbose     = 0;
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
 
-void jdkrig::Log::add(ILogBackend *backend)
+void kittenpaw::Log::add(ILogBackend *backend)
 {
     assert(d != nullptr);
 
@@ -212,20 +212,20 @@ void jdkrig::Log::add(ILogBackend *backend)
 }
 
 
-void jdkrig::Log::destroy()
+void kittenpaw::Log::destroy()
 {
     delete d;
     d = nullptr;
 }
 
 
-void jdkrig::Log::init()
+void kittenpaw::Log::init()
 {
     d = new LogPrivate();
 }
 
 
-void jdkrig::Log::print(const char *fmt, ...)
+void kittenpaw::Log::print(const char *fmt, ...)
 {
     if (!d) {
         return;
@@ -240,7 +240,7 @@ void jdkrig::Log::print(const char *fmt, ...)
 }
 
 
-void jdkrig::Log::print(Level level, const char *fmt, ...)
+void kittenpaw::Log::print(Level level, const char *fmt, ...)
 {
     if (!d) {
         return;

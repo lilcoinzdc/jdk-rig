@@ -1,4 +1,4 @@
-/* XMRig
+/* KITTENpaw
  * Copyright 2010      Jeff Garzik <jgarzik@pobox.com>
  * Copyright 2012-2014 pooler      <pooler@litecoinpool.org>
  * Copyright 2014      Lucas Jones <https://github.com/lucasjones>
@@ -6,7 +6,7 @@
  * Copyright 2016      Jay D Dee   <jayddee246@gmail.com>
  * Copyright 2017-2018 XMR-Stak    <https://github.com/fireice-uk>, <https://github.com/psychocrypt>
  * Copyright 2018-2019 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2019 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright 2016-2019 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -31,22 +31,22 @@
 #include <map>
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 static std::map<uint32_t, OclSharedData> map;
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-jdkrig::OclSharedData &jdkrig::OclSharedState::get(uint32_t index)
+kittenpaw::OclSharedData &kittenpaw::OclSharedState::get(uint32_t index)
 {
     return map[index];
 }
 
 
-void jdkrig::OclSharedState::release()
+void kittenpaw::OclSharedState::release()
 {
     for (auto &kv : map) {
         kv.second.release();
@@ -56,7 +56,7 @@ void jdkrig::OclSharedState::release()
 }
 
 
-void jdkrig::OclSharedState::start(const std::vector<OclLaunchData> &threads, const Job &job)
+void kittenpaw::OclSharedState::start(const std::vector<OclLaunchData> &threads, const Job &job)
 {
     assert(map.empty());
 
@@ -65,7 +65,7 @@ void jdkrig::OclSharedState::start(const std::vector<OclLaunchData> &threads, co
 
         ++sharedData;
 
-#       ifdef JDKRIG_ALGO_RANDOMX
+#       ifdef KITTENPAW_ALGO_RANDOMX
         if (data.algorithm.family() == Algorithm::RANDOM_X) {
             sharedData.createDataset(data.ctx, job, data.thread.isDatasetHost());
         }

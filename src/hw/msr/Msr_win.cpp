@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@
 #define IOCTL_WRITE_MSR CTL_CODE(40000, 0x822, METHOD_BUFFERED, FILE_ANY_ACCESS)
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 static const wchar_t *kServiceName = SERVICE_NAME;
@@ -82,10 +82,10 @@ public:
 };
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-jdkrig::Msr::Msr() : d_ptr(new MsrPrivate())
+kittenpaw::Msr::Msr() : d_ptr(new MsrPrivate())
 {
     DWORD err = 0;
 
@@ -192,7 +192,7 @@ jdkrig::Msr::Msr() : d_ptr(new MsrPrivate())
 }
 
 
-jdkrig::Msr::~Msr()
+kittenpaw::Msr::~Msr()
 {
     d_ptr->uninstall();
 
@@ -200,13 +200,13 @@ jdkrig::Msr::~Msr()
 }
 
 
-bool jdkrig::Msr::isAvailable() const
+bool kittenpaw::Msr::isAvailable() const
 {
     return d_ptr->driver != INVALID_HANDLE_VALUE;
 }
 
 
-bool jdkrig::Msr::write(Callback &&callback)
+bool kittenpaw::Msr::write(Callback &&callback)
 {
     const auto &units = Cpu::info()->units();
     bool success      = false;
@@ -231,7 +231,7 @@ bool jdkrig::Msr::write(Callback &&callback)
 }
 
 
-bool jdkrig::Msr::rdmsr(uint32_t reg, int32_t cpu, uint64_t &value) const
+bool kittenpaw::Msr::rdmsr(uint32_t reg, int32_t cpu, uint64_t &value) const
 {
     assert(cpu < 0);
 
@@ -241,7 +241,7 @@ bool jdkrig::Msr::rdmsr(uint32_t reg, int32_t cpu, uint64_t &value) const
 }
 
 
-bool jdkrig::Msr::wrmsr(uint32_t reg, uint64_t value, int32_t cpu)
+bool kittenpaw::Msr::wrmsr(uint32_t reg, uint64_t value, int32_t cpu)
 {
     assert(cpu < 0);
 

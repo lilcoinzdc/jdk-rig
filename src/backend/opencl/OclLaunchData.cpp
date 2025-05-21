@@ -1,4 +1,4 @@
-/* XMRig
+/* KITTENpaw
  * Copyright 2010      Jeff Garzik <jgarzik@pobox.com>
  * Copyright 2012-2014 pooler      <pooler@litecoinpool.org>
  * Copyright 2014      Lucas Jones <https://github.com/lucasjones>
@@ -7,7 +7,7 @@
  * Copyright 2017-2018 XMR-Stak    <https://github.com/fireice-uk>, <https://github.com/psychocrypt>
  * Copyright 2018      Lee Clagett <https://github.com/vtnerd>
  * Copyright 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -29,11 +29,11 @@
 #include "backend/opencl/OclConfig.h"
 
 
-jdkrig::OclLaunchData::OclLaunchData(const Jdkrigger *jdkrigger, const Algorithm &algorithm, const OclConfig &config, const OclPlatform &platform, const OclThread &thread, const OclDevice &device, int64_t affinity) :
+kittenpaw::OclLaunchData::OclLaunchData(const Kittenpawger *kittenpawger, const Algorithm &algorithm, const OclConfig &config, const OclPlatform &platform, const OclThread &thread, const OclDevice &device, int64_t affinity) :
     algorithm(algorithm),
     cache(config.isCacheEnabled()),
     affinity(affinity),
-    jdkrigger(jdkrigger),
+    kittenpawger(kittenpawger),
     device(device),
     platform(platform),
     thread(thread)
@@ -41,14 +41,14 @@ jdkrig::OclLaunchData::OclLaunchData(const Jdkrigger *jdkrigger, const Algorithm
 }
 
 
-bool jdkrig::OclLaunchData::isEqual(const OclLaunchData &other) const
+bool kittenpaw::OclLaunchData::isEqual(const OclLaunchData &other) const
 {
     return (other.algorithm == algorithm &&
             other.thread    == thread);
 }
 
 
-const char *jdkrig::OclLaunchData::tag()
+const char *kittenpaw::OclLaunchData::tag()
 {
     return ocl_tag();
 }

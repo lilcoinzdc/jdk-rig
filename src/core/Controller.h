@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_CONTROLLER_H
-#define JDKRIG_CONTROLLER_H
+#ifndef KITTENPAW_CONTROLLER_H
+#define KITTENPAW_CONTROLLER_H
 
 
 #include "base/kernel/Base.h"
@@ -26,19 +26,19 @@
 #include <memory>
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class HwApi;
 class Job;
-class Jdkrigger;
+class Kittenpawger;
 class Network;
 
 
 class Controller : public Base
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(Controller)
+    KITTENPAW_DISABLE_COPY_MOVE_DEFAULT(Controller)
 
     Controller(Process *process);
     ~Controller() override;
@@ -47,21 +47,21 @@ public:
     void start() override;
     void stop() override;
 
-    Jdkrigger *jdkrigger() const;
+    Kittenpawger *kittenpawger() const;
     Network *network() const;
     void execCommand(char command) const;
 
 private:
-    std::shared_ptr<Jdkrigger> m_jdkrigger;
+    std::shared_ptr<Kittenpawger> m_kittenpawger;
     std::shared_ptr<Network> m_network;
 
-#   ifdef JDKRIG_FEATURE_API
+#   ifdef KITTENPAW_FEATURE_API
     std::shared_ptr<HwApi> m_hwApi;
 #   endif
 };
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-#endif /* JDKRIG_CONTROLLER_H */
+#endif /* KITTENPAW_CONTROLLER_H */

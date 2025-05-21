@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -25,13 +25,13 @@
 #include "base/net/tools/NetBuffer.h"
 
 
-jdkrig::HttpsServer::HttpsServer(const std::shared_ptr<IHttpListener> &listener) :
+kittenpaw::HttpsServer::HttpsServer(const std::shared_ptr<IHttpListener> &listener) :
     m_listener(listener)
 {
 }
 
 
-jdkrig::HttpsServer::~HttpsServer()
+kittenpaw::HttpsServer::~HttpsServer()
 {
     HttpContext::closeAll();
 
@@ -39,7 +39,7 @@ jdkrig::HttpsServer::~HttpsServer()
 }
 
 
-bool jdkrig::HttpsServer::setTls(const TlsConfig &config)
+bool kittenpaw::HttpsServer::setTls(const TlsConfig &config)
 {
     m_tls = TlsContext::create(config);
 
@@ -47,7 +47,7 @@ bool jdkrig::HttpsServer::setTls(const TlsConfig &config)
 }
 
 
-void jdkrig::HttpsServer::onConnection(uv_stream_t *stream, uint16_t)
+void kittenpaw::HttpsServer::onConnection(uv_stream_t *stream, uint16_t)
 {
     auto ctx = new HttpsContext(m_tls, m_listener);
     uv_accept(stream, ctx->stream());
@@ -56,7 +56,7 @@ void jdkrig::HttpsServer::onConnection(uv_stream_t *stream, uint16_t)
 }
 
 
-void jdkrig::HttpsServer::onRead(uv_stream_t *stream, ssize_t nread, const uv_buf_t *buf)
+void kittenpaw::HttpsServer::onRead(uv_stream_t *stream, ssize_t nread, const uv_buf_t *buf)
 {
     auto ctx = static_cast<HttpsContext*>(stream->data);
     if (nread >= 0) {

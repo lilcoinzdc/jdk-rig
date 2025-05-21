@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2023 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2023 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2023 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_PLATFORM_H
-#define JDKRIG_PLATFORM_H
+#ifndef KITTENPAW_PLATFORM_H
+#define KITTENPAW_PLATFORM_H
 
 
 #include <cstdint>
@@ -26,7 +26,7 @@
 #include "base/tools/String.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class Platform
@@ -49,7 +49,7 @@ public:
     static inline bool isUserActive(uint64_t ms)    { return idleTime() < ms; }
     static inline const String &userAgent()         { return m_userAgent; }
 
-#   ifdef JDKRIG_OS_WIN
+#   ifdef KITTENPAW_OS_WIN
     static bool hasKeepalive();
 #   else
     static constexpr bool hasKeepalive()            { return true; }
@@ -65,7 +65,7 @@ private:
 };
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-#endif /* JDKRIG_PLATFORM_H */
+#endif /* KITTENPAW_PLATFORM_H */

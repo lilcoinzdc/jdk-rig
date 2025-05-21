@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2023 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2023 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2023 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@
 #include "base/tools/Chrono.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 static Storage<DnsUvBackend> *storage = nullptr;
@@ -45,10 +45,10 @@ Storage<DnsUvBackend> &DnsUvBackend::getStorage()
 static addrinfo hints{};
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-jdkrig::DnsUvBackend::DnsUvBackend()
+kittenpaw::DnsUvBackend::DnsUvBackend()
 {
     if (!hints.ai_protocol) {
         hints.ai_family     = AF_UNSPEC;
@@ -60,7 +60,7 @@ jdkrig::DnsUvBackend::DnsUvBackend()
 }
 
 
-jdkrig::DnsUvBackend::~DnsUvBackend()
+kittenpaw::DnsUvBackend::~DnsUvBackend()
 {
     assert(storage);
 
@@ -73,7 +73,7 @@ jdkrig::DnsUvBackend::~DnsUvBackend()
 }
 
 
-std::shared_ptr<jdkrig::DnsRequest> jdkrig::DnsUvBackend::resolve(const String &host, IDnsListener *listener, uint64_t ttl)
+std::shared_ptr<kittenpaw::DnsRequest> kittenpaw::DnsUvBackend::resolve(const String &host, IDnsListener *listener, uint64_t ttl)
 {
     auto req = std::make_shared<DnsRequest>(listener);
 
@@ -91,7 +91,7 @@ std::shared_ptr<jdkrig::DnsRequest> jdkrig::DnsUvBackend::resolve(const String &
 }
 
 
-bool jdkrig::DnsUvBackend::resolve(const String &host)
+bool kittenpaw::DnsUvBackend::resolve(const String &host)
 {
     m_req = std::make_shared<uv_getaddrinfo_t>();
     m_req->data = getStorage().ptr(m_key);
@@ -102,7 +102,7 @@ bool jdkrig::DnsUvBackend::resolve(const String &host)
 }
 
 
-void jdkrig::DnsUvBackend::done()
+void kittenpaw::DnsUvBackend::done()
 {
     const char *error = m_status < 0 ? uv_strerror(m_status) : nullptr;
 
@@ -119,7 +119,7 @@ void jdkrig::DnsUvBackend::done()
 }
 
 
-void jdkrig::DnsUvBackend::onResolved(int status, addrinfo *res)
+void kittenpaw::DnsUvBackend::onResolved(int status, addrinfo *res)
 {
     m_ts = Chrono::currentMSecsSinceEpoch();
 
@@ -137,7 +137,7 @@ void jdkrig::DnsUvBackend::onResolved(int status, addrinfo *res)
 }
 
 
-void jdkrig::DnsUvBackend::onResolved(uv_getaddrinfo_t *req, int status, addrinfo *res)
+void kittenpaw::DnsUvBackend::onResolved(uv_getaddrinfo_t *req, int status, addrinfo *res)
 {
     auto backend = getStorage().get(req->data);
     if (backend) {

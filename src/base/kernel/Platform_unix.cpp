@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,7 +16,7 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifdef JDKRIG_OS_FREEBSD
+#ifdef KITTENPAW_OS_FREEBSD
 #   include <sys/types.h>
 #   include <sys/param.h>
 #   ifndef __DragonFly__
@@ -43,7 +43,7 @@
 #include "version.h"
 
 
-char *jdkrig::Platform::createUserAgent()
+char *kittenpaw::Platform::createUserAgent()
 {
     constexpr const size_t max = 256;
 
@@ -70,21 +70,21 @@ char *jdkrig::Platform::createUserAgent()
 }
 
 
-#ifndef JDKRIG_FEATURE_HWLOC
+#ifndef KITTENPAW_FEATURE_HWLOC
 #ifdef __DragonFly__
 
-bool jdkrig::Platform::setThreadAffinity(uint64_t cpu_id)
+bool kittenpaw::Platform::setThreadAffinity(uint64_t cpu_id)
 {
     return true;
 }
 
 #else
 
-#ifdef JDKRIG_OS_FREEBSD
+#ifdef KITTENPAW_OS_FREEBSD
 typedef cpuset_t cpu_set_t;
 #endif
 
-bool jdkrig::Platform::setThreadAffinity(uint64_t cpu_id)
+bool kittenpaw::Platform::setThreadAffinity(uint64_t cpu_id)
 {
     cpu_set_t mn;
     CPU_ZERO(&mn);
@@ -101,15 +101,15 @@ bool jdkrig::Platform::setThreadAffinity(uint64_t cpu_id)
 }
 
 #endif // __DragonFly__
-#endif // JDKRIG_FEATURE_HWLOC
+#endif // KITTENPAW_FEATURE_HWLOC
 
 
-void jdkrig::Platform::setProcessPriority(int)
+void kittenpaw::Platform::setProcessPriority(int)
 {
 }
 
 
-void jdkrig::Platform::setThreadPriority(int priority)
+void kittenpaw::Platform::setThreadPriority(int priority)
 {
     if (priority == -1) {
         return;
@@ -157,7 +157,7 @@ void jdkrig::Platform::setThreadPriority(int priority)
 }
 
 
-bool jdkrig::Platform::isOnBatteryPower()
+bool kittenpaw::Platform::isOnBatteryPower()
 {
     for (int i = 0; i <= 1; ++i) {
         char buf[64];
@@ -173,7 +173,7 @@ bool jdkrig::Platform::isOnBatteryPower()
 }
 
 
-uint64_t jdkrig::Platform::idleTime()
+uint64_t kittenpaw::Platform::idleTime()
 {
     return std::numeric_limits<uint64_t>::max();
 }

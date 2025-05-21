@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@
 #include "base/tools/Handle.h"
 
 
-jdkrig::Console::Console(IConsoleListener *listener)
+kittenpaw::Console::Console(IConsoleListener *listener)
     : m_listener(listener)
 {
     if (!isSupported()) {
@@ -41,7 +41,7 @@ jdkrig::Console::Console(IConsoleListener *listener)
 }
 
 
-jdkrig::Console::~Console()
+kittenpaw::Console::~Console()
 {
     uv_tty_reset_mode();
 
@@ -49,14 +49,14 @@ jdkrig::Console::~Console()
 }
 
 
-bool jdkrig::Console::isSupported()
+bool kittenpaw::Console::isSupported()
 {
     const uv_handle_type type = uv_guess_handle(0);
     return type == UV_TTY || type == UV_NAMED_PIPE;
 }
 
 
-void jdkrig::Console::onAllocBuffer(uv_handle_t *handle, size_t, uv_buf_t *buf)
+void kittenpaw::Console::onAllocBuffer(uv_handle_t *handle, size_t, uv_buf_t *buf)
 {
     auto console = static_cast<Console*>(handle->data);
     buf->len  = 1;
@@ -64,7 +64,7 @@ void jdkrig::Console::onAllocBuffer(uv_handle_t *handle, size_t, uv_buf_t *buf)
 }
 
 
-void jdkrig::Console::onRead(uv_stream_t *stream, ssize_t nread, const uv_buf_t *buf)
+void kittenpaw::Console::onRead(uv_stream_t *stream, ssize_t nread, const uv_buf_t *buf)
 {
     if (nread < 0) {
         return uv_close(reinterpret_cast<uv_handle_t*>(stream), nullptr);

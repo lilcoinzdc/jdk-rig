@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -27,14 +27,14 @@
 #include "core/Controller.h"
 
 
-#ifdef JDKRIG_FEATURE_TLS
+#ifdef KITTENPAW_FEATURE_TLS
 #   include "base/net/https/HttpsServer.h"
 #else
 #   include "base/net/http/HttpServer.h"
 #endif
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 static const char *kAuthorization = "authorization";
 
@@ -43,10 +43,10 @@ static const char *favicon = nullptr;
 static size_t faviconSize  = 0;
 #endif
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-jdkrig::Httpd::Httpd(Base *base) :
+kittenpaw::Httpd::Httpd(Base *base) :
     m_base(base)
 {
     m_httpListener = std::make_shared<HttpListener>(this);
@@ -55,10 +55,10 @@ jdkrig::Httpd::Httpd(Base *base) :
 }
 
 
-jdkrig::Httpd::~Httpd() = default;
+kittenpaw::Httpd::~Httpd() = default;
 
 
-bool jdkrig::Httpd::start()
+bool kittenpaw::Httpd::start()
 {
     const auto &config = m_base->config()->http();
 
@@ -68,7 +68,7 @@ bool jdkrig::Httpd::start()
 
     bool tls = false;
 
-#   ifdef JDKRIG_FEATURE_TLS
+#   ifdef KITTENPAW_FEATURE_TLS
     m_http = new HttpsServer(m_httpListener);
     tls = m_http->setTls(m_base->config()->tls());
 #   else
@@ -110,7 +110,7 @@ bool jdkrig::Httpd::start()
 }
 
 
-void jdkrig::Httpd::stop()
+void kittenpaw::Httpd::stop()
 {
     delete m_server;
     delete m_http;
@@ -122,7 +122,7 @@ void jdkrig::Httpd::stop()
 
 
 
-void jdkrig::Httpd::onConfigChanged(Config *config, Config *previousConfig)
+void kittenpaw::Httpd::onConfigChanged(Config *config, Config *previousConfig)
 {
     if (config->http() == previousConfig->http()) {
         return;
@@ -133,7 +133,7 @@ void jdkrig::Httpd::onConfigChanged(Config *config, Config *previousConfig)
 }
 
 
-void jdkrig::Httpd::onHttpData(const HttpData &data)
+void kittenpaw::Httpd::onHttpData(const HttpData &data)
 {
     if (data.method == HTTP_OPTIONS) {
         return HttpApiResponse(data.id()).end();
@@ -175,7 +175,7 @@ void jdkrig::Httpd::onHttpData(const HttpData &data)
 }
 
 
-int jdkrig::Httpd::auth(const HttpData &req) const
+int kittenpaw::Httpd::auth(const HttpData &req) const
 {
     const Http &config = m_base->config()->http();
 

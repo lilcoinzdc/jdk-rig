@@ -1,4 +1,4 @@
-/* XMRig
+/* KITTENpaw
  * Copyright 2010      Jeff Garzik <jgarzik@pobox.com>
  * Copyright 2012-2014 pooler      <pooler@litecoinpool.org>
  * Copyright 2014      Lucas Jones <https://github.com/lucasjones>
@@ -6,7 +6,7 @@
  * Copyright 2016      Jay D Dee   <jayddee246@gmail.com>
  * Copyright 2017-2018 XMR-Stak    <https://github.com/fireice-uk>, <https://github.com/psychocrypt>
  * Copyright 2018-2019 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2019 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright 2016-2019 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -22,8 +22,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_IOCLRUNNER_H
-#define JDKRIG_IOCLRUNNER_H
+#ifndef KITTENPAW_IOCLRUNNER_H
+#define KITTENPAW_IOCLRUNNER_H
 
 
 #include "base/tools/Object.h"
@@ -35,7 +35,7 @@
 using cl_context = struct _cl_context *;
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class Algorithm;
@@ -46,7 +46,7 @@ class OclLaunchData;
 class IOclRunner
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE(IOclRunner)
+    KITTENPAW_DISABLE_COPY_MOVE(IOclRunner)
 
     IOclRunner()          = default;
     virtual ~IOclRunner() = default;
@@ -73,7 +73,7 @@ protected:
 };
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif // JDKRIG_IOCLRUNNER_H
+#endif // KITTENPAW_IOCLRUNNER_H

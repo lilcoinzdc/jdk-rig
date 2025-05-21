@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2022 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2022 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2022 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,15 +16,15 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_ALIGNMENT_H
-#define JDKRIG_ALIGNMENT_H
+#ifndef KITTENPAW_ALIGNMENT_H
+#define KITTENPAW_ALIGNMENT_H
 
 
 #include <type_traits>
 #include <cstring>
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 template<typename T>
@@ -47,7 +47,7 @@ inline void writeUnaligned(T* ptr, T data)
 }
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif /* JDKRIG_ALIGNMENT_H */
+#endif /* KITTENPAW_ALIGNMENT_H */

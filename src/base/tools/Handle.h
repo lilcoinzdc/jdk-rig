@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,14 +16,14 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_HANDLE_H
-#define JDKRIG_HANDLE_H
+#ifndef KITTENPAW_HANDLE_H
+#define KITTENPAW_HANDLE_H
 
 
 #include <uv.h>
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class Handle
@@ -80,7 +80,7 @@ inline void Handle::close(uv_fs_event_t *handle)
 }
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif /* JDKRIG_HANDLE_H */
+#endif /* KITTENPAW_HANDLE_H */

@@ -1,2 +1,0 @@
-/usr/bin/ar qc libjdkrig-asm.a CMakeFiles/jdkrig-asm.dir/src/crypto/cn/asm/cn_main_loop.S.o CMakeFiles/jdkrig-asm.dir/src/crypto/cn/asm/CryptonightR_template.S.o
-/usr/bin/ranlib libjdkrig-asm.a

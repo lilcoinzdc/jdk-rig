@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@
 #include <cassert>
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 static void fsWriteCallback(uv_fs_t *req)
@@ -36,28 +36,28 @@ static void fsWriteCallback(uv_fs_t *req)
 }
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-jdkrig::FileLogWriter::FileLogWriter()
+kittenpaw::FileLogWriter::FileLogWriter()
 {
     init();
 }
 
-jdkrig::FileLogWriter::FileLogWriter(const char* fileName)
+kittenpaw::FileLogWriter::FileLogWriter(const char* fileName)
 {
     init();
     open(fileName);
 }
 
-jdkrig::FileLogWriter::~FileLogWriter()
+kittenpaw::FileLogWriter::~FileLogWriter()
 {
     uv_close(reinterpret_cast<uv_handle_t*>(&m_flushAsync), nullptr);
 
     uv_mutex_destroy(&m_buffersLock);
 }
 
-void jdkrig::FileLogWriter::init()
+void kittenpaw::FileLogWriter::init()
 {
     uv_mutex_init(&m_buffersLock);
 
@@ -65,7 +65,7 @@ void jdkrig::FileLogWriter::init()
     m_flushAsync.data = this;
 }
 
-bool jdkrig::FileLogWriter::open(const char *fileName)
+bool kittenpaw::FileLogWriter::open(const char *fileName)
 {
     assert(fileName != nullptr);
     if (!fileName) {
@@ -93,7 +93,7 @@ bool jdkrig::FileLogWriter::open(const char *fileName)
 }
 
 
-bool jdkrig::FileLogWriter::write(const char *data, size_t size)
+bool kittenpaw::FileLogWriter::write(const char *data, size_t size)
 {
     if (!isOpen()) {
         return false;
@@ -113,7 +113,7 @@ bool jdkrig::FileLogWriter::write(const char *data, size_t size)
 }
 
 
-bool jdkrig::FileLogWriter::writeLine(const char *data, size_t size)
+bool kittenpaw::FileLogWriter::writeLine(const char *data, size_t size)
 {
     if (!isOpen()) {
         return false;
@@ -135,7 +135,7 @@ bool jdkrig::FileLogWriter::writeLine(const char *data, size_t size)
     return true;
 }
 
-void jdkrig::FileLogWriter::flush()
+void kittenpaw::FileLogWriter::flush()
 {
     uv_mutex_lock(&m_buffersLock);
 

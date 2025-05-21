@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@
 #include "base/kernel/Platform.h"
 
 
-jdkrig::FailoverStrategy::FailoverStrategy(const std::vector<Pool> &pools, int retryPause, int retries, IStrategyListener *listener, bool quiet) :
+kittenpaw::FailoverStrategy::FailoverStrategy(const std::vector<Pool> &pools, int retryPause, int retries, IStrategyListener *listener, bool quiet) :
     m_quiet(quiet),
     m_retries(retries),
     m_retryPause(retryPause),
@@ -36,7 +36,7 @@ jdkrig::FailoverStrategy::FailoverStrategy(const std::vector<Pool> &pools, int r
 }
 
 
-jdkrig::FailoverStrategy::FailoverStrategy(int retryPause, int retries, IStrategyListener *listener, bool quiet) :
+kittenpaw::FailoverStrategy::FailoverStrategy(int retryPause, int retries, IStrategyListener *listener, bool quiet) :
     m_quiet(quiet),
     m_retries(retries),
     m_retryPause(retryPause),
@@ -45,7 +45,7 @@ jdkrig::FailoverStrategy::FailoverStrategy(int retryPause, int retries, IStrateg
 }
 
 
-jdkrig::FailoverStrategy::~FailoverStrategy()
+kittenpaw::FailoverStrategy::~FailoverStrategy()
 {
     for (IClient *client : m_pools) {
         client->deleteLater();
@@ -53,7 +53,7 @@ jdkrig::FailoverStrategy::~FailoverStrategy()
 }
 
 
-void jdkrig::FailoverStrategy::add(const Pool &pool)
+void kittenpaw::FailoverStrategy::add(const Pool &pool)
 {
     IClient *client = pool.createClient(static_cast<int>(m_pools.size()), this);
 
@@ -65,7 +65,7 @@ void jdkrig::FailoverStrategy::add(const Pool &pool)
 }
 
 
-int64_t jdkrig::FailoverStrategy::submit(const JobResult &result)
+int64_t kittenpaw::FailoverStrategy::submit(const JobResult &result)
 {
     if (!isActive()) {
         return -1;
@@ -75,13 +75,13 @@ int64_t jdkrig::FailoverStrategy::submit(const JobResult &result)
 }
 
 
-void jdkrig::FailoverStrategy::connect()
+void kittenpaw::FailoverStrategy::connect()
 {
     m_pools[m_index]->connect();
 }
 
 
-void jdkrig::FailoverStrategy::resume()
+void kittenpaw::FailoverStrategy::resume()
 {
     if (!isActive()) {
         return;
@@ -91,7 +91,7 @@ void jdkrig::FailoverStrategy::resume()
 }
 
 
-void jdkrig::FailoverStrategy::setAlgo(const Algorithm &algo)
+void kittenpaw::FailoverStrategy::setAlgo(const Algorithm &algo)
 {
     for (IClient *client : m_pools) {
         client->setAlgo(algo);
@@ -99,7 +99,7 @@ void jdkrig::FailoverStrategy::setAlgo(const Algorithm &algo)
 }
 
 
-void jdkrig::FailoverStrategy::setProxy(const ProxyUrl &proxy)
+void kittenpaw::FailoverStrategy::setProxy(const ProxyUrl &proxy)
 {
     for (IClient *client : m_pools) {
         client->setProxy(proxy);
@@ -107,7 +107,7 @@ void jdkrig::FailoverStrategy::setProxy(const ProxyUrl &proxy)
 }
 
 
-void jdkrig::FailoverStrategy::stop()
+void kittenpaw::FailoverStrategy::stop()
 {
     for (auto &pool : m_pools) {
         pool->disconnect();
@@ -120,7 +120,7 @@ void jdkrig::FailoverStrategy::stop()
 }
 
 
-void jdkrig::FailoverStrategy::tick(uint64_t now)
+void kittenpaw::FailoverStrategy::tick(uint64_t now)
 {
     for (IClient *client : m_pools) {
         client->tick(now);
@@ -128,7 +128,7 @@ void jdkrig::FailoverStrategy::tick(uint64_t now)
 }
 
 
-void jdkrig::FailoverStrategy::onClose(IClient *client, int failures)
+void kittenpaw::FailoverStrategy::onClose(IClient *client, int failures)
 {
     if (failures == -1) {
         return;
@@ -149,13 +149,13 @@ void jdkrig::FailoverStrategy::onClose(IClient *client, int failures)
 }
 
 
-void jdkrig::FailoverStrategy::onLogin(IClient *client, rapidjson::Document &doc, rapidjson::Value &params)
+void kittenpaw::FailoverStrategy::onLogin(IClient *client, rapidjson::Document &doc, rapidjson::Value &params)
 {
     m_listener->onLogin(this, client, doc, params);
 }
 
 
-void jdkrig::FailoverStrategy::onJobReceived(IClient *client, const Job &job, const rapidjson::Value &params)
+void kittenpaw::FailoverStrategy::onJobReceived(IClient *client, const Job &job, const rapidjson::Value &params)
 {
     if (m_active == client->id()) {
         m_listener->onJob(this, client, job, params);
@@ -163,7 +163,7 @@ void jdkrig::FailoverStrategy::onJobReceived(IClient *client, const Job &job, co
 }
 
 
-void jdkrig::FailoverStrategy::onLoginSuccess(IClient *client)
+void kittenpaw::FailoverStrategy::onLoginSuccess(IClient *client)
 {
     int active = m_active;
 
@@ -184,13 +184,13 @@ void jdkrig::FailoverStrategy::onLoginSuccess(IClient *client)
 }
 
 
-void jdkrig::FailoverStrategy::onResultAccepted(IClient *client, const SubmitResult &result, const char *error)
+void kittenpaw::FailoverStrategy::onResultAccepted(IClient *client, const SubmitResult &result, const char *error)
 {
     m_listener->onResultAccepted(this, client, result, error);
 }
 
 
-void jdkrig::FailoverStrategy::onVerifyAlgorithm(const IClient *client, const Algorithm &algorithm, bool *ok)
+void kittenpaw::FailoverStrategy::onVerifyAlgorithm(const IClient *client, const Algorithm &algorithm, bool *ok)
 {
     m_listener->onVerifyAlgorithm(this, client, algorithm, ok);
 }

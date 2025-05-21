@@ -1,7 +1,7 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2014-2019 heapwolf    <https://github.com/heapwolf>
  * Copyright (c) 2018-2024 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2024 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2024 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -23,22 +23,22 @@
 #include "base/net/http/HttpData.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 static const char *kError  = "error";
 static const char *kStatus = "status";
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-jdkrig::HttpApiResponse::HttpApiResponse(uint64_t id) :
+kittenpaw::HttpApiResponse::HttpApiResponse(uint64_t id) :
     HttpResponse(id),
     m_doc(rapidjson::kObjectType)
 {
 }
 
 
-jdkrig::HttpApiResponse::HttpApiResponse(uint64_t id, int status) :
+kittenpaw::HttpApiResponse::HttpApiResponse(uint64_t id, int status) :
     HttpResponse(id),
     m_doc(rapidjson::kObjectType)
 {
@@ -46,7 +46,7 @@ jdkrig::HttpApiResponse::HttpApiResponse(uint64_t id, int status) :
 }
 
 
-void jdkrig::HttpApiResponse::end()
+void kittenpaw::HttpApiResponse::end()
 {
     using namespace rapidjson;
 

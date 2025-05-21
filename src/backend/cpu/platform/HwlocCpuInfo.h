@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2023 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2023 XMRig       <support@jdkrig.com>
+ * Copyright (c) 2016-2023 KITTENpaw       <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_HWLOCCPUINFO_H
-#define JDKRIG_HWLOCCPUINFO_H
+#ifndef KITTENPAW_HWLOCCPUINFO_H
+#define KITTENPAW_HWLOCCPUINFO_H
 
 
 #include "backend/cpu/platform/BasicCpuInfo.h"
@@ -26,13 +26,13 @@
 using hwloc_obj_t = struct hwloc_obj *;
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class HwlocCpuInfo : public BasicCpuInfo
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE(HwlocCpuInfo)
+    KITTENPAW_DISABLE_COPY_MOVE(HwlocCpuInfo)
 
     HwlocCpuInfo();
     ~HwlocCpuInfo() override;
@@ -65,7 +65,7 @@ private:
 };
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-#endif // JDKRIG_HWLOCCPUINFO_H
+#endif // KITTENPAW_HWLOCCPUINFO_H

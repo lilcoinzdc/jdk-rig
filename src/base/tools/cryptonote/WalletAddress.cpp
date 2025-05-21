@@ -1,8 +1,8 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2012-2013 The Cryptonote developers
  * Copyright (c) 2014-2021 The Monero Project
  * Copyright (c) 2018-2023 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2023 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2023 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@
 #include <map>
 
 
-bool jdkrig::WalletAddress::decode(const char *address, size_t size)
+bool kittenpaw::WalletAddress::decode(const char *address, size_t size)
 {
     uint64_t tf_tag = 0;
     if (size >= 4 && !strncmp(address, "TF", 2)) {
@@ -147,13 +147,13 @@ bool jdkrig::WalletAddress::decode(const char *address, size_t size)
 }
 
 
-bool jdkrig::WalletAddress::decode(const rapidjson::Value &address)
+bool kittenpaw::WalletAddress::decode(const rapidjson::Value &address)
 {
     return address.IsString() && decode(address.GetString(), address.GetStringLength());
 }
 
 
-const char *jdkrig::WalletAddress::netName() const
+const char *kittenpaw::WalletAddress::netName() const
 {
     static const std::array<const char *, 3> names = { "mainnet", "testnet", "stagenet" };
 
@@ -161,7 +161,7 @@ const char *jdkrig::WalletAddress::netName() const
 }
 
 
-const char *jdkrig::WalletAddress::typeName() const
+const char *kittenpaw::WalletAddress::typeName() const
 {
     static const std::array<const char *, 3> names = { "public", "integrated", "subaddress" };
 
@@ -169,7 +169,7 @@ const char *jdkrig::WalletAddress::typeName() const
 }
 
 
-rapidjson::Value jdkrig::WalletAddress::toJSON(rapidjson::Document &doc) const
+rapidjson::Value kittenpaw::WalletAddress::toJSON(rapidjson::Document &doc) const
 {
     using namespace rapidjson;
 
@@ -177,8 +177,8 @@ rapidjson::Value jdkrig::WalletAddress::toJSON(rapidjson::Document &doc) const
 }
 
 
-#ifdef JDKRIG_FEATURE_API
-rapidjson::Value jdkrig::WalletAddress::toAPI(rapidjson::Document &doc) const
+#ifdef KITTENPAW_FEATURE_API
+rapidjson::Value kittenpaw::WalletAddress::toAPI(rapidjson::Document &doc) const
 {
     using namespace rapidjson;
 
@@ -204,7 +204,7 @@ rapidjson::Value jdkrig::WalletAddress::toAPI(rapidjson::Document &doc) const
 #endif
 
 
-const jdkrig::WalletAddress::TagInfo &jdkrig::WalletAddress::tagInfo(uint64_t tag)
+const kittenpaw::WalletAddress::TagInfo &kittenpaw::WalletAddress::tagInfo(uint64_t tag)
 {
     static TagInfo dummy = { Coin::INVALID, MAINNET, PUBLIC, 0, 0 };
     static const std::map<uint64_t, TagInfo> tags = {

@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -31,14 +31,14 @@
 #include "version.h"
 
 
-char *jdkrig::Platform::createUserAgent()
+char *kittenpaw::Platform::createUserAgent()
 {
     constexpr const size_t max = 256;
 
     char *buf = new char[max]();
     int length = snprintf(buf, max,
                           "%s/%s (Macintosh; macOS"
-#                         ifdef JDKRIG_ARM
+#                         ifdef KITTENPAW_ARM
                           "; arm64"
 #                         else
                           "; x86_64"
@@ -55,18 +55,18 @@ char *jdkrig::Platform::createUserAgent()
 }
 
 
-bool jdkrig::Platform::setThreadAffinity(uint64_t cpu_id)
+bool kittenpaw::Platform::setThreadAffinity(uint64_t cpu_id)
 {
     return true;
 }
 
 
-void jdkrig::Platform::setProcessPriority(int)
+void kittenpaw::Platform::setProcessPriority(int)
 {
 }
 
 
-void jdkrig::Platform::setThreadPriority(int priority)
+void kittenpaw::Platform::setThreadPriority(int priority)
 {
     if (priority == -1) {
         return;
@@ -103,13 +103,13 @@ void jdkrig::Platform::setThreadPriority(int priority)
 }
 
 
-bool jdkrig::Platform::isOnBatteryPower()
+bool kittenpaw::Platform::isOnBatteryPower()
 {
     return IOPSGetTimeRemainingEstimate() != kIOPSTimeRemainingUnlimited;
 }
 
 
-uint64_t jdkrig::Platform::idleTime()
+uint64_t kittenpaw::Platform::idleTime()
 {
     uint64_t idle_time  = 0;
     const auto service  = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching("IOHIDSystem"));

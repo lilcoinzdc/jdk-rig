@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@
 #include "base/net/http/HttpData.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 static const char *kError  = "error";
@@ -58,10 +58,10 @@ static inline const char *rpcError(int code) {
 }
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-jdkrig::HttpApiRequest::HttpApiRequest(const HttpData &req, bool restricted) :
+kittenpaw::HttpApiRequest::HttpApiRequest(const HttpData &req, bool restricted) :
     ApiRequest(SOURCE_HTTP, restricted),
     m_req(req),
     m_res(req.id()),
@@ -103,7 +103,7 @@ jdkrig::HttpApiRequest::HttpApiRequest(const HttpData &req, bool restricted) :
 }
 
 
-bool jdkrig::HttpApiRequest::accept()
+bool kittenpaw::HttpApiRequest::accept()
 {
     using namespace rapidjson;
 
@@ -128,7 +128,7 @@ bool jdkrig::HttpApiRequest::accept()
 }
 
 
-const rapidjson::Value &jdkrig::HttpApiRequest::json() const
+const rapidjson::Value &kittenpaw::HttpApiRequest::json() const
 {
     if (type() == REQ_JSON_RPC) {
         return Json::getValue(m_body, "params");
@@ -138,13 +138,13 @@ const rapidjson::Value &jdkrig::HttpApiRequest::json() const
 }
 
 
-jdkrig::IApiRequest::Method jdkrig::HttpApiRequest::method() const
+kittenpaw::IApiRequest::Method kittenpaw::HttpApiRequest::method() const
 {
     return static_cast<IApiRequest::Method>(m_req.method);
 }
 
 
-void jdkrig::HttpApiRequest::done(int status)
+void kittenpaw::HttpApiRequest::done(int status)
 {
     ApiRequest::done(status);
 
@@ -172,7 +172,7 @@ void jdkrig::HttpApiRequest::done(int status)
 }
 
 
-void jdkrig::HttpApiRequest::setRpcError(int code, const char *message)
+void kittenpaw::HttpApiRequest::setRpcError(int code, const char *message)
 {
     using namespace rapidjson;
     auto &allocator = doc().GetAllocator();
@@ -185,13 +185,13 @@ void jdkrig::HttpApiRequest::setRpcError(int code, const char *message)
 }
 
 
-void jdkrig::HttpApiRequest::setRpcResult(rapidjson::Value &result)
+void kittenpaw::HttpApiRequest::setRpcResult(rapidjson::Value &result)
 {
     rpcDone(kResult, result);
 }
 
 
-void jdkrig::HttpApiRequest::rpcDone(const char *key, rapidjson::Value &value)
+void kittenpaw::HttpApiRequest::rpcDone(const char *key, rapidjson::Value &value)
 {
     ApiRequest::done(0);
 

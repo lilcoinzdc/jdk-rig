@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,14 +16,14 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_IBENCHLISTENER_H
-#define JDKRIG_IBENCHLISTENER_H
+#ifndef KITTENPAW_IBENCHLISTENER_H
+#define KITTENPAW_IBENCHLISTENER_H
 
 
 #include "base/tools/Object.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class IBackend;
@@ -32,7 +32,7 @@ class IBackend;
 class IBenchListener
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE(IBenchListener)
+    KITTENPAW_DISABLE_COPY_MOVE(IBenchListener)
 
     IBenchListener()            = default;
     virtual ~IBenchListener()   = default;
@@ -42,7 +42,7 @@ public:
 };
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif // JDKRIG_IBENCHLISTENER_H
+#endif // KITTENPAW_IBENCHLISTENER_H

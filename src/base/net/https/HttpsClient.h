@@ -1,7 +1,7 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2014-2019 heapwolf    <https://github.com/heapwolf>
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -18,8 +18,8 @@
  */
 
 
-#ifndef JDKRIG_HTTPSCLIENT_H
-#define JDKRIG_HTTPSCLIENT_H
+#ifndef KITTENPAW_HTTPSCLIENT_H
+#define KITTENPAW_HTTPSCLIENT_H
 
 
 using BIO       = struct bio_st;
@@ -32,13 +32,13 @@ using X509      = struct x509_st;
 #include "base/tools/String.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class HttpsClient : public HttpClient
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(HttpsClient)
+    KITTENPAW_DISABLE_COPY_MOVE_DEFAULT(HttpsClient)
 
     HttpsClient(const char *tag, FetchRequest &&req, const std::weak_ptr<IHttpListener> &listener);
     ~HttpsClient() override;
@@ -66,7 +66,7 @@ private:
 };
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-#endif // JDKRIG_HTTPSCLIENT_H
+#endif // KITTENPAW_HTTPSCLIENT_H

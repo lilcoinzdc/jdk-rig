@@ -1,4 +1,4 @@
-**:warning: Recent version of this page https://jdkrig.com/docs/jdkrigger/config/cpu.**
+**:warning: Recent version of this page https://kittenpaw.com/docs/kittenpawger/config/cpu.**
 
 # CPU backend
 
@@ -86,19 +86,19 @@ Thread count to initialize RandomX dataset. Auto-detect (`-1`) or any number gre
 Use AVX2 for dataset initialization. Faster on some CPUs. Auto-detect (`-1`), disabled (`0`), always enabled on CPUs that support AVX2 (`1`).
 
 #### `mode`
-RandomX jdkrigging mode: `auto`, `fast` (2 GB memory), `light` (256 MB memory).
+RandomX kittenpawging mode: `auto`, `fast` (2 GB memory), `light` (256 MB memory).
 
 #### `1gb-pages`
 Use 1GB hugepages for RandomX dataset (Linux only). Enabled (`true`) or disabled (`false`). It gives 1-3% speedup.
 
 #### `wrmsr`
-[MSR mod](https://jdkrig.com/docs/jdkrigger/randomx-optimization-guide/msr). Enabled (`true`) or disabled (`false`). It gives up to 15% speedup depending on your system. _(**Note**: Userspace MSR writes are no longer enabled by default; the flag `msr.allow_writes=on` must be set for Linux Kernels 5.9 and after.)_
+[MSR mod](https://kittenpaw.com/docs/kittenpawger/randomx-optimization-guide/msr). Enabled (`true`) or disabled (`false`). It gives up to 15% speedup depending on your system. _(**Note**: Userspace MSR writes are no longer enabled by default; the flag `msr.allow_writes=on` must be set for Linux Kernels 5.9 and after.)_
 
 #### `rdmsr`
 Restore MSR register values to their original values on exit. Used together with `wrmsr`. Enabled (`true`) or disabled (`false`).
 
 #### `cache_qos`
-[Cache QoS](https://jdkrig.com/docs/jdkrigger/randomx-optimization-guide/qos). Enabled (`true`) or disabled (`false`). It's useful when you can't or don't want to mine on all CPU cores to make jdkrigging hashrate more stable.
+[Cache QoS](https://kittenpaw.com/docs/kittenpawger/randomx-optimization-guide/qos). Enabled (`true`) or disabled (`false`). It's useful when you can't or don't want to mine on all CPU cores to make kittenpawging hashrate more stable.
 
 #### `numa`
 NUMA support (better hashrate on multi-CPU servers and Ryzen Threadripper 1xxx/2xxx). Enabled (`true`) or disabled (`false`).
@@ -118,13 +118,13 @@ Enable (`true`) or disable (`false`) huge pages support, by default `true`.
 Enable (`true`) or disable (`false`) huge pages support for RandomX JIT code, by default `false`. It gives a very small boost on Ryzen CPUs, but hashrate is unstable between launches. Use with caution.
 
 #### `hw-aes`
-Force enable (`true`) or disable (`false`) hardware AES support. Default value `null` means jdkrigger autodetect this feature. Usually don't need change this option, this option useful for some rare cases when jdkrigger can't detect hardware AES, but it available. If you force enable this option, but your hardware not support it, jdkrigger will crash.
+Force enable (`true`) or disable (`false`) hardware AES support. Default value `null` means kittenpawger autodetect this feature. Usually don't need change this option, this option useful for some rare cases when kittenpawger can't detect hardware AES, but it available. If you force enable this option, but your hardware not support it, kittenpawger will crash.
 
 #### `priority`
-Mining threads priority, value from `1` (lowest priority) to `5` (highest possible priority). Default value `null` means jdkrigger don't change threads priority at all. Setting priority higher than 2 can make your PC unresponsive.
+Mining threads priority, value from `1` (lowest priority) to `5` (highest possible priority). Default value `null` means kittenpawger don't change threads priority at all. Setting priority higher than 2 can make your PC unresponsive.
 
 #### `memory-pool` (since v4.3.0)
-Use continuous, persistent memory block for jdkrigging threads, useful for preserve huge pages allocation while algorithm switching. Possible values `false` (feature disabled, by default) or `true` or specific count of 2 MB huge pages. It helps to avoid loosing huge pages for scratchpads when RandomX dataset is updated and jdkrigging threads restart after a 2-3 days of jdkrigging.
+Use continuous, persistent memory block for kittenpawging threads, useful for preserve huge pages allocation while algorithm switching. Possible values `false` (feature disabled, by default) or `true` or specific count of 2 MB huge pages. It helps to avoid loosing huge pages for scratchpads when RandomX dataset is updated and kittenpawging threads restart after a 2-3 days of kittenpawging.
 
 #### `yield` (since v5.1.1)
 Prefer system better system response/stability `true` (default value) or maximum hashrate `false`.
@@ -133,7 +133,7 @@ Prefer system better system response/stability `true` (default value) or maximum
 Enable/configure or disable ASM optimizations. Possible values: `true`, `false`, `"intel"`, `"ryzen"`, `"bulldozer"`.
 
 #### `argon2-impl` (since v3.1.0)
-Allow override automatically detected Argon2 implementation, this option added mostly for debug purposes, default value `null` means autodetect. This is used in RandomX dataset initialization and also in some other jdkrigging algorithms. Other possible values: `"x86_64"`, `"SSE2"`, `"SSSE3"`, `"XOP"`, `"AVX2"`, `"AVX-512F"`. Manual selection has no safe guards - if your CPU doesn't support required instuctions, jdkrigger will crash.
+Allow override automatically detected Argon2 implementation, this option added mostly for debug purposes, default value `null` means autodetect. This is used in RandomX dataset initialization and also in some other kittenpawging algorithms. Other possible values: `"x86_64"`, `"SSE2"`, `"SSSE3"`, `"XOP"`, `"AVX2"`, `"AVX-512F"`. Manual selection has no safe guards - if your CPU doesn't support required instuctions, kittenpawger will crash.
 
 #### `astrobwt-max-size`
 AstroBWT algorithm: skip hashes with large stage 2 size, default: `550`, min: `400`, max: `1200`. Optimal value depends on your CPU/GPU

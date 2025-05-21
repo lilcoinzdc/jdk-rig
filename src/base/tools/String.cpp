@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@
 #include <cctype>
 
 
-jdkrig::String::String(const char *str, size_t size) :
+kittenpaw::String::String(const char *str, size_t size) :
     m_size(size)
 {
     if (str == nullptr) {
@@ -38,7 +38,7 @@ jdkrig::String::String(const char *str, size_t size) :
 }
 
 
-jdkrig::String::String(const char *str) :
+kittenpaw::String::String(const char *str) :
     m_size(str == nullptr ? 0 : strlen(str))
 {
     if (str == nullptr) {
@@ -50,7 +50,7 @@ jdkrig::String::String(const char *str) :
 }
 
 
-jdkrig::String::String(const rapidjson::Value &value)
+kittenpaw::String::String(const rapidjson::Value &value)
 {
     if (!value.IsString()) {
         return;
@@ -66,7 +66,7 @@ jdkrig::String::String(const rapidjson::Value &value)
 }
 
 
-jdkrig::String::String(const String &other) :
+kittenpaw::String::String(const String &other) :
     m_size(other.m_size)
 {
     if (other.m_data == nullptr) {
@@ -78,13 +78,13 @@ jdkrig::String::String(const String &other) :
 }
 
 
-bool jdkrig::String::isEqual(const char *str) const
+bool kittenpaw::String::isEqual(const char *str) const
 {
     return (m_data != nullptr && str != nullptr && strcmp(m_data, str) == 0) || (m_data == nullptr && str == nullptr);
 }
 
 
-bool jdkrig::String::isEqual(const String &other) const
+bool kittenpaw::String::isEqual(const String &other) const
 {
     if (m_size != other.m_size) {
         return false;
@@ -94,7 +94,7 @@ bool jdkrig::String::isEqual(const String &other) const
 }
 
 
-rapidjson::Value jdkrig::String::toJSON() const
+rapidjson::Value kittenpaw::String::toJSON() const
 {
     using namespace rapidjson;
 
@@ -102,7 +102,7 @@ rapidjson::Value jdkrig::String::toJSON() const
 }
 
 
-rapidjson::Value jdkrig::String::toJSON(rapidjson::Document &doc) const
+rapidjson::Value kittenpaw::String::toJSON(rapidjson::Document &doc) const
 {
     using namespace rapidjson;
 
@@ -110,7 +110,7 @@ rapidjson::Value jdkrig::String::toJSON(rapidjson::Document &doc) const
 }
 
 
-std::vector<jdkrig::String> jdkrig::String::split(char sep) const
+std::vector<kittenpaw::String> kittenpaw::String::split(char sep) const
 {
     std::vector<String> out;
     if (m_size == 0) {
@@ -140,7 +140,7 @@ std::vector<jdkrig::String> jdkrig::String::split(char sep) const
 }
 
 
-jdkrig::String &jdkrig::String::toLower()
+kittenpaw::String &kittenpaw::String::toLower()
 {
     if (isNull() || isEmpty()) {
         return *this;
@@ -154,7 +154,7 @@ jdkrig::String &jdkrig::String::toLower()
 }
 
 
-jdkrig::String &jdkrig::String::toUpper()
+kittenpaw::String &kittenpaw::String::toUpper()
 {
     if (isNull() || isEmpty()) {
         return *this;
@@ -168,7 +168,7 @@ jdkrig::String &jdkrig::String::toUpper()
 }
 
 
-jdkrig::String jdkrig::String::join(const std::vector<jdkrig::String> &vec, char sep)
+kittenpaw::String kittenpaw::String::join(const std::vector<kittenpaw::String> &vec, char sep)
 {
     if (vec.empty()) {
         return String();
@@ -198,7 +198,7 @@ jdkrig::String jdkrig::String::join(const std::vector<jdkrig::String> &vec, char
 }
 
 
-void jdkrig::String::copy(const char *str)
+void kittenpaw::String::copy(const char *str)
 {
     delete [] m_data;
 
@@ -216,7 +216,7 @@ void jdkrig::String::copy(const char *str)
 }
 
 
-void jdkrig::String::copy(const String &other)
+void kittenpaw::String::copy(const String &other)
 {
     if (m_size > 0 && m_size == other.m_size) {
         memcpy(m_data, other.m_data, m_size + 1);
@@ -240,7 +240,7 @@ void jdkrig::String::copy(const String &other)
 }
 
 
-void jdkrig::String::move(char *str)
+void kittenpaw::String::move(char *str)
 {
     delete [] m_data;
 
@@ -249,7 +249,7 @@ void jdkrig::String::move(char *str)
 }
 
 
-void jdkrig::String::move(String &&other)
+void kittenpaw::String::move(String &&other)
 {
     delete [] m_data;
 

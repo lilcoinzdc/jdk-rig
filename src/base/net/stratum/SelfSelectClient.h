@@ -1,8 +1,8 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2019       jtgrassie       <https://github.com/jtgrassie>
  * Copyright (c) 2021       Hansie Odendaal <https://github.com/hansieodendaal>
  * Copyright (c) 2018-2021  SChernykh       <https://github.com/SChernykh>
- * Copyright (c) 2016-2021  XMRig           <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021  KITTENpaw           <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -18,8 +18,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_SELFSELECTCLIENT_H
-#define JDKRIG_SELFSELECTCLIENT_H
+#ifndef KITTENPAW_SELFSELECTCLIENT_H
+#define KITTENPAW_SELFSELECTCLIENT_H
 
 
 #include "base/kernel/interfaces/IClient.h"
@@ -32,13 +32,13 @@
 #include <memory>
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class SelfSelectClient : public IClient, public IClientListener, public IHttpListener
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(SelfSelectClient)
+    KITTENPAW_DISABLE_COPY_MOVE_DEFAULT(SelfSelectClient)
 
     SelfSelectClient(int id, const char *agent, IClientListener *listener, bool submitToOrigin);
     ~SelfSelectClient() override;
@@ -123,7 +123,7 @@ private:
 };
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif /* JDKRIG_SELFSELECTCLIENT_H */
+#endif /* KITTENPAW_SELFSELECTCLIENT_H */

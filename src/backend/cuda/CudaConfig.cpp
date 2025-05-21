@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@
 #include "base/io/log/Log.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 static bool generated           = false;
@@ -35,7 +35,7 @@ static const char *kDevicesHint = "devices-hint";
 static const char *kEnabled     = "enabled";
 static const char *kLoader      = "loader";
 
-#ifdef JDKRIG_FEATURE_NVML
+#ifdef KITTENPAW_FEATURE_NVML
 static const char *kNvml        = "nvml";
 #endif
 
@@ -43,10 +43,10 @@ static const char *kNvml        = "nvml";
 extern template class Threads<CudaThreads>;
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-rapidjson::Value jdkrig::CudaConfig::toJSON(rapidjson::Document &doc) const
+rapidjson::Value kittenpaw::CudaConfig::toJSON(rapidjson::Document &doc) const
 {
     using namespace rapidjson;
     auto &allocator = doc.GetAllocator();
@@ -56,7 +56,7 @@ rapidjson::Value jdkrig::CudaConfig::toJSON(rapidjson::Document &doc) const
     obj.AddMember(StringRef(kEnabled),  m_enabled, allocator);
     obj.AddMember(StringRef(kLoader),   m_loader.toJSON(), allocator);
 
-#   ifdef JDKRIG_FEATURE_NVML
+#   ifdef KITTENPAW_FEATURE_NVML
     if (m_nvmlLoader.isNull()) {
         obj.AddMember(StringRef(kNvml), m_nvml, allocator);
     }
@@ -71,7 +71,7 @@ rapidjson::Value jdkrig::CudaConfig::toJSON(rapidjson::Document &doc) const
 }
 
 
-std::vector<jdkrig::CudaLaunchData> jdkrig::CudaConfig::get(const Jdkrigger *jdkrigger, const Algorithm &algorithm, const std::vector<CudaDevice> &devices) const
+std::vector<kittenpaw::CudaLaunchData> kittenpaw::CudaConfig::get(const Kittenpawger *kittenpawger, const Algorithm &algorithm, const std::vector<CudaDevice> &devices) const
 {
     auto deviceIndex = [&devices](uint32_t index) -> int {
         for (uint32_t i = 0; i < devices.size(); ++i) {
@@ -99,14 +99,14 @@ std::vector<jdkrig::CudaLaunchData> jdkrig::CudaConfig::get(const Jdkrigger *jdk
             continue;
         }
 
-        out.emplace_back(jdkrigger, algorithm, thread, devices[static_cast<size_t>(index)]);
+        out.emplace_back(kittenpawger, algorithm, thread, devices[static_cast<size_t>(index)]);
     }
 
     return out;
 }
 
 
-void jdkrig::CudaConfig::read(const rapidjson::Value &value)
+void kittenpaw::CudaConfig::read(const rapidjson::Value &value)
 {
     if (value.IsObject()) {
         m_enabled   = Json::getBool(value, kEnabled, m_enabled);
@@ -116,7 +116,7 @@ void jdkrig::CudaConfig::read(const rapidjson::Value &value)
 
         setDevicesHint(Json::getString(value, kDevicesHint));
 
-#       ifdef JDKRIG_FEATURE_NVML
+#       ifdef KITTENPAW_FEATURE_NVML
         auto &nvml = Json::getValue(value, kNvml);
         if (nvml.IsString()) {
             m_nvmlLoader = nvml.GetString();
@@ -143,7 +143,7 @@ void jdkrig::CudaConfig::read(const rapidjson::Value &value)
 }
 
 
-void jdkrig::CudaConfig::generate()
+void kittenpaw::CudaConfig::generate()
 {
     if (generated) {
         return;
@@ -168,20 +168,20 @@ void jdkrig::CudaConfig::generate()
 
     size_t count = 0;
 
-    count += jdkrig::generate<Algorithm::CN>(m_threads, devices);
-    count += jdkrig::generate<Algorithm::CN_LITE>(m_threads, devices);
-    count += jdkrig::generate<Algorithm::CN_HEAVY>(m_threads, devices);
-    count += jdkrig::generate<Algorithm::CN_PICO>(m_threads, devices);
-    count += jdkrig::generate<Algorithm::CN_FEMTO>(m_threads, devices);
-    count += jdkrig::generate<Algorithm::RANDOM_X>(m_threads, devices);
-    count += jdkrig::generate<Algorithm::KAWPOW>(m_threads, devices);
+    count += kittenpaw::generate<Algorithm::CN>(m_threads, devices);
+    count += kittenpaw::generate<Algorithm::CN_LITE>(m_threads, devices);
+    count += kittenpaw::generate<Algorithm::CN_HEAVY>(m_threads, devices);
+    count += kittenpaw::generate<Algorithm::CN_PICO>(m_threads, devices);
+    count += kittenpaw::generate<Algorithm::CN_FEMTO>(m_threads, devices);
+    count += kittenpaw::generate<Algorithm::RANDOM_X>(m_threads, devices);
+    count += kittenpaw::generate<Algorithm::KAWPOW>(m_threads, devices);
 
     generated    = true;
     m_shouldSave = count > 0;
 }
 
 
-void jdkrig::CudaConfig::setDevicesHint(const char *devicesHint)
+void kittenpaw::CudaConfig::setDevicesHint(const char *devicesHint)
 {
     if (devicesHint == nullptr) {
         return;

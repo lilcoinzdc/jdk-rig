@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2024 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2024 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2024 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -35,7 +35,7 @@
 #include "version.h"
 
 
-#ifdef JDKRIG_FEATURE_HTTP
+#ifdef KITTENPAW_FEATURE_HTTP
 #   include "base/api/Httpd.h"
 #endif
 
@@ -43,7 +43,7 @@
 #include <thread>
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 static rapidjson::Value getResources(rapidjson::Document &doc)
@@ -77,10 +77,10 @@ static rapidjson::Value getResources(rapidjson::Document &doc)
 }
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-jdkrig::Api::Api(Base *base) :
+kittenpaw::Api::Api(Base *base) :
     m_base(base),
     m_timestamp(Chrono::currentMSecsSinceEpoch())
 {
@@ -90,9 +90,9 @@ jdkrig::Api::Api(Base *base) :
 }
 
 
-jdkrig::Api::~Api()
+kittenpaw::Api::~Api()
 {
-#   ifdef JDKRIG_FEATURE_HTTP
+#   ifdef KITTENPAW_FEATURE_HTTP
     if (m_httpd) {
         m_httpd->stop();
         delete m_httpd;
@@ -102,7 +102,7 @@ jdkrig::Api::~Api()
 }
 
 
-void jdkrig::Api::request(const HttpData &req)
+void kittenpaw::Api::request(const HttpData &req)
 {
     HttpApiRequest request(req, m_base->config()->http().isRestricted());
 
@@ -110,11 +110,11 @@ void jdkrig::Api::request(const HttpData &req)
 }
 
 
-void jdkrig::Api::start()
+void kittenpaw::Api::start()
 {
     genWorkerId(m_base->config()->apiWorkerId());
 
-#   ifdef JDKRIG_FEATURE_HTTP
+#   ifdef KITTENPAW_FEATURE_HTTP
     if (!m_httpd) {
         m_httpd = new Httpd(m_base);
         if (!m_httpd->start()) {
@@ -128,9 +128,9 @@ void jdkrig::Api::start()
 }
 
 
-void jdkrig::Api::stop()
+void kittenpaw::Api::stop()
 {
-#   ifdef JDKRIG_FEATURE_HTTP
+#   ifdef KITTENPAW_FEATURE_HTTP
     if (m_httpd) {
         m_httpd->stop();
     }
@@ -138,9 +138,9 @@ void jdkrig::Api::stop()
 }
 
 
-void jdkrig::Api::tick()
+void kittenpaw::Api::tick()
 {
-#   ifdef JDKRIG_FEATURE_HTTP
+#   ifdef KITTENPAW_FEATURE_HTTP
     if (!m_httpd || !m_base->config()->http().isEnabled() || m_httpd->isBound()) {
         return;
     }
@@ -155,7 +155,7 @@ void jdkrig::Api::tick()
 }
 
 
-void jdkrig::Api::onConfigChanged(Config *config, Config *previousConfig)
+void kittenpaw::Api::onConfigChanged(Config *config, Config *previousConfig)
 {
     if (config->apiId() != previousConfig->apiId()) {
         genId(config->apiId());
@@ -167,7 +167,7 @@ void jdkrig::Api::onConfigChanged(Config *config, Config *previousConfig)
 }
 
 
-void jdkrig::Api::exec(IApiRequest &request)
+void kittenpaw::Api::exec(IApiRequest &request)
 {
     using namespace rapidjson;
 
@@ -184,25 +184,25 @@ void jdkrig::Api::exec(IApiRequest &request)
         reply.AddMember("resources",  getResources(request.doc()), allocator);
 
         Value features(kArrayType);
-#       ifdef JDKRIG_FEATURE_API
+#       ifdef KITTENPAW_FEATURE_API
         features.PushBack("api", allocator);
 #       endif
-#       ifdef JDKRIG_FEATURE_ASM
+#       ifdef KITTENPAW_FEATURE_ASM
         features.PushBack("asm", allocator);
 #       endif
-#       ifdef JDKRIG_FEATURE_HTTP
+#       ifdef KITTENPAW_FEATURE_HTTP
         features.PushBack("http", allocator);
 #       endif
-#       ifdef JDKRIG_FEATURE_HWLOC
+#       ifdef KITTENPAW_FEATURE_HWLOC
         features.PushBack("hwloc", allocator);
 #       endif
-#       ifdef JDKRIG_FEATURE_TLS
+#       ifdef KITTENPAW_FEATURE_TLS
         features.PushBack("tls", allocator);
 #       endif
-#       ifdef JDKRIG_FEATURE_OPENCL
+#       ifdef KITTENPAW_FEATURE_OPENCL
         features.PushBack("opencl", allocator);
 #       endif
-#       ifdef JDKRIG_FEATURE_CUDA
+#       ifdef KITTENPAW_FEATURE_CUDA
         features.PushBack("cuda", allocator);
 #       endif
         reply.AddMember("features", features, allocator);
@@ -220,7 +220,7 @@ void jdkrig::Api::exec(IApiRequest &request)
 }
 
 
-void jdkrig::Api::genId(const String &id)
+void kittenpaw::Api::genId(const String &id)
 {
     memset(m_id, 0, sizeof(m_id));
 
@@ -260,7 +260,7 @@ void jdkrig::Api::genId(const String &id)
 }
 
 
-void jdkrig::Api::genWorkerId(const String &id)
+void kittenpaw::Api::genWorkerId(const String &id)
 {
     m_workerId = Env::expand(id);
     if (m_workerId.isEmpty()) {

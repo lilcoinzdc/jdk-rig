@@ -1,7 +1,7 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2019 tevador     <tevador@gmail.com>
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@
 #include "crypto/rx/RxVm.h"
 
 
-randomx_vm *jdkrig::RxVm::create(RxDataset *dataset, uint8_t *scratchpad, bool softAes, const Assembly &assembly, uint32_t node)
+randomx_vm *kittenpaw::RxVm::create(RxDataset *dataset, uint8_t *scratchpad, bool softAes, const Assembly &assembly, uint32_t node)
 {
     int flags = 0;
 
@@ -50,7 +50,7 @@ randomx_vm *jdkrig::RxVm::create(RxDataset *dataset, uint8_t *scratchpad, bool s
 }
 
 
-void jdkrig::RxVm::destroy(randomx_vm* vm)
+void kittenpaw::RxVm::destroy(randomx_vm* vm)
 {
     if (vm) {
         randomx_destroy_vm(vm);

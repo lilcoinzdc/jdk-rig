@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2023 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2023 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2023 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -24,8 +24,8 @@
 #include <thread>
 
 
-#ifndef JDKRIG_OS_APPLE
-bool jdkrig::Platform::setThreadAffinity(uint64_t cpu_id)
+#ifndef KITTENPAW_OS_APPLE
+bool kittenpaw::Platform::setThreadAffinity(uint64_t cpu_id)
 {
     auto topology = Cpu::info()->topology();
     auto pu       = hwloc_get_pu_obj_by_os_index(topology, static_cast<unsigned>(cpu_id));

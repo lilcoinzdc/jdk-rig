@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_GR_HASH_H
-#define JDKRIG_GR_HASH_H
+#ifndef KITTENPAW_GR_HASH_H
+#define KITTENPAW_GR_HASH_H
 
 
 #include <cstddef>
@@ -28,7 +28,7 @@
 struct cryptonight_ctx;
 
 
-namespace jdkrig
+namespace kittenpaw
 {
 
 
@@ -47,6 +47,6 @@ void hash_octa(const uint8_t* data, size_t size, uint8_t* output, cryptonight_ct
 } // namespace ghostrider
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
-#endif // JDKRIG_GR_HASH_H
+#endif // KITTENPAW_GR_HASH_H

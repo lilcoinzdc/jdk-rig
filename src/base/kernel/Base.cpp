@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -42,31 +42,31 @@
 #endif
 
 
-#ifdef JDKRIG_FEATURE_API
+#ifdef KITTENPAW_FEATURE_API
 #   include "base/api/Api.h"
 #   include "base/api/interfaces/IApiRequest.h"
 
-namespace jdkrig {
+namespace kittenpaw {
 
 static const char *kConfigPathV1 = "/1/config";
 static const char *kConfigPathV2 = "/2/config";
 
-} // namespace jdkrig
+} // namespace kittenpaw
 #endif
 
 
-#ifdef JDKRIG_FEATURE_EMBEDDED_CONFIG
+#ifdef KITTENPAW_FEATURE_EMBEDDED_CONFIG
 #   include "core/config/Config_default.h"
 #endif
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class BasePrivate
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(BasePrivate)
+    KITTENPAW_DISABLE_COPY_MOVE_DEFAULT(BasePrivate)
 
 
     inline explicit BasePrivate(Process *process)
@@ -79,7 +79,7 @@ public:
 
     inline ~BasePrivate()
     {
-#       ifdef JDKRIG_FEATURE_API
+#       ifdef KITTENPAW_FEATURE_API
         delete api;
 #       endif
 
@@ -140,12 +140,12 @@ private:
             return config.release();
         }
 
-        chain.addFile(Process::location(Process::HomeLocation, ".config" JDKRIG_DIR_SEPARATOR APP_ID ".json"));
+        chain.addFile(Process::location(Process::HomeLocation, ".config" KITTENPAW_DIR_SEPARATOR APP_ID ".json"));
         if (read(chain, config)) {
             return config.release();
         }
 
-#       ifdef JDKRIG_FEATURE_EMBEDDED_CONFIG
+#       ifdef KITTENPAW_FEATURE_EMBEDDED_CONFIG
         chain.addRaw(default_config);
 
         if (read(chain, config)) {
@@ -158,31 +158,31 @@ private:
 };
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-jdkrig::Base::Base(Process *process)
+kittenpaw::Base::Base(Process *process)
     : d_ptr(new BasePrivate(process))
 {
 
 }
 
 
-jdkrig::Base::~Base()
+kittenpaw::Base::~Base()
 {
     delete d_ptr;
 }
 
 
-bool jdkrig::Base::isReady() const
+bool kittenpaw::Base::isReady() const
 {
     return d_ptr->config != nullptr;
 }
 
 
-int jdkrig::Base::init()
+int kittenpaw::Base::init()
 {
-#   ifdef JDKRIG_FEATURE_API
+#   ifdef KITTENPAW_FEATURE_API
     d_ptr->api = new Api(this);
     d_ptr->api->addListener(this);
 #   endif
@@ -210,9 +210,9 @@ int jdkrig::Base::init()
 }
 
 
-void jdkrig::Base::start()
+void kittenpaw::Base::start()
 {
-#   ifdef JDKRIG_FEATURE_API
+#   ifdef KITTENPAW_FEATURE_API
     api()->start();
 #   endif
 
@@ -226,9 +226,9 @@ void jdkrig::Base::start()
 }
 
 
-void jdkrig::Base::stop()
+void kittenpaw::Base::stop()
 {
-#   ifdef JDKRIG_FEATURE_API
+#   ifdef KITTENPAW_FEATURE_API
     api()->stop();
 #   endif
 
@@ -237,7 +237,7 @@ void jdkrig::Base::stop()
 }
 
 
-jdkrig::Api *jdkrig::Base::api() const
+kittenpaw::Api *kittenpaw::Base::api() const
 {
     assert(d_ptr->api != nullptr);
 
@@ -245,13 +245,13 @@ jdkrig::Api *jdkrig::Base::api() const
 }
 
 
-bool jdkrig::Base::isBackground() const
+bool kittenpaw::Base::isBackground() const
 {
     return d_ptr->config && d_ptr->config->isBackground();
 }
 
 
-bool jdkrig::Base::reload(const rapidjson::Value &json)
+bool kittenpaw::Base::reload(const rapidjson::Value &json)
 {
     JsonReader reader(json);
     if (reader.isEmpty()) {
@@ -279,7 +279,7 @@ bool jdkrig::Base::reload(const rapidjson::Value &json)
 }
 
 
-jdkrig::Config *jdkrig::Base::config() const
+kittenpaw::Config *kittenpaw::Base::config() const
 {
     assert(d_ptr->config != nullptr);
 
@@ -287,13 +287,13 @@ jdkrig::Config *jdkrig::Base::config() const
 }
 
 
-void jdkrig::Base::addListener(IBaseListener *listener)
+void kittenpaw::Base::addListener(IBaseListener *listener)
 {
     d_ptr->listeners.push_back(listener);
 }
 
 
-void jdkrig::Base::onFileChanged(const String &fileName)
+void kittenpaw::Base::onFileChanged(const String &fileName)
 {
     LOG_WARN("%s " YELLOW("\"%s\" was changed, reloading configuration"), Tags::config(), fileName.data());
 
@@ -313,8 +313,8 @@ void jdkrig::Base::onFileChanged(const String &fileName)
 }
 
 
-#ifdef JDKRIG_FEATURE_API
-void jdkrig::Base::onRequest(IApiRequest &request)
+#ifdef KITTENPAW_FEATURE_API
+void kittenpaw::Base::onRequest(IApiRequest &request)
 {
     if (request.method() == IApiRequest::METHOD_GET) {
         if (request.url() == kConfigPathV1 || request.url() == kConfigPathV2) {

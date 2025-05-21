@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -17,8 +17,8 @@
  */
 
 
-#ifndef JDKRIG_THREADS_H
-#define JDKRIG_THREADS_H
+#ifndef KITTENPAW_THREADS_H
+#define KITTENPAW_THREADS_H
 
 
 #include <map>
@@ -30,7 +30,7 @@
 #include "base/tools/String.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 template <class T>
@@ -72,7 +72,7 @@ private:
 };
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif /* JDKRIG_THREADS_H */
+#endif /* KITTENPAW_THREADS_H */

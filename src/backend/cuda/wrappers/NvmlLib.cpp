@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@
 
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 static uv_lib_t nvmlLib;
@@ -71,10 +71,10 @@ char NvmlLib::m_nvmlVersion[80]     = { 0 };
 String NvmlLib::m_loader;
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-bool jdkrig::NvmlLib::init(const char *fileName)
+bool kittenpaw::NvmlLib::init(const char *fileName)
 {
     if (!m_initialized) {
         m_loader      = fileName;
@@ -86,13 +86,13 @@ bool jdkrig::NvmlLib::init(const char *fileName)
 }
 
 
-const char *jdkrig::NvmlLib::lastError() noexcept
+const char *kittenpaw::NvmlLib::lastError() noexcept
 {
     return uv_dlerror(&nvmlLib);
 }
 
 
-void jdkrig::NvmlLib::close()
+void kittenpaw::NvmlLib::close()
 {
     if (m_ready) {
         pNvmlShutdown();
@@ -102,7 +102,7 @@ void jdkrig::NvmlLib::close()
 }
 
 
-bool jdkrig::NvmlLib::assign(std::vector<CudaDevice> &devices)
+bool kittenpaw::NvmlLib::assign(std::vector<CudaDevice> &devices)
 {
     uint32_t count = 0;
     if (pNvmlDeviceGetCount(&count) != NVML_SUCCESS) {
@@ -131,7 +131,7 @@ bool jdkrig::NvmlLib::assign(std::vector<CudaDevice> &devices)
 }
 
 
-NvmlHealth jdkrig::NvmlLib::health(nvmlDevice_t device)
+NvmlHealth kittenpaw::NvmlLib::health(nvmlDevice_t device)
 {
     if (!device) {
         return {};
@@ -168,7 +168,7 @@ NvmlHealth jdkrig::NvmlLib::health(nvmlDevice_t device)
 }
 
 
-bool jdkrig::NvmlLib::dlopen()
+bool kittenpaw::NvmlLib::dlopen()
 {
     if (!m_loader.isNull()) {
         return uv_dlopen(m_loader, &nvmlLib) == 0;
@@ -189,7 +189,7 @@ bool jdkrig::NvmlLib::dlopen()
 }
 
 
-bool jdkrig::NvmlLib::load()
+bool kittenpaw::NvmlLib::load()
 {
     try {
         DLSYM(NvmlDeviceGetClockInfo);

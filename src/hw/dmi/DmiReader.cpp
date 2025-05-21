@@ -1,8 +1,8 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2000-2002 Alan Cox     <alan@redhat.com>
  * Copyright (c) 2005-2020 Jean Delvare <jdelvare@suse.de>
  * Copyright (c) 2018-2021 SChernykh    <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig        <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw        <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@
 #include "hw/dmi/DmiTools.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 static void dmi_get_header(dmi_header *h, uint8_t *data)
@@ -36,11 +36,11 @@ static void dmi_get_header(dmi_header *h, uint8_t *data)
 }
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-#ifdef JDKRIG_FEATURE_API
-rapidjson::Value jdkrig::DmiReader::toJSON(rapidjson::Document &doc) const
+#ifdef KITTENPAW_FEATURE_API
+rapidjson::Value kittenpaw::DmiReader::toJSON(rapidjson::Document &doc) const
 {
     rapidjson::Value obj;
     toJSON(obj, doc);
@@ -49,7 +49,7 @@ rapidjson::Value jdkrig::DmiReader::toJSON(rapidjson::Document &doc) const
 }
 
 
-void jdkrig::DmiReader::toJSON(rapidjson::Value &out, rapidjson::Document &doc) const
+void kittenpaw::DmiReader::toJSON(rapidjson::Value &out, rapidjson::Document &doc) const
 {
     using namespace rapidjson;
 
@@ -71,7 +71,7 @@ void jdkrig::DmiReader::toJSON(rapidjson::Value &out, rapidjson::Document &doc) 
 #endif
 
 
-bool jdkrig::DmiReader::decode(uint8_t *buf, const Cleanup &cleanup)
+bool kittenpaw::DmiReader::decode(uint8_t *buf, const Cleanup &cleanup)
 {
     const bool rc = decode(buf);
 
@@ -81,7 +81,7 @@ bool jdkrig::DmiReader::decode(uint8_t *buf, const Cleanup &cleanup)
 }
 
 
-bool jdkrig::DmiReader::decode(uint8_t *buf)
+bool kittenpaw::DmiReader::decode(uint8_t *buf)
 {
     if (!buf) {
         return false;
@@ -104,7 +104,7 @@ bool jdkrig::DmiReader::decode(uint8_t *buf)
             next++;
         }
 
-#       ifdef JDKRIG_OS_APPLE
+#       ifdef KITTENPAW_OS_APPLE
         while ((unsigned long)(next - buf + 1) < m_size && (next[0] == 0 && next[1] == 0))
 #       endif
         next += 2;

@@ -1,7 +1,7 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2014-2019 heapwolf    <https://github.com/heapwolf>
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -32,16 +32,16 @@
 #include <uv.h>
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 static const char *kCRLF = "\r\n";
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-jdkrig::HttpClient::HttpClient(const char *tag, FetchRequest &&req, const std::weak_ptr<IHttpListener> &listener) :
+kittenpaw::HttpClient::HttpClient(const char *tag, FetchRequest &&req, const std::weak_ptr<IHttpListener> &listener) :
     HttpContext(HTTP_RESPONSE, listener),
     m_tag(tag),
     m_req(std::move(req))
@@ -57,7 +57,7 @@ jdkrig::HttpClient::HttpClient(const char *tag, FetchRequest &&req, const std::w
 }
 
 
-bool jdkrig::HttpClient::connect()
+bool kittenpaw::HttpClient::connect()
 {
     m_dns = Dns::resolve(m_req.host, this);
 
@@ -65,7 +65,7 @@ bool jdkrig::HttpClient::connect()
 }
 
 
-void jdkrig::HttpClient::onResolved(const DnsRecords &records, int status, const char *error)
+void kittenpaw::HttpClient::onResolved(const DnsRecords &records, int status, const char *error)
 {
     this->status = status;
     m_dns.reset();
@@ -85,13 +85,13 @@ void jdkrig::HttpClient::onResolved(const DnsRecords &records, int status, const
 }
 
 
-void jdkrig::HttpClient::onTimer(const Timer *)
+void kittenpaw::HttpClient::onTimer(const Timer *)
 {
     close(UV_ETIMEDOUT);
 }
 
 
-void jdkrig::HttpClient::handshake()
+void kittenpaw::HttpClient::handshake()
 {
     headers.insert({ "Host",       host() });
     headers.insert({ "Connection", "close" });
@@ -117,7 +117,7 @@ void jdkrig::HttpClient::handshake()
 }
 
 
-void jdkrig::HttpClient::read(const char *data, size_t size)
+void kittenpaw::HttpClient::read(const char *data, size_t size)
 {
     if (!parse(data, size)) {
         close(UV_EPROTO);
@@ -125,7 +125,7 @@ void jdkrig::HttpClient::read(const char *data, size_t size)
 }
 
 
-void jdkrig::HttpClient::onConnect(uv_connect_t *req, int status)
+void kittenpaw::HttpClient::onConnect(uv_connect_t *req, int status)
 {
     auto client = static_cast<HttpClient *>(req->data);
     delete req;

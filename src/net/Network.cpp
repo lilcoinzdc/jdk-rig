@@ -1,7 +1,7 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2019      Howard Chu  <https://github.com/hyc>
  * Copyright (c) 2018-2023 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2023 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2023 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -33,19 +33,19 @@
 #include "base/tools/Timer.h"
 #include "core/config/Config.h"
 #include "core/Controller.h"
-#include "core/Jdkrigger.h"
+#include "core/Kittenpawger.h"
 #include "net/JobResult.h"
 #include "net/JobResults.h"
 #include "net/strategies/DonateStrategy.h"
 
 
-#ifdef JDKRIG_FEATURE_API
+#ifdef KITTENPAW_FEATURE_API
 #   include "base/api/Api.h"
 #   include "base/api/interfaces/IApiRequest.h"
 #endif
 
 
-#ifdef JDKRIG_FEATURE_BENCHMARK
+#ifdef KITTENPAW_FEATURE_BENCHMARK
 #   include "backend/common/benchmark/BenchState.h"
 #endif
 
@@ -57,13 +57,13 @@
 #include <memory>
 
 
-jdkrig::Network::Network(Controller *controller) :
+kittenpaw::Network::Network(Controller *controller) :
     m_controller(controller)
 {
     JobResults::setListener(this, controller->config()->cpu().isHwAES());
     controller->addListener(this);
 
-#   ifdef JDKRIG_FEATURE_API
+#   ifdef KITTENPAW_FEATURE_API
     controller->api()->addListener(this);
 #   endif
 
@@ -80,7 +80,7 @@ jdkrig::Network::Network(Controller *controller) :
 }
 
 
-jdkrig::Network::~Network()
+kittenpaw::Network::~Network()
 {
     JobResults::stop();
 
@@ -91,13 +91,13 @@ jdkrig::Network::~Network()
 }
 
 
-void jdkrig::Network::connect()
+void kittenpaw::Network::connect()
 {
     m_strategy->connect();
 }
 
 
-void jdkrig::Network::execCommand(char command)
+void kittenpaw::Network::execCommand(char command)
 {
     switch (command) {
     case 's':
@@ -116,7 +116,7 @@ void jdkrig::Network::execCommand(char command)
 }
 
 
-void jdkrig::Network::onActive(IStrategy *strategy, IClient *client)
+void kittenpaw::Network::onActive(IStrategy *strategy, IClient *client)
 {
     if (m_donate && m_donate == strategy) {
         LOG_NOTICE("%s " WHITE_BOLD("dev donate started"), Tags::network());
@@ -125,7 +125,7 @@ void jdkrig::Network::onActive(IStrategy *strategy, IClient *client)
 
     const auto &pool = client->pool();
 
-#   ifdef JDKRIG_FEATURE_BENCHMARK
+#   ifdef KITTENPAW_FEATURE_BENCHMARK
     if (pool.mode() == Pool::MODE_BENCHMARK) {
         return;
     }
@@ -147,7 +147,7 @@ void jdkrig::Network::onActive(IStrategy *strategy, IClient *client)
 }
 
 
-void jdkrig::Network::onConfigChanged(Config *config, Config *previousConfig)
+void kittenpaw::Network::onConfigChanged(Config *config, Config *previousConfig)
 {
     if (config->pools() == previousConfig->pools() || !config->pools().active()) {
         return;
@@ -163,7 +163,7 @@ void jdkrig::Network::onConfigChanged(Config *config, Config *previousConfig)
 }
 
 
-void jdkrig::Network::onJob(IStrategy *strategy, IClient *client, const Job &job, const rapidjson::Value &)
+void kittenpaw::Network::onJob(IStrategy *strategy, IClient *client, const Job &job, const rapidjson::Value &)
 {
     if (m_donate && m_donate->isActive() && m_donate != strategy) {
         return;
@@ -173,7 +173,7 @@ void jdkrig::Network::onJob(IStrategy *strategy, IClient *client, const Job &job
 }
 
 
-void jdkrig::Network::onJobResult(const JobResult &result)
+void kittenpaw::Network::onJobResult(const JobResult &result)
 {
     if (result.index == 1 && m_donate) {
         m_donate->submit(result);
@@ -184,12 +184,12 @@ void jdkrig::Network::onJobResult(const JobResult &result)
 }
 
 
-void jdkrig::Network::onLogin(IStrategy *, IClient *client, rapidjson::Document &doc, rapidjson::Value &params)
+void kittenpaw::Network::onLogin(IStrategy *, IClient *client, rapidjson::Document &doc, rapidjson::Value &params)
 {
     using namespace rapidjson;
     auto &allocator = doc.GetAllocator();
 
-    Algorithms algorithms     = m_controller->jdkrigger()->algorithms();
+    Algorithms algorithms     = m_controller->kittenpawger()->algorithms();
     const Algorithm algorithm = client->pool().algorithm();
     if (algorithm.isValid()) {
         const size_t index = static_cast<size_t>(std::distance(algorithms.begin(), std::find(algorithms.begin(), algorithms.end(), algorithm)));
@@ -208,7 +208,7 @@ void jdkrig::Network::onLogin(IStrategy *, IClient *client, rapidjson::Document 
 }
 
 
-void jdkrig::Network::onPause(IStrategy *strategy)
+void kittenpaw::Network::onPause(IStrategy *strategy)
 {
     if (m_donate && m_donate == strategy) {
         LOG_NOTICE("%s " WHITE_BOLD("dev donate finished"), Tags::network());
@@ -218,12 +218,12 @@ void jdkrig::Network::onPause(IStrategy *strategy)
     if (!m_strategy->isActive()) {
         LOG_ERR("%s " RED("no active pools, stop selling hein"), Tags::network());
 
-        return m_controller->jdkrigger()->pause();
+        return m_controller->kittenpawger()->pause();
     }
 }
 
 
-void jdkrig::Network::onResultAccepted(IStrategy *, IClient *, const SubmitResult &result, const char *error)
+void kittenpaw::Network::onResultAccepted(IStrategy *, IClient *, const SubmitResult &result, const char *error)
 {
     uint64_t diff     = result.diff;
     const char *scale = NetworkState::scaleDiff(diff);
@@ -239,9 +239,9 @@ void jdkrig::Network::onResultAccepted(IStrategy *, IClient *, const SubmitResul
 }
 
 
-void jdkrig::Network::onVerifyAlgorithm(IStrategy *, const IClient *, const Algorithm &algorithm, bool *ok)
+void kittenpaw::Network::onVerifyAlgorithm(IStrategy *, const IClient *, const Algorithm &algorithm, bool *ok)
 {
-    if (!m_controller->jdkrigger()->isEnabled(algorithm)) {
+    if (!m_controller->kittenpawger()->isEnabled(algorithm)) {
         *ok = false;
 
         return;
@@ -249,8 +249,8 @@ void jdkrig::Network::onVerifyAlgorithm(IStrategy *, const IClient *, const Algo
 }
 
 
-#ifdef JDKRIG_FEATURE_API
-void jdkrig::Network::onRequest(IApiRequest &request)
+#ifdef KITTENPAW_FEATURE_API
+void kittenpaw::Network::onRequest(IApiRequest &request)
 {
     if (request.type() == IApiRequest::REQ_SUMMARY) {
         request.accept();
@@ -262,9 +262,9 @@ void jdkrig::Network::onRequest(IApiRequest &request)
 #endif
 
 
-void jdkrig::Network::setJob(IClient *client, const Job &job, bool donate)
+void kittenpaw::Network::setJob(IClient *client, const Job &job, bool donate)
 {
-#   ifdef JDKRIG_FEATURE_BENCHMARK
+#   ifdef KITTENPAW_FEATURE_BENCHMARK
     if (!BenchState::size())
 #   endif
     {
@@ -295,11 +295,11 @@ void jdkrig::Network::setJob(IClient *client, const Job &job, bool donate)
         static_cast<DonateStrategy *>(m_donate)->update(client, job);
     }
 
-    m_controller->jdkrigger()->setJob(job, donate);
+    m_controller->kittenpawger()->setJob(job, donate);
 }
 
 
-void jdkrig::Network::tick()
+void kittenpaw::Network::tick()
 {
     const uint64_t now = Chrono::steadyMSecs();
 
@@ -309,14 +309,14 @@ void jdkrig::Network::tick()
         m_donate->tick(now);
     }
 
-#   ifdef JDKRIG_FEATURE_API
+#   ifdef KITTENPAW_FEATURE_API
     m_controller->api()->tick();
 #   endif
 }
 
 
-#ifdef JDKRIG_FEATURE_API
-void jdkrig::Network::getConnection(rapidjson::Value &reply, rapidjson::Document &doc, int version) const
+#ifdef KITTENPAW_FEATURE_API
+void kittenpaw::Network::getConnection(rapidjson::Value &reply, rapidjson::Document &doc, int version) const
 {
     using namespace rapidjson;
     auto &allocator = doc.GetAllocator();
@@ -326,7 +326,7 @@ void jdkrig::Network::getConnection(rapidjson::Value &reply, rapidjson::Document
 }
 
 
-void jdkrig::Network::getResults(rapidjson::Value &reply, rapidjson::Document &doc, int version) const
+void kittenpaw::Network::getResults(rapidjson::Value &reply, rapidjson::Document &doc, int version) const
 {
     using namespace rapidjson;
     auto &allocator = doc.GetAllocator();

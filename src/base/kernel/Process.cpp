@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -27,7 +27,7 @@
 #include "version.h"
 
 
-#ifdef JDKRIG_OS_WIN
+#ifdef KITTENPAW_OS_WIN
 #   ifdef _MSC_VER
 #       include <direct.h>
 #       define MKDIR(path) _mkdir(path.c_str());
@@ -39,7 +39,7 @@
 #endif
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 static char pathBuf[520];
@@ -80,7 +80,7 @@ static std::string getPath(Process::Location location)
         }
 
         auto path       = std::string(pathBuf, size);
-        const auto pos  = path.rfind(*JDKRIG_DIR_SEPARATOR);
+        const auto pos  = path.rfind(*KITTENPAW_DIR_SEPARATOR);
 
         if (pos != std::string::npos) {
             return path.substr(0, pos);
@@ -114,19 +114,19 @@ static void setDataDir(const char *path)
 }
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-jdkrig::Process::Process(int argc, char **argv) :
+kittenpaw::Process::Process(int argc, char **argv) :
     m_arguments(argc, argv)
 {
     srand(static_cast<unsigned int>(Chrono::currentMSecsSinceEpoch() ^ reinterpret_cast<uintptr_t>(this)));
 
     setDataDir(m_arguments.value("--data-dir", "-d"));
 
-#   ifdef JDKRIG_SHARED_DATADIR
+#   ifdef KITTENPAW_SHARED_DATADIR
     if (dataDir.empty()) {
-        dataDir = fmt::format("{}" JDKRIG_DIR_SEPARATOR ".jdkrig" JDKRIG_DIR_SEPARATOR, location(HomeLocation));
+        dataDir = fmt::format("{}" KITTENPAW_DIR_SEPARATOR ".kittenpaw" KITTENPAW_DIR_SEPARATOR, location(HomeLocation));
         MKDIR(dataDir);
 
         dataDir += APP_KIND;
@@ -138,7 +138,7 @@ jdkrig::Process::Process(int argc, char **argv) :
 }
 
 
-int jdkrig::Process::ppid()
+int kittenpaw::Process::ppid()
 {
 #   if UV_VERSION_HEX >= 0x011000
     return uv_os_getppid();
@@ -148,7 +148,7 @@ int jdkrig::Process::ppid()
 }
 
 
-jdkrig::String jdkrig::Process::exepath()
+kittenpaw::String kittenpaw::Process::exepath()
 {
     size_t size = sizeof(pathBuf);
 
@@ -156,12 +156,12 @@ jdkrig::String jdkrig::Process::exepath()
 }
 
 
-jdkrig::String jdkrig::Process::location(Location location, const char *fileName)
+kittenpaw::String kittenpaw::Process::location(Location location, const char *fileName)
 {
     auto path = getPath(location);
     if (path.empty() || fileName == nullptr) {
         return path.c_str();
     }
 
-    return fmt::format("{}" JDKRIG_DIR_SEPARATOR "{}", path, fileName).c_str();
+    return fmt::format("{}" KITTENPAW_DIR_SEPARATOR "{}", path, fileName).c_str();
 }

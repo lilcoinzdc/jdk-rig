@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_CN_ALGO_H
-#define JDKRIG_CN_ALGO_H
+#ifndef KITTENPAW_CN_ALGO_H
+#define KITTENPAW_CN_ALGO_H
 
 
 #include <cstddef>
@@ -27,7 +27,7 @@
 #include "base/crypto/Algorithm.h"
 
 
-namespace jdkrig
+namespace kittenpaw
 {
 
 
@@ -57,11 +57,11 @@ public:
 
         case Algorithm::CN_FAST:
         case Algorithm::CN_HALF:
-#       ifdef JDKRIG_ALGO_CN_LITE
+#       ifdef KITTENPAW_ALGO_CN_LITE
         case Algorithm::CN_LITE_0:
         case Algorithm::CN_LITE_1:
 #       endif
-#       ifdef JDKRIG_ALGO_CN_HEAVY
+#       ifdef KITTENPAW_ALGO_CN_HEAVY
         case Algorithm::CN_HEAVY_0:
         case Algorithm::CN_HEAVY_TUBE:
         case Algorithm::CN_HEAVY_XHV:
@@ -77,13 +77,13 @@ public:
         case Algorithm::CN_DOUBLE:
             return CN_ITER * 2;
 
-#       ifdef JDKRIG_ALGO_CN_PICO
+#       ifdef KITTENPAW_ALGO_CN_PICO
         case Algorithm::CN_PICO_0:
         case Algorithm::CN_PICO_TLO:
             return CN_ITER / 8;
 #       endif
 
-#       ifdef JDKRIG_ALGO_CN_FEMTO
+#       ifdef KITTENPAW_ALGO_CN_FEMTO
         case Algorithm::CN_UPX2:
             return CN_ITER / 32;
 #       endif
@@ -97,19 +97,19 @@ public:
 
     inline static uint32_t mask(Algorithm::Id algo)
     {
-#       ifdef JDKRIG_ALGO_CN_PICO
+#       ifdef KITTENPAW_ALGO_CN_PICO
         if (algo == Algorithm::CN_PICO_0) {
             return 0x1FFF0;
         }
 #       endif
 
-#       ifdef JDKRIG_ALGO_CN_FEMTO
+#       ifdef KITTENPAW_ALGO_CN_FEMTO
         if (algo == Algorithm::CN_UPX2) {
             return 0x1FFF0;
         }
 #       endif
 
-#       ifdef JDKRIG_ALGO_GHOSTRIDER
+#       ifdef KITTENPAW_ALGO_GHOSTRIDER
         if (algo == Algorithm::CN_GR_1) {
             return 0x3FFF0;
         }
@@ -147,7 +147,7 @@ template<> constexpr inline uint32_t CnAlgo<Algorithm::CN_UPX2>::iterations() co
 template<> constexpr inline uint32_t CnAlgo<Algorithm::CN_PICO_0>::mask() const             { return 0x1FFF0; }
 template<> constexpr inline uint32_t CnAlgo<Algorithm::CN_UPX2>::mask() const               { return 0x1FFF0; }
 
-#ifdef JDKRIG_ALGO_GHOSTRIDER
+#ifdef KITTENPAW_ALGO_GHOSTRIDER
 template<> constexpr inline uint32_t CnAlgo<Algorithm::CN_GR_0>::iterations() const         { return CN_ITER / 4; }
 template<> constexpr inline uint32_t CnAlgo<Algorithm::CN_GR_1>::iterations() const         { return CN_ITER / 4; }
 template<> constexpr inline uint32_t CnAlgo<Algorithm::CN_GR_2>::iterations() const         { return CN_ITER / 2; }
@@ -160,7 +160,7 @@ template<> constexpr inline uint32_t CnAlgo<Algorithm::CN_GR_5>::mask() const   
 #endif
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif /* JDKRIG_CN_ALGO_H */
+#endif /* KITTENPAW_CN_ALGO_H */

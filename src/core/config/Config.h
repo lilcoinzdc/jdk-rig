@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_CONFIG_H
-#define JDKRIG_CONFIG_H
+#ifndef KITTENPAW_CONFIG_H
+#define KITTENPAW_CONFIG_H
 
 
 #include <cstdint>
@@ -29,7 +29,7 @@
 #include "base/tools/Object.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class ConfigPrivate;
@@ -42,24 +42,24 @@ class RxConfig;
 class Config : public BaseConfig
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE(Config);
+    KITTENPAW_DISABLE_COPY_MOVE(Config);
 
     static const char *kPauseOnBattery;
     static const char *kPauseOnActive;
 
-#   ifdef JDKRIG_FEATURE_OPENCL
+#   ifdef KITTENPAW_FEATURE_OPENCL
     static const char *kOcl;
 #   endif
 
-#   ifdef JDKRIG_FEATURE_CUDA
+#   ifdef KITTENPAW_FEATURE_CUDA
     static const char *kCuda;
 #   endif
 
-#   if defined(JDKRIG_FEATURE_NVML) || defined (JDKRIG_FEATURE_ADL)
+#   if defined(KITTENPAW_FEATURE_NVML) || defined (KITTENPAW_FEATURE_ADL)
     static const char *kHealthPrintTime;
 #   endif
 
-#   ifdef JDKRIG_FEATURE_DMI
+#   ifdef KITTENPAW_FEATURE_DMI
     static const char *kDMI;
 #   endif
 
@@ -72,25 +72,25 @@ public:
     const CpuConfig &cpu() const;
     uint32_t idleTime() const;
 
-#   ifdef JDKRIG_FEATURE_OPENCL
+#   ifdef KITTENPAW_FEATURE_OPENCL
     const OclConfig &cl() const;
 #   endif
 
-#   ifdef JDKRIG_FEATURE_CUDA
+#   ifdef KITTENPAW_FEATURE_CUDA
     const CudaConfig &cuda() const;
 #   endif
 
-#   ifdef JDKRIG_ALGO_RANDOMX
+#   ifdef KITTENPAW_ALGO_RANDOMX
     const RxConfig &rx() const;
 #   endif
 
-#   if defined(JDKRIG_FEATURE_NVML) || defined (JDKRIG_FEATURE_ADL)
+#   if defined(KITTENPAW_FEATURE_NVML) || defined (KITTENPAW_FEATURE_ADL)
     uint32_t healthPrintTime() const;
 #   else
     uint32_t healthPrintTime() const        { return 0; }
 #   endif
 
-#   ifdef JDKRIG_FEATURE_DMI
+#   ifdef KITTENPAW_FEATURE_DMI
     bool isDMI() const;
 #   else
     static constexpr inline bool isDMI()    { return false; }
@@ -105,7 +105,7 @@ private:
 };
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif /* JDKRIG_CONFIG_H */
+#endif /* KITTENPAW_CONFIG_H */

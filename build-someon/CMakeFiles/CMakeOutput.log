@@ -462,7 +462,7 @@ gmake[1]: Leaving directory '/mnt/jdk-rig/build-someon/CMakeFiles/CMakeTmp'
 
 Source file was:
 int main() { return 0; }
-Deterjdkrigging if the include file syslog.h exists passed with the following output:
+Deterkittenpawging if the include file syslog.h exists passed with the following output:
 Change Dir: /mnt/jdk-rig/build-someon/CMakeFiles/CMakeTmp
 
 Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_a931c/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_a931c.dir/build.make CMakeFiles/cmTC_a931c.dir/build
@@ -476,7 +476,7 @@ gmake[1]: Leaving directory '/mnt/jdk-rig/build-someon/CMakeFiles/CMakeTmp'
 
 
 
-Deterjdkrigging if the __builtin___clear_cache exist passed with the following output:
+Deterkittenpawging if the __builtin___clear_cache exist passed with the following output:
 Change Dir: /mnt/jdk-rig/build-someon/CMakeFiles/CMakeTmp
 
 Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_21911/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_21911.dir/build.make CMakeFiles/cmTC_21911.dir/build

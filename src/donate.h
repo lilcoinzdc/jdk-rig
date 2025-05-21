@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2022 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2022 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2022 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,19 +16,19 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_DONATE_H
-#define JDKRIG_DONATE_H
+#ifndef KITTENPAW_DONATE_H
+#define KITTENPAW_DONATE_H
 
 
 /*
  * Dev donation.
  *
- * Percentage of your hashing power that you want to donate to the developer can be 0% but supports XMRig Development.
+ * Percentage of your hashing power that you want to donate to the developer can be 0% but supports KITTENpaw Development.
  *
  * Example of how it works for the setting of 1%:
- * Your jdkrigger will mine into your usual pool for a random time (in a range from 49.5 to 148.5 minutes),
+ * Your kittenpawger will mine into your usual pool for a random time (in a range from 49.5 to 148.5 minutes),
  * then switch to the developer's pool for 1 minute, then switch again to your pool for 99 minutes
- * and then switch again to developer's pool for 1 minute; these rounds will continue until the jdkrigger stops.
+ * and then switch again to developer's pool for 1 minute; these rounds will continue until the kittenpawger stops.
  *
  * Randomised only on the first round to prevent waves on the donation pool.
  *
@@ -41,4 +41,4 @@ constexpr const int kDefaultDonateLevel = 0;
 constexpr const int kMinimumDonateLevel = 0;
 
 
-#endif // JDKRIG_DONATE_H
+#endif // KITTENPAW_DONATE_H

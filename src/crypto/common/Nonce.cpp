@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -20,17 +20,17 @@
 #include "crypto/common/Nonce.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 std::atomic<bool> Nonce::m_paused = {true};
 std::atomic<uint64_t>  Nonce::m_sequence[Nonce::MAX] = { {1}, {1}, {1} };
 std::atomic<uint64_t> Nonce::m_nonces[2] = { {0}, {0} };
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-bool jdkrig::Nonce::next(uint8_t index, uint32_t *nonce, uint32_t reserveCount, uint64_t mask)
+bool kittenpaw::Nonce::next(uint8_t index, uint32_t *nonce, uint32_t reserveCount, uint64_t mask)
 {
     mask &= 0x7FFFFFFFFFFFFFFFULL;
     if (reserveCount == 0 || mask < reserveCount - 1) {
@@ -65,7 +65,7 @@ bool jdkrig::Nonce::next(uint8_t index, uint32_t *nonce, uint32_t reserveCount, 
 }
 
 
-void jdkrig::Nonce::stop()
+void kittenpaw::Nonce::stop()
 {
     pause(false);
 
@@ -75,7 +75,7 @@ void jdkrig::Nonce::stop()
 }
 
 
-void jdkrig::Nonce::touch()
+void kittenpaw::Nonce::touch()
 {
     for (auto &i : m_sequence) {
         i++;

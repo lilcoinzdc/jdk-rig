@@ -1,7 +1,7 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2019 tevador     <tevador@gmail.com>
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@
 #include "crypto/rx/RxAlgo.h"
 
 
-jdkrig::Algorithm::Id jdkrig::RxAlgo::apply(Algorithm::Id algorithm)
+kittenpaw::Algorithm::Id kittenpaw::RxAlgo::apply(Algorithm::Id algorithm)
 {
     randomx_apply_config(*base(algorithm));
 
@@ -29,7 +29,7 @@ jdkrig::Algorithm::Id jdkrig::RxAlgo::apply(Algorithm::Id algorithm)
 }
 
 
-const RandomX_ConfigurationBase *jdkrig::RxAlgo::base(Algorithm::Id algorithm)
+const RandomX_ConfigurationBase *kittenpaw::RxAlgo::base(Algorithm::Id algorithm)
 {
     switch (algorithm) {
     case Algorithm::RX_WOW:
@@ -55,25 +55,25 @@ const RandomX_ConfigurationBase *jdkrig::RxAlgo::base(Algorithm::Id algorithm)
 }
 
 
-uint32_t jdkrig::RxAlgo::version(Algorithm::Id algorithm)
+uint32_t kittenpaw::RxAlgo::version(Algorithm::Id algorithm)
 {
     return algorithm == Algorithm::RX_WOW ? 103 : 104;
 }
 
 
-uint32_t jdkrig::RxAlgo::programCount(Algorithm::Id algorithm)
+uint32_t kittenpaw::RxAlgo::programCount(Algorithm::Id algorithm)
 {
     return base(algorithm)->ProgramCount;
 }
 
 
-uint32_t jdkrig::RxAlgo::programIterations(Algorithm::Id algorithm)
+uint32_t kittenpaw::RxAlgo::programIterations(Algorithm::Id algorithm)
 {
     return base(algorithm)->ProgramIterations;
 }
 
 
-uint32_t jdkrig::RxAlgo::programSize(Algorithm::Id algorithm)
+uint32_t kittenpaw::RxAlgo::programSize(Algorithm::Id algorithm)
 {
     return base(algorithm)->ProgramSize;
 }

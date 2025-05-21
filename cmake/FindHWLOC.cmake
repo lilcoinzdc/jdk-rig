@@ -1,7 +1,7 @@
 find_path(
     HWLOC_INCLUDE_DIR
     NAMES hwloc.h
-    PATHS "${JDKRIG_DEPS}" ENV "JDKRIG_DEPS"
+    PATHS "${KITTENPAW_DEPS}" ENV "KITTENPAW_DEPS"
     PATH_SUFFIXES "include"
     NO_DEFAULT_PATH
 )
@@ -11,7 +11,7 @@ find_path(HWLOC_INCLUDE_DIR NAMES hwloc.h)
 find_library(
     HWLOC_LIBRARY
     NAMES hwloc.a hwloc libhwloc
-    PATHS "${JDKRIG_DEPS}" ENV "JDKRIG_DEPS"
+    PATHS "${KITTENPAW_DEPS}" ENV "KITTENPAW_DEPS"
     PATH_SUFFIXES "lib"
     NO_DEFAULT_PATH
 )

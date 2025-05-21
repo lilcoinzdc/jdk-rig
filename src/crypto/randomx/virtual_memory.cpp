@@ -34,7 +34,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 void* allocExecutableMemory(std::size_t bytes, bool hugePages) {
-    void *mem = jdkrig::VirtualMemory::allocateExecutableMemory(bytes, hugePages);
+    void *mem = kittenpaw::VirtualMemory::allocateExecutableMemory(bytes, hugePages);
     if (mem == nullptr) {
         throw std::runtime_error("Failed to allocate executable memory");
     }
@@ -44,7 +44,7 @@ void* allocExecutableMemory(std::size_t bytes, bool hugePages) {
 
 
 void* allocLargePagesMemory(std::size_t bytes) {
-    void *mem = jdkrig::VirtualMemory::allocateLargePagesMemory(bytes);
+    void *mem = kittenpaw::VirtualMemory::allocateLargePagesMemory(bytes);
     if (mem == nullptr) {
         throw std::runtime_error("Failed to allocate large pages memory");
     }
@@ -54,5 +54,5 @@ void* allocLargePagesMemory(std::size_t bytes) {
 
 
 void freePagedMemory(void* ptr, std::size_t bytes) {
-    jdkrig::VirtualMemory::freeLargePagesMemory(ptr, bytes);
+    kittenpaw::VirtualMemory::freeLargePagesMemory(ptr, bytes);
 }

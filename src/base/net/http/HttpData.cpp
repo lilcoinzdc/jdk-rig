@@ -1,7 +1,7 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2014-2019 heapwolf    <https://github.com/heapwolf>
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -99,7 +99,7 @@ enum http_status
 };
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 const std::string HttpData::kApplicationJson    = "application/json";
@@ -119,10 +119,10 @@ static const char *http_status_str(enum http_status s)
 }
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-bool jdkrig::HttpData::isJSON() const
+bool kittenpaw::HttpData::isJSON() const
 {
     if (!headers.count(kContentTypeL)) {
         return false;
@@ -134,13 +134,13 @@ bool jdkrig::HttpData::isJSON() const
 }
 
 
-const char *jdkrig::HttpData::methodName() const
+const char *kittenpaw::HttpData::methodName() const
 {
     return llhttp_method_name(static_cast<llhttp_method>(method));
 }
 
 
-rapidjson::Document jdkrig::HttpData::json() const
+rapidjson::Document kittenpaw::HttpData::json() const
 {
     if (status < 0) {
         throw std::runtime_error(statusName());
@@ -167,7 +167,7 @@ rapidjson::Document jdkrig::HttpData::json() const
 }
 
 
-const char *jdkrig::HttpData::statusName(int status)
+const char *kittenpaw::HttpData::statusName(int status)
 {
     if (status < 0) {
         return uv_strerror(status);

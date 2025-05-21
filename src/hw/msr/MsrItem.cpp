@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@
 #include <cstdio>
 
 
-jdkrig::MsrItem::MsrItem(const rapidjson::Value &value)
+kittenpaw::MsrItem::MsrItem(const rapidjson::Value &value)
 {
     if (!value.IsString()) {
         return;
@@ -41,13 +41,13 @@ jdkrig::MsrItem::MsrItem(const rapidjson::Value &value)
 }
 
 
-rapidjson::Value jdkrig::MsrItem::toJSON(rapidjson::Document &doc) const
+rapidjson::Value kittenpaw::MsrItem::toJSON(rapidjson::Document &doc) const
 {
     return toString().toJSON(doc);
 }
 
 
-jdkrig::String jdkrig::MsrItem::toString() const
+kittenpaw::String kittenpaw::MsrItem::toString() const
 {
     constexpr size_t size = 48;
 

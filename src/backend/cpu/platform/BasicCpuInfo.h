@@ -1,7 +1,7 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2017-2019 XMR-Stak    <https://github.com/fireice-uk>, <https://github.com/psychocrypt>
  * Copyright (c) 2018-2023 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2023 XMRig       <support@jdkrig.com>
+ * Copyright (c) 2016-2023 KITTENpaw       <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -17,8 +17,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_BASICCPUINFO_H
-#define JDKRIG_BASICCPUINFO_H
+#ifndef KITTENPAW_BASICCPUINFO_H
+#define KITTENPAW_BASICCPUINFO_H
 
 
 #include "backend/cpu/interfaces/ICpuInfo.h"
@@ -27,7 +27,7 @@
 #include <bitset>
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class BasicCpuInfo : public ICpuInfo
@@ -65,7 +65,7 @@ protected:
     inline Vendor vendor() const override                       { return m_vendor; }
     inline uint32_t model() const override
     {
-#   ifndef JDKRIG_ARM
+#   ifndef KITTENPAW_ARM
         return m_model;
 #   else
         return 0;
@@ -80,7 +80,7 @@ protected:
     Vendor m_vendor         = VENDOR_UNKNOWN;
 
 private:
-#   ifndef JDKRIG_ARM
+#   ifndef KITTENPAW_ARM
     uint32_t m_procInfo     = 0;
     uint32_t m_family       = 0;
     uint32_t m_model        = 0;
@@ -93,7 +93,7 @@ private:
 };
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-#endif // JDKRIG_BASICCPUINFO_H
+#endif // KITTENPAW_BASICCPUINFO_H

@@ -77,7 +77,7 @@ static void store_block(void *output, const block *src) {
 
 /***************Memory functions*****************/
 
-int jdkrig_ar2_allocate_memory(const argon2_context *context, argon2_instance_t *instance) {
+int kittenpaw_ar2_allocate_memory(const argon2_context *context, argon2_instance_t *instance) {
     size_t blocks = instance->memory_blocks;
     size_t memory_size = blocks * ARGON2_BLOCK_SIZE;
 
@@ -106,10 +106,10 @@ int jdkrig_ar2_allocate_memory(const argon2_context *context, argon2_instance_t 
     return ARGON2_OK;
 }
 
-void jdkrig_ar2_free_memory(const argon2_context *context, const argon2_instance_t *instance) {
+void kittenpaw_ar2_free_memory(const argon2_context *context, const argon2_instance_t *instance) {
     size_t memory_size = instance->memory_blocks * ARGON2_BLOCK_SIZE;
 
-    jdkrig_ar2_clear_internal_memory(instance->memory, memory_size);
+    kittenpaw_ar2_clear_internal_memory(instance->memory, memory_size);
 
     if (instance->keep_memory) {
         /* user-supplied memory -- do not free */
@@ -123,7 +123,7 @@ void jdkrig_ar2_free_memory(const argon2_context *context, const argon2_instance
     }
 }
 
-void NOT_OPTIMIZED jdkrig_ar2_secure_wipe_memory(void *v, size_t n) {
+void NOT_OPTIMIZED kittenpaw_ar2_secure_wipe_memory(void *v, size_t n) {
 #if defined(_MSC_VER) && VC_GE_2005(_MSC_VER)
     SecureZeroMemory(v, n);
 #elif defined memset_s
@@ -138,13 +138,13 @@ void NOT_OPTIMIZED jdkrig_ar2_secure_wipe_memory(void *v, size_t n) {
 
 /* Memory clear flag defaults to true. */
 int FLAG_clear_internal_memory = 0;
-void jdkrig_ar2_clear_internal_memory(void *v, size_t n) {
+void kittenpaw_ar2_clear_internal_memory(void *v, size_t n) {
     if (FLAG_clear_internal_memory && v) {
-        jdkrig_ar2_secure_wipe_memory(v, n);
+        kittenpaw_ar2_secure_wipe_memory(v, n);
     }
 }
 
-void jdkrig_ar2_finalize(const argon2_context *context, argon2_instance_t *instance) {
+void kittenpaw_ar2_finalize(const argon2_context *context, argon2_instance_t *instance) {
     if (context != NULL && instance != NULL && context->out != NULL) {
         block blockhash;
         uint32_t l;
@@ -162,21 +162,21 @@ void jdkrig_ar2_finalize(const argon2_context *context, argon2_instance_t *insta
         {
             uint8_t blockhash_bytes[ARGON2_BLOCK_SIZE];
             store_block(blockhash_bytes, &blockhash);
-            jdkrig_ar2_blake2b_long(context->out, context->outlen, blockhash_bytes, ARGON2_BLOCK_SIZE);
+            kittenpaw_ar2_blake2b_long(context->out, context->outlen, blockhash_bytes, ARGON2_BLOCK_SIZE);
             /* clear blockhash and blockhash_bytes */
-            jdkrig_ar2_clear_internal_memory(blockhash.v, ARGON2_BLOCK_SIZE);
-            jdkrig_ar2_clear_internal_memory(blockhash_bytes, ARGON2_BLOCK_SIZE);
+            kittenpaw_ar2_clear_internal_memory(blockhash.v, ARGON2_BLOCK_SIZE);
+            kittenpaw_ar2_clear_internal_memory(blockhash_bytes, ARGON2_BLOCK_SIZE);
         }
 
         if (instance->print_internals) {
             print_tag(context->out, context->outlen);
         }
 
-        jdkrig_ar2_free_memory(context, instance);
+        kittenpaw_ar2_free_memory(context, instance);
     }
 }
 
-uint32_t jdkrig_ar2_index_alpha(const argon2_instance_t *instance, const argon2_position_t *position, uint32_t pseudo_rand, int same_lane) {
+uint32_t kittenpaw_ar2_index_alpha(const argon2_instance_t *instance, const argon2_position_t *position, uint32_t pseudo_rand, int same_lane) {
     /*
      * Pass 0:
      *      This lane : all already finished segments plus already constructed
@@ -252,7 +252,7 @@ static int fill_memory_blocks_st(argon2_instance_t *instance) {
         for (s = 0; s < ARGON2_SYNC_POINTS; ++s) {
             for (l = 0; l < instance->lanes; ++l) {
                 argon2_position_t position = { r, l, (uint8_t)s, 0 };
-                jdkrig_ar2_fill_segment(instance, position);
+                kittenpaw_ar2_fill_segment(instance, position);
             }
         }
 
@@ -263,7 +263,7 @@ static int fill_memory_blocks_st(argon2_instance_t *instance) {
     return ARGON2_OK;
 }
 
-int jdkrig_ar2_fill_memory_blocks(argon2_instance_t *instance) {
+int kittenpaw_ar2_fill_memory_blocks(argon2_instance_t *instance) {
     if (instance == NULL || instance->lanes == 0) {
         return ARGON2_INCORRECT_PARAMETER;
     }
@@ -271,7 +271,7 @@ int jdkrig_ar2_fill_memory_blocks(argon2_instance_t *instance) {
     return fill_memory_blocks_st(instance);
 }
 
-int jdkrig_ar2_validate_inputs(const argon2_context *context) {
+int kittenpaw_ar2_validate_inputs(const argon2_context *context) {
     if (NULL == context) {
         return ARGON2_INCORRECT_PARAMETER;
     }
@@ -398,7 +398,7 @@ int jdkrig_ar2_validate_inputs(const argon2_context *context) {
     return ARGON2_OK;
 }
 
-void jdkrig_ar2_fill_first_blocks(uint8_t *blockhash, const argon2_instance_t *instance) {
+void kittenpaw_ar2_fill_first_blocks(uint8_t *blockhash, const argon2_instance_t *instance) {
     uint32_t l;
     /* Make the first and second block in each lane as G(H0||0||i) or
        G(H0||1||i) */
@@ -407,17 +407,17 @@ void jdkrig_ar2_fill_first_blocks(uint8_t *blockhash, const argon2_instance_t *i
 
         store32(blockhash + ARGON2_PREHASH_DIGEST_LENGTH, 0);
         store32(blockhash + ARGON2_PREHASH_DIGEST_LENGTH + 4, l);
-        jdkrig_ar2_blake2b_long(blockhash_bytes, ARGON2_BLOCK_SIZE, blockhash, ARGON2_PREHASH_SEED_LENGTH);
+        kittenpaw_ar2_blake2b_long(blockhash_bytes, ARGON2_BLOCK_SIZE, blockhash, ARGON2_PREHASH_SEED_LENGTH);
         load_block(&instance->memory[l * instance->lane_length + 0], blockhash_bytes);
 
         store32(blockhash + ARGON2_PREHASH_DIGEST_LENGTH, 1);
-        jdkrig_ar2_blake2b_long(blockhash_bytes, ARGON2_BLOCK_SIZE, blockhash, ARGON2_PREHASH_SEED_LENGTH);
+        kittenpaw_ar2_blake2b_long(blockhash_bytes, ARGON2_BLOCK_SIZE, blockhash, ARGON2_PREHASH_SEED_LENGTH);
         load_block(&instance->memory[l * instance->lane_length + 1], blockhash_bytes);
     }
-    jdkrig_ar2_clear_internal_memory(blockhash_bytes, ARGON2_BLOCK_SIZE);
+    kittenpaw_ar2_clear_internal_memory(blockhash_bytes, ARGON2_BLOCK_SIZE);
 }
 
-void jdkrig_ar2_initial_hash(uint8_t *blockhash, argon2_context *context,
+void kittenpaw_ar2_initial_hash(uint8_t *blockhash, argon2_context *context,
                   argon2_type type) {
     blake2b_state BlakeHash;
     uint8_t value[sizeof(uint32_t)];
@@ -426,70 +426,70 @@ void jdkrig_ar2_initial_hash(uint8_t *blockhash, argon2_context *context,
         return;
     }
 
-    jdkrig_ar2_blake2b_init(&BlakeHash, ARGON2_PREHASH_DIGEST_LENGTH);
+    kittenpaw_ar2_blake2b_init(&BlakeHash, ARGON2_PREHASH_DIGEST_LENGTH);
 
     store32(&value, context->lanes);
-    jdkrig_ar2_blake2b_update(&BlakeHash, (const uint8_t *)&value, sizeof(value));
+    kittenpaw_ar2_blake2b_update(&BlakeHash, (const uint8_t *)&value, sizeof(value));
 
     store32(&value, context->outlen);
-    jdkrig_ar2_blake2b_update(&BlakeHash, (const uint8_t *)&value, sizeof(value));
+    kittenpaw_ar2_blake2b_update(&BlakeHash, (const uint8_t *)&value, sizeof(value));
 
     store32(&value, context->m_cost);
-    jdkrig_ar2_blake2b_update(&BlakeHash, (const uint8_t *)&value, sizeof(value));
+    kittenpaw_ar2_blake2b_update(&BlakeHash, (const uint8_t *)&value, sizeof(value));
 
     store32(&value, context->t_cost);
-    jdkrig_ar2_blake2b_update(&BlakeHash, (const uint8_t *)&value, sizeof(value));
+    kittenpaw_ar2_blake2b_update(&BlakeHash, (const uint8_t *)&value, sizeof(value));
 
     store32(&value, context->version);
-    jdkrig_ar2_blake2b_update(&BlakeHash, (const uint8_t *)&value, sizeof(value));
+    kittenpaw_ar2_blake2b_update(&BlakeHash, (const uint8_t *)&value, sizeof(value));
 
     store32(&value, (uint32_t)type);
-    jdkrig_ar2_blake2b_update(&BlakeHash, (const uint8_t *)&value, sizeof(value));
+    kittenpaw_ar2_blake2b_update(&BlakeHash, (const uint8_t *)&value, sizeof(value));
 
     store32(&value, context->pwdlen);
-    jdkrig_ar2_blake2b_update(&BlakeHash, (const uint8_t *)&value, sizeof(value));
+    kittenpaw_ar2_blake2b_update(&BlakeHash, (const uint8_t *)&value, sizeof(value));
 
     if (context->pwd != NULL) {
-        jdkrig_ar2_blake2b_update(&BlakeHash, (const uint8_t *)context->pwd,
+        kittenpaw_ar2_blake2b_update(&BlakeHash, (const uint8_t *)context->pwd,
                        context->pwdlen);
 
         if (context->flags & ARGON2_FLAG_CLEAR_PASSWORD) {
-            jdkrig_ar2_secure_wipe_memory(context->pwd, context->pwdlen);
+            kittenpaw_ar2_secure_wipe_memory(context->pwd, context->pwdlen);
             context->pwdlen = 0;
         }
     }
 
     store32(&value, context->saltlen);
-    jdkrig_ar2_blake2b_update(&BlakeHash, (const uint8_t *)&value, sizeof(value));
+    kittenpaw_ar2_blake2b_update(&BlakeHash, (const uint8_t *)&value, sizeof(value));
 
     if (context->salt != NULL) {
-        jdkrig_ar2_blake2b_update(&BlakeHash, (const uint8_t *)context->salt,
+        kittenpaw_ar2_blake2b_update(&BlakeHash, (const uint8_t *)context->salt,
                        context->saltlen);
     }
 
     store32(&value, context->secretlen);
-    jdkrig_ar2_blake2b_update(&BlakeHash, (const uint8_t *)&value, sizeof(value));
+    kittenpaw_ar2_blake2b_update(&BlakeHash, (const uint8_t *)&value, sizeof(value));
 
     if (context->secret != NULL) {
-        jdkrig_ar2_blake2b_update(&BlakeHash, (const uint8_t *)context->secret, context->secretlen);
+        kittenpaw_ar2_blake2b_update(&BlakeHash, (const uint8_t *)context->secret, context->secretlen);
 
         if (context->flags & ARGON2_FLAG_CLEAR_SECRET) {
-            jdkrig_ar2_secure_wipe_memory(context->secret, context->secretlen);
+            kittenpaw_ar2_secure_wipe_memory(context->secret, context->secretlen);
             context->secretlen = 0;
         }
     }
 
     store32(&value, context->adlen);
-    jdkrig_ar2_blake2b_update(&BlakeHash, (const uint8_t *)&value, sizeof(value));
+    kittenpaw_ar2_blake2b_update(&BlakeHash, (const uint8_t *)&value, sizeof(value));
 
     if (context->ad != NULL) {
-        jdkrig_ar2_blake2b_update(&BlakeHash, (const uint8_t *)context->ad, context->adlen);
+        kittenpaw_ar2_blake2b_update(&BlakeHash, (const uint8_t *)context->ad, context->adlen);
     }
 
-    jdkrig_ar2_blake2b_final(&BlakeHash, blockhash, ARGON2_PREHASH_DIGEST_LENGTH);
+    kittenpaw_ar2_blake2b_final(&BlakeHash, blockhash, ARGON2_PREHASH_DIGEST_LENGTH);
 }
 
-int jdkrig_ar2_initialize(argon2_instance_t *instance, argon2_context *context) {
+int kittenpaw_ar2_initialize(argon2_instance_t *instance, argon2_context *context) {
     uint8_t blockhash[ARGON2_PREHASH_SEED_LENGTH];
     int result = ARGON2_OK;
 
@@ -499,7 +499,7 @@ int jdkrig_ar2_initialize(argon2_instance_t *instance, argon2_context *context) 
 
     /* 1. Memory allocation */
 
-    result = jdkrig_ar2_allocate_memory(context, instance);
+    result = kittenpaw_ar2_allocate_memory(context, instance);
     if (result != ARGON2_OK) {
         return result;
     }
@@ -508,9 +508,9 @@ int jdkrig_ar2_initialize(argon2_instance_t *instance, argon2_context *context) 
     /* H_0 + 8 extra bytes to produce the first blocks */
     /* uint8_t blockhash[ARGON2_PREHASH_SEED_LENGTH]; */
     /* Hashing all inputs */
-    jdkrig_ar2_initial_hash(blockhash, context, instance->type);
+    kittenpaw_ar2_initial_hash(blockhash, context, instance->type);
     /* Zeroing 8 extra bytes */
-    jdkrig_ar2_clear_internal_memory(blockhash + ARGON2_PREHASH_DIGEST_LENGTH, ARGON2_PREHASH_SEED_LENGTH - ARGON2_PREHASH_DIGEST_LENGTH);
+    kittenpaw_ar2_clear_internal_memory(blockhash + ARGON2_PREHASH_DIGEST_LENGTH, ARGON2_PREHASH_SEED_LENGTH - ARGON2_PREHASH_DIGEST_LENGTH);
 
     if (instance->print_internals) {
         initial_kat(blockhash, context, instance->type);
@@ -518,9 +518,9 @@ int jdkrig_ar2_initialize(argon2_instance_t *instance, argon2_context *context) 
 
     /* 3. Creating first blocks, we always have at least two blocks in a slice
      */
-    jdkrig_ar2_fill_first_blocks(blockhash, instance);
+    kittenpaw_ar2_fill_first_blocks(blockhash, instance);
     /* Clearing the hash */
-    jdkrig_ar2_clear_internal_memory(blockhash, ARGON2_PREHASH_SEED_LENGTH);
+    kittenpaw_ar2_clear_internal_memory(blockhash, ARGON2_PREHASH_SEED_LENGTH);
 
     return ARGON2_OK;
 }

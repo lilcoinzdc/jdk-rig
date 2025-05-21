@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2023 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2023 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2023 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,14 +16,14 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_CPU_H
-#define JDKRIG_CPU_H
+#ifndef KITTENPAW_CPU_H
+#define KITTENPAW_CPU_H
 
 
 #include "backend/cpu/interfaces/ICpuInfo.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class Cpu
@@ -37,7 +37,7 @@ public:
 };
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-#endif // JDKRIG_CPU_H
+#endif // KITTENPAW_CPU_H

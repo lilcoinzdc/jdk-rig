@@ -32,24 +32,24 @@ if (WITH_HWLOC)
         set(CPUID_LIB ${HWLOC_LIBRARY})
     endif()
 
-    add_definitions(/DJDKRIG_FEATURE_HWLOC)
+    add_definitions(/DKITTENPAW_FEATURE_HWLOC)
 
     if (HWLOC_DEBUG)
-        add_definitions(/DJDKRIG_HWLOC_DEBUG)
+        add_definitions(/DKITTENPAW_HWLOC_DEBUG)
     endif()
 
     list(APPEND HEADERS_BACKEND_CPU src/backend/cpu/platform/HwlocCpuInfo.h)
     list(APPEND SOURCES_BACKEND_CPU src/backend/cpu/platform/HwlocCpuInfo.cpp)
 else()
-    remove_definitions(/DJDKRIG_FEATURE_HWLOC)
+    remove_definitions(/DKITTENPAW_FEATURE_HWLOC)
 
     set(CPUID_LIB "")
 endif()
 
-if (JDKRIG_ARM)
+if (KITTENPAW_ARM)
     list(APPEND SOURCES_BACKEND_CPU src/backend/cpu/platform/BasicCpuInfo_arm.cpp)
 
-    if (JDKRIG_OS_UNIX)
+    if (KITTENPAW_OS_UNIX)
         list(APPEND SOURCES_BACKEND_CPU src/backend/cpu/platform/lscpu_arm.cpp)
     endif()
 else()

@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -35,16 +35,16 @@
 #include <uv.h>
 
 
-#ifdef JDKRIG_FEATURE_TLS
+#ifdef KITTENPAW_FEATURE_TLS
 #   include <openssl/opensslv.h>
 #endif
 
-#ifdef JDKRIG_FEATURE_HWLOC
+#ifdef KITTENPAW_FEATURE_HWLOC
 #   include "backend/cpu/Cpu.h"
 #endif
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 const char *BaseConfig::kApi            = "api";
@@ -64,15 +64,15 @@ const char *BaseConfig::kVerbose        = "verbose";
 const char *BaseConfig::kWatch          = "watch";
 
 
-#ifdef JDKRIG_FEATURE_TLS
+#ifdef KITTENPAW_FEATURE_TLS
 const char *BaseConfig::kTls            = "tls";
 #endif
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-bool jdkrig::BaseConfig::read(const IJsonReader &reader, const char *fileName)
+bool kittenpaw::BaseConfig::read(const IJsonReader &reader, const char *fileName)
 {
     m_fileName = fileName;
 
@@ -90,7 +90,7 @@ bool jdkrig::BaseConfig::read(const IJsonReader &reader, const char *fileName)
     m_printTime         = std::min(reader.getUint(kPrintTime, m_printTime), 3600U);
     m_title             = reader.getValue(kTitle);
 
-#   ifdef JDKRIG_FEATURE_TLS
+#   ifdef KITTENPAW_FEATURE_TLS
     m_tls = reader.getValue(kTls);
 #   endif
 
@@ -112,7 +112,7 @@ bool jdkrig::BaseConfig::read(const IJsonReader &reader, const char *fileName)
 }
 
 
-bool jdkrig::BaseConfig::save()
+bool kittenpaw::BaseConfig::save()
 {
     if (m_fileName.isNull()) {
         return false;
@@ -130,7 +130,7 @@ bool jdkrig::BaseConfig::save()
 }
 
 
-void jdkrig::BaseConfig::printVersions()
+void kittenpaw::BaseConfig::printVersions()
 {
     char buf[256] = { 0 };
 
@@ -146,7 +146,7 @@ void jdkrig::BaseConfig::printVersions()
 
     std::string libs;
 
-#   if defined(JDKRIG_FEATURE_TLS)
+#   if defined(KITTENPAW_FEATURE_TLS)
     {
 #       if defined(LIBRESSL_VERSION_TEXT)
         snprintf(buf, sizeof buf, "LibreSSL/%s ", LIBRESSL_VERSION_TEXT + 9);
@@ -159,7 +159,7 @@ void jdkrig::BaseConfig::printVersions()
     }
 #   endif
 
-#   if defined(JDKRIG_FEATURE_HWLOC)
+#   if defined(KITTENPAW_FEATURE_HWLOC)
     libs += Cpu::info()->backend();
 #   endif
 
@@ -167,7 +167,7 @@ void jdkrig::BaseConfig::printVersions()
 }
 
 
-void jdkrig::BaseConfig::setVerbose(const rapidjson::Value &value)
+void kittenpaw::BaseConfig::setVerbose(const rapidjson::Value &value)
 {
     if (value.IsBool()) {
         Log::setVerbose(value.GetBool() ? 1 : 0);

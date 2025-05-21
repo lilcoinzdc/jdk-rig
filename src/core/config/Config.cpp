@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -31,22 +31,22 @@
 #include "crypto/common/Assembly.h"
 
 
-#ifdef JDKRIG_ALGO_RANDOMX
+#ifdef KITTENPAW_ALGO_RANDOMX
 #   include "crypto/rx/RxConfig.h"
 #endif
 
 
-#ifdef JDKRIG_FEATURE_OPENCL
+#ifdef KITTENPAW_FEATURE_OPENCL
 #   include "backend/opencl/OclConfig.h"
 #endif
 
 
-#ifdef JDKRIG_FEATURE_CUDA
+#ifdef KITTENPAW_FEATURE_CUDA
 #   include "backend/cuda/CudaConfig.h"
 #endif
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 constexpr static uint32_t kIdleTime     = 60U;
@@ -56,19 +56,19 @@ const char *Config::kPauseOnBattery     = "pause-on-battery";
 const char *Config::kPauseOnActive      = "pause-on-active";
 
 
-#ifdef JDKRIG_FEATURE_OPENCL
+#ifdef KITTENPAW_FEATURE_OPENCL
 const char *Config::kOcl                = "opencl";
 #endif
 
-#ifdef JDKRIG_FEATURE_CUDA
+#ifdef KITTENPAW_FEATURE_CUDA
 const char *Config::kCuda               = "cuda";
 #endif
 
-#if defined(JDKRIG_FEATURE_NVML) || defined (JDKRIG_FEATURE_ADL)
+#if defined(KITTENPAW_FEATURE_NVML) || defined (KITTENPAW_FEATURE_ADL)
 const char *Config::kHealthPrintTime    = "health-print-time";
 #endif
 
-#ifdef JDKRIG_FEATURE_DMI
+#ifdef KITTENPAW_FEATURE_DMI
 const char *Config::kDMI                = "dmi";
 #endif
 
@@ -80,23 +80,23 @@ public:
     CpuConfig cpu;
     uint32_t idleTime   = 0;
 
-#   ifdef JDKRIG_ALGO_RANDOMX
+#   ifdef KITTENPAW_ALGO_RANDOMX
     RxConfig rx;
 #   endif
 
-#   ifdef JDKRIG_FEATURE_OPENCL
+#   ifdef KITTENPAW_FEATURE_OPENCL
     OclConfig cl;
 #   endif
 
-#   ifdef JDKRIG_FEATURE_CUDA
+#   ifdef KITTENPAW_FEATURE_CUDA
     CudaConfig cuda;
 #   endif
 
-#   if defined(JDKRIG_FEATURE_NVML) || defined (JDKRIG_FEATURE_ADL)
+#   if defined(KITTENPAW_FEATURE_NVML) || defined (KITTENPAW_FEATURE_ADL)
     uint32_t healthPrintTime = 60U;
 #   endif
 
-#   ifdef JDKRIG_FEATURE_DMI
+#   ifdef KITTENPAW_FEATURE_DMI
     bool dmi = true;
 #   endif
 
@@ -111,92 +111,92 @@ public:
     }
 };
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-jdkrig::Config::Config() :
+kittenpaw::Config::Config() :
     d_ptr(new ConfigPrivate())
 {
 }
 
 
-jdkrig::Config::~Config()
+kittenpaw::Config::~Config()
 {
     delete d_ptr;
 }
 
 
-bool jdkrig::Config::isPauseOnBattery() const
+bool kittenpaw::Config::isPauseOnBattery() const
 {
     return d_ptr->pauseOnBattery;
 }
 
 
-const jdkrig::CpuConfig &jdkrig::Config::cpu() const
+const kittenpaw::CpuConfig &kittenpaw::Config::cpu() const
 {
     return d_ptr->cpu;
 }
 
 
-uint32_t jdkrig::Config::idleTime() const
+uint32_t kittenpaw::Config::idleTime() const
 {
     return d_ptr->idleTime * 1000U;
 }
 
 
-#ifdef JDKRIG_FEATURE_OPENCL
-const jdkrig::OclConfig &jdkrig::Config::cl() const
+#ifdef KITTENPAW_FEATURE_OPENCL
+const kittenpaw::OclConfig &kittenpaw::Config::cl() const
 {
     return d_ptr->cl;
 }
 #endif
 
 
-#ifdef JDKRIG_FEATURE_CUDA
-const jdkrig::CudaConfig &jdkrig::Config::cuda() const
+#ifdef KITTENPAW_FEATURE_CUDA
+const kittenpaw::CudaConfig &kittenpaw::Config::cuda() const
 {
     return d_ptr->cuda;
 }
 #endif
 
 
-#ifdef JDKRIG_ALGO_RANDOMX
-const jdkrig::RxConfig &jdkrig::Config::rx() const
+#ifdef KITTENPAW_ALGO_RANDOMX
+const kittenpaw::RxConfig &kittenpaw::Config::rx() const
 {
     return d_ptr->rx;
 }
 #endif
 
 
-#if defined(JDKRIG_FEATURE_NVML) || defined (JDKRIG_FEATURE_ADL)
-uint32_t jdkrig::Config::healthPrintTime() const
+#if defined(KITTENPAW_FEATURE_NVML) || defined (KITTENPAW_FEATURE_ADL)
+uint32_t kittenpaw::Config::healthPrintTime() const
 {
     return d_ptr->healthPrintTime;
 }
 #endif
 
 
-#ifdef JDKRIG_FEATURE_DMI
-bool jdkrig::Config::isDMI() const
+#ifdef KITTENPAW_FEATURE_DMI
+bool kittenpaw::Config::isDMI() const
 {
     return d_ptr->dmi;
 }
 #endif
 
 
-bool jdkrig::Config::isShouldSave() const
+bool kittenpaw::Config::isShouldSave() const
 {
     if (!isAutoSave()) {
         return false;
     }
 
-#   ifdef JDKRIG_FEATURE_OPENCL
+#   ifdef KITTENPAW_FEATURE_OPENCL
     if (cl().isShouldSave()) {
         return true;
     }
 #   endif
 
-#   ifdef JDKRIG_FEATURE_CUDA
+#   ifdef KITTENPAW_FEATURE_CUDA
     if (cuda().isShouldSave()) {
         return true;
     }
@@ -206,7 +206,7 @@ bool jdkrig::Config::isShouldSave() const
 }
 
 
-bool jdkrig::Config::read(const IJsonReader &reader, const char *fileName)
+bool kittenpaw::Config::read(const IJsonReader &reader, const char *fileName)
 {
     if (!BaseConfig::read(reader, fileName)) {
         return false;
@@ -217,29 +217,29 @@ bool jdkrig::Config::read(const IJsonReader &reader, const char *fileName)
 
     d_ptr->cpu.read(reader.getValue(CpuConfig::kField));
 
-#   ifdef JDKRIG_ALGO_RANDOMX
+#   ifdef KITTENPAW_ALGO_RANDOMX
     if (!d_ptr->rx.read(reader.getValue(RxConfig::kField))) {
         m_upgrade = true;
     }
 #   endif
 
-#   ifdef JDKRIG_FEATURE_OPENCL
+#   ifdef KITTENPAW_FEATURE_OPENCL
     if (!pools().isBenchmark()) {
         d_ptr->cl.read(reader.getValue(kOcl));
     }
 #   endif
 
-#   ifdef JDKRIG_FEATURE_CUDA
+#   ifdef KITTENPAW_FEATURE_CUDA
     if (!pools().isBenchmark()) {
         d_ptr->cuda.read(reader.getValue(kCuda));
     }
 #   endif
 
-#   if defined(JDKRIG_FEATURE_NVML) || defined (JDKRIG_FEATURE_ADL)
+#   if defined(KITTENPAW_FEATURE_NVML) || defined (KITTENPAW_FEATURE_ADL)
     d_ptr->healthPrintTime = reader.getUint(kHealthPrintTime, d_ptr->healthPrintTime);
 #   endif
 
-#   ifdef JDKRIG_FEATURE_DMI
+#   ifdef KITTENPAW_FEATURE_DMI
     d_ptr->dmi = reader.getBool(kDMI, d_ptr->dmi);
 #   endif
 
@@ -247,7 +247,7 @@ bool jdkrig::Config::read(const IJsonReader &reader, const char *fileName)
 }
 
 
-void jdkrig::Config::getJSON(rapidjson::Document &doc) const
+void kittenpaw::Config::getJSON(rapidjson::Document &doc) const
 {
     using namespace rapidjson;
 
@@ -266,17 +266,17 @@ void jdkrig::Config::getJSON(rapidjson::Document &doc) const
     doc.AddMember(StringRef(kColors),                   Log::isColors(), allocator);
     doc.AddMember(StringRef(kTitle),                    title().toJSON(), allocator);
 
-#   ifdef JDKRIG_ALGO_RANDOMX
+#   ifdef KITTENPAW_ALGO_RANDOMX
     doc.AddMember(StringRef(RxConfig::kField),          rx().toJSON(doc), allocator);
 #   endif
 
     doc.AddMember(StringRef(CpuConfig::kField),         cpu().toJSON(doc), allocator);
 
-#   ifdef JDKRIG_FEATURE_OPENCL
+#   ifdef KITTENPAW_FEATURE_OPENCL
     doc.AddMember(StringRef(kOcl),                      cl().toJSON(doc), allocator);
 #   endif
 
-#   ifdef JDKRIG_FEATURE_CUDA
+#   ifdef KITTENPAW_FEATURE_CUDA
     doc.AddMember(StringRef(kCuda),                     cuda().toJSON(doc), allocator);
 #   endif
 
@@ -285,17 +285,17 @@ void jdkrig::Config::getJSON(rapidjson::Document &doc) const
     m_pools.toJSON(doc, doc);
 
     doc.AddMember(StringRef(kPrintTime),                printTime(), allocator);
-#   if defined(JDKRIG_FEATURE_NVML) || defined (JDKRIG_FEATURE_ADL)
+#   if defined(KITTENPAW_FEATURE_NVML) || defined (KITTENPAW_FEATURE_ADL)
     doc.AddMember(StringRef(kHealthPrintTime),          healthPrintTime(), allocator);
 #   endif
 
-#   ifdef JDKRIG_FEATURE_DMI
+#   ifdef KITTENPAW_FEATURE_DMI
     doc.AddMember(StringRef(kDMI),                      isDMI(), allocator);
 #   endif
 
     doc.AddMember(StringRef(kSyslog),                   isSyslog(), allocator);
 
-#   ifdef JDKRIG_FEATURE_TLS
+#   ifdef KITTENPAW_FEATURE_TLS
     doc.AddMember(StringRef(kTls),                      m_tls.toJSON(doc), allocator);
 #   endif
 

@@ -1,0 +1,598 @@
+kittenpaw: \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/Scrt1.o \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/crti.o \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/crtbeginS.o \
+  CMakeFiles/kittenpaw.dir/src/backend/cpu/CpuLaunchData.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/3rdparty/fmt/format.cc.o \
+  CMakeFiles/kittenpaw.dir/src/base/crypto/Algorithm.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/crypto/Coin.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/crypto/keccak.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/crypto/sha3.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/io/Async.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/io/Console.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/io/Env.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/io/json/Json.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/io/json/JsonChain.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/io/json/JsonRequest.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/io/log/backends/ConsoleLog.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/io/log/backends/FileLog.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/io/log/FileLogWriter.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/io/log/Log.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/io/log/Tags.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/io/Signals.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/io/Watcher.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/kernel/Base.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/kernel/config/BaseConfig.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/kernel/config/BaseTransform.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/kernel/config/Title.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/kernel/Entry.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/kernel/Platform.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/kernel/Process.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/net/dns/Dns.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/net/dns/DnsConfig.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/net/dns/DnsRecord.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/net/dns/DnsRecords.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/net/dns/DnsUvBackend.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/net/http/Http.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/net/stratum/BaseClient.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/net/stratum/Client.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/net/stratum/Job.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/net/stratum/NetworkState.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/net/stratum/Pool.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/net/stratum/Pools.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/net/stratum/ProxyUrl.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/net/stratum/Socks5.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/net/stratum/strategies/FailoverStrategy.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/net/stratum/strategies/SinglePoolStrategy.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/net/stratum/Url.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/net/tools/LineReader.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/net/tools/NetBuffer.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/tools/Arguments.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/tools/Chrono.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/tools/cryptonote/BlockTemplate.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/tools/cryptonote/crypto-ops-data.c.o \
+  CMakeFiles/kittenpaw.dir/src/base/tools/cryptonote/crypto-ops.c.o \
+  CMakeFiles/kittenpaw.dir/src/base/tools/cryptonote/Signatures.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/tools/cryptonote/WalletAddress.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/tools/Cvt.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/tools/String.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/tools/Timer.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/net/stratum/AutoClient.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/net/stratum/EthStratumClient.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/3rdparty/llhttp/llhttp.c.o \
+  CMakeFiles/kittenpaw.dir/src/3rdparty/llhttp/api.c.o \
+  CMakeFiles/kittenpaw.dir/src/3rdparty/llhttp/http.c.o \
+  CMakeFiles/kittenpaw.dir/src/base/api/Api.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/api/Httpd.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/api/requests/ApiRequest.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/api/requests/HttpApiRequest.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/net/http/Fetch.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/net/http/HttpApiResponse.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/net/http/HttpClient.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/net/http/HttpContext.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/net/http/HttpData.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/net/http/HttpListener.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/net/http/HttpResponse.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/net/stratum/DaemonClient.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/net/stratum/SelfSelectClient.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/net/tools/TcpServer.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/common/Hashrate.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/common/Threads.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/common/Worker.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/common/Workers.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/common/HashrateInterpolator.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/common/GpuWorker.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/cpu/Cpu.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/cpu/CpuBackend.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/cpu/CpuConfig.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/cpu/CpuThread.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/cpu/CpuThreads.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/cpu/CpuWorker.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/cpu/platform/BasicCpuInfo.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/opencl/cl/OclSource.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/opencl/generators/ocl_generic_cn_generator.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/opencl/generators/ocl_vega_cn_generator.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/opencl/kernels/Cn0Kernel.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/opencl/kernels/Cn1Kernel.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/opencl/kernels/Cn2Kernel.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/opencl/kernels/CnBranchKernel.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/opencl/OclBackend.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/opencl/OclCache.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/opencl/OclConfig.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/opencl/OclLaunchData.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/opencl/OclThread.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/opencl/OclThreads.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/opencl/OclWorker.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/opencl/runners/OclBaseRunner.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/opencl/runners/OclCnRunner.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/opencl/runners/tools/OclCnR.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/opencl/runners/tools/OclSharedData.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/opencl/runners/tools/OclSharedState.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/opencl/wrappers/OclContext.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/opencl/wrappers/OclDevice.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/opencl/wrappers/OclError.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/opencl/wrappers/OclKernel.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/opencl/wrappers/OclLib.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/opencl/wrappers/OclPlatform.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/opencl/OclCache_unix.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/opencl/generators/ocl_generic_kawpow_generator.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/opencl/kernels/kawpow/KawPow_CalculateDAGKernel.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/opencl/runners/OclKawPowRunner.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/opencl/runners/tools/OclKawPow.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/cuda/CudaBackend.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/cuda/CudaConfig.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/cuda/CudaLaunchData.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/cuda/CudaThread.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/cuda/CudaThreads.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/cuda/CudaWorker.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/cuda/runners/CudaBaseRunner.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/cuda/runners/CudaCnRunner.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/cuda/wrappers/CudaDevice.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/cuda/wrappers/CudaLib.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/backend/cuda/runners/CudaKawPowRunner.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/App.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/core/config/Config.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/core/config/ConfigTransform.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/core/Controller.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/core/Kittenpawger.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/core/Taskbar.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/net/JobResults.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/net/Network.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/net/strategies/DonateStrategy.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/Summary.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/kittenpaw.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/hw/api/HwApi.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/io/json/Json_unix.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/kernel/Platform_unix.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/kernel/Process_unix.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/App_unix.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/crypto/common/VirtualMemory_unix.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/crypto/common/LinuxMemory.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/crypto/cn/c_blake256.c.o \
+  CMakeFiles/kittenpaw.dir/src/crypto/cn/c_groestl.c.o \
+  CMakeFiles/kittenpaw.dir/src/crypto/cn/c_jh.c.o \
+  CMakeFiles/kittenpaw.dir/src/crypto/cn/c_skein.c.o \
+  CMakeFiles/kittenpaw.dir/src/crypto/cn/CnCtx.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/crypto/cn/CnHash.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/crypto/common/HugePagesInfo.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/crypto/common/MemoryPool.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/crypto/common/Nonce.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/crypto/common/VirtualMemory.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/crypto/kawpow/KPCache.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/crypto/kawpow/KPHash.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/io/log/backends/SysLog.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/net/stratum/Tls.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/net/tls/ServerTls.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/net/tls/TlsConfig.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/net/tls/TlsContext.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/net/tls/TlsGen.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/net/https/HttpsClient.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/net/https/HttpsContext.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/base/net/https/HttpsServer.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/crypto/common/Assembly.cpp.o \
+  CMakeFiles/kittenpaw.dir/src/crypto/cn/r/CryptonightR_gen.cpp.o \
+  libkittenpaw-asm.a \
+  /usr/lib/libssl.so \
+  /usr/lib/libcrypto.so \
+  /usr/lib/libuv.so \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/libpthread.a \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/librt.a \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/libdl.a \
+  src/3rdparty/libethash/libethash.a \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/libstdc++.a \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/libm.so \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/libm.so \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/libm.so \
+  /usr/lib/libm.so.6 \
+  /usr/lib/libmvec.so.1 \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/libgcc.a \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/libgcc_eh.a \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/libc.so \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/libc.so \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/libc.so \
+  /usr/lib/libc.so.6 \
+  /usr/lib/libc_nonshared.a \
+  /usr/lib/ld-linux-x86-64.so.2 \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/libgcc.a \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/libgcc_eh.a \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/crtfastmath.o \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/crtendS.o \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/crtn.o
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/Scrt1.o:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/crti.o:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/crtbeginS.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/cpu/CpuLaunchData.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/3rdparty/fmt/format.cc.o:
+
+CMakeFiles/kittenpaw.dir/src/base/crypto/Algorithm.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/crypto/Coin.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/crypto/keccak.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/crypto/sha3.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/io/Async.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/io/Console.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/io/Env.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/io/json/Json.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/io/json/JsonChain.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/io/json/JsonRequest.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/io/log/backends/ConsoleLog.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/io/log/backends/FileLog.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/io/log/FileLogWriter.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/io/log/Log.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/io/log/Tags.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/io/Signals.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/io/Watcher.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/kernel/Base.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/kernel/config/BaseConfig.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/kernel/config/BaseTransform.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/kernel/config/Title.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/kernel/Entry.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/kernel/Platform.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/kernel/Process.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/net/dns/Dns.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/net/dns/DnsConfig.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/net/dns/DnsRecord.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/net/dns/DnsRecords.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/net/dns/DnsUvBackend.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/net/http/Http.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/net/stratum/BaseClient.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/net/stratum/Client.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/net/stratum/Job.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/net/stratum/NetworkState.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/net/stratum/Pool.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/net/stratum/Pools.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/net/stratum/ProxyUrl.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/net/stratum/Socks5.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/net/stratum/strategies/FailoverStrategy.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/net/stratum/strategies/SinglePoolStrategy.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/net/stratum/Url.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/net/tools/LineReader.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/net/tools/NetBuffer.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/tools/Arguments.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/tools/Chrono.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/tools/cryptonote/BlockTemplate.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/tools/cryptonote/crypto-ops-data.c.o:
+
+CMakeFiles/kittenpaw.dir/src/base/tools/cryptonote/crypto-ops.c.o:
+
+CMakeFiles/kittenpaw.dir/src/base/tools/cryptonote/Signatures.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/tools/cryptonote/WalletAddress.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/tools/Cvt.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/tools/String.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/tools/Timer.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/net/stratum/AutoClient.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/net/stratum/EthStratumClient.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/3rdparty/llhttp/llhttp.c.o:
+
+CMakeFiles/kittenpaw.dir/src/3rdparty/llhttp/api.c.o:
+
+CMakeFiles/kittenpaw.dir/src/3rdparty/llhttp/http.c.o:
+
+CMakeFiles/kittenpaw.dir/src/base/api/Api.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/api/Httpd.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/api/requests/ApiRequest.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/api/requests/HttpApiRequest.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/net/http/Fetch.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/net/http/HttpApiResponse.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/net/http/HttpClient.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/net/http/HttpContext.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/net/http/HttpData.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/net/http/HttpListener.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/net/http/HttpResponse.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/net/stratum/DaemonClient.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/net/stratum/SelfSelectClient.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/net/tools/TcpServer.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/common/Hashrate.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/common/Threads.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/common/Worker.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/common/Workers.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/common/HashrateInterpolator.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/common/GpuWorker.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/cpu/Cpu.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/cpu/CpuBackend.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/cpu/CpuConfig.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/cpu/CpuThread.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/cpu/CpuThreads.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/cpu/CpuWorker.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/cpu/platform/BasicCpuInfo.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/opencl/cl/OclSource.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/opencl/generators/ocl_generic_cn_generator.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/opencl/generators/ocl_vega_cn_generator.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/opencl/kernels/Cn0Kernel.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/opencl/kernels/Cn1Kernel.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/opencl/kernels/Cn2Kernel.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/opencl/kernels/CnBranchKernel.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/opencl/OclBackend.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/opencl/OclCache.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/opencl/OclConfig.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/opencl/OclLaunchData.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/opencl/OclThread.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/opencl/OclThreads.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/opencl/OclWorker.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/opencl/runners/OclBaseRunner.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/opencl/runners/OclCnRunner.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/opencl/runners/tools/OclCnR.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/opencl/runners/tools/OclSharedData.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/opencl/runners/tools/OclSharedState.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/opencl/wrappers/OclContext.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/opencl/wrappers/OclDevice.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/opencl/wrappers/OclError.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/opencl/wrappers/OclKernel.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/opencl/wrappers/OclLib.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/opencl/wrappers/OclPlatform.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/opencl/OclCache_unix.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/opencl/generators/ocl_generic_kawpow_generator.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/opencl/kernels/kawpow/KawPow_CalculateDAGKernel.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/opencl/runners/OclKawPowRunner.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/opencl/runners/tools/OclKawPow.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/cuda/CudaBackend.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/cuda/CudaConfig.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/cuda/CudaLaunchData.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/cuda/CudaThread.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/cuda/CudaThreads.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/cuda/CudaWorker.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/cuda/runners/CudaBaseRunner.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/cuda/runners/CudaCnRunner.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/cuda/wrappers/CudaDevice.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/cuda/wrappers/CudaLib.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/backend/cuda/runners/CudaKawPowRunner.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/App.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/core/config/Config.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/core/config/ConfigTransform.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/core/Controller.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/core/Kittenpawger.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/core/Taskbar.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/net/JobResults.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/net/Network.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/net/strategies/DonateStrategy.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/Summary.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/kittenpaw.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/hw/api/HwApi.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/io/json/Json_unix.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/kernel/Platform_unix.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/kernel/Process_unix.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/App_unix.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/crypto/common/VirtualMemory_unix.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/crypto/common/LinuxMemory.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/crypto/cn/c_blake256.c.o:
+
+CMakeFiles/kittenpaw.dir/src/crypto/cn/c_groestl.c.o:
+
+CMakeFiles/kittenpaw.dir/src/crypto/cn/c_jh.c.o:
+
+CMakeFiles/kittenpaw.dir/src/crypto/cn/c_skein.c.o:
+
+CMakeFiles/kittenpaw.dir/src/crypto/cn/CnCtx.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/crypto/cn/CnHash.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/crypto/common/HugePagesInfo.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/crypto/common/MemoryPool.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/crypto/common/Nonce.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/crypto/common/VirtualMemory.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/crypto/kawpow/KPCache.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/crypto/kawpow/KPHash.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/io/log/backends/SysLog.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/net/stratum/Tls.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/net/tls/ServerTls.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/net/tls/TlsConfig.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/net/tls/TlsContext.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/net/tls/TlsGen.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/net/https/HttpsClient.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/net/https/HttpsContext.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/base/net/https/HttpsServer.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/crypto/common/Assembly.cpp.o:
+
+CMakeFiles/kittenpaw.dir/src/crypto/cn/r/CryptonightR_gen.cpp.o:
+
+libkittenpaw-asm.a:
+
+/usr/lib/libssl.so:
+
+/usr/lib/libcrypto.so:
+
+/usr/lib/libuv.so:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/libpthread.a:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/librt.a:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/libdl.a:
+
+src/3rdparty/libethash/libethash.a:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/libstdc++.a:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/libm.so:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/libm.so:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/libm.so:
+
+/usr/lib/libm.so.6:
+
+/usr/lib/libmvec.so.1:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/libgcc.a:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/libgcc_eh.a:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/libc.so:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/libc.so:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/libc.so:
+
+/usr/lib/libc.so.6:
+
+/usr/lib/libc_nonshared.a:
+
+/usr/lib/ld-linux-x86-64.so.2:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/libgcc.a:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/libgcc_eh.a:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/crtfastmath.o:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/crtendS.o:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/crtn.o:

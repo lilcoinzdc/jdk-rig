@@ -1,7 +1,7 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2019 tevador     <tevador@gmail.com>
  * Copyright (c) 2018-2023 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2023 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2023 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -35,7 +35,7 @@
 #include <thread>
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 constexpr size_t oneMiB = 1024 * 1024;
@@ -74,7 +74,7 @@ static inline void printDatasetReady(uint32_t nodeId, uint64_t ts)
 class RxNUMAStoragePrivate
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(RxNUMAStoragePrivate)
+    KITTENPAW_DISABLE_COPY_MOVE_DEFAULT(RxNUMAStoragePrivate)
 
     inline explicit RxNUMAStoragePrivate(const std::vector<uint32_t> &nodeset) :
         m_nodeset(nodeset)
@@ -329,28 +329,28 @@ private:
 };
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-jdkrig::RxNUMAStorage::RxNUMAStorage(const std::vector<uint32_t> &nodeset) :
+kittenpaw::RxNUMAStorage::RxNUMAStorage(const std::vector<uint32_t> &nodeset) :
     d_ptr(new RxNUMAStoragePrivate(nodeset))
 {
 }
 
 
-jdkrig::RxNUMAStorage::~RxNUMAStorage()
+kittenpaw::RxNUMAStorage::~RxNUMAStorage()
 {
     delete d_ptr;
 }
 
 
-bool jdkrig::RxNUMAStorage::isAllocated() const
+bool kittenpaw::RxNUMAStorage::isAllocated() const
 {
     return d_ptr->isAllocated();
 }
 
 
-jdkrig::HugePagesInfo jdkrig::RxNUMAStorage::hugePages() const
+kittenpaw::HugePagesInfo kittenpaw::RxNUMAStorage::hugePages() const
 {
     if (!d_ptr->isAllocated()) {
         return {};
@@ -360,7 +360,7 @@ jdkrig::HugePagesInfo jdkrig::RxNUMAStorage::hugePages() const
 }
 
 
-jdkrig::RxDataset *jdkrig::RxNUMAStorage::dataset(const Job &job, uint32_t nodeId) const
+kittenpaw::RxDataset *kittenpaw::RxNUMAStorage::dataset(const Job &job, uint32_t nodeId) const
 {
     if (!d_ptr->isReady(job)) {
         return nullptr;
@@ -370,7 +370,7 @@ jdkrig::RxDataset *jdkrig::RxNUMAStorage::dataset(const Job &job, uint32_t nodeI
 }
 
 
-void jdkrig::RxNUMAStorage::init(const RxSeed &seed, uint32_t threads, bool hugePages, bool oneGbPages, RxConfig::Mode, int priority)
+void kittenpaw::RxNUMAStorage::init(const RxSeed &seed, uint32_t threads, bool hugePages, bool oneGbPages, RxConfig::Mode, int priority)
 {
     d_ptr->setSeed(seed);
 

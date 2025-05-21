@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -32,7 +32,7 @@
 #include "crypto/cn/CnAlgo.h"
 
 
-jdkrig::OclCnRunner::OclCnRunner(size_t index, const OclLaunchData &data) : OclBaseRunner(index, data)
+kittenpaw::OclCnRunner::OclCnRunner(size_t index, const OclLaunchData &data) : OclBaseRunner(index, data)
 {
     uint32_t stridedIndex = data.thread.stridedIndex();
     const auto f = m_algorithm.family();
@@ -57,7 +57,7 @@ jdkrig::OclCnRunner::OclCnRunner(size_t index, const OclLaunchData &data) : OclB
 }
 
 
-jdkrig::OclCnRunner::~OclCnRunner()
+kittenpaw::OclCnRunner::~OclCnRunner()
 {
     delete m_cn0;
     delete m_cn1;
@@ -78,7 +78,7 @@ jdkrig::OclCnRunner::~OclCnRunner()
 }
 
 
-size_t jdkrig::OclCnRunner::bufferSize() const
+size_t kittenpaw::OclCnRunner::bufferSize() const
 {
     return OclBaseRunner::bufferSize() +
            align(m_algorithm.l3() * m_intensity) +
@@ -87,7 +87,7 @@ size_t jdkrig::OclCnRunner::bufferSize() const
 }
 
 
-void jdkrig::OclCnRunner::run(uint32_t nonce, uint32_t /*nonce_offset*/, uint32_t *hashOutput)
+void kittenpaw::OclCnRunner::run(uint32_t nonce, uint32_t /*nonce_offset*/, uint32_t *hashOutput)
 {
     static const cl_uint zero = 0;
 
@@ -114,7 +114,7 @@ void jdkrig::OclCnRunner::run(uint32_t nonce, uint32_t /*nonce_offset*/, uint32_
 }
 
 
-void jdkrig::OclCnRunner::set(const Job &job, uint8_t *blob)
+void kittenpaw::OclCnRunner::set(const Job &job, uint8_t *blob)
 {
     if (job.size() > (Job::kMaxBlobSize - 4)) {
         throw std::length_error("job size too big");
@@ -151,7 +151,7 @@ void jdkrig::OclCnRunner::set(const Job &job, uint8_t *blob)
 }
 
 
-void jdkrig::OclCnRunner::build()
+void kittenpaw::OclCnRunner::build()
 {
     OclBaseRunner::build();
 
@@ -175,7 +175,7 @@ void jdkrig::OclCnRunner::build()
 }
 
 
-void jdkrig::OclCnRunner::init()
+void kittenpaw::OclCnRunner::init()
 {
     OclBaseRunner::init();
 

@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_DNS_H
-#define JDKRIG_DNS_H
+#ifndef KITTENPAW_DNS_H
+#define KITTENPAW_DNS_H
 
 
 #include "base/net/dns/DnsConfig.h"
@@ -28,7 +28,7 @@
 #include <memory>
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class DnsConfig;
@@ -51,7 +51,7 @@ private:
 };
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif /* JDKRIG_DNS_H */
+#endif /* KITTENPAW_DNS_H */

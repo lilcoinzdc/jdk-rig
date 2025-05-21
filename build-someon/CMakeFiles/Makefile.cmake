@@ -88,7 +88,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/jdkrig-asm.dir/DependInfo.cmake"
-  "CMakeFiles/jdkrig.dir/DependInfo.cmake"
+  "CMakeFiles/kittenpaw-asm.dir/DependInfo.cmake"
+  "CMakeFiles/kittenpaw.dir/DependInfo.cmake"
   "src/3rdparty/libethash/CMakeFiles/ethash.dir/DependInfo.cmake"
   )

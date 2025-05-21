@@ -1,7 +1,7 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018      Lee Clagett <https://github.com/vtnerd>
  * Copyright (c) 2018-2023 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2023 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2023 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -41,7 +41,7 @@ int DH_set0_pqg(DH *dh, BIGNUM *p, BIGNUM *q, BIGNUM *g)
 #endif
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 // https://wiki.openssl.org/index.php/Diffie-Hellman_parameters
@@ -100,16 +100,16 @@ static DH *get_dh2048()
 #endif
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-jdkrig::TlsContext::~TlsContext()
+kittenpaw::TlsContext::~TlsContext()
 {
     SSL_CTX_free(m_ctx);
 }
 
 
-jdkrig::TlsContext *jdkrig::TlsContext::create(const TlsConfig &config)
+kittenpaw::TlsContext *kittenpaw::TlsContext::create(const TlsConfig &config)
 {
     if (!config.isEnabled()) {
         return nullptr;
@@ -126,7 +126,7 @@ jdkrig::TlsContext *jdkrig::TlsContext::create(const TlsConfig &config)
 }
 
 
-bool jdkrig::TlsContext::load(const TlsConfig &config)
+bool kittenpaw::TlsContext::load(const TlsConfig &config)
 {
     m_ctx = SSL_CTX_new(SSLv23_server_method());
     if (m_ctx == nullptr) {
@@ -162,7 +162,7 @@ bool jdkrig::TlsContext::load(const TlsConfig &config)
 }
 
 
-bool jdkrig::TlsContext::setCiphers(const char *ciphers)
+bool kittenpaw::TlsContext::setCiphers(const char *ciphers)
 {
     if (ciphers == nullptr || SSL_CTX_set_cipher_list(m_ctx, ciphers) == 1) {
         return true;
@@ -174,7 +174,7 @@ bool jdkrig::TlsContext::setCiphers(const char *ciphers)
 }
 
 
-bool jdkrig::TlsContext::setCipherSuites(const char *ciphersuites)
+bool kittenpaw::TlsContext::setCipherSuites(const char *ciphersuites)
 {
     if (ciphersuites == nullptr) {
         return true;
@@ -192,7 +192,7 @@ bool jdkrig::TlsContext::setCipherSuites(const char *ciphersuites)
 }
 
 
-bool jdkrig::TlsContext::setDH(const char *dhparam)
+bool kittenpaw::TlsContext::setDH(const char *dhparam)
 {
 #   if OPENSSL_VERSION_NUMBER < 0x30000000L || defined(LIBRESSL_VERSION_NUMBER)
     DH *dh = nullptr;
@@ -262,7 +262,7 @@ bool jdkrig::TlsContext::setDH(const char *dhparam)
 }
 
 
-void jdkrig::TlsContext::setProtocols(uint32_t protocols)
+void kittenpaw::TlsContext::setProtocols(uint32_t protocols)
 {
     if (protocols == 0) {
         return;

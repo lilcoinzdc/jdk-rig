@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,14 +16,14 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_IHTTPLISTENER_H
-#define JDKRIG_IHTTPLISTENER_H
+#ifndef KITTENPAW_IHTTPLISTENER_H
+#define KITTENPAW_IHTTPLISTENER_H
 
 
 #include "base/tools/Object.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class HttpData;
@@ -33,7 +33,7 @@ class HttpResponse;
 class IHttpListener
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE(IHttpListener)
+    KITTENPAW_DISABLE_COPY_MOVE(IHttpListener)
 
     IHttpListener()             = default;
     virtual ~IHttpListener()    = default;
@@ -42,7 +42,7 @@ public:
 };
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif // JDKRIG_IHTTPLISTENER_H
+#endif // KITTENPAW_IHTTPLISTENER_H

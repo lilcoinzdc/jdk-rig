@@ -3,7 +3,7 @@
 
 #include "core.h"
 
-void jdkrig_ar2_fill_segment_sse2(const argon2_instance_t *instance, argon2_position_t position);
-int jdkrig_ar2_check_sse2(void);
+void kittenpaw_ar2_fill_segment_sse2(const argon2_instance_t *instance, argon2_position_t position);
+int kittenpaw_ar2_check_sse2(void);
 
 #endif // ARGON2_SSE2_H

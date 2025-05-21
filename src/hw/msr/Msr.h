@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_MSR_H
-#define JDKRIG_MSR_H
+#ifndef KITTENPAW_MSR_H
+#define KITTENPAW_MSR_H
 
 
 #include "base/tools/Object.h"
@@ -28,7 +28,7 @@
 #include <memory>
 
 
-namespace jdkrig
+namespace kittenpaw
 {
 
 
@@ -38,7 +38,7 @@ class MsrPrivate;
 class Msr
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE(Msr)
+    KITTENPAW_DISABLE_COPY_MOVE(Msr)
 
     using Callback = std::function<bool(int32_t cpu)>;
 
@@ -63,7 +63,7 @@ private:
 };
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif /* JDKRIG_MSR_H */
+#endif /* KITTENPAW_MSR_H */

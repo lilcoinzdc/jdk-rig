@@ -1,4 +1,4 @@
-/* XMRig
+/* KITTENpaw
  * Copyright 2010      Jeff Garzik <jgarzik@pobox.com>
  * Copyright 2012-2014 pooler      <pooler@litecoinpool.org>
  * Copyright 2014      Lucas Jones <https://github.com/lucasjones>
@@ -6,7 +6,7 @@
  * Copyright 2016      Jay D Dee   <jayddee246@gmail.com>
  * Copyright 2017-2018 XMR-Stak    <https://github.com/fireice-uk>, <https://github.com/psychocrypt>
  * Copyright 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -28,7 +28,7 @@
 #include "backend/opencl/wrappers/OclLib.h"
 
 
-std::vector<jdkrig::OclPlatform> jdkrig::OclPlatform::get()
+std::vector<kittenpaw::OclPlatform> kittenpaw::OclPlatform::get()
 {
     const std::vector<cl_platform_id> platforms = OclLib::getPlatformIDs();
     std::vector<OclPlatform> out;
@@ -46,7 +46,7 @@ std::vector<jdkrig::OclPlatform> jdkrig::OclPlatform::get()
 }
 
 
-void jdkrig::OclPlatform::print()
+void kittenpaw::OclPlatform::print()
 {
     const auto platforms = OclPlatform::get();
 
@@ -63,7 +63,7 @@ void jdkrig::OclPlatform::print()
 }
 
 
-rapidjson::Value jdkrig::OclPlatform::toJSON(rapidjson::Document &doc) const
+rapidjson::Value kittenpaw::OclPlatform::toJSON(rapidjson::Document &doc) const
 {
     using namespace rapidjson;
     auto &allocator = doc.GetAllocator();
@@ -84,7 +84,7 @@ rapidjson::Value jdkrig::OclPlatform::toJSON(rapidjson::Document &doc) const
 }
 
 
-std::vector<jdkrig::OclDevice> jdkrig::OclPlatform::devices() const
+std::vector<kittenpaw::OclDevice> kittenpaw::OclPlatform::devices() const
 {
     std::vector<OclDevice> out;
     if (!isValid()) {
@@ -109,31 +109,31 @@ std::vector<jdkrig::OclDevice> jdkrig::OclPlatform::devices() const
 }
 
 
-jdkrig::String jdkrig::OclPlatform::extensions() const
+kittenpaw::String kittenpaw::OclPlatform::extensions() const
 {
     return OclLib::getString(id(), CL_PLATFORM_EXTENSIONS);
 }
 
 
-jdkrig::String jdkrig::OclPlatform::name() const
+kittenpaw::String kittenpaw::OclPlatform::name() const
 {
     return OclLib::getString(id(), CL_PLATFORM_NAME);
 }
 
 
-jdkrig::String jdkrig::OclPlatform::profile() const
+kittenpaw::String kittenpaw::OclPlatform::profile() const
 {
     return OclLib::getString(id(), CL_PLATFORM_PROFILE);
 }
 
 
-jdkrig::String jdkrig::OclPlatform::vendor() const
+kittenpaw::String kittenpaw::OclPlatform::vendor() const
 {
     return OclLib::getString(id(), CL_PLATFORM_VENDOR);
 }
 
 
-jdkrig::String jdkrig::OclPlatform::version() const
+kittenpaw::String kittenpaw::OclPlatform::version() const
 {
     return OclLib::getString(id(), CL_PLATFORM_VERSION);
 }

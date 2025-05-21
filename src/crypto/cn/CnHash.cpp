@@ -1,7 +1,7 @@
-/* XMRig
+/* KITTENpaw
  * Copyright 2018      Lee Clagett <https://github.com/vtnerd>
  * Copyright 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -23,14 +23,14 @@
 #include "crypto/common/VirtualMemory.h"
 
 
-#if defined(JDKRIG_ARM)
+#if defined(KITTENPAW_ARM)
 #   include "crypto/cn/CryptoNight_arm.h"
 #else
 #   include "crypto/cn/CryptoNight_x86.h"
 #endif
 
 
-#ifdef JDKRIG_ALGO_ARGON2
+#ifdef KITTENPAW_ALGO_ARGON2
 #   include "crypto/argon2/Hash.h"
 #endif
 
@@ -54,7 +54,7 @@ bool cn_sse41_enabled = false;
 bool cn_vaes_enabled = false;
 
 
-#ifdef JDKRIG_FEATURE_ASM
+#ifdef KITTENPAW_FEATURE_ASM
 #   define ADD_FN_ASM(algo) do {                                                                                    \
         m_map[algo]->data[AV_SINGLE][Assembly::INTEL]     = cryptonight_single_hash_asm<algo, Assembly::INTEL>;     \
         m_map[algo]->data[AV_SINGLE][Assembly::RYZEN]     = cryptonight_single_hash_asm<algo, Assembly::RYZEN>;     \
@@ -65,7 +65,7 @@ bool cn_vaes_enabled = false;
     } while (0)
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 cn_mainloop_fun        cn_half_mainloop_ivybridge_asm             = nullptr;
@@ -164,7 +164,7 @@ static void patchAsmVariants()
     cn_half_mainloop_bulldozer_asm              = reinterpret_cast<cn_mainloop_fun>         (base + 0x2000);
     cn_half_double_mainloop_sandybridge_asm     = reinterpret_cast<cn_mainloop_fun>         (base + 0x3000);
 
-#   ifdef JDKRIG_ALGO_CN_PICO
+#   ifdef KITTENPAW_ALGO_CN_PICO
     cn_trtl_mainloop_ivybridge_asm              = reinterpret_cast<cn_mainloop_fun>         (base + 0x4000);
     cn_trtl_mainloop_ryzen_asm                  = reinterpret_cast<cn_mainloop_fun>         (base + 0x5000);
     cn_trtl_mainloop_bulldozer_asm              = reinterpret_cast<cn_mainloop_fun>         (base + 0x6000);
@@ -181,19 +181,19 @@ static void patchAsmVariants()
     cn_double_mainloop_bulldozer_asm            = reinterpret_cast<cn_mainloop_fun>         (base + 0xE000);
     cn_double_double_mainloop_sandybridge_asm   = reinterpret_cast<cn_mainloop_fun>         (base + 0xF000);
 
-#   ifdef JDKRIG_ALGO_CN_PICO
+#   ifdef KITTENPAW_ALGO_CN_PICO
     cn_tlo_mainloop_ivybridge_asm               = reinterpret_cast<cn_mainloop_fun>         (base + 0x10000);
     cn_tlo_mainloop_ryzen_asm                   = reinterpret_cast<cn_mainloop_fun>         (base + 0x11000);
     cn_tlo_mainloop_bulldozer_asm               = reinterpret_cast<cn_mainloop_fun>         (base + 0x12000);
     cn_tlo_double_mainloop_sandybridge_asm      = reinterpret_cast<cn_mainloop_fun>         (base + 0x13000);
 #   endif
 
-#   ifdef JDKRIG_ALGO_CN_FEMTO
+#   ifdef KITTENPAW_ALGO_CN_FEMTO
     cn_upx2_mainloop_asm                        = reinterpret_cast<cn_mainloop_fun>         (base + 0x14000);
     cn_upx2_double_mainloop_asm                 = reinterpret_cast<cn_mainloop_fun>         (base + 0x15000);
 #   endif
 
-#   ifdef JDKRIG_ALGO_GHOSTRIDER
+#   ifdef KITTENPAW_ALGO_GHOSTRIDER
     cn_gr0_single_mainloop_asm                  = reinterpret_cast<cn_mainloop_fun>         (base + 0x16000);
     cn_gr1_single_mainloop_asm                  = reinterpret_cast<cn_mainloop_fun>         (base + 0x16800);
     cn_gr2_single_mainloop_asm                  = reinterpret_cast<cn_mainloop_fun>         (base + 0x17000);
@@ -225,7 +225,7 @@ static void patchAsmVariants()
         patchCode(cn_half_double_mainloop_sandybridge_asm,   cnv2_double_mainloop_sandybridge_asm,  ITER);
     }
 
-#   ifdef JDKRIG_ALGO_CN_PICO
+#   ifdef KITTENPAW_ALGO_CN_PICO
     {
         constexpr uint32_t ITER = CnAlgo<Algorithm::CN_PICO_0>().iterations();
         constexpr uint32_t MASK = CnAlgo<Algorithm::CN_PICO_0>().mask();
@@ -265,7 +265,7 @@ static void patchAsmVariants()
         patchCode(cn_double_double_mainloop_sandybridge_asm, cnv2_double_mainloop_sandybridge_asm,  ITER);
     }
 
-#   ifdef JDKRIG_ALGO_CN_FEMTO
+#   ifdef KITTENPAW_ALGO_CN_FEMTO
     {
         constexpr uint32_t ITER = CnAlgo<Algorithm::CN_UPX2>().iterations();
         constexpr uint32_t MASK = CnAlgo<Algorithm::CN_UPX2>().mask();
@@ -275,7 +275,7 @@ static void patchAsmVariants()
     }
 #   endif
 
-#   ifdef JDKRIG_ALGO_GHOSTRIDER
+#   ifdef KITTENPAW_ALGO_GHOSTRIDER
     patchCode<Algorithm::CN_1>(cn_gr0_single_mainloop_asm, cnv1_single_mainloop_asm, CnAlgo<Algorithm::CN_GR_0>().iterations(), CnAlgo<Algorithm::CN_GR_0>().mask());
     patchCode<Algorithm::CN_1>(cn_gr1_single_mainloop_asm, cnv1_single_mainloop_asm, CnAlgo<Algorithm::CN_GR_1>().iterations(), CnAlgo<Algorithm::CN_GR_1>().mask());
     patchCode<Algorithm::CN_1>(cn_gr2_single_mainloop_asm, cnv1_single_mainloop_asm, CnAlgo<Algorithm::CN_GR_2>().iterations(), CnAlgo<Algorithm::CN_GR_2>().mask());
@@ -301,16 +301,16 @@ static void patchAsmVariants()
     VirtualMemory::protectRX(base, allocation_size);
     VirtualMemory::flushInstructionCache(base, allocation_size);
 }
-} // namespace jdkrig
+} // namespace kittenpaw
 #else
 #   define ADD_FN_ASM(algo)
 #endif
 
 
-static const jdkrig::CnHash cnHash;
+static const kittenpaw::CnHash cnHash;
 
 
-jdkrig::CnHash::CnHash()
+kittenpaw::CnHash::CnHash()
 {
     ADD_FN(Algorithm::CN_0);
     ADD_FN(Algorithm::CN_1);
@@ -331,18 +331,18 @@ jdkrig::CnHash::CnHash()
     ADD_FN_ASM(Algorithm::CN_ZLS);
     ADD_FN_ASM(Algorithm::CN_DOUBLE);
 
-#   ifdef JDKRIG_ALGO_CN_LITE
+#   ifdef KITTENPAW_ALGO_CN_LITE
     ADD_FN(Algorithm::CN_LITE_0);
     ADD_FN(Algorithm::CN_LITE_1);
 #   endif
 
-#   ifdef JDKRIG_ALGO_CN_HEAVY
+#   ifdef KITTENPAW_ALGO_CN_HEAVY
     ADD_FN(Algorithm::CN_HEAVY_0);
     ADD_FN(Algorithm::CN_HEAVY_TUBE);
     ADD_FN(Algorithm::CN_HEAVY_XHV);
 #   endif
 
-#   ifdef JDKRIG_ALGO_CN_PICO
+#   ifdef KITTENPAW_ALGO_CN_PICO
     ADD_FN(Algorithm::CN_PICO_0);
     ADD_FN_ASM(Algorithm::CN_PICO_0);
     ADD_FN(Algorithm::CN_PICO_TLO);
@@ -351,12 +351,12 @@ jdkrig::CnHash::CnHash()
 
     ADD_FN(Algorithm::CN_CCX);
 
-#   ifdef JDKRIG_ALGO_CN_FEMTO
+#   ifdef KITTENPAW_ALGO_CN_FEMTO
     ADD_FN(Algorithm::CN_UPX2);
     ADD_FN_ASM(Algorithm::CN_UPX2);
 #   endif
 
-#   ifdef JDKRIG_ALGO_ARGON2
+#   ifdef KITTENPAW_ALGO_ARGON2
     m_map[Algorithm::AR2_CHUKWA] = new cn_hash_fun_array{};
     m_map[Algorithm::AR2_CHUKWA]->data[AV_SINGLE][Assembly::NONE]         = argon2::single_hash<Algorithm::AR2_CHUKWA>;
     m_map[Algorithm::AR2_CHUKWA]->data[AV_SINGLE_SOFT][Assembly::NONE]    = argon2::single_hash<Algorithm::AR2_CHUKWA>;
@@ -370,7 +370,7 @@ jdkrig::CnHash::CnHash()
     m_map[Algorithm::AR2_WRKZ]->data[AV_SINGLE_SOFT][Assembly::NONE]      = argon2::single_hash<Algorithm::AR2_WRKZ>;
 #   endif
 
-#   ifdef JDKRIG_ALGO_GHOSTRIDER
+#   ifdef KITTENPAW_ALGO_GHOSTRIDER
     ADD_FN(Algorithm::CN_GR_0);
     ADD_FN(Algorithm::CN_GR_1);
     ADD_FN(Algorithm::CN_GR_2);
@@ -379,13 +379,13 @@ jdkrig::CnHash::CnHash()
     ADD_FN(Algorithm::CN_GR_5);
 #   endif
 
-#   ifdef JDKRIG_FEATURE_ASM
+#   ifdef KITTENPAW_FEATURE_ASM
     patchAsmVariants();
 #   endif
 }
 
 
-jdkrig::CnHash::~CnHash()
+kittenpaw::CnHash::~CnHash()
 {
     for (auto const& x : m_map) {
       delete m_map[x.first];
@@ -393,7 +393,7 @@ jdkrig::CnHash::~CnHash()
 }
 
 
-jdkrig::cn_hash_fun jdkrig::CnHash::fn(const Algorithm &algorithm, AlgoVariant av, Assembly::Id assembly)
+kittenpaw::cn_hash_fun kittenpaw::CnHash::fn(const Algorithm &algorithm, AlgoVariant av, Assembly::Id assembly)
 {
     assert(cnHash.m_map.count(algorithm));
 
@@ -406,7 +406,7 @@ jdkrig::cn_hash_fun jdkrig::CnHash::fn(const Algorithm &algorithm, AlgoVariant a
         return nullptr;
     }
 
-#   ifdef JDKRIG_ALGO_CN_HEAVY
+#   ifdef KITTENPAW_ALGO_CN_HEAVY
     // cn-heavy optimization for Zen3/Zen4 CPUs
     const auto arch = Cpu::info()->arch();
     const uint32_t model = Cpu::info()->model();
@@ -429,7 +429,7 @@ jdkrig::cn_hash_fun jdkrig::CnHash::fn(const Algorithm &algorithm, AlgoVariant a
     }
 #   endif
 
-#   ifdef JDKRIG_FEATURE_ASM
+#   ifdef KITTENPAW_FEATURE_ASM
     cn_hash_fun fun = it->second->data[av][Cpu::assembly(assembly)];
     if (fun) {
         return fun;

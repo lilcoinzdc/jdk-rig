@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -22,7 +22,7 @@
 #include "crypto/common/VirtualMemory.h"
 
 
-jdkrig::Worker::Worker(size_t id, int64_t affinity, int priority) :
+kittenpaw::Worker::Worker(size_t id, int64_t affinity, int priority) :
     m_affinity(affinity),
     m_id(id)
 {

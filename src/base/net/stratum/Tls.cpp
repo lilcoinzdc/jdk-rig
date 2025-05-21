@@ -1,7 +1,7 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018      Lee Clagett <https://github.com/vtnerd>
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -32,7 +32,7 @@
 #include <openssl/ssl.h>
 
 
-jdkrig::Client::Tls::Tls(Client *client) :
+kittenpaw::Client::Tls::Tls(Client *client) :
     m_client(client)
 {
     m_ctx = SSL_CTX_new(SSLv23_method());
@@ -48,7 +48,7 @@ jdkrig::Client::Tls::Tls(Client *client) :
 }
 
 
-jdkrig::Client::Tls::~Tls()
+kittenpaw::Client::Tls::~Tls()
 {
     if (m_ctx) {
         SSL_CTX_free(m_ctx);
@@ -60,7 +60,7 @@ jdkrig::Client::Tls::~Tls()
 }
 
 
-bool jdkrig::Client::Tls::handshake(const char* servername)
+bool kittenpaw::Client::Tls::handshake(const char* servername)
 {
     m_ssl = SSL_new(m_ctx);
     assert(m_ssl != nullptr);
@@ -81,7 +81,7 @@ bool jdkrig::Client::Tls::handshake(const char* servername)
 }
 
 
-bool jdkrig::Client::Tls::send(const char *data, size_t size)
+bool kittenpaw::Client::Tls::send(const char *data, size_t size)
 {
     SSL_write(m_ssl, data, size);
 
@@ -89,19 +89,19 @@ bool jdkrig::Client::Tls::send(const char *data, size_t size)
 }
 
 
-const char *jdkrig::Client::Tls::fingerprint() const
+const char *kittenpaw::Client::Tls::fingerprint() const
 {
     return m_ready ? m_fingerprint : nullptr;
 }
 
 
-const char *jdkrig::Client::Tls::version() const
+const char *kittenpaw::Client::Tls::version() const
 {
     return m_ready ? SSL_get_version(m_ssl) : nullptr;
 }
 
 
-void jdkrig::Client::Tls::read(const char *data, size_t size)
+void kittenpaw::Client::Tls::read(const char *data, size_t size)
 {
     BIO_write(m_read, data, size);
 
@@ -136,13 +136,13 @@ void jdkrig::Client::Tls::read(const char *data, size_t size)
 }
 
 
-bool jdkrig::Client::Tls::send()
+bool kittenpaw::Client::Tls::send()
 {
     return m_client->send(m_write);
 }
 
 
-bool jdkrig::Client::Tls::verify(X509 *cert)
+bool kittenpaw::Client::Tls::verify(X509 *cert)
 {
     if (cert == nullptr) {
         LOG_ERR("[%s] Failed to get server certificate", m_client->url());
@@ -166,7 +166,7 @@ bool jdkrig::Client::Tls::verify(X509 *cert)
 }
 
 
-bool jdkrig::Client::Tls::verifyFingerprint(X509 *cert)
+bool kittenpaw::Client::Tls::verifyFingerprint(X509 *cert)
 {
     const EVP_MD *digest = EVP_get_digestbyname("sha256");
     if (digest == nullptr) {

@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -35,12 +35,12 @@
 #include "base/tools/Cvt.h"
 #include "version.h"
 
-#ifdef JDKRIG_FEATURE_DMI
+#ifdef KITTENPAW_FEATURE_DMI
 #   include "hw/dmi/DmiReader.h"
 #endif
 
 
-jdkrig::BenchClient::BenchClient(const std::shared_ptr<BenchConfig> &benchmark, IClientListener* listener) :
+kittenpaw::BenchClient::BenchClient(const std::shared_ptr<BenchConfig> &benchmark, IClientListener* listener) :
     m_listener(listener),
     m_benchmark(benchmark),
     m_hash(benchmark->hash())
@@ -48,7 +48,7 @@ jdkrig::BenchClient::BenchClient(const std::shared_ptr<BenchConfig> &benchmark, 
     std::vector<char> blob(112 * 2 + 1, '0');
     blob.back() = '\0';
 
-#   ifdef JDKRIG_ALGO_GHOSTRIDER
+#   ifdef KITTENPAW_ALGO_GHOSTRIDER
     if (m_benchmark->algorithm() == Algorithm::GHOSTRIDER_RTM) {
         const uint32_t q = (benchmark->rotation() / 20) & 1;
         const uint32_t r = benchmark->rotation() % 20;
@@ -93,7 +93,7 @@ jdkrig::BenchClient::BenchClient(const std::shared_ptr<BenchConfig> &benchmark, 
 
     BenchState::init(this, m_benchmark->size());
 
-#   ifdef JDKRIG_FEATURE_HTTP
+#   ifdef KITTENPAW_FEATURE_HTTP
     if (m_benchmark->isSubmit() && (m_benchmark->algorithm().family() == Algorithm::RANDOM_X)) {
         m_mode  = ONLINE_BENCH;
         m_token = m_benchmark->token();
@@ -121,21 +121,21 @@ jdkrig::BenchClient::BenchClient(const std::shared_ptr<BenchConfig> &benchmark, 
 }
 
 
-jdkrig::BenchClient::~BenchClient()
+kittenpaw::BenchClient::~BenchClient()
 {
     BenchState::destroy();
 }
 
 
-const char *jdkrig::BenchClient::tag() const
+const char *kittenpaw::BenchClient::tag() const
 {
     return Tags::bench();
 }
 
 
-void jdkrig::BenchClient::connect()
+void kittenpaw::BenchClient::connect()
 {
-#   ifdef JDKRIG_FEATURE_HTTP
+#   ifdef KITTENPAW_FEATURE_HTTP
     if (m_mode == ONLINE_BENCH || m_mode == ONLINE_VERIFY) {
         return resolve();
     }
@@ -145,19 +145,19 @@ void jdkrig::BenchClient::connect()
 }
 
 
-void jdkrig::BenchClient::setPool(const Pool &pool)
+void kittenpaw::BenchClient::setPool(const Pool &pool)
 {
     m_pool = pool;
 }
 
 
-void jdkrig::BenchClient::onBenchDone(uint64_t result, uint64_t diff, uint64_t ts)
+void kittenpaw::BenchClient::onBenchDone(uint64_t result, uint64_t diff, uint64_t ts)
 {
     m_result    = result;
     m_diff      = diff;
     m_doneTime  = ts;
 
-#   ifdef JDKRIG_FEATURE_HTTP
+#   ifdef KITTENPAW_FEATURE_HTTP
     if (!m_token.isEmpty()) {
         send(DONE_BENCH);
     }
@@ -175,13 +175,13 @@ void jdkrig::BenchClient::onBenchDone(uint64_t result, uint64_t diff, uint64_t t
 }
 
 
-void jdkrig::BenchClient::onBenchReady(uint64_t ts, uint32_t threads, const IBackend *backend)
+void kittenpaw::BenchClient::onBenchReady(uint64_t ts, uint32_t threads, const IBackend *backend)
 {
     m_readyTime = ts;
     m_threads   = threads;
     m_backend   = backend;
 
-#   ifdef JDKRIG_FEATURE_HTTP
+#   ifdef KITTENPAW_FEATURE_HTTP
     if (m_mode == ONLINE_BENCH) {
         send(CREATE_BENCH);
     }
@@ -189,9 +189,9 @@ void jdkrig::BenchClient::onBenchReady(uint64_t ts, uint32_t threads, const IBac
 }
 
 
-void jdkrig::BenchClient::onHttpData(const HttpData &data)
+void kittenpaw::BenchClient::onHttpData(const HttpData &data)
 {
-#   ifdef JDKRIG_FEATURE_HTTP
+#   ifdef KITTENPAW_FEATURE_HTTP
     rapidjson::Document doc;
 
     try {
@@ -221,9 +221,9 @@ void jdkrig::BenchClient::onHttpData(const HttpData &data)
 }
 
 
-void jdkrig::BenchClient::onResolved(const DnsRecords &records, int status, const char *error)
+void kittenpaw::BenchClient::onResolved(const DnsRecords &records, int status, const char *error)
 {
-#   ifdef JDKRIG_FEATURE_HTTP
+#   ifdef KITTENPAW_FEATURE_HTTP
     assert(!m_httpListener);
 
     m_dns.reset();
@@ -245,7 +245,7 @@ void jdkrig::BenchClient::onResolved(const DnsRecords &records, int status, cons
 }
 
 
-bool jdkrig::BenchClient::setSeed(const char *seed)
+bool kittenpaw::BenchClient::setSeed(const char *seed)
 {
     if (!seed) {
         return false;
@@ -273,7 +273,7 @@ bool jdkrig::BenchClient::setSeed(const char *seed)
 }
 
 
-uint64_t jdkrig::BenchClient::referenceHash() const
+uint64_t kittenpaw::BenchClient::referenceHash() const
 {
     if (m_hash || m_mode == ONLINE_BENCH) {
         return m_hash;
@@ -283,13 +283,13 @@ uint64_t jdkrig::BenchClient::referenceHash() const
 }
 
 
-void jdkrig::BenchClient::printExit() const
+void kittenpaw::BenchClient::printExit() const
 {
     LOG_INFO("%s " WHITE_BOLD("press ") MAGENTA_BOLD("Ctrl+C") WHITE_BOLD(" to exit"), tag());
 }
 
 
-void jdkrig::BenchClient::start()
+void kittenpaw::BenchClient::start()
 {
     const uint32_t size = BenchState::size();
 
@@ -305,8 +305,8 @@ void jdkrig::BenchClient::start()
 
 
 
-#ifdef JDKRIG_FEATURE_HTTP
-void jdkrig::BenchClient::onCreateReply(const rapidjson::Value &value)
+#ifdef KITTENPAW_FEATURE_HTTP
+void kittenpaw::BenchClient::onCreateReply(const rapidjson::Value &value)
 {
     m_startTime = Chrono::steadyMSecs();
     m_token     = Json::getString(value, BenchConfig::kToken);
@@ -320,14 +320,14 @@ void jdkrig::BenchClient::onCreateReply(const rapidjson::Value &value)
 }
 
 
-void jdkrig::BenchClient::onDoneReply(const rapidjson::Value &)
+void kittenpaw::BenchClient::onDoneReply(const rapidjson::Value &)
 {
-    LOG_NOTICE("%s " WHITE_BOLD("benchmark submitted ") CYAN_BOLD("https://jdkrig.com/benchmark/%s"), tag(), m_job.id().data());
+    LOG_NOTICE("%s " WHITE_BOLD("benchmark submitted ") CYAN_BOLD("https://kittenpaw.com/benchmark/%s"), tag(), m_job.id().data());
     printExit();
 }
 
 
-void jdkrig::BenchClient::onGetReply(const rapidjson::Value &value)
+void kittenpaw::BenchClient::onGetReply(const rapidjson::Value &value)
 {
     const char *hash = Json::getString(value, BenchConfig::kHash);
     if (hash) {
@@ -343,13 +343,13 @@ void jdkrig::BenchClient::onGetReply(const rapidjson::Value &value)
 }
 
 
-void jdkrig::BenchClient::resolve()
+void kittenpaw::BenchClient::resolve()
 {
     m_dns = Dns::resolve(BenchConfig::kApiHost, this);
 }
 
 
-void jdkrig::BenchClient::send(Request request)
+void kittenpaw::BenchClient::send(Request request)
 {
     using namespace rapidjson;
 
@@ -375,7 +375,7 @@ void jdkrig::BenchClient::send(Request request)
             doc.AddMember("steady_ready_ts",                m_readyTime, allocator);
             doc.AddMember("cpu",                            Cpu::toJSON(doc), allocator);
 
-#           ifdef JDKRIG_FEATURE_DMI
+#           ifdef KITTENPAW_FEATURE_DMI
             if (m_benchmark->isDMI()) {
                 DmiReader reader;
                 if (reader.read()) {
@@ -413,7 +413,7 @@ void jdkrig::BenchClient::send(Request request)
 }
 
 
-void jdkrig::BenchClient::setError(const char *message, const char *label)
+void kittenpaw::BenchClient::setError(const char *message, const char *label)
 {
     LOG_ERR("%s " RED("%s: ") RED_BOLD("\"%s\""), tag(), label ? label : "benchmark failed", message);
     printExit();
@@ -422,7 +422,7 @@ void jdkrig::BenchClient::setError(const char *message, const char *label)
 }
 
 
-void jdkrig::BenchClient::update(const rapidjson::Value &body)
+void kittenpaw::BenchClient::update(const rapidjson::Value &body)
 {
     assert(!m_token.isEmpty());
 

@@ -1,7 +1,7 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2019      Spudz76     <https://github.com/Spudz76>
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -25,19 +25,19 @@
 #include "version.h"
 
 
-jdkrig::SysLog::SysLog()
+kittenpaw::SysLog::SysLog()
 {
     openlog(APP_ID, LOG_PID, LOG_USER);
 }
 
 
-jdkrig::SysLog::~SysLog()
+kittenpaw::SysLog::~SysLog()
 {
     closelog();
 }
 
 
-void jdkrig::SysLog::print(uint64_t, int level, const char *line, size_t offset, size_t, bool colors)
+void kittenpaw::SysLog::print(uint64_t, int level, const char *line, size_t offset, size_t, bool colors)
 {
     if (colors) {
         return;

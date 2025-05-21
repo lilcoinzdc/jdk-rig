@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh    <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig        <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw        <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_HWAPI_H
-#define JDKRIG_HWAPI_H
+#ifndef KITTENPAW_HWAPI_H
+#define KITTENPAW_HWAPI_H
 
 
 #include "base/api/interfaces/IApiListener.h"
@@ -26,7 +26,7 @@
 #include <memory>
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class DmiReader;
@@ -41,13 +41,13 @@ protected:
     void onRequest(IApiRequest &request) override;
 
 private:
-#   ifdef JDKRIG_FEATURE_DMI
+#   ifdef KITTENPAW_FEATURE_DMI
     std::shared_ptr<DmiReader> m_dmi;
 #   endif
 };
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif /* JDKRIG_HWAPI_H */
+#endif /* KITTENPAW_HWAPI_H */

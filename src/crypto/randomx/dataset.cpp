@@ -1,7 +1,7 @@
 /*
 Copyright (c) 2018-2020, tevador    <tevador@gmail.com>
 Copyright (c) 2019-2020, SChernykh  <https://github.com/SChernykh>
-Copyright (c) 2019-2020, XMRig      <https://github.com/jdkrig>, <support@jdkrig.com>
+Copyright (c) 2019-2020, KITTENpaw      <https://github.com/kittenpaw>, <support@kittenpaw.com>
 
 All rights reserved.
 
@@ -104,7 +104,7 @@ namespace randomx {
 	void initCacheCompile(randomx_cache* cache, const void* key, size_t keySize) {
 		initCache(cache, key, keySize);
 
-#		ifdef JDKRIG_SECURE_JIT
+#		ifdef KITTENPAW_SECURE_JIT
 		cache->jit->enableWriting();
 #		endif
 
@@ -112,7 +112,7 @@ namespace randomx {
 		cache->jit->generateDatasetInitCode();
 		cache->datasetInit  = cache->jit->getDatasetInitFunc();
 
-#		ifdef JDKRIG_SECURE_JIT
+#		ifdef KITTENPAW_SECURE_JIT
 		cache->jit->enableExecution();
 #		endif
 	}

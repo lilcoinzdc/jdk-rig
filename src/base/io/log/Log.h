@@ -1,7 +1,7 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2019      Spudz76     <https://github.com/Spudz76>
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -17,15 +17,15 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_LOG_H
-#define JDKRIG_LOG_H
+#ifndef KITTENPAW_LOG_H
+#define KITTENPAW_LOG_H
 
 
 #include <cstddef>
 #include <cstdint>
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class ILogBackend;
@@ -76,7 +76,7 @@ private:
 #define BRIGHT_BLACK_S      CSI "0;90m" // somewhat MD.GRAY
 #define BLACK_S             CSI "0;30m"
 
-#ifdef JDKRIG_OS_APPLE
+#ifdef KITTENPAW_OS_APPLE
 #   define BLACK_BOLD_S     CSI "0;37m"
 #else
 #   define BLACK_BOLD_S     CSI "1;30m" // another name for GRAY
@@ -136,36 +136,36 @@ private:
 #define CYAN_BG_BOLD(x)     CYAN_BG_BOLD_S x CLEAR
 
 
-#define LOG_EMERG(x, ...)   jdkrig::Log::print(jdkrig::Log::EMERG,   x, ##__VA_ARGS__)
-#define LOG_ALERT(x, ...)   jdkrig::Log::print(jdkrig::Log::ALERT,   x, ##__VA_ARGS__)
-#define LOG_CRIT(x, ...)    jdkrig::Log::print(jdkrig::Log::CRIT,    x, ##__VA_ARGS__)
-#define LOG_ERR(x, ...)     jdkrig::Log::print(jdkrig::Log::ERR,     x, ##__VA_ARGS__)
-#define LOG_WARN(x, ...)    jdkrig::Log::print(jdkrig::Log::WARNING, x, ##__VA_ARGS__)
-#define LOG_NOTICE(x, ...)  jdkrig::Log::print(jdkrig::Log::NOTICE,  x, ##__VA_ARGS__)
-#define LOG_INFO(x, ...)    jdkrig::Log::print(jdkrig::Log::INFO,    x, ##__VA_ARGS__)
-#define LOG_VERBOSE(x, ...) if (jdkrig::Log::verbose() > 0) { jdkrig::Log::print(jdkrig::Log::INFO, x, ##__VA_ARGS__); }
-#define LOG_V1(x, ...)      if (jdkrig::Log::verbose() > 0) { jdkrig::Log::print(jdkrig::Log::INFO, x, ##__VA_ARGS__); }
-#define LOG_V2(x, ...)      if (jdkrig::Log::verbose() > 1) { jdkrig::Log::print(jdkrig::Log::INFO, x, ##__VA_ARGS__); }
-#define LOG_V3(x, ...)      if (jdkrig::Log::verbose() > 2) { jdkrig::Log::print(jdkrig::Log::INFO, x, ##__VA_ARGS__); }
-#define LOG_V4(x, ...)      if (jdkrig::Log::verbose() > 3) { jdkrig::Log::print(jdkrig::Log::INFO, x, ##__VA_ARGS__); }
-#define LOG_V5(x, ...)      if (jdkrig::Log::verbose() > 4) { jdkrig::Log::print(jdkrig::Log::INFO, x, ##__VA_ARGS__); }
+#define LOG_EMERG(x, ...)   kittenpaw::Log::print(kittenpaw::Log::EMERG,   x, ##__VA_ARGS__)
+#define LOG_ALERT(x, ...)   kittenpaw::Log::print(kittenpaw::Log::ALERT,   x, ##__VA_ARGS__)
+#define LOG_CRIT(x, ...)    kittenpaw::Log::print(kittenpaw::Log::CRIT,    x, ##__VA_ARGS__)
+#define LOG_ERR(x, ...)     kittenpaw::Log::print(kittenpaw::Log::ERR,     x, ##__VA_ARGS__)
+#define LOG_WARN(x, ...)    kittenpaw::Log::print(kittenpaw::Log::WARNING, x, ##__VA_ARGS__)
+#define LOG_NOTICE(x, ...)  kittenpaw::Log::print(kittenpaw::Log::NOTICE,  x, ##__VA_ARGS__)
+#define LOG_INFO(x, ...)    kittenpaw::Log::print(kittenpaw::Log::INFO,    x, ##__VA_ARGS__)
+#define LOG_VERBOSE(x, ...) if (kittenpaw::Log::verbose() > 0) { kittenpaw::Log::print(kittenpaw::Log::INFO, x, ##__VA_ARGS__); }
+#define LOG_V1(x, ...)      if (kittenpaw::Log::verbose() > 0) { kittenpaw::Log::print(kittenpaw::Log::INFO, x, ##__VA_ARGS__); }
+#define LOG_V2(x, ...)      if (kittenpaw::Log::verbose() > 1) { kittenpaw::Log::print(kittenpaw::Log::INFO, x, ##__VA_ARGS__); }
+#define LOG_V3(x, ...)      if (kittenpaw::Log::verbose() > 2) { kittenpaw::Log::print(kittenpaw::Log::INFO, x, ##__VA_ARGS__); }
+#define LOG_V4(x, ...)      if (kittenpaw::Log::verbose() > 3) { kittenpaw::Log::print(kittenpaw::Log::INFO, x, ##__VA_ARGS__); }
+#define LOG_V5(x, ...)      if (kittenpaw::Log::verbose() > 4) { kittenpaw::Log::print(kittenpaw::Log::INFO, x, ##__VA_ARGS__); }
 
 #ifdef APP_DEBUG
-#   define LOG_DEBUG(x, ...) jdkrig::Log::print(jdkrig::Log::DEBUG, x, ##__VA_ARGS__)
+#   define LOG_DEBUG(x, ...) kittenpaw::Log::print(kittenpaw::Log::DEBUG, x, ##__VA_ARGS__)
 #else
 #   define LOG_DEBUG(x, ...)
 #endif
 
 #if defined(APP_DEBUG) || defined(APP_DEVEL)
-#   define LOG_DEBUG_ERR(x, ...)  jdkrig::Log::print(jdkrig::Log::ERR,     x, ##__VA_ARGS__)
-#   define LOG_DEBUG_WARN(x, ...) jdkrig::Log::print(jdkrig::Log::WARNING, x, ##__VA_ARGS__)
+#   define LOG_DEBUG_ERR(x, ...)  kittenpaw::Log::print(kittenpaw::Log::ERR,     x, ##__VA_ARGS__)
+#   define LOG_DEBUG_WARN(x, ...) kittenpaw::Log::print(kittenpaw::Log::WARNING, x, ##__VA_ARGS__)
 #else
 #   define LOG_DEBUG_ERR(x, ...)
 #   define LOG_DEBUG_WARN(x, ...)
 #endif
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif /* JDKRIG_LOG_H */
+#endif /* KITTENPAW_LOG_H */

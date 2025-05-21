@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@
 #include <algorithm>
 
 
-#ifdef JDKRIG_FEATURE_PROFILING
+#ifdef KITTENPAW_FEATURE_PROFILING
 
 
 ProfileScopeData* ProfileScopeData::s_data[MAX_DATA_COUNT] = {};
@@ -93,11 +93,11 @@ NOINLINE void ProfileScopeData::Init()
 
         if (t2 - t1 > 1000000000) {
             s_tscSpeed = (count2 - count1) * 1e9 / (t2 - t1);
-            LOG_INFO("%s TSC speed = %.3f GHz", jdkrig::Tags::profiler(), s_tscSpeed / 1e9);
+            LOG_INFO("%s TSC speed = %.3f GHz", kittenpaw::Tags::profiler(), s_tscSpeed / 1e9);
             return;
         }
     }
 }
 
 
-#endif /* JDKRIG_FEATURE_PROFILING */
+#endif /* KITTENPAW_FEATURE_PROFILING */

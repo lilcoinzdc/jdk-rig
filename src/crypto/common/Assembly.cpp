@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@
 #include "3rdparty/rapidjson/document.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 static const char *asmNames[] = {
@@ -42,10 +42,10 @@ static const char *asmNames[] = {
 };
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-jdkrig::Assembly::Id jdkrig::Assembly::parse(const char *assembly, Id defaultValue)
+kittenpaw::Assembly::Id kittenpaw::Assembly::parse(const char *assembly, Id defaultValue)
 {
     constexpr size_t const size = sizeof(asmNames) / sizeof((asmNames)[0]);
     static_assert(size == MAX, "asmNames size mismatch");
@@ -64,7 +64,7 @@ jdkrig::Assembly::Id jdkrig::Assembly::parse(const char *assembly, Id defaultVal
 }
 
 
-jdkrig::Assembly::Id jdkrig::Assembly::parse(const rapidjson::Value &value, Id defaultValue)
+kittenpaw::Assembly::Id kittenpaw::Assembly::parse(const rapidjson::Value &value, Id defaultValue)
 {
     if (value.IsBool()) {
         return value.GetBool() ? AUTO : NONE;
@@ -78,13 +78,13 @@ jdkrig::Assembly::Id jdkrig::Assembly::parse(const rapidjson::Value &value, Id d
 }
 
 
-const char *jdkrig::Assembly::toString() const
+const char *kittenpaw::Assembly::toString() const
 {
     return asmNames[m_id];
 }
 
 
-rapidjson::Value jdkrig::Assembly::toJSON() const
+rapidjson::Value kittenpaw::Assembly::toJSON() const
 {
     using namespace rapidjson;
 

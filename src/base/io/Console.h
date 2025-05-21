@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_CONSOLE_H
-#define JDKRIG_CONSOLE_H
+#ifndef KITTENPAW_CONSOLE_H
+#define KITTENPAW_CONSOLE_H
 
 
 #include "base/tools/Object.h"
@@ -28,14 +28,14 @@ using uv_handle_t   = struct uv_handle_s;
 using uv_stream_t   = struct uv_stream_s;
 using uv_tty_t      = struct uv_tty_s;
 
-#ifdef JDKRIG_OS_WIN
+#ifdef KITTENPAW_OS_WIN
 using ssize_t = intptr_t;
 #else
 #   include <sys/types.h>
 #endif
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class IConsoleListener;
@@ -44,7 +44,7 @@ class IConsoleListener;
 class Console
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(Console)
+    KITTENPAW_DISABLE_COPY_MOVE_DEFAULT(Console)
 
     Console(IConsoleListener *listener);
     ~Console();
@@ -61,7 +61,7 @@ private:
 };
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif /* JDKRIG_CONSOLE_H */
+#endif /* KITTENPAW_CONSOLE_H */

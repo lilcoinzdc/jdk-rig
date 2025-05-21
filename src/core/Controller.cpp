@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -19,12 +19,12 @@
 #include "core/Controller.h"
 #include "backend/cpu/Cpu.h"
 #include "core/config/Config.h"
-#include "core/Jdkrigger.h"
+#include "core/Kittenpawger.h"
 #include "crypto/common/VirtualMemory.h"
 #include "net/Network.h"
 
 
-#ifdef JDKRIG_FEATURE_API
+#ifdef KITTENPAW_FEATURE_API
 #   include "base/api/Api.h"
 #   include "hw/api/HwApi.h"
 #endif
@@ -33,19 +33,19 @@
 #include <cassert>
 
 
-jdkrig::Controller::Controller(Process *process) :
+kittenpaw::Controller::Controller(Process *process) :
     Base(process)
 {
 }
 
 
-jdkrig::Controller::~Controller()
+kittenpaw::Controller::~Controller()
 {
     VirtualMemory::destroy();
 }
 
 
-int jdkrig::Controller::init()
+int kittenpaw::Controller::init()
 {
     Base::init();
 
@@ -53,7 +53,7 @@ int jdkrig::Controller::init()
 
     m_network = std::make_shared<Network>(this);
 
-#   ifdef JDKRIG_FEATURE_API
+#   ifdef KITTENPAW_FEATURE_API
     m_hwApi = std::make_shared<HwApi>();
     api()->addListener(m_hwApi.get());
 #   endif
@@ -62,36 +62,36 @@ int jdkrig::Controller::init()
 }
 
 
-void jdkrig::Controller::start()
+void kittenpaw::Controller::start()
 {
     Base::start();
 
-    m_jdkrigger = std::make_shared<Jdkrigger>(this);
+    m_kittenpawger = std::make_shared<Kittenpawger>(this);
 
     network()->connect();
 }
 
 
-void jdkrig::Controller::stop()
+void kittenpaw::Controller::stop()
 {
     Base::stop();
 
     m_network.reset();
 
-    m_jdkrigger->stop();
-    m_jdkrigger.reset();
+    m_kittenpawger->stop();
+    m_kittenpawger.reset();
 }
 
 
-jdkrig::Jdkrigger *jdkrig::Controller::jdkrigger() const
+kittenpaw::Kittenpawger *kittenpaw::Controller::kittenpawger() const
 {
-    assert(m_jdkrigger);
+    assert(m_kittenpawger);
 
-    return m_jdkrigger.get();
+    return m_kittenpawger.get();
 }
 
 
-jdkrig::Network *jdkrig::Controller::network() const
+kittenpaw::Network *kittenpaw::Controller::network() const
 {
     assert(m_network);
 
@@ -99,8 +99,8 @@ jdkrig::Network *jdkrig::Controller::network() const
 }
 
 
-void jdkrig::Controller::execCommand(char command) const
+void kittenpaw::Controller::execCommand(char command) const
 {
-    jdkrigger()->execCommand(command);
+    kittenpawger()->execCommand(command);
     network()->execCommand(command);
 }

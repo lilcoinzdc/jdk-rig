@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_KP_CACHE_H
-#define JDKRIG_KP_CACHE_H
+#ifndef KITTENPAW_KP_CACHE_H
+#define KITTENPAW_KP_CACHE_H
 
 
 #include "base/tools/Object.h"
@@ -25,7 +25,7 @@
 #include <vector>
 
 
-namespace jdkrig
+namespace kittenpaw
 {
 
 
@@ -39,7 +39,7 @@ public:
     static constexpr size_t l1_cache_num_items = l1_cache_size / sizeof(uint32_t);
     static constexpr uint32_t num_dataset_parents = 512;
 
-    JDKRIG_DISABLE_COPY_MOVE(KPCache)
+    KITTENPAW_DISABLE_COPY_MOVE(KPCache)
 
     KPCache();
     ~KPCache();
@@ -68,7 +68,7 @@ private:
 };
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif /* JDKRIG_KP_CACHE_H */
+#endif /* KITTENPAW_KP_CACHE_H */

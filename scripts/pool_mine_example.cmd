@@ -1,7 +1,7 @@
-:: Example batch file for jdkrigging Monero at a pool
+:: Example batch file for kittenpawging Monero at a pool
 ::
 :: Format:
-::	jdkrig.exe -o <pool address>:<pool port> -u <pool username/wallet> -p <pool password>
+::	kittenpaw.exe -o <pool address>:<pool port> -u <pool username/wallet> -p <pool password>
 ::
 :: Fields:
 ::	pool address		The host name of the pool stratum or its IP address, for example pool.hashvault.pro
@@ -9,12 +9,12 @@
 ::	pool username/wallet 	For most pools, this is the wallet address you want to mine to. Some pools require a username
 ::	pool password 		For most pools this can be just 'x'. For pools using usernames, you may need to provide a password as configured on the pool.
 ::
-:: List of Monero jdkrigging pools:
-::	https://jdkriggingpoolstats.stream/monero
+:: List of Monero kittenpawging pools:
+::	https://kittenpawgingpoolstats.stream/monero
 ::
 :: Choose pools outside of top 5 to help Monero network be more decentralized!
 :: Smaller pools also often have smaller fees/payout limits.
 
 cd /d "%~dp0"
-jdkrig.exe -o xmrpool.eu:3333 -u 48edfHu7V9Z84YzzMa6fUueoELZ9ZRXq9VetWzYGzKt52XU5xvqgzYnDK9URnRoJMk1j8nLwEVsaSWJ4fhdUyZijBGUicoD -p x
+kittenpaw.exe -o xmrpool.eu:3333 -u 48edfHu7V9Z84YzzMa6fUueoELZ9ZRXq9VetWzYGzKt52XU5xvqgzYnDK9URnRoJMk1j8nLwEVsaSWJ4fhdUyZijBGUicoD -p x
 pause

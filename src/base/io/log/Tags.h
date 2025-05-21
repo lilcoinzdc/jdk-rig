@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,15 +16,15 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_TAGS_H
-#define JDKRIG_TAGS_H
+#ifndef KITTENPAW_TAGS_H
+#define KITTENPAW_TAGS_H
 
 
 #include <cstddef>
 #include <cstdint>
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class Tags
@@ -35,36 +35,36 @@ public:
     static const char *origin();
     static const char *signal();
 
-#   ifdef JDKRIG_JDKRIGGER_PROJECT
+#   ifdef KITTENPAW_KITTENPAWGER_PROJECT
     static const char *cpu();
-    static const char *jdkrigger();
-#   ifdef JDKRIG_ALGO_RANDOMX
+    static const char *kittenpawger();
+#   ifdef KITTENPAW_ALGO_RANDOMX
     static const char *randomx();
 #   endif
-#   ifdef JDKRIG_FEATURE_BENCHMARK
+#   ifdef KITTENPAW_FEATURE_BENCHMARK
     static const char *bench();
 #   endif
 #   endif
 
-#   ifdef JDKRIG_PROXY_PROJECT
+#   ifdef KITTENPAW_PROXY_PROJECT
     static const char *proxy();
 #   endif
 
-#   ifdef JDKRIG_FEATURE_CUDA
+#   ifdef KITTENPAW_FEATURE_CUDA
     static const char *nvidia();
 #   endif
 
-#   ifdef JDKRIG_FEATURE_OPENCL
+#   ifdef KITTENPAW_FEATURE_OPENCL
     static const char *opencl();
 #   endif
 
-#   ifdef JDKRIG_FEATURE_PROFILING
+#   ifdef KITTENPAW_FEATURE_PROFILING
     static const char* profiler();
 #   endif
 };
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif /* JDKRIG_TAGS_H */
+#endif /* KITTENPAW_TAGS_H */

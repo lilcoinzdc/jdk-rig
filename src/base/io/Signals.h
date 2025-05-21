@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_SIGNALS_H
-#define JDKRIG_SIGNALS_H
+#ifndef KITTENPAW_SIGNALS_H
+#define KITTENPAW_SIGNALS_H
 
 
 #include "base/tools/Object.h"
@@ -30,7 +30,7 @@
 using uv_signal_t = struct uv_signal_s;
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class ISignalListener;
@@ -39,7 +39,7 @@ class ISignalListener;
 class Signals
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(Signals)
+    KITTENPAW_DISABLE_COPY_MOVE_DEFAULT(Signals)
 
 #   ifdef SIGUSR1
     constexpr static const size_t kSignalsCount = 4;
@@ -60,7 +60,7 @@ private:
 };
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif /* JDKRIG_SIGNALS_H */
+#endif /* KITTENPAW_SIGNALS_H */

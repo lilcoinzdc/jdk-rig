@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -26,32 +26,32 @@
 #include <uv.h>
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
-static MemPool<JDKRIG_NET_BUFFER_CHUNK_SIZE, JDKRIG_NET_BUFFER_INIT_CHUNKS> *pool = nullptr;
+static MemPool<KITTENPAW_NET_BUFFER_CHUNK_SIZE, KITTENPAW_NET_BUFFER_INIT_CHUNKS> *pool = nullptr;
 
 
-inline MemPool<JDKRIG_NET_BUFFER_CHUNK_SIZE, JDKRIG_NET_BUFFER_INIT_CHUNKS> *getPool()
+inline MemPool<KITTENPAW_NET_BUFFER_CHUNK_SIZE, KITTENPAW_NET_BUFFER_INIT_CHUNKS> *getPool()
 {
     if (!pool) {
-        pool = new MemPool<JDKRIG_NET_BUFFER_CHUNK_SIZE, JDKRIG_NET_BUFFER_INIT_CHUNKS>();
+        pool = new MemPool<KITTENPAW_NET_BUFFER_CHUNK_SIZE, KITTENPAW_NET_BUFFER_INIT_CHUNKS>();
     }
 
     return pool;
 }
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-char *jdkrig::NetBuffer::allocate()
+char *kittenpaw::NetBuffer::allocate()
 {
     return getPool()->allocate();
 }
 
 
-void jdkrig::NetBuffer::destroy()
+void kittenpaw::NetBuffer::destroy()
 {
     if (!pool) {
         return;
@@ -64,14 +64,14 @@ void jdkrig::NetBuffer::destroy()
 }
 
 
-void jdkrig::NetBuffer::onAlloc(uv_handle_t *, size_t, uv_buf_t *buf)
+void kittenpaw::NetBuffer::onAlloc(uv_handle_t *, size_t, uv_buf_t *buf)
 {
     buf->base = getPool()->allocate();
-    buf->len  = JDKRIG_NET_BUFFER_CHUNK_SIZE;
+    buf->len  = KITTENPAW_NET_BUFFER_CHUNK_SIZE;
 }
 
 
-void jdkrig::NetBuffer::release(const char *buf)
+void kittenpaw::NetBuffer::release(const char *buf)
 {
     if (buf == nullptr) {
         return;
@@ -81,7 +81,7 @@ void jdkrig::NetBuffer::release(const char *buf)
 }
 
 
-void jdkrig::NetBuffer::release(const uv_buf_t *buf)
+void kittenpaw::NetBuffer::release(const uv_buf_t *buf)
 {
     if (buf->base == nullptr) {
         return;

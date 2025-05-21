@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2023 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2023 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2023 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -23,22 +23,22 @@
 #include <uv.h>
 
 
-#ifdef JDKRIG_FEATURE_TLS
+#ifdef KITTENPAW_FEATURE_TLS
 #   include <openssl/ssl.h>
 #   include <openssl/err.h>
 #endif
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 String Platform::m_userAgent;
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-void jdkrig::Platform::init(const char *userAgent)
+void kittenpaw::Platform::init(const char *userAgent)
 {
-#   ifdef JDKRIG_FEATURE_TLS
+#   ifdef KITTENPAW_FEATURE_TLS
     SSL_library_init();
     SSL_load_error_strings();
 

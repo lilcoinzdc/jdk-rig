@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@
 #include <algorithm>
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 const char *DnsConfig::kField   = "dns";
@@ -32,17 +32,17 @@ const char *DnsConfig::kIPv6    = "ipv6";
 const char *DnsConfig::kTTL     = "ttl";
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-jdkrig::DnsConfig::DnsConfig(const rapidjson::Value &value)
+kittenpaw::DnsConfig::DnsConfig(const rapidjson::Value &value)
 {
     m_ipv6  = Json::getBool(value, kIPv6, m_ipv6);
     m_ttl   = std::max(Json::getUint(value, kTTL, m_ttl), 1U);
 }
 
 
-rapidjson::Value jdkrig::DnsConfig::toJSON(rapidjson::Document &doc) const
+rapidjson::Value kittenpaw::DnsConfig::toJSON(rapidjson::Document &doc) const
 {
     using namespace rapidjson;
 

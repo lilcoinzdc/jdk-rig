@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-# https://jdkrig.com/docs/jdkrigger/hugepages#onegb-huge-pages
+# https://kittenpaw.com/docs/kittenpawger/hugepages#onegb-huge-pages
 
 sysctl -w vm.nr_hugepages=$(nproc)
 

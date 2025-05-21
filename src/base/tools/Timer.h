@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_TIMER_H
-#define JDKRIG_TIMER_H
+#ifndef KITTENPAW_TIMER_H
+#define KITTENPAW_TIMER_H
 
 
 using uv_timer_t = struct uv_timer_s;
@@ -29,7 +29,7 @@ using uv_timer_t = struct uv_timer_s;
 #include <cstdint>
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class ITimerListener;
@@ -38,7 +38,7 @@ class ITimerListener;
 class Timer
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(Timer);
+    KITTENPAW_DISABLE_COPY_MOVE_DEFAULT(Timer);
 
     Timer(ITimerListener *listener);
     Timer(ITimerListener *listener, uint64_t timeout, uint64_t repeat);
@@ -63,7 +63,7 @@ private:
 };
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif /* JDKRIG_TIMER_H */
+#endif /* KITTENPAW_TIMER_H */

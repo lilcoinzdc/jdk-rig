@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2023 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2023 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2023 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -34,24 +34,24 @@
 #include "base/tools/Timer.h"
 #include "core/config/Config.h"
 #include "core/Controller.h"
-#include "core/Jdkrigger.h"
+#include "core/Kittenpawger.h"
 #include "net/Network.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 static inline double randomf(double min, double max)                 { return (max - min) * (((static_cast<double>(rand())) / static_cast<double>(RAND_MAX))) + min; }
 static inline uint64_t random(uint64_t base, double min, double max) { return static_cast<uint64_t>(base * randomf(min, max)); }
 
-static const char *kDonateHost = "donate.v2.jdkrig.com";
-#ifdef JDKRIG_FEATURE_TLS
-static const char *kDonateHostTls = "donate.ssl.jdkrig.com";
+static const char *kDonateHost = "donate.v2.kittenpaw.com";
+#ifdef KITTENPAW_FEATURE_TLS
+static const char *kDonateHostTls = "donate.ssl.kittenpaw.com";
 #endif
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-jdkrig::DonateStrategy::DonateStrategy(Controller *controller, IStrategyListener *listener) :
+kittenpaw::DonateStrategy::DonateStrategy(Controller *controller, IStrategyListener *listener) :
     m_donateTime(static_cast<uint64_t>(controller->config()->pools().donateLevel()) * 60 * 1000),
     m_idleTime((100 - static_cast<uint64_t>(controller->config()->pools().donateLevel())) * 60 * 1000),
     m_controller(controller),
@@ -63,13 +63,13 @@ jdkrig::DonateStrategy::DonateStrategy(Controller *controller, IStrategyListener
     keccak(reinterpret_cast<const uint8_t *>(user.data()), user.size(), hash);
     Cvt::toHex(m_userId, sizeof(m_userId), hash, 32);
 
-#   if defined JDKRIG_ALGO_KAWPOW || defined JDKRIG_ALGO_GHOSTRIDER
+#   if defined KITTENPAW_ALGO_KAWPOW || defined KITTENPAW_ALGO_GHOSTRIDER
     constexpr Pool::Mode mode = Pool::MODE_AUTO_ETH;
 #   else
     constexpr Pool::Mode mode = Pool::MODE_POOL;
 #   endif
 
-#   ifdef JDKRIG_FEATURE_TLS
+#   ifdef KITTENPAW_FEATURE_TLS
     m_pools.emplace_back(kDonateHostTls, 443, m_userId, nullptr, nullptr, 0, true, true, mode);
 #   endif
     m_pools.emplace_back(kDonateHost, 3333, m_userId, nullptr, nullptr, 0, true, false, mode);
@@ -87,7 +87,7 @@ jdkrig::DonateStrategy::DonateStrategy(Controller *controller, IStrategyListener
 }
 
 
-jdkrig::DonateStrategy::~DonateStrategy()
+kittenpaw::DonateStrategy::~DonateStrategy()
 {
     delete m_timer;
     delete m_strategy;
@@ -98,7 +98,7 @@ jdkrig::DonateStrategy::~DonateStrategy()
 }
 
 
-void jdkrig::DonateStrategy::update(IClient *client, const Job &job)
+void kittenpaw::DonateStrategy::update(IClient *client, const Job &job)
 {
     setAlgo(job.algorithm());
     setProxy(client->pool().proxy());
@@ -109,13 +109,13 @@ void jdkrig::DonateStrategy::update(IClient *client, const Job &job)
 }
 
 
-int64_t jdkrig::DonateStrategy::submit(const JobResult &result)
+int64_t kittenpaw::DonateStrategy::submit(const JobResult &result)
 {
     return m_proxy ? m_proxy->submit(result) : m_strategy->submit(result);
 }
 
 
-void jdkrig::DonateStrategy::connect()
+void kittenpaw::DonateStrategy::connect()
 {
     m_proxy = createProxy();
     if (m_proxy) {
@@ -128,7 +128,7 @@ void jdkrig::DonateStrategy::connect()
 }
 
 
-void jdkrig::DonateStrategy::setAlgo(const jdkrig::Algorithm &algo)
+void kittenpaw::DonateStrategy::setAlgo(const kittenpaw::Algorithm &algo)
 {
     m_algorithm = algo;
 
@@ -136,20 +136,20 @@ void jdkrig::DonateStrategy::setAlgo(const jdkrig::Algorithm &algo)
 }
 
 
-void jdkrig::DonateStrategy::setProxy(const ProxyUrl &proxy)
+void kittenpaw::DonateStrategy::setProxy(const ProxyUrl &proxy)
 {
     m_strategy->setProxy(proxy);
 }
 
 
-void jdkrig::DonateStrategy::stop()
+void kittenpaw::DonateStrategy::stop()
 {
     m_timer->stop();
     m_strategy->stop();
 }
 
 
-void jdkrig::DonateStrategy::tick(uint64_t now)
+void kittenpaw::DonateStrategy::tick(uint64_t now)
 {
     m_now = now;
 
@@ -165,7 +165,7 @@ void jdkrig::DonateStrategy::tick(uint64_t now)
 }
 
 
-void jdkrig::DonateStrategy::onActive(IStrategy *, IClient *client)
+void kittenpaw::DonateStrategy::onActive(IStrategy *, IClient *client)
 {
     if (isActive()) {
         return;
@@ -176,12 +176,12 @@ void jdkrig::DonateStrategy::onActive(IStrategy *, IClient *client)
 }
 
 
-void jdkrig::DonateStrategy::onPause(IStrategy *)
+void kittenpaw::DonateStrategy::onPause(IStrategy *)
 {
 }
 
 
-void jdkrig::DonateStrategy::onClose(IClient *, int failures)
+void kittenpaw::DonateStrategy::onClose(IClient *, int failures)
 {
     if (failures == 2 && m_controller->config()->pools().proxyDonate() == Pools::PROXY_DONATE_AUTO) {
         m_proxy->deleteLater();
@@ -192,12 +192,12 @@ void jdkrig::DonateStrategy::onClose(IClient *, int failures)
 }
 
 
-void jdkrig::DonateStrategy::onLogin(IClient *, rapidjson::Document &doc, rapidjson::Value &params)
+void kittenpaw::DonateStrategy::onLogin(IClient *, rapidjson::Document &doc, rapidjson::Value &params)
 {
     using namespace rapidjson;
     auto &allocator = doc.GetAllocator();
 
-#   ifdef JDKRIG_FEATURE_TLS
+#   ifdef KITTENPAW_FEATURE_TLS
     if (m_tls) {
         char buf[40] = { 0 };
         snprintf(buf, sizeof(buf), "stratum+ssl://%s", m_pools[0].url().data());
@@ -214,13 +214,13 @@ void jdkrig::DonateStrategy::onLogin(IClient *, rapidjson::Document &doc, rapidj
 }
 
 
-void jdkrig::DonateStrategy::onLogin(IStrategy *, IClient *, rapidjson::Document &doc, rapidjson::Value &params)
+void kittenpaw::DonateStrategy::onLogin(IStrategy *, IClient *, rapidjson::Document &doc, rapidjson::Value &params)
 {
     setParams(doc, params);
 }
 
 
-void jdkrig::DonateStrategy::onLoginSuccess(IClient *client)
+void kittenpaw::DonateStrategy::onLoginSuccess(IClient *client)
 {
     if (isActive()) {
         return;
@@ -231,25 +231,25 @@ void jdkrig::DonateStrategy::onLoginSuccess(IClient *client)
 }
 
 
-void jdkrig::DonateStrategy::onVerifyAlgorithm(const IClient *client, const Algorithm &algorithm, bool *ok)
+void kittenpaw::DonateStrategy::onVerifyAlgorithm(const IClient *client, const Algorithm &algorithm, bool *ok)
 {
     m_listener->onVerifyAlgorithm(this, client, algorithm, ok);
 }
 
 
-void jdkrig::DonateStrategy::onVerifyAlgorithm(IStrategy *, const  IClient *client, const Algorithm &algorithm, bool *ok)
+void kittenpaw::DonateStrategy::onVerifyAlgorithm(IStrategy *, const  IClient *client, const Algorithm &algorithm, bool *ok)
 {
     m_listener->onVerifyAlgorithm(this, client, algorithm, ok);
 }
 
 
-void jdkrig::DonateStrategy::onTimer(const Timer *)
+void kittenpaw::DonateStrategy::onTimer(const Timer *)
 {
     setState(isActive() ? STATE_WAIT : STATE_CONNECT);
 }
 
 
-jdkrig::IClient *jdkrig::DonateStrategy::createProxy()
+kittenpaw::IClient *kittenpaw::DonateStrategy::createProxy()
 {
     if (m_controller->config()->pools().proxyDonate() == Pools::PROXY_DONATE_NONE) {
         return nullptr;
@@ -275,13 +275,13 @@ jdkrig::IClient *jdkrig::DonateStrategy::createProxy()
 }
 
 
-void jdkrig::DonateStrategy::idle(double min, double max)
+void kittenpaw::DonateStrategy::idle(double min, double max)
 {
     m_timer->start(random(m_idleTime, min, max), 0);
 }
 
 
-void jdkrig::DonateStrategy::setJob(IClient *client, const Job &job, const rapidjson::Value &params)
+void kittenpaw::DonateStrategy::setJob(IClient *client, const Job &job, const rapidjson::Value &params)
 {
     if (isActive()) {
         m_listener->onJob(this, client, job, params);
@@ -289,11 +289,11 @@ void jdkrig::DonateStrategy::setJob(IClient *client, const Job &job, const rapid
 }
 
 
-void jdkrig::DonateStrategy::setParams(rapidjson::Document &doc, rapidjson::Value &params)
+void kittenpaw::DonateStrategy::setParams(rapidjson::Document &doc, rapidjson::Value &params)
 {
     using namespace rapidjson;
     auto &allocator = doc.GetAllocator();
-    auto algorithms = m_controller->jdkrigger()->algorithms();
+    auto algorithms = m_controller->kittenpawger()->algorithms();
 
     const size_t index = static_cast<size_t>(std::distance(algorithms.begin(), std::find(algorithms.begin(), algorithms.end(), m_algorithm)));
     if (index > 0 && index < algorithms.size()) {
@@ -316,13 +316,13 @@ void jdkrig::DonateStrategy::setParams(rapidjson::Document &doc, rapidjson::Valu
 }
 
 
-void jdkrig::DonateStrategy::setResult(IClient *client, const SubmitResult &result, const char *error)
+void kittenpaw::DonateStrategy::setResult(IClient *client, const SubmitResult &result, const char *error)
 {
     m_listener->onResultAccepted(this, client, result, error);
 }
 
 
-void jdkrig::DonateStrategy::setState(State state)
+void kittenpaw::DonateStrategy::setState(State state)
 {
     constexpr const uint64_t waitTime = 3000;
 

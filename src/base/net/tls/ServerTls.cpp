@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -26,13 +26,13 @@
 #include <openssl/ssl.h>
 
 
-jdkrig::ServerTls::ServerTls(SSL_CTX *ctx) :
+kittenpaw::ServerTls::ServerTls(SSL_CTX *ctx) :
     m_ctx(ctx)
 {
 }
 
 
-jdkrig::ServerTls::~ServerTls()
+kittenpaw::ServerTls::~ServerTls()
 {
     if (m_ssl) {
         SSL_free(m_ssl);
@@ -40,7 +40,7 @@ jdkrig::ServerTls::~ServerTls()
 }
 
 
-bool jdkrig::ServerTls::isHTTP(const char *data, size_t size)
+bool kittenpaw::ServerTls::isHTTP(const char *data, size_t size)
 {
     assert(size > 0);
 
@@ -50,7 +50,7 @@ bool jdkrig::ServerTls::isHTTP(const char *data, size_t size)
 }
 
 
-bool jdkrig::ServerTls::isTLS(const char *data, size_t size)
+bool kittenpaw::ServerTls::isTLS(const char *data, size_t size)
 {
     assert(size > 0);
 
@@ -60,7 +60,7 @@ bool jdkrig::ServerTls::isTLS(const char *data, size_t size)
 }
 
 
-bool jdkrig::ServerTls::send(const char *data, size_t size)
+bool kittenpaw::ServerTls::send(const char *data, size_t size)
 {
     SSL_write(m_ssl, data, size);
 
@@ -68,7 +68,7 @@ bool jdkrig::ServerTls::send(const char *data, size_t size)
 }
 
 
-void jdkrig::ServerTls::read(const char *data, size_t size)
+void kittenpaw::ServerTls::read(const char *data, size_t size)
 {
     if (!m_ssl) {
         m_ssl = SSL_new(m_ctx);
@@ -105,7 +105,7 @@ void jdkrig::ServerTls::read(const char *data, size_t size)
 }
 
 
-void jdkrig::ServerTls::read()
+void kittenpaw::ServerTls::read()
 {
     static char buf[16384]{};
 

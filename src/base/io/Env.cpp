@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -40,24 +40,24 @@
 #endif
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
-#ifdef JDKRIG_FEATURE_ENV
+#ifdef KITTENPAW_FEATURE_ENV
 static std::map<String, String> variables;
 
 
 static void createVariables()
 {
-    variables.insert({ "JDKRIG_VERSION",  APP_VERSION });
-    variables.insert({ "JDKRIG_KIND",     APP_KIND });
-    variables.insert({ "JDKRIG_HOSTNAME", Env::hostname() });
-    variables.insert({ "JDKRIG_EXE",      Process::exepath() });
-    variables.insert({ "JDKRIG_EXE_DIR",  Process::location(Process::ExeLocation) });
-    variables.insert({ "JDKRIG_CWD",      Process::location(Process::CwdLocation) });
-    variables.insert({ "JDKRIG_HOME_DIR", Process::location(Process::HomeLocation) });
-    variables.insert({ "JDKRIG_TEMP_DIR", Process::location(Process::TempLocation) });
-    variables.insert({ "JDKRIG_DATA_DIR", Process::location(Process::DataLocation) });
+    variables.insert({ "KITTENPAW_VERSION",  APP_VERSION });
+    variables.insert({ "KITTENPAW_KIND",     APP_KIND });
+    variables.insert({ "KITTENPAW_HOSTNAME", Env::hostname() });
+    variables.insert({ "KITTENPAW_EXE",      Process::exepath() });
+    variables.insert({ "KITTENPAW_EXE_DIR",  Process::location(Process::ExeLocation) });
+    variables.insert({ "KITTENPAW_CWD",      Process::location(Process::CwdLocation) });
+    variables.insert({ "KITTENPAW_HOME_DIR", Process::location(Process::HomeLocation) });
+    variables.insert({ "KITTENPAW_TEMP_DIR", Process::location(Process::TempLocation) });
+    variables.insert({ "KITTENPAW_DATA_DIR", Process::location(Process::DataLocation) });
 
     String hostname = "HOSTNAME";
     if (!getenv(hostname)) { // NOLINT(concurrency-mt-unsafe)
@@ -67,12 +67,12 @@ static void createVariables()
 #endif
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-jdkrig::String jdkrig::Env::expand(const char *in, const std::map<String, String> &extra)
+kittenpaw::String kittenpaw::Env::expand(const char *in, const std::map<String, String> &extra)
 {
-#   ifdef JDKRIG_FEATURE_ENV
+#   ifdef KITTENPAW_FEATURE_ENV
     if (in == nullptr) {
         return {};
     }
@@ -116,9 +116,9 @@ jdkrig::String jdkrig::Env::expand(const char *in, const std::map<String, String
 }
 
 
-jdkrig::String jdkrig::Env::get(const String &name, const std::map<String, String> &extra)
+kittenpaw::String kittenpaw::Env::get(const String &name, const std::map<String, String> &extra)
 {
-#   ifdef JDKRIG_FEATURE_ENV
+#   ifdef KITTENPAW_FEATURE_ENV
     if (variables.empty()) {
         createVariables();
     }
@@ -140,7 +140,7 @@ jdkrig::String jdkrig::Env::get(const String &name, const std::map<String, Strin
 }
 
 
-jdkrig::String jdkrig::Env::hostname()
+kittenpaw::String kittenpaw::Env::hostname()
 {
     char buf[UV_MAXHOSTNAMESIZE]{};
 

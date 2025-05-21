@@ -1,8 +1,8 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2012-2013 The Cryptonote developers
  * Copyright (c) 2014-2021 The Monero Project
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -18,15 +18,15 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_WALLETADDRESS_H
-#define JDKRIG_WALLETADDRESS_H
+#ifndef KITTENPAW_WALLETADDRESS_H
+#define KITTENPAW_WALLETADDRESS_H
 
 
 #include "base/tools/String.h"
 #include "base/crypto/Coin.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class WalletAddress
@@ -74,7 +74,7 @@ public:
     const char *typeName() const;
     rapidjson::Value toJSON(rapidjson::Document &doc) const;
 
-#   ifdef JDKRIG_FEATURE_API
+#   ifdef KITTENPAW_FEATURE_API
     rapidjson::Value toAPI(rapidjson::Document &doc) const;
 #   endif
 
@@ -98,7 +98,7 @@ private:
 };
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif /* JDKRIG_WALLETADDRESS_H */
+#endif /* KITTENPAW_WALLETADDRESS_H */

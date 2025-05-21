@@ -1,4 +1,4 @@
-/* XMRig
+/* KITTENpaw
  * Copyright 2010      Jeff Garzik <jgarzik@pobox.com>
  * Copyright 2012-2014 pooler      <pooler@litecoinpool.org>
  * Copyright 2014      Lucas Jones <https://github.com/lucasjones>
@@ -7,7 +7,7 @@
  * Copyright 2017-2018 XMR-Stak    <https://github.com/fireice-uk>, <https://github.com/psychocrypt>
  * Copyright 2018      Lee Clagett <https://github.com/vtnerd>
  * Copyright 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -23,8 +23,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_JOBRESULT_H
-#define JDKRIG_JOBRESULT_H
+#ifndef KITTENPAW_JOBRESULT_H
+#define KITTENPAW_JOBRESULT_H
 
 
 #include <memory.h>
@@ -35,7 +35,7 @@
 #include "base/net/stratum/Job.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class JobResult
@@ -43,7 +43,7 @@ class JobResult
 public:
     JobResult() = delete;
 
-    inline JobResult(const Job &job, uint64_t nonce, const uint8_t *result, const uint8_t* header_hash = nullptr, const uint8_t *mix_hash = nullptr, const uint8_t* jdkrigger_signature = nullptr) :
+    inline JobResult(const Job &job, uint64_t nonce, const uint8_t *result, const uint8_t* header_hash = nullptr, const uint8_t *mix_hash = nullptr, const uint8_t* kittenpawger_signature = nullptr) :
         algorithm(job.algorithm()),
         index(job.index()),
         clientId(job.clientId()),
@@ -62,9 +62,9 @@ public:
             memcpy(m_mixHash, mix_hash, sizeof(m_mixHash));
         }
 
-        if (jdkrigger_signature) {
-            m_hasJdkriggerSignature = true;
-            memcpy(m_jdkriggerSignature, jdkrigger_signature, sizeof(m_jdkriggerSignature));
+        if (kittenpawger_signature) {
+            m_hasKittenpawgerSignature = true;
+            memcpy(m_kittenpawgerSignature, kittenpawger_signature, sizeof(m_kittenpawgerSignature));
         }
     }
 
@@ -85,7 +85,7 @@ public:
     inline const uint8_t *headerHash() const { return m_headerHash; }
     inline const uint8_t *mixHash() const    { return m_mixHash; }
 
-    inline const uint8_t *jdkriggerSignature() const { return m_hasJdkriggerSignature ? m_jdkriggerSignature : nullptr; }
+    inline const uint8_t *kittenpawgerSignature() const { return m_hasKittenpawgerSignature ? m_kittenpawgerSignature : nullptr; }
 
     const Algorithm algorithm;
     const uint8_t index;
@@ -100,12 +100,12 @@ private:
     uint8_t m_headerHash[32] = { 0 };
     uint8_t m_mixHash[32]    = { 0 };
 
-    uint8_t m_jdkriggerSignature[64] = { 0 };
-    bool m_hasJdkriggerSignature = false;
+    uint8_t m_kittenpawgerSignature[64] = { 0 };
+    bool m_hasKittenpawgerSignature = false;
 };
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif /* JDKRIG_JOBRESULT_H */
+#endif /* KITTENPAW_JOBRESULT_H */

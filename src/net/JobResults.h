@@ -1,4 +1,4 @@
-/* XMRig
+/* KITTENpaw
  * Copyright 2010      Jeff Garzik <jgarzik@pobox.com>
  * Copyright 2012-2014 pooler      <pooler@litecoinpool.org>
  * Copyright 2014      Lucas Jones <https://github.com/lucasjones>
@@ -7,7 +7,7 @@
  * Copyright 2017-2018 XMR-Stak    <https://github.com/fireice-uk>, <https://github.com/psychocrypt>
  * Copyright 2018      Lee Clagett <https://github.com/vtnerd>
  * Copyright 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -23,15 +23,15 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_JOBRESULTS_H
-#define JDKRIG_JOBRESULTS_H
+#ifndef KITTENPAW_JOBRESULTS_H
+#define KITTENPAW_JOBRESULTS_H
 
 
 #include <cstddef>
 #include <cstdint>
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class IJobResultListener;
@@ -46,16 +46,16 @@ public:
     static void setListener(IJobResultListener *listener, bool hwAES);
     static void stop();
     static void submit(const Job &job, uint32_t nonce, const uint8_t *result);
-    static void submit(const Job& job, uint32_t nonce, const uint8_t* result, const uint8_t* jdkrigger_signature);
+    static void submit(const Job& job, uint32_t nonce, const uint8_t* result, const uint8_t* kittenpawger_signature);
     static void submit(const JobResult &result);
 
-#   if defined(JDKRIG_FEATURE_OPENCL) || defined(JDKRIG_FEATURE_CUDA)
+#   if defined(KITTENPAW_FEATURE_OPENCL) || defined(KITTENPAW_FEATURE_CUDA)
     static void submit(const Job &job, uint32_t *results, size_t count, uint32_t device_index);
 #   endif
 };
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-#endif /* JDKRIG_JOBRESULTS_H */
+#endif /* KITTENPAW_JOBRESULTS_H */

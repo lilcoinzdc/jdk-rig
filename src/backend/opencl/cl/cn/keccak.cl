@@ -1,5 +1,5 @@
-#ifndef JDKRIG_KECCAK_CL
-#define JDKRIG_KECCAK_CL
+#ifndef KITTENPAW_KECCAK_CL
+#define KITTENPAW_KECCAK_CL
 
 
 STATIC const __constant ulong keccakf_rndc[24] =

@@ -1,4 +1,4 @@
-/* XMRig
+/* KITTENpaw
  * Copyright 2010      Jeff Garzik <jgarzik@pobox.com>
  * Copyright 2012-2014 pooler      <pooler@litecoinpool.org>
  * Copyright 2014      Lucas Jones <https://github.com/lucasjones>
@@ -6,7 +6,7 @@
  * Copyright 2016      Jay D Dee   <jayddee246@gmail.com>
  * Copyright 2017-2018 XMR-Stak    <https://github.com/fireice-uk>, <https://github.com/psychocrypt>
  * Copyright 2018-2019 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2019 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright 2016-2019 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -30,20 +30,20 @@
 #include "backend/opencl/wrappers/OclLib.h"
 
 
-jdkrig::Cn1Kernel::Cn1Kernel(cl_program program)
+kittenpaw::Cn1Kernel::Cn1Kernel(cl_program program)
     : OclKernel(program, "cn1")
 {
 }
 
 
-jdkrig::Cn1Kernel::Cn1Kernel(cl_program program, uint64_t height)
+kittenpaw::Cn1Kernel::Cn1Kernel(cl_program program, uint64_t height)
     : OclKernel(program, ("cn1_" + std::to_string(height)).c_str())
 {
 
 }
 
 
-void jdkrig::Cn1Kernel::enqueue(cl_command_queue queue, uint32_t nonce, size_t threads, size_t worksize)
+void kittenpaw::Cn1Kernel::enqueue(cl_command_queue queue, uint32_t nonce, size_t threads, size_t worksize)
 {
     const size_t offset   = nonce;
     const size_t gthreads = threads;
@@ -54,7 +54,7 @@ void jdkrig::Cn1Kernel::enqueue(cl_command_queue queue, uint32_t nonce, size_t t
 
 
 // __kernel void cn1(__global ulong *input, __global uint4 *Scratchpad, __global ulong *states, uint Threads)
-void jdkrig::Cn1Kernel::setArgs(cl_mem input, cl_mem scratchpads, cl_mem states, uint32_t threads)
+void kittenpaw::Cn1Kernel::setArgs(cl_mem input, cl_mem scratchpads, cl_mem states, uint32_t threads)
 {
     setArg(0, sizeof(cl_mem), &input);
     setArg(1, sizeof(cl_mem), &scratchpads);

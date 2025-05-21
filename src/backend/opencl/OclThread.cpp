@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@
 #include <algorithm>
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 static const char *kIndex        = "index";
 static const char *kIntensity    = "intensity";
@@ -33,16 +33,16 @@ static const char *kThreads      = "threads";
 static const char *kUnroll       = "unroll";
 static const char *kWorksize     = "worksize";
 
-#ifdef JDKRIG_ALGO_RANDOMX
+#ifdef KITTENPAW_ALGO_RANDOMX
 static const char *kBFactor      = "bfactor";
 static const char *kGCNAsm       = "gcn_asm";
 static const char* kDatasetHost  = "dataset_host";
 #endif
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-jdkrig::OclThread::OclThread(const rapidjson::Value &value)
+kittenpaw::OclThread::OclThread(const rapidjson::Value &value)
 {
     if (!value.IsObject()) {
         return;
@@ -78,7 +78,7 @@ jdkrig::OclThread::OclThread(const rapidjson::Value &value)
         m_threads.emplace_back(-1);
     }
 
-#   ifdef JDKRIG_ALGO_RANDOMX
+#   ifdef KITTENPAW_ALGO_RANDOMX
     const auto &gcnAsm = Json::getValue(value, kGCNAsm);
     if (gcnAsm.IsBool()) {
         m_fields.set(RANDOMX_FIELDS, true);
@@ -91,7 +91,7 @@ jdkrig::OclThread::OclThread(const rapidjson::Value &value)
 }
 
 
-bool jdkrig::OclThread::isEqual(const OclThread &other) const
+bool kittenpaw::OclThread::isEqual(const OclThread &other) const
 {
     return other.m_threads.size() == m_threads.size() &&
            std::equal(m_threads.begin(), m_threads.end(), other.m_threads.begin()) &&
@@ -107,7 +107,7 @@ bool jdkrig::OclThread::isEqual(const OclThread &other) const
 }
 
 
-rapidjson::Value jdkrig::OclThread::toJSON(rapidjson::Document &doc) const
+rapidjson::Value kittenpaw::OclThread::toJSON(rapidjson::Document &doc) const
 {
     using namespace rapidjson;
     auto &allocator = doc.GetAllocator();
@@ -136,7 +136,7 @@ rapidjson::Value jdkrig::OclThread::toJSON(rapidjson::Document &doc) const
     out.AddMember(StringRef(kThreads), threads, allocator);
 
     if (m_fields.test(RANDOMX_FIELDS)) {
-#       ifdef JDKRIG_ALGO_RANDOMX
+#       ifdef KITTENPAW_ALGO_RANDOMX
         out.AddMember(StringRef(kBFactor),      bfactor(), allocator);
         out.AddMember(StringRef(kGCNAsm),       isAsm(), allocator);
         out.AddMember(StringRef(kDatasetHost),  isDatasetHost(), allocator);

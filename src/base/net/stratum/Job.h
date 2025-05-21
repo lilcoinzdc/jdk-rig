@@ -1,4 +1,4 @@
-/* XMRig
+/* KITTENpaw
  * Copyright 2010      Jeff Garzik <jgarzik@pobox.com>
  * Copyright 2012-2014 pooler      <pooler@litecoinpool.org>
  * Copyright 2014      Lucas Jones <https://github.com/lucasjones>
@@ -8,7 +8,7 @@
  * Copyright 2018      Lee Clagett <https://github.com/vtnerd>
  * Copyright 2019      Howard Chu  <https://github.com/hyc>
  * Copyright 2018-2024 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2024 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright 2016-2024 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -24,8 +24,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_JOB_H
-#define JDKRIG_JOB_H
+#ifndef KITTENPAW_JOB_H
+#define KITTENPAW_JOB_H
 
 #include <cstddef>
 #include <cstdint>
@@ -35,14 +35,14 @@
 #include "base/tools/String.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class Job
 {
 public:
-    // Max blob size is 84 (75 fixed + 9 variable), aligned to 96. https://github.com/jdkrig/jdkrig/issues/1 Thanks fireice-uk.
-    // SECOR increase requirements for blob size: https://github.com/jdkrig/jdkrig/issues/913
+    // Max blob size is 84 (75 fixed + 9 variable), aligned to 96. https://github.com/kittenpaw/kittenpaw/issues/1 Thanks fireice-uk.
+    // SECOR increase requirements for blob size: https://github.com/kittenpaw/kittenpaw/issues/913
     // Haven (XHV) offshore increases requirements by adding pricing_record struct (192 bytes) to block_header.
     // Round it up to 408 (136*3) for a convenient keccak calculation in OpenCL
     static constexpr const size_t kMaxBlobSize = 408;
@@ -97,7 +97,7 @@ public:
     inline void setIndex(uint8_t index)                 { m_index = index; }
     inline void setPoolWallet(const String &poolWallet) { m_poolWallet = poolWallet; }
 
-#   ifdef JDKRIG_PROXY_PROJECT
+#   ifdef KITTENPAW_PROXY_PROJECT
     inline char *rawBlob()                              { return m_rawBlob; }
     inline const char *rawBlob() const                  { return m_rawBlob; }
     inline const char *rawTarget() const                { return m_rawTarget; }
@@ -112,34 +112,34 @@ public:
     inline Job &operator=(const Job &other)             { if (this != &other) { copy(other); } return *this; }
     inline Job &operator=(Job &&other) noexcept         { move(std::move(other)); return *this; }
 
-#   ifdef JDKRIG_FEATURE_BENCHMARK
+#   ifdef KITTENPAW_FEATURE_BENCHMARK
     inline uint32_t benchSize() const                   { return m_benchSize; }
     inline void setBenchSize(uint32_t size)             { m_benchSize = size; }
 #   endif
 
-#   ifdef JDKRIG_PROXY_PROJECT
+#   ifdef KITTENPAW_PROXY_PROJECT
     inline bool hasViewTag() const                      { return m_hasViewTag; }
 
     void setSpendSecretKey(const uint8_t* key);
-    void setJdkriggerTx(const uint8_t* begin, const uint8_t* end, size_t jdkriggerTxEphPubKeyOffset, size_t jdkriggerTxPubKeyOffset, size_t jdkriggerTxExtraNonceOffset, size_t jdkriggerTxExtraNonceSize, const Buffer& jdkriggerTxMerkleTreeBranch, bool hasViewTag);
-    void setViewTagInJdkriggerTx(uint8_t view_tag);
-    void setExtraNonceInJdkriggerTx(uint32_t extra_nonce);
+    void setKittenpawgerTx(const uint8_t* begin, const uint8_t* end, size_t kittenpawgerTxEphPubKeyOffset, size_t kittenpawgerTxPubKeyOffset, size_t kittenpawgerTxExtraNonceOffset, size_t kittenpawgerTxExtraNonceSize, const Buffer& kittenpawgerTxMerkleTreeBranch, bool hasViewTag);
+    void setViewTagInKittenpawgerTx(uint8_t view_tag);
+    void setExtraNonceInKittenpawgerTx(uint32_t extra_nonce);
     void generateSignatureData(String& signatureData, uint8_t& view_tag) const;
     void generateHashingBlob(String& blob) const;
 #   else
-    inline const uint8_t* ephSecretKey() const { return m_hasJdkriggerSignature ? m_ephSecretKey : nullptr; }
+    inline const uint8_t* ephSecretKey() const { return m_hasKittenpawgerSignature ? m_ephSecretKey : nullptr; }
 
     inline void setEphemeralKeys(const uint8_t *pub_key, const uint8_t *sec_key)
     {
-        m_hasJdkriggerSignature = true;
+        m_hasKittenpawgerSignature = true;
         memcpy(m_ephPublicKey, pub_key, sizeof(m_ephSecretKey));
         memcpy(m_ephSecretKey, sec_key, sizeof(m_ephSecretKey));
     }
 
-    void generateJdkriggerSignature(const uint8_t* blob, size_t size, uint8_t* out_sig) const;
+    void generateKittenpawgerSignature(const uint8_t* blob, size_t size, uint8_t* out_sig) const;
 #   endif
 
-    inline bool hasJdkriggerSignature() const { return m_hasJdkriggerSignature; }
+    inline bool hasKittenpawgerSignature() const { return m_hasKittenpawgerSignature; }
 
     uint32_t getNumTransactions() const;
 
@@ -162,39 +162,39 @@ private:
     uint8_t m_blob[kMaxBlobSize]{ 0 };
     uint8_t m_index     = 0;
 
-#   ifdef JDKRIG_PROXY_PROJECT
+#   ifdef KITTENPAW_PROXY_PROJECT
     char m_rawBlob[kMaxBlobSize * 2 + 8]{};
     char m_rawTarget[24]{};
     String m_rawSeedHash;
     String m_rawSigKey;
 
-    // Jdkrigger signatures
+    // Kittenpawger signatures
     uint8_t m_spendSecretKey[32]{};
     uint8_t m_viewSecretKey[32]{};
     uint8_t m_spendPublicKey[32]{};
     uint8_t m_viewPublicKey[32]{};
-    mutable Buffer m_jdkriggerTxPrefix;
-    size_t m_jdkriggerTxEphPubKeyOffset = 0;
-    size_t m_jdkriggerTxPubKeyOffset = 0;
-    size_t m_jdkriggerTxExtraNonceOffset = 0;
-    size_t m_jdkriggerTxExtraNonceSize = 0;
-    Buffer m_jdkriggerTxMerkleTreeBranch;
+    mutable Buffer m_kittenpawgerTxPrefix;
+    size_t m_kittenpawgerTxEphPubKeyOffset = 0;
+    size_t m_kittenpawgerTxPubKeyOffset = 0;
+    size_t m_kittenpawgerTxExtraNonceOffset = 0;
+    size_t m_kittenpawgerTxExtraNonceSize = 0;
+    Buffer m_kittenpawgerTxMerkleTreeBranch;
     bool m_hasViewTag = false;
 #   else
-    // Jdkrigger signatures
+    // Kittenpawger signatures
     uint8_t m_ephPublicKey[32]{};
     uint8_t m_ephSecretKey[32]{};
 #   endif
 
-    bool m_hasJdkriggerSignature = false;
+    bool m_hasKittenpawgerSignature = false;
 
-#   ifdef JDKRIG_FEATURE_BENCHMARK
+#   ifdef KITTENPAW_FEATURE_BENCHMARK
     uint32_t m_benchSize = 0;
 #   endif
 };
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif /* JDKRIG_JOB_H */
+#endif /* KITTENPAW_JOB_H */

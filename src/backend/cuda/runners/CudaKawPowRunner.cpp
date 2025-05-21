@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -28,19 +28,19 @@
 #include "crypto/kawpow/KPHash.h"
 
 
-jdkrig::CudaKawPowRunner::CudaKawPowRunner(size_t index, const CudaLaunchData &data) :
+kittenpaw::CudaKawPowRunner::CudaKawPowRunner(size_t index, const CudaLaunchData &data) :
     CudaBaseRunner(index, data)
 {
 }
 
 
-bool jdkrig::CudaKawPowRunner::run(uint32_t /*startNonce*/, uint32_t *rescount, uint32_t *resnonce)
+bool kittenpaw::CudaKawPowRunner::run(uint32_t /*startNonce*/, uint32_t *rescount, uint32_t *resnonce)
 {
     return callWrapper(CudaLib::kawPowHash(m_ctx, m_jobBlob, m_target, rescount, resnonce, &m_skippedHashes));
 }
 
 
-bool jdkrig::CudaKawPowRunner::set(const Job &job, uint8_t *blob)
+bool kittenpaw::CudaKawPowRunner::set(const Job &job, uint8_t *blob)
 {
     if (!CudaBaseRunner::set(job, blob)) {
         return false;
@@ -74,7 +74,7 @@ bool jdkrig::CudaKawPowRunner::set(const Job &job, uint8_t *blob)
 }
 
 
-void jdkrig::CudaKawPowRunner::jobEarlyNotification(const Job&)
+void kittenpaw::CudaKawPowRunner::jobEarlyNotification(const Job&)
 {
     CudaLib::kawPowStopHash(m_ctx);
 }

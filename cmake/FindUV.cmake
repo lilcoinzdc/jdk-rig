@@ -1,7 +1,7 @@
 find_path(
     UV_INCLUDE_DIR
     NAMES uv.h
-    PATHS "${JDKRIG_DEPS}" ENV "JDKRIG_DEPS"
+    PATHS "${KITTENPAW_DEPS}" ENV "KITTENPAW_DEPS"
     PATH_SUFFIXES "include"
     NO_DEFAULT_PATH
 )
@@ -11,7 +11,7 @@ find_path(UV_INCLUDE_DIR NAMES uv.h)
 find_library(
     UV_LIBRARY
     NAMES libuv.a uv libuv
-    PATHS "${JDKRIG_DEPS}" ENV "JDKRIG_DEPS"
+    PATHS "${KITTENPAW_DEPS}" ENV "KITTENPAW_DEPS"
     PATH_SUFFIXES "lib"
     NO_DEFAULT_PATH
 )

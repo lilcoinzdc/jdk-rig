@@ -8901,7 +8901,7 @@ FORCE_INLINE __m128i _mm_aesimc_si128(__m128i a)
 //
 // Emits the Advanced Encryption Standard (AES) instruction aeskeygenassist.
 // This instruction generates a round key for AES encryption. See
-// https://kazakov.life/2017/11/01/cryptocurrency-jdkrigging-on-ios-devices/
+// https://kazakov.life/2017/11/01/cryptocurrency-kittenpawging-on-ios-devices/
 // for details.
 FORCE_INLINE __m128i _mm_aeskeygenassist_si128(__m128i a, const int rcon)
 {

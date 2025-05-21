@@ -1,7 +1,7 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2014-2019 heapwolf    <https://github.com/heapwolf>
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -18,8 +18,8 @@
  */
 
 
-#ifndef JDKRIG_HTTPCONTEXT_H
-#define JDKRIG_HTTPCONTEXT_H
+#ifndef KITTENPAW_HTTPCONTEXT_H
+#define KITTENPAW_HTTPCONTEXT_H
 
 
 using llhttp_settings_t     = struct llhttp_settings_s;
@@ -37,7 +37,7 @@ using uv_tcp_t              = struct uv_tcp_s;
 #include <memory>
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class IHttpListener;
@@ -46,7 +46,7 @@ class IHttpListener;
 class HttpContext : public HttpData
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(HttpContext)
+    KITTENPAW_DISABLE_COPY_MOVE_DEFAULT(HttpContext)
 
     HttpContext(int parser_type, const std::weak_ptr<IHttpListener> &listener);
     ~HttpContext() override;
@@ -91,8 +91,8 @@ private:
 };
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-#endif // JDKRIG_HTTPCONTEXT_H
+#endif // KITTENPAW_HTTPCONTEXT_H
 

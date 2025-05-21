@@ -1,11 +1,11 @@
-if (BUILD_STATIC AND JDKRIG_OS_UNIX AND WITH_CUDA)
+if (BUILD_STATIC AND KITTENPAW_OS_UNIX AND WITH_CUDA)
     message(WARNING "CUDA backend is not compatible with static build, use -DWITH_CUDA=OFF to suppress this warning")
 
     set(WITH_CUDA OFF)
 endif()
 
 if (WITH_CUDA)
-    add_definitions(/DJDKRIG_FEATURE_CUDA)
+    add_definitions(/DKITTENPAW_FEATURE_CUDA)
 
     set(HEADERS_BACKEND_CUDA
         src/backend/cuda/CudaBackend.h
@@ -36,7 +36,7 @@ if (WITH_CUDA)
        )
 
    if (WITH_NVML AND NOT APPLE)
-       add_definitions(/DJDKRIG_FEATURE_NVML)
+       add_definitions(/DKITTENPAW_FEATURE_NVML)
 
        list(APPEND HEADERS_BACKEND_CUDA
            src/backend/cuda/wrappers/nvml_lite.h
@@ -46,7 +46,7 @@ if (WITH_CUDA)
 
        list(APPEND SOURCES_BACKEND_CUDA src/backend/cuda/wrappers/NvmlLib.cpp)
    else()
-       remove_definitions(/DJDKRIG_FEATURE_NVML)
+       remove_definitions(/DKITTENPAW_FEATURE_NVML)
    endif()
 
    if (WITH_RANDOMX)
@@ -59,8 +59,8 @@ if (WITH_CUDA)
        list(APPEND SOURCES_BACKEND_CUDA src/backend/cuda/runners/CudaKawPowRunner.cpp)
    endif()
 else()
-    remove_definitions(/DJDKRIG_FEATURE_CUDA)
-    remove_definitions(/DJDKRIG_FEATURE_NVML)
+    remove_definitions(/DKITTENPAW_FEATURE_CUDA)
+    remove_definitions(/DKITTENPAW_FEATURE_NVML)
 
     set(HEADERS_BACKEND_CUDA "")
     set(SOURCES_BACKEND_CUDA "")

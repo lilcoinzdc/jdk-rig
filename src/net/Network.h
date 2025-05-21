@@ -1,7 +1,7 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2019      Howard Chu  <https://github.com/hyc>
  * Copyright (c) 2018-2023 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2023 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2023 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -17,8 +17,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_NETWORK_H
-#define JDKRIG_NETWORK_H
+#ifndef KITTENPAW_NETWORK_H
+#define KITTENPAW_NETWORK_H
 
 
 #include "3rdparty/rapidjson/fwd.h"
@@ -33,7 +33,7 @@
 #include <vector>
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class Controller;
@@ -44,7 +44,7 @@ class NetworkState;
 class Network : public IJobResultListener, public IStrategyListener, public IBaseListener, public ITimerListener, public IApiListener
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(Network)
+    KITTENPAW_DISABLE_COPY_MOVE_DEFAULT(Network)
 
     Network(Controller *controller);
     ~Network() override;
@@ -66,7 +66,7 @@ protected:
     void onResultAccepted(IStrategy *strategy, IClient *client, const SubmitResult &result, const char *error) override;
     void onVerifyAlgorithm(IStrategy *strategy, const  IClient *client, const Algorithm &algorithm, bool *ok) override;
 
-#   ifdef JDKRIG_FEATURE_API
+#   ifdef KITTENPAW_FEATURE_API
     void onRequest(IApiRequest &request) override;
 #   endif
 
@@ -76,7 +76,7 @@ private:
     void setJob(IClient *client, const Job &job, bool donate);
     void tick();
 
-#   ifdef JDKRIG_FEATURE_API
+#   ifdef KITTENPAW_FEATURE_API
     void getConnection(rapidjson::Value &reply, rapidjson::Document &doc, int version) const;
     void getResults(rapidjson::Value &reply, rapidjson::Document &doc, int version) const;
 #   endif
@@ -89,7 +89,7 @@ private:
 };
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-#endif // JDKRIG_NETWORK_H
+#endif // KITTENPAW_NETWORK_H

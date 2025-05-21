@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -21,13 +21,13 @@
 #include "base/io/json/Json.h"
 
 
-jdkrig::AutoClient::AutoClient(int id, const char *agent, IClientListener *listener) :
+kittenpaw::AutoClient::AutoClient(int id, const char *agent, IClientListener *listener) :
     EthStratumClient(id, agent, listener)
 {
 }
 
 
-bool jdkrig::AutoClient::handleResponse(int64_t id, const rapidjson::Value &result, const rapidjson::Value &error)
+bool kittenpaw::AutoClient::handleResponse(int64_t id, const rapidjson::Value &result, const rapidjson::Value &error)
 {
     if (m_mode == DEFAULT_MODE) {
         return Client::handleResponse(id, result, error); // NOLINT(bugprone-parent-virtual-call)
@@ -37,7 +37,7 @@ bool jdkrig::AutoClient::handleResponse(int64_t id, const rapidjson::Value &resu
 }
 
 
-bool jdkrig::AutoClient::parseLogin(const rapidjson::Value &result, int *code)
+bool kittenpaw::AutoClient::parseLogin(const rapidjson::Value &result, int *code)
 {
     if (result.HasMember("job")) {
         return Client::parseLogin(result, code);
@@ -65,7 +65,7 @@ bool jdkrig::AutoClient::parseLogin(const rapidjson::Value &result, int *code)
     m_mode = ETH_MODE;
     setAlgo(algo);
 
-#   ifdef JDKRIG_ALGO_GHOSTRIDER
+#   ifdef KITTENPAW_ALGO_GHOSTRIDER
     if (algo.family() == Algorithm::GHOSTRIDER) {
         setExtraNonce2Size(Json::getUint64(result, "extra_nonce2_size"));
     }
@@ -75,7 +75,7 @@ bool jdkrig::AutoClient::parseLogin(const rapidjson::Value &result, int *code)
 }
 
 
-int64_t jdkrig::AutoClient::submit(const JobResult &result)
+int64_t kittenpaw::AutoClient::submit(const JobResult &result)
 {
     if (m_mode == DEFAULT_MODE) {
         return Client::submit(result); // NOLINT(bugprone-parent-virtual-call)
@@ -85,7 +85,7 @@ int64_t jdkrig::AutoClient::submit(const JobResult &result)
 }
 
 
-void jdkrig::AutoClient::parseNotification(const char *method, const rapidjson::Value &params, const rapidjson::Value &error)
+void kittenpaw::AutoClient::parseNotification(const char *method, const rapidjson::Value &params, const rapidjson::Value &error)
 {
     if (m_mode == DEFAULT_MODE) {
         return Client::parseNotification(method, params, error); // NOLINT(bugprone-parent-virtual-call)

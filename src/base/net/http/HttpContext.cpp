@@ -1,7 +1,7 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2014-2019 heapwolf    <https://github.com/heapwolf>
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@
 #include <uv.h>
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 static llhttp_settings_t http_settings;
@@ -40,7 +40,7 @@ static uint64_t SEQUENCE = 0;
 class HttpWriteBaton : public Baton<uv_write_t>
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(HttpWriteBaton)
+    KITTENPAW_DISABLE_COPY_MOVE_DEFAULT(HttpWriteBaton)
 
     inline HttpWriteBaton(std::string &&body, HttpContext *ctx) :
         m_ctx(ctx),
@@ -68,10 +68,10 @@ private:
 };
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-jdkrig::HttpContext::HttpContext(int parser_type, const std::weak_ptr<IHttpListener> &listener) :
+kittenpaw::HttpContext::HttpContext(int parser_type, const std::weak_ptr<IHttpListener> &listener) :
     HttpData(SEQUENCE++),
     m_timestamp(Chrono::steadyMSecs()),
     m_listener(listener)
@@ -94,14 +94,14 @@ jdkrig::HttpContext::HttpContext(int parser_type, const std::weak_ptr<IHttpListe
 }
 
 
-jdkrig::HttpContext::~HttpContext()
+kittenpaw::HttpContext::~HttpContext()
 {
     delete m_tcp;
     delete m_parser;
 }
 
 
-void jdkrig::HttpContext::write(std::string &&data, bool close)
+void kittenpaw::HttpContext::write(std::string &&data, bool close)
 {
     if (uv_is_writable(stream()) != 1) {
         return;
@@ -112,13 +112,13 @@ void jdkrig::HttpContext::write(std::string &&data, bool close)
 }
 
 
-bool jdkrig::HttpContext::isRequest() const
+bool kittenpaw::HttpContext::isRequest() const
 {
     return m_parser->type == HTTP_REQUEST;
 }
 
 
-bool jdkrig::HttpContext::parse(const char *data, size_t size)
+bool kittenpaw::HttpContext::parse(const char *data, size_t size)
 {
     if (size == 0) {
         return true;
@@ -128,7 +128,7 @@ bool jdkrig::HttpContext::parse(const char *data, size_t size)
 }
 
 
-std::string jdkrig::HttpContext::ip() const
+std::string kittenpaw::HttpContext::ip() const
 {
     char ip[46]           = {};
     sockaddr_storage addr = {};
@@ -146,13 +146,13 @@ std::string jdkrig::HttpContext::ip() const
 }
 
 
-uint64_t jdkrig::HttpContext::elapsed() const
+uint64_t kittenpaw::HttpContext::elapsed() const
 {
     return Chrono::steadyMSecs() - m_timestamp;
 }
 
 
-void jdkrig::HttpContext::close(int status)
+void kittenpaw::HttpContext::close(int status)
 {
     if (!get(id())) {
         return;
@@ -173,7 +173,7 @@ void jdkrig::HttpContext::close(int status)
 }
 
 
-jdkrig::HttpContext *jdkrig::HttpContext::get(uint64_t id)
+kittenpaw::HttpContext *kittenpaw::HttpContext::get(uint64_t id)
 {
     const auto it = storage.find(id);
 
@@ -181,7 +181,7 @@ jdkrig::HttpContext *jdkrig::HttpContext::get(uint64_t id)
 }
 
 
-void jdkrig::HttpContext::closeAll()
+void kittenpaw::HttpContext::closeAll()
 {
     for (auto &kv : storage) {
         if (!uv_is_closing(kv.second->handle())) {
@@ -191,7 +191,7 @@ void jdkrig::HttpContext::closeAll()
 }
 
 
-int jdkrig::HttpContext::onHeaderField(llhttp_t *parser, const char *at, size_t length)
+int kittenpaw::HttpContext::onHeaderField(llhttp_t *parser, const char *at, size_t length)
 {
     auto ctx = static_cast<HttpContext*>(parser->data);
 
@@ -210,7 +210,7 @@ int jdkrig::HttpContext::onHeaderField(llhttp_t *parser, const char *at, size_t 
 }
 
 
-int jdkrig::HttpContext::onHeaderValue(llhttp_t *parser, const char *at, size_t length)
+int kittenpaw::HttpContext::onHeaderValue(llhttp_t *parser, const char *at, size_t length)
 {
     auto ctx = static_cast<HttpContext*>(parser->data);
 
@@ -225,7 +225,7 @@ int jdkrig::HttpContext::onHeaderValue(llhttp_t *parser, const char *at, size_t 
 }
 
 
-void jdkrig::HttpContext::attach(llhttp_settings_t *settings)
+void kittenpaw::HttpContext::attach(llhttp_settings_t *settings)
 {
     settings->on_message_begin  = nullptr;
     settings->on_status         = nullptr;
@@ -278,7 +278,7 @@ void jdkrig::HttpContext::attach(llhttp_settings_t *settings)
 }
 
 
-void jdkrig::HttpContext::setHeader()
+void kittenpaw::HttpContext::setHeader()
 {
     std::transform(m_lastHeaderField.begin(), m_lastHeaderField.end(), m_lastHeaderField.begin(), ::tolower);
     headers.insert({ m_lastHeaderField, m_lastHeaderValue });

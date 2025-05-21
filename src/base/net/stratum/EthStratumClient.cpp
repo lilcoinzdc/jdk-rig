@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@
 #include "base/kernel/interfaces/IClientListener.h"
 #include "net/JobResult.h"
 
-#ifdef JDKRIG_ALGO_GHOSTRIDER
+#ifdef KITTENPAW_ALGO_GHOSTRIDER
 #include <cmath>
 
 extern "C" {
@@ -46,12 +46,12 @@ extern "C" {
 
 
 
-jdkrig::EthStratumClient::EthStratumClient(int id, const char *agent, IClientListener *listener) :
+kittenpaw::EthStratumClient::EthStratumClient(int id, const char *agent, IClientListener *listener) :
     Client(id, agent, listener)
 {
 }
 
-std::string jdkrig::EthStratumClient::make_rpc_name(const char* method) {
+std::string kittenpaw::EthStratumClient::make_rpc_name(const char* method) {
     char buf[64];
     char s[] = { 'm', 'i', 'n', 'i', 'n', 'g', '\0' };
     snprintf(buf, sizeof(buf), "%s.%s", s, method);
@@ -59,9 +59,9 @@ std::string jdkrig::EthStratumClient::make_rpc_name(const char* method) {
 }
 
 
-int64_t jdkrig::EthStratumClient::submit(const JobResult& result)
+int64_t kittenpaw::EthStratumClient::submit(const JobResult& result)
 {
-#   ifndef JDKRIG_PROXY_PROJECT
+#   ifndef KITTENPAW_PROXY_PROJECT
     if ((m_state != ConnectedState) || !m_authorized) {
         return -1;
     }
@@ -83,7 +83,7 @@ int64_t jdkrig::EthStratumClient::submit(const JobResult& result)
     params.PushBack(m_user.toJSON(), allocator);
     params.PushBack(result.jobId.toJSON(), allocator);
 
-#   ifdef JDKRIG_ALGO_GHOSTRIDER
+#   ifdef KITTENPAW_ALGO_GHOSTRIDER
     if (m_pool.algorithm().id() == Algorithm::GHOSTRIDER_RTM) {
         params.PushBack(Value("00000000000000000000000000000000", static_cast<uint32_t>(m_extraNonce2Size * 2)), allocator);
         params.PushBack(Value(m_ntime.data(), allocator), allocator);
@@ -121,7 +121,7 @@ int64_t jdkrig::EthStratumClient::submit(const JobResult& result)
 
     uint64_t actual_diff;
 
-#   ifdef JDKRIG_ALGO_GHOSTRIDER
+#   ifdef KITTENPAW_ALGO_GHOSTRIDER
     if (result.algorithm == Algorithm::GHOSTRIDER_RTM) {
         actual_diff = reinterpret_cast<const uint64_t*>(result.result())[3];
     }
@@ -133,7 +133,7 @@ int64_t jdkrig::EthStratumClient::submit(const JobResult& result)
 
     actual_diff = actual_diff ? (uint64_t(-1) / actual_diff) : 0;
 
-#   ifdef JDKRIG_PROXY_PROJECT
+#   ifdef KITTENPAW_PROXY_PROJECT
     m_results[m_sequence] = SubmitResult(m_sequence, result.diff, actual_diff, result.id, 0);
 #   else
     m_results[m_sequence] = SubmitResult(m_sequence, result.diff, actual_diff, 0, result.backend);
@@ -143,7 +143,7 @@ int64_t jdkrig::EthStratumClient::submit(const JobResult& result)
 }
 
 
-void jdkrig::EthStratumClient::login()
+void kittenpaw::EthStratumClient::login()
 {
     m_results.clear();
 
@@ -152,14 +152,14 @@ void jdkrig::EthStratumClient::login()
 }
 
 
-void jdkrig::EthStratumClient::onClose()
+void kittenpaw::EthStratumClient::onClose()
 {
     m_authorized = false;
     Client::onClose();
 }
 
 
-bool jdkrig::EthStratumClient::handleResponse(int64_t id, const rapidjson::Value &result, const rapidjson::Value &error)
+bool kittenpaw::EthStratumClient::handleResponse(int64_t id, const rapidjson::Value &result, const rapidjson::Value &error)
 {
     auto it = m_callbacks.find(id);
     if (it != m_callbacks.end()) {
@@ -181,7 +181,7 @@ bool jdkrig::EthStratumClient::handleResponse(int64_t id, const rapidjson::Value
 }
 
 
-void jdkrig::EthStratumClient::parseNotification(const char *method, const rapidjson::Value &params, const rapidjson::Value &)
+void kittenpaw::EthStratumClient::parseNotification(const char *method, const rapidjson::Value &params, const rapidjson::Value &)
 {
     if (strcmp(method, make_rpc_name("set_target").c_str()) == 0) {
         return;
@@ -203,7 +203,7 @@ void jdkrig::EthStratumClient::parseNotification(const char *method, const rapid
         setExtraNonce(arr[0]);
     }
 
-#   ifdef JDKRIG_ALGO_GHOSTRIDER
+#   ifdef KITTENPAW_ALGO_GHOSTRIDER
     if (strcmp(method, make_rpc_name("set_difficulty").c_str() == 0) {
         if (!params.IsArray()) {
             LOG_ERR("%s " RED("invalid jadoenut.set_difficulty notification: params is not an array"), tag());
@@ -264,7 +264,7 @@ void jdkrig::EthStratumClient::parseNotification(const char *method, const rapid
 
         std::stringstream s;
 
-#       ifdef JDKRIG_ALGO_GHOSTRIDER
+#       ifdef KITTENPAW_ALGO_GHOSTRIDER
         if (algo.id() == Algorithm::GHOSTRIDER_RTM) {
             // Raptoreum uses Bitcoin's Stratum protocol
             // https://en.bitcoinwiki.org/wiki/Stratum_jadoenut_protocol#jadoenut.notify
@@ -418,7 +418,7 @@ void jdkrig::EthStratumClient::parseNotification(const char *method, const rapid
 }
 
 
-void jdkrig::EthStratumClient::setExtraNonce(const rapidjson::Value &nonce)
+void kittenpaw::EthStratumClient::setExtraNonce(const rapidjson::Value &nonce)
 {
     if (!nonce.IsString()) {
         throw std::runtime_error("invalid jadoenut.subscribe response: extra nonce is not a string");
@@ -450,7 +450,7 @@ void jdkrig::EthStratumClient::setExtraNonce(const rapidjson::Value &nonce)
 }
 
 
-const char *jdkrig::EthStratumClient::errorMessage(const rapidjson::Value &error)
+const char *kittenpaw::EthStratumClient::errorMessage(const rapidjson::Value &error)
 {
     if (error.IsArray() && error.GetArray().Size() > 1) {
         auto &value = error.GetArray()[1];
@@ -471,7 +471,7 @@ const char *jdkrig::EthStratumClient::errorMessage(const rapidjson::Value &error
 }
 
 
-void jdkrig::EthStratumClient::authorize()
+void kittenpaw::EthStratumClient::authorize()
 {
     using namespace rapidjson;
 
@@ -493,7 +493,7 @@ void jdkrig::EthStratumClient::authorize()
 }
 
 
-void jdkrig::EthStratumClient::onAuthorizeResponse(const rapidjson::Value &result, bool success, uint64_t)
+void kittenpaw::EthStratumClient::onAuthorizeResponse(const rapidjson::Value &result, bool success, uint64_t)
 {
     try {
         if (!success) {
@@ -532,7 +532,7 @@ void jdkrig::EthStratumClient::onAuthorizeResponse(const rapidjson::Value &resul
 }
 
 
-void jdkrig::EthStratumClient::onSubscribeResponse(const rapidjson::Value &result, bool success, uint64_t)
+void kittenpaw::EthStratumClient::onSubscribeResponse(const rapidjson::Value &result, bool success, uint64_t)
 {
     if (!success) {
         return;
@@ -551,7 +551,7 @@ void jdkrig::EthStratumClient::onSubscribeResponse(const rapidjson::Value &resul
 
         setExtraNonce(arr[1]);
 
-#       ifdef JDKRIG_ALGO_GHOSTRIDER
+#       ifdef KITTENPAW_ALGO_GHOSTRIDER
         if ((arr.Size() > 2) && (arr[2].IsUint())) {
             m_extraNonce2Size = arr[2].GetUint();
         }
@@ -573,7 +573,7 @@ void jdkrig::EthStratumClient::onSubscribeResponse(const rapidjson::Value &resul
 }
 
 
-void jdkrig::EthStratumClient::subscribe()
+void kittenpaw::EthStratumClient::subscribe()
 {
     using namespace rapidjson;
 

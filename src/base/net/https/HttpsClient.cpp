@@ -1,7 +1,7 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2014-2019 heapwolf    <https://github.com/heapwolf>
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@
 #endif
 
 
-jdkrig::HttpsClient::HttpsClient(const char *tag, FetchRequest &&req, const std::weak_ptr<IHttpListener> &listener) :
+kittenpaw::HttpsClient::HttpsClient(const char *tag, FetchRequest &&req, const std::weak_ptr<IHttpListener> &listener) :
     HttpClient(tag, std::move(req), listener)
 {
     m_ctx = SSL_CTX_new(SSLv23_method());
@@ -49,7 +49,7 @@ jdkrig::HttpsClient::HttpsClient(const char *tag, FetchRequest &&req, const std:
 }
 
 
-jdkrig::HttpsClient::~HttpsClient()
+kittenpaw::HttpsClient::~HttpsClient()
 {
     if (m_ctx) {
         SSL_CTX_free(m_ctx);
@@ -61,19 +61,19 @@ jdkrig::HttpsClient::~HttpsClient()
 }
 
 
-const char *jdkrig::HttpsClient::tlsFingerprint() const
+const char *kittenpaw::HttpsClient::tlsFingerprint() const
 {
     return m_ready ? m_fingerprint : nullptr;
 }
 
 
-const char *jdkrig::HttpsClient::tlsVersion() const
+const char *kittenpaw::HttpsClient::tlsVersion() const
 {
     return m_ready ? SSL_get_version(m_ssl) : nullptr;
 }
 
 
-void jdkrig::HttpsClient::handshake()
+void kittenpaw::HttpsClient::handshake()
 {
     m_ssl = SSL_new(m_ctx);
     assert(m_ssl != nullptr);
@@ -92,7 +92,7 @@ void jdkrig::HttpsClient::handshake()
 }
 
 
-void jdkrig::HttpsClient::read(const char *data, size_t size)
+void kittenpaw::HttpsClient::read(const char *data, size_t size)
 {
     BIO_write(m_read, data, size);
 
@@ -130,7 +130,7 @@ void jdkrig::HttpsClient::read(const char *data, size_t size)
 }
 
 
-void jdkrig::HttpsClient::write(std::string &&data, bool close)
+void kittenpaw::HttpsClient::write(std::string &&data, bool close)
 {
     const std::string body = std::move(data);
     SSL_write(m_ssl, body.data(), body.size());
@@ -139,7 +139,7 @@ void jdkrig::HttpsClient::write(std::string &&data, bool close)
 }
 
 
-bool jdkrig::HttpsClient::verify(X509 *cert)
+bool kittenpaw::HttpsClient::verify(X509 *cert)
 {
     if (cert == nullptr) {
         return false;
@@ -162,7 +162,7 @@ bool jdkrig::HttpsClient::verify(X509 *cert)
 }
 
 
-bool jdkrig::HttpsClient::verifyFingerprint(X509 *cert)
+bool kittenpaw::HttpsClient::verifyFingerprint(X509 *cert)
 {
     const EVP_MD *digest = EVP_get_digestbyname("sha256");
     if (digest == nullptr) {
@@ -182,7 +182,7 @@ bool jdkrig::HttpsClient::verifyFingerprint(X509 *cert)
 }
 
 
-void jdkrig::HttpsClient::flush(bool close)
+void kittenpaw::HttpsClient::flush(bool close)
 {
     if (uv_is_writable(stream()) != 1) {
         return;

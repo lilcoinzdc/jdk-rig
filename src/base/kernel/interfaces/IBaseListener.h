@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,14 +16,14 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_IBASELISTENER_H
-#define JDKRIG_IBASELISTENER_H
+#ifndef KITTENPAW_IBASELISTENER_H
+#define KITTENPAW_IBASELISTENER_H
 
 
 #include "base/tools/Object.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class Config;
@@ -32,7 +32,7 @@ class Config;
 class IBaseListener
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE(IBaseListener)
+    KITTENPAW_DISABLE_COPY_MOVE(IBaseListener)
 
     IBaseListener()             = default;
     virtual ~IBaseListener()    = default;
@@ -41,7 +41,7 @@ public:
 };
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif // JDKRIG_IBASELISTENER_H
+#endif // KITTENPAW_IBASELISTENER_H

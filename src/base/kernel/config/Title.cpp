@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@
 #include "version.h"
 
 
-jdkrig::Title::Title(const rapidjson::Value &value)
+kittenpaw::Title::Title(const rapidjson::Value &value)
 {
     if (value.IsBool()) {
         m_enabled = value.GetBool();
@@ -34,7 +34,7 @@ jdkrig::Title::Title(const rapidjson::Value &value)
 }
 
 
-rapidjson::Value jdkrig::Title::toJSON() const
+rapidjson::Value kittenpaw::Title::toJSON() const
 {
     if (isEnabled() && !m_value.isNull()) {
         return m_value.toJSON();
@@ -44,7 +44,7 @@ rapidjson::Value jdkrig::Title::toJSON() const
 }
 
 
-jdkrig::String jdkrig::Title::value() const
+kittenpaw::String kittenpaw::Title::value() const
 {
     if (!isEnabled()) {
         return {};

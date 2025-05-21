@@ -1,7 +1,7 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2019 tevador     <tevador@gmail.com>
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -17,8 +17,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_RX_DATASET_H
-#define JDKRIG_RX_DATASET_H
+#ifndef KITTENPAW_RX_DATASET_H
+#define KITTENPAW_RX_DATASET_H
 
 
 #include "base/tools/Buffer.h"
@@ -33,7 +33,7 @@
 struct randomx_dataset;
 
 
-namespace jdkrig
+namespace kittenpaw
 {
 
 
@@ -44,7 +44,7 @@ class VirtualMemory;
 class RxDataset
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(RxDataset)
+    KITTENPAW_DISABLE_COPY_MOVE_DEFAULT(RxDataset)
 
     RxDataset(bool hugePages, bool oneGbPages, bool cache, RxConfig::Mode mode, uint32_t node);
     RxDataset(RxCache *cache);
@@ -78,7 +78,7 @@ private:
 };
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif /* JDKRIG_RX_DATASET_H */
+#endif /* KITTENPAW_RX_DATASET_H */

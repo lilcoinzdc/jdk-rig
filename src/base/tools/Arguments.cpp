@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@
 #include "base/tools/Arguments.h"
 
 
-jdkrig::Arguments::Arguments(int argc, char **argv) :
+kittenpaw::Arguments::Arguments(int argc, char **argv) :
     m_argv(argv),
     m_argc(argc)
 {
@@ -36,7 +36,7 @@ jdkrig::Arguments::Arguments(int argc, char **argv) :
 }
 
 
-bool jdkrig::Arguments::hasArg(const char *name) const
+bool kittenpaw::Arguments::hasArg(const char *name) const
 {
     if (m_argc == 1) {
         return false;
@@ -46,7 +46,7 @@ bool jdkrig::Arguments::hasArg(const char *name) const
 }
 
 
-const char *jdkrig::Arguments::value(const char *key1, const char *key2) const
+const char *kittenpaw::Arguments::value(const char *key1, const char *key2) const
 {
     const size_t size = m_data.size();
     if (size < 3) {
@@ -63,7 +63,7 @@ const char *jdkrig::Arguments::value(const char *key1, const char *key2) const
 }
 
 
-void jdkrig::Arguments::add(const char *arg)
+void kittenpaw::Arguments::add(const char *arg)
 {
     if (arg == nullptr) {
         return;

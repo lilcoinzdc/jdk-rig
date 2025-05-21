@@ -1,7 +1,7 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2017-2018 XMR-Stak    <https://github.com/fireice-uk>, <https://github.com/psychocrypt>
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -17,8 +17,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_HASHRATE_H
-#define JDKRIG_HASHRATE_H
+#ifndef KITTENPAW_HASHRATE_H
+#define KITTENPAW_HASHRATE_H
 
 
 #include <cmath>
@@ -30,13 +30,13 @@
 #include "base/tools/Object.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class Hashrate
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(Hashrate)
+    KITTENPAW_DISABLE_COPY_MOVE_DEFAULT(Hashrate)
 
     enum Intervals : size_t {
         ShortInterval  = 10000,
@@ -58,7 +58,7 @@ public:
     static const char *format(std::pair<bool, double> h, char *buf, size_t size);
     static rapidjson::Value normalize(std::pair<bool, double> d);
 
-#   ifdef JDKRIG_FEATURE_API
+#   ifdef KITTENPAW_FEATURE_API
     rapidjson::Value toJSON(rapidjson::Document &doc) const;
     rapidjson::Value toJSON(size_t threadId, rapidjson::Document &doc) const;
 #   endif
@@ -80,7 +80,7 @@ private:
 };
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-#endif /* JDKRIG_HASHRATE_H */
+#endif /* KITTENPAW_HASHRATE_H */

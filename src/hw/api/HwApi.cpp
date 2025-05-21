@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh    <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig        <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw        <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -22,15 +22,15 @@
 #include "base/tools/String.h"
 
 
-#ifdef JDKRIG_FEATURE_DMI
+#ifdef KITTENPAW_FEATURE_DMI
 #   include "hw/dmi/DmiReader.h"
 #endif
 
 
-void jdkrig::HwApi::onRequest(IApiRequest &request)
+void kittenpaw::HwApi::onRequest(IApiRequest &request)
 {
     if (request.method() == IApiRequest::METHOD_GET) {
-#       ifdef JDKRIG_FEATURE_DMI
+#       ifdef KITTENPAW_FEATURE_DMI
         if (request.url() == "/2/dmi") {
             if (!m_dmi) {
                 m_dmi = std::make_shared<DmiReader>();

@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -17,8 +17,8 @@
  */
 
 
-#ifndef JDKRIG_SERVERTLS_H
-#define JDKRIG_SERVERTLS_H
+#ifndef KITTENPAW_SERVERTLS_H
+#define KITTENPAW_SERVERTLS_H
 
 
 using BIO       = struct bio_st;
@@ -30,13 +30,13 @@ using SSL_CTX   = struct ssl_ctx_st;
 #include "base/tools/Object.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class ServerTls
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(ServerTls)
+    KITTENPAW_DISABLE_COPY_MOVE_DEFAULT(ServerTls)
 
     ServerTls(SSL_CTX *ctx);
     virtual ~ServerTls();
@@ -63,7 +63,7 @@ private:
 };
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-#endif /* JDKRIG_SERVERTLS_H */
+#endif /* KITTENPAW_SERVERTLS_H */

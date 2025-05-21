@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -27,7 +27,7 @@
 
 #if __ARM_FEATURE_CRYPTO && !defined(__APPLE__)
 #   include <sys/auxv.h>
-#   if !defined(JDKRIG_OS_FREEBSD)
+#   if !defined(KITTENPAW_OS_FREEBSD)
 #       include <asm/hwcap.h>
 #   else
 #       include <stdint.h>
@@ -43,18 +43,18 @@
 #include "3rdparty/rapidjson/document.h"
 
 
-#if defined(JDKRIG_OS_UNIX)
-namespace jdkrig {
+#if defined(KITTENPAW_OS_UNIX)
+namespace kittenpaw {
 
 extern String cpu_name_arm();
 
-} // namespace jdkrig
-#elif defined(JDKRIG_OS_MACOS)
+} // namespace kittenpaw
+#elif defined(KITTENPAW_OS_MACOS)
 #   include <sys/sysctl.h>
 #endif
 
 
-jdkrig::BasicCpuInfo::BasicCpuInfo() :
+kittenpaw::BasicCpuInfo::BasicCpuInfo() :
     m_threads(std::thread::hardware_concurrency())
 {
     m_units.resize(m_threads);
@@ -62,7 +62,7 @@ jdkrig::BasicCpuInfo::BasicCpuInfo() :
         m_units[i] = i;
     }
 
-#   if (JDKRIG_ARM == 8)
+#   if (KITTENPAW_ARM == 8)
     memcpy(m_brand, "ARMv8", 5);
 #   else
     memcpy(m_brand, "ARMv7", 5);
@@ -71,7 +71,7 @@ jdkrig::BasicCpuInfo::BasicCpuInfo() :
 #   if __ARM_FEATURE_CRYPTO
 #   if defined(__APPLE__)
     m_flags.set(FLAG_AES, true);
-#   elif defined(JDKRIG_OS_FREEBSD)
+#   elif defined(KITTENPAW_OS_FREEBSD)
     uint64_t isar0 = READ_SPECIALREG(id_aa64isar0_el1);
     m_flags.set(FLAG_AES, ID_AA64ISAR0_AES_VAL(isar0) >= ID_AA64ISAR0_AES_BASE);
 #   else
@@ -79,29 +79,29 @@ jdkrig::BasicCpuInfo::BasicCpuInfo() :
 #   endif
 #   endif
 
-#   if defined(JDKRIG_OS_UNIX)
+#   if defined(KITTENPAW_OS_UNIX)
     auto name = cpu_name_arm();
     if (!name.isNull()) {
         strncpy(m_brand, name, sizeof(m_brand) - 1);
     }
 
     m_flags.set(FLAG_PDPE1GB, std::ifstream("/sys/kernel/mm/hugepages/hugepages-1048576kB/nr_hugepages").good());
-#   elif defined(JDKRIG_OS_MACOS)
+#   elif defined(KITTENPAW_OS_MACOS)
     size_t buflen = sizeof(m_brand);
     sysctlbyname("machdep.cpu.brand_string", &m_brand, &buflen, nullptr, 0);
 #   endif
 }
 
 
-const char *jdkrig::BasicCpuInfo::backend() const
+const char *kittenpaw::BasicCpuInfo::backend() const
 {
     return "basic/1";
 }
 
 
-jdkrig::CpuThreads jdkrig::BasicCpuInfo::threads(const Algorithm &algorithm, uint32_t) const
+kittenpaw::CpuThreads kittenpaw::BasicCpuInfo::threads(const Algorithm &algorithm, uint32_t) const
 {
-#   ifdef JDKRIG_ALGO_GHOSTRIDER
+#   ifdef KITTENPAW_ALGO_GHOSTRIDER
     if (algorithm.family() == Algorithm::GHOSTRIDER) {
         return CpuThreads(threads(), 8);
     }
@@ -111,7 +111,7 @@ jdkrig::CpuThreads jdkrig::BasicCpuInfo::threads(const Algorithm &algorithm, uin
 }
 
 
-rapidjson::Value jdkrig::BasicCpuInfo::toJSON(rapidjson::Document &doc) const
+rapidjson::Value kittenpaw::BasicCpuInfo::toJSON(rapidjson::Document &doc) const
 {
     using namespace rapidjson;
     auto &allocator = doc.GetAllocator();
@@ -133,7 +133,7 @@ rapidjson::Value jdkrig::BasicCpuInfo::toJSON(rapidjson::Document &doc) const
     out.AddMember("msr",        "none", allocator);
     out.AddMember("assembly",   "none", allocator);
 
-#   if (JDKRIG_ARM == 8)
+#   if (KITTENPAW_ARM == 8)
     out.AddMember("arch", "aarch64", allocator);
 #   else
     out.AddMember("arch", "aarch32", allocator);

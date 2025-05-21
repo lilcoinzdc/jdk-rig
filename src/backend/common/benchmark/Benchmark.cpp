@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -27,14 +27,14 @@
 #include <cinttypes>
 
 
-jdkrig::Benchmark::Benchmark(size_t workers, const IBackend *backend) :
+kittenpaw::Benchmark::Benchmark(size_t workers, const IBackend *backend) :
     m_backend(backend),
     m_workers(workers)
 {
 }
 
 
-bool jdkrig::Benchmark::finish(uint64_t totalHashCount)
+bool kittenpaw::Benchmark::finish(uint64_t totalHashCount)
 {
     m_current = totalHashCount;
 
@@ -42,13 +42,13 @@ bool jdkrig::Benchmark::finish(uint64_t totalHashCount)
 }
 
 
-void jdkrig::Benchmark::start()
+void kittenpaw::Benchmark::start()
 {
     m_startTime = BenchState::start(m_workers, m_backend);
 }
 
 
-void jdkrig::Benchmark::printProgress() const
+void kittenpaw::Benchmark::printProgress() const
 {
     if (!m_startTime || !m_current) {
         return;

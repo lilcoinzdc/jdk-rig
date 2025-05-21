@@ -1,4 +1,4 @@
-/* XMRig
+/* KITTENpaw
  * Copyright 2010      Jeff Garzik <jgarzik@pobox.com>
  * Copyright 2012-2014 pooler      <pooler@litecoinpool.org>
  * Copyright 2014      Lucas Jones <https://github.com/lucasjones>
@@ -7,7 +7,7 @@
  * Copyright 2017-2018 XMR-Stak    <https://github.com/fireice-uk>, <https://github.com/psychocrypt>
  * Copyright 2018      Lee Clagett <https://github.com/vtnerd>
  * Copyright 2018-2019 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2018 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright 2016-2018 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -23,14 +23,14 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_CRYPTONIGHT_H
-#define JDKRIG_CRYPTONIGHT_H
+#ifndef KITTENPAW_CRYPTONIGHT_H
+#define KITTENPAW_CRYPTONIGHT_H
 
 
 #include <stddef.h>
 #include <stdint.h>
 
-#if defined _MSC_VER || defined JDKRIG_ARM
+#if defined _MSC_VER || defined KITTENPAW_ARM
 #   define ABI_ATTRIBUTE
 #else
 #   define ABI_ATTRIBUTE __attribute__((ms_abi))
@@ -66,4 +66,4 @@ struct cryptonight_ctx {
 };
 
 
-#endif /* JDKRIG_CRYPTONIGHT_H */
+#endif /* KITTENPAW_CRYPTONIGHT_H */

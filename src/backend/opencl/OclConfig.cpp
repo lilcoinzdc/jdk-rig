@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@
 #include "base/io/log/Log.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 static const char *kCache       = "cache";
@@ -33,14 +33,14 @@ static const char *kDevicesHint = "devices-hint";
 static const char *kEnabled     = "enabled";
 static const char *kLoader      = "loader";
 
-#ifndef JDKRIG_OS_APPLE
+#ifndef KITTENPAW_OS_APPLE
 static const char *kAMD         = "AMD";
 static const char *kINTEL       = "INTEL";
 static const char *kNVIDIA      = "NVIDIA";
 static const char *kPlatform    = "platform";
 #endif
 
-#ifdef JDKRIG_FEATURE_ADL
+#ifdef KITTENPAW_FEATURE_ADL
 static const char *kAdl         = "adl";
 #endif
 
@@ -48,24 +48,24 @@ static const char *kAdl         = "adl";
 extern template class Threads<OclThreads>;
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-#ifndef JDKRIG_OS_APPLE
-jdkrig::OclConfig::OclConfig() : m_platformVendor(kAMD) {}
+#ifndef KITTENPAW_OS_APPLE
+kittenpaw::OclConfig::OclConfig() : m_platformVendor(kAMD) {}
 #else
-jdkrig::OclConfig::OclConfig() = default;
+kittenpaw::OclConfig::OclConfig() = default;
 #endif
 
 
-jdkrig::OclPlatform jdkrig::OclConfig::platform() const
+kittenpaw::OclPlatform kittenpaw::OclConfig::platform() const
 {
     const auto platforms = OclPlatform::get();
     if (platforms.empty()) {
         return {};
     }
 
-#   ifndef JDKRIG_OS_APPLE
+#   ifndef KITTENPAW_OS_APPLE
     if (!m_platformVendor.isEmpty()) {
         String search;
         String vendor = m_platformVendor;
@@ -101,7 +101,7 @@ jdkrig::OclPlatform jdkrig::OclConfig::platform() const
 }
 
 
-rapidjson::Value jdkrig::OclConfig::toJSON(rapidjson::Document &doc) const
+rapidjson::Value kittenpaw::OclConfig::toJSON(rapidjson::Document &doc) const
 {
     using namespace rapidjson;
     auto &allocator = doc.GetAllocator();
@@ -112,11 +112,11 @@ rapidjson::Value jdkrig::OclConfig::toJSON(rapidjson::Document &doc) const
     obj.AddMember(StringRef(kCache),    m_cache, allocator);
     obj.AddMember(StringRef(kLoader),   m_loader.toJSON(), allocator);
 
-#   ifndef JDKRIG_OS_APPLE
+#   ifndef KITTENPAW_OS_APPLE
     obj.AddMember(StringRef(kPlatform), m_platformVendor.isEmpty() ? Value(m_platformIndex) : m_platformVendor.toJSON(), allocator);
 #   endif
 
-#   ifdef JDKRIG_FEATURE_ADL
+#   ifdef KITTENPAW_FEATURE_ADL
     obj.AddMember(StringRef(kAdl),      m_adl, allocator);
 #   endif
 
@@ -126,7 +126,7 @@ rapidjson::Value jdkrig::OclConfig::toJSON(rapidjson::Document &doc) const
 }
 
 
-std::vector<jdkrig::OclLaunchData> jdkrig::OclConfig::get(const Jdkrigger *jdkrigger, const Algorithm &algorithm, const OclPlatform &platform, const std::vector<OclDevice> &devices) const
+std::vector<kittenpaw::OclLaunchData> kittenpaw::OclConfig::get(const Kittenpawger *kittenpawger, const Algorithm &algorithm, const OclPlatform &platform, const std::vector<OclDevice> &devices) const
 {
     std::vector<OclLaunchData> out;
     const auto &threads = m_threads.get(algorithm);
@@ -145,11 +145,11 @@ std::vector<jdkrig::OclLaunchData> jdkrig::OclConfig::get(const Jdkrigger *jdkri
 
         if (thread.threads().size() > 1) {
             for (int64_t affinity : thread.threads()) {
-                out.emplace_back(jdkrigger, algorithm, *this, platform, thread, devices[thread.index()], affinity);
+                out.emplace_back(kittenpawger, algorithm, *this, platform, thread, devices[thread.index()], affinity);
             }
         }
         else {
-            out.emplace_back(jdkrigger, algorithm, *this, platform, thread, devices[thread.index()], thread.threads().front());
+            out.emplace_back(kittenpawger, algorithm, *this, platform, thread, devices[thread.index()], thread.threads().front());
         }
     }
 
@@ -157,20 +157,20 @@ std::vector<jdkrig::OclLaunchData> jdkrig::OclConfig::get(const Jdkrigger *jdkri
 }
 
 
-void jdkrig::OclConfig::read(const rapidjson::Value &value)
+void kittenpaw::OclConfig::read(const rapidjson::Value &value)
 {
     if (value.IsObject()) {
         m_enabled   = Json::getBool(value, kEnabled, m_enabled);
         m_cache     = Json::getBool(value, kCache, m_cache);
         m_loader    = Json::getString(value, kLoader);
 
-#       ifndef JDKRIG_OS_APPLE
+#       ifndef KITTENPAW_OS_APPLE
         setPlatform(Json::getValue(value, kPlatform));
 #       endif
 
         setDevicesHint(Json::getString(value, kDevicesHint));
 
-#       ifdef JDKRIG_FEATURE_ADL
+#       ifdef KITTENPAW_FEATURE_ADL
         m_adl = Json::getBool(value, kAdl, m_adl);
 #       endif
 
@@ -191,7 +191,7 @@ void jdkrig::OclConfig::read(const rapidjson::Value &value)
 }
 
 
-void jdkrig::OclConfig::generate()
+void kittenpaw::OclConfig::generate()
 {
     if (!isEnabled() || m_threads.has("*")) {
         return;
@@ -208,19 +208,19 @@ void jdkrig::OclConfig::generate()
 
     size_t count = 0;
 
-    count += jdkrig::generate<Algorithm::CN>(m_threads, devices);
-    count += jdkrig::generate<Algorithm::CN_LITE>(m_threads, devices);
-    count += jdkrig::generate<Algorithm::CN_HEAVY>(m_threads, devices);
-    count += jdkrig::generate<Algorithm::CN_PICO>(m_threads, devices);
-    count += jdkrig::generate<Algorithm::CN_FEMTO>(m_threads, devices);
-    count += jdkrig::generate<Algorithm::RANDOM_X>(m_threads, devices);
-    count += jdkrig::generate<Algorithm::KAWPOW>(m_threads, devices);
+    count += kittenpaw::generate<Algorithm::CN>(m_threads, devices);
+    count += kittenpaw::generate<Algorithm::CN_LITE>(m_threads, devices);
+    count += kittenpaw::generate<Algorithm::CN_HEAVY>(m_threads, devices);
+    count += kittenpaw::generate<Algorithm::CN_PICO>(m_threads, devices);
+    count += kittenpaw::generate<Algorithm::CN_FEMTO>(m_threads, devices);
+    count += kittenpaw::generate<Algorithm::RANDOM_X>(m_threads, devices);
+    count += kittenpaw::generate<Algorithm::KAWPOW>(m_threads, devices);
 
     m_shouldSave = count > 0;
 }
 
 
-void jdkrig::OclConfig::setDevicesHint(const char *devicesHint)
+void kittenpaw::OclConfig::setDevicesHint(const char *devicesHint)
 {
     if (devicesHint == nullptr) {
         return;
@@ -235,8 +235,8 @@ void jdkrig::OclConfig::setDevicesHint(const char *devicesHint)
 }
 
 
-#ifndef JDKRIG_OS_APPLE
-void jdkrig::OclConfig::setPlatform(const rapidjson::Value &platform)
+#ifndef KITTENPAW_OS_APPLE
+void kittenpaw::OclConfig::setPlatform(const rapidjson::Value &platform)
 {
     if (platform.IsString()) {
         m_platformVendor = platform.GetString();

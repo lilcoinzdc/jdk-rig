@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_ETHSTRATUMCLIENT_H
-#define JDKRIG_ETHSTRATUMCLIENT_H
+#ifndef KITTENPAW_ETHSTRATUMCLIENT_H
+#define KITTENPAW_ETHSTRATUMCLIENT_H
 
 
 #include "base/net/stratum/Client.h"
@@ -26,13 +26,13 @@
 #include <utility>
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class EthStratumClient : public Client
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(EthStratumClient)
+    KITTENPAW_DISABLE_COPY_MOVE_DEFAULT(EthStratumClient)
 
     EthStratumClient(int id, const char *agent, IClientListener *listener);
     std::string make_rpc_name(const char* method);
@@ -48,7 +48,7 @@ protected:
 
     void setExtraNonce(const rapidjson::Value &nonce);
 
-#   ifdef JDKRIG_ALGO_GHOSTRIDER
+#   ifdef KITTENPAW_ALGO_GHOSTRIDER
     inline void setExtraNonce2Size(uint64_t size)   { m_extraNonce2Size = size; }
 #   endif
 
@@ -63,7 +63,7 @@ private:
     bool m_authorized   = false;
     std::pair<uint64_t, String> m_extraNonce{};
 
-#   ifdef JDKRIG_ALGO_GHOSTRIDER
+#   ifdef KITTENPAW_ALGO_GHOSTRIDER
     uint64_t m_extraNonce2Size = 0;
     uint64_t m_nextDifficulty = 0;
     String m_ntime;
@@ -71,7 +71,7 @@ private:
 };
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif /* JDKRIG_ETHSTRATUMCLIENT_H */
+#endif /* KITTENPAW_ETHSTRATUMCLIENT_H */

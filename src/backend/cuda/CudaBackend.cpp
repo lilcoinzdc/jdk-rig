@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -40,25 +40,25 @@
 #include "core/Controller.h"
 
 
-#ifdef JDKRIG_ALGO_KAWPOW
+#ifdef KITTENPAW_ALGO_KAWPOW
 #   include "crypto/kawpow/KPCache.h"
 #   include "crypto/kawpow/KPHash.h"
 #endif
 
 
-#ifdef JDKRIG_FEATURE_API
+#ifdef KITTENPAW_FEATURE_API
 #   include "base/api/interfaces/IApiRequest.h"
 #endif
 
 
-#ifdef JDKRIG_FEATURE_NVML
+#ifdef KITTENPAW_FEATURE_NVML
 #include "backend/cuda/wrappers/NvmlLib.h"
 
-namespace jdkrig { static const char *kNvmlLabel = "NVML"; }
+namespace kittenpaw { static const char *kNvmlLabel = "NVML"; }
 #endif
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 extern template class Threads<CudaThreads>;
@@ -164,7 +164,7 @@ public:
         Log::print(GREEN_BOLD(" * ") WHITE_BOLD("%-13s") WHITE_BOLD("%s") "/" WHITE_BOLD("%s") BLACK_BOLD("/%s"), kLabel,
                    CudaLib::version(runtimeVersion).c_str(), CudaLib::version(driverVersion).c_str(), CudaLib::pluginVersion());
 
-#       ifdef JDKRIG_FEATURE_NVML
+#       ifdef KITTENPAW_FEATURE_NVML
         if (cuda.isNvmlEnabled()) {
             if (NvmlLib::init(cuda.nvmlLoader())) {
                 NvmlLib::assign(devices);
@@ -219,7 +219,7 @@ public:
         for (const auto &data : threads) {
             size_t mem_used = (data.thread.threads() * data.thread.blocks()) * algo_l3 / oneMiB;
 
-#           ifdef JDKRIG_ALGO_KAWPOW
+#           ifdef KITTENPAW_ALGO_KAWPOW
             if (algo.family() == Algorithm::KAWPOW) {
                 const uint32_t epoch = job.height() / KPHash::EPOCH_LENGTH;
                 mem_used = (KPCache::dag_size(epoch) + oneMiB - 1) / oneMiB;
@@ -248,7 +248,7 @@ public:
     }
 
 
-#   ifdef JDKRIG_FEATURE_NVML
+#   ifdef KITTENPAW_FEATURE_NVML
     void printHealth()
     {
         for (const auto &device : devices) {
@@ -293,70 +293,70 @@ public:
 };
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-const char *jdkrig::cuda_tag()
+const char *kittenpaw::cuda_tag()
 {
     return Tags::nvidia();
 }
 
 
-jdkrig::CudaBackend::CudaBackend(Controller *controller) :
+kittenpaw::CudaBackend::CudaBackend(Controller *controller) :
     d_ptr(new CudaBackendPrivate(controller))
 {
     d_ptr->workers.setBackend(this);
 }
 
 
-jdkrig::CudaBackend::~CudaBackend()
+kittenpaw::CudaBackend::~CudaBackend()
 {
     delete d_ptr;
 
     CudaLib::close();
 
-#   ifdef JDKRIG_FEATURE_NVML
+#   ifdef KITTENPAW_FEATURE_NVML
     NvmlLib::close();
 #   endif
 }
 
 
-bool jdkrig::CudaBackend::isEnabled() const
+bool kittenpaw::CudaBackend::isEnabled() const
 {
     return d_ptr->controller->config()->cuda().isEnabled() && CudaLib::isInitialized() && !d_ptr->devices.empty();;
 }
 
 
-bool jdkrig::CudaBackend::isEnabled(const Algorithm &algorithm) const
+bool kittenpaw::CudaBackend::isEnabled(const Algorithm &algorithm) const
 {
     return !d_ptr->controller->config()->cuda().threads().get(algorithm).isEmpty();
 }
 
 
-const jdkrig::Hashrate *jdkrig::CudaBackend::hashrate() const
+const kittenpaw::Hashrate *kittenpaw::CudaBackend::hashrate() const
 {
     return d_ptr->workers.hashrate();
 }
 
 
-const jdkrig::String &jdkrig::CudaBackend::profileName() const
+const kittenpaw::String &kittenpaw::CudaBackend::profileName() const
 {
     return d_ptr->profileName;
 }
 
 
-const jdkrig::String &jdkrig::CudaBackend::type() const
+const kittenpaw::String &kittenpaw::CudaBackend::type() const
 {
     return kType;
 }
 
 
-void jdkrig::CudaBackend::execCommand(char)
+void kittenpaw::CudaBackend::execCommand(char)
 {
 }
 
 
-void jdkrig::CudaBackend::prepare(const Job &job)
+void kittenpaw::CudaBackend::prepare(const Job &job)
 {
     if (d_ptr) {
         d_ptr->workers.jobEarlyNotification(job);
@@ -364,7 +364,7 @@ void jdkrig::CudaBackend::prepare(const Job &job)
 }
 
 
-void jdkrig::CudaBackend::printHashrate(bool details)
+void kittenpaw::CudaBackend::printHashrate(bool details)
 {
     if (!details || !hashrate()) {
         return;
@@ -423,15 +423,15 @@ void jdkrig::CudaBackend::printHashrate(bool details)
 }
 
 
-void jdkrig::CudaBackend::printHealth()
+void kittenpaw::CudaBackend::printHealth()
 {
-#   ifdef JDKRIG_FEATURE_NVML
+#   ifdef KITTENPAW_FEATURE_NVML
     d_ptr->printHealth();
 #   endif
 }
 
 
-void jdkrig::CudaBackend::setJob(const Job &job)
+void kittenpaw::CudaBackend::setJob(const Job &job)
 {
     const auto &cuda = d_ptr->controller->config()->cuda();
     if (cuda.isEnabled()) {
@@ -442,7 +442,7 @@ void jdkrig::CudaBackend::setJob(const Job &job)
         return stop();
     }
 
-    auto threads = cuda.get(d_ptr->controller->jdkrigger(), job.algorithm(), d_ptr->devices);
+    auto threads = cuda.get(d_ptr->controller->kittenpawger(), job.algorithm(), d_ptr->devices);
     if (!d_ptr->threads.empty() && d_ptr->threads.size() == threads.size() && std::equal(d_ptr->threads.begin(), d_ptr->threads.end(), threads.begin())) {
         return;
     }
@@ -463,7 +463,7 @@ void jdkrig::CudaBackend::setJob(const Job &job)
 }
 
 
-void jdkrig::CudaBackend::start(IWorker *worker, bool ready)
+void kittenpaw::CudaBackend::start(IWorker *worker, bool ready)
 {
     mutex.lock();
 
@@ -481,7 +481,7 @@ void jdkrig::CudaBackend::start(IWorker *worker, bool ready)
 }
 
 
-void jdkrig::CudaBackend::stop()
+void kittenpaw::CudaBackend::stop()
 {
     if (d_ptr->threads.empty()) {
         return;
@@ -496,14 +496,14 @@ void jdkrig::CudaBackend::stop()
 }
 
 
-bool jdkrig::CudaBackend::tick(uint64_t ticks)
+bool kittenpaw::CudaBackend::tick(uint64_t ticks)
 {
     return d_ptr->workers.tick(ticks);
 }
 
 
-#ifdef JDKRIG_FEATURE_API
-rapidjson::Value jdkrig::CudaBackend::toJSON(rapidjson::Document &doc) const
+#ifdef KITTENPAW_FEATURE_API
+rapidjson::Value kittenpaw::CudaBackend::toJSON(rapidjson::Document &doc) const
 {
     using namespace rapidjson;
     auto &allocator = doc.GetAllocator();
@@ -520,7 +520,7 @@ rapidjson::Value jdkrig::CudaBackend::toJSON(rapidjson::Document &doc) const
         versions.AddMember("cuda-driver",    Value(CudaLib::version(d_ptr->driverVersion).c_str(), allocator), allocator);
         versions.AddMember("plugin",         String(CudaLib::pluginVersion()).toJSON(doc), allocator);
 
-#       ifdef JDKRIG_FEATURE_NVML
+#       ifdef KITTENPAW_FEATURE_NVML
         if (NvmlLib::isReady()) {
             versions.AddMember("nvml",       StringRef(NvmlLib::version()), allocator);
             versions.AddMember("driver",     StringRef(NvmlLib::driverVersion()), allocator);
@@ -555,7 +555,7 @@ rapidjson::Value jdkrig::CudaBackend::toJSON(rapidjson::Document &doc) const
 }
 
 
-void jdkrig::CudaBackend::handleRequest(IApiRequest &)
+void kittenpaw::CudaBackend::handleRequest(IApiRequest &)
 {
 }
 #endif

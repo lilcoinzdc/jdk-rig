@@ -26,7 +26,7 @@
 
 #include <cstdint>
 
-#ifdef JDKRIG_64_BIT
+#ifdef KITTENPAW_64_BIT
 #   ifdef _MSC_VER
 #       include <intrin.h>
 #       pragma intrinsic(_umul128)

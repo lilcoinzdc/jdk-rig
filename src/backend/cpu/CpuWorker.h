@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_CPUWORKER_H
-#define JDKRIG_CPUWORKER_H
+#ifndef KITTENPAW_CPUWORKER_H
+#define KITTENPAW_CPUWORKER_H
 
 
 #include "backend/common/Worker.h"
@@ -27,18 +27,18 @@
 #include "net/JobResult.h"
 
 
-#ifdef JDKRIG_ALGO_RANDOMX
+#ifdef KITTENPAW_ALGO_RANDOMX
 class randomx_vm;
 #endif
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class RxVm;
 
 
-#ifdef JDKRIG_ALGO_GHOSTRIDER
+#ifdef KITTENPAW_ALGO_GHOSTRIDER
 namespace ghostrider { struct HelperThread; }
 #endif
 
@@ -47,14 +47,14 @@ template<size_t N>
 class CpuWorker : public Worker
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(CpuWorker)
+    KITTENPAW_DISABLE_COPY_MOVE_DEFAULT(CpuWorker)
 
     CpuWorker(size_t id, const CpuLaunchData &data);
     ~CpuWorker() override;
 
     size_t threads() const override
     {
-#       ifdef JDKRIG_ALGO_GHOSTRIDER
+#       ifdef KITTENPAW_ALGO_GHOSTRIDER
         return ((m_algorithm.family() == Algorithm::GHOSTRIDER) && m_ghHelper) ? 2 : 1;
 #       else
         return 1;
@@ -73,7 +73,7 @@ protected:
 private:
     inline cn_hash_fun fn(const Algorithm &algorithm) const { return CnHash::fn(algorithm, m_av, m_assembly); }
 
-#   ifdef JDKRIG_ALGO_RANDOMX
+#   ifdef KITTENPAW_ALGO_RANDOMX
     void allocateRandomX_VM();
 #   endif
 
@@ -89,22 +89,22 @@ private:
     const bool m_hwAES;
     const bool m_yield;
     const CnHash::AlgoVariant m_av;
-    const Jdkrigger *m_jdkrigger;
+    const Kittenpawger *m_kittenpawger;
     const size_t m_threads;
     cryptonight_ctx *m_ctx[N];
     VirtualMemory *m_memory = nullptr;
     WorkerJob<N> m_job;
 
-#   ifdef JDKRIG_ALGO_RANDOMX
+#   ifdef KITTENPAW_ALGO_RANDOMX
     randomx_vm *m_vm        = nullptr;
     Buffer m_seed;
 #   endif
 
-#   ifdef JDKRIG_ALGO_GHOSTRIDER
+#   ifdef KITTENPAW_ALGO_GHOSTRIDER
     ghostrider::HelperThread* m_ghHelper = nullptr;
 #   endif
 
-#   ifdef JDKRIG_FEATURE_BENCHMARK
+#   ifdef KITTENPAW_FEATURE_BENCHMARK
     uint32_t m_benchSize    = 0;
 #   endif
 };
@@ -122,7 +122,7 @@ extern template class CpuWorker<5>;
 extern template class CpuWorker<8>;
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-#endif /* JDKRIG_CPUWORKER_H */
+#endif /* KITTENPAW_CPUWORKER_H */

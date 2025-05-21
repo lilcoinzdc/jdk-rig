@@ -1,4 +1,4 @@
-/* XMRig
+/* KITTENpaw
  * Copyright 2010      Jeff Garzik <jgarzik@pobox.com>
  * Copyright 2012-2014 pooler      <pooler@litecoinpool.org>
  * Copyright 2014      Lucas Jones <https://github.com/lucasjones>
@@ -7,7 +7,7 @@
  * Copyright 2017-2019 XMR-Stak    <https://github.com/fireice-uk>, <https://github.com/psychocrypt>
  * Copyright 2018      Lee Clagett <https://github.com/vtnerd>
  * Copyright 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -23,8 +23,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_CRYPTONIGHT_X86_H
-#define JDKRIG_CRYPTONIGHT_X86_H
+#ifndef KITTENPAW_CRYPTONIGHT_X86_H
+#define KITTENPAW_CRYPTONIGHT_X86_H
 
 
 #ifdef __GNUC__
@@ -43,7 +43,7 @@
 #include "crypto/cn/soft_aes.h"
 
 
-#ifdef JDKRIG_VAES
+#ifdef KITTENPAW_VAES
 #   include "crypto/cn/CryptoNight_x86_vaes.h"
 #endif
 
@@ -272,7 +272,7 @@ inline void mix_and_propagate(__m128i& x0, __m128i& x1, __m128i& x2, __m128i& x3
 }
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 template<int interleave>
@@ -294,7 +294,7 @@ static NOINLINE void cn_explode_scratchpad(cryptonight_ctx *ctx)
 {
     constexpr CnAlgo<ALGO> props;
 
-#   ifdef JDKRIG_VAES
+#   ifdef KITTENPAW_VAES
     if (!SOFT_AES && !props.isHeavy() && cn_vaes_enabled) {
         cn_explode_scratchpad_vaes(ctx, props.memory(), props.half_mem());
         return;
@@ -408,7 +408,7 @@ static NOINLINE void cn_implode_scratchpad(cryptonight_ctx *ctx)
 {
     constexpr CnAlgo<ALGO> props;
 
-#   ifdef JDKRIG_VAES
+#   ifdef KITTENPAW_VAES
     if (!SOFT_AES && !props.isHeavy() && cn_vaes_enabled) {
         cn_implode_scratchpad_vaes(ctx, props.memory(), props.half_mem());
         return;
@@ -543,7 +543,7 @@ static NOINLINE void cn_implode_scratchpad(cryptonight_ctx *ctx)
 }
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
 static inline __m128i aes_round_tweak_div(const __m128i &in, const __m128i &key)
@@ -588,13 +588,13 @@ static inline __m128i int_sqrt_v2(const uint64_t n0)
 }
 
 
-void v4_soft_aes_compile_code(const V4_Instruction *code, int code_size, void *machine_code, jdkrig::Assembly ASM);
+void v4_soft_aes_compile_code(const V4_Instruction *code, int code_size, void *machine_code, kittenpaw::Assembly ASM);
 
 
 alignas(64) static const uint32_t tweak1_table[256] = { 268435456,0,268435456,0,268435456,0,268435456,0,268435456,0,268435456,0,268435456,0,268435456,0,805306368,0,805306368,0,805306368,0,805306368,0,805306368,0,805306368,0,805306368,0,805306368,0,268435456,268435456,268435456,268435456,268435456,268435456,268435456,268435456,268435456,268435456,268435456,268435456,268435456,268435456,268435456,268435456,805306368,268435456,805306368,268435456,805306368,268435456,805306368,268435456,805306368,268435456,805306368,268435456,805306368,268435456,805306368,268435456,268435456,0,268435456,0,268435456,0,268435456,0,268435456,0,268435456,0,268435456,0,268435456,0,805306368,0,805306368,0,805306368,0,805306368,0,805306368,0,805306368,0,805306368,0,805306368,0,268435456,268435456,268435456,268435456,268435456,268435456,268435456,268435456,268435456,268435456,268435456,268435456,268435456,268435456,268435456,268435456,805306368,268435456,805306368,268435456,805306368,268435456,805306368,268435456,805306368,268435456,805306368,268435456,805306368,268435456,805306368,268435456,268435456,0,268435456,0,268435456,0,268435456,0,268435456,0,268435456,0,268435456,0,268435456,0,805306368,0,805306368,0,805306368,0,805306368,0,805306368,0,805306368,0,805306368,0,805306368,0,268435456,268435456,268435456,268435456,268435456,268435456,268435456,268435456,268435456,268435456,268435456,268435456,268435456,268435456,268435456,268435456,805306368,268435456,805306368,268435456,805306368,268435456,805306368,268435456,805306368,268435456,805306368,268435456,805306368,268435456,805306368,268435456,268435456,0,268435456,0,268435456,0,268435456,0,268435456,0,268435456,0,268435456,0,268435456,0,805306368,0,805306368,0,805306368,0,805306368,0,805306368,0,805306368,0,805306368,0,805306368,0,268435456,268435456,268435456,268435456,268435456,268435456,268435456,268435456,268435456,268435456,268435456,268435456,268435456,268435456,268435456,268435456,805306368,268435456,805306368,268435456,805306368,268435456,805306368,268435456,805306368,268435456,805306368,268435456,805306368,268435456,805306368,268435456 };
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 template<Algorithm::Id ALGO>
@@ -634,7 +634,7 @@ static inline void cryptonight_conceal_tweak(__m128i& cx, __m128& conc_var)
     cx = _mm_xor_si128(cx, _mm_cvttps_epi32(nc));
 }
 
-#ifdef JDKRIG_FEATURE_ASM
+#ifdef KITTENPAW_FEATURE_ASM
 template<Algorithm::Id ALGO>
 static void cryptonight_single_hash_gr_sse41(const uint8_t* __restrict__ input, size_t size, uint8_t* __restrict__ output, cryptonight_ctx** __restrict__ ctx, uint64_t height);
 #endif
@@ -642,7 +642,7 @@ static void cryptonight_single_hash_gr_sse41(const uint8_t* __restrict__ input, 
 template<Algorithm::Id ALGO, bool SOFT_AES, int interleave>
 inline void cryptonight_single_hash(const uint8_t *__restrict__ input, size_t size, uint8_t *__restrict__ output, cryptonight_ctx **__restrict__ ctx, uint64_t height)
 {
-#   ifdef JDKRIG_FEATURE_ASM
+#   ifdef KITTENPAW_FEATURE_ASM
     if (!SOFT_AES) {
         switch (ALGO) {
         case Algorithm::CN_GR_0:
@@ -667,7 +667,7 @@ inline void cryptonight_single_hash(const uint8_t *__restrict__ input, size_t si
     constexpr size_t MASK        = props.mask();
     constexpr Algorithm::Id BASE = props.base();
 
-#   ifdef JDKRIG_ALGO_CN_HEAVY
+#   ifdef KITTENPAW_ALGO_CN_HEAVY
     constexpr bool IS_CN_HEAVY_TUBE = ALGO == Algorithm::CN_HEAVY_TUBE;
 #   else
     constexpr bool IS_CN_HEAVY_TUBE = false;
@@ -688,7 +688,7 @@ inline void cryptonight_single_hash(const uint8_t *__restrict__ input, size_t si
     uint64_t *h0 = reinterpret_cast<uint64_t*>(ctx[0]->state);
     uint8_t *l0   = ctx[0]->memory;
 
-#   ifdef JDKRIG_FEATURE_ASM
+#   ifdef KITTENPAW_FEATURE_ASM
     if (SOFT_AES && props.isR()) {
         if (!ctx[0]->generated_code_data.match(ALGO, height)) {
             V4_Instruction code[256];
@@ -801,14 +801,14 @@ inline void cryptonight_single_hash(const uint8_t *__restrict__ input, size_t si
         ah0 ^= ch;
         idx0 = al0;
 
-#       ifdef JDKRIG_ALGO_CN_HEAVY
+#       ifdef KITTENPAW_ALGO_CN_HEAVY
         if (props.isHeavy()) {
             int64_t n = ((int64_t*)&l0[interleaved_index<interleave>(idx0 & MASK)])[0];
             int64_t d = ((int32_t*)&l0[interleaved_index<interleave>(idx0 & MASK)])[2];
 
             int64_t d5;
 
-#           if defined(_MSC_VER) || (defined(__GNUC__) && (__GNUC__ == 8)) || !defined(JDKRIG_64_BIT)
+#           if defined(_MSC_VER) || (defined(__GNUC__) && (__GNUC__ == 8)) || !defined(KITTENPAW_64_BIT)
             d5 = d | 5;
 #           else
             // Workaround for stupid GCC which converts to 32 bit before doing "| 5" and then converts back to 64 bit
@@ -834,7 +834,7 @@ inline void cryptonight_single_hash(const uint8_t *__restrict__ input, size_t si
         bx0 = cx;
     }
 
-#   ifdef JDKRIG_FEATURE_ASM
+#   ifdef KITTENPAW_FEATURE_ASM
     }
 #   endif
 
@@ -844,10 +844,10 @@ inline void cryptonight_single_hash(const uint8_t *__restrict__ input, size_t si
 }
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#ifdef JDKRIG_FEATURE_ASM
+#ifdef KITTENPAW_FEATURE_ASM
 extern "C" void cnv1_single_mainloop_asm(cryptonight_ctx * *ctx);
 extern "C" void cnv1_double_mainloop_asm(cryptonight_ctx **ctx);
 extern "C" void cnv1_quad_mainloop_asm(cryptonight_ctx **ctx);
@@ -860,7 +860,7 @@ extern "C" void cnv2_rwz_double_mainloop_asm(cryptonight_ctx **ctx);
 extern "C" void cnv2_upx_double_mainloop_zen3_asm(cryptonight_ctx **ctx);
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 typedef void (*cn_mainloop_fun)(cryptonight_ctx **ctx);
@@ -916,28 +916,28 @@ extern cn_mainloop_fun cn_gr4_quad_mainloop_asm;
 extern cn_mainloop_fun cn_gr5_quad_mainloop_asm;
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-void v4_compile_code(const V4_Instruction* code, int code_size, void* machine_code, jdkrig::Assembly ASM);
-void v4_compile_code_double(const V4_Instruction* code, int code_size, void* machine_code, jdkrig::Assembly ASM);
+void v4_compile_code(const V4_Instruction* code, int code_size, void* machine_code, kittenpaw::Assembly ASM);
+void v4_compile_code_double(const V4_Instruction* code, int code_size, void* machine_code, kittenpaw::Assembly ASM);
 
 
-template<jdkrig::Algorithm::Id ALGO>
-void cn_r_compile_code(const V4_Instruction* code, int code_size, void* machine_code, jdkrig::Assembly ASM)
+template<kittenpaw::Algorithm::Id ALGO>
+void cn_r_compile_code(const V4_Instruction* code, int code_size, void* machine_code, kittenpaw::Assembly ASM)
 {
     v4_compile_code(code, code_size, machine_code, ASM);
 }
 
 
-template<jdkrig::Algorithm::Id ALGO>
-void cn_r_compile_code_double(const V4_Instruction* code, int code_size, void* machine_code, jdkrig::Assembly ASM)
+template<kittenpaw::Algorithm::Id ALGO>
+void cn_r_compile_code_double(const V4_Instruction* code, int code_size, void* machine_code, kittenpaw::Assembly ASM)
 {
     v4_compile_code_double(code, code_size, machine_code, ASM);
 }
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 template<Algorithm::Id ALGO, Assembly::Id ASM>
@@ -982,7 +982,7 @@ inline void cryptonight_single_hash_asm(const uint8_t *__restrict__ input, size_
             cn_half_mainloop_bulldozer_asm(ctx);
         }
     }
-#   ifdef JDKRIG_ALGO_CN_PICO
+#   ifdef KITTENPAW_ALGO_CN_PICO
     else if (ALGO == Algorithm::CN_PICO_0) {
         if (ASM == Assembly::INTEL) {
             cn_trtl_mainloop_ivybridge_asm(ctx);
@@ -1031,7 +1031,7 @@ inline void cryptonight_single_hash_asm(const uint8_t *__restrict__ input, size_
             cn_double_mainloop_bulldozer_asm(ctx);
         }
     }
-#   ifdef JDKRIG_ALGO_CN_FEMTO
+#   ifdef KITTENPAW_ALGO_CN_FEMTO
     else if (ALGO == Algorithm::CN_UPX2) {
         cn_upx2_mainloop_asm(ctx);
     }
@@ -1067,7 +1067,7 @@ inline void cryptonight_double_hash_asm(const uint8_t *__restrict__ input, size_
         ctx[1]->first_half = true;
     }
 
-#   ifdef JDKRIG_VAES
+#   ifdef KITTENPAW_VAES
     if (!props.isHeavy() && cn_vaes_enabled) {
         cn_explode_scratchpad_vaes_double(ctx[0], ctx[1], props.memory(), props.half_mem());
     }
@@ -1084,7 +1084,7 @@ inline void cryptonight_double_hash_asm(const uint8_t *__restrict__ input, size_
     else if (ALGO == Algorithm::CN_HALF) {
         cn_half_double_mainloop_sandybridge_asm(ctx);
     }
-#   ifdef JDKRIG_ALGO_CN_PICO
+#   ifdef KITTENPAW_ALGO_CN_PICO
     else if (ALGO == Algorithm::CN_PICO_0) {
         cn_trtl_double_mainloop_sandybridge_asm(ctx);
     }
@@ -1092,7 +1092,7 @@ inline void cryptonight_double_hash_asm(const uint8_t *__restrict__ input, size_
         cn_tlo_double_mainloop_sandybridge_asm(ctx);
     }
 #   endif
-#   ifdef JDKRIG_ALGO_CN_FEMTO
+#   ifdef KITTENPAW_ALGO_CN_FEMTO
     else if (ALGO == Algorithm::CN_UPX2) {
         if (Cpu::info()->arch() == ICpuInfo::ARCH_ZEN3) {
             cnv2_upx_double_mainloop_zen3_asm(ctx);
@@ -1115,7 +1115,7 @@ inline void cryptonight_double_hash_asm(const uint8_t *__restrict__ input, size_
         ctx[0]->generated_code(ctx);
     }
 
-#   ifdef JDKRIG_VAES
+#   ifdef KITTENPAW_VAES
     if (!props.isHeavy() && cn_vaes_enabled) {
         cn_implode_scratchpad_vaes_double(ctx[0], ctx[1], props.memory(), props.half_mem());
     }
@@ -1134,14 +1134,14 @@ inline void cryptonight_double_hash_asm(const uint8_t *__restrict__ input, size_
 }
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 #endif
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
-#ifdef JDKRIG_FEATURE_ASM
+#ifdef KITTENPAW_FEATURE_ASM
 template<Algorithm::Id ALGO>
 static NOINLINE void cryptonight_single_hash_gr_sse41(const uint8_t* __restrict__ input, size_t size, uint8_t* __restrict__ output, cryptonight_ctx** __restrict__ ctx, uint64_t height)
 {
@@ -1195,7 +1195,7 @@ static NOINLINE void cryptonight_double_hash_gr_sse41(const uint8_t *__restrict_
         ctx[1]->first_half = true;
     }
 
-#   ifdef JDKRIG_VAES
+#   ifdef KITTENPAW_VAES
     if (!props.isHeavy() && cn_vaes_enabled) {
         cn_explode_scratchpad_vaes_double(ctx[0], ctx[1], props.memory(), props.half_mem());
     }
@@ -1221,7 +1221,7 @@ static NOINLINE void cryptonight_double_hash_gr_sse41(const uint8_t *__restrict_
     if (ALGO == Algorithm::CN_GR_4) cn_gr4_double_mainloop_asm(ctx);
     if (ALGO == Algorithm::CN_GR_5) cn_gr5_double_mainloop_asm(ctx);
 
-#   ifdef JDKRIG_VAES
+#   ifdef KITTENPAW_VAES
     if (!props.isHeavy() && cn_vaes_enabled) {
         cn_implode_scratchpad_vaes_double(ctx[0], ctx[1], props.memory(), props.half_mem());
     }
@@ -1244,7 +1244,7 @@ static NOINLINE void cryptonight_double_hash_gr_sse41(const uint8_t *__restrict_
 template<Algorithm::Id ALGO, bool SOFT_AES>
 inline void cryptonight_double_hash(const uint8_t *__restrict__ input, size_t size, uint8_t *__restrict__ output, cryptonight_ctx **__restrict__ ctx, uint64_t height)
 {
-#   ifdef JDKRIG_FEATURE_ASM
+#   ifdef KITTENPAW_FEATURE_ASM
     if (!SOFT_AES) {
         switch (ALGO) {
         case Algorithm::CN_GR_0:
@@ -1269,7 +1269,7 @@ inline void cryptonight_double_hash(const uint8_t *__restrict__ input, size_t si
     constexpr size_t MASK        = props.mask();
     constexpr Algorithm::Id BASE = props.base();
 
-#   ifdef JDKRIG_ALGO_CN_HEAVY
+#   ifdef KITTENPAW_ALGO_CN_HEAVY
     constexpr bool IS_CN_HEAVY_TUBE = ALGO == Algorithm::CN_HEAVY_TUBE;
 #   else
     constexpr bool IS_CN_HEAVY_TUBE = false;
@@ -1301,7 +1301,7 @@ inline void cryptonight_double_hash(const uint8_t *__restrict__ input, size_t si
         ctx[1]->first_half = true;
     }
 
-#   ifdef JDKRIG_VAES
+#   ifdef KITTENPAW_VAES
     if (!SOFT_AES && !props.isHeavy() && cn_vaes_enabled) {
         cn_explode_scratchpad_vaes_double(ctx[0], ctx[1], props.memory(), props.half_mem());
     }
@@ -1422,7 +1422,7 @@ inline void cryptonight_double_hash(const uint8_t *__restrict__ input, size_t si
         ah0 ^= ch;
         idx0 = al0;
 
-#       ifdef JDKRIG_ALGO_CN_HEAVY
+#       ifdef KITTENPAW_ALGO_CN_HEAVY
         if (props.isHeavy()) {
             int64_t n = ((int64_t*)&l0[idx0 & MASK])[0];
             int32_t d = ((int32_t*)&l0[idx0 & MASK])[2];
@@ -1480,7 +1480,7 @@ inline void cryptonight_double_hash(const uint8_t *__restrict__ input, size_t si
         ah1 ^= ch;
         idx1 = al1;
 
-#       ifdef JDKRIG_ALGO_CN_HEAVY
+#       ifdef KITTENPAW_ALGO_CN_HEAVY
         if (props.isHeavy()) {
             int64_t n = ((int64_t*)&l1[idx1 & MASK])[0];
             int32_t d = ((int32_t*)&l1[idx1 & MASK])[2];
@@ -1505,7 +1505,7 @@ inline void cryptonight_double_hash(const uint8_t *__restrict__ input, size_t si
         bx10 = cx1;
     }
 
-#   ifdef JDKRIG_VAES
+#   ifdef KITTENPAW_VAES
     if (!SOFT_AES && !props.isHeavy() && cn_vaes_enabled) {
         cn_implode_scratchpad_vaes_double(ctx[0], ctx[1], props.memory(), props.half_mem());
     }
@@ -1524,7 +1524,7 @@ inline void cryptonight_double_hash(const uint8_t *__restrict__ input, size_t si
 }
 
 
-#ifdef JDKRIG_FEATURE_ASM
+#ifdef KITTENPAW_FEATURE_ASM
 template<Algorithm::Id ALGO>
 static NOINLINE void cryptonight_quad_hash_gr_sse41(const uint8_t* __restrict__ input, size_t size, uint8_t* __restrict__ output, cryptonight_ctx** __restrict__ ctx, uint64_t height)
 {
@@ -1548,7 +1548,7 @@ static NOINLINE void cryptonight_quad_hash_gr_sse41(const uint8_t* __restrict__ 
         ctx[3]->first_half = true;
     }
 
-#   ifdef JDKRIG_VAES
+#   ifdef KITTENPAW_VAES
     if (!props.isHeavy() && cn_vaes_enabled) {
         cn_explode_scratchpad_vaes_double(ctx[0], ctx[1], props.memory(), props.half_mem());
         cn_explode_scratchpad_vaes_double(ctx[2], ctx[3], props.memory(), props.half_mem());
@@ -1576,7 +1576,7 @@ static NOINLINE void cryptonight_quad_hash_gr_sse41(const uint8_t* __restrict__ 
     if (ALGO == Algorithm::CN_GR_4) cn_gr4_quad_mainloop_asm(ctx);
     if (ALGO == Algorithm::CN_GR_5) cn_gr5_quad_mainloop_asm(ctx);
 
-#   ifdef JDKRIG_VAES
+#   ifdef KITTENPAW_VAES
     if (!props.isHeavy() && cn_vaes_enabled) {
         cn_implode_scratchpad_vaes_double(ctx[0], ctx[1], props.memory(), props.half_mem());
         cn_implode_scratchpad_vaes_double(ctx[2], ctx[3], props.memory(), props.half_mem());
@@ -1723,7 +1723,7 @@ inline void cryptonight_triple_hash(const uint8_t *__restrict__ input, size_t si
     constexpr size_t MASK        = props.mask();
     constexpr Algorithm::Id BASE = props.base();
 
-#   ifdef JDKRIG_ALGO_CN_HEAVY
+#   ifdef KITTENPAW_ALGO_CN_HEAVY
     constexpr bool IS_CN_HEAVY_TUBE = ALGO == Algorithm::CN_HEAVY_TUBE;
     constexpr bool IS_CN_HEAVY_XHV  = ALGO == Algorithm::CN_HEAVY_XHV;
 #   else
@@ -1796,7 +1796,7 @@ inline void cryptonight_triple_hash(const uint8_t *__restrict__ input, size_t si
 template<Algorithm::Id ALGO, bool SOFT_AES>
 inline void cryptonight_quad_hash(const uint8_t *__restrict__ input, size_t size, uint8_t *__restrict__ output, cryptonight_ctx **__restrict__ ctx, uint64_t height)
 {
-#   ifdef JDKRIG_FEATURE_ASM
+#   ifdef KITTENPAW_FEATURE_ASM
     if (!SOFT_AES) {
         switch (ALGO) {
         case Algorithm::CN_GR_0:
@@ -1821,7 +1821,7 @@ inline void cryptonight_quad_hash(const uint8_t *__restrict__ input, size_t size
     constexpr size_t MASK        = props.mask();
     constexpr Algorithm::Id BASE = props.base();
 
-#   ifdef JDKRIG_ALGO_CN_HEAVY
+#   ifdef KITTENPAW_ALGO_CN_HEAVY
     constexpr bool IS_CN_HEAVY_TUBE = ALGO == Algorithm::CN_HEAVY_TUBE;
     constexpr bool IS_CN_HEAVY_XHV  = ALGO == Algorithm::CN_HEAVY_XHV;
 #   else
@@ -1841,7 +1841,7 @@ inline void cryptonight_quad_hash(const uint8_t *__restrict__ input, size_t size
         }
     }
 
-#   ifdef JDKRIG_VAES
+#   ifdef KITTENPAW_VAES
     if (!SOFT_AES && !props.isHeavy() && cn_vaes_enabled) {
         cn_explode_scratchpad_vaes_double(ctx[0], ctx[1], props.memory(), props.half_mem());
         cn_explode_scratchpad_vaes_double(ctx[2], ctx[3], props.memory(), props.half_mem());
@@ -1904,7 +1904,7 @@ inline void cryptonight_quad_hash(const uint8_t *__restrict__ input, size_t size
         CN_STEP4(3, ax3, bx30, bx31, cx3, l3, mc3, ptr3, idx3);
     }
 
-#   ifdef JDKRIG_VAES
+#   ifdef KITTENPAW_VAES
     if (!SOFT_AES && !props.isHeavy() && cn_vaes_enabled) {
         cn_implode_scratchpad_vaes_double(ctx[0], ctx[1], props.memory(), props.half_mem());
         cn_implode_scratchpad_vaes_double(ctx[2], ctx[3], props.memory(), props.half_mem());
@@ -1932,7 +1932,7 @@ inline void cryptonight_penta_hash(const uint8_t *__restrict__ input, size_t siz
     constexpr size_t MASK        = props.mask();
     constexpr Algorithm::Id BASE = props.base();
 
-#   ifdef JDKRIG_ALGO_CN_HEAVY
+#   ifdef KITTENPAW_ALGO_CN_HEAVY
     constexpr bool IS_CN_HEAVY_TUBE = ALGO == Algorithm::CN_HEAVY_TUBE;
     constexpr bool IS_CN_HEAVY_XHV  = ALGO == Algorithm::CN_HEAVY_XHV;
 #   else
@@ -2018,7 +2018,7 @@ inline void cryptonight_penta_hash(const uint8_t *__restrict__ input, size_t siz
 }
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif /* JDKRIG_CRYPTONIGHT_X86_H */
+#endif /* KITTENPAW_CRYPTONIGHT_X86_H */

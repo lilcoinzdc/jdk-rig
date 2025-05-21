@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,16 +16,16 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_CONSTANTS_H
-#define JDKRIG_CONSTANTS_H
+#ifndef KITTENPAW_CONSTANTS_H
+#define KITTENPAW_CONSTANTS_H
 
 
 #include <cstddef>
 #include <cstdint>
 
 
-constexpr size_t      JDKRIG_NET_BUFFER_CHUNK_SIZE           = 64 * 1024;
-constexpr size_t      JDKRIG_NET_BUFFER_INIT_CHUNKS          = 4;
+constexpr size_t      KITTENPAW_NET_BUFFER_CHUNK_SIZE           = 64 * 1024;
+constexpr size_t      KITTENPAW_NET_BUFFER_INIT_CHUNKS          = 4;
 
 
-#endif /* JDKRIG_CONSTANTS_H */
+#endif /* KITTENPAW_CONSTANTS_H */

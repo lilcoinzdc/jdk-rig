@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -21,17 +21,17 @@
 #include "backend/common/Tags.h"
 
 
-jdkrig::CudaLaunchData::CudaLaunchData(const Jdkrigger *jdkrigger, const Algorithm &algorithm, const CudaThread &thread, const CudaDevice &device) :
+kittenpaw::CudaLaunchData::CudaLaunchData(const Kittenpawger *kittenpawger, const Algorithm &algorithm, const CudaThread &thread, const CudaDevice &device) :
     algorithm(algorithm),
     device(device),
     thread(thread),
     affinity(thread.affinity()),
-    jdkrigger(jdkrigger)
+    kittenpawger(kittenpawger)
 {
 }
 
 
-bool jdkrig::CudaLaunchData::isEqual(const CudaLaunchData &other) const
+bool kittenpaw::CudaLaunchData::isEqual(const CudaLaunchData &other) const
 {
     return (other.algorithm.family() == algorithm.family() &&
             other.algorithm.l3()     == algorithm.l3() &&
@@ -39,7 +39,7 @@ bool jdkrig::CudaLaunchData::isEqual(const CudaLaunchData &other) const
 }
 
 
-const char *jdkrig::CudaLaunchData::tag()
+const char *kittenpaw::CudaLaunchData::tag()
 {
     return cuda_tag();
 }

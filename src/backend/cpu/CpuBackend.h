@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_CPUBACKEND_H
-#define JDKRIG_CPUBACKEND_H
+#ifndef KITTENPAW_CPUBACKEND_H
+#define KITTENPAW_CPUBACKEND_H
 
 
 #include "backend/common/interfaces/IBackend.h"
@@ -27,18 +27,18 @@
 #include <utility>
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class Controller;
 class CpuBackendPrivate;
-class Jdkrigger;
+class Kittenpawger;
 
 
 class CpuBackend : public IBackend
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(CpuBackend)
+    KITTENPAW_DISABLE_COPY_MOVE_DEFAULT(CpuBackend)
 
     CpuBackend(Controller *controller);
     ~CpuBackend() override;
@@ -59,12 +59,12 @@ protected:
     void start(IWorker *worker, bool ready) override;
     void stop() override;
 
-#   ifdef JDKRIG_FEATURE_API
+#   ifdef KITTENPAW_FEATURE_API
     rapidjson::Value toJSON(rapidjson::Document &doc) const override;
     void handleRequest(IApiRequest &request) override;
 #   endif
 
-#   ifdef JDKRIG_FEATURE_BENCHMARK
+#   ifdef KITTENPAW_FEATURE_BENCHMARK
     Benchmark *benchmark() const override;
     void printBenchProgress() const override;
 #   endif
@@ -74,7 +74,7 @@ private:
 };
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif /* JDKRIG_CPUBACKEND_H */
+#endif /* KITTENPAW_CPUBACKEND_H */

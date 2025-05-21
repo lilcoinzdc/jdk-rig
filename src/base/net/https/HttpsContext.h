@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -17,8 +17,8 @@
  */
 
 
-#ifndef JDKRIG_HTTPSCONTEXT_H
-#define JDKRIG_HTTPSCONTEXT_H
+#ifndef KITTENPAW_HTTPSCONTEXT_H
+#define KITTENPAW_HTTPSCONTEXT_H
 
 
 using BIO = struct bio_st;
@@ -29,7 +29,7 @@ using SSL = struct ssl_st;
 #include "base/net/tls/ServerTls.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class TlsContext;
@@ -38,7 +38,7 @@ class TlsContext;
 class HttpsContext : public HttpContext, public ServerTls
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(HttpsContext)
+    KITTENPAW_DISABLE_COPY_MOVE_DEFAULT(HttpsContext)
 
     HttpsContext(TlsContext *tls, const std::weak_ptr<IHttpListener> &listener);
     ~HttpsContext() override;
@@ -66,8 +66,8 @@ private:
 };
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-#endif // JDKRIG_HTTPSCONTEXT_H
+#endif // KITTENPAW_HTTPSCONTEXT_H
 

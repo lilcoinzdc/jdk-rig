@@ -1,7 +1,7 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2020      cohcho      <https://github.com/cohcho>
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -27,13 +27,13 @@
 #include <cstring>
 
 
-jdkrig::LineReader::~LineReader()
+kittenpaw::LineReader::~LineReader()
 {
     NetBuffer::release(m_buf);
 }
 
 
-void jdkrig::LineReader::parse(char *data, size_t size)
+void kittenpaw::LineReader::parse(char *data, size_t size)
 {
     assert(m_listener != nullptr && size > 0);
     if (!m_listener || size == 0) {
@@ -44,7 +44,7 @@ void jdkrig::LineReader::parse(char *data, size_t size)
 }
 
 
-void jdkrig::LineReader::reset()
+void kittenpaw::LineReader::reset()
 {
     if (m_buf) {
         NetBuffer::release(m_buf);
@@ -54,9 +54,9 @@ void jdkrig::LineReader::reset()
 }
 
 
-void jdkrig::LineReader::add(const char *data, size_t size)
+void kittenpaw::LineReader::add(const char *data, size_t size)
 {
-    if (size + m_pos > JDKRIG_NET_BUFFER_CHUNK_SIZE) {
+    if (size + m_pos > KITTENPAW_NET_BUFFER_CHUNK_SIZE) {
         // it breaks correctness silently for long lines
         return;
     }
@@ -71,7 +71,7 @@ void jdkrig::LineReader::add(const char *data, size_t size)
 }
 
 
-void jdkrig::LineReader::getline(char *data, size_t size)
+void kittenpaw::LineReader::getline(char *data, size_t size)
 {
     char *end        = nullptr;
     char *start      = data;

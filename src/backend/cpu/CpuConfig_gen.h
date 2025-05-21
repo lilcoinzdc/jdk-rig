@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2024 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2024 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2024 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_CPUCONFIG_GEN_H
-#define JDKRIG_CPUCONFIG_GEN_H
+#ifndef KITTENPAW_CPUCONFIG_GEN_H
+#define KITTENPAW_CPUCONFIG_GEN_H
 
 
 #include "backend/common/Threads.h"
@@ -25,7 +25,7 @@
 #include "backend/cpu/CpuThreads.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 static inline size_t generate(const char *key, Threads<CpuThreads> &threads, const Algorithm &algorithm, uint32_t limit)
@@ -58,7 +58,7 @@ size_t inline generate<Algorithm::CN>(Threads<CpuThreads> &threads, uint32_t lim
 }
 
 
-#ifdef JDKRIG_ALGO_CN_LITE
+#ifdef KITTENPAW_ALGO_CN_LITE
 template<>
 size_t inline generate<Algorithm::CN_LITE>(Threads<CpuThreads> &threads, uint32_t limit)
 {
@@ -76,7 +76,7 @@ size_t inline generate<Algorithm::CN_LITE>(Threads<CpuThreads> &threads, uint32_
 #endif
 
 
-#ifdef JDKRIG_ALGO_CN_HEAVY
+#ifdef KITTENPAW_ALGO_CN_HEAVY
 template<>
 size_t inline generate<Algorithm::CN_HEAVY>(Threads<CpuThreads> &threads, uint32_t limit)
 {
@@ -85,7 +85,7 @@ size_t inline generate<Algorithm::CN_HEAVY>(Threads<CpuThreads> &threads, uint32
 #endif
 
 
-#ifdef JDKRIG_ALGO_CN_PICO
+#ifdef KITTENPAW_ALGO_CN_PICO
 template<>
 size_t inline generate<Algorithm::CN_PICO>(Threads<CpuThreads> &threads, uint32_t limit)
 {
@@ -94,7 +94,7 @@ size_t inline generate<Algorithm::CN_PICO>(Threads<CpuThreads> &threads, uint32_
 #endif
 
 
-#ifdef JDKRIG_ALGO_CN_FEMTO
+#ifdef KITTENPAW_ALGO_CN_FEMTO
 template<>
 size_t inline generate<Algorithm::CN_FEMTO>(Threads<CpuThreads>& threads, uint32_t limit)
 {
@@ -103,7 +103,7 @@ size_t inline generate<Algorithm::CN_FEMTO>(Threads<CpuThreads>& threads, uint32
 #endif
 
 
-#ifdef JDKRIG_ALGO_RANDOMX
+#ifdef KITTENPAW_ALGO_RANDOMX
 template<>
 size_t inline generate<Algorithm::RANDOM_X>(Threads<CpuThreads> &threads, uint32_t limit)
 {
@@ -133,7 +133,7 @@ size_t inline generate<Algorithm::RANDOM_X>(Threads<CpuThreads> &threads, uint32
 #endif
 
 
-#ifdef JDKRIG_ALGO_ARGON2
+#ifdef KITTENPAW_ALGO_ARGON2
 template<>
 size_t inline generate<Algorithm::ARGON2>(Threads<CpuThreads> &threads, uint32_t limit)
 {
@@ -142,7 +142,7 @@ size_t inline generate<Algorithm::ARGON2>(Threads<CpuThreads> &threads, uint32_t
 #endif
 
 
-#ifdef JDKRIG_ALGO_GHOSTRIDER
+#ifdef KITTENPAW_ALGO_GHOSTRIDER
 template<>
 size_t inline generate<Algorithm::GHOSTRIDER>(Threads<CpuThreads>& threads, uint32_t limit)
 {
@@ -151,7 +151,7 @@ size_t inline generate<Algorithm::GHOSTRIDER>(Threads<CpuThreads>& threads, uint
 #endif
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif /* JDKRIG_CPUCONFIG_GEN_H */
+#endif /* KITTENPAW_CPUCONFIG_GEN_H */

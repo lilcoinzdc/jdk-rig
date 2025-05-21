@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -24,17 +24,17 @@
 #include "base/io/log/Log.h"
 #include "base/tools/Alignment.h"
 #include "base/tools/Chrono.h"
-#include "core/Jdkrigger.h"
+#include "core/Kittenpawger.h"
 #include "crypto/common/Nonce.h"
 #include "net/JobResults.h"
 
 
-#ifdef JDKRIG_ALGO_RANDOMX
+#ifdef KITTENPAW_ALGO_RANDOMX
 #   include "backend/cuda/runners/CudaRxRunner.h"
 #endif
 
 
-#ifdef JDKRIG_ALGO_KAWPOW
+#ifdef KITTENPAW_ALGO_KAWPOW
 #   include "backend/cuda/runners/CudaKawPowRunner.h"
 #endif
 
@@ -43,7 +43,7 @@
 #include <thread>
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 std::atomic<bool> CudaWorker::ready;
@@ -52,18 +52,18 @@ std::atomic<bool> CudaWorker::ready;
 static inline bool isReady()    { return !Nonce::isPaused() && CudaWorker::ready; }
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
 
-jdkrig::CudaWorker::CudaWorker(size_t id, const CudaLaunchData &data) :
+kittenpaw::CudaWorker::CudaWorker(size_t id, const CudaLaunchData &data) :
     GpuWorker(id, data.thread.affinity(), -1, data.device.index()),
     m_algorithm(data.algorithm),
-    m_jdkrigger(data.jdkrigger)
+    m_kittenpawger(data.kittenpawger)
 {
     switch (m_algorithm.family()) {
     case Algorithm::RANDOM_X:
-#       ifdef JDKRIG_ALGO_RANDOMX
+#       ifdef KITTENPAW_ALGO_RANDOMX
         m_runner = new CudaRxRunner(id, data);
 #       endif
         break;
@@ -72,7 +72,7 @@ jdkrig::CudaWorker::CudaWorker(size_t id, const CudaLaunchData &data) :
         break;
 
     case Algorithm::KAWPOW:
-#       ifdef JDKRIG_ALGO_KAWPOW
+#       ifdef KITTENPAW_ALGO_KAWPOW
         m_runner = new CudaKawPowRunner(id, data);
 #       endif
         break;
@@ -94,13 +94,13 @@ jdkrig::CudaWorker::CudaWorker(size_t id, const CudaLaunchData &data) :
 }
 
 
-jdkrig::CudaWorker::~CudaWorker()
+kittenpaw::CudaWorker::~CudaWorker()
 {
     delete m_runner;
 }
 
 
-void jdkrig::CudaWorker::jobEarlyNotification(const Job &job)
+void kittenpaw::CudaWorker::jobEarlyNotification(const Job &job)
 {
     if (m_runner) {
         m_runner->jobEarlyNotification(job);
@@ -108,19 +108,19 @@ void jdkrig::CudaWorker::jobEarlyNotification(const Job &job)
 }
 
 
-bool jdkrig::CudaWorker::selfTest()
+bool kittenpaw::CudaWorker::selfTest()
 {
     return m_runner != nullptr;
 }
 
 
-size_t jdkrig::CudaWorker::intensity() const
+size_t kittenpaw::CudaWorker::intensity() const
 {
     return m_runner ? m_runner->roundSize() : 0;
 }
 
 
-void jdkrig::CudaWorker::start()
+void kittenpaw::CudaWorker::start()
 {
     while (Nonce::sequence(Nonce::CUDA) > 0) {
         if (!isReady()) {
@@ -165,19 +165,19 @@ void jdkrig::CudaWorker::start()
 }
 
 
-bool jdkrig::CudaWorker::consumeJob()
+bool kittenpaw::CudaWorker::consumeJob()
 {
     if (Nonce::sequence(Nonce::CUDA) == 0) {
         return false;
     }
 
-    m_job.add(m_jdkrigger->job(), intensity(), Nonce::CUDA);
+    m_job.add(m_kittenpawger->job(), intensity(), Nonce::CUDA);
 
     return m_runner->set(m_job.currentJob(), m_job.blob());
 }
 
 
-void jdkrig::CudaWorker::storeStats()
+void kittenpaw::CudaWorker::storeStats()
 {
     if (!isReady()) {
         return;

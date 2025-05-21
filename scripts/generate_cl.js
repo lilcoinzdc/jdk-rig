@@ -24,7 +24,7 @@ function cn()
     ]));
 
     // fs.writeFileSync('cryptonight_gen.cl', cn);
-    fs.writeFileSync('cryptonight_cl.h', text2h(cn, 'jdkrig', 'cryptonight_cl'));
+    fs.writeFileSync('cryptonight_cl.h', text2h(cn, 'kittenpaw', 'cryptonight_cl'));
 }
 
 
@@ -39,7 +39,7 @@ function cn_r()
     //      fs.writeFileSync(key + '_gen.cl', items[key]);
     // }
 
-    fs.writeFileSync('cryptonight_r_cl.h', text2h_bundle('jdkrig', items));
+    fs.writeFileSync('cryptonight_r_cl.h', text2h_bundle('kittenpaw', items));
 }
 
 
@@ -62,7 +62,7 @@ function rx()
     rx = opencl_minify(rx);
 
     //fs.writeFileSync('randomx_gen.cl', rx);
-    fs.writeFileSync('randomx_cl.h', text2h(rx, 'jdkrig', 'randomx_cl'));
+    fs.writeFileSync('randomx_cl.h', text2h(rx, 'kittenpaw', 'randomx_cl'));
 }
 
 
@@ -72,8 +72,8 @@ function kawpow()
     const kawpow_dag = opencl_minify(addIncludes('kawpow_dag.cl', [ 'defs.h' ]));
 
     // fs.writeFileSync('kawpow_gen.cl', kawpow);
-    fs.writeFileSync('kawpow_cl.h', text2h(kawpow, 'jdkrig', 'kawpow_cl'));
-    fs.writeFileSync('kawpow_dag_cl.h', text2h(kawpow_dag, 'jdkrig', 'kawpow_dag_cl'));
+    fs.writeFileSync('kawpow_cl.h', text2h(kawpow, 'kittenpaw', 'kawpow_cl'));
+    fs.writeFileSync('kawpow_dag_cl.h', text2h(kawpow_dag, 'kittenpaw', 'kawpow_dag_cl'));
 }
 
 

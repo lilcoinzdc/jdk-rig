@@ -1,4 +1,4 @@
-/* XMRig
+/* KITTENpaw
  * Copyright 2010      Jeff Garzik <jgarzik@pobox.com>
  * Copyright 2012-2014 pooler      <pooler@litecoinpool.org>
  * Copyright 2014      Lucas Jones <https://github.com/lucasjones>
@@ -6,7 +6,7 @@
  * Copyright 2016      Jay D Dee   <jayddee246@gmail.com>
  * Copyright 2017-2018 XMR-Stak    <https://github.com/fireice-uk>, <https://github.com/psychocrypt>
  * Copyright 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@
 #include "base/net/stratum/Pool.h"
 
 
-jdkrig::SinglePoolStrategy::SinglePoolStrategy(const Pool &pool, int retryPause, int retries, IStrategyListener *listener, bool quiet) :
+kittenpaw::SinglePoolStrategy::SinglePoolStrategy(const Pool &pool, int retryPause, int retries, IStrategyListener *listener, bool quiet) :
     m_active(false),
     m_listener(listener)
 {
@@ -42,25 +42,25 @@ jdkrig::SinglePoolStrategy::SinglePoolStrategy(const Pool &pool, int retryPause,
 }
 
 
-jdkrig::SinglePoolStrategy::~SinglePoolStrategy()
+kittenpaw::SinglePoolStrategy::~SinglePoolStrategy()
 {
     m_client->deleteLater();
 }
 
 
-int64_t jdkrig::SinglePoolStrategy::submit(const JobResult &result)
+int64_t kittenpaw::SinglePoolStrategy::submit(const JobResult &result)
 {
     return m_client->submit(result);
 }
 
 
-void jdkrig::SinglePoolStrategy::connect()
+void kittenpaw::SinglePoolStrategy::connect()
 {
     m_client->connect();
 }
 
 
-void jdkrig::SinglePoolStrategy::resume()
+void kittenpaw::SinglePoolStrategy::resume()
 {
     if (!isActive()) {
         return;
@@ -70,31 +70,31 @@ void jdkrig::SinglePoolStrategy::resume()
 }
 
 
-void jdkrig::SinglePoolStrategy::setAlgo(const Algorithm &algo)
+void kittenpaw::SinglePoolStrategy::setAlgo(const Algorithm &algo)
 {
     m_client->setAlgo(algo);
 }
 
 
-void jdkrig::SinglePoolStrategy::setProxy(const ProxyUrl &proxy)
+void kittenpaw::SinglePoolStrategy::setProxy(const ProxyUrl &proxy)
 {
     m_client->setProxy(proxy);
 }
 
 
-void jdkrig::SinglePoolStrategy::stop()
+void kittenpaw::SinglePoolStrategy::stop()
 {
     m_client->disconnect();
 }
 
 
-void jdkrig::SinglePoolStrategy::tick(uint64_t now)
+void kittenpaw::SinglePoolStrategy::tick(uint64_t now)
 {
     m_client->tick(now);
 }
 
 
-void jdkrig::SinglePoolStrategy::onClose(IClient *, int)
+void kittenpaw::SinglePoolStrategy::onClose(IClient *, int)
 {
     if (!isActive()) {
         return;
@@ -105,32 +105,32 @@ void jdkrig::SinglePoolStrategy::onClose(IClient *, int)
 }
 
 
-void jdkrig::SinglePoolStrategy::onJobReceived(IClient *client, const Job &job, const rapidjson::Value &params)
+void kittenpaw::SinglePoolStrategy::onJobReceived(IClient *client, const Job &job, const rapidjson::Value &params)
 {
     m_listener->onJob(this, client, job, params);
 }
 
 
-void jdkrig::SinglePoolStrategy::onLogin(IClient *client, rapidjson::Document &doc, rapidjson::Value &params)
+void kittenpaw::SinglePoolStrategy::onLogin(IClient *client, rapidjson::Document &doc, rapidjson::Value &params)
 {
     m_listener->onLogin(this, client, doc, params);
 }
 
 
-void jdkrig::SinglePoolStrategy::onLoginSuccess(IClient *client)
+void kittenpaw::SinglePoolStrategy::onLoginSuccess(IClient *client)
 {
     m_active = true;
     m_listener->onActive(this, client);
 }
 
 
-void jdkrig::SinglePoolStrategy::onResultAccepted(IClient *client, const SubmitResult &result, const char *error)
+void kittenpaw::SinglePoolStrategy::onResultAccepted(IClient *client, const SubmitResult &result, const char *error)
 {
     m_listener->onResultAccepted(this, client, result, error);
 }
 
 
-void jdkrig::SinglePoolStrategy::onVerifyAlgorithm(const IClient *client, const Algorithm &algorithm, bool *ok)
+void kittenpaw::SinglePoolStrategy::onVerifyAlgorithm(const IClient *client, const Algorithm &algorithm, bool *ok)
 {
     m_listener->onVerifyAlgorithm(this, client, algorithm, ok);
 }

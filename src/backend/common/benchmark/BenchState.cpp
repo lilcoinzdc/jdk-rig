@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@
 #include <mutex>
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class BenchStatePrivate
@@ -55,23 +55,23 @@ static BenchStatePrivate *d_ptr = nullptr;
 std::atomic<uint64_t> BenchState::m_data{};
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
 
-bool jdkrig::BenchState::isDone()
+bool kittenpaw::BenchState::isDone()
 {
     return d_ptr == nullptr;
 }
 
 
-uint32_t jdkrig::BenchState::size()
+uint32_t kittenpaw::BenchState::size()
 {
     return d_ptr ? d_ptr->size : 0U;
 }
 
 
-uint64_t jdkrig::BenchState::referenceHash(const Algorithm &algo, uint32_t size, uint32_t threads)
+uint64_t kittenpaw::BenchState::referenceHash(const Algorithm &algo, uint32_t size, uint32_t threads)
 {
     uint64_t hash = 0;
 
@@ -84,7 +84,7 @@ uint64_t jdkrig::BenchState::referenceHash(const Algorithm &algo, uint32_t size,
 }
 
 
-uint64_t jdkrig::BenchState::start(size_t threads, const IBackend *backend)
+uint64_t kittenpaw::BenchState::start(size_t threads, const IBackend *backend)
 {
     assert(d_ptr != nullptr);
 
@@ -103,14 +103,14 @@ uint64_t jdkrig::BenchState::start(size_t threads, const IBackend *backend)
 }
 
 
-void jdkrig::BenchState::destroy()
+void kittenpaw::BenchState::destroy()
 {
     delete d_ptr;
     d_ptr = nullptr;
 }
 
 
-void jdkrig::BenchState::done()
+void kittenpaw::BenchState::done()
 {
     assert(d_ptr != nullptr && d_ptr->async && d_ptr->remaining > 0);
 
@@ -127,7 +127,7 @@ void jdkrig::BenchState::done()
 }
 
 
-void jdkrig::BenchState::init(IBenchListener *listener, uint32_t size)
+void kittenpaw::BenchState::init(IBenchListener *listener, uint32_t size)
 {
     assert(d_ptr == nullptr);
 
@@ -135,7 +135,7 @@ void jdkrig::BenchState::init(IBenchListener *listener, uint32_t size)
 }
 
 
-void jdkrig::BenchState::setSize(uint32_t size)
+void kittenpaw::BenchState::setSize(uint32_t size)
 {
     assert(d_ptr != nullptr);
 

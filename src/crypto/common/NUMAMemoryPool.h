@@ -1,4 +1,4 @@
-/* XMRig
+/* KITTENpaw
  * Copyright 2010      Jeff Garzik <jgarzik@pobox.com>
  * Copyright 2012-2014 pooler      <pooler@litecoinpool.org>
  * Copyright 2014      Lucas Jones <https://github.com/lucasjones>
@@ -8,7 +8,7 @@
  * Copyright 2018      Lee Clagett <https://github.com/vtnerd>
  * Copyright 2018-2019 SChernykh   <https://github.com/SChernykh>
  * Copyright 2018-2019 tevador     <tevador@gmail.com>
- * Copyright 2016-2019 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright 2016-2019 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -24,8 +24,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_NUMAMEMORYPOOL_H
-#define JDKRIG_NUMAMEMORYPOOL_H
+#ifndef KITTENPAW_NUMAMEMORYPOOL_H
+#define KITTENPAW_NUMAMEMORYPOOL_H
 
 
 #include "backend/common/interfaces/IMemoryPool.h"
@@ -35,7 +35,7 @@
 #include <map>
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class IMemoryPool;
@@ -44,7 +44,7 @@ class IMemoryPool;
 class NUMAMemoryPool : public IMemoryPool
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(NUMAMemoryPool)
+    KITTENPAW_DISABLE_COPY_MOVE_DEFAULT(NUMAMemoryPool)
 
     NUMAMemoryPool(size_t size, bool hugePages);
     ~NUMAMemoryPool() override;
@@ -65,8 +65,8 @@ private:
 };
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
 
-#endif /* JDKRIG_NUMAMEMORYPOOL_H */
+#endif /* KITTENPAW_NUMAMEMORYPOOL_H */

@@ -1,7 +1,7 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2014-2019 heapwolf    <https://github.com/heapwolf>
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -17,8 +17,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_HTTPSERVER_H
-#define JDKRIG_HTTPSERVER_H
+#ifndef KITTENPAW_HTTPSERVER_H
+#define KITTENPAW_HTTPSERVER_H
 
 
 #include "base/kernel/interfaces/ITcpServerListener.h"
@@ -28,7 +28,7 @@
 #include <memory>
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class IHttpListener;
@@ -37,7 +37,7 @@ class IHttpListener;
 class HttpServer : public ITcpServerListener
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(HttpServer)
+    KITTENPAW_DISABLE_COPY_MOVE_DEFAULT(HttpServer)
 
     HttpServer(const std::shared_ptr<IHttpListener> &listener);
     ~HttpServer() override;
@@ -50,8 +50,8 @@ private:
 };
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-#endif // JDKRIG_HTTPSERVER_H
+#endif // KITTENPAW_HTTPSERVER_H
 

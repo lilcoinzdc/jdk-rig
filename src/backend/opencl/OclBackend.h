@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_OCLBACKEND_H
-#define JDKRIG_OCLBACKEND_H
+#ifndef KITTENPAW_OCLBACKEND_H
+#define KITTENPAW_OCLBACKEND_H
 
 
 #include <utility>
@@ -27,18 +27,18 @@
 #include "base/tools/Object.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class Controller;
 class OclBackendPrivate;
-class Jdkrigger;
+class Kittenpawger;
 
 
 class OclBackend : public IBackend
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(OclBackend)
+    KITTENPAW_DISABLE_COPY_MOVE_DEFAULT(OclBackend)
 
     OclBackend(Controller *controller);
 
@@ -59,12 +59,12 @@ protected:
     void stop() override;
     bool tick(uint64_t ticks) override;
 
-#   ifdef JDKRIG_FEATURE_API
+#   ifdef KITTENPAW_FEATURE_API
     rapidjson::Value toJSON(rapidjson::Document &doc) const override;
     void handleRequest(IApiRequest &request) override;
 #   endif
 
-#   ifdef JDKRIG_FEATURE_BENCHMARK
+#   ifdef KITTENPAW_FEATURE_BENCHMARK
     inline Benchmark *benchmark() const override        { return nullptr; }
     inline void printBenchProgress() const override     {}
 #   endif
@@ -74,7 +74,7 @@ private:
 };
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif /* JDKRIG_OCLBACKEND_H */
+#endif /* KITTENPAW_OCLBACKEND_H */

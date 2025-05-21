@@ -1,4 +1,4 @@
-/* XMRig
+/* KITTENpaw
  * Copyright 2010      Jeff Garzik <jgarzik@pobox.com>
  * Copyright 2012-2014 pooler      <pooler@litecoinpool.org>
  * Copyright 2014      Lucas Jones <https://github.com/lucasjones>
@@ -6,7 +6,7 @@
  * Copyright 2016      Jay D Dee   <jayddee246@gmail.com>
  * Copyright 2017-2018 XMR-Stak    <https://github.com/fireice-uk>, <https://github.com/psychocrypt>
  * Copyright 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -32,12 +32,12 @@
 #include "donate.h"
 
 
-#ifdef JDKRIG_FEATURE_BENCHMARK
+#ifdef KITTENPAW_FEATURE_BENCHMARK
 #   include "base/net/stratum/benchmark/BenchConfig.h"
 #endif
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 const char *Pools::kDonateLevel     = "donate-level";
@@ -47,20 +47,20 @@ const char *Pools::kRetries         = "retries";
 const char *Pools::kRetryPause      = "retry-pause";
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-jdkrig::Pools::Pools() :
+kittenpaw::Pools::Pools() :
     m_donateLevel(kDefaultDonateLevel)
 {
-#   ifdef JDKRIG_PROXY_PROJECT
+#   ifdef KITTENPAW_PROXY_PROJECT
     m_retries    = 2;
     m_retryPause = 1;
 #   endif
 }
 
 
-bool jdkrig::Pools::isEqual(const Pools &other) const
+bool kittenpaw::Pools::isEqual(const Pools &other) const
 {
     if (m_data.size() != other.m_data.size() || m_retries != other.m_retries || m_retryPause != other.m_retryPause) {
         return false;
@@ -70,9 +70,9 @@ bool jdkrig::Pools::isEqual(const Pools &other) const
 }
 
 
-int jdkrig::Pools::donateLevel() const
+int kittenpaw::Pools::donateLevel() const
 {
-#   ifdef JDKRIG_FEATURE_BENCHMARK
+#   ifdef KITTENPAW_FEATURE_BENCHMARK
     return benchSize() || (m_benchmark && !m_benchmark->id().isEmpty()) ? 0 : m_donateLevel;
 #   else
     return m_donateLevel;
@@ -80,7 +80,7 @@ int jdkrig::Pools::donateLevel() const
 }
 
 
-jdkrig::IStrategy *jdkrig::Pools::createStrategy(IStrategyListener *listener) const
+kittenpaw::IStrategy *kittenpaw::Pools::createStrategy(IStrategyListener *listener) const
 {
     if (active() == 1) {
         for (const Pool &pool : m_data) {
@@ -101,7 +101,7 @@ jdkrig::IStrategy *jdkrig::Pools::createStrategy(IStrategyListener *listener) co
 }
 
 
-rapidjson::Value jdkrig::Pools::toJSON(rapidjson::Document &doc) const
+rapidjson::Value kittenpaw::Pools::toJSON(rapidjson::Document &doc) const
 {
     using namespace rapidjson;
     auto &allocator = doc.GetAllocator();
@@ -116,7 +116,7 @@ rapidjson::Value jdkrig::Pools::toJSON(rapidjson::Document &doc) const
 }
 
 
-size_t jdkrig::Pools::active() const
+size_t kittenpaw::Pools::active() const
 {
     size_t count = 0;
     for (const Pool &pool : m_data) {
@@ -129,11 +129,11 @@ size_t jdkrig::Pools::active() const
 }
 
 
-void jdkrig::Pools::load(const IJsonReader &reader)
+void kittenpaw::Pools::load(const IJsonReader &reader)
 {
     m_data.clear();
 
-#   ifdef JDKRIG_FEATURE_BENCHMARK
+#   ifdef KITTENPAW_FEATURE_BENCHMARK
     m_benchmark = std::shared_ptr<BenchConfig>(BenchConfig::create(reader.getObject(BenchConfig::kBenchmark), reader.getBool("dmi", true)));
     if (m_benchmark) {
         m_data.emplace_back(m_benchmark);
@@ -165,9 +165,9 @@ void jdkrig::Pools::load(const IJsonReader &reader)
 }
 
 
-uint32_t jdkrig::Pools::benchSize() const
+uint32_t kittenpaw::Pools::benchSize() const
 {
-#   ifdef JDKRIG_FEATURE_BENCHMARK
+#   ifdef KITTENPAW_FEATURE_BENCHMARK
     return m_benchmark ? m_benchmark->size() : 0;
 #   else
     return 0;
@@ -175,7 +175,7 @@ uint32_t jdkrig::Pools::benchSize() const
 }
 
 
-void jdkrig::Pools::print() const
+void kittenpaw::Pools::print() const
 {
     size_t i = 1;
     for (const Pool &pool : m_data) {
@@ -194,12 +194,12 @@ void jdkrig::Pools::print() const
 }
 
 
-void jdkrig::Pools::toJSON(rapidjson::Value &out, rapidjson::Document &doc) const
+void kittenpaw::Pools::toJSON(rapidjson::Value &out, rapidjson::Document &doc) const
 {
     using namespace rapidjson;
     auto &allocator = doc.GetAllocator();
 
-#   ifdef JDKRIG_FEATURE_BENCHMARK
+#   ifdef KITTENPAW_FEATURE_BENCHMARK
     if (m_benchmark) {
         out.AddMember(StringRef(BenchConfig::kBenchmark), m_benchmark->toJSON(doc), allocator);
 
@@ -215,7 +215,7 @@ void jdkrig::Pools::toJSON(rapidjson::Value &out, rapidjson::Document &doc) cons
 }
 
 
-void jdkrig::Pools::setDonateLevel(int level)
+void kittenpaw::Pools::setDonateLevel(int level)
 {
     if (level >= kMinimumDonateLevel && level <= 99) {
         m_donateLevel = level;
@@ -223,7 +223,7 @@ void jdkrig::Pools::setDonateLevel(int level)
 }
 
 
-void jdkrig::Pools::setProxyDonate(int value)
+void kittenpaw::Pools::setProxyDonate(int value)
 {
     switch (value) {
     case PROXY_DONATE_NONE:
@@ -237,7 +237,7 @@ void jdkrig::Pools::setProxyDonate(int value)
 }
 
 
-void jdkrig::Pools::setRetries(int retries)
+void kittenpaw::Pools::setRetries(int retries)
 {
     if (retries > 0 && retries <= 1000) {
         m_retries = retries;
@@ -245,7 +245,7 @@ void jdkrig::Pools::setRetries(int retries)
 }
 
 
-void jdkrig::Pools::setRetryPause(int retryPause)
+void kittenpaw::Pools::setRetryPause(int retryPause)
 {
     if (retryPause > 0 && retryPause <= 3600) {
         m_retryPause = retryPause;

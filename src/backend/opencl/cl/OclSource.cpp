@@ -1,4 +1,4 @@
-/* XMRig
+/* KITTENpaw
  * Copyright 2010      Jeff Garzik <jgarzik@pobox.com>
  * Copyright 2012-2014 pooler      <pooler@litecoinpool.org>
  * Copyright 2014      Lucas Jones <https://github.com/lucasjones>
@@ -6,7 +6,7 @@
  * Copyright 2016      Jay D Dee   <jayddee246@gmail.com>
  * Copyright 2017-2018 XMR-Stak    <https://github.com/fireice-uk>, <https://github.com/psychocrypt>
  * Copyright 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -28,25 +28,25 @@
 #include "base/crypto/Algorithm.h"
 
 
-#ifdef JDKRIG_ALGO_RANDOMX
+#ifdef KITTENPAW_ALGO_RANDOMX
 #   include "backend/opencl/cl/rx/randomx_cl.h"
 #endif
 
-#ifdef JDKRIG_ALGO_KAWPOW
+#ifdef KITTENPAW_ALGO_KAWPOW
 #   include "backend/opencl/cl/kawpow/kawpow_cl.h"
 #   include "backend/opencl/cl/kawpow/kawpow_dag_cl.h"
 #endif
 
 
-const char *jdkrig::OclSource::get(const Algorithm &algorithm)
+const char *kittenpaw::OclSource::get(const Algorithm &algorithm)
 {
-#   ifdef JDKRIG_ALGO_RANDOMX
+#   ifdef KITTENPAW_ALGO_RANDOMX
     if (algorithm.family() == Algorithm::RANDOM_X) {
         return randomx_cl;
     }
 #   endif
 
-#   ifdef JDKRIG_ALGO_KAWPOW
+#   ifdef KITTENPAW_ALGO_KAWPOW
     if (algorithm.family() == Algorithm::KAWPOW) {
         return kawpow_dag_cl;
     }

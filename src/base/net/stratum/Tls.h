@@ -1,7 +1,7 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018      Lee Clagett <https://github.com/vtnerd>
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -17,8 +17,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_CLIENT_TLS_H
-#define JDKRIG_CLIENT_TLS_H
+#ifndef KITTENPAW_CLIENT_TLS_H
+#define KITTENPAW_CLIENT_TLS_H
 
 
 using BIO       = struct bio_st;
@@ -31,13 +31,13 @@ using X509      = struct x509_st;
 #include "base/tools/Object.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class Client::Tls
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(Tls)
+    KITTENPAW_DISABLE_COPY_MOVE_DEFAULT(Tls)
 
     Tls(Client *client);
     ~Tls();
@@ -63,7 +63,7 @@ private:
 };
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif /* JDKRIG_CLIENT_TLS_H */
+#endif /* KITTENPAW_CLIENT_TLS_H */

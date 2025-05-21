@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2023 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2023 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2023 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,15 +16,15 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_HTTPD_H
-#define JDKRIG_HTTPD_H
+#ifndef KITTENPAW_HTTPD_H
+#define KITTENPAW_HTTPD_H
 
 
 #include "base/kernel/interfaces/IBaseListener.h"
 #include "base/net/http/HttpListener.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class Base;
@@ -36,7 +36,7 @@ class TcpServer;
 class Httpd : public IBaseListener, public IHttpListener
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(Httpd)
+    KITTENPAW_DISABLE_COPY_MOVE_DEFAULT(Httpd)
 
     explicit Httpd(Base *base);
     ~Httpd() override;
@@ -58,7 +58,7 @@ private:
     TcpServer *m_server     = nullptr;
     uint16_t m_port         = 0;
 
-#   ifdef JDKRIG_FEATURE_TLS
+#   ifdef KITTENPAW_FEATURE_TLS
     HttpsServer *m_http     = nullptr;
 #   else
     HttpServer *m_http      = nullptr;
@@ -66,7 +66,7 @@ private:
 };
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-#endif // JDKRIG_HTTPD_H
+#endif // KITTENPAW_HTTPD_H

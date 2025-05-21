@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -22,27 +22,27 @@
 #include "crypto/cn/CnAlgo.h"
 
 
-#ifdef JDKRIG_FEATURE_OPENCL
+#ifdef KITTENPAW_FEATURE_OPENCL
 #   include "backend/opencl/OclThreads.h"
 #endif
 
 
-#ifdef JDKRIG_FEATURE_CUDA
+#ifdef KITTENPAW_FEATURE_CUDA
 #   include "backend/cuda/CudaThreads.h"
 #endif
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 static const char *kAsterisk = "*";
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
 template <class T>
-const T &jdkrig::Threads<T>::get(const String &profileName) const
+const T &kittenpaw::Threads<T>::get(const String &profileName) const
 {
     static T empty;
     if (profileName.isNull() || !has(profileName)) {
@@ -54,7 +54,7 @@ const T &jdkrig::Threads<T>::get(const String &profileName) const
 
 
 template <class T>
-size_t jdkrig::Threads<T>::read(const rapidjson::Value &value)
+size_t kittenpaw::Threads<T>::read(const rapidjson::Value &value)
 {
     using namespace rapidjson;
 
@@ -98,7 +98,7 @@ size_t jdkrig::Threads<T>::read(const rapidjson::Value &value)
 
 
 template <class T>
-jdkrig::String jdkrig::Threads<T>::profileName(const Algorithm &algorithm, bool strict) const
+kittenpaw::String kittenpaw::Threads<T>::profileName(const Algorithm &algorithm, bool strict) const
 {
     if (isDisabled(algorithm)) {
         return String();
@@ -137,7 +137,7 @@ jdkrig::String jdkrig::Threads<T>::profileName(const Algorithm &algorithm, bool 
 
 
 template <class T>
-void jdkrig::Threads<T>::toJSON(rapidjson::Value &out, rapidjson::Document &doc) const
+void kittenpaw::Threads<T>::toJSON(rapidjson::Value &out, rapidjson::Document &doc) const
 {
     using namespace rapidjson;
     auto &allocator = doc.GetAllocator();
@@ -156,16 +156,16 @@ void jdkrig::Threads<T>::toJSON(rapidjson::Value &out, rapidjson::Document &doc)
 }
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 template class Threads<CpuThreads>;
 
-#ifdef JDKRIG_FEATURE_OPENCL
+#ifdef KITTENPAW_FEATURE_OPENCL
 template class Threads<OclThreads>;
 #endif
 
-#ifdef JDKRIG_FEATURE_CUDA
+#ifdef KITTENPAW_FEATURE_CUDA
 template class Threads<CudaThreads>;
 #endif
 
-} // namespace jdkrig
+} // namespace kittenpaw

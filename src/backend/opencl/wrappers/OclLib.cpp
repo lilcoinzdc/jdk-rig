@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@
 
 
 #if defined(OCL_DEBUG_REFERENCE_COUNT)
-#   define LOG_REFS(x, ...) jdkrig::Log::print(jdkrig::Log::WARNING, x, ##__VA_ARGS__)
+#   define LOG_REFS(x, ...) kittenpaw::Log::print(kittenpaw::Log::WARNING, x, ##__VA_ARGS__)
 #endif
 
 
@@ -153,7 +153,7 @@ static unloadPlatformCompiler_t pUnloadPlatformCompiler                     = nu
 #define DLSYM(x) if (uv_dlsym(&oclLib, k##x, reinterpret_cast<void**>(&p##x)) == -1) { throw std::runtime_error(kSymbolNotFound); }
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 bool OclLib::m_initialized = false;
 bool OclLib::m_ready       = false;
@@ -175,10 +175,10 @@ static String getOclString(FUNC fn, OBJ obj, PARAM param)
 }
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-bool jdkrig::OclLib::init(const char *fileName)
+bool kittenpaw::OclLib::init(const char *fileName)
 {
     if (!m_initialized) {
         m_loader      = fileName == nullptr ? defaultLoader() : Env::expand(fileName);
@@ -190,19 +190,19 @@ bool jdkrig::OclLib::init(const char *fileName)
 }
 
 
-const char *jdkrig::OclLib::lastError()
+const char *kittenpaw::OclLib::lastError()
 {
     return uv_dlerror(&oclLib);
 }
 
 
-void jdkrig::OclLib::close()
+void kittenpaw::OclLib::close()
 {
     uv_dlclose(&oclLib);
 }
 
 
-bool jdkrig::OclLib::load()
+bool kittenpaw::OclLib::load()
 {
     try {
         DLSYM(CreateCommandQueue);
@@ -250,7 +250,7 @@ bool jdkrig::OclLib::load()
 }
 
 
-jdkrig::String jdkrig::OclLib::defaultLoader()
+kittenpaw::String kittenpaw::OclLib::defaultLoader()
 {
 #   if defined(__APPLE__)
     return "/System/Library/Frameworks/OpenCL.framework/OpenCL";
@@ -262,7 +262,7 @@ jdkrig::String jdkrig::OclLib::defaultLoader()
 }
 
 
-cl_command_queue jdkrig::OclLib::createCommandQueue(cl_context context, cl_device_id device, cl_int *errcode_ret) noexcept
+cl_command_queue kittenpaw::OclLib::createCommandQueue(cl_context context, cl_device_id device, cl_int *errcode_ret) noexcept
 {
     cl_command_queue result = nullptr;
 
@@ -289,7 +289,7 @@ cl_command_queue jdkrig::OclLib::createCommandQueue(cl_context context, cl_devic
 }
 
 
-cl_command_queue jdkrig::OclLib::createCommandQueue(cl_context context, cl_device_id device)
+cl_command_queue kittenpaw::OclLib::createCommandQueue(cl_context context, cl_device_id device)
 {
     cl_int ret = 0;
     cl_command_queue queue = createCommandQueue(context, device, &ret);
@@ -301,7 +301,7 @@ cl_command_queue jdkrig::OclLib::createCommandQueue(cl_context context, cl_devic
 }
 
 
-cl_context jdkrig::OclLib::createContext(const cl_context_properties *properties, cl_uint num_devices, const cl_device_id *devices, void (CL_CALLBACK *pfn_notify)(const char *, const void *, size_t, void *), void *user_data, cl_int *errcode_ret)
+cl_context kittenpaw::OclLib::createContext(const cl_context_properties *properties, cl_uint num_devices, const cl_device_id *devices, void (CL_CALLBACK *pfn_notify)(const char *, const void *, size_t, void *), void *user_data, cl_int *errcode_ret)
 {
     assert(pCreateContext != nullptr);
 
@@ -316,14 +316,14 @@ cl_context jdkrig::OclLib::createContext(const cl_context_properties *properties
 }
 
 
-cl_context jdkrig::OclLib::createContext(const std::vector<cl_device_id> &ids)
+cl_context kittenpaw::OclLib::createContext(const std::vector<cl_device_id> &ids)
 {
     cl_int ret = 0;
     return createContext(nullptr, static_cast<cl_uint>(ids.size()), ids.data(), nullptr, nullptr, &ret);
 }
 
 
-cl_int jdkrig::OclLib::buildProgram(cl_program program, cl_uint num_devices, const cl_device_id *device_list, const char *options, void (CL_CALLBACK *pfn_notify)(cl_program program, void *user_data), void *user_data) noexcept
+cl_int kittenpaw::OclLib::buildProgram(cl_program program, cl_uint num_devices, const cl_device_id *device_list, const char *options, void (CL_CALLBACK *pfn_notify)(cl_program program, void *user_data), void *user_data) noexcept
 {
     assert(pBuildProgram != nullptr);
 
@@ -336,7 +336,7 @@ cl_int jdkrig::OclLib::buildProgram(cl_program program, cl_uint num_devices, con
 }
 
 
-cl_int jdkrig::OclLib::enqueueNDRangeKernel(cl_command_queue command_queue, cl_kernel kernel, cl_uint work_dim, const size_t *global_work_offset, const size_t *global_work_size, const size_t *local_work_size, cl_uint num_events_in_wait_list, const cl_event *event_wait_list, cl_event *event) noexcept
+cl_int kittenpaw::OclLib::enqueueNDRangeKernel(cl_command_queue command_queue, cl_kernel kernel, cl_uint work_dim, const size_t *global_work_offset, const size_t *global_work_size, const size_t *local_work_size, cl_uint num_events_in_wait_list, const cl_event *event_wait_list, cl_event *event) noexcept
 {
     assert(pEnqueueNDRangeKernel != nullptr);
 
@@ -344,7 +344,7 @@ cl_int jdkrig::OclLib::enqueueNDRangeKernel(cl_command_queue command_queue, cl_k
 }
 
 
-cl_int jdkrig::OclLib::enqueueReadBuffer(cl_command_queue command_queue, cl_mem buffer, cl_bool blocking_read, size_t offset, size_t size, void *ptr, cl_uint num_events_in_wait_list, const cl_event *event_wait_list, cl_event *event) noexcept
+cl_int kittenpaw::OclLib::enqueueReadBuffer(cl_command_queue command_queue, cl_mem buffer, cl_bool blocking_read, size_t offset, size_t size, void *ptr, cl_uint num_events_in_wait_list, const cl_event *event_wait_list, cl_event *event) noexcept
 {
     assert(pEnqueueReadBuffer != nullptr);
 
@@ -357,7 +357,7 @@ cl_int jdkrig::OclLib::enqueueReadBuffer(cl_command_queue command_queue, cl_mem 
 }
 
 
-cl_int jdkrig::OclLib::enqueueWriteBuffer(cl_command_queue command_queue, cl_mem buffer, cl_bool blocking_write, size_t offset, size_t size, const void *ptr, cl_uint num_events_in_wait_list, const cl_event *event_wait_list, cl_event *event) noexcept
+cl_int kittenpaw::OclLib::enqueueWriteBuffer(cl_command_queue command_queue, cl_mem buffer, cl_bool blocking_write, size_t offset, size_t size, const void *ptr, cl_uint num_events_in_wait_list, const cl_event *event_wait_list, cl_event *event) noexcept
 {
     assert(pEnqueueWriteBuffer != nullptr);
 
@@ -370,7 +370,7 @@ cl_int jdkrig::OclLib::enqueueWriteBuffer(cl_command_queue command_queue, cl_mem
 }
 
 
-cl_int jdkrig::OclLib::finish(cl_command_queue command_queue) noexcept
+cl_int kittenpaw::OclLib::finish(cl_command_queue command_queue) noexcept
 {
     assert(pFinish != nullptr);
 
@@ -378,19 +378,19 @@ cl_int jdkrig::OclLib::finish(cl_command_queue command_queue) noexcept
 }
 
 
-cl_int jdkrig::OclLib::getCommandQueueInfo(cl_command_queue command_queue, cl_command_queue_info param_name, size_t param_value_size, void *param_value, size_t *param_value_size_ret) noexcept
+cl_int kittenpaw::OclLib::getCommandQueueInfo(cl_command_queue command_queue, cl_command_queue_info param_name, size_t param_value_size, void *param_value, size_t *param_value_size_ret) noexcept
 {
     return pGetCommandQueueInfo(command_queue, param_name, param_value_size, param_value, param_value_size_ret);
 }
 
 
-cl_int jdkrig::OclLib::getContextInfo(cl_context context, cl_context_info param_name, size_t param_value_size, void *param_value, size_t *param_value_size_ret) noexcept
+cl_int kittenpaw::OclLib::getContextInfo(cl_context context, cl_context_info param_name, size_t param_value_size, void *param_value, size_t *param_value_size_ret) noexcept
 {
     return pGetContextInfo(context, param_name, param_value_size, param_value, param_value_size_ret);
 }
 
 
-cl_int jdkrig::OclLib::getDeviceIDs(cl_platform_id platform, cl_device_type device_type, cl_uint num_entries, cl_device_id *devices, cl_uint *num_devices) noexcept
+cl_int kittenpaw::OclLib::getDeviceIDs(cl_platform_id platform, cl_device_type device_type, cl_uint num_entries, cl_device_id *devices, cl_uint *num_devices) noexcept
 {
     assert(pGetDeviceIDs != nullptr);
 
@@ -398,7 +398,7 @@ cl_int jdkrig::OclLib::getDeviceIDs(cl_platform_id platform, cl_device_type devi
 }
 
 
-cl_int jdkrig::OclLib::getDeviceInfo(cl_device_id device, cl_device_info param_name, size_t param_value_size, void *param_value, size_t *param_value_size_ret) noexcept
+cl_int kittenpaw::OclLib::getDeviceInfo(cl_device_id device, cl_device_info param_name, size_t param_value_size, void *param_value, size_t *param_value_size_ret) noexcept
 {
     assert(pGetDeviceInfo != nullptr);
 
@@ -411,19 +411,19 @@ cl_int jdkrig::OclLib::getDeviceInfo(cl_device_id device, cl_device_info param_n
 }
 
 
-cl_int jdkrig::OclLib::getKernelInfo(cl_kernel kernel, cl_kernel_info param_name, size_t param_value_size, void *param_value, size_t *param_value_size_ret) noexcept
+cl_int kittenpaw::OclLib::getKernelInfo(cl_kernel kernel, cl_kernel_info param_name, size_t param_value_size, void *param_value, size_t *param_value_size_ret) noexcept
 {
     return pGetKernelInfo(kernel, param_name, param_value_size, param_value, param_value_size_ret);
 }
 
 
-cl_int jdkrig::OclLib::getMemObjectInfo(cl_mem memobj, cl_mem_info param_name, size_t param_value_size, void *param_value, size_t *param_value_size_ret) noexcept
+cl_int kittenpaw::OclLib::getMemObjectInfo(cl_mem memobj, cl_mem_info param_name, size_t param_value_size, void *param_value, size_t *param_value_size_ret) noexcept
 {
     return pGetMemObjectInfo(memobj, param_name, param_value_size, param_value, param_value_size_ret);
 }
 
 
-cl_int jdkrig::OclLib::getPlatformIDs(cl_uint num_entries, cl_platform_id *platforms, cl_uint *num_platforms)
+cl_int kittenpaw::OclLib::getPlatformIDs(cl_uint num_entries, cl_platform_id *platforms, cl_uint *num_platforms)
 {
     assert(pGetPlatformIDs != nullptr);
 
@@ -431,7 +431,7 @@ cl_int jdkrig::OclLib::getPlatformIDs(cl_uint num_entries, cl_platform_id *platf
 }
 
 
-cl_int jdkrig::OclLib::getPlatformInfo(cl_platform_id platform, cl_platform_info param_name, size_t param_value_size, void *param_value, size_t *param_value_size_ret) noexcept
+cl_int kittenpaw::OclLib::getPlatformInfo(cl_platform_id platform, cl_platform_info param_name, size_t param_value_size, void *param_value, size_t *param_value_size_ret) noexcept
 {
     assert(pGetPlatformInfo != nullptr);
 
@@ -439,7 +439,7 @@ cl_int jdkrig::OclLib::getPlatformInfo(cl_platform_id platform, cl_platform_info
 }
 
 
-cl_int jdkrig::OclLib::getProgramBuildInfo(cl_program program, cl_device_id device, cl_program_build_info param_name, size_t param_value_size, void *param_value, size_t *param_value_size_ret) noexcept
+cl_int kittenpaw::OclLib::getProgramBuildInfo(cl_program program, cl_device_id device, cl_program_build_info param_name, size_t param_value_size, void *param_value, size_t *param_value_size_ret) noexcept
 {
     assert(pGetProgramBuildInfo != nullptr);
 
@@ -452,7 +452,7 @@ cl_int jdkrig::OclLib::getProgramBuildInfo(cl_program program, cl_device_id devi
 }
 
 
-cl_int jdkrig::OclLib::getProgramInfo(cl_program program, cl_program_info param_name, size_t param_value_size, void *param_value, size_t *param_value_size_ret)
+cl_int kittenpaw::OclLib::getProgramInfo(cl_program program, cl_program_info param_name, size_t param_value_size, void *param_value, size_t *param_value_size_ret)
 {
     assert(pGetProgramInfo != nullptr);
 
@@ -465,7 +465,7 @@ cl_int jdkrig::OclLib::getProgramInfo(cl_program program, cl_program_info param_
 }
 
 
-cl_int jdkrig::OclLib::release(cl_command_queue command_queue) noexcept
+cl_int kittenpaw::OclLib::release(cl_command_queue command_queue) noexcept
 {
     assert(pReleaseCommandQueue != nullptr);
     assert(pGetCommandQueueInfo != nullptr);
@@ -489,7 +489,7 @@ cl_int jdkrig::OclLib::release(cl_command_queue command_queue) noexcept
 }
 
 
-cl_int jdkrig::OclLib::release(cl_context context) noexcept
+cl_int kittenpaw::OclLib::release(cl_context context) noexcept
 {
     assert(pReleaseContext != nullptr);
 
@@ -506,7 +506,7 @@ cl_int jdkrig::OclLib::release(cl_context context) noexcept
 }
 
 
-cl_int jdkrig::OclLib::release(cl_device_id id) noexcept
+cl_int kittenpaw::OclLib::release(cl_device_id id) noexcept
 {
     assert(pReleaseDevice != nullptr);
 
@@ -523,7 +523,7 @@ cl_int jdkrig::OclLib::release(cl_device_id id) noexcept
 }
 
 
-cl_int jdkrig::OclLib::release(cl_kernel kernel) noexcept
+cl_int kittenpaw::OclLib::release(cl_kernel kernel) noexcept
 {
     assert(pReleaseKernel != nullptr);
 
@@ -544,7 +544,7 @@ cl_int jdkrig::OclLib::release(cl_kernel kernel) noexcept
 }
 
 
-cl_int jdkrig::OclLib::release(cl_mem mem_obj) noexcept
+cl_int kittenpaw::OclLib::release(cl_mem mem_obj) noexcept
 {
     assert(pReleaseMemObject != nullptr);
 
@@ -565,7 +565,7 @@ cl_int jdkrig::OclLib::release(cl_mem mem_obj) noexcept
 }
 
 
-cl_int jdkrig::OclLib::release(cl_program program) noexcept
+cl_int kittenpaw::OclLib::release(cl_program program) noexcept
 {
     assert(pReleaseProgram != nullptr);
 
@@ -586,7 +586,7 @@ cl_int jdkrig::OclLib::release(cl_program program) noexcept
 }
 
 
-cl_int jdkrig::OclLib::setKernelArg(cl_kernel kernel, cl_uint arg_index, size_t arg_size, const void *arg_value) noexcept
+cl_int kittenpaw::OclLib::setKernelArg(cl_kernel kernel, cl_uint arg_index, size_t arg_size, const void *arg_value) noexcept
 {
     assert(pSetKernelArg != nullptr);
 
@@ -594,13 +594,13 @@ cl_int jdkrig::OclLib::setKernelArg(cl_kernel kernel, cl_uint arg_index, size_t 
 }
 
 
-cl_int jdkrig::OclLib::unloadPlatformCompiler(cl_platform_id platform) noexcept
+cl_int kittenpaw::OclLib::unloadPlatformCompiler(cl_platform_id platform) noexcept
 {
     return pUnloadPlatformCompiler(platform);
 }
 
 
-cl_kernel jdkrig::OclLib::createKernel(cl_program program, const char *kernel_name, cl_int *errcode_ret) noexcept
+cl_kernel kittenpaw::OclLib::createKernel(cl_program program, const char *kernel_name, cl_int *errcode_ret) noexcept
 {
     assert(pCreateKernel != nullptr);
 
@@ -616,7 +616,7 @@ cl_kernel jdkrig::OclLib::createKernel(cl_program program, const char *kernel_na
 }
 
 
-cl_kernel jdkrig::OclLib::createKernel(cl_program program, const char *kernel_name)
+cl_kernel kittenpaw::OclLib::createKernel(cl_program program, const char *kernel_name)
 {
     cl_int ret = 0;
     cl_kernel kernel = createKernel(program, kernel_name, &ret);
@@ -628,7 +628,7 @@ cl_kernel jdkrig::OclLib::createKernel(cl_program program, const char *kernel_na
 }
 
 
-cl_mem jdkrig::OclLib::createBuffer(cl_context context, cl_mem_flags flags, size_t size, void *host_ptr)
+cl_mem kittenpaw::OclLib::createBuffer(cl_context context, cl_mem_flags flags, size_t size, void *host_ptr)
 {
     cl_int ret = 0;
     cl_mem mem = createBuffer(context, flags, size, host_ptr, &ret);
@@ -640,7 +640,7 @@ cl_mem jdkrig::OclLib::createBuffer(cl_context context, cl_mem_flags flags, size
 }
 
 
-cl_mem jdkrig::OclLib::createBuffer(cl_context context, cl_mem_flags flags, size_t size, void *host_ptr, cl_int *errcode_ret) noexcept
+cl_mem kittenpaw::OclLib::createBuffer(cl_context context, cl_mem_flags flags, size_t size, void *host_ptr, cl_int *errcode_ret) noexcept
 {
     assert(pCreateBuffer != nullptr);
 
@@ -656,7 +656,7 @@ cl_mem jdkrig::OclLib::createBuffer(cl_context context, cl_mem_flags flags, size
 }
 
 
-cl_mem jdkrig::OclLib::createSubBuffer(cl_mem buffer, cl_mem_flags flags, size_t offset, size_t size, cl_int *errcode_ret) noexcept
+cl_mem kittenpaw::OclLib::createSubBuffer(cl_mem buffer, cl_mem_flags flags, size_t offset, size_t size, cl_int *errcode_ret) noexcept
 {
     const cl_buffer_region region = { offset, size };
 
@@ -672,7 +672,7 @@ cl_mem jdkrig::OclLib::createSubBuffer(cl_mem buffer, cl_mem_flags flags, size_t
 }
 
 
-cl_mem jdkrig::OclLib::createSubBuffer(cl_mem buffer, cl_mem_flags flags, size_t offset, size_t size)
+cl_mem kittenpaw::OclLib::createSubBuffer(cl_mem buffer, cl_mem_flags flags, size_t offset, size_t size)
 {
     cl_int ret = 0;
     cl_mem mem = createSubBuffer(buffer, flags, offset, size, &ret);
@@ -684,7 +684,7 @@ cl_mem jdkrig::OclLib::createSubBuffer(cl_mem buffer, cl_mem_flags flags, size_t
 }
 
 
-cl_mem jdkrig::OclLib::retain(cl_mem memobj) noexcept
+cl_mem kittenpaw::OclLib::retain(cl_mem memobj) noexcept
 {
     assert(pRetainMemObject != nullptr);
 
@@ -696,7 +696,7 @@ cl_mem jdkrig::OclLib::retain(cl_mem memobj) noexcept
 }
 
 
-cl_program jdkrig::OclLib::createProgramWithBinary(cl_context context, cl_uint num_devices, const cl_device_id *device_list, const size_t *lengths, const unsigned char **binaries, cl_int *binary_status, cl_int *errcode_ret) noexcept
+cl_program kittenpaw::OclLib::createProgramWithBinary(cl_context context, cl_uint num_devices, const cl_device_id *device_list, const size_t *lengths, const unsigned char **binaries, cl_int *binary_status, cl_int *errcode_ret) noexcept
 {
     assert(pCreateProgramWithBinary != nullptr);
 
@@ -711,7 +711,7 @@ cl_program jdkrig::OclLib::createProgramWithBinary(cl_context context, cl_uint n
 }
 
 
-cl_program jdkrig::OclLib::createProgramWithSource(cl_context context, cl_uint count, const char **strings, const size_t *lengths, cl_int *errcode_ret) noexcept
+cl_program kittenpaw::OclLib::createProgramWithSource(cl_context context, cl_uint count, const char **strings, const size_t *lengths, cl_int *errcode_ret) noexcept
 {
     assert(pCreateProgramWithSource != nullptr);
 
@@ -726,7 +726,7 @@ cl_program jdkrig::OclLib::createProgramWithSource(cl_context context, cl_uint c
 }
 
 
-cl_program jdkrig::OclLib::retain(cl_program program) noexcept
+cl_program kittenpaw::OclLib::retain(cl_program program) noexcept
 {
     assert(pRetainProgram != nullptr);
 
@@ -738,7 +738,7 @@ cl_program jdkrig::OclLib::retain(cl_program program) noexcept
 }
 
 
-cl_uint jdkrig::OclLib::getNumPlatforms() noexcept
+cl_uint kittenpaw::OclLib::getNumPlatforms() noexcept
 {
     cl_uint count   = 0;
     cl_int ret      = 0;
@@ -755,7 +755,7 @@ cl_uint jdkrig::OclLib::getNumPlatforms() noexcept
 }
 
 
-cl_uint jdkrig::OclLib::getUint(cl_command_queue command_queue, cl_command_queue_info param_name, cl_uint defaultValue) noexcept
+cl_uint kittenpaw::OclLib::getUint(cl_command_queue command_queue, cl_command_queue_info param_name, cl_uint defaultValue) noexcept
 {
     getCommandQueueInfo(command_queue, param_name, sizeof(cl_uint), &defaultValue);
 
@@ -763,7 +763,7 @@ cl_uint jdkrig::OclLib::getUint(cl_command_queue command_queue, cl_command_queue
 }
 
 
-cl_uint jdkrig::OclLib::getUint(cl_context context, cl_context_info param_name, cl_uint defaultValue) noexcept
+cl_uint kittenpaw::OclLib::getUint(cl_context context, cl_context_info param_name, cl_uint defaultValue) noexcept
 {
     getContextInfo(context, param_name, sizeof(cl_uint), &defaultValue);
 
@@ -771,7 +771,7 @@ cl_uint jdkrig::OclLib::getUint(cl_context context, cl_context_info param_name, 
 }
 
 
-cl_uint jdkrig::OclLib::getUint(cl_device_id id, cl_device_info param, cl_uint defaultValue) noexcept
+cl_uint kittenpaw::OclLib::getUint(cl_device_id id, cl_device_info param, cl_uint defaultValue) noexcept
 {
     getDeviceInfo(id, param, sizeof(cl_uint), &defaultValue);
 
@@ -779,7 +779,7 @@ cl_uint jdkrig::OclLib::getUint(cl_device_id id, cl_device_info param, cl_uint d
 }
 
 
-cl_uint jdkrig::OclLib::getUint(cl_kernel kernel, cl_kernel_info  param_name, cl_uint defaultValue) noexcept
+cl_uint kittenpaw::OclLib::getUint(cl_kernel kernel, cl_kernel_info  param_name, cl_uint defaultValue) noexcept
 {
     getKernelInfo(kernel, param_name, sizeof(cl_uint), &defaultValue);
 
@@ -787,7 +787,7 @@ cl_uint jdkrig::OclLib::getUint(cl_kernel kernel, cl_kernel_info  param_name, cl
 }
 
 
-cl_uint jdkrig::OclLib::getUint(cl_mem memobj, cl_mem_info param_name, cl_uint defaultValue) noexcept
+cl_uint kittenpaw::OclLib::getUint(cl_mem memobj, cl_mem_info param_name, cl_uint defaultValue) noexcept
 {
     getMemObjectInfo(memobj, param_name, sizeof(cl_uint), &defaultValue);
 
@@ -795,7 +795,7 @@ cl_uint jdkrig::OclLib::getUint(cl_mem memobj, cl_mem_info param_name, cl_uint d
 }
 
 
-cl_uint jdkrig::OclLib::getUint(cl_program program, cl_program_info param, cl_uint defaultValue) noexcept
+cl_uint kittenpaw::OclLib::getUint(cl_program program, cl_program_info param, cl_uint defaultValue) noexcept
 {
     getProgramInfo(program, param, sizeof(cl_uint), &defaultValue);
 
@@ -803,7 +803,7 @@ cl_uint jdkrig::OclLib::getUint(cl_program program, cl_program_info param, cl_ui
 }
 
 
-cl_ulong jdkrig::OclLib::getUlong(cl_device_id id, cl_device_info param, cl_ulong defaultValue) noexcept
+cl_ulong kittenpaw::OclLib::getUlong(cl_device_id id, cl_device_info param, cl_ulong defaultValue) noexcept
 {
     getDeviceInfo(id, param, sizeof(cl_ulong), &defaultValue);
 
@@ -811,7 +811,7 @@ cl_ulong jdkrig::OclLib::getUlong(cl_device_id id, cl_device_info param, cl_ulon
 }
 
 
-cl_ulong jdkrig::OclLib::getUlong(cl_mem memobj, cl_mem_info param_name, cl_ulong defaultValue) noexcept
+cl_ulong kittenpaw::OclLib::getUlong(cl_mem memobj, cl_mem_info param_name, cl_ulong defaultValue) noexcept
 {
     getMemObjectInfo(memobj, param_name, sizeof(cl_ulong), &defaultValue);
 
@@ -819,7 +819,7 @@ cl_ulong jdkrig::OclLib::getUlong(cl_mem memobj, cl_mem_info param_name, cl_ulon
 }
 
 
-std::vector<cl_platform_id> jdkrig::OclLib::getPlatformIDs() noexcept
+std::vector<cl_platform_id> kittenpaw::OclLib::getPlatformIDs() noexcept
 {
     const uint32_t count = getNumPlatforms();
     std::vector<cl_platform_id> platforms(count);
@@ -832,7 +832,7 @@ std::vector<cl_platform_id> jdkrig::OclLib::getPlatformIDs() noexcept
 }
 
 
-jdkrig::String jdkrig::OclLib::getProgramBuildLog(cl_program program, cl_device_id device) noexcept
+kittenpaw::String kittenpaw::OclLib::getProgramBuildLog(cl_program program, cl_device_id device) noexcept
 {
     size_t size = 0;
     if (getProgramBuildInfo(program, device, CL_PROGRAM_BUILD_LOG, 0, nullptr, &size) != CL_SUCCESS) {
@@ -856,25 +856,25 @@ jdkrig::String jdkrig::OclLib::getProgramBuildLog(cl_program program, cl_device_
 }
 
 
-jdkrig::String jdkrig::OclLib::getString(cl_device_id id, cl_device_info param) noexcept
+kittenpaw::String kittenpaw::OclLib::getString(cl_device_id id, cl_device_info param) noexcept
 {
     return getOclString(OclLib::getDeviceInfo, id, param);
 }
 
 
-jdkrig::String jdkrig::OclLib::getString(cl_kernel kernel, cl_kernel_info param_name) noexcept
+kittenpaw::String kittenpaw::OclLib::getString(cl_kernel kernel, cl_kernel_info param_name) noexcept
 {
     return getOclString(OclLib::getKernelInfo, kernel, param_name);
 }
 
 
-jdkrig::String jdkrig::OclLib::getString(cl_platform_id platform, cl_platform_info param_name) noexcept
+kittenpaw::String kittenpaw::OclLib::getString(cl_platform_id platform, cl_platform_info param_name) noexcept
 {
     return getOclString(OclLib::getPlatformInfo, platform, param_name);
 }
 
 
-jdkrig::String jdkrig::OclLib::getString(cl_program program, cl_program_info param_name) noexcept
+kittenpaw::String kittenpaw::OclLib::getString(cl_program program, cl_program_info param_name) noexcept
 {
     return getOclString(OclLib::getProgramInfo, program, param_name);
 }

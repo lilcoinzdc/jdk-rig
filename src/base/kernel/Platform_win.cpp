@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2023 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2023 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2023 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -45,7 +45,7 @@ static inline OSVERSIONINFOEX winOsVersion()
 }
 
 
-char *jdkrig::Platform::createUserAgent()
+char *kittenpaw::Platform::createUserAgent()
 {
     const auto osver = winOsVersion();
     constexpr const size_t max = 256;
@@ -69,14 +69,14 @@ char *jdkrig::Platform::createUserAgent()
 }
 
 
-bool jdkrig::Platform::hasKeepalive()
+bool kittenpaw::Platform::hasKeepalive()
 {
     return winOsVersion().dwMajorVersion >= 6;
 }
 
 
-#ifndef JDKRIG_FEATURE_HWLOC
-bool jdkrig::Platform::setThreadAffinity(uint64_t cpu_id)
+#ifndef KITTENPAW_FEATURE_HWLOC
+bool kittenpaw::Platform::setThreadAffinity(uint64_t cpu_id)
 {
     const bool result = (SetThreadAffinityMask(GetCurrentThread(), 1ULL << cpu_id) != 0);
     Sleep(1);
@@ -85,7 +85,7 @@ bool jdkrig::Platform::setThreadAffinity(uint64_t cpu_id)
 #endif
 
 
-void jdkrig::Platform::setProcessPriority(int priority)
+void kittenpaw::Platform::setProcessPriority(int priority)
 {
     if (priority == -1) {
         return;
@@ -122,7 +122,7 @@ void jdkrig::Platform::setProcessPriority(int priority)
 }
 
 
-void jdkrig::Platform::setThreadPriority(int priority)
+void kittenpaw::Platform::setThreadPriority(int priority)
 {
     if (priority == -1) {
         return;
@@ -159,7 +159,7 @@ void jdkrig::Platform::setThreadPriority(int priority)
 }
 
 
-bool jdkrig::Platform::isOnBatteryPower()
+bool kittenpaw::Platform::isOnBatteryPower()
 {
     SYSTEM_POWER_STATUS st;
     if (GetSystemPowerStatus(&st)) {
@@ -169,7 +169,7 @@ bool jdkrig::Platform::isOnBatteryPower()
 }
 
 
-uint64_t jdkrig::Platform::idleTime()
+uint64_t kittenpaw::Platform::idleTime()
 {
     LASTINPUTINFO info{};
     info.cbSize = sizeof(LASTINPUTINFO);

@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2023 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2023 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2023 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_TLSGEN_H
-#define JDKRIG_TLSGEN_H
+#ifndef KITTENPAW_TLSGEN_H
+#define KITTENPAW_TLSGEN_H
 
 
 #include "base/tools/Object.h"
@@ -28,13 +28,13 @@ using EVP_PKEY  = struct evp_pkey_st;
 using X509      = struct x509_st;
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class TlsGen
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE(TlsGen)
+    KITTENPAW_DISABLE_COPY_MOVE(TlsGen)
 
     TlsGen() : m_cert("cert.pem"), m_certKey("cert_key.pem") {}
     ~TlsGen();
@@ -55,7 +55,7 @@ private:
 };
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-#endif // JDKRIG_TLSGEN_H
+#endif // KITTENPAW_TLSGEN_H

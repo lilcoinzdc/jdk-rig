@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -17,8 +17,8 @@
  */
 
 
-#ifndef JDKRIG_HTTPAPIREQUEST_H
-#define JDKRIG_HTTPAPIREQUEST_H
+#ifndef KITTENPAW_HTTPAPIREQUEST_H
+#define KITTENPAW_HTTPAPIREQUEST_H
 
 
 #include "base/api/requests/ApiRequest.h"
@@ -26,7 +26,7 @@
 #include "base/tools/String.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class HttpData;
@@ -61,8 +61,8 @@ private:
 };
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-#endif // JDKRIG_HTTPAPIREQUEST_H
+#endif // KITTENPAW_HTTPAPIREQUEST_H
 

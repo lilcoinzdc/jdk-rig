@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@
 #include "base/io/json/Json.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 static const char *kAffinity    = "affinity";
@@ -73,10 +73,10 @@ static inline int64_t getAffinity(uint64_t index, int64_t affinity)
 }
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-jdkrig::CpuThreads::CpuThreads(const rapidjson::Value &value)
+kittenpaw::CpuThreads::CpuThreads(const rapidjson::Value &value)
 {
     if (value.IsArray()) {
         for (auto &v : value.GetArray()) {
@@ -103,7 +103,7 @@ jdkrig::CpuThreads::CpuThreads(const rapidjson::Value &value)
 }
 
 
-jdkrig::CpuThreads::CpuThreads(size_t count, uint32_t intensity)
+kittenpaw::CpuThreads::CpuThreads(size_t count, uint32_t intensity)
 {
     m_data.reserve(count);
 
@@ -113,7 +113,7 @@ jdkrig::CpuThreads::CpuThreads(size_t count, uint32_t intensity)
 }
 
 
-bool jdkrig::CpuThreads::isEqual(const CpuThreads &other) const
+bool kittenpaw::CpuThreads::isEqual(const CpuThreads &other) const
 {
     if (isEmpty() && other.isEmpty()) {
         return true;
@@ -123,7 +123,7 @@ bool jdkrig::CpuThreads::isEqual(const CpuThreads &other) const
 }
 
 
-rapidjson::Value jdkrig::CpuThreads::toJSON(rapidjson::Document &doc) const
+rapidjson::Value kittenpaw::CpuThreads::toJSON(rapidjson::Document &doc) const
 {
     using namespace rapidjson;
     auto &allocator = doc.GetAllocator();

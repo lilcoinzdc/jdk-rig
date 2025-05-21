@@ -1,7 +1,7 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2019 tevador     <tevador@gmail.com>
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@
 #include "crypto/rx/RxSeed.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 constexpr size_t oneMiB = 1024 * 1024;
@@ -38,7 +38,7 @@ constexpr size_t oneMiB = 1024 * 1024;
 class RxBasicStoragePrivate
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE(RxBasicStoragePrivate)
+    KITTENPAW_DISABLE_COPY_MOVE(RxBasicStoragePrivate)
 
     inline RxBasicStoragePrivate() = default;
     inline ~RxBasicStoragePrivate() { deleteDataset(); }
@@ -122,28 +122,28 @@ private:
 };
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-jdkrig::RxBasicStorage::RxBasicStorage() :
+kittenpaw::RxBasicStorage::RxBasicStorage() :
     d_ptr(new RxBasicStoragePrivate())
 {
 }
 
 
-jdkrig::RxBasicStorage::~RxBasicStorage()
+kittenpaw::RxBasicStorage::~RxBasicStorage()
 {
     delete d_ptr;
 }
 
 
-bool jdkrig::RxBasicStorage::isAllocated() const
+bool kittenpaw::RxBasicStorage::isAllocated() const
 {
     return d_ptr->dataset() && d_ptr->dataset()->cache() && d_ptr->dataset()->cache()->get();
 }
 
 
-jdkrig::HugePagesInfo jdkrig::RxBasicStorage::hugePages() const
+kittenpaw::HugePagesInfo kittenpaw::RxBasicStorage::hugePages() const
 {
     if (!d_ptr->dataset()) {
         return {};
@@ -153,7 +153,7 @@ jdkrig::HugePagesInfo jdkrig::RxBasicStorage::hugePages() const
 }
 
 
-jdkrig::RxDataset *jdkrig::RxBasicStorage::dataset(const Job &job, uint32_t) const
+kittenpaw::RxDataset *kittenpaw::RxBasicStorage::dataset(const Job &job, uint32_t) const
 {
     if (!d_ptr->isReady(job)) {
         return nullptr;
@@ -163,7 +163,7 @@ jdkrig::RxDataset *jdkrig::RxBasicStorage::dataset(const Job &job, uint32_t) con
 }
 
 
-void jdkrig::RxBasicStorage::init(const RxSeed &seed, uint32_t threads, bool hugePages, bool oneGbPages, RxConfig::Mode mode, int priority)
+void kittenpaw::RxBasicStorage::init(const RxSeed &seed, uint32_t threads, bool hugePages, bool oneGbPages, RxConfig::Mode mode, int priority)
 {
     d_ptr->setSeed(seed);
 

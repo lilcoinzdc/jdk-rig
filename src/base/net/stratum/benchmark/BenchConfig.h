@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,15 +16,15 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_BENCHCONFIG_H
-#define JDKRIG_BENCHCONFIG_H
+#ifndef KITTENPAW_BENCHCONFIG_H
+#define KITTENPAW_BENCHCONFIG_H
 
 
 #include "base/crypto/Algorithm.h"
 #include "base/tools/String.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class BenchConfig
@@ -43,7 +43,7 @@ public:
     static const char *kUser;
     static const char *kVerify;
 
-#   ifndef JDKRIG_DEBUG_BENCHMARK_API
+#   ifndef KITTENPAW_DEBUG_BENCHMARK_API
     static constexpr bool kApiTLS               = true;
     static constexpr const uint16_t kApiPort    = 443;
 #   else
@@ -84,7 +84,7 @@ private:
 };
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif /* JDKRIG_BENCHCONFIG_H */
+#endif /* KITTENPAW_BENCHCONFIG_H */

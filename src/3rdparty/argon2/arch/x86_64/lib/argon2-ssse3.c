@@ -112,17 +112,17 @@ static __m128i f(__m128i x, __m128i y)
 
 #include "argon2-template-128.h"
 
-void jdkrig_ar2_fill_segment_ssse3(const argon2_instance_t *instance, argon2_position_t position)
+void kittenpaw_ar2_fill_segment_ssse3(const argon2_instance_t *instance, argon2_position_t position)
 {
     fill_segment_128(instance, position);
 }
 
 extern int cpu_flags_has_ssse3(void);
-int jdkrig_ar2_check_ssse3(void) { return cpu_flags_has_ssse3(); }
+int kittenpaw_ar2_check_ssse3(void) { return cpu_flags_has_ssse3(); }
 
 #else
 
-void jdkrig_ar2_fill_segment_ssse3(const argon2_instance_t *instance, argon2_position_t position) {}
-int jdkrig_ar2_check_ssse3(void) { return 0; }
+void kittenpaw_ar2_fill_segment_ssse3(const argon2_instance_t *instance, argon2_position_t position) {}
+int kittenpaw_ar2_check_ssse3(void) { return 0; }
 
 #endif

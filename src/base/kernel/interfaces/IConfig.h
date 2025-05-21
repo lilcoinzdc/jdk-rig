@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,14 +16,14 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_ICONFIG_H
-#define JDKRIG_ICONFIG_H
+#ifndef KITTENPAW_ICONFIG_H
+#define KITTENPAW_ICONFIG_H
 
 
 #include "3rdparty/rapidjson/fwd.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class IJsonReader;
@@ -90,12 +90,12 @@ public:
         RotationKey          = 1058,
         DaemonJobTimeoutKey  = 1059,
 
-        // jdkrig common
+        // kittenpaw common
         CPUPriorityKey       = 1021,
         NicehashKey          = 1006,
         PrintTimeKey         = 1007,
 
-        // jdkrig cpu
+        // kittenpaw cpu
         CPUKey               = 1024,
         AVKey                = 'v',
         CPUAffinityKey       = 1020,
@@ -115,7 +115,7 @@ public:
         Argon2ImplKey        = 1039,
         RandomXCacheQoSKey   = 1040,
 
-        // jdkrig amd
+        // kittenpaw amd
         OclPlatformKey       = 1400,
         OclAffinityKey       = 1401,
         OclDevicesKey        = 1402,
@@ -129,7 +129,7 @@ public:
         OclCompModeKey       = 1410,
         OclKey               = 1411,
 
-        // jdkrig-proxy
+        // kittenpaw-proxy
         AccessLogFileKey     = 'A',
         BindKey              = 'b',
         CustomDiffKey        = 1102,
@@ -152,7 +152,7 @@ public:
         ProxyPasswordKey     = 1116,
         LoginFileKey         = 'L',
 
-        // jdkrig nvidia
+        // kittenpaw nvidia
         CudaMaxThreadsKey    = 1200,
         CudaBFactorKey       = 1201,
         CudaBSleepKey        = 1202,
@@ -177,7 +177,7 @@ public:
 };
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif // JDKRIG_ICONFIG_H
+#endif // KITTENPAW_ICONFIG_H

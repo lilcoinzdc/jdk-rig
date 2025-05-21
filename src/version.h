@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2024 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2024 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2024 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,17 +16,17 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_VERSION_H
-#define JDKRIG_VERSION_H
+#ifndef KITTENPAW_VERSION_H
+#define KITTENPAW_VERSION_H
 
-#define APP_ID        "jdkrig"
-#define APP_NAME      "XMRig"
-#define APP_DESC      "XMRig jdkrigger"
+#define APP_ID        "kittenpaw"
+#define APP_NAME      "KITTENpaw"
+#define APP_DESC      "KITTENpaw kittenpawger"
 #define APP_VERSION   "6.22.2"
-#define APP_DOMAIN    "jdkrig.com"
-#define APP_SITE      "www.jdkrig.com"
-#define APP_COPYRIGHT "Copyright (C) 2016-2024 jdkrig.com"
-#define APP_KIND      "jdkrigger"
+#define APP_DOMAIN    "kittenpaw.com"
+#define APP_SITE      "www.kittenpaw.com"
+#define APP_COPYRIGHT "Copyright (C) 2016-2024 kittenpaw.com"
+#define APP_KIND      "kittenpawger"
 
 #define APP_VER_MAJOR  6
 #define APP_VER_MINOR  22
@@ -52,17 +52,17 @@
 #   endif
 #endif
 
-#ifdef JDKRIG_OS_WIN
+#ifdef KITTENPAW_OS_WIN
 #    define APP_OS "Windows"
-#elif defined JDKRIG_OS_IOS
+#elif defined KITTENPAW_OS_IOS
 #    define APP_OS "iOS"
-#elif defined JDKRIG_OS_MACOS
+#elif defined KITTENPAW_OS_MACOS
 #    define APP_OS "macOS"
-#elif defined JDKRIG_OS_ANDROID
+#elif defined KITTENPAW_OS_ANDROID
 #    define APP_OS "Android"
-#elif defined JDKRIG_OS_LINUX
+#elif defined KITTENPAW_OS_LINUX
 #    define APP_OS "Linux"
-#elif defined JDKRIG_OS_FREEBSD
+#elif defined KITTENPAW_OS_FREEBSD
 #    define APP_OS "FreeBSD"
 #else
 #    define APP_OS "Unknown OS"
@@ -71,8 +71,8 @@
 #define STR(X) #X
 #define STR2(X) STR(X)
 
-#ifdef JDKRIG_ARM
-#   define APP_ARCH "ARMv" STR2(JDKRIG_ARM)
+#ifdef KITTENPAW_ARM
+#   define APP_ARCH "ARMv" STR2(KITTENPAW_ARM)
 #else
 #   if defined(__x86_64__) || defined(__amd64__) || defined(_M_X64) || defined(_M_AMD64)
 #       define APP_ARCH "x86-64"
@@ -81,10 +81,10 @@
 #   endif
 #endif
 
-#ifdef JDKRIG_64_BIT
+#ifdef KITTENPAW_64_BIT
 #   define APP_BITS "64 bit"
 #else
 #   define APP_BITS "32 bit"
 #endif
 
-#endif // JDKRIG_VERSION_H
+#endif // KITTENPAW_VERSION_H

@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@
 #include "base/io/json/Json.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 const char *Http::kEnabled    = "enabled";
@@ -32,16 +32,16 @@ const char *Http::kRestricted = "restricted";
 const char *Http::kToken      = "access-token";
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-jdkrig::Http::Http() :
+kittenpaw::Http::Http() :
     m_host(kLocalhost)
 {
 }
 
 
-bool jdkrig::Http::isEqual(const Http &other) const
+bool kittenpaw::Http::isEqual(const Http &other) const
 {
     return other.m_enabled    == m_enabled &&
            other.m_restricted == m_restricted &&
@@ -51,7 +51,7 @@ bool jdkrig::Http::isEqual(const Http &other) const
 }
 
 
-rapidjson::Value jdkrig::Http::toJSON(rapidjson::Document &doc) const
+rapidjson::Value kittenpaw::Http::toJSON(rapidjson::Document &doc) const
 {
     using namespace rapidjson;
     auto &allocator = doc.GetAllocator();
@@ -68,7 +68,7 @@ rapidjson::Value jdkrig::Http::toJSON(rapidjson::Document &doc) const
 }
 
 
-void jdkrig::Http::load(const rapidjson::Value &http)
+void kittenpaw::Http::load(const rapidjson::Value &http)
 {
     if (!http.IsObject()) {
         return;
@@ -83,7 +83,7 @@ void jdkrig::Http::load(const rapidjson::Value &http)
 }
 
 
-void jdkrig::Http::setPort(int port)
+void kittenpaw::Http::setPort(int port)
 {
     if (port >= 0 && port <= 65536) {
         m_port = static_cast<uint16_t>(port);

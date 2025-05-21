@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -24,20 +24,20 @@
 #include "3rdparty/rapidjson/document.h"
 
 
-#if defined(JDKRIG_FEATURE_HWLOC)
+#if defined(KITTENPAW_FEATURE_HWLOC)
 #   include "backend/cpu/platform/HwlocCpuInfo.h"
 #else
 #   include "backend/cpu/platform/BasicCpuInfo.h"
 #endif
 
 
-static jdkrig::ICpuInfo *cpuInfo = nullptr;
+static kittenpaw::ICpuInfo *cpuInfo = nullptr;
 
 
-jdkrig::ICpuInfo *jdkrig::Cpu::info()
+kittenpaw::ICpuInfo *kittenpaw::Cpu::info()
 {
     if (cpuInfo == nullptr) {
-#       if defined(JDKRIG_FEATURE_HWLOC)
+#       if defined(KITTENPAW_FEATURE_HWLOC)
         cpuInfo = new HwlocCpuInfo();
 #       else
         cpuInfo = new BasicCpuInfo();
@@ -48,13 +48,13 @@ jdkrig::ICpuInfo *jdkrig::Cpu::info()
 }
 
 
-rapidjson::Value jdkrig::Cpu::toJSON(rapidjson::Document &doc)
+rapidjson::Value kittenpaw::Cpu::toJSON(rapidjson::Document &doc)
 {
     return info()->toJSON(doc);
 }
 
 
-void jdkrig::Cpu::release()
+void kittenpaw::Cpu::release()
 {
     delete cpuInfo;
     cpuInfo = nullptr;

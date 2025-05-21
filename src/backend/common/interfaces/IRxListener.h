@@ -1,7 +1,7 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2019 tevador     <tevador@gmail.com>
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -17,31 +17,31 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_IRXLISTENER_H
-#define JDKRIG_IRXLISTENER_H
+#ifndef KITTENPAW_IRXLISTENER_H
+#define KITTENPAW_IRXLISTENER_H
 
 
 #include "base/tools/Object.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class IRxListener
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE(IRxListener)
+    KITTENPAW_DISABLE_COPY_MOVE(IRxListener)
 
     IRxListener()           = default;
     virtual ~IRxListener()  = default;
 
-#   ifdef JDKRIG_ALGO_RANDOMX
+#   ifdef KITTENPAW_ALGO_RANDOMX
     virtual void onDatasetReady() = 0;
 #   endif
 };
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif // JDKRIG_IRXLISTENER_H
+#endif // KITTENPAW_IRXLISTENER_H

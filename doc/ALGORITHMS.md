@@ -2,11 +2,11 @@
 
 Algorithm can be defined in 3 ways:
 
-1. By pool, using algorithm negotiation, in this case no need specify algorithm on jdkrigger side.
+1. By pool, using algorithm negotiation, in this case no need specify algorithm on kittenpawger side.
 2. Per pool `coin` option, currently only usable values for this option is `monero` and `arqma`.
 3. Per pool `algo` option.
 
-Option `coin` useful for pools without [algorithm negotiation](https://jdkrig.com/docs/extensions/algorithm-negotiation) support or daemon to allow automatically switch algorithm in next hard fork. If you use jdkrig-proxy don't need specify algorithm on jdkrigger side.
+Option `coin` useful for pools without [algorithm negotiation](https://kittenpaw.com/docs/extensions/algorithm-negotiation) support or daemon to allow automatically switch algorithm in next hard fork. If you use kittenpaw-proxy don't need specify algorithm on kittenpawger side.
 
 ## Algorithm names
 
@@ -41,7 +41,7 @@ Option `coin` useful for pools without [algorithm negotiation](https://jdkrig.co
 | `cn/0` | 2 MB | 0.5.0+ | CryptoNight (original). |  |
 
 ## Migration to v3
-Since version 3 jdkrigging [algorithm](#algorithm-names) should specified for each pool separately (`algo` option), earlier versions was use one global `algo` option and per pool `variant` option (this option was removed in v3). If your pool support [jdkrigging algorithm negotiation](https://github.com/jdkrig/jdkrig-proxy/issues/168) you may not specify this option at all.
+Since version 3 kittenpawging [algorithm](#algorithm-names) should specified for each pool separately (`algo` option), earlier versions was use one global `algo` option and per pool `variant` option (this option was removed in v3). If your pool support [kittenpawging algorithm negotiation](https://github.com/kittenpaw/kittenpaw-proxy/issues/168) you may not specify this option at all.
  
 #### Example
 ```json

@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2020 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2020 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2020 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_FAILOVERSTRATEGY_H
-#define JDKRIG_FAILOVERSTRATEGY_H
+#ifndef KITTENPAW_FAILOVERSTRATEGY_H
+#define KITTENPAW_FAILOVERSTRATEGY_H
 
 
 #include <vector>
@@ -29,7 +29,7 @@
 #include "base/tools/Object.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 class Client;
@@ -39,7 +39,7 @@ class IStrategyListener;
 class FailoverStrategy : public IStrategy, public IClientListener
 {
 public:
-    JDKRIG_DISABLE_COPY_MOVE_DEFAULT(FailoverStrategy)
+    KITTENPAW_DISABLE_COPY_MOVE_DEFAULT(FailoverStrategy)
 
     FailoverStrategy(const std::vector<Pool> &pool, int retryPause, int retries, IStrategyListener *listener, bool quiet = false);
     FailoverStrategy(int retryPause, int retries, IStrategyListener *listener, bool quiet = false);
@@ -79,6 +79,6 @@ private:
 };
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
-#endif /* JDKRIG_FAILOVERSTRATEGY_H */
+#endif /* KITTENPAW_FAILOVERSTRATEGY_H */

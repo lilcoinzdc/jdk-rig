@@ -1,8 +1,8 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2000-2002 Alan Cox     <alan@redhat.com>
  * Copyright (c) 2005-2020 Jean Delvare <jdelvare@suse.de>
  * Copyright (c) 2018-2021 SChernykh    <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig        <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw        <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -18,8 +18,8 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef JDKRIG_DMITOOLS_H
-#define JDKRIG_DMITOOLS_H
+#ifndef KITTENPAW_DMITOOLS_H
+#define KITTENPAW_DMITOOLS_H
 
 
 #include <cstddef>
@@ -27,7 +27,7 @@
 #include "base/tools/Alignment.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 struct dmi_header
@@ -55,7 +55,7 @@ inline T dmi_get(const dmi_header *h, size_t offset)    { return readUnaligned(r
 const char *dmi_string(dmi_header *dm, size_t offset);
 
 
-} /* namespace jdkrig */
+} /* namespace kittenpaw */
 
 
-#endif /* JDKRIG_DMITOOLS_H */
+#endif /* KITTENPAW_DMITOOLS_H */

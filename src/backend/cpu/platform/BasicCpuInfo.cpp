@@ -1,7 +1,7 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2017-2019 XMR-Stak    <https://github.com/fireice-uk>, <https://github.com/psychocrypt>
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@
 
 
 #include "crypto/cn/CryptoNight_monero.h"
-#ifdef JDKRIG_VAES
+#ifdef KITTENPAW_VAES
 #   include "crypto/cn/CryptoNight_x86_vaes.h"
 #endif
 
@@ -55,7 +55,7 @@
 #define EDX_Reg  (3)
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 constexpr size_t kCpuFlagsSize                                  = 15;
@@ -63,7 +63,7 @@ static const std::array<const char *, kCpuFlagsSize> flagNames  = { "aes", "vaes
 static_assert(kCpuFlagsSize == ICpuInfo::FLAG_MAX, "kCpuFlagsSize and FLAG_MAX mismatch");
 
 
-#ifdef JDKRIG_FEATURE_MSR
+#ifdef KITTENPAW_FEATURE_MSR
 constexpr size_t kMsrArraySize                                  = 7;
 static const std::array<const char *, kMsrArraySize> msrNames   = { MSR_NAMES_LIST };
 static_assert(kMsrArraySize == ICpuInfo::MSR_MOD_MAX, "kMsrArraySize and MSR_MOD_MAX mismatch");
@@ -159,25 +159,25 @@ static inline bool has_cat_l3()     { return has_feature(EXTENDED_FEATURES,     
 static inline bool is_vm()          { return has_feature(PROCESSOR_INFO,        ECX_Reg, 1 << 31); }
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-#ifdef JDKRIG_ALGO_ARGON2
+#ifdef KITTENPAW_ALGO_ARGON2
 extern "C" {
 
 
-int cpu_flags_has_avx2()    { return jdkrig::has_avx2(); }
-int cpu_flags_has_avx512f() { return jdkrig::has_avx512f(); }
-int cpu_flags_has_sse2()    { return jdkrig::has_sse2(); }
-int cpu_flags_has_ssse3()   { return jdkrig::has_ssse3(); }
-int cpu_flags_has_xop()     { return jdkrig::has_xop(); }
+int cpu_flags_has_avx2()    { return kittenpaw::has_avx2(); }
+int cpu_flags_has_avx512f() { return kittenpaw::has_avx512f(); }
+int cpu_flags_has_sse2()    { return kittenpaw::has_sse2(); }
+int cpu_flags_has_ssse3()   { return kittenpaw::has_ssse3(); }
+int cpu_flags_has_xop()     { return kittenpaw::has_xop(); }
 
 
 }
 #endif
 
 
-jdkrig::BasicCpuInfo::BasicCpuInfo() :
+kittenpaw::BasicCpuInfo::BasicCpuInfo() :
     m_threads(std::thread::hardware_concurrency())
 {
     cpu_brand_string(m_brand);
@@ -203,7 +203,7 @@ jdkrig::BasicCpuInfo::BasicCpuInfo() :
         m_units[i] = i;
     }
 
-#   ifdef JDKRIG_FEATURE_ASM
+#   ifdef KITTENPAW_FEATURE_ASM
     if (m_flags.test(FLAG_AES)) {
         char vendor[13] = { 0 };
         int32_t data[4] = { 0 };
@@ -317,13 +317,13 @@ jdkrig::BasicCpuInfo::BasicCpuInfo() :
 }
 
 
-const char *jdkrig::BasicCpuInfo::backend() const
+const char *kittenpaw::BasicCpuInfo::backend() const
 {
     return "basic/1";
 }
 
 
-jdkrig::CpuThreads jdkrig::BasicCpuInfo::threads(const Algorithm &algorithm, uint32_t) const
+kittenpaw::CpuThreads kittenpaw::BasicCpuInfo::threads(const Algorithm &algorithm, uint32_t) const
 {
     const size_t count = std::thread::hardware_concurrency();
 
@@ -333,31 +333,31 @@ jdkrig::CpuThreads jdkrig::BasicCpuInfo::threads(const Algorithm &algorithm, uin
 
     const auto f = algorithm.family();
 
-#   ifdef JDKRIG_ALGO_CN_LITE
+#   ifdef KITTENPAW_ALGO_CN_LITE
     if (f == Algorithm::CN_LITE) {
         return CpuThreads(count, 1);
     }
 #   endif
 
-#   ifdef JDKRIG_ALGO_CN_PICO
+#   ifdef KITTENPAW_ALGO_CN_PICO
     if (f == Algorithm::CN_PICO) {
         return CpuThreads(count, 2);
     }
 #   endif
 
-#   ifdef JDKRIG_ALGO_CN_FEMTO
+#   ifdef KITTENPAW_ALGO_CN_FEMTO
     if (f == Algorithm::CN_FEMTO) {
         return CpuThreads(count, 2);
     }
 #   endif
 
-#   ifdef JDKRIG_ALGO_CN_HEAVY
+#   ifdef KITTENPAW_ALGO_CN_HEAVY
     if (f == Algorithm::CN_HEAVY) {
         return CpuThreads(std::max<size_t>(count / 4, 1), 1);
     }
 #   endif
 
-#   ifdef JDKRIG_ALGO_RANDOMX
+#   ifdef KITTENPAW_ALGO_RANDOMX
     if (f == Algorithm::RANDOM_X) {
         if (algorithm == Algorithm::RX_WOW) {
             return count;
@@ -367,13 +367,13 @@ jdkrig::CpuThreads jdkrig::BasicCpuInfo::threads(const Algorithm &algorithm, uin
     }
 #   endif
 
-#   ifdef JDKRIG_ALGO_ARGON2
+#   ifdef KITTENPAW_ALGO_ARGON2
     if (f == Algorithm::ARGON2) {
         return count;
     }
 #   endif
 
-#   ifdef JDKRIG_ALGO_GHOSTRIDER
+#   ifdef KITTENPAW_ALGO_GHOSTRIDER
     if (f == Algorithm::GHOSTRIDER) {
         return CpuThreads(std::max<size_t>(count / 2, 1), 8);
     }
@@ -383,7 +383,7 @@ jdkrig::CpuThreads jdkrig::BasicCpuInfo::threads(const Algorithm &algorithm, uin
 }
 
 
-rapidjson::Value jdkrig::BasicCpuInfo::toJSON(rapidjson::Document &doc) const
+rapidjson::Value kittenpaw::BasicCpuInfo::toJSON(rapidjson::Document &doc) const
 {
     using namespace rapidjson;
     auto &allocator = doc.GetAllocator();
@@ -407,13 +407,13 @@ rapidjson::Value jdkrig::BasicCpuInfo::toJSON(rapidjson::Document &doc) const
     out.AddMember("nodes",      static_cast<uint64_t>(nodes()), allocator);
     out.AddMember("backend",    StringRef(backend()), allocator);
 
-#   ifdef JDKRIG_FEATURE_MSR
+#   ifdef KITTENPAW_FEATURE_MSR
     out.AddMember("msr",        StringRef(msrNames[msrMod()]), allocator);
 #   else
     out.AddMember("msr",        "none", allocator);
 #   endif
 
-#   ifdef JDKRIG_FEATURE_ASM
+#   ifdef KITTENPAW_FEATURE_ASM
     out.AddMember("assembly",   StringRef(Assembly(assembly()).toString()), allocator);
 #   else
     out.AddMember("assembly",   "none", allocator);

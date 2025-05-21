@@ -1,7 +1,7 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2008-2018 Advanced Micro Devices, Inc.
  * Copyright (c) 2018-2021 SChernykh                    <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig                        <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw                        <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -27,7 +27,7 @@
 #include "backend/opencl/wrappers/OclDevice.h"
 
 
-namespace jdkrig {
+namespace kittenpaw {
 
 
 static std::vector<AdapterInfo> adapters;
@@ -154,10 +154,10 @@ static void getSensorsData_v8(const AdapterInfo &adapter, AdlHealth &health)
 }
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-bool jdkrig::AdlLib::init()
+bool kittenpaw::AdlLib::init()
 {
     if (!m_initialized) {
         m_ready       = dlopen() && load();
@@ -168,13 +168,13 @@ bool jdkrig::AdlLib::init()
 }
 
 
-const char *jdkrig::AdlLib::lastError() noexcept
+const char *kittenpaw::AdlLib::lastError() noexcept
 {
     return uv_dlerror(&adlLib);
 }
 
 
-void jdkrig::AdlLib::close()
+void kittenpaw::AdlLib::close()
 {
     if (m_ready) {
         ADL_Main_Control_Destroy();
@@ -184,7 +184,7 @@ void jdkrig::AdlLib::close()
 }
 
 
-AdlHealth jdkrig::AdlLib::health(const OclDevice &device)
+AdlHealth kittenpaw::AdlLib::health(const OclDevice &device)
 {
     if (!isReady() || device.vendorId() != OCL_VENDOR_AMD) {
         return {};
@@ -219,13 +219,13 @@ AdlHealth jdkrig::AdlLib::health(const OclDevice &device)
 }
 
 
-bool jdkrig::AdlLib::dlopen()
+bool kittenpaw::AdlLib::dlopen()
 {
     return uv_dlopen("atiadlxx.dll", &adlLib) == 0;
 }
 
 
-bool jdkrig::AdlLib::load()
+bool kittenpaw::AdlLib::load()
 {
     try {
         DLSYM(ADL_Main_Control_Create);

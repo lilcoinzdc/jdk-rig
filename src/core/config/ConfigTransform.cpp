@@ -1,6 +1,6 @@
-/* XMRig
+/* KITTENpaw
  * Copyright (c) 2018-2021 SChernykh   <https://github.com/SChernykh>
- * Copyright (c) 2016-2021 XMRig       <https://github.com/jdkrig>, <support@jdkrig.com>
+ * Copyright (c) 2016-2021 KITTENpaw       <https://github.com/kittenpaw>, <support@kittenpaw.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -25,17 +25,17 @@
 #include "crypto/cn/CnHash.h"
 
 
-#ifdef JDKRIG_ALGO_RANDOMX
+#ifdef KITTENPAW_ALGO_RANDOMX
 #   include "crypto/rx/RxConfig.h"
 #endif
 
 
-#ifdef JDKRIG_FEATURE_BENCHMARK
+#ifdef KITTENPAW_FEATURE_BENCHMARK
 #   include "base/net/stratum/benchmark/BenchConfig.h"
 #endif
 
 
-namespace jdkrig
+namespace kittenpaw
 {
 
 
@@ -83,10 +83,10 @@ static inline bool isHwAes(uint64_t av)
 }
 
 
-} // namespace jdkrig
+} // namespace kittenpaw
 
 
-void jdkrig::ConfigTransform::finalize(rapidjson::Document &doc)
+void kittenpaw::ConfigTransform::finalize(rapidjson::Document &doc)
 {
     using namespace rapidjson;
     auto &allocator = doc.GetAllocator();
@@ -103,13 +103,13 @@ void jdkrig::ConfigTransform::finalize(rapidjson::Document &doc)
         profile.AddMember(StringRef(kThreads),   m_threads, allocator);
         profile.AddMember(StringRef(kAffinity),  m_affinity, allocator);
 
-#       ifdef JDKRIG_ALGO_KAWPOW
+#       ifdef KITTENPAW_ALGO_KAWPOW
         doc[CpuConfig::kField].AddMember(StringRef(Algorithm::kKAWPOW), false, doc.GetAllocator());
 #       endif
         doc[CpuConfig::kField].AddMember(StringRef(kAsterisk), profile, doc.GetAllocator());
     }
 
-#   ifdef JDKRIG_FEATURE_OPENCL
+#   ifdef KITTENPAW_FEATURE_OPENCL
     if (m_opencl) {
         set(doc, Config::kOcl, kEnabled, true);
     }
@@ -117,7 +117,7 @@ void jdkrig::ConfigTransform::finalize(rapidjson::Document &doc)
 }
 
 
-void jdkrig::ConfigTransform::transform(rapidjson::Document &doc, int key, const char *arg)
+void kittenpaw::ConfigTransform::transform(rapidjson::Document &doc, int key, const char *arg)
 {
     BaseTransform::transform(doc, key, arg);
 
@@ -153,21 +153,21 @@ void jdkrig::ConfigTransform::transform(rapidjson::Document &doc, int key, const
     case IConfig::PauseOnActiveKey: /* --pause-on-active */
         return set(doc, Config::kPauseOnActive, static_cast<uint64_t>(strtol(arg, nullptr, 10)));
 
-#   ifdef JDKRIG_ALGO_ARGON2
+#   ifdef KITTENPAW_ALGO_ARGON2
     case IConfig::Argon2ImplKey: /* --argon2-impl */
         return set(doc, CpuConfig::kField, CpuConfig::kArgon2Impl, arg);
 #   endif
 
-#   ifdef JDKRIG_FEATURE_ASM
+#   ifdef KITTENPAW_FEATURE_ASM
     case IConfig::AssemblyKey: /* --asm */
         return set(doc, CpuConfig::kField, CpuConfig::kAsm, arg);
 #   endif
 
-#   ifdef JDKRIG_ALGO_RANDOMX
+#   ifdef KITTENPAW_ALGO_RANDOMX
     case IConfig::RandomXInitKey: /* --randomx-init */
         return set(doc, RxConfig::kField, RxConfig::kInit, static_cast<int64_t>(strtol(arg, nullptr, 10)));
 
-#   ifdef JDKRIG_FEATURE_HWLOC
+#   ifdef KITTENPAW_FEATURE_HWLOC
     case IConfig::RandomXNumaKey: /* --randomx-no-numa */
         return set(doc, RxConfig::kField, RxConfig::kNUMA, false);
 #   endif
@@ -195,7 +195,7 @@ void jdkrig::ConfigTransform::transform(rapidjson::Document &doc, int key, const
         return set(doc, CpuConfig::kField, CpuConfig::kHugePagesJit, true);
 #   endif
 
-#   ifdef JDKRIG_FEATURE_OPENCL
+#   ifdef KITTENPAW_FEATURE_OPENCL
     case IConfig::OclKey: /* --opencl */
         m_opencl = true;
         break;
@@ -218,7 +218,7 @@ void jdkrig::ConfigTransform::transform(rapidjson::Document &doc, int key, const
         return set(doc, Config::kOcl, "platform", arg);
 #   endif
 
-#   ifdef JDKRIG_FEATURE_CUDA
+#   ifdef KITTENPAW_FEATURE_CUDA
     case IConfig::CudaKey: /* --cuda */
         return set(doc, Config::kCuda, kEnabled, true);
 
@@ -236,22 +236,22 @@ void jdkrig::ConfigTransform::transform(rapidjson::Document &doc, int key, const
         return set(doc, Config::kCuda, "bsleep-hint", static_cast<uint64_t>(strtol(arg, nullptr, 10)));
 #   endif
 
-#   ifdef JDKRIG_FEATURE_NVML
+#   ifdef KITTENPAW_FEATURE_NVML
     case IConfig::NvmlKey: /* --no-nvml */
         return set(doc, Config::kCuda, "nvml", false);
 #   endif
 
-#   if defined(JDKRIG_FEATURE_NVML) || defined (JDKRIG_FEATURE_ADL)
+#   if defined(KITTENPAW_FEATURE_NVML) || defined (KITTENPAW_FEATURE_ADL)
     case IConfig::HealthPrintTimeKey: /* --health-print-time */
         return set(doc, Config::kHealthPrintTime, static_cast<uint64_t>(strtol(arg, nullptr, 10)));
 #   endif
 
-#   ifdef JDKRIG_FEATURE_DMI
+#   ifdef KITTENPAW_FEATURE_DMI
     case IConfig::DmiKey: /* --no-dmi */
         return set(doc, Config::kDMI, false);
 #   endif
 
-#   ifdef JDKRIG_FEATURE_BENCHMARK
+#   ifdef KITTENPAW_FEATURE_BENCHMARK
     case IConfig::AlgorithmKey:     /* --algo */
     case IConfig::BenchKey:         /* --bench */
     case IConfig::StressKey:        /* --stress */
@@ -271,7 +271,7 @@ void jdkrig::ConfigTransform::transform(rapidjson::Document &doc, int key, const
 }
 
 
-void jdkrig::ConfigTransform::transformBoolean(rapidjson::Document &doc, int key, bool enable)
+void kittenpaw::ConfigTransform::transformBoolean(rapidjson::Document &doc, int key, bool enable)
 {
     switch (key) {
     case IConfig::HugePagesKey: /* --no-huge-pages */
@@ -286,7 +286,7 @@ void jdkrig::ConfigTransform::transformBoolean(rapidjson::Document &doc, int key
 }
 
 
-void jdkrig::ConfigTransform::transformUint64(rapidjson::Document &doc, int key, uint64_t arg)
+void kittenpaw::ConfigTransform::transformUint64(rapidjson::Document &doc, int key, uint64_t arg)
 {
     using namespace rapidjson;
 
@@ -316,8 +316,8 @@ void jdkrig::ConfigTransform::transformUint64(rapidjson::Document &doc, int key,
 }
 
 
-#ifdef JDKRIG_FEATURE_BENCHMARK
-void jdkrig::ConfigTransform::transformBenchmark(rapidjson::Document &doc, int key, const char *arg)
+#ifdef KITTENPAW_FEATURE_BENCHMARK
+void kittenpaw::ConfigTransform::transformBenchmark(rapidjson::Document &doc, int key, const char *arg)
 {
     switch (key) {
     case IConfig::AlgorithmKey: /* --algo */
